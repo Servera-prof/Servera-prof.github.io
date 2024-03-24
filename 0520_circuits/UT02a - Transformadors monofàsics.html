@@ -1,3 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ============================================================== -->
+<head>
+
+<meta charset="UTF-8">
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+</style>
+
+<link rel="stylesheet" type="text/css" href="css/main.css" /> 
+
+<title>Resums - CIFP Politecnic de Llevant</title>
+
+</head>
+<!-- ============================================================== -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/texme@1.2.2"></script>
+<textarea>
+ 
+
+
 # Transformadors
 
 ## 1.- Introducció
@@ -8,7 +37,7 @@ Un transformador és una màquina elèctrica estàtica que transmet energia elè
 
 Bàsicament, està format per dos o més circuits elèctrics acoblats magnèticament mitjançant un flux comú, és a dir, per dues o més bobines acoblades. El de dues bobines acoblades es diu transformador monofàsic.
 
-Per a aconseguir un flux comú entre les bobines es pot utilitzar un nucli d'aire, encara que resulta molt més adequat utilitzar un nucli de ferro o un altre material ferromagnètic (en aquest cas, el camí a través de l'aire també existeix, però és negligible). Per a que un bobinat indueixi tensió a l'altre, el flux comú ha de ser variable i, per això, també ha de ser-ho la corrent que el crea (amb corrent contínua constant no es pot induir tensió).
+Per a aconseguir un flux comú entre les bobines es pot utilitzar un nucli d'aire, encara que resulta molt més adequat utilitzar un nucli de ferro o un altre material  ferromagnètic (en aquest cas, el camí a través de l'aire també existeix, però és negligible). Per a que un bobinat indueixi tensió a l'altre, el flux comú ha de ser variable i, per això, també ha de ser-ho la corrent que el crea (amb corrent contínua constant no es pot induir tensió).
 
 Com altres màquines elèctriques, el transformador és reversible. Això vol dir que també es pot alimentar pel costat u₂, i₂ cedir energia al costat u₁, i₁. Sovint es considera que el primari del transformador és el costat que es connecta a l'alimentació (a tensió) mentre que el secundari és el que es connecta al consum, és a dir, la transferència de potència és del primari al secundari. No obstant això, aquesta definició té una certa ambigüitat en el cas de transformadors connectats en xarxes mallades, en els quals la transferència de potència es pot produir en qualsevol dels dos sentits, depenent de com es distribueixi la potència de tota la xarxa.
 
@@ -51,7 +80,7 @@ $$
 
 Aquesta expressió mostra que la relació entre les tensions instantànies del primari i secundari, $u_1~u_2$, és constant i és igual al quocient del nombre d'espires d'ambdós enrotllaments (és a dir, la relació de transformació). El mateix succeeix amb les intensitats instantànies del secundari i primari, $i_2 ~ i_1$.
 
-L'expressió de la relació de tensions, $u_1(t) / u_2(t)=r_t$, s'obté fàcilment ja que el transformador ideal no té flux de dispersió ni resistència interna als seus enrotllaments. A més, com que no té pèrdues ni emmagatzema energia en forma de camp elèctric o magnètic la potència instantània neta que s'absorbeix és nul·la. Això equival a dir que la potència instantània que absorbeix el primari,$p(t)$, es cedeix instantàniament al secundari i viceversa:
+L'expressió de la relació de tensions, $u_1(t) / u_2(t)=r_t$, s'obté fàcilment ja que el transformador ideal no té flux de dispersió ni resistència interna als seus enrotllaments. A més, com que no té pèrdues ni emmagatzema energia en forma de camp elèctric o magnètic la potència instantània neta que s'absorbeix és nul·la. Això equival a dir que la potència instantània que absorbeix el primari, $p(t)$, es cedeix instantàniament al secundari i viceversa:
 
 $$
 p(t) = u_1(t) \cdot i_1(t) = u_2(t) \cdot i_2(t)
@@ -59,7 +88,7 @@ $$
 
 D'aquesta equació i de la relació de tensions, $u_1(t) / u_2(t)=r_t$, s'obté la relació entre les intensitats instantànies de primari i secundari: $i_2(t) / i_1(t)=r_t$
 
-Atès que la relació entre tensions i intensitats instantànies és un nombre real constant, si les tensions i intensitats del primari són sinusoidals, també ho seran les del secundari (seran tensions i intensitats de valor eficaç, proporcionals a la relació de transformació, de la mateixa freqüència i de igual fase que les corresponents del primari). Fasorialment es pot escriure,
+Atès que la relació entre tensions i intensitats instantànies és un nombre real constant, si les tensions i intensitats del primari són sinusoïdals, també ho seran les del secundari (seran tensions i intensitats de valor eficaç, proporcionals a la relació de transformació, de la mateixa freqüència i d'igual fase que les corresponents del primari). Fasorialment es pot escriure,
 
 $$
 r_{t}=\frac{\underline{U}_{1}}{\underline{U}_{2}}=\frac{N_{1}}{N_{2}}=\frac{\underline{I}_{2}}{\underline{I}_{1}}
@@ -103,7 +132,7 @@ De la mateixa manera que succeeix amb les tensions, el transformador ideal ajust
 
 Cal destacar que treballar amb transformadors implica l'existència de dos circuits diferents corresponents als dos costats del transformador, cadascun amb un nivell de tensió específic assignat. Per exemple, no és el mateix considerar una càrrega de 10Ω al costat de baixa (U<sub>N2</sub> = 380 V) que tractar-la al costat d'alta (U<sub>N1</sub> = 6 kV).
 
-Es podria dur a terme un exercici senzill per a calcular les corrents i tensions dels petits transformadors domèstics (220/125 V, 200 VA) que encara es troben en instal·lacions antigues. Això es podria aconseguir coneixent la tensió d'alimentació (220 V a l'endoll) i els dispositius connectats al secundari (com ara estufes, batedores, etc.). És important tenir present que aquests transformadors s'allunyen molt més de la idealitat en comparació amb un transformador de alta potència.
+Es podria dur a terme un exercici senzill per a calcular les corrents i tensions dels petits transformadors domèstics (220/125 V, 200 VA) que encara es troben en instal·lacions antigues. Això es podria aconseguir coneixent la tensió d'alimentació (220 V a l'endoll) i els dispositius connectats al secundari (com ara estufes, batedores, etc.). És important tenir present que aquests transformadors s'allunyen molt més de la idealitat en comparació amb un transformador d'alta potència.
 
 Es fa notar que el secundari i el primari del transformador estan elèctricament separats, és a dir, no hi ha cap punt en els seus circuits connectat per conductors, i la relació entre tots dos s'estableix a través del circuit magnètic. Aquesta característica es coneix com aïllament galvànic, i permet la separació de qualsevol fenomen elèctric entre el primari i el secundari.
 
@@ -217,10 +246,10 @@ La temperatura màxima dels aïllants, juntament amb la capacitat de dissipació
 La **potència nominal**, representada com a S, és la potència aparent (VA, kVA o MVA) que s'obté a partir de la tensió i la corrent nominals dels dos debanaments del transformador. Pel que fa a un transformador monofàsic, s'expressa de la següent manera:
 
 $$
-S_N=U_{N1}\cdot%20I_{N1}=U_{N2}\cdot%20I_{N2}
+S_N=U_{N1}\cdot I_{N1}=U_{N2}\cdot I_{N2}
 $$
 
-Es refereix a la capacitat de subministrar potència al secundari del transformador en règim permanent sense que l'escalfament sigui excessiu. Si la càrrega al secundari té un factor de potència igual a la unitat, tota la potencia aparent és, de fet, potència activa; per tant la potència nominal és també la màxima potència activa que pot desenvolupar el transformador. En condicions intermitents de funcionament, com ara connexions i desconnexions periòdiques, el transformador pot subministrar fins a 1,5 vegades la potència nominal. Això es deu al fet que durant el temps de desconnexió, el transformador es refreda fins a la temperatura ambient (o altres intermèdies entre la de funcionament i la ambient), i un transformador pot subministrar potència superior a la nominal mentre es recalenta fins a arribar a la seva temperatura màxima.
+Es refereix a la capacitat de subministrar potència al secundari del transformador en règim permanent sense que l'escalfament sigui excessiu. Si la càrrega al secundari té un factor de potència igual a la unitat, tota la potencia aparent és, de fet, potència activa; per tant la potència nominal és també la màxima potència activa que pot desenvolupar el transformador. En condicions intermitents de funcionament, com ara connexions i desconnexions periòdiques, el transformador pot subministrar fins a 1,5 vegades la potència nominal. Això es deu al fet que durant el temps de desconnexió, el transformador es refreda fins a la temperatura ambient (o altres intermèdies entre la de funcionament i la ambient), i un transformador pot subministrar potència superior a la nominal mentre es reescalfa fins a arribar a la seva temperatura màxima.
 
 Les **tensions nominals**, representades per U, són les tensions per a les quals s'han calculat els debanats del transformador. Aquestes tensions no han de superar-se per evitar el deteriorament dels aïllaments.
 
@@ -350,7 +379,7 @@ $$
 b_M = y_{Fe}\sin\varphi_0 = y_{Fe}sqrt{1-\cos^2\varphi_0} = 0.01\sqrt{1-0.2^2}=0.009798~\text{p.u.}
 $$
 
-Degut a que la càrrega $\underline{Z_2}$ es troba al secundari del transformador, per a reduir la seva impedància s'ha de utilitzar la impedància base del secundari:
+Degut a que la càrrega $\underline{Z_2}$ es troba al secundari del transformador, per a reduir la seva impedància s'ha d'utilitzar la impedància base del secundari:
 
 $$
 \underline{z_2} = r_2 + jx_2 = \dfrac{0.305+j0.5}{0.2888} = 1.0561 + j1.7313~\text{p.u.}
@@ -368,7 +397,7 @@ $$
 \begin{array}{ccc}i_1=\dfrac{I_1}{I_{N1}} & ; & i_2=\dfrac{I_2}{I_{N2}}\end{array}
 $$
 
-L'índex de càrrega dona una idea de a on està treballant el transformador (per sota de la seva potència nominal, a la potència nominal i inclús per sobre, ja que el transformador pot estar sobrecarregat, breus períodes de temps si està fred.
+L'índex de càrrega dona una idea d'on està treballant el transformador (per sota de la seva potència nominal, a la potència nominal i inclús per sobre, ja que el transformador pot estar sobrecarregat, breus períodes de temps si està fred.
 
 Si la branca del ferro és negligigle, llavors 
 
@@ -403,13 +432,13 @@ c.d.t. = \left(\left|\underline{u_1}\right| - \left|\underline{u_2}\right|\right
 $$
 
 $$
-c.d.t. \text{(\%)} = \left(\left|\underline{u_1}\right| - \left|\underline{u_2}\right|\right)\cdot 100
+c.d.t. (\%) = \left(\left|\underline{u_1}\right| - \left|\underline{u_2}\right|\right)\cdot 100
 $$
 
 Així doncs en el cas del present transformador:
 
 $$
-\begin{array}{ccc}c.d.t. \text{(\%)} = 2.34~\text{\%} & ; & c.d.t. = 0.0234 \cdot 380 = 8.88V \end{array}
+\begin{array}{ccc}c.d.t. (\%) = 2.34~\% & ; & c.d.t. = 0.0234 \cdot 380 = 8.88V \end{array}
 $$
 
 Per a aquest exemple és interessant calcular la caiguda de tensió a partir del valor de les tensions en buid i en càrrega:
@@ -419,16 +448,16 @@ $$
 $$
 
 $$
-c.d.t. \text{(\%)} = \frac{\left|\underline{U}_{2,~buid}\right| - \left|\underline{U}_{2,~carrega} \right|}{U_{N2}} = \frac{372.4-363.5}{380} = 2.34~\text{\%}
+c.d.t. (\%) = \frac{\left|\underline{U}_{2,~buid}\right| - \left|\underline{U}_{2,~carrega} \right|}{U_{N2}} = \frac{372.4-363.5}{380} = 2.34~\%
 $$
 
-El rendiment del transformador no és si no la relació entre la potència de sortida respecte a la potència d'entrada. La diferència entre ambdues potències són les perdues del coure i del ferro. És a dir:
+El rendiment del transformador no és si no la relació entre la potència de sortida respecte a la potència d'entrada. La diferència entre ambdues potències són les pèrdues del coure i del ferro. És a dir:
 
 $$
 \eta = \frac {\text{Potencia util}}{\text{Potencia absorbida}} = \frac{p_2}{p_2+p_{Fe}+p_{Cu}}
 $$
 
-Les perdues en el coure es calculen segons:
+Les pèrdues en el coure es calculen segons:
 
 $$
 p_{Cu}=r \cdot i^2
@@ -458,7 +487,7 @@ p_{Fe} = (u_2)^2g_{Fe}=0.00183
 $$
 
 $$
-\eta = \dfrac{0.23499}{0.23499+0.00445+0.00183}100=97.4\text{\%}
+\eta = \dfrac{0.23499}{0.23499+0.00445+0.00183}100=97.4~\%
 $$
 
 Finalment, en cas de curtcircuit, la corrent reduida val:
@@ -493,3 +522,5 @@ I_{cc1} = i_{cc}\cdot I_{b1}^{p.u.}=392~\text{A}&;
 & I_{cc2} = i_{cc}\cdot I_{b2}^{p.u.}=25.79~\text{kA}
 \end{array}
 $$
+</textarea>
+

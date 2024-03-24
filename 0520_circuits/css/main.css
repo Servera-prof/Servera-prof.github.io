@@ -1,0 +1,17 @@
+img[alt~="eq"]{
+
+}
+
+img[alt~="redu"]{
+	width: 500px;
+}
+
+img[alt~="img"]{
+	border: 1px solid gray;
+}
+
+blockquote{
+	border-left: 3px solid gray;
+	padding-left: 20px;
+	margin-left: 40px;
+}
