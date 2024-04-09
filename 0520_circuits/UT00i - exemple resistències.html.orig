@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ============================================================== -->
+<head>
+
+<meta charset="UTF-8">
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+</style>
+
+<link rel="stylesheet" type="text/css" href="css/main.css" /> 
+
+<title>Resums - CIFP Politecnic de Llevant</title>
+
+</head>
+<!-- ============================================================== -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/texme@1.2.2"></script>
+<textarea>
+ 
+
+
+Exercici de resistències
+========================
+
+![img 1](img/exemple_resistències.png)
+
+Per a treure la intensitat que surt de la font primer s'haurà de reduir el circuit a un que només tingui una font d'alimentació i una sola resistència. Per tant s'haurà de treure la resistència equivalent de tot el circuit.
+
+Primer es combinaran la resistència R<sub>3</sub> i R<sub>4</sub>, que estan en sèrie, per tant:
+
+![eq 1](https://latex.codecogs.com/svg.latex?R_{eq}^I=R_3+R_4=5+3=8\Omega)
+
+Ara, les resistències R<sub>3</sub> i R<sub>4</sub> estan combinades a una resistència que es pot anomenar R<sup>I</sup><sub>eq</sub>. Aquesta nova resistència combinada està amb paral·lel amb  R<sub>2</sub> i  R<sub>5</sub>, per tant:
+
+![eq 2](https://latex.codecogs.com/svg.latex?\dfrac{1}{R_{eq}^{II}}=\dfrac{1}{R_2}+\dfrac{1}{R_{eq}^I}+\dfrac{1}{R_5}=\dfrac{1}{10}+\dfrac{1}{8}+\dfrac{1}{2}=0,725\rightarrow%20R_{eq}^{II}=\dfrac{1}{0,725}=1,379\Omega)
+
+Novament, s'han combinat varies resistències en una sola, per això R<sub>2</sub>, R<sub>3</sub>, R<sub>4</sub> i R<sub>5</sub> estan combinades a R<sup>II</sup><sub>eq</sub>, la qual està en sèrie amb R<sub>1</sub> i per tant:
+
+![eq 3](https://latex.codecogs.com/svg.latex?R_{eq}^{III}=R_1+R_{eq}^{II}=2+1,379=3,379\Omega)
+
+Es procedeix anàlogament fins arribar a tenir només una resistència de la següent manera:
+
+![eq 4](https://latex.codecogs.com/svg.latex?\dfrac{1}{R_{eq}^{IV}}=\dfrac{1}{R_{eq}^{III}}+\dfrac{1}{R_6}=\dfrac{1}{3,379}+\dfrac{1}{5}=0,4959\rightarrow%20R_{eq}^{IV}=\dfrac{1}{0,4959}=2,016\Omega)
+
+![eq 5](https://latex.codecogs.com/svg.latex?R_{eq}^{V}=R_{eq}^{IV}+R_7=2,016+2=4,016\Omega)
+
+---
+
+Ara ja es pot calcular la intensitat de la font, que segons la llei d'Ohm és:
+
+![eq 6](https://latex.codecogs.com/svg.latex?I_{font}=\dfrac{V}{R_{eq}^{V}}=\dfrac{10}{4,016}=2,490\text{A})
+
+Hom es pot fixar en que la intensitat que circula per R<sub>7</sub>, ha de ser la mateixa que a la font, ja que no hi ha bifurcació.
+
+![eq 7](https://latex.codecogs.com/svg.latex?I_{R7}=I_{font}=2,490\text{A})
+
+Sabent la intensitat i la resistència es pot obtenir la cdt novament gràcies a la llei d'Ohm.
+
+![eq 8](https://latex.codecogs.com/svg.latex?V_{R7}=R_7\cdot%20I_{R7}=2\cdot2,490=4,980\text{V})
+
+---
+
+Es pot observar que la caiguda de tensió que hi ha a R<sub>6</sub> és la mateixa que la font menys el que es perd a R<sub>7</sub>
+
+![eq 9](https://latex.codecogs.com/svg.latex?V_{R6}=V_{font}-V_{R7}=10-4,980=5,020\text{V})
+
+Novament, s'aplica la llei d'Ohm.
+
+![eq 10](https://latex.codecogs.com/svg.latex?I_{R6}=\dfrac{V_{R6}}{R_{6}}=\dfrac{5,020}{5}=1,004\text{A})
+
+---
+
+Per a la resta de resistències es procedeix de manera similar:
+
+![eq 11](https://latex.codecogs.com/svg.latex?I_{R1}=I_{font}-I_{R6}=2,490-1,004=1,486\text{A})
+
+![eq 12](https://latex.codecogs.com/svg.latex?V_{R1}=R_1\cdot%20I_{R1}=2\cdot1,486=2,972\text{V})
+
+---
+
+![eq 13](https://latex.codecogs.com/svg.latex?V_{R2}=V_{font}-V_{R7}-V_{R1}=10-4,980-2,972=2,048\text{V})
+
+![eq 14](https://latex.codecogs.com/svg.latex?I_{R2}=\dfrac{V_{R2}}{R2}=\dfrac{2,048}{10}=0,2048\text{A})
+
+---
+
+![eq 15](https://latex.codecogs.com/svg.latex?V_{R5}=V_{R2}=2,048\text{V})
+
+![eq 16](https://latex.codecogs.com/svg.latex?I_{R5}=\dfrac{V_{R5}}{R_5}=\dfrac{2,048}{2}=1,024\text{A})
+
+---
+
+![eq 17](https://latex.codecogs.com/svg.latex?I_{R3}=I_{R4}=I_{R1}-I_{R2}-I_{R5}=1,486-0,2048-1,024=0,2572\text{A})
+
+![eq 18](https://latex.codecogs.com/svg.latex?V_{R3}=R_3\cdot%20I_{R3}=5\cdot0,2572=1,286\text{V})
+
+![eq 17](https://latex.codecogs.com/svg.latex?V_{R4}=R_4=I_{R4}=3\cdot0,2572=0,7716\text{V})</textarea>
+

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ============================================================== -->
+<head>
+
+<meta charset="UTF-8">
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+</style>
+
+<link rel="stylesheet" type="text/css" href="css/main.css" /> 
+
+<title>Resums - CIFP Politecnic de Llevant</title>
+
+</head>
+<!-- ============================================================== -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/texme@1.2.2"></script>
+<textarea>
+ 
+
+
+# Formulari
+
+## Monofàsic
+
+$$
+S_N=U_{N1} \cdot U_{N2}
+$$
+
+$$
+r_t = \frac {U_{N1}}{U_{N2}} = \frac {N_1} {N_2} = \frac {I_{N2}}{I_{N1}}
+$$
+
+$$
+\frac{U_N}{f_N}=\frac{U}{f}=cte
+$$
+
+## Trifàsic
+
+$$
+S_N = \sqrt 3 \cdot U_{N1} \cdot I_{N1} = \sqrt 3 \cdot U_{N2} \cdot I_{N2}
+$$
+
+$$
+r_t = \dfrac{U_{N1}}{U_{N2}}
+$$
+
+### Impedàncies internes
+
+$$
+R^{\prime\prime}=R_{1}^{\prime\prime}+R_{2}^{\prime\prime}
+$$
+
+$$
+X^{\prime\prime}=X_{1}^{\prime\prime}+X_{2}^{\prime\prime}
+$$
+
+### Reducció de circuit
+
+#### Valors base per a la reducció p.u. (MONOFÁSIC)
+
+$$
+\begin{array}{ccc}
+& S_b^{p.u.} = S_N~(\text{VA}) & \\\\[5mm]
+U_{b1}^{p.u.} = U_{N1}~(\text{V}) & U_{b1}^{p.u.}/U_{b2}^{p.u.} = r_t&U_{b2}^{p.u.} = U_{N2}~(\text{V}) \\\\[5mm]
+I_{b1}^{p.u.} = \dfrac{S_N}{U_{N1}}~(\text{A})&&I_{b2}^{p.u.} = \dfrac{S_N}{U_{N2}}~(\text{A})\\\\[5mm]
+Z_{b1}^{p.u.} = \dfrac{U_{N1}^{2}}{S_N}~(\Omega)&&Z_{N2}^{p.u.} = \dfrac{U_{N2}^{2}}{S_N}~(\Omega)
+\end{array}
+$$
+
+#### Valors base per a la reducció p.u. (TRIFASIC)
+
+$$
+\begin{array}{ccc}
+& S_b^{p.u}=S_N~(\text{VA}) & \\\\[1mm]
+& S_{b,F}^{p.u} = S_N/3 ~(\text{VA}) & \\\\[3mm]
+U_{b1}^{p.u}=U_{N1}~(\text{V}) & U_{N1}/U_{N2} = r_t & U_{b2}^{p.u}=U_{N2}~(\text{V}) \\\\[1mm]
+U_{b1,F}^{p.u}=U_{N1} / \sqrt 3 ~ (\text{V}) & & U_{b2,F}^{p.u}=U_{N2} / \sqrt 3 ~ (\text{V}) \\\\[3mm]
+I_{b1}^{p.u} = \dfrac{S_N}{\sqrt 3 U_{N1}}=I_{N1}~(\text{A}) & & I_{b2}^{p.u} = \dfrac{S_b}{\sqrt 3 U_{b2}}=I_{N2}~(\text{A}) \\\\[3mm]
+Z_{b1}^{p.u} = \dfrac{U_{N1}^2}{S_N}~(\Omega) & & Z_{b2}^{p.u} = \dfrac{U_{N2}^2}{S_N}~(\Omega)
+\end{array}
+$$
+
+#### Valors reduïts
+
+$$
+\begin{array}{ccc}\underline{u}_G^r=\dfrac{\underline{U}_G}{U_{b1}}&;
+& \underline{s}_G^r = \dfrac{\underline{S}_G}{S_{b}} = 
+\dfrac{\underline{U}_G\underline{I}_1^*}{S_{b}}&;
+& \underline{z}_L^r = \dfrac{\underline{Z}_L}{Z_{b1}}&;
+& \underline{i}_1^r = \dfrac{\underline{I}_1}{I_{b1}} = 
+\dfrac {\underline{I}_1^{\prime\prime}}{I_{b2}}\\\\
+\end{array}
+$$
+
+$$
+\begin{array}{ccc} 
+\underline{u}_1^r = \dfrac{\underline{U}_1}{U_{b1}} =
+\dfrac{\underline{U}_1^{\prime\prime}}{U_{b2}}&;
+&x^r = \dfrac{X^{\prime\prime}}{Z_{b2}}&;
+&r^r = \dfrac{R^{\prime\prime}}{Z_{b2}}&;
+&\underline{u}_2^r=\dfrac{\underline{U}_2}{U_{b2}}
+\end{array}
+$$
+
+$$
+\begin{array}{ccc}
+\underline{z}_c^r=\dfrac{\underline{Z}_c}{Z_{b2}}&;
+&\underline{s}_c^r = \dfrac{\underline{S}_c}{S_{b}} =
+\dfrac{\underline{U}_2\underline{I}_2^*}{S_b}
+\end{array}
+$$
+
+#### Equivalències de les dades de l'assaig de curtcircuit
+
+$$
+\begin{array}{ccccc}
+z = \varepsilon_{cc} & ; & r = w_{cc} = \dfrac{W_{cc}}{S_b^{p.u.}} = \dfrac{W_{cc}}{S_N} & ; & x = \sqrt{z^2-r^2} \\\\[2mm]
+z = \varepsilon_{cc} & ; & r = z\cos\varphi_{cc} & ; & x = z\sin\varphi_{cc} 
+\end{array}
+$$
+
+#### Equivalències de les dades de l'assaig de buit
+
+$$
+\begin{array}{ccccc}
+y_{Fe} = \dfrac{1}{z_{Fe}}=i_0 & ; & g_{Fe} = \dfrac{1}{r_{Fe}} = w_0 = \dfrac {W_0}{S_b^{p.u.}} = \dfrac{W_0}{S_N} & ; & b_M = \dfrac {1}{x_M} = \sqrt{y_{Fe}^2-g_{Fe}^2} \\\\[2mm]
+g_{Fe} = w_0 & ; & y_{Fe} = \dfrac{g_{Fe}}{\cos\varphi_0} & ; & b_M = y_{Fe}\sin\varphi_0 
+\end{array}
+$$
+
+### Altres
+
+#### Tensió
+
+$$
+u_1 = \dfrac{U_1}{U_{b1}^{p.u.}}
+$$
+
+$$
+\underline {u_2}= \dfrac{U_2}{U_{b2}^{p.u.}}=\underline{z_2}\cdot\underline{i}
+$$
+
+$$
+\begin{array}{ccc}U_{2,~buid}=u_1 \cdot U_{b2}^{p.u.} & ; & U_{2,~carrega}=u_2 \cdot U_{b2}^{p.u.} \end{array}
+$$
+
+$$
+c.d.t. = \left(\left|\underline{u_1}\right| - \left|\underline{u_2}\right|\right)\cdot U_{N2}
+$$
+
+$$
+c.d.t. (\%) = \left(\left|\underline{u_1}\right| - \left|\underline{u_2}\right|\right)\cdot 100
+$$
+
+#### Intensitats
+
+$$
+\underline{i} = \dfrac{\underline{u_1}}{r+jx+\underline{z_2}}
+$$
+
+$$
+i_{cc} = \dfrac {u_1}{z}=19.6
+$$
+
+#### Càrrega
+
+$$
+\underline{z_2} = r_2 + jx_2 = \dfrac{R_2+jX_2}{Z_{b2}^{p.u.}}
+$$
+
+#### 
+
+#### Potències i rendiment
+
+$$
+p_{Fe} = u^2_2g_{Fe}
+$$
+
+$$
+p_{Cu}=r\cdot i^2
+$$
+
+$$
+p_2 = r_2i^2 = \text{Re}\{\underline{s_2}\} = 
+\text{Re}\{\underline{u}_2\underline{i}_2^*\}=
+\text{Re}\{\left(u_2\right)^2\underline{y}_2^*\}=0.23499
+$$
+
+$$
+\eta = \frac {\text{Potencia util}}{\text{Potencia absorbida}} = \frac{p_2}{p_2+p_{Fe}+p_{Cu}}
+$$
+</textarea>
+
