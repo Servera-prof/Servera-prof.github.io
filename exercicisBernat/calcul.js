@@ -79,7 +79,7 @@ function crearIdentificacio(txt){
     canvi += '<div style="text-align: center;">';
     canvi += '<button type="submit" ';
     canvi += 'id="boto" style="font-size: 20px; ';
-    canvi += 'color: #AA5050;"> Avaluar - NO PULSAR! </button>';
+    canvi += 'color: #AA5050;"> Avaluar </button>';
     canvi += '</div>\n';
     canvi += '</form>';
 
