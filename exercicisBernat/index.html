@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Exercicis</title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+</head>
+
+<script>
+
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+
+
+window.onload = function (){
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'Enunciat.md', true);
+    xhr.setRequestHeader("Cache-Control", "max-age=0");
+    xhr.onreadystatechange = function() {
+        if (this.readyState!==4) return;
+        if (this.status!==200) return;
+
+        txtEnunciat = this.responseText;
+        renderEnunciat(txtEnunciat);
+
+    };
+    xhr.send();
+}
+
+
+
+
+
+</script>
+<script src="js/texme/texme.min.js"></script>
+<script src="calcul.js"></script> 
+
+<textarea id="enunciat">
+
+</textarea>
