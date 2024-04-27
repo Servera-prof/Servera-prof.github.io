@@ -1,0 +1,263 @@
+# Formulari 3 - Màquines asincrones
+
+#### Matemàtiques.
+
+$$
+\begin{gather}
+\overrightarrow{C} = r \angle \theta = a + jb \\
+r = \sqrt{a^2+b^2} & ; &
+\theta = \arctan{\left(\dfrac{b}{a}\right)} \\
+a = r \cdot \cos(\theta) & ; &
+b = r \cdot \sin(\theta)
+\end{gather}
+$$
+
+
+Si es considera que $\overrightarrow{C_1} = a+jb$ i que $\overrightarrow{C_2} = c+jd$
+
+$$
+\begin{gather}
+\overrightarrow{C_1} + \overrightarrow{C_2} =  (a + c) + j (b + d) \\
+\overrightarrow{C_1} - \overrightarrow{C_2} = (a - c) + j (b - d) \\
+\overrightarrow{C_1} \cdot \overrightarrow{C_2} = 
+(ac - bd) + j (ad + bc) \\
+\overrightarrow{C_1}/\overrightarrow{C_2} = 
+\dfrac{ac + bd}{c^2+d^2} + j\dfrac{bc-ad}{c^2+d^2}
+\end{gather}
+$$
+
+
+Si es considera que $\overrightarrow{C_1} = r \angle \alpha$ 
+i que $\overrightarrow{C_2} = s \angle \beta$
+
+$$
+\begin{gather}
+\overrightarrow{C_1} \cdot \overrightarrow{C_2} = 
+(r \cdot s) \angle (\alpha + \beta) \\
+\overrightarrow{C_1}/\overrightarrow{C_2} = 
+(r / s) \angle (\alpha - \beta) 
+\end{gather}
+$$
+
+En el cas especial que $\overrightarrow{C_1} = 1$:
+
+$$
+\begin{gather}
+1/\overrightarrow{C_2} = 
+\dfrac{c}{c^2+d^2} + j\dfrac{-d}{c^2+d^2}
+\end{gather}
+$$
+
+I per tant:
+
+$$
+\begin{gather}
+G=\dfrac{R}{R^2+X^2} && ; && B=\dfrac{-X}{R^2+X^2}
+\end{gather}
+$$
+
+
+#### Camp magnètic
+
+$$
+\begin{gather}
+\omega_m+\dfrac{\omega_r}{p}=\dfrac{\omega_s}{p} \\[4mm]
+\Omega_m + \Omega_r = \Omega_s
+\end{gather}
+$$
+
+
+#### Lliscament
+
+$$
+\begin{gather}
+s =\dfrac{\dfrac{\omega_s}{p}-\omega_m}{\dfrac{\omega_s}{p}} = 
+  \dfrac{\Omega_s-\Omega}{\Omega_s}
+\end{gather}
+$$
+
+
+$$
+\begin{gather}
+\omega_m=(1-s)\cdot\dfrac{\omega_s}{p} && ; && \omega_r=s\cdot\omega_s
+\end{gather}
+$$
+
+$$
+\begin{gather}
+n_s=\dfrac{60f_s}{p} \\
+n_r = \dfrac{60f_r}{p}=\dfrac{60\cdot (s\cdot f_s)}{p} \\
+n = \omega_m \cdot \dfrac{60}{2\cdot\pi}
+\end{gather}
+$$
+
+$$
+\begin{gather}
+\dfrac{n_s-n}{n_s} & ; & n = (1-s)\cdot n_s && ; 
+&& n_r = s\cdot n_s
+\end{gather}
+$$
+
+#### Circuit equivalent
+
+![](img/circ_eq_maq_asinc_exacte.png)
+
+$$
+\begin{gather}
+R_2^\prime = R_2 \cdot rt^2 & ; &
+X_2^\prime = X_2 \cdot rt^2
+\end{gather}
+$$
+
+$$
+\begin{gather}
+I_2 = I_2^\prime \cdot rt &&
+\end{gather}
+$$
+
+$$
+\begin{gather}
+\overrightarrow I_1 = \overrightarrow I_0+\overrightarrow I_2^\prime \\
+\overrightarrow I_0 = \overrightarrow I_{Fe} + \overrightarrow I_\mu \\
+\overrightarrow V_1 = 
+  \overrightarrow E_1 + \overrightarrow I_1(R_1+jX_1) \\
+\overrightarrow E_2^\prime = E_1 = 
+  \overrightarrow I_2^\prime (R_2^\prime  +jX_2^\prime) + 
+  I_2^\prime R_c^\prime
+\end{gather} 
+$$
+
+$$
+\begin{gather}
+R_c^\prime = R_2^\prime\left(\dfrac{1}{s}-1\right)
+\end{gather}
+$$
+
+$$
+\begin{gather}
+R_2^\prime + R_c^\prime = \dfrac{R_2^\prime}{s}
+\end{gather}
+$$
+
+#### Circuit aproximat
+
+![](img/circ_eq_maq_asinc_aprox.png)
+
+$$
+\begin{gather}\begin{array}{ccc}
+R_{cc} = R_1 + R_2 && ; && X_{cc} = X_1 + X_2
+\end{array}\end{gather}
+$$
+
+#### Potències
+
+$$
+\begin{gather}
+P_1 = 3 \cdot V_1 I_1 \cos \varphi_1
+\end{gather}
+$$
+
+$$
+\begin{gather}
+P_{Cu1}=3 \cdot R_1 I_1^2
+\end{gather}
+$$
+
+$$
+\begin{gather}
+P_{Fe} = 3 \cdot E_1I_{Fe} \approx 3\cdot V_1 I_{Fe}
+\end{gather}
+$$
+
+$$
+\begin{gather}
+P_a=P_1-P_{Cu1}-P_{Fe}
+\end{gather}
+$$
+
+$$
+\begin{gather}
+P_{Cu2} = 3 \cdot R_2 I_2^2 = 3 \cdot R_2^\prime \cdot {I_2^\prime}^2
+\end{gather}
+$$
+
+$$
+\begin{gather}
+P_{mi} = 3 \cdot R_c^\prime \cdot {I_2^\prime}^2 = 
+3 \cdot R_2^\prime \left( \dfrac{1}{s}-1\right){I_2^\prime}^2 = 
+3 \cdot R_2^\prime \left( \dfrac{1-s}{s}\right){I_2^\prime}^2
+\end{gather}
+$$
+
+$$
+\begin{gather}
+P_u = P_{mi} - P_m
+\end{gather}
+$$
+
+$$
+\begin{gather}
+P_a = P_{mi}+P_{Cu2} = 3 \cdot (R_c^\prime + R_2^\prime) = 
+  3 \cdot \dfrac{R_2^\prime}{s}{I_2^\prime}^2 \\
+P_{Cu2} = \dfrac{s}{1-s}P_{mi} = s \cdot P_a \\[4mm] 
+P_a = \dfrac{P_{Cu2}}{s} = \dfrac{P_{mi}}{1-s}  
+\end{gather}
+$$
+
+$$
+\begin{gather}
+\eta = \dfrac{P_u}{P_1}=  
+\dfrac{P_u}{P_u+P_m+P_{Cu2}+P_{Fe}+P_{Cu1}}
+\end{gather}
+$$
+
+#### Parell
+
+$$
+\begin{gather}
+M_u = \dfrac{P_u}{\Omega} = \dfrac{P_u}{\dfrac{2\pi}{60}n}
+\end{gather}
+$$
+
+$$
+\begin{gather}
+M = \dfrac{P_{mi}}{\Omega} = \dfrac{P_{mi}}{\dfrac{2\pi}{60}n}
+\end{gather}
+$$
+
+**Aproximacions**
+
+$$
+\begin{gather}
+M = \dfrac{P_{a}}{\Omega_1} = \dfrac{P_{a}}{\dfrac{2\pi}{60}n_1}
+\end{gather}
+$$
+
+$$
+\begin{gather}
+I_2^\prime = \dfrac{V_1}{\sqrt{\left(R_{cc}+R_c^\prime\right)^2 + X_{cc}^2}} =
+  \dfrac{V_1}{\sqrt{\left(R_1+\dfrac{R_2}{s}^\prime\right)^2 + X_{cc}^2}}
+\end{gather}
+$$
+
+$$
+\begin{gather}
+M = \dfrac {3 \dfrac{R_2^\prime}{s}}{\dfrac{2\pi}{60}n_1}\cdot
+  \dfrac{V_1^2}{\left(R_1+\dfrac{R_2^\prime}{s}\right)^2+X_{cc}^2}
+\end{gather}
+$$
+
+**Màxims**
+
+$$
+\begin{gather}
+s_m = \pm \dfrac{R_2^\prime}{\sqrt{R_1^2+X_{cc}^2}}
+\end{gather}
+$$
+
+$$
+\begin{gather}
+M_{max} = \pm\dfrac{3}{\dfrac{2\pi}{60}n_1}\cdot
+  \dfrac{V_1^2}{2\left( \pm R_1+\sqrt{R_1^2+X_{cc}^2} \right)}
+\end{gather}
+$$

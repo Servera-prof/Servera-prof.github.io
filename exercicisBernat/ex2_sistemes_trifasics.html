@@ -1,0 +1,62 @@
+
+<!----- NO TOCAR ----------------------------------------------------->
+<!DOCTYPE html>
+<head>
+<!----- FI NO TOCAR -------------------------------------------------->
+
+
+
+
+<!-- == MODIFICAR TITOL =========================================== -->
+    <title>Exercici 2 - Sistemes trifàsics</title>
+<!-- == FI MODIFICAR TITOL ======================================== -->
+
+
+
+
+<!----- NO TOCAR ----------------------------------------------------->
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+
+window.onload = function (){
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', rutaEnunciat, true);
+    xhr.setRequestHeader("Cache-Control", "max-age=0");
+    xhr.onreadystatechange = function() {
+        if (this.readyState!==4) return;
+        if (this.status!==200) return;
+
+        txtEnunciat = this.responseText;
+        renderEnunciat(txtEnunciat);
+
+    };
+    xhr.send();
+}
+</script>
+<script src="js/texme/texme.min.js"></script>
+<script src="js/entrenadorserveri.js"></script>
+<!----- FI NO TOCAR -------------------------------------------------->
+
+
+
+
+<!-- == MODIFICAR RUTA A CALCULS ================================== -->
+<script src="js/calc_ex2_sistemes_trifasics.js"></script>
+<!-- == FI MODIFICAR RUTA A CALCULS =============================== -->
+
+
+
+
+
+<!----- NO TOCAR ----------------------------------------------------->
+<textarea id="enunciat">
+</textarea>
+<!----- FI NO TOCAR -------------------------------------------------->

@@ -1,16 +1,10 @@
+const π = Math.PI;
 
-
-const e1 = {};
 let calculs = [""];
 let parametres = [""];
 let solucions = [""];
 let respostes = [""];
-const puntuacions = ["",
-    0.5, 0.5,
-    0.5, 0.5, 0.5, 0.5,
-    0.5, 0.5,
-    1
-];
+
 
 let alumne = {
     nom: "",
@@ -30,19 +24,12 @@ function renderEnunciat(txtEnunciat){
     texme.renderPage();
 }
 
-function estableixParametres(){
-    let p_e1;
-    e1.VF_Traf = aleat(100, 500); 
-    e1.Z_trif = aleat(20,60);
-    p_e1 = [e1.VF_Traf, e1.Z_trif];
-    parametres = parametres.concat(p_e1);
 
-}
 
 function exportarParametres(txt){
     let patro = "", canvi = "";
     const fi = parametres.length;
-    for (let i = 1; i < puntuacions.length; i++) {
+    for (let i = 1; i < parametres.length; i++) {
         patro = "[[p" + i +"]]";
         canvi = parametres[i];
         txt = txt.replace(patro, canvi);
@@ -91,7 +78,7 @@ function avalua(){
     importaRespostes();
 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', './Avaluacio.md', true);
+    xhr.open('GET', rutaAvaluacio, true);
     xhr.setRequestHeader("Cache-Control", "max-age=0");
  
     xhr.onreadystatechange = function() {
@@ -112,8 +99,7 @@ function importaRespostes(){
     for (let i = 1; i < puntuacions.length; i++){
         r[i] = document.getElementById("i"+i).value;
     }
-    console.log(r);
-    respostes = r.map(xSignif);
+    respostes = r.map(xsMap);
 }
 
 
@@ -132,10 +118,9 @@ function renderAvaluacio(txt){
     const avaluacio = document.getElementById("avaluacio");
     txt = identificarAlumne(txt);
     txt = puntua(txt);
-    txt = txt.replace("[[backup]]", JSON.stringify(calculs[1], false, 4));
+    txt = txt.replace("[[log]]", tlog);
     avaluacio.innerHTML = txt;
     texme.renderPage();
-
 }
 
 
@@ -149,6 +134,8 @@ function identificarAlumne(txt){
 function puntua(txt){
     calcula();
 
+    txt = exportarParametres(txt);
+
     let ptsAlumne = 0, ptsTotal = 0;
     let canvi = "", patro = "";
     let a = 0, b = 0;
@@ -156,56 +143,30 @@ function puntua(txt){
         a = respostes[i];
         b = solucions[i];
         ptsTotal += puntuacions[i];
-
+        canvi = 
+            '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">' 
+            + coma(a) + '</span>';
         if ((b*0.99) < a && a < (b*1.01)) {
             ptsAlumne += puntuacions[i];
-            canvi = "**OK**";
+            canvi += 
+                ' <span style="color: green">(' + 
+                coma(b) +') OK (+' + puntuacions[i] + ')</span>';
         }else{
-            canvi = "Error";
+            canvi += 
+                ' <span style="color: red;"> (' + 
+                coma(b) +')</span>';
         }
-        patro = "[[resultat" + i + "]]";
-        canvi += "   -   Resposta de l'alumne: " + respostes[i] + 
-                ", resultat esperat: " + solucions[i];
-
+        patro = "[[i" + i + "]]";
 
         txt = txt.replace(patro, canvi);
     }
-    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ ptsAlumne +
-        " punts de " + ptsTotal + " possibles.\n>\n>" +
-        "**Nota final: " + ptsAlumne/ptsTotal*10 + "**");
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
     return txt;
 }
 
-function calcula(){
-       
-    e1.VL = 3**0.5 * e1.VF_Traf; 
 
-    e1.V_mono_fn = e1.VF_Traf; 
-    e1.V_mono_ff = e1.VL; 
-
-    e1.VL_D = e1.VL; 
-    e1.VF_D = e1.VL_D; 
-    e1.IF_D = e1.VF_D / e1.Z_trif;
-    e1.IL_D = 3**0.5 * e1.IF_D;
-
-    e1.VL_Y = e1.VL;
-    e1.VF_Y = e1.VL_Y/3**0.5;
-    e1.IF_Y = e1.VF_Y / e1.Z_trif;
-    e1.IL_Y = e1.IF_Y;
-
-    e1.IL_tot = e1.IL_D + e1.IL_Y;
-
-    calculs[1] = e1;
-
-    r_e1 = [
-        e1.V_mono_fn, e1.V_mono_ff, 
-        e1.VL_D, e1.VF_D, e1.VL_Y, e1.VF_Y, 
-        e1.IF_D, e1.IF_Y, e1.IL_tot
-    ];
-    xs_e1 = r_e1.map(xSignif);
-    solucions = solucions.concat(xs_e1);
-
-}
 
 
 
@@ -221,9 +182,93 @@ function aleat(min, max) {
     return c;
 }
 
-function xSignif(a){
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar
+    c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    return log;
+}
+
+function blog(){
+    log = "";
+    for (var i = 0; i < arguments.length - 2; i++){
+        log += arguments[i] + ": "
+        i++;
+        log += xs(arguments[i]) + "; "
+    }
+    log += arguments[i] + ": "
+    i++;
+    log += xs(arguments[i]) + "\n"
+    return log;
+}
+
+function xs(a, b = 4){
     a = Number(a);
-    if (a.toPrecision) return a.toPrecision(4);
-    else return a;
+    if (a.toPrecision) a = a.toPrecision(b);
+    return a;
+}
+
+function coma(a){
+    a = a.replace(".", ",");
+    return a;
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
 }
 
