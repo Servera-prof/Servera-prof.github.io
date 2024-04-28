@@ -21,8 +21,15 @@ table, th, td {
 </head>
 <!-- ============================================================== -->
 
+<script>
+window.texme = {
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
 
-<script src="https://cdn.jsdelivr.net/npm/texme@1.2.2"></script>
+
+<script src="js/texme/texme.min.js"></script>
 <textarea>
  
 
@@ -50,7 +57,7 @@ L'aplicació més significativa dels transformadors és en els sistemes elèctri
 Les tensions nominals del primari i secundari, $U_{N1}/U_{N2}$, juntament amb la seva potència nominal, $S_N$, caracteritzen el transformador, i a partir d'aquests valors es poden calcular les corrents nominals, $I_{N1}/I_{N2}$
 
 $$
-S_N=U_{N1} \cdot U_{N2}
+S_N=U_{N1} \cdot I_{N1}
 $$
 
 Els valors nominals són aquells pels quals s'ha calculat el transformador, i superar-los comporta el risc de danyar-lo. La distinció entre l'enrotllament d'alta i baixa tensió, així com si el transformador és elevador (400V / 6 kV) o reductor (25 / 6 kV), depèn de quina de les tensions nominals sigui més gran.

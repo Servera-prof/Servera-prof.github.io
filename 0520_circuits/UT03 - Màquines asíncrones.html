@@ -21,15 +21,22 @@ table, th, td {
 </head>
 <!-- ============================================================== -->
 
+<script>
+window.texme = {
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
 
-<script src="https://cdn.jsdelivr.net/npm/texme@1.2.2"></script>
+
+<script src="js/texme/texme.min.js"></script>
 <textarea>
  
 
 
 # Màquines asíncrones
 
-## 0. Nota previa important.
+## 0. Nota prèvia important.
 
 Les relacions
 
@@ -40,7 +47,7 @@ B=\dfrac{1}{X}
 \end{gather}
 $$
 
-Només es donen en circuits resistius o reactius purs. Si es considera $G=\mathrm{Re}\{Y\}$ o també B=\mathrm{Im}\{Y\}, llavors:
+Només es donen en circuits resistius o reactius purs. Si es considera $G=\mathfrak{Re}\{\overrightarrow Y\}$ o també $B=\mathfrak{Im}\{Y\}$, llavors:
 
 $$
 \begin{gather}
@@ -74,11 +81,11 @@ La velocitat angular anterior es dona només en el cas de que hi hagi dos pols p
 
 > ![](img/ferraris.gif)
 > 
-> **Fig. 1** _Visualitació del teorema de Ferraris_ Creació pròpia (autor Joan Servera), mitjançant la animació de gràfiques estàtiques generades mitjançant LibreOffice. 
+> **Fig. 1a** _Visualització del teorema de Ferraris_ Creació pròpia (autor Joan Servera), mitjançant la animació de gràfiques estàtiques generades mitjançant LibreOffice. 
 
 > ![](img/ferrari_vectors.gif)
 > 
-> **Fig. 1** _Visualitació del teorema de Ferraris_ Creació pròpia (autor Joan Servera), mitjançant la animació de gràfiques estàtiques generades mitjançant LibreOffice. 
+> **Fig. 1b** _Visualització del teorema de Ferraris_ Imatge creada per [M.A. Rodríguez Pozueta][1] de la [Universitat de Cantabria][2] sota llicencia [CC3.0 by-nc-sa][3]  
 
 ### 2.2. Inducció al rotor. Llei de Lenz
 
@@ -442,11 +449,11 @@ Entre 0 i la velocitat de sincronisme, o expressat d'una altra manera, quan el l
 
 Si es supera la velocitat de sincronisme, o expressat d'una altra manera, si el lliscament és negatiu, és la zona blava de la gràfica. Això provoca que tant $P_{mi}$ com $P_a$ són  negatives, i per tant el motor produeix potència elèctrica en lloc de consumir-la. Per altra banda la velocitat i el parell tenen signes oposats, això vol dir que es consumeix potència mecànica.
 
-És a dir, es comporta com una màquina que consumeix potència mecànica i produeix potència elèctrica, es a dir, es comporta com un generador.
+És a dir, es comporta com una màquina que consumeix potència mecànica i produeix potència elèctrica, és a dir, es comporta com un generador.
 
 ### 6.3. Funcionament com a fre a contracorrent
 
-Si la velocitat és negativa, o si parlem en funció del lliscament, si el lliscament és major que 1, el motor gira en sentit contrari al camp magnètic de l'estator). Si es comproven les equacions es veurà que la $P_a$ és positiva, i per tant la màquina consumeix energia elèctrica. Per la banda mecànica el parell i la velocitat tenen signes oposats, es a dir que consumeix energia mecànica frenant el moviment.
+Si la velocitat és negativa, o si parlem en funció del lliscament, si el lliscament és major que 1, el motor gira en sentit contrari al camp magnètic de l'estator). Si es comproven les equacions es veurà que la $P_a$ és positiva, i per tant la màquina consumeix energia elèctrica. Per la banda el parell i la velocitat tenen signes oposats, es a dir que consumeix energia mecànica frenant el moviment.
 
 Tota aquesta energia es rebuda pel rotor (rep energia tant de l'estator com de l'eix) que l'ha de dissipar en forma de calor a través de les seves resistències internes. Com a conseqüència en aquest règim el motor pot arribar a escalfar-se en excés.
 
@@ -490,7 +497,7 @@ El parell nominal és aquell en el que el motor funciona a una velocitat assigna
 La capacitat de sobrecarrega es defineix com el següent quocient:
 
 $$
-\text{c.d.t.} = \dfrac{M_{max}}{M_N}
+\text{csc} = \dfrac{M_{max}}{M_N}
 $$
 
 # Bibliografia:
