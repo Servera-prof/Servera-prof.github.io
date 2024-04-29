@@ -75,7 +75,7 @@ function calcula(){
     e1.S = xs(S); e1.P = xs(P); e1.Q = xs(Q);
 
 
-    calculs[1] = e1;
+    tlog = "" + JSON.stringify(e1);
 
     r_e1 = [
         ω,
