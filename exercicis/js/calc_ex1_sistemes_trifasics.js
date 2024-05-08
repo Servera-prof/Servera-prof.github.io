@@ -61,7 +61,7 @@ function calcula(){
     IL_tot = IL_D + IL_Y;
     e1.IL_tot = xs(IL_tot);
 
-    tlog = "" + JSON.stringify(e1);
+    calculs[1] = e1;
 
     r_e1 = [
         e1.V_mono_fn, e1.V_mono_ff, 

@@ -88,8 +88,6 @@ function avalua(){
         resetejar();
         renderAvaluacio(txtAvaluacio);
     };
-   
-
     xhr.send();
 }
 
@@ -182,6 +180,11 @@ function aleat(min, max) {
     return c;
 }
 
+function triaElementMatriu (matriu, n = 0){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(n)];
+}
+
 function atan(a){
     return Math.atan(a)*360/2/π;
 }
@@ -224,6 +227,10 @@ function multc(a, b){
     return cpol(a.r*b.r, a.φ+b.φ);
 }
 
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
 function divc(a, b){
     return cpol(a.r/b.r, a.φ-b.φ);
 }
@@ -243,6 +250,14 @@ function logc (nom, v){ // log de un numero complexe
     return log;
 }
 
+function logcbi (v){ // log de un numero complexe només en binomial
+    log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    return log;
+}
+
 function blog(){
     log = "";
     for (var i = 0; i < arguments.length - 2; i++){
@@ -253,6 +268,18 @@ function blog(){
     log += arguments[i] + ": "
     i++;
     log += xs(arguments[i]) + "\n"
+    return log;
+}
+
+function blog2(){
+    let ids = arguments[0].split().trim();
+    let uds = arguments[length - 1].split().trim();
+
+    let log = "";
+    for (var i = 1; i < arguments.length - 2; i++){
+        log += ids[i - 1] + ": ";
+        log += xs(arguments[i]) + " " + uds[i - 1] + "\n";
+    }
     return log;
 }
 

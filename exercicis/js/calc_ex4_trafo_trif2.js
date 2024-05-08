@@ -15,115 +15,235 @@
  * vector solucions.
  * *******************************************************************/
 
-const rutaEnunciat = 'md/enun_ex3_maquines_asinc.md';
-const rutaAvaluacio = 'md/aval_ex3_maquines_asinc.md';
+
+
+
+
+// == ACTUALITZAR VALORS ==============================================
+const rutaEnunciat = 'md/enun_ex4_trafo_trif.md';
+const rutaAvaluacio = 'md/aval_ex4_trafo_trif.md';
 const puntuacions = ["",
-    1, 1, 1, 1, 0.5,
-    2, 2, 2, 2, 
-    1.5, 1.5, 1.5, 1.5,
-    2, 2,
-    2, 2, 
-    3, 3
+
 ];
 
-const a = [""];
-
-
-const e1 = {};
-calculs[2] = "";
+parametres = [""];
 tlog = "";
+// == FI ACTUALITZAR VALORS ===========================================
+
+
+
+
+
+// == DECLARACIÓ DE PARÀMETRES ========================================
+const S_N = 500;    // kVA
+const U_N1 = 25;    // kV
+const U_N2 = 6000;  // V
+const U_G = 24;     // kV
+const ε_cc = 0.05;  // "" 
+
+const W_cc = 10;    // kW
+const W_0 = 1;      // kW
+const cosφ_0 = 0.2; // ""
+const Z_2 = cbi(215, 200); // Ω
+// == FI DECLARACIÓ DE PARÀMETRES ====================================
+
+
+
+
+
 function estableixParametres(){
-    let p_e1;
-/*
-    e1.R1 = 0.5;
-    e1.X1 = 1.5;
-    e1.R2 = 0.1;
-    e1.X2 = 0.2;
-    e1.RFe = 360;
-    e1.XM = 40;
-    e1.rt = 2.5;
-    e1.Pm = 100;
 
-    e1.nN = 1425;
-    e1.PuN = 9.8;
-    e1.VND = 230;
-    e1.VNY = 400;
-    e1.VN = "△ " + e1.VND + " / Υ " + e1.VNY;
-    e1.f = 50;
-    e1.INY = 18.7;
-    e1.fdp = 0.85;
+    p = [
+        U_G  + " kV",
+        U_N2 + " V",
+        S_N  + " kVA",
+        UN_1 + " kV / " + U_N2 + " V",
+        ε_cc,
 
-    e1.Mc = 14;
-    e1.VL = 400;
-    e1.Rr = 7;
-*/
-    e1.R1 = aleat (40, 50) / 100;
-    e1.X1 = aleat (10, 20) / 10;
-    e1.R2 = aleat (10, 20) / 100;
-    e1.X2 = xs(aleat (20, 25) / 10 * e1.R2, 2);
-    e1.RFe = aleat (30, 40) * 10;
-    e1.XM = aleat (30, 40);
-    e1.rt = aleat (20, 20) / 10;
-    e1.Pm = aleat (10, 30) * 10;
-
-
-
-    vns = [[127, 220], [230, 400], [400, 630]];
-    vn = triaElementMatriu(vns);
-    e1.VND = vn[0];
-    e1.VNY = vn[1];
-    e1.VN = "△ " + e1.VND + " / Υ " + e1.VNY;
-
-    fs = [50, 60];
-    e1.f = triaElementMatriu(fs);
-    e1.nN = Math.round(aleat(93, 98) / 100 * 60 * e1.f / aleat (1, 4));
-
-    is = calculaIs(e1.VNY/3**0.5, e1.f, e1.nN, e1.rt, 
-        e1.R1, e1.X1, e1.RFe, e1.XM, e1.R2, e1.X2);
-    e1.INY = xs(aleat(97, 103) / 100 * is.get("I1").r, 2);
-    e1.PuN = xs(aleat(97, 103) / 100 * is.get("rc") * is.get("i2").r**2 * 3 / 1000, 2);
-    e1.fdp = xs(cos(aleat(97, 103) / 100 * is.get("Ztot").φ), 2);
-
-    e1.Mc = xs(aleat(25, 35) / 100 * e1.PuN*1e3 / (2*π * e1.nN / 60), 2);
-    e1.VL = aleat (95, 101) / 100 * e1.VNY;
-    e1.Rr = aleat (5, 8);
-
-    p_e1 = [
-        e1.R1, e1.X1, e1.R2, e1.X2, e1.RFe, e1.XM, e1.rt, e1.Pm,
-        e1.nN, e1.PuN, e1.VN, e1.f, e1.INY, e1.fdp,
-        e1.Mc, e1.VL, e1.Rr
+        W_cc + " kW",
+        W_0  + " kW",
+        cosφ_0,
+        logcbi(Z_2),
     ];
-    parametres = parametres.concat(p_e1);
+    parametres = parametres.concat(p);
 }
+
+
+
+
 
 function calcula(){
 
+    const I_N1 = S_N / (Math.sqrt(3) * U_N1);
+    const I_N2 = S_N*1000 / (Math.sqrt(3) * U_N2);
+    const Z_b1 = (U_N1*1000)**2 / (S_N * 1000);
+    const Z_b2 = (U_N2)**2 / (S_N * 1000);
+
+    const z_mod = ε_cc;
+    const r = W_cc / S_N;
+    const x = Math.sqrt(z_mod**2-r**2);
+    const z = cbi(r, x);
+
+    const g_Fe = W_0 / S_N;
+    const y_Fe_mod = g_Fe / cosfi_0;
+    const b_M = y_Fe * Math.sqrt(1 - cosfi_0**2);
+    const y_Fe = cbi(g_Fe, b_M);
+
+    const U_1 = U_G;
+    const u_1 = cpol (U_1 / U_N1, 0);
+    const z_2 = multc_esc(1/(3 * Z_b2), Z_2);
+
+
+
+    const z_eq = sumc(z_2, z);
+    const i_1 = divc(u_1, z_eq);
+    const u_2 = multc(i_1, z_2);
+
+
+
+    const cdt_pu = u_1.r - u_2.r;
+    const cdt_V = cdt_pu * U_N2;
+
+    tlog += blog2(
+         cdt_pu, cdt_V
+        "cdt_pu, cdt_V"
+    );
+    tlog += "\n\n";
+
+
+
+
+    tlog += "1.6. càlcul potències i rendiment\n";
+    tlog += "---------------------------------\n\n"; 
+
+    const p_2 = z_2.x * i_1.r**2;
+    const p_Cu = z.x * i_1.r**2;
+    const p_Fe = u_2.r**2 * y_Fe.x;
+    const η = p_2 / (p_2 + p_Cu + p_Fe) * 100;
+
+    tlog += blog2(
+         p_2, p_Cu, p_Fe
+        "p_2, p_Cu, p_Fe"
+    );
+    tlog += "\n\n";
+
+
+
+    tlog += "1.7. Càlcul tensió real al secundari\n";
+    tlog += "------------------------------------\n\n"; 
+
+    const U_2 = multc_esc (U_N2 * u_2.r);
+
+    tlog += logc("U_2", U_2);
+    tlog += "\n\n\n";
+
+
+
+
+
+
+    tlog += "2. Càlcul intensitats de curtcircuit\n";
+    tlog += "====================================\n\n"; 
+
+    const i_cc = u_1.r / z.r;
+    const I_cc2 = i_cc * I_N2 / 1000;
+
+    tlog += blog2(I_cc2, "I_cc2");
+    tlog += "\n\n\n";
+
+
+
+
+
+    tlog += "3. Índex horari\n";
+    tlog += "===============\n\n"; 
+
+    let index_horari;
+    if (iAT === 0 && iBT === 0) index_horari = 11;
+    else if (iAT === 0 && iBT === 1) index_horari = 7;
+    else if (iAT === 0 && iBT === 2) index_horari = 3;
+    else if (iAT === 1 && iBT === 0) index_horari = 1;
+    else if (iAT === 1 && iBT === 1) index_horari = 5;
+    else if (iAT === 1 && iBT === 2) index_horari = 9;
+    else index_horari = "";
+
+    tlog += "Index horari: " + index_horari + "\n";
+    tlog += "\n\n\n";
+
+
+
+
+
+    tlog += "4. Índex horari\n";
+    tlog += "===============\n\n"; 
+
+    const R_AT = 2000/56/50;
+    const r_AT = R_AT / Z_b2;
+    const x_AT = r_AT * 0.1;
+    const u_g = U_G / U_N1;
+    const r_totV2 = r_tot + r_AT;
+    const x_totV2 = x_tot + x_AT;
+    const z_totV2Mod = (r_totV2**2 + x_totV2**2)**0.5;
+    const iModV2 = u_g /z_totV2Mod;
+
+
+
     tlog += "1. Paràmetres\n";
     tlog += "=============\n\n";
-    R1 = e1.R1; X1 = e1.X1; R2 = e1.R2; X2 = e1.X2;
-    tlog += blog("R1", R1, "X1", X1, "R2", R2, "X2", X2);
     
-    RFe = e1.RFe; XM = e1.XM; rt = e1.rt; Pm = e1.Pm;
-    tlog += blog("RFe", RFe, "XM", XM, "rt", rt, "Pm", Pm);
+    tlog += blog2(S_N, U_N1, U_N2, U_G,
+                 "S_N, U_N1, U_N2, U_G");
+    tlog += blog2(ε_cc, W_cc, W_0, cosφ_0,
+                 "ε_cc, W_cc, W_0, cosφ_0");
+    tlog += logc("Z_2", Z_2);
+    tlog += "\n\n\n";
 
-    nN = e1.nN; PuN = e1.PuN; VND = e1.VND; VNY = e1.VNY;
-    tlog += blog("nN", nN, "PuN", PuN, "VND", VND, "VNY", VNY);
 
-    f = e1.f; INY = e1.INY; fdp = e1.fdp; 
-    tlog += blog("f", f, "INY", INY, "fdp", fdp);
+    tlog += "1.1. Valors base\n";
+    tlog += "----------------\n\n";
 
-    Mc = e1.Mc; VL = e1.VL; Rr = e1.Rr;
-    tlog += blog("Mc", Mc, "VL", VL, "Rr", Rr) + "\n\n\n";
+    tlog += blog2(S_N, UN_1, U_N2,
+                 "S_N, UN_1, U_N2"); 
+    tlog += blog2(I_N1, I_N2,
+                 "I_N1, I_N2"); 
+    tlog += blog2(Z_b1, Zb2,
+                 "Z_b1, Zb2");
+    tlog += "\n\n";
+
+
+    tlog += "1.2. Valors reduïts\n";
+    tlog += "-------------------\n\n";
+
+    tlog += logc("z", z);
+    tlog += logc("y_Fe", y_Fe);
+    tlog += "\n\n";
+
+
+    tlog += "1.3. Entrada i sortida reduïda\n";
+    tlog += "------------------------------\n\n";
+
+    tlog += blog2(U_1, "U_1");
+    tlog += logc("u_1" u_1);
+    tlog += logc("z_2" z_2);
+    tlog += "\n\n";
+
+
+    tlog += "1.4. Calcul Z equivalent i intensitat\n";
+    tlog += "-------------------------------------\n\n";
+
+    tlog += logc ("z_eq", z_eq);
+    tlog += logc ("i_1", i_1);
+    tlog += logc ("u_2", u_2);
+    tlog += "\n\n";
+
+
+    tlog += "1.5. caiguda de tensió\n";
+    tlog += "----------------------\n\n";
 
 
 
     tlog += "2. Càlculs\n";
     tlog += "==========\n\n";
-    p = Math.floor(60 * f / nN);
-    ω = 2 * π * f;
-    ns = 60 * f / p;
-    sN = (ns - nN) / ns;
-    tlog += blog("p", p, "ω", ω, "ns", ns, "sN", sN);
     
     a[1] = p; a[2] = ω;
 
@@ -147,7 +267,7 @@ function calcula(){
     actualitzaIs();
 
     a[6] = I1.r; a[7] = IM.r; a[8] = IFe.r; a[9] = I2.r;
-
+    console.log(I2);
 
 
 
@@ -203,7 +323,7 @@ function calcula(){
 
 
     tlog += "### Càlcul Moment\n\n"
-    tlog += blog("I1arr", I1.r);
+    tlog += logc("I1arr", I1.r);
     Marr = 3 * r2 * i2.r**2 / s / (2 * π * ns / 60);
     tlog += blog("Marr", Marr) + "\n\n\n";
 
@@ -246,6 +366,14 @@ function calcula(){
     tlog += blog("Marr", Marr) + "\n\n\n";
     a[18] = I1.r; a[19] = Marr;
 
+/*
+    r_e1 = [
+        p, ω, VLY_MAX, sN, M,
+        I1.r, IM.r, IFe.r, I2.r, η, ηN,
+        I1arr,
+    ];
+
+*/
     xs_e1 = a.slice(1).map(xsMap); //resultats amb 4 xifres significatives
     solucions = solucions.concat(xs_e1);
 
@@ -313,47 +441,3 @@ function actualitzaZeq(s){
     tlog += logc("I2", I2);
  }
 
-function calculaIs(Vin, f, n, rt, R1, X1, RFe, XM, R2, X2){
-
-    const d = new Map();
-    const r2 = R2 * rt**2;
-    const x2 = X2 * rt**2;
-    
-    const p = Math.floor(60 * f / n);
-    const ns = 60 * f / p;
-    const s = (ns - n) / ns;
-    const rc = r2 * (1 - s) / s;
-    
-    const za = cbi(r2 + rc, x2);
-    const ya = invc(za);                 
-
-    const YFe = cbi(1 / RFe, -1 / XM);
-    const Yb = sumc(ya, YFe);            
-    const Zb = invc(Yb);                 
-
-    const Z1 = cbi(R1, X1);
-    const Ztot = sumc(Z1, Zb);           
-
-    const V1 = cbi(Vin, 0);
-    const I1 = divc(V1, Ztot);        
-    const Vb = multc(I1, Zb);         
-
-    const RFec = cbi(RFe, 0);
-    const XMc = cbi(0, XM);
-    const IFe = divc(Vb, RFec);       
-    const IM = divc(Vb, XMc);               
- 
-    const i2 = divc(Vb, za);                
-    const rtc = cbi(rt, 0);
-    const I2 = multc(rtc, i2);
-
-    d.set("rc", rc);
-    d.set("Ztot", Ztot);
-    d.set("I1", I1);
-    d.set("IFe", IFe);
-    d.set("IM", IM);
-    d.set("i2", i2);
-    d.set("I2", I2);
-
-    return d;              
-}

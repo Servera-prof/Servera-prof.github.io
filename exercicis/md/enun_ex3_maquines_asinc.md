@@ -40,8 +40,8 @@ Abans de resoldre la necessitat del client convé caracteritzar mínimament la m
 [[i3]] (1 pt)
 4. Quin es el lliscament a la velocitat nominal?<br/>
 [[i4]] (1 pt)
-5. Quin es el moment nominal en N·m? <br/>
-[[i5]] (1 pt)
+5. Quin és el moment que sol·licita la càrrega en N·m? <br/>
+[[i5]] (0.5 pt)
 
 Tot i que el problema principal és a l'arrencada es calcularan alguns valors nominals per assegurar que no s'ha de rectificar res una vegada s'aconsegueix arribar al règim estacionari. Suposant que la màquina es connecta en estrella a la tensió de línia [[p16]]
 
@@ -53,32 +53,36 @@ Tot i que el problema principal és a l'arrencada es calcularan alguns valors no
 [[i8]] (2 pt)
 9. Llavors la intensitat del rotor, serà (en A):<br/>
 [[i9]] (2 pt)
-10. Finalment es pot calcular el rendiment, però **Alerta!** el rendiment calculat segons la placa i segons els assajos poden ser diferents degut a alguna anomalia, comprova-ho:<br/>
-    - Rendiment segons el circuit equivalent (en %): [[i10]]
-    - Rendiment segons la placa (en %): [[i11]]
+10. Finalment es poden comparar els rendiments:<br/>
+    - Rendiment segons el circuit equivalent (en %): [[i10]] (1,5 pt)
+    - Rendiment segons la placa (en %): [[i11]] (1,5 pt)
+11. Ara, es poden comparar els moments en N·m. Calcula el moment segons els assajos i segons la placa de característiques:
+    - Moment segons els assajos [[i12]] (1,5 pt)
+    - Moment segons la placa de característiques [[i13]] (1,5 pt)
+
 
 Tots aquest valors són concordants amb les dades de que es disposen, per tant el motor funciona correctament. La sol·lució del problema del client passarà per estudiar les diferents estratègies per a l'arrencada. Per començar:
 
-11. Quina és la intensitat que li arriba a l'estator durant l'arrencada? (en A)<br/>
-[[i12]] (2 pt)
-12. Quin és el moment en aquest punt (en N·m)?<br/>
-[[i13]] (3 pt)
+12. Quina és la intensitat que li arriba a l'estator durant l'arrencada? (en A)<br/>
+[[i14]] (2 pt)
+13. Quin és el moment en aquest punt (en N·m)?<br/>
+[[i15]] (2 pt)
 
 Sabent això, es proposa la instal·lació d'un autotransformador a l'entrada per a reduïr la tensió a una tercera part de la nominal, i d'aquesta manera reduir la intensitat.
 
-13. La intensitat s'ha reduït fins a un valor de (en A):<br/>
-[[i14]] (2 pt)
+14. La intensitat s'ha reduït fins a un valor de (en A):<br/>
+[[i16]] (2 pt)
 
-14. Ara bé, el moment s'ha reduït fins a (en N·m):<br/>
-[[i15]] (2 pt)
+15. Ara bé, el moment a l'arrencada s'ha reduït fins a (en N·m):<br/>
+[[i17]] (2 pt)
 
 Per a comparar, s'estudia l'opció de instal·lar unes resistències rotòriques de [[p17]] Ω. En aquest supòsit:
 
-15. La intesitat és:<br/>
-[[i16]] (3 pt)
+16. La intesitat és:<br/>
+[[i18]] (3 pt)
 
-16. El moment és:<br/>
-[[i17]] (3 pt)
+17. El moment és:<br/>
+[[i19]] (3 pt)
 
 ## Identificació de l'alumne:
 
