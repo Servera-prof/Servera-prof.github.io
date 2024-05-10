@@ -120,7 +120,7 @@ function calcula(){
     tlog += "2. Càlculs\n";
     tlog += "==========\n\n";
     p = Math.floor(60 * f / nN);
-    ω = 2 * π * f;
+    ωm = 2 * π * nN / 60;
     ns = 60 * f / p;
     sN = (ns - nN) / ns;
     tlog += blog("p", p, "ω", ω, "ns", ns, "sN", sN);
