@@ -1,20 +1,25 @@
+<!-- 
+MOLT IMPORTANT: Al final del document es poden trobar les
+instruccions sobre la utilització d'aquesta eina.
 
-<!----- NO TOCAR ----------------------------------------------------->
+L'índex sempre està a la linia 10. Tots els punts de l'índex estan fixats
+per a navegar d'una línia a una altra a si s'utilitza el programa sublime
+text la combinació de tecles és Ctrl + G
+
+
+INDEX:
+
+A. Capçalera i inits ............................................... 19
+B. Enunciat ........................................................ 40
+C. Script ......................................................... 100
+D. Entrenador serverí ............................................. 300
+-->
+
+
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
 <!DOCTYPE html>
 <head>
-<!----- FI NO TOCAR -------------------------------------------------->
-
-
-
-
-<!-- == MODIFICAR TITOL =========================================== -->
-    <title>Exercici 2 - Sistemes trifàsics</title>
-<!-- == FI MODIFICAR TITOL ======================================== -->
-
-
-
-
-<!----- NO TOCAR ----------------------------------------------------->
+    <title id="titol"></title>
     <link rel="icon" type="image/x-icon" href=img/favicon.png>
     <meta charset="UTF-8">
 </head>
@@ -25,38 +30,612 @@ window.texme = {
     markdownURL: 'js/marked/marked.min.js',
     MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
 }
-
-window.onload = function (){
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', rutaEnunciat, true);
-    xhr.setRequestHeader("Cache-Control", "max-age=0");
-    xhr.onreadystatechange = function() {
-        if (this.readyState!==4) return;
-        if (this.status!==200) return;
-
-        txtEnunciat = this.responseText;
-        renderEnunciat(txtEnunciat);
-
-    };
-    xhr.send();
-}
 </script>
 <script src="js/texme/texme.min.js"></script>
-<script src="js/entrenadorserveri.js"></script>
-<!----- FI NO TOCAR -------------------------------------------------->
+<!-- FI NO TOCAR ================================================== -->
 
 
 
 
-<!-- == MODIFICAR RUTA A CALCULS ================================== -->
-<script src="js/calc_ex2_sistemes_trifasics.js"></script>
-<!-- == FI MODIFICAR RUTA A CALCULS =============================== -->
-
-
-
-
-
-<!----- NO TOCAR ----------------------------------------------------->
+<!-- B. ENUNCIAT ================================================== -->
 <textarea id="enunciat">
+## Formulari
+
+Fórmules trifàsic
+
+Si la connexió és en estrella
+
+$$
+\begin{gather}
+V_L = \sqrt{3} V_F    &    ;    &    I_L = I_F
+\end{gather}
+$$
+
+Si la connexió és en triangle
+
+$$
+\begin{gather}
+V_L = V_F    &    ;    &    I_L = \sqrt{3} I_F
+\end{gather}
+$$
+
+Corrent alterna:
+
+$$
+\begin{gather}
+\omega = 2 \pi \cdot f & ; & V_F = Z \cdot I_F &  \\ 
+X_L = L \cdot \omega & ; & X_C = \dfrac {1}{C\cdot \omega} &  \\
+Z = \sqrt{R^2+X^2} & ; &  \varphi = \arctan \left( \dfrac{X}{R} \right) \\
+S = \sqrt 3 V_L I_L & ; & P = S \cos(\varphi) & ; & Q = S \sin(\varphi)
+\end{gather}
+$$
+
+## Enunciat
+
+Es té una càrrega trifàsica connectada en [[p1]] a una xarxa de [[p2]] V i [[p3]] Hz. Aquesta càrrega està formada per una resistència, una capacitància i una inductància totes en sèrie. S'ha sotmès aquesta càrrega a una sèrie de amidaments i s'han obtingut els següents valors:
+
+- $R = [[p4]]~\Omega$
+- $L = [[p5]]~\text{mH}$
+- $C = [[p6]]~\mu\text{F}$
+
+## Preguntes
+
+1. Quin serà el valor de la pulsació ($\omega$) en rad/s? (0,5 punts) <br/> 
+[[i1]]
+2. Quin serà el valor de la reactància ($X$) en Ω? (1 punt)<br/>
+[[i2]]
+3. Quin serà el valor de la impedància ($Z$) en Ω? (1 punt)<br/>
+[[i3]]
+4. Quin serà el valor de l'angle φ en graus? (1 punt)<br/>
+[[i4]]
+5. Quin és el factor de potència (0,5 punts) <br/> 
+[[i5]]
+6. Quina serà la tensió de línia de la càrrega en V? (0,5 punts) <br/> 
+[[i6]]
+7. Quina serà la tensió de fase de la càrrega en V? (0,5 punts) <br/> 
+[[i7]]
+8. Quina serà la intensitat de fase de la càrrega en A?(0,5 punts) <br/> [[i8]]
+9. Quina serà la intensitat de línia de la càrrega en A? (0,5 punts) <br/> [[i9]]
+10. Si hi hagués dues càrregues trifàsiques iguals, a dos subministres diferents però a la mateixa xarxa de distribució. Quina seria la intensitat que haurien de suportar els fusibles d'aquesta xarxa en A? (1,5 punts)<br/>
+[[i10]].
+11. Quina seria la potència aparent en kVA , activa en kW  i reactiva en kVA<sub>R</sub>  que hauria de subministrar el transformador d'aquesta línia? (2,1 punts)
+    - S: [[i11]]
+    - P: [[i12]]
+    - Q: [[i13]]
 </textarea>
-<!----- FI NO TOCAR -------------------------------------------------->
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+/* INDEX:
+
+1. Constants (actualitzar) ........................................ 114
+2. Paràmetres ..................................................... 121
+    2.1 Declaració de parametres .................................. 123
+    2.2 establiment de paràmetres ................................. 136
+3. Càlculs ........................................................ 152
+    3.1. Lògica ................................................... 154
+    3.2. Log ...................................................... 217
+*/
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Exercici 5 - Transformadors monofàsics"; 
+const puntuacions = ["",
+    0.5, 
+    1, 1, 1, 0.5,
+    0.5, 0.5, 0.5, 0.5,
+    1.5, 
+    0.7, 0.7, 0.7
+];
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+const π = Math.PI;
+
+const connexio = aleat(1,2) === 1 ? "D" : "Y";
+const VL = aleat(100, 500); 
+const f = aleat(30,100);
+const R = aleat(50,150);
+const L = aleat(50,150)/1e3;
+const C = aleat(50,150)/1e6;
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+function estableixParametres(){
+    p = [
+        connexio, VL, f,
+        R, L, C
+    ];
+    parametres = parametres.concat(p);
+}
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+    const ω = 2*π*f; 
+    const XL = L*ω;
+    const XC = 1/(C*ω);
+    const X = XL-XC;    
+
+    const Z = (R**2+X**2)**0.5;
+    const φ = atan(X/R);
+    const cosφ = cos(φ);
+ 
+    const VF = connexio === "D" ? VL : VL/3**0.5;
+    const IF = VF/Z;
+    const IL = connexio === "D" ? IF*3**0.5 : IF;
+    const IL_tot = 2*IL;
+
+    const S = 3**0.5*VL*IL;
+    const P = S*cosφ;
+    const Q = S*(1-cosφ**2)**0.5;
+
+
+
+    solucions = [""].concat([
+        ω,
+        X, 
+        Z, 
+        φ, 
+        cosφ,
+        VL, 
+        VF, 
+        IF, 
+        IL,
+        IL_tot,
+        S/1e3,
+        P/1e3,
+        Q/1e3
+    ].map(xsMap));
+
+
+
+// ## 3.2 LOG ---------------------------------------------------------
+tlog += 
+`
+> ## Backup
+> 
+> ### Paràmetres
+> 
+> - connexio: ${connexio}
+> - V<sub>L</sub> = ${l(VL)} V 
+> - f = ${l(f)} Hz
+> - R = ${l(R)} Ω
+> - L = ${l(L*1e3)} mH
+> - C = ${l(C*1e6)} μF
+> 
+> 
+> ### Calcul impedàncies
+> 
+> - ω  = ${l(ω)} Hz
+> - X<sub>L</sub> = ${l(XL)} Ω 
+> - X<sub>C</sub> = ${l(XC)} Ω
+> - X = ${l(X)} Ω
+> - Z = ${l(Z)} Ω
+> - φ = ${l(φ)}°
+> - cos φ = ${l(cosφ)}
+> 
+> 
+> ### Tensions i intensitats
+> 
+> - V<sub>F</sub> = ${l(VF)}
+> - I<sub>F</sub> = ${l(IF)}
+> - V<sub>L</sub> = ${l(VL)}
+> - I<sub>L</sub> = ${l(IL)}
+>  
+> 
+> ### Potències
+> 
+> - S = ${l(S/1e3)} kVA
+> - P = ${l(P/1e3)} kW
+> - Q = ${l(Q/1e3)} kVA<sub>R</sub>
+
+`
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* # D. ENTRENADOR SERVERI ============================================
+
+INDEX:
+
+window.onload ..................................................... 336
+    renderEnunciat() .............................................. 342
+        exportarParametres(txt) ................................... 354
+        crearInputs(txt) .......................................... 365
+        crearIdentificacio(txt) ................................... 376
+avalua() .......................................................... 402
+    importaRespostes() ............................................ 407
+    resetejar() ................................................... 416
+    renderAvaluacio() ............................................. 424
+        identificarAlumne(txt) .................................... 447
+        puntua(txt) ............................................... 454
+*/
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne. 
+let alumne = {
+    nom: "",
+    cicle: "CFGS Tècnic Superior en Sistemes Electrotècnics i " + 
+           "Automatitzats",
+    anys: "2023/2024"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;    
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="number" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 80px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto" 
+            style="font-size: 20px; color: #AA5050;"> 
+            Avaluar 
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    let r = [""];
+    alumne.nom = document.getElementById("nom").value;  // veure C.2.1 
+    for (let i = 1; i < puntuacions.length; i++){
+        r[i] = document.getElementById("i"+i).value;
+    }
+    respostes = r.map(xsMap);                           // veure C.2.1
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);    
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' + 
+           '<h2 align="center" style="color: #888">' + titol + "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+    "",
+    "> [[nota]]"
+    ].join("\n") + "\n";
+    txt += "## Enunciat\n\n" + txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    let ptsAlumne = 0, ptsTotal = 0;
+    let canvi = "", patro = "";
+    let a = 0, b = 0;
+    for (let i = 1; i < puntuacions.length; i++){
+        a = respostes[i];
+        b = solucions[i];
+        ptsTotal += puntuacions[i];
+        canvi = 
+            '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">' 
+            + coma(a) + '</span>';
+        if ((b*0.99) < a && a < (b*1.01)) {
+            ptsAlumne += puntuacions[i];
+            canvi += 
+                ' <span style="color: green">(' + 
+                coma(b) +') OK (+' + puntuacions[i] + ')</span>';
+        }else{
+            canvi += 
+                ' <span style="color: red;"> (' + 
+                coma(b) +')</span>';
+        }
+        patro = "[[i" + i + "]]";
+
+        txt = txt.replace(patro, canvi);
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a){  // log abreviat a l totsol
+    return coma(xs(a));
+}
+
+function ll(a){ // log Latex
+    return cl(xs(a));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return a;
+}
+
+function coma(a){
+    a = a + ""; 
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+/**********************************************************************
+ * - Establir les puntuacions, que han de correspondre amb la quantitat
+ * de respostes que l'alumne pot contestar.
+ * 
+ * - Establir els paràmetres. En general serà una funció per a generar
+ * nombres aleatoris, però també es poden fixar. Aquest últim cas és
+ * interessant per a testejar els càlculs. IMPORTANT: Al finalitzar
+ * tots els parametres hauran de concatenarse al vector parametres.
+ * 
+ * -  El mateix succeeix amb els càlculs. Tot haura de volcar-se al
+ * vector solucions.
+ * *******************************************************************/
+-->
