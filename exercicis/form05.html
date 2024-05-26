@@ -1,6 +1,31 @@
-# Formulari 3 - Màquines asincrones
+<!-- MOLT IMPORTANT: Al final del document es poden trobar les
+instruccions sobre la utilització d'aquesta eina.-->
 
-#### Matemàtiques.
+
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.min.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+### Matemàtiques.
 
 $$
 \begin{gather}
@@ -57,7 +82,7 @@ G=\dfrac{R}{R^2+X^2} && ; && B=\dfrac{-X}{R^2+X^2}
 $$
 
 
-#### Camp magnètic
+### Camp magnètic
 
 $$
 \begin{gather}
@@ -67,7 +92,7 @@ $$
 $$
 
 
-#### Lliscament
+### Lliscament
 
 $$
 \begin{gather}
@@ -98,7 +123,7 @@ $$
 \end{gather}
 $$
 
-#### Circuit equivalent
+### Circuit equivalent
 
 ![](img/circ_eq_maq_asinc_exacte.png)
 
@@ -139,7 +164,7 @@ R_2^\prime + R_c^\prime = \dfrac{R_2^\prime}{s}
 \end{gather}
 $$
 
-#### Circuit aproximat
+### Circuit aproximat
 
 ![](img/circ_eq_maq_asinc_aprox.png)
 
@@ -211,7 +236,7 @@ $$
 \end{gather}
 $$
 
-#### Parell
+### Parell
 
 $$
 \begin{gather}
@@ -225,7 +250,7 @@ M = \dfrac{P_{mi}}{\Omega} = \dfrac{P_{mi}}{\dfrac{2\pi}{60}n}
 \end{gather}
 $$
 
-**Aproximacions**
+#### Aproximacions
 
 $$
 \begin{gather}
@@ -247,7 +272,7 @@ M = \dfrac {3 \dfrac{R_2^\prime}{s}}{\dfrac{2\pi}{60}n_1}\cdot
 \end{gather}
 $$
 
-**Màxims**
+#### Màxims
 
 $$
 \begin{gather}
@@ -261,3 +286,40 @@ M_{max} = \pm\dfrac{3}{\dfrac{2\pi}{60}n_1}\cdot
   \dfrac{V_1^2}{2\left( \pm R_1+\sqrt{R_1^2+X_{cc}^2} \right)}
 \end{gather}
 $$
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Formulari - Màquines asíncrones"; 
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>

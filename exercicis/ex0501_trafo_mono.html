@@ -1,19 +1,5 @@
-<!-- 
-MOLT IMPORTANT: Al final del document es poden trobar les
-instruccions sobre la utilització d'aquesta eina.
-
-L'índex sempre està a la linia 10. Tots els punts de l'índex estan fixats
-per a navegar d'una línia a una altra a si s'utilitza el programa sublime
-text la combinació de tecles és Ctrl + G
-
-
-INDEX:
-
-A. Capçalera i inits ............................................... 19
-B. Enunciat ........................................................ 40
-C. Script ......................................................... 100
-D. Entrenador serverí ............................................. 300
--->
+<!-- MOLT IMPORTANT: Al final del document es poden trobar les
+instruccions sobre la utilització d'aquesta eina.-->
 
 
 <!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
@@ -100,19 +86,9 @@ connectat a una xarxa de [[p7]] i alimenta una impedància de valor
 <!-- C. SCRIPT ==================================================== -->
 <script>
 
-/* INDEX:
-
-1. Constants (actualitzar) ........................................ 114
-2. Paràmetres ..................................................... 121
-    2.1 Declaració de parametres .................................. 123
-    2.2 establiment de paràmetres ................................. 136
-3. Càlculs ........................................................ 152
-    3.1. Lògica ................................................... 154
-    3.2. Log ...................................................... 217
-*/
 
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Exercici 5 - Transformadors monofàsics"; 
+const titol = "Transformadors monofàsics - E.05.01"; 
 const puntuacions = ["",
     3, 1, 2, 0.5, 1
 ];
@@ -122,28 +98,28 @@ const puntuacions = ["",
 
 // ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
 const π = Math.PI;
-const sn = 500*1e3;
-const un1 = 25000;
-const un2 = 380;
-const ug = 24500;
+const sn = xs(aleat(90, 110)/100 * 500*1e3 ,6);
+const un1 = xs(aleat(90, 110)/100 * 25000, 5);
+const un2 = xs(aleat(90, 110)/100 * 380, 3);
+const ug = xs(aleat(90, 110)/100 * 24500, 5);
 
-const εcc = 0.05;
-const wcc = 10*1e3;
-const w0 = 1*1e3;
-const cosφ0 = 0.2;
-const z2 = cbi(0.305, 0.5);
+const εcc = xs(aleat(80, 120)/100 * 0.05, 1);
+const wcc = xs(aleat(80, 120)/100 * 10*1e3, 2);
+const w0 = xs(aleat(80, 120)/100 * 1*1e3, 2);
+const cosφ0 = xs(aleat(80, 120)/100 * 0.2, 2);
+const z2 = cbi(aleat(80, 120)/100 * 0.305, aleat(80, 120)/100 * 0.5);
 
 // ## 2.2 FUNCIO (actualitzar) ----------------------------------------
 function estableixParametres(){
     p = [
         `$    ${cl(sn/1e3)} ~\\text{kVA}                          $`,
         `$    ${cl(un1)} ~/~ ${cl(un2)} ~\\text{V}                $`,
-        `$    \\epsilon_{cc} = ${ll(εcc)}                         $`,
+        `$    \\epsilon_{cc} = ${cl(εcc)}                       $`,
         `$    W_{CC} = ${cl(wcc/1e3)}~\\text{kW}                  $`,
         `$    W_{0} = ${cl(w0/1e3)}~\\text{kW}                    $`,
-        `$    \\cos{\\varphi_0} = ${ll(cosφ0)}                    $`,
+        `$    \\cos{\\varphi_0} = ${cl(cosφ0)}                    $`,
         `$    ${cl(ug)}~\\text{V}                                 $`,
-        `$    \\overrightarrow Z_2 = ${cl(logcbi(z2))}~\\text{kW} $`,
+        `$    \\overrightarrow Z_2 = ${cl(logcbi(z2))}~\\Omega $`,
     ];
     parametres = parametres.concat(p);
 }
@@ -206,7 +182,7 @@ function calcula(){
 
 
     solucions = [""].concat([
-        i1_r.r, 
+        i1_r.r * 100, 
         cdt * 100,
         η * 100,
         icc1/1e3,
@@ -348,6 +324,7 @@ function renderEnunciat(){
     txt = crearInputs(txt);
     txt = crearIdentificacio(txt);
     document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
     texme.renderPage();
 }
 
@@ -497,28 +474,6 @@ function puntua(txt){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// # 1. CONSTANTS GLOBALS =============================================
-
-
-
-
-
-// # 2. FUNCIONS ======================================================
-
 function aleat(min, max) { // enter aleat entre min i max (inclosos)
     const a = Math.ceil(min);
     const b = Math.floor(max);
@@ -605,8 +560,8 @@ function l(a){  // log abreviat a l totsol
     return coma(xs(a));
 }
 
-function ll(a){ // log Latex
-    return cl(xs(a));
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
 }
 
 function xs(a, b = 4){

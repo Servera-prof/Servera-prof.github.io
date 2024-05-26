@@ -1,0 +1,803 @@
+<!-- MOLT IMPORTANT: Al final del document es poden trobar les
+instruccions sobre la utilització d'aquesta eina.-->
+
+
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.min.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+## Enunciat
+
+D'un motor se'n coneixen les següents dades obtingudes gràcies als
+assajos als quals se l'ha sotmès:
+
+- Resistència de l'estator: [[p1]] Ω
+- Inductància de l'estator: [[p2]] Ω
+- Resistència del rotor: [[p3]] Ω
+- Inductancia del rotor: [[p4]] Ω
+- Resistència del ferro: [[p5]] Ω
+- Inductància magnetitzant: [[p6]] Ω
+- Relació de transformació: [[p7]]
+- Pèrdues mecàniques: [[p8]] W
+
+Per altra banda la placa aporta les següents característiques:
+
+- Velocitat nominal: [[p9]] rpm
+- Potència: [[p10]] kW
+- Tensió nominal: [[p11]] V
+- Freqüencia: [[p12]] Hz
+- Intensitat nominal [[p13]] A
+- fdp: [[p14]]
+
+
+## Preguntes
+
+Si s'alimenta el motor amb una tensió de línia de [[p15]] V i es
+connecta en estrella.
+
+1. Quina és la intensitat que circularia per l'estator (en A)?<br/>
+[[i1]] (2 pt)
+
+2. Quin és el moment en aquest punt (en N·m)?<br/>
+[[i2]] (2 pt)
+
+Calcula quina seria la intensitat i el moment, també a l'arrencada
+si la tensió fos la meitat:
+
+3. La intensitat ara té un valor de (en A):<br/>
+[[i3]] (2 pt)
+
+4. I el moment a l'arrencada s'ha reduït fins a (en N·m):<br/>
+[[i4]] (2 pt)
+
+5. Si s'instal·len resistències rotòriques de [[p16]] Ω quin serà el 
+mòdul de la impedància REDUÏDA del rotor?<br/>
+[[i5]] (2 pt)
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Màquines asíncrones - Exercici 3"; 
+const puntuacions = ["",
+      2,   2,   2,   2,   2, 
+];
+
+
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+const π = Math.PI; // NO TOCAR π
+
+const r1 = aleat (40, 50) / 100;    // R a l'estator
+const x1 = aleat (10, 20) / 10;     // X a l'estator
+const r2 = aleat (10, 20) / 100;    // R al rotor
+const x2 =                          // X al rotor
+    xs(aleat (20, 25) / 10 * r2, 
+    2);                             // X al rotor 
+const rfe = aleat (30, 40) * 10;    // R del ferro
+const xm = aleat (30, 40);          // X del ferro (o magnetitzant)
+const rt = aleat (20, 20) / 10;     // relació de transformació
+const pm = aleat (10, 30) * 10;     // pèrdues mecàniques
+
+const vns = [                       // possibles parells de tensions
+    [127, 220], 
+    [230, 400], 
+    [400, 630]]; 
+
+const vn = triaElementMatriu(vns);
+const vnd = vn[0];                  // V nom. en triangle
+const vny = vn[1];                  // V nom. en estrella
+const vnp =                         // V nom placa
+    "△ " + vnd + " / " +
+    "Υ " + vny;
+
+const fs = [50, 60];                // possibles valors de freqüència
+const f = triaElementMatriu(fs);    // f de funcionament del motor
+                                    
+const nn =                          // velocitat nominal. 
+    Math.round(aleat(93, 98)/100 *  // Exemple: 98% * 60 * 50 / 2
+    60 * f / aleat (1, 4));
+
+const p = Math.floor(60 * f / nn);  // parells de pols
+
+const d =                           // intensitats donades unes resist.
+    resolcircuit(vny/3**0.5, f, p,
+    nn, rt, r1, x1, rfe, xm, r2, x2);
+
+const iny =                         // Intensitat nominal en estrella
+    xs(aleat(97, 103) / 100 * 
+    d.get("I1").r, 2);
+
+const pun =                         // Potència útil nominal                       
+    xs(aleat(97, 103) / 100 *
+    d.get("Rc'") * d.get("I2'").r**2 * 3 / 1000, 2);
+
+const fdp =                         // factor de pot
+    xs(cos(aleat(97, 103) / 100 * 
+    d.get("Zeq").φ), 2);
+
+const mc =                          // Moment de la càrrega
+    xs(aleat(25, 35) / 100 * 
+    pun*1e3 / (2*π * nn / 60), 2);
+
+const vl =                          // tensió de línia
+    aleat (95, 101) / 100 * vny;
+
+const rr = aleat(4, 8);             // resist. rotòriques
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+function estableixParametres(){
+    parametres = parametres.concat([
+         r1, x1,  r2,  x2, rfe, 
+         xm, rt,  pm,  nn, pun,
+        vnp,  f, iny, fdp,  vl,
+         rr
+    ]);
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+    const ω = 2 * π * nn / 60;      // Velocitat ang. nom. en rad/s
+    const ns = 60 * f / p;          // Velocitat ang. nom. en rpm
+    const sn = (ns - nn) / ns;      // Lliscament nominal
+
+    const vly_max = vny;            // Tensió linia màxima en estr.
+    const vf = vl / 3**0.5;         // Tens. d fase (que veu la bobina)
+
+    let v1 = cpol(vf, 0);
+    
+    const d1 =                      // dades a lliscament nominal
+        resolcircuit(vf, f, p, nn, 
+        rt, r1, x1, rfe, xm, r2, x2);
+
+    // INTENSITATS REGIM NOMINAL
+    const i1 = d1.get("I1").r;
+    const im = d1.get("IM").r;
+    const ife = d1.get("IFe").r;
+    const i2 = d1.get("I2").r
+    const i2_r = d1.get("I2'").r;
+
+    // POTÈNCIES
+    const r2_r = d1.get("R2'");
+    const rc_r = d1.get("Rc'");
+    const pcu1 = 3 * r1 * i1**2;
+    const pfe  = 3 * rfe * ife**2;
+    const pcu2 = 3 * r2_r * i2_r**2;
+    const pmi  = 3 * rc_r * i2_r**2;
+
+    const pu = pmi - pm;
+    const p1 = (pu + pm + pcu2 + pfe + pcu1);
+    const φtot = d1.get("Zeq").φ;
+    const p1b = 3 * v1.r * i1 * cos(φtot);
+    const η = pu / p1 * 100;
+    
+    const p1n = 3**0.5 * vny * iny * fdp;
+    const ηn = pun*1000 / p1n * 100;
+
+    const mu = pu / (2 * π * nn / 60);
+    const mn = pun * 1000 / (2 * π * nn / 60);
+
+
+    // INTENSITATS I PARELL ARRENCADA
+    const s = 1;
+    const d2 =                      // dades a s = 1 (arrencada)
+        resolcircuit(vf, f, p, 0, 
+        rt, r1, x1, rfe, xm, r2, x2);
+
+    const i1_2 = d2.get("I1").r;
+    const i2_r_2 = d2.get("I2'").r;
+    const m_2 = 3 * r2_r * i2_r_2**2 / s / (2 * π * ns / 60);
+
+
+    // INTENSITATS I PARELL A VF/2 A L'ARRENCADA
+    const d3 =                      // dades a vf/3 n = 0
+        resolcircuit(vf/2, f, p, 0,
+        rt, r1, x1, rfe, xm, r2, x2);
+    const i1_3 = d3.get("I1").r;
+    const i2_r_3 = d3.get("I2'").r;
+    const m_3 = 3 * r2_r * i2_r_3**2 / s / (2 * π * ns / 60);
+
+
+    // INTENSITAT I PARELL AMB Rr A L'ARRENCADA
+    const d4 =                      // dades amb resis. rot. i n = 0
+        resolcircuit(vf, f, p, 0,
+        rt, r1, x1, rfe, xm, r2 + rr, x2);
+    const i1_4 = d4.get("I1").r; 
+    const i2_r_4 = d4.get("I2'").r;
+    const r2_r_4 = d4.get("R2'");
+    const m_4 = 3 * r2_r_4 * i2_r_4**2 / s / (2 * π * ns / 60);
+    const za_4 = d4.get("Za").r; 
+
+    solucions = solucions.concat([
+        i1_2,  m_2,  i1_3,  m_3,  za_4,
+    ].map(xsMap));
+
+
+
+// ## 3.2 LOG ---------------------------------------------------------
+tlog += 
+`
+> ## Backup
+> 
+> ### 1. Paràmetres
+> 
+> - R<sub>1</sub> = ${l(r1)} Ω
+> - X<sub>1</sub> = ${l(x1)} Ω 
+> - R<sub>2</sub> = ${l(r2)} Ω
+> - X<sub>2</sub> = ${l(x2)} Ω 
+> - R<sub>Fe</sub> = ${l(rfe)} Ω
+> - X<sub>M</sub> = ${l(xm)} Ω 
+> 
+> 
+> ### 2. Velocitat nominal
+>
+> #### 2.1. Calcul impedàncies
+> 
+${d1.get("logz")}
+> 
+> 
+> #### 2.2. Càlcul intensitats
+> 
+${d1.get("logi")}
+>  
+> 
+> #### 2.3. Potències
+> 
+> - P<sub>Cu1</sub> = ${l(pcu1)} W
+> - P<sub>Fe</sub> = ${l(pfe)} W
+> - P<sub>Cu2</sub> = ${l(pcu2)} W
+> - P<sub>mi</sub> = ${l(pmi/1e3)} kW
+>
+> - P<sub>u</sub> = ${l(pu/1e3)} kW
+> - P<sub>1</sub> = ${l(p1/1e3)} kW (calculat com P<sub>u</sub> + P<sub>Cu1</sub> + P<sub>Fe</sub> + P<sub>Cu2</sub> + P<sub>m</sub>)
+> - P<sub>1</sub> = ${l(p1b/1e3)} kW (calculat com 3 * V<sub>1</sub> * I<sub>1</sub> * cos φ<sub>eq</sub>)
+> - η = ${l(η)} %
+> - η<sub>N</sub> = ${l(ηn)} %
+>
+>
+> #### 2.4. Moments
+>
+> - M<sub>u</sub> = ${l(mu)} N·m
+> - M<sub>N</sub> = ${l(mn)} N·m
+>
+> 
+> ### 3. Arrencada
+>
+> #### 3.1. Calcul impedàncies
+> 
+${d2.get("logz")}
+> 
+> 
+> #### 3.2. Càlcul intensitats
+> 
+${d2.get("logi")}
+>
+>
+> #### 3.3. Moment
+>
+> - M<sub>u</sub> = ${l(m_2)} N·m
+>
+> 
+> ### 4. Arrencada a V<sub>F</sub>/3
+>
+> #### 4.1. Calcul impedàncies
+> 
+${d3.get("logz")}
+> 
+> 
+> #### 4.2. Càlcul intensitats
+> 
+${d3.get("logi")}
+>
+>
+> #### 4.3. Moment
+>
+> - M<sub>u</sub> = ${l(m_3)} N·m
+>
+> 
+> ### 5. Arrencada amb R<sub>r</sub>
+>
+> #### 5.1. Calcul impedàncies
+> 
+${d4.get("logz")}
+> 
+> 
+> #### 5.2. Càlcul intensitats
+> 
+${d4.get("logi")}
+>
+>
+> #### 5.3. Moment
+>
+> - M<sub>u</sub> = ${l(m_4)} N·m
+`;
+}
+
+
+
+
+function resolcircuit(vin, f, p, n, rt, r1, x1, rfe, xm, r2, x2){
+
+    const d = new Map();
+    const r2_r = r2 * rt**2;
+    const x2_r = x2 * rt**2;
+    
+    const ns = 60 * f / p;
+    const s = (ns - n) / ns;
+    const rc_r = r2_r * (1 - s) / s;
+    
+    const za = cbi(r2_r + rc_r, x2_r);
+    const ya = invc(za);                 
+
+    const yfe = cbi(1 / rfe, -1 / xm);
+    const yb = sumc(ya, yfe);            
+    const zb = invc(yb);                 
+
+    const z1 = cbi(r1, x1);
+    const zeq = sumc(z1, zb);           
+
+    const v1 = cbi(vin, 0);
+    const i1 = divc(v1, zeq);
+    const vb = multc(i1, zb);         
+
+    const rfec = cbi(rfe, 0);
+    const xmc = cbi(0, xm);
+    const ife = divc(vb, rfec);       
+    const im = divc(vb, xmc);               
+ 
+    const i2_r = divc(vb, za);                
+    const rtc = cbi(rt, 0);
+    const i2 = multc(rtc, i2_r);
+
+    const logz =
+`\
+> - R<sub>c</sub>' = ${l(rc_r)} Ω
+> - Z<sub>a</sub> = ${logc(za)} Ω
+> - Y<sub>a</sub> = ${logc(ya)} Ω
+> - Y<sub>Fe</sub> = ${logc(yfe)} Ω
+> - Y<sub>b</sub> = ${logc(yb)} Ω
+> - Z<sub>b</sub> = ${logc(zb)} Ω
+> - Z<sub>1</sub> = ${logc(z1)} Ω
+> - Z<sub>eq</sub> = ${logc(zeq)} Ω \
+`;
+
+    const logi =
+`\
+> - I<sub>1</sub> = ${logc(i1)} A
+> - I<sub>Fe</sub> = ${logc(ife)} A
+> - I<sub>M</sub> = ${logc(im)} A
+> - I<sub>2</sub>' = ${logc(i2_r)} A
+> - I<sub>2</sub>' = ${logc(i2)} A \
+`;
+    d.set("R2'", r2_r);
+    d.set("Rc'", rc_r);
+    d.set("Za", za);
+    d.set("Ya", ya);
+    d.set("YFe", yfe);
+    d.set("Yb", yb);
+    d.set("Zb", zb);
+    d.set("Z1", z1);
+    d.set("Zeq", zeq);
+    d.set("I1", i1);
+    d.set("IFe", ife);
+    d.set("IM", im);
+    d.set("I2'", i2_r);
+    d.set("I2", i2);
+    d.set("logz", logz);
+    d.set("logi", logi);
+
+    return d;   
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne. 
+let alumne = {
+    nom: "",
+    cicle: "CFGS Tècnic Superior en Sistemes Electrotècnics i " + 
+           "Automatitzats",
+    anys: "2023/2024"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;    
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="number" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 80px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto" 
+            style="font-size: 20px; color: #AA5050;"> 
+            Avaluar 
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    let r = [""];
+    alumne.nom = document.getElementById("nom").value;  // veure C.2.1 
+    for (let i = 1; i < puntuacions.length; i++){
+        r[i] = document.getElementById("i"+i).value;
+    }
+    respostes = r.map(xsMap);                           // veure C.2.1
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);    
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' + 
+           '<h2 align="center" style="color: #888">' + titol + "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+    "",
+    "> [[nota]]"
+    ].join("\n") + "\n";
+    txt += "## Enunciat\n\n" + txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    let ptsAlumne = 0, ptsTotal = 0;
+    let canvi = "", patro = "";
+    let a = 0, b = 0;
+    for (let i = 1; i < puntuacions.length; i++){
+        a = respostes[i];
+        b = solucions[i];
+        ptsTotal += puntuacions[i];
+        canvi = 
+            '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">' 
+            + coma(a) + '</span>';
+        if ((b*0.99) < a && a < (b*1.01)) {
+            ptsAlumne += puntuacions[i];
+            canvi += 
+                ' <span style="color: green">(' + 
+                coma(b) +') OK (+' + puntuacions[i] + ')</span>';
+        }else{
+            canvi += 
+                ' <span style="color: red;"> (' + 
+                coma(b) +')</span>';
+        }
+        patro = "[[i" + i + "]]";
+
+        txt = txt.replace(patro, canvi);
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu, n = 0){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(n)];
+}
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (c){ // log de un numero complexe
+    let log = "";
+    log += xs(c.x);
+    if (c.y > 0) log += " + j" + xs(c.y);
+    else if (c.y < 0) log += "-j" + xs(-c.y);
+    log += "; ";
+    log += xs(c.r) + "∠" + xs(c.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a){  // log abreviat a l totsol
+    return coma(xs(a));
+}
+
+function ll(a){ // log Latex
+    return cl(xs(a));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return a;
+}
+
+function coma(a){
+    a = a + ""; 
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+/**********************************************************************
+ * - Establir les puntuacions, que han de correspondre amb la quantitat
+ * de respostes que l'alumne pot contestar.
+ * 
+ * - Establir els paràmetres. En general serà una funció per a generar
+ * nombres aleatoris, però també es poden fixar. Aquest últim cas és
+ * interessant per a testejar els càlculs. IMPORTANT: Al finalitzar
+ * tots els parametres hauran de concatenarse al vector parametres.
+ * 
+ * -  El mateix succeeix amb els càlculs. Tot haura de volcar-se al
+ * vector solucions.
+ * *******************************************************************/
+-->

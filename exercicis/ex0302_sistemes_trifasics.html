@@ -1,19 +1,5 @@
-<!-- 
-MOLT IMPORTANT: Al final del document es poden trobar les
-instruccions sobre la utilització d'aquesta eina.
-
-L'índex sempre està a la linia 10. Tots els punts de l'índex estan fixats
-per a navegar d'una línia a una altra a si s'utilitza el programa sublime
-text la combinació de tecles és Ctrl + G
-
-
-INDEX:
-
-A. Capçalera i inits ............................................... 19
-B. Enunciat ........................................................ 40
-C. Script ......................................................... 100
-D. Entrenador serverí ............................................. 300
--->
+<!-- MOLT IMPORTANT: Al final del document es poden trobar les
+instruccions sobre la utilització d'aquesta eina.-->
 
 
 <!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
@@ -148,19 +134,9 @@ Es té una càrrega trifàsica connectada en [[p1]] a una xarxa de [[p2]] V i [
 <!-- C. SCRIPT ==================================================== -->
 <script>
 
-/* INDEX:
-
-1. Constants (actualitzar) ........................................ 114
-2. Paràmetres ..................................................... 121
-    2.1 Declaració de parametres .................................. 123
-    2.2 establiment de paràmetres ................................. 136
-3. Càlculs ........................................................ 152
-    3.1. Lògica ................................................... 154
-    3.2. Log ...................................................... 217
-*/
 
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Exercici 5 - Transformadors monofàsics"; 
+const titol = "Transformadors monofàsics - E.03.02"; 
 const puntuacions = ["",
     0.5, 
     1, 1, 1, 0.5,
@@ -187,7 +163,7 @@ const C = aleat(50,150)/1e6;
 function estableixParametres(){
     p = [
         connexio, VL, f,
-        R, L, C
+        R, L*1e3, C*1e6
     ];
     parametres = parametres.concat(p);
 }
@@ -299,22 +275,7 @@ tlog +=
 
 
 
-/* # D. ENTRENADOR SERVERI ============================================
-
-INDEX:
-
-window.onload ..................................................... 336
-    renderEnunciat() .............................................. 342
-        exportarParametres(txt) ................................... 354
-        crearInputs(txt) .......................................... 365
-        crearIdentificacio(txt) ................................... 376
-avalua() .......................................................... 402
-    importaRespostes() ............................................ 407
-    resetejar() ................................................... 416
-    renderAvaluacio() ............................................. 424
-        identificarAlumne(txt) .................................... 447
-        puntua(txt) ............................................... 454
-*/
+// # D. ENTRENADOR SERVERI ============================================
 
 
 // # 1. VARIABLES GLOBALS =============================================
