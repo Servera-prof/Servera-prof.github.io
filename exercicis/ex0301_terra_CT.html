@@ -1,0 +1,628 @@
+<!-- MOLT IMPORTANT: Al final del document es poden trobar les
+instruccions sobre la utilització d'aquesta eina.-->
+
+
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.min.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+## Formulari
+
+$$
+\begin{gather}
+R_t^\prime = K_r \cdot \rho
+\end{gather}
+$$
+
+$$
+\begin{gather}
+I_d^\prime \cdot R_t^\prime \le V_{bt} & ; & I_d^\prime \gt I_a^\prime
+\end{gather}
+$$
+
+$$
+\begin{gather}
+I_d^\prime = \dfrac {U}{\sqrt 3 \cdot \sqrt{(R_n+R_t)^2+X_n^2}}
+\end{gather}
+$$
+
+$$
+\begin{gather}
+V_p^\prime = K_p \cdot \rho \cdot I_d^\prime
+\end{gather}
+$$
+
+$$
+\begin{gather}
+V_d^\prime = R_t^\prime \cdot I_d^\prime
+\end{gather}
+$$
+
+$$
+\begin{gather}
+D = \dfrac{\rho \cdot I_d^\prime}{2000 \cdot \pi}
+\end{gather}
+$$
+
+$$
+\begin{gather}
+V_p = \dfrac{10 \cdot K} {t^n} \cdot (1 + \dfrac{6 \rho}{1000})
+\end{gather}
+$$
+
+$$
+\begin{gather}
+V_{p(acc)} = \dfrac{10 \cdot K}{t^n} 
+(1 + \dfrac{3 \rho + 3 \rho^\prime}{1000})
+\end{gather}
+$$
+
+## Enunciat
+A un CT integrat a edifici hi s'instal·larà material de BT amb un 
+aïllament de 10 kV, tal i com recomana edistribución. De totes maneres
+per a tenir un marge de seguretat els calculs es realitzaran com si
+l'aïllament fos de [[p1]] V. La tensió de servei es de [[p2]] kV.
+
+Per altra bandà el relé de dispar no es considerarà temps depenent, i
+salta a [[p3]] s en tots els casos, amb una intensitat d'arrencada de
+[[p4]] A.
+
+S'ha mesurat la resistivitat del terreny i s'han obtinguts valors de
+$\rho = [[p5]] ~ \Omega \cdot m$. I la del terra del CT és 
+$\rho^\prime = 3000 ~ \Omega \cdot m$ 
+
+S'ha triat un elèctrode [[p6]], comprova que sigui correcte.
+
+- $K_r$: [[i1]] 
+- $K_p$: [[i2]]
+- $K_c$: [[i3]]
+
+Calcula (1 punt per resposta correcta):
+
+- Resistència a terra (en Ω) $R_t^\prime$: [[i4]]
+- Intensitat de defecte (en A) $I_d^\prime$: [[i5]]
+- Tensió de pas a l'exterior (en V) $V_p^\prime$: [[i6]]
+- Tensió de defecte $V_d^\prime$ (en V) [[i7]]
+- Separació entre les terres de protecció i de servei (en m) $D$: [[i8]]
+
+Quins serien els màxims o mínims valors admisibles? (1 punt per resposta
+correcta):
+
+- Tensió de pas a l'exterior (en V) $V_p$: [[i9]] (max)
+- Tensió de pas en l'accés al transformador (en kV) 
+$V_{p(acc)}$: [[i10]] (max)
+- Tensió de defecte (en V) $V_d$: [[i11]] (max)
+- Intensitat de defecte (en A) $I_d$: [[i12]] (min)
+
+Finalment, si l'electrode està separat de l'entrada al CT [[p7]] m, 
+per a construir l'elèctrode necessitaré:
+
+- Metres de cable de coure nuu [[i13]]
+- Secció del cable de coure [[i14]]
+- Profunditat de l'electrode [[i15]]
+- Número de piques [[i16]]
+- Longitud de les piques [[i17]]
+
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Càlcul de les terres dels CTs - E.03.01"; 
+const puntuacions = ["",
+    0.25, 0.25, 0.25, 1.00, 1.00,
+    1.00, 1.00, 1.00, 1.00, 1.00,
+    1.00, 1.00, 0.50, 0.25, 0.25,
+    0.25, 0.25, 
+];
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+const π = Math.PI;
+
+const electrodes = [
+// prof   n.piq      kr       kp   sep
+    [5,       2,  0.201,  0.0392,    3],
+    [5,       3,  0.135,  0.0252,    3],
+    [5,       4,  0.104,  0.0184,    3],
+    [5,       6,  0.073,  0.0120,    3],
+    [5,       8, 0.0572, 0.00345,    3],
+                                       
+    [8,       2,  0.194,  0.0253,    3],
+    [8,       3,  0.130,  0.0170,    3],
+    [8,       4,  0.100,  0.0127,    3],
+    [8,       6, 0.0707, 0.00833,    3],
+    [8,       8, 0.0556, 0.00255,    3],
+]; // Fi const electrodes
+
+const vbt = 8000; // V_bt
+const u = 20e3;
+const t = xs(0.5, 1);
+const iap = 50; // I_a^\prime
+const ρ = aleat(100, 500);
+
+const rn = 30;
+const xn = 0;
+const k = 72;
+const n = 1;
+const ρp = 3000;
+
+const lp = 2; // longitud piques
+const ipr = aleat(0, 1); //index profunditat
+const inp = aleat(0, 4); //index numero de piques
+const ie = ipr * 5 + inp; //index de la taula d'electrodes
+const electrode = electrodes[ie][0] + "/" + electrodes[ie][1] + "" + lp;
+const dect = aleat (2, 10); // distancia entre electrode i CT
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+function estableixParametres(){
+    p = [
+              vbt, xs(u/1e3,2), t, iap, ρ,
+        electrode, dect,
+    ];
+    parametres = parametres.concat(p);
+}
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+    const pr = xs(electrodes[ie][0]/10, 1); // profunditat electrode
+    const np = electrodes[ie][1];
+    const kr = electrodes[ie][2];
+    const kp = electrodes[ie][3];
+    const sep = electrodes[ie][4]; // separació entre piques
+
+    const kc = 0;
+
+    const rtp = kr * ρ; // R_t^\prime
+    const idp = u / (3**0.5 * ((rn + rtp)**2 + xn**2)**0.5);
+    const vpp = kp * ρ * idp;
+    const vdp = rtp * idp;
+    const d = ρ * idp / 2000;
+
+    const vp = 10 * k / t**n * (1 + 6*ρ/1000);
+    const vpacc = 10 * k / t**n * (1 + (3 * ρ + 3 * ρp)/1000);
+    const vd = vbt;
+    const id = iap;
+
+    const mcu = np - 1 * sep + dect; // longitud Cu nu
+    const scu = 50; //secció coure
+
+
+
+
+    solucions = [""].concat([
+           kr,   kp,   kc,  rtp,        idp,
+          vpp,  vdp,    d,   vp,  vpacc/1e3,
+           vd,   id,   mcu,  scu,        pr,
+           np,   lp,  
+    ].map(xsMap));
+
+
+// ## 3.2 LOG ---------------------------------------------------------
+tlog += 
+`
+> Es considera que en aquest cas no és necessari fer un log dels 
+> càlculs
+`
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne. 
+let alumne = {
+    nom: "",
+    cicle: "CFGS Tècnic Superior en Sistemes Electrotècnics i " + 
+           "Automatitzats",
+    anys: "2023/2024"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;    
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="number" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 80px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto" 
+            style="font-size: 20px; color: #AA5050;"> 
+            Avaluar 
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    let r = [""];
+    alumne.nom = document.getElementById("nom").value;  // veure C.2.1 
+    for (let i = 1; i < puntuacions.length; i++){
+        r[i] = document.getElementById("i"+i).value;
+    }
+    respostes = r.map(xsMap);                           // veure C.2.1
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);    
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' + 
+           '<h2 align="center" style="color: #888">' + titol + "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+    "",
+    "> [[nota]]"
+    ].join("\n") + "\n";
+    txt += "## Enunciat\n\n" + txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    let ptsAlumne = 0, ptsTotal = 0;
+    let canvi = "", patro = "";
+    let a = 0, b = 0;
+    for (let i = 1; i < puntuacions.length; i++){
+        a = respostes[i];
+        b = solucions[i];
+        ptsTotal += puntuacions[i];
+        canvi = 
+            '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">' 
+            + coma(a) + '</span>';
+        if ((b*0.99) < a && a < (b*1.01)) {
+            ptsAlumne += puntuacions[i];
+            canvi += 
+                ' <span style="color: green">(' + 
+                coma(b) +') OK (+' + puntuacions[i] + ')</span>';
+        }else{
+            canvi += 
+                ' <span style="color: red;"> (' + 
+                coma(b) +')</span>';
+        }
+        patro = "[[i" + i + "]]";
+
+        txt = txt.replace(patro, canvi);
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a){  // log abreviat a l totsol
+    return coma(xs(a));
+}
+
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return a;
+}
+
+function coma(a){
+    a = a + ""; 
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+/**********************************************************************
+ * - Establir les puntuacions, que han de correspondre amb la quantitat
+ * de respostes que l'alumne pot contestar.
+ * 
+ * - Establir els paràmetres. En general serà una funció per a generar
+ * nombres aleatoris, però també es poden fixar. Aquest últim cas és
+ * interessant per a testejar els càlculs. IMPORTANT: Al finalitzar
+ * tots els parametres hauran de concatenarse al vector parametres.
+ * 
+ * -  El mateix succeeix amb els càlculs. Tot haura de volcar-se al
+ * vector solucions.
+ * *******************************************************************/
+-->
