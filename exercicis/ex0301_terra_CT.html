@@ -119,11 +119,11 @@ $V_{p(acc)}$: [[i10]] (max)
 Finalment, si l'electrode està separat de l'entrada al CT [[p7]] m, 
 per a construir l'elèctrode necessitaré:
 
-- Metres de cable de coure nuu [[i13]]
-- Secció del cable de coure [[i14]]
-- Profunditat de l'electrode [[i15]]
+- Metres de cable de coure nu [[i13]]
+- Secció del cable de coure (en mm²) [[i14]]
+- Profunditat de l'electrode (en m) [[i15]]
 - Número de piques [[i16]]
-- Longitud de les piques [[i17]]
+- Longitud de les piques (en m) [[i17]]
 
 
 </textarea>
@@ -249,14 +249,14 @@ function calcula(){
     const idp = u / (3**0.5 * ((rn + rtp)**2 + xn**2)**0.5);
     const vpp = kp * ρ * idp;
     const vdp = rtp * idp;
-    const d = ρ * idp / 2000;
+    const d = ρ * idp / (2000 * π);
 
     const vp = 10 * k / t**n * (1 + 6*ρ/1000);
     const vpacc = 10 * k / t**n * (1 + (3 * ρ + 3 * ρp)/1000);
     const vd = vbt;
     const id = iap;
 
-    const mcu = np - 1 * sep + dect; // longitud Cu nu
+    const mcu = (np - 1) * sep + dect; // longitud Cu nu
     const scu = 50; //secció coure
 
 
