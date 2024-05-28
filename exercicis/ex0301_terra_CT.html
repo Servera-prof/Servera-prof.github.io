@@ -42,7 +42,7 @@ $$
 
 $$
 \begin{gather}
-I_d^\prime = \dfrac {U}{\sqrt 3 \cdot \sqrt{(R_n+R_t)^2+X_n^2}}
+I_d^\prime = \dfrac {U}{\sqrt 3 \cdot \sqrt{(R_n+R_t^\prime)^2+X_n^2}}
 \end{gather}
 $$
 
@@ -78,10 +78,10 @@ V_{p(acc)} = \dfrac{10 \cdot K}{t^n}
 $$
 
 ## Enunciat
-A un CT integrat a edifici hi s'instal·larà material de BT amb un 
+A un CT integrat a edifici s'instal·larà material de BT amb un 
 aïllament de 10 kV, tal i com recomana edistribución. De totes maneres
-per a tenir un marge de seguretat els calculs es realitzaran com si
-l'aïllament fos de [[p1]] V. La tensió de servei es de [[p2]] kV.
+per a tenir un marge de seguretat els càlculs es realitzaran com si
+l'aïllament fos de [[p1]] V. La tensió de servei és de [[p2]] kV.
 
 Per altra bandà el relé de dispar no es considerarà temps depenent, i
 salta a [[p3]] s en tots els casos, amb una intensitat d'arrencada de
@@ -91,7 +91,9 @@ S'ha mesurat la resistivitat del terreny i s'han obtinguts valors de
 $\rho = [[p5]] ~ \Omega \cdot m$. I la del terra del CT és 
 $\rho^\prime = 3000 ~ \Omega \cdot m$ 
 
-S'ha triat un elèctrode [[p6]], comprova que sigui correcte.
+S'ha triat un elèctrode [[p6]], comprova que sigui correcte. Es pot
+considerar que la resistència del neutre és de 30 Ω i la seva
+inductància 0 Ω.
 
 - $K_r$: [[i1]] 
 - $K_p$: [[i2]]
