@@ -226,21 +226,30 @@ tlog +=
 > - x = ${l(x)}
 > - z = ${logcbi(z)}
 > 
-> - g<sub>Fe</sub> = ${l(gfe)}
-> - y<sub>Fe</sub> = ${l(yfe_mod)}
-> - b<sub>M</sub>  = ${l(bm)}
-> - y<sub>Fe</sub> = ${logcbi(yfe)}
+> - g<sub>Fe</sub>  = ${l(gfe)}
+> - y<sub>Fe</sub>  = ${l(yfe_mod)}
+> - b<sub>M</sub>   = ${l(bm)}
+> - y<sub>Fe</sub>  = ${logcbi(yfe)}
 > 
-> - z<sub>2</sub>  = ${logcbi(z2_r)}
-> - u<sub>1</sub>  = ${logcbi(u1_r)}
-> - z<sub>eq</sub> = ${logcbi(zeq)}
-> - i<sub>cc</sub> = ${l(icc_r)}
-> - I<sub>1</sub>  = ${l(i1)} A
-> - U<sub>2</sub>  = ${l(u2)} V
-> 
-> - P<sub>2</sub>  = ${l(p2/1000)} kW
-> - P<sub>Cu</sub> = ${l(pcu)}    W
-> - P<sub>Fe</sub> = ${l(pfe)}    W
+> - z<sub>2</sub>   = ${logc(z2_r)}
+> - u<sub>1</sub>   = ${logc(u1_r)}
+> - z<sub>eq</sub>  = ${logc(zeq)}
+> - i               = ${logc(i1_r)}
+> - u<sub>2</sub>   = ${logc(u2_r)}
+> - p<sub>2</sub>   = ${l(p2_r)}
+> - p<sub>Cu</sub>  = ${l{pcu_r}}
+> - p<sub>Fe</sub>  = ${l{pfe_r}}
+> - i<sub>cc</sub>  = ${l(icc_r)}
+
+> - I<sub>1</sub>   = ${l(i1)}           A
+> - U<sub>2</sub>   = ${l(u2)}           V
+> - P<sub>2</sub>   = ${l(p2/1000)}      kW
+> - P<sub>Cu</sub>  = ${l(pcu)}          W
+> - P<sub>Fe</sub>  = ${l(pfe)}          W
+> - I<sub>cc1</sub> = ${l(icc1/1e3)}     kA
+> - I<sub>cc2</sub> = ${l(icc2/1e3)}     kA
+> - c.d.t.          = ${l(cdt * 100)}    %
+> - η               = ${l(η * 100)}      %
 > 
 > 
 > ### Solucions
@@ -535,9 +544,8 @@ function invc(a){ // inversa d'un complexe
     return cpol(1/a.r, -a.φ);
 }
 
-function logc (nom, v){ // log de un numero complexe
+function logc (v){ // log de un numero complexe
     let log = "";
-    log += nom + ": ";
     log += xs(v.x);
     if (v.y > 0) log += " + j" + xs(v.y);
     else if (v.y < 0) log += "-j" + xs(-v.y);
