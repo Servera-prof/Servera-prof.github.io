@@ -98,16 +98,16 @@ const puntuacions = ["",
 
 // ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
 const π = Math.PI;
-const sn = 450e3;
-const un1 = 27500;
-const un2 = 353
-const ug = 25480;
+const sn = 535e3;
+const un1 = 22500;
+const un2 = 418;
+const ug = 22295;
 
 const εcc = 0.05;
-const wcc = 11e3;
-const w0 = 1.2e3;
-const cosφ0 = 0.19;
-const z2 = cbi(0.3538, 0.6);
+const wcc = 9.5e3;
+const w0 = 0.82e3;
+const cosφ0 = 0.18;
+const z2 = cbi(0.2501, 0.4650);
 
 // ## 2.2 FUNCIO (actualitzar) ----------------------------------------
 function estableixParametres(){
@@ -160,7 +160,7 @@ function calcula(){
     const cdt = u1_r.r - u2_r.r;
 
     // Potències
-    const p2_r = z2_r.r * i2_r.r**2
+    const p2_r = z2_r.x * i2_r.r**2
     const pcu_r = r * i1_r.r**2;
     const pfe_r = u2_r.r**2 * gfe;
 
