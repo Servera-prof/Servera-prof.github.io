@@ -1,0 +1,685 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <style>
+        p{
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        img[alt="c500"]{
+            width: 500px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img[alt="250"]{
+            width: 250px;
+        }
+        img[alt="fr250"]{
+            width: 250px;
+            float: right;
+            margin: 0 0 0 0.7em;
+        }
+        img[alt="fr"]{
+            float: right;
+            margin: 0 0 0 0.7em;
+        }
+        img[alt="fl250"]{
+            width: 250px;
+            float: left;
+            margin: 0 .7em 0 0;
+        }
+        img[alt="fl"]{
+            float: left;
+            margin: 0 5px 0 0;
+        }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="../js/texme/texme.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+
+> ![c500](img/el_sistema_electric.png)
+> **Fig. 1** _Visió esquemàtica del sistema elèctric_.
+> [L'autor][PACO~commonswiki] d'aquesta imatge autoritza el seu ús sota
+> llicència [CC2.5-by]. 🅭🅯
+
+Actualment l'electricitat no es pot emmagatzemar en grans quantitats,
+per això tot el que es consumeix s'ha de generar instantàniament.
+Per aquest motiu hi ha una gran xarxa que connecta les centrals amb els
+punts de consum.
+L'electricitat que ens arriba de la xarxa és alterna, a 230/400 V i a
+50 Hz.
+
+
+
+
+## 1. Components de les xarxes.
+
+### 1.1. Centrals generadores.
+
+**Objectiu:** transformar energia de qualsevol tipus en energia
+elèctrica.
+La majoria de centrals utilitzen energia mecànica d'algun fluid (aigua,
+vapor, vent) per moure una màquina (turbina, hèlix, motor tèrmic).
+Després, connectem un generador elèctric síncron (alternador).
+L'alternador produeix una tensió sinusoïdal sobre una bobina (induït).
+
+> ![c500](img/central_generadora_3.jpg)
+> **Fig. 2** _Generador posterior a una turbina de vapor a la central
+> nuclear de Balakovo_.
+> L'autor d'aquesta imatge
+> [Александр Ситенький (Alexander Seetenky)][Alexander Seetenky]
+> del CPI BalNpp (Centre d'Informació Pública de Balakovo NPP)
+> autoritza el seu ús sota llicència [CC3.0-by-sa]. 🅭🅯🄎
+
+> ![c500](img/central_generadora_4.png)
+> **Fig. 3** _Instal·lació d'un rotor d'un alternador a la central
+> elèctrica de Lavey_.
+> [Font] P. Meystre: _L'aménagement hydroélectrique de Lavey_. Bulletin
+> technique de la Suisse romande. Volume 77. 1951. p. 281. Fig. 47.
+> La imatge es troba al [domini public][CC0]. 🄍
+
+Normalment s'utilitza un generador elèctric síncron:
+
+- Produeixen una tensió entre 10 kV i 22 kV.
+- Necessiten després un transformador per elevar la tensió.
+- No s'utilitzen voltatges majors ja que s'ha de garantir l'aïllament
+  entre distints elements.
+- Ni més baixos perquè obligaria a fer servir conductors massa gruixuts.
+
+Altres tipus de centrals generadores:
+
+- Parcs fotovoltaics: produeixen corrent continu que s’ha de convertir
+  en altern (amb inversors) abans d’injectar l’energia a la xarxa.
+
+Les centrals generadores solen estar allunyades dels centres de consum
+per diverses raons:
+
+- Proximitat a fonts d’energia primària (salts d’aigua, conques de
+  carbó...)
+- Preu del sol (plantes fotovoltàiques)
+- Per seguretat (centrals nuclears)
+
+Evolució de la producció d’energia elèctrica a nivell mundial:
+
+> ![c500](img/generacio_electricitat_per_font.png)
+> **Fig. 4** _Generació d'electricitat per font_.
+> [Font] [IEA (2023)], Energy Statistics Data Browser, IEA, Paris
+> Sota llicencia [CC4.0-by]. 🅭🅯
+
+
+
+
+### 1.2. Subestació
+
+**Objectiu:** establir els nivells de tensió adequats per al transport i
+distribució de l'energia elèctrica.
+
+Tipus:
+
+- **Subestacions elevadores**, situades a prop de les centrals
+  generadores, tenen la funció d’elevar el nivell de tensió, fins a
+  132, 220 o fins i tot 400 kV, abans de lliurar l'energia a la xarxa de
+  transport.
+
+- **Subestacions reductores**, que redueixen el nivell de tensió fins a
+  valors d’entre 10 i 66 kV i lliuren l'energia a la xarxa de
+  distribució.
+
+
+> [![c500](https://i.ytimg.com/vi/0aTN4QtXuMo/hqdefault.jpg)][Video 1]
+> **Video 1** Endesa Educa (2023) _Cómo funciona una subestación
+> eléctrica_ [YouTube]
+
+
+
+
+### 1.3 Xarxes de transport
+
+Transporten l’energia elèctrica a grans distàncies i són propietat de
+[Red Electrica de España (REE)][REE].
+
+El motiu per el que s'utilitza alta tensió es pot explicar per mitjà
+d'un exemple simplificat:
+
+$$
+\begin{array}{ll}
+\textbf{Sistema 1} && \textbf{Sistema 2} \\[2mm]
+P = 10~\text{kW} && P = 10~\text{kW} \\[2mm]
+V = 1000~\text{V} \rightarrow
+ I = \dfrac{10 \cdot 10^3}{1000} = 10~\text{A} &&
+V = 1000~\text{V} \rightarrow
+ I = \dfrac{10 \cdot 10^3}{100} = 100~\text{A} \\[2mm]
+P_{perd} = R \cdot 10^2 = R \cdot 100 &&
+P_{perd} = R \cdot 100^2 = R \cdot 10.000
+\end{array}
+$$
+
+Per tant, pujant la tensió es redueix la potència que consumeix el
+cable. Pujant la tensió al doble les pèrdues es redueixen per quatre.
+
+També existeixen les xarxes de transport en contínua.
+
+La resistència del cable depèn del material, secció i longitud.
+
+> $$
+ \begin{gather}
+ R = \rho \cdot \dfrac {L}{S}
+ \end{gather}
+ $$
+>
+> A on:
+> - $R$ és la resistencia del cable en $\Omega$
+> - $S$ és la secció del cable en $\text{mm}^2$
+> - $L$ és la longitud del cable en $\text{m}$
+> - $\rho$ és la resistivitat del mateiral en
+>   $\Omega \cdot \text{mm}^2 /\text{m}$
+
+Una tensió elevada redueix dràsticament la caiguda de tensió a les
+línies. Considerem el següent sistema de corrent continu:
+
+> ![c300](img/circuit_simple.png)
+> **Fig. 5** _Circuit simple de corrent continua_.
+> Imatge del departament d'electricitat del CIFP Pau Casesnoves
+
+La caiguda de tensió per unitat al llarg de la línia és:
+
+> $$
+ \begin{gather}
+ \dfrac{\Delta v}{v} = R \cdot \dfrac {p}{v^2}
+ \end{gather}
+ $$
+>
+> A on:
+> - $\Delta v$ és la caiguda de tensió en $\text{V}$
+> - $v$ és la tensió de la font en $\text{V}$
+> - $R$ és la resistència de la línia en $\Omega$
+> - $p$ és la potència de la càrrega de CC en $\text{W}$
+
+Per a transportar i distribuir electricitat hem de pujar i baixar el
+voltatge per tal de reduir les pèrdues.
+Variar el voltatge és fàcil amb un transformador, però només funcionen
+en corrent altern. Aquest és el motiu d'utilitzar CA en lloc de CC.
+
+Augmentar la tensió va reduir la caiguda de tensió i va permetre
+augmentar la longitud de les xarxes elèctriques.
+Les xarxes aïllades s’uniren entre sí i formaren els grans sistemes
+elèctrics actuals, que ofereixen dos avantatges importants:
+
+- Permeten despatxar en cada moment les unitats més econòmiques.
+- Milloren la seguretat del subministrament quan unes parts del sistema
+  actuen com a recolzament de les altres.
+
+A l’actualitat les xarxes elèctriques s’estenen al llarg de milers de
+kilòmetres i transporten gran part de l’energia necessària per a
+l’activitat econòmica i la vida domèstica.
+Per això es diu que el sistema elèctric, incloent les càrregues i els
+generadors connectats a elles, és la màquina més gran construïda per
+l’ésser humà.
+
+Dibuix esquemàtic d'un sistema elèctric modern:
+
+> ![500c](img/sistema_electric_modern.svg)
+> **Fig. 6** J. Servera (2024). _Esquema d'un sistema elèctric modern_.
+> Imatge d'elaboració pròpia sota llicencia [CC4.0-by-sa-nc]. 🅭🅯🄏🄎
+
+La xarxa de transport (en vermell), per raons de seguretat, és mallada.
+Significa que existeixen camins alternatius per al transport de
+l’energia, i la pèrdua d’una branca del circuit no implica la
+desconnexió automàtica d’una part del sistema.
+
+És el propi circuit físic d’una xarxa el que determina el corrent i la
+potència de cada branca, no essent possible traslladar arbitràriament
+part del fluxe de corrent d’una branca a una altra.
+
+Es distingeix (Ley del Sector Eléctrico) entre:
+
+- Xarxa de transport primària: línies, parcs, transformadors i altres
+  elements amb tensiones iguals o superiors a 380 kV i aquelles altres
+  instal·lacions d’interconnexió internacional i amb territoris no
+  peninsulars.
+- Xarxa de transport secundària: operen amb tensions iguals o
+  superiors a 220 kV i no estan incloses al paràgraf anterior. I altres
+  amb tensions inferiors a 220 kV que cumpleixin la funció de transport.
+
+
+
+
+### 1.4. Xarxes de transport HVDC
+
+La investigació dels materials semiconductors i el desenvolupament de
+l’electrònica de potència va permetre convertir corrent continu en
+altern i a l’inrevés, així com també pujar i baixar la tensió en CC.
+
+Aquests fets han permès utilitzar xarxes de transport en corrent
+continu (HVDC High Voltage Direct Current) per a grans distàncies.
+
+Avantatges:
+
+- Disminueixen les pèrdues dels cables (menor efecte
+  pelicular i s’eliminen les pèrdues inductives i capacitives).
+- Permeten servir a xarxes amb diferent freqüència.
+
+Desavantatges:
+- Elevat cost dels equips.
+- No es poden utilitzar transformadors.
+- Generació d'harmònics.
+
+Usos de les xarxes de transport en corrent continu:
+- Línies de grans distàncies (més de 500 km)
+- Línies marines i soterrades on els cables són aïllats i tenen una
+  elevada capacitat distribuïda.
+- Connexió entre xarxes de diferent freqüència.
+
+Exemples:
+- Connexió península-Balears
+- Central hidroelèctrica Xina de les Tres Gorgues (22,5 GW), on s’ha
+  de transportar l’energia grans distàncies.
+- Central hidroelèctrica Itaipú (Brasil-Paraguai), on a més de les
+  distàncies, cada país funciona a una freqüència diferent.
+
+
+
+
+## 2. Tipologies de les xarxes
+
+### 2.1. Xarxes de distribució
+
+Poden ser en mitjana tensió (de 1 a 30 kV) o baixa tensió.
+Són propietat de les companyies de distribució (igual que els centres
+de transformació).
+Distribueixen l’electricitat en els nuclis de consum.
+
+> ![c500](img/distribuidores.svg)
+> **Fig. 7** J. Servera (2024). _Mapa de les companyies distribuidores
+> d'electricitat en el mercat espanyol_.
+> Imatge d'elaboració pròpia sota llicencia [CC4.0-by-sa-nc] 🅭🅯🄏🄎 a
+> partir de la
+> [imatge original](https://commons.wikimedia.org/wiki/File:Distribuidoras_de_electricidad_en_el_mercado_el%C3%A9ctrico_espa%C3%B1ol.svg)
+> amb llicencia [CC0]. 🄍
+
+Les xarxes de distribució d’un sistema elèctric poden ser nombroses,
+i totes elles es troben connectades a la xarxa de transport.
+A la _Fig. 7_ es mostren dues xarxes de distribució en color blau.
+
+La tensió es redueix des del nivell de la xarxa de transport fins al
+consum final en varis esglaons successius, corresponents a diverses
+subestacions de distribució (per simplicitat al dibuix només es
+representen les subestacions frontera).
+
+Les xarxes de distribució s’operen de forma radial o “en antena”,
+cosa que simplifica la seva gestió (des d’un punt de consum qualsevol
+fins a la xarxa de transport només hi ha un únic camí).
+
+Sí que hi pot haver malles instal·lades (part superior dreta), però
+normalment es troben obertes amb algun dispositiu de tall.
+Aquests donen a la xarxa de distribució flexibilitat i rapidesa de
+resposta, podent disposar de camins alternatius en cas de necessitat.
+
+Els nivells de tensió de les xarxes de distribució són inferiors als
+de la xarxa de transport. Algunes tensions nominals i recomanades a
+España (Reglament d’Alta Tensió) són 132 kV, 66 kV i 20 kV, tot i que
+per raons històriques existeixen altres nivells de tensió en ús, p.e.
+a Balears 15 kV.
+
+Les diferències conceptuals entre xarxa de transport i xarxa de
+distribució són importants, i comuns a pràcticament tots els sistemes
+elèctrics, però no s’han d’agafar com a regles estrictes.
+Per exemple: Existeix generació distribuïda connectada a la xarxa de
+distribució (típicament unitats petites però que poden ser nombroses).
+Una part de la xarxa de transport pot operar a tensions inferiors
+a 220 kV, i una part de la xarxa de distribució propera a la xarxa de
+transport pot ser mallada.
+
+De vegades es fa servir l’expressió xarxa de subtransport o xarxa de
+repartiment per a referir-se a parts intermitges de la xarxa entre les
+funcions de transport i distribució.
+
+> ![c500](img/exemple_de_final_de_xarxa.png)
+> **Fig. 8** Schneider electric. _Exemple final de xarxa_.
+> Imatge amb copyright<sup>©</sup>
+
+
+
+
+### 2.2. Centres de transformació
+
+Els CT redueixen el voltatge de mitjana tensió a un valor de 230/400 V
+apte pel consum domèstic i de petites indústries.
+Els CT es van distribuint dins les poblacions per donar
+subministrament elèctric en baixa tensió, ja que les xarxes de BT
+només poden recórrer petites distàncies.
+
+![250](img/centres_transformacio_superficie.jpg)
+![250](img/centre_transformacio_intemperie.jpg)
+
+
+
+
+### 2.3. Tipus de xarxa segons la tensió:
+
+- Alta tensió
+    + 3a Categoria (mitjana tensió)
+        * Tensió superior a 1 kV i igual o inferior a 30 kV
+        * Tensions normalitzades: 3 kV, 6 kV, 10 kV, 15 kV, 20 kV,
+          25 kV i 30 kV
+        * A Balears funcionen a 15 kV
+    + 2a Categoria
+        * Tensió superior a 30 kV i igual o inferior 66 kV
+        * Tensions normalitzades: 45 kV i 66 kV
+    + 1a Categoria
+        * Tensió superior a 66 kV i inferior a 220 kV.
+        * Tensions normalitzades: 110 kV, 132 kV, 150 kV.
+    + Categoria especial
+        * Tensió igual o superior a 220 kV.
+- Baixa tensió (inferior a 1 kV)
+
+
+### 2.4. Tipues de xarxa segons l'estructura:
+
+**Radial, ramificada o en punta**
+![fr250](img/xarxa_en_punta.jpg)
+
+- Els CT s’alimenten per un únic punt.
+- Menor cost i facilitat de protecció.
+- Poc fiables i difícil manteniment.
+- S’utilitzen en zones poc poblades.
+
+
+**En bucle o anell:**
+
+![fr250](img/xarxa_bucle.png)
+- Els CT s’alimenten per dos punts, encara que aquests punts
+  provenen de la mateixa subestació.
+- Més fiables i facilitat de manteniment que les radials: es pot
+  deixar un tram sense tensió per fer manteniment o quan hi ha qualque
+  falla.
+- Cost més elevat.
+- S’utilitza en zones més densament poblades.
+
+
+**En bucle o anell múltiple**
+
+![250](img/xarxa_anell_multiple.png)
+
+
+**Lineal:**
+![fr250](img/xarxa_lineal.png)
+
+- Els CT s’alimenten per dos punts provinents de dues subestacions.
+- Més fiables i facilitat de manteniment que les radials: es pot
+  deixar un tram sense tensió per fer manteniment o quan hi ha qualque
+  falla.
+- Cost més elevat.
+
+
+**Fus:**
+
+![fr250](img/xarxa_en_fus.jpg)
+- És una millora de l’anell, per millorar la continuïtat del servei.
+  Pot funcionar amb dos trams avariats.
+- Els CT s’alimenten des de dos punts, i a més disposen d’un circuit
+  zero que no s’utilitza en condicions normals.
+- Només disposen d’una connexió a subestació. A l’altra costat es
+  connecten a un centre de reflexió que permet realitzar les maniobres
+  de connexió i desconnexió.
+- S’utilitza en zones molt densament poblades.
+
+
+**Fus recolzat:**
+![fr250](img/xarxa_en_fus_recolzat.jpg)
+
+- En comptes d’un centre de reflexió es connecta a una altra subestació,
+  per tal de millorar la continuïtat del servei.
+
+
+**Fus multiple:**
+
+![250](img/xarxa_fus_multiple.png)
+
+
+**Espiga:**
+![fr250](img/xarxa_espiga.png)
+
+- És una variant de la xarxa en fus, a on es connecten diferents
+  xarxes de CT a diferents centres de reflexió.
+- La fiabilitat és com la xarxa en fus.
+
+
+**Espiga recolzada:**
+
+- S'alimenta per més d'una subestació.
+
+![250](img/xarxa_espiga_recolzada.png)
+
+
+
+
+### 2.5. Tipus de xarxes segons la disposició
+
+- Aèries
+    + Cable nuu i aïlladors
+    + Cable aïllat
+- Soterrades
+    + Directament soterrades
+    + Dins galeries
+
+![250](img/XSMT_en_galeria.jpg)
+![250](img/XSMT_soterrades.jpg)
+
+
+
+
+## 3. Transmissió d'informació pel Sistema Elèctric
+
+- Podem transmetre informació sobre l’estat de la xarxa, i també
+  realitzar en telecomandament sobre els elements de maniobra i
+  protecció.
+- D’aquesta forma podrem realitzar la telemesura del consums dels
+  diferents abonats, a més de conèixer la càrrega de les diferents
+  línies i transformadors.
+- Realitzar el telecomandament de la xarxa ens permetrà:
+    + Millorar la qualitat i la continuïtat del servei.
+    + Disminuir els retards d'intervenció.
+    + Controlar el repartiment de les càrregues.
+    + Reduir costs d’explotació.
+
+- Les formes més típiques de realitzar telecomandament de les
+  instal·lacions són:
+    + Per ona portadora.
+    + Per radio.
+    + Per fibra òptica.
+- D’aquesta forma podrem actuar sobre els elements de maniobra i
+  protecció de:
+    + Subestacions.
+    + Centres de reflexió i repartiment.
+    + Centres de transformació.
+    + Xarxes de transport i distribució.
+
+
+### 3.1. Telecomandament: Ona portadora
+
+![fl250](img/ona_portadora_1.jpg)
+És un dels sistemes emprats per telecomandar els interruptors dels
+centres de distribució.
+Utilitza com a suport físic la pròpia xarxa elèctrica.
+Sobre el senyal sinusoidal de 50 Hz s’injecta un senyal d’alta
+freqüència que permet comunicacions bidireccionals.
+
+![fr](img/ona_portadora_2.jpg)
+Es necessiten equips per tal de filtrar el senyal de 50 Hz
+(condensadors i bobines), i que permetin seguir transmetent la
+informació quan els elements de maniobra i protecció estan oberts.
+
+- Avantatge: utilitza com a suport de transmissió de senyals el propi
+  cable de les línies.
+- Inconvenient: pèrdua de dades per a grans distàncies.
+
+
+### 3.2. Telecomandament: ràdio
+
+![fr250](img/telecom_radio.jpg)
+La informació es transmet a través d’ones de ràdio.
+
+- Avantatge: no necessita transport físic.
+- Inconvenients:
+    + Espectre de bandes limitat per part d’emissores comercials i
+      forces armades.
+    + Necessita instal·lar estacions repetidores per salvar grans
+      distàncies.
+    + Es produeixen interferències produïdes per tempestes solars.
+
+
+### 3.3. Telecomandament: fibra òptica
+
+![fr250](img/telecom_fibra.jpg)
+Són filaments de vidre o plàstic que transporten llum, per tant no
+tenen interferències amb camps elèctrics i magnètics, i no condueixen
+l’electricitat.
+
+- Avantatges:
+    + Gran ample de banda i alta velocitat de transmissió.
+    + Detecció d’averies senzill.
+- Desavantatges:
+    + Fragilitat de les fibres.
+    + Enpalmaments més complicats de realitzar.
+    + En molts de casos necessitarem conversors elèctric-òptics.
+
+#### 3.3.1 Sistema OPGW (_OPtical Groud Wire_, cable òptic de terra)
+
+Els cables OPGW s'empren en les línies de transport i distribució
+d'energia elèctrica, tenint la doble funció de transmissió de dades i
+de connexió a terra.
+
+S’utilitzen en alta tensió.
+La part conductora del cable serveix per a unir les posades a terra de
+les estructures adjacents, protegint a les estructures i la xarxa dels
+llamps.
+
+Les fibres òptiques dins del cable s'utilitzen per a la transmissió de
+dades a alta velocitat per a:
+
+- Telecomandament de la xarxa i telemesura.
+- Altres usos com llogar-les a empreses de comunicacions.
+
+> ![c500](img/OPGW.svg)
+> **Fig. 9** J. Servera (2024). _Secció d'un OPGW_.
+> Imatge d'elaboració pròpia sota llicencia [CC4.0-by-sa-nc] 🅭🅯🄏🄎
+>
+> Llegenda:
+> 1. Element central (fibra de vidre + resina)
+> 2. Segona protecció de tubs de PBT
+> 3. Fibres òptiques
+> 4. Farciment antihumitat
+> 5. Cintes sintètiques per a lligar el nucli
+> 6. Tub d'alumini
+> 7. Fils de acer recuberts d'alumini
+> 8. Recobriment d'alumini
+
+Quan es parla d'aquest tipus d'instal·lacions, es necessari coneixer
+certa terminologia.
+
+- Obertura (Vano): Distància entre pals.
+- Fletxa: Desviació màxima permesa del cable respecte a l'horitzontal;
+  deguda al pes del cable i condicions climàtiques.
+- Condicions climàtiques: El vent i la neu causen tracció addicional
+  en el cable, per la qual cosa és important conèixer les condicions
+  climàtiques de la zona on serà instal·lat.
+
+
+#### 3.3.2. Sistema de cablejat autosuportat dielèctric (ADDS)
+
+El cable ADSS (All Dielectric Self Supported), és completament
+dielèctric i autosuportat, està dissenyat per a la instal·lació aèria
+entre pals, evitant la necessitat de cables guia.
+
+Els cables ADSS ofereixen la resistència a la tracció necessària en
+aquest tipus d'instal·lacions gràcies a la aramida, un material que
+aporta excel·lents propietats mecàniques de tracció, mantenint un pes
+molt lleuger.
+
+![250](img/ADSS.png)
+![250](img/ADSS.jpg)
+
+
+#### 3.3.3. Sistema de conductor de fase òptic OPPC
+
+El cable OPPC (_OPtical Phase Conductor_) S’utilitza també quan la
+línia no té cable de terra.
+Té una estructura similar al OPGW i una doble funcionalitat: conductor
+de fase i comunicació.
+S’utilitza principalment en les xarxes de baixa i mitjana tensió.
+
+
+## 4. Enllaços externs
+
+- [Mapa de la xarxa de transport (2005)]
+- [Planificació elèctrica]
+- [REBT (Reglamento Electrotécnico de Baja Tensión)]
+- [LAT (reglamento de Lineas de Alta Tensión)]
+- [RAT (Reglamento de Alta Tensión)]
+- [Ley del sector eléctrico]
+
+[Mapa de la xarxa de transport (2005)]: https://www.ree.es/sites/default/files/downloadable/maptra2005.pdf
+[Planificació elèctrica]: https://www.planificacionelectrica.es/
+[REBT (Reglamento electrotécnico de baja tensión)]: https://www.boe.es/eli/es/rd/2002/08/02/842/con
+[LAT (reglamento de Lineas de Alta Tensión)]: https://www.boe.es/eli/es/rd/2008/02/15/223/con
+[RAT (Reglamento de Alta Tensión)]: https://www.boe.es/eli/es/rd/2014/05/09/337/con
+[Ley del sector eléctrico]: https://www.boe.es/eli/es/l/2013/12/26/24/con
+
+[PACO~commonswiki]: https://commons.wikimedia.org/wiki/User:PACO~commonswiki
+[Alexander Seetenky]: https://commons.wikimedia.org/w/index.php?curid=11616340
+[IEA (2023)]: https://www.iea.org/data-and-statistics/data-tools/energy-statistics-data-browser
+[REE]: https://www.ree.es/es
+
+[CC0]: https://creativecommons.org/publicdomain/zero/1.0/deed.ca "domini públic"
+[CC2.5-by]: https://creativecommons.org/licenses/by/2.5/deed.ca "Llicencia Creative Commons 2.5 Genèrica - Reconeixement"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Creative Commons 3.0 No adaptada - Reconeixement-CompartirIgual"
+[CC4.0-by]: https://creativecommons.org/licenses/by/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional- Reconeixement"
+[CC4.0-by-sa-nc]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional- Reconeixement NoComercial CompartirIgual"
+
+[Video 1]: https://youtu.be/0aTN4QtXuMo
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+const titol = "UT01 - El sistema elèctric"; // MODIFICAR
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>
