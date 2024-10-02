@@ -1,0 +1,118 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <style>
+        p{
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        img[alt="c500"]{
+            width: 500px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img[alt="250"]{
+            width: 250px;
+        }
+        img[alt="fr250"]{
+            width: 250px;
+            float: right;
+            margin: 0 0 0 0.7em;
+        }
+        img[alt="fr"]{
+            float: right;
+            margin: 0 0 0 0.7em;
+        }
+        img[alt="fl250"]{
+            width: 250px;
+            float: left;
+            margin: 0 .7em 0 0;
+        }
+        img[alt="fl"]{
+            float: left;
+            margin: 0 5px 0 0;
+        }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+## 1. Xarxes de distribucio en BT
+Es defineix com a BT aquelles tensions que entre fases tenen un valor
+igual o inferior a:
+- 1.000 V en alterna.
+- 1.500 V en contínua.
+La seva funció és dur l’energia elèctrica des del CT fins als
+consumidors.
+Van des dels fusibles del quadre de BT del CT fins a la caixa general
+de protecció (CGP) del consumidor.
+Normativa a complir:
+- REBT (ITC-BT 06 i ITC-BT 07).
+- Normes particulars de l’empresa subministradora d’energia (ESE).
+- Normes urbanístiques del municipi (sobretot si és aèria).
+
+Les aèries s’utilitzen en llocs que no tinguin una alta densitat de
+població.
+Si hi ha grans finques la quantitat de cables per la façana i entre
+suports seria massa gran. En aquests casos s’utilitzen xarxes
+soterrades.
+
+Avantatges i inconvenients:
+En les aèries la instal·lació i el manteniment són més fàcils, per tant
+són més econòmiques, però tenen major impacte visual i l’hi afecten més
+els llamps.
+Les soterrades són més cares i es complica la localització d’avaries,
+però no provoquen impacte visual.
+
+## 2. Xarxes aèries
+
+S’instal·len a l’exterior a certa altura.
+Poden ser de cable nuu o aïllat, i es poden instal·lar a la façana o
+tensada entre suports
+
+
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+const titol = "UT01 - Caracterització de les xarxes de baixa tensió"; // MODIFICAR
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>
