@@ -1,0 +1,724 @@
+<!-- MOLT IMPORTANT: Al final del document es poden trobar les
+instruccions sobre la utilització d'aquesta eina.-->
+
+
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+
+    <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+## Enunciat
+
+**1.** Es té un aerogenerador emplaçat en un terreny que podem considerar
+com una classe de rugositat d'1 a 7, a una alçada de [[p1]] msnm.
+
+Les característiques tècnique són les següents:
+
+- Diàmetre rotor: [[p2]] m
+- Cp: [[p3]]
+- ρ: [[p4]] kg/m³
+- alçada de la naveta (_nacelle_) sobre el terreny: [[p5]] m
+- El vent a [[p6]] m d'alçada sobre el sòl té una velocitat de
+[[p7]] m/s
+- z<sub>0</sub>: [[p8]] m
+
+Calcula:
+
+- La potència útil real que s'extreu amb l'aeroturbina.<br/>
+[[i1]] kW
+- La màxima potència que podria extreure una aeroturbina.<br/>
+[[i2]] kW
+- La potència disponible del vent amb aquestes característiques.<br/>
+[[i3]] kW
+- La velocitat de gir si la velocitat caracterísitca λ és de
+[[p9]].<br/>
+[[i4]] rpm
+
+&nbsp;
+
+
+**2.** Calcula el diàmetre del rotor d’un aerogenerador de [[p10]] kW
+que fa feina amb una velocitat de vent de [[p11]] m/s. Considera una
+densitat d’aire de [[p12]] kg/m³, un rendiment aerodinàmic de la turbina
+de [[p13]] i un rendiment conjunt mecànic-elèctric
+(η<sub>mec-elec</sub>) del [[p14]]%.
+
+- [[i5]] m
+
+&nbsp;
+
+
+**3.** Calcula l’increment de potència en el rotor d’un aerogenerador
+quan passa de fer feina en hivern (T = [[p15]]˚C) a fer feina en estiu
+(T = [[p16]] ˚C ). (_3 punts_)
+
+Dades:
+
+- Velocitat a [[p17]] m del sol: [[p18]] m/s;
+- Coeficient de potència: [[p19]];
+- Longitud de la pala: [[p20]] m
+- Altura del rotor sobre el terreny: [[p21]] m
+- Longitud de la rugositat: z0 = [[p22]] m
+- Emplaçament del molí: a [[p23]] m sobre el nivell del mar
+
+L'increment de potencia és: [[i6]] kW
+
+&nbsp;
+
+
+**4.** Calcula la potència elèctrica que s’obté d’un aerogenerador de
+[[p24]] m de diàmetre de rotor, ubicat a [[p25]] m sobre el nivell del
+mar girant a [[p26]] rpm quan la temperatura ambient és de [[p27]] ˚C.
+(_2 punts_)
+
+Altres dades per a aquesta situació:
+- Cp: [[p28]]
+- Rendiment mecànic-elèctric (η mec-elec): [[p29]]
+- Velocitat del vent a [[p30]] m sobre el terreny: [[p31]] m/s
+- Longitud de la rugositat: z0 = [[p32]] m
+- Altura de la naveta sobre el nivell del sol: [[p33]] m
+
+La potència elèctrica obtinguda seria: [[i7]] MW
+
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "UT01d - Exercicis finals";
+const puntuacions = ["",
+    1, 1, 1, 1, 1,
+    3, 2
+];
+const π = 3.141592654;
+const RPRIMA = 287.04;                  // unitats en J/(kg*K)
+const KELVIN = 273.15;                  // 0°C = 273,15 K
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+
+
+// Exercici 1
+
+const p01 = aleat(0, 1000);              // msnm
+const p02 = aleat(25, 35);               // d
+const p03 = xs(aleat(30, 50)/100, 2);    // cp
+const p04 = xs(aleat(115,125)/100, 3);   // ρ
+const p05 = aleat(50, 70);               // z
+
+const p06 = aleat(10, 20);               // z_ref
+const p07 = xs(aleat(50, 80)/10, 2);     // v_ref
+const p08 = xs(aleat(3,100)/100, 1);     // z0
+const p09 = xs(aleat(300,500)/100, 3);   // λ
+
+
+// Exercici 2
+
+const p10 = aleat(400, 600);            // p_gen
+const p11 = aleat(10,20);               // v
+const p12 = xs(aleat(115,125)/100, 3);  // ρ
+const p13 = xs(aleat(40,55)/100);       // cp
+const p14 = aleat(70,90);               // ηme
+
+
+// Exercici 3
+
+const p15 = 5;                          // t_hiv
+const p16 = 35;                         // t_est
+
+const p17 = 10;                         // z_ref
+const p18 = 10;                         // v_ref
+const p19 = 0.42;                       // cp
+const p20 = 16;                         // r
+const p21 = 50;                         // z
+const p22 = 0.25;                       // z0
+const p23 = 250;                        // msnm
+
+
+// Exrcici 4
+
+const p24 = 80;                         // d
+const p25 = 140;                        // msnm
+const p26 = 18;                         // Ω_rpm
+const p27 = 25;                         // temp
+
+const p28 = 0.4;                        // cp
+const p29 = 0.85;                       // ηme
+const p30 = 10;                         // z_ref
+const p31 = 11;                         // v_ref
+const p32 = 0.25;                       // z0
+const p33 = 60;                         // z
+
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+// !!! CONVERTIR si és necessari les unitats a les unitats que requereix
+// el nostre enunciat.
+
+function estableixParametres(){
+    array = [
+      p01, p02, p03, p04, p05,          p06, p07, p08, p09, p10,
+      p11, p12, p13, p14, p15,          p16, p17, p18, p19, p20,
+      p21, p22, p23, p24, p25,          p26, p27, p28, p29, p30,
+      p31, p32, p33
+
+    ]; // actualitzar entre []
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+    tlog += "~~~\n";
+
+
+
+    // Exercici 1 -----------------------------------------------------
+
+    msnm = p01;
+    d = p02;
+    cp = p03;
+    ρ = p04;
+    z = p05;
+
+    z_ref = p06;
+    v_ref = p07;
+    z0 = p08;
+    λ = p09;
+
+    v = v_ref * ln(z/z0)/ln(z_ref/z0);
+    r = d/2;
+    a = π*r**2;
+    p_aire = 0.5 * ρ * a * v**3;
+    cp_max = 0.593;
+    p_max = p_aire * cp_max;
+    p_gen = p_aire * cp;
+    ω = λ * v / r;
+
+    const s1 = p_gen/1e3;
+    const s2 = p_max/1e3;
+    const s3 = p_aire/1e3;
+    const s4 = ω/2/π*60;
+
+    tlog += `
+    Exercici 1
+    ----------
+
+    v = v_ref * ln(z/z0)/ln(z_ref/z0) = ${xs(v)} m/s;
+    r = d/2 = ${xs(r)} m;
+    a = π*r**2 = ${xs(a)} m²;
+    p_aire = 0.5 * ρ * a * v**3 = ${xs(p_aire/1e3)} kW;
+    cp_max = 0.593;
+    p_max = p_aire * cp_max = ${xs(p_max/1e3)} kW;
+    p_gen = p_aire * cp = ${xs(p_gen/1e3)} kW;
+    ω = λ * v / r ${xs(ω)} rad/s = ${xs(s4)} rpm;
+
+    `;
+
+
+    // Exercici 2 -----------------------------------------------------
+
+    pe = p10*1e3;
+    v = p11;
+    ρ = p12;
+    cp = p13;
+    ηme = p14/100;
+
+    d = (8 * pe / (ηme * cp * ρ * π * v**3))**0.5;
+
+    const s5 = d;
+
+    tlog += `
+    Exercici 2
+    ----------
+
+    d = (8 * pe / (ηme * cp * ρ * π * v**3))**0.5 = ${xs(d)} m;
+
+    `;
+
+
+    // Exercici 3 -----------------------------------------------------
+
+    t_hiv = p15 + KELVIN;
+    t_est = p16 + KELVIN;
+    z_ref = p17;
+    v_ref = p18;
+    cp = p19;
+    r = p20;
+    z = p21;
+    z0 = p22;
+    msnm = p23;
+
+    p_mbar = 1013.25 * (1 - (msnm + z)*2.2569e-5)**5.2561;
+    p_pa = 100 * p_mbar;
+    ρ_hiv = p_pa / (RPRIMA*t_hiv);
+    ρ_est = p_pa / (RPRIMA*t_est);
+    a = π * r**2;
+    v = v_ref * ln(z/z0) / ln(z_ref/z0);
+    p_gen_hiv = 0.5 * cp * ρ_hiv * a * v**3;
+    p_gen_est = 0.5 * cp * ρ_est * a * v**3;
+    ΔP = p_gen_hiv - p_gen_est;
+
+    const s6 = ΔP/1e3;
+
+    tlog += `
+    Exercici 3
+    ----------
+
+    const RPRIMA = 287.04;
+    const KELVIN = 273.15;
+
+    t_hiv = t_hiv + KELVIN = ${xs(t_hiv)};
+    t_est = t_est + KELVIN; = ${xs(t_est)};
+
+    p_mbar = 1013.25 * (1 - msnm*2.2569e-5)**5.2561 =
+           = ${xs(p_mbar)} mbar;
+    p_pa = 100 * p_mbar = ${xs(p_pa)} Pa;
+    ρ_hiv = p_pa/(RPRIMA*t_hiv) = ${xs(ρ_hiv)} kg/m³;
+    ρ_est = p_pa/(RPRIMA*t_est) = ${xs(ρ_est)} kg/m³;
+    a = π * r**2 = ${xs(a)} m²;
+    v = v_ref * ln(z/z0) / ln(z_ref/z0) = ${xs(v)} m/s;
+    p_gen_hiv = 0.5 * cp * ρ_hiv * a * v**3 = ${xs(p_gen_hiv/1e3)} kW;
+    p_gen_est = 0.5 * cp * ρ_est * a * v**3 = ${xs(p_gen_est/1e3)} kW;
+    ΔP = p_gen_hiv - p_gen_est = ${xs(ΔP/1e3)} kW;
+
+    `;
+
+
+    // Exercici 4 -----------------------------------------------------
+
+    d = p24;
+    r = d/2;
+    msnm = p25;
+    Ω_rpm = p26;
+    Ω = Ω_rpm/60*2*π;
+    temp = p27 + KELVIN;
+
+    cp = p28;
+    ηme = p29;
+    z_ref = p30;
+    v_ref = p31;
+    z0 = p32;
+    z = p33;
+
+
+    p_mbar = 1031 * (1 - (msnm+z)*2.2569e-5)**5.2561;
+    p_pa = 100 * p_mbar;
+    ρ = p_pa/(RPRIMA * temp);
+    a = π * r**2;
+    v = v_ref * ln(z/z0) / ln(z_ref/z0);
+    p_gen = 0.5* cp * ρ * a * v**3;
+    p_ele = p_gen * ηme;
+
+    const s7 = p_ele/1e6;
+
+    tlog += `
+    Exercici 4
+    ----------
+
+    temp = p27 + KELVIN = ${l(temp)}
+    p_mbar = 1031.25 * (1 - (msnm+z)*2.2569e-5)**5.2561 = ${l(p_mbar)};
+    p_pa = 100 * p_mbar = ${l(p_pa)};
+    ρ = p_pa/(RPRIMA * temp) = ${l(ρ)};
+    a = π * r**2 = ${l(a)};
+    v = v_ref * ln(z/z0) / ln(z_ref/z0) = ${l(v)};
+    p_gen = 0.5* cp * ρ * a * v**3 = ${l(p_gen)};
+    p_ele = p_gen * ηme = ${l(p_ele)};
+
+    **ALERTA:**
+    ALS EXERCICIS RESSOLTS APAREIX 3,4MW amb ρ = 1,15
+    `;
+
+    solucions = [""].concat([
+        s1, s2, s3, s4, s5,
+        s6, s7
+    ].map(xsMap));
+
+    tlog += "\n~~~";
+
+}
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS Técnic Superior en Energies Renovables",
+    anys: "2024/2025"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = l(parametres[i]);
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="number" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 80px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    let r = [""];
+    alumne.nom = document.getElementById("nom").value;  // veure C.2.1
+    for (let i = 1; i < puntuacions.length; i++){
+        r[i] = document.getElementById("i"+i).value;
+    }
+    respostes = r.map(xsMap);                           // veure C.2.1
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol + "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+    "",
+    "> [[nota]]"
+    ].join("\n") + "\n";
+    txt += "## Enunciat\n\n" + txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    let ptsAlumne = 0, ptsTotal = 0;
+    let canvi = "", patro = "";
+    let a = 0, b = 0;
+    for (let i = 1; i < puntuacions.length; i++){
+        a = respostes[i];
+        b = solucions[i];
+        ptsTotal += puntuacions[i];
+        canvi =
+            '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">'
+            + coma(a) + '</span>';
+        if ((b*0.99) < a && a < (b*1.01)) {
+            ptsAlumne += puntuacions[i];
+            canvi +=
+                ' <span style="color: green">(' +
+                coma(b) +') OK (+' + puntuacions[i] + ')</span>';
+        }else{
+            canvi +=
+                ' <span style="color: red;"> (' +
+                coma(b) +')</span>';
+        }
+        patro = "[[i" + i + "]]";
+
+        txt = txt.replace(patro, canvi);
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function ln(a){
+    return Math.log(a);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar (φ en graus)
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a){  // log abreviat a l totsol
+    if (!a.toPrecision) return a;
+    return coma(xs(a));
+}
+
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return Number(a);
+}
+
+function coma(a){
+    a = a + "";
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+/**********************************************************************
+ * - Establir les puntuacions, que han de correspondre amb la quantitat
+ * de respostes que l'alumne pot contestar.
+ *
+ * - Establir els paràmetres. En general serà una funció per a generar
+ * nombres aleatoris, però també es poden fixar. Aquest últim cas és
+ * interessant per a testejar els càlculs. IMPORTANT: Al finalitzar
+ * tots els parametres hauran de concatenarse al vector parametres.
+ *
+ * -  El mateix succeeix amb els càlculs. Tot haura de volcar-se al
+ * vector solucions.
+ * *******************************************************************/
+-->
