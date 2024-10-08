@@ -9,8 +9,20 @@
             text-align: justify;
             text-justify: inter-word;
         }
+        img[alt="c"]{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
         img[alt="c500"]{
             width: 500px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        img[alt="c250"]{
+            width: 250px;
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -55,15 +67,19 @@ window.texme = {
 <!-- B. ENUNCIAT ================================================== -->
 <textarea id="enunciat">
 
-## 1. Xarxes de distribucio en BT
+## 1. Xarxes de distribució en BT
+
+![fr250](img/XABT_1.png)
 Es defineix com a BT aquelles tensions que entre fases tenen un valor
 igual o inferior a:
 - 1.000 V en alterna.
 - 1.500 V en contínua.
+
 La seva funció és dur l’energia elèctrica des del CT fins als
 consumidors.
 Van des dels fusibles del quadre de BT del CT fins a la caixa general
 de protecció (CGP) del consumidor.
+
 Normativa a complir:
 - REBT (ITC-BT 06 i ITC-BT 07).
 - Normes particulars de l’empresa subministradora d’energia (ESE).
@@ -76,19 +92,614 @@ suports seria massa gran. En aquests casos s’utilitzen xarxes
 soterrades.
 
 Avantatges i inconvenients:
-En les aèries la instal·lació i el manteniment són més fàcils, per tant
+En les aèries la instal·lació i el manteniment són més fàcils, per tant,
 són més econòmiques, però tenen major impacte visual i l’hi afecten més
 els llamps.
 Les soterrades són més cares i es complica la localització d’avaries,
 però no provoquen impacte visual.
 
+
+
+
 ## 2. Xarxes aèries
 
+![fl250](img/operari_XABT.jpg)
 S’instal·len a l’exterior a certa altura.
-Poden ser de cable nuu o aïllat, i es poden instal·lar a la façana o
+Poden ser de cable nu o aïllat, i es poden instal·lar a la façana o
 tensada entre suports
 
+&nbsp;<br/>&nbsp;<br/>
 
+![fr250](img/XABT_posada.jpg)
+A les xarxes posades:
+- Els cables són aïllats.
+- Es subjecten a murs i façanes.
+- No suporten esforços de tracció.
+- Només suporten el pes del tram entre fixacions.
+
+&nbsp;<br/>&nbsp;<br/>&nbsp;<br/>&nbsp;<br/>
+
+![fr250](img/XABT_tensada.png)
+A les xarxes tibades (_tensadas_ en castellà):
+- Poden utilitzar cables nus o aïllats.
+- Es subjecten en suports verticals (pals) o en certs punts entre
+  façanes.
+- Suporten esforços de tracció, vent, gel i neu.
+
+&nbsp;<br/>&nbsp;<br/>&nbsp;<br/>&nbsp;<br/>
+
+
+
+
+### 2.1. Tipus de conductors
+
+Els cables, també anomenats conductors, estan formats pel propi element
+conductor, fet d'un metall i l'aïllament.
+
+La part conductora es caracteritza per:
+- Fases de coure o alumini.
+- El neutre pot ser d’Almelec (alumini + magnesi + silici) en xarxes
+  tibades per a suportar esforços majors (però la resistivitat és major).
+- Secció mínima de 10 mm² en coure i de 16 mm² en alumini.
+
+Aïllament:
+- Mínim de 0,6/1 kV (600 V entre fase i terra, 1000 V entre fases).
+- Normalment, s’utilitza una capa de polietilè reticulat (XLPE) que
+  serveix de protecció mecànica i d’aïllament elèctric.
+- Els quatre conductors van trenats.
+
+En xarxes posades, s'utilitza:
+- Cablejat RZ → coberta de XLPE (R) i conductors de coure trenats (Z).
+- RZ-Al → igual però d’alumini.
+
+> ![c500](img/cable_trenat_alumini.svg)
+> **Fig. 1**
+> J. Servera (2024).
+> _Conductor i aïllament d'un cable trenat d'alumini_.
+> Imatge d'elaboració pròpia sota llicència [CC4.0-by-nc-nd]. 🅭🅯🄏⊜
+
+En xarxes tibades:
+- Es pot utilitzar cable d’acer fiador o no.
+  És el que realitza l’esforç mecànic de subjectar la trena de cables.
+- Cables amb fiador d’acer. S’utilitzen cables com en les xarxes
+  posades, però se li afegeix un cable fiador d’acer galvanitzat
+  (que aguanti mínim 800 kg) per fer de suport a la resta de cables.
+- Cables amb neutre fiador.
+  La funció mecànica de subjectar la resta de cables la fa el neutre.
+  Les 3 fases van subjectades al neutre.
+  Si són d’alumini el neutre és d’Almelec.
+
+> ![c](img/fiador_acer.png)
+> **Fig. 2**
+> Institut Obert de Catalunya, IOC (2) .
+> _Detall de l'ús d'un cable fiador d'acer_.
+> Llicència [CC3.0-by-nc-sa] 🅭🅯🄏🄎
+
+
+
+
+### 2.2. Cables nus
+
+![fr250](img/XABT_tensada.png)
+Els cables nus, com el seu nom indica, no tenen aïllament
+(o tenen aïllament menor que 0,6/1kV) i:
+- Són de coure o alumini amb ànima d’acer.
+- Ja no s’utilitzen en BT. S’utilitzaven només en xarxes tibades.
+- Es subjectaven en aïlladors de vidre o porcellana.
+
+
+Existeixen diversos tipus:
+
+- Tipus C: conductor de coure, compost per diversos fils de coure,
+  cablejats en capes concèntriques.
+- Tipus AL1/ST1A: conductor de fils d’alumini i fils d’ànima d’acer
+  galvanitzat.
+- Tipus AL1/A20SA: conductor de fils d’alumini i fils d’ànima d’acer
+  revestit d’alumini.
+
+![c250](img/cable_nu.jpg)
+
+
+### 2.3. El conductor neutre a les xarxes de BT aèries
+
+El cable neutre ha de complir amb el que marca el REBT, concretament
+amb els apartats del 3.4 al 3.7 de la ITC-06.
+
+
+**Secció mínima del neutre:**
+- En línies monofàsiques → igual que la secció de la fase.
+- En línies trifàsiques la secció es pot reduir d’acord amb la taula 1
+  de la ITC-BT-07, sempre respectant el mínim establert i adoptant una
+  secció elèctricament equivalent en cas d’utilitzar neutre fiador
+  d’Almelec.
+- A la pràctica és suficient en adoptar la secció de neutre que
+  marquen les taules d’intensitat màxima admissible.
+
+
+**Identificació del neutre:**
+
+- S’ha de poder distingir respecte a les fases.
+- Normalment, les fases van enumerades d'1 a 3, i el neutre duu el 4.
+
+
+**Continuïtat del neutre:**
+
+Els dispositius de tall (com interruptors) que s’utilitzin han de
+desconnectar abans les fases i després el neutre, o ho han de fer de
+forma simultània.
+Per això no podem posar fusible al neutre, ja que no garanteix aquesta
+condició.
+
+En unions desmuntables (com els connectors de perforació) primer hem
+d’obrir les fases i després el neutre.
+A l’hora de tancar la connexió primer hem de connectar el neutre i
+després les fases.
+
+En xarxes públiques el neutre s’ha de connectar a terra en els centres
+de transformació o centrals generadores (com panells fotovoltaics).
+
+A més el neutre s’ha de posar a terra en altres punts:
+- Com a mínim cada 500 m segons el REBT.
+- En punts d’on surtin derivacions.
+- Segons edistribucion, cada 200 m com a mínim i en el final de totes
+  les línies i derivacions.
+
+Per fer la connexió a terra s’utilitza cable nu enterrat i piquetes.
+
+> [![c500](img/PT_ED.png)](docs/PT_ED.pdf)
+> **Fig. 3**
+> e-distribución (2020)
+> _Posada a terra segons NRZ002_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI] ([veure en pdf](docs/PT_ED.pdf))
+
+## 3. Xarxes aèries posades
+
+### 3.1. Elements de fixació
+
+![fr](img/abraçadores.png "Imatge de l'IOC 🅭🅯🄏🄎")
+Els elements de fixació són abraçadores i brides, les quals:
+
+- Subjecten el cable a certa distància de la paret per facilitar la
+  refrigeració.
+- Solen ser d’acer inoxidable plastificat i materials sintètics, ja
+  que aïllen elèctricament i protegeixen de la corrosió
+- Se solen col·locar cada 70-80 cm i abans i després de canvis de
+  direcció.
+
+> [![c500](img/estesa_ED.png)](docs/estesa_ED.pdf)
+> **Fig. 4**
+> e-distribución (2020).
+> _Estesa de cablejat per façana, cantó, creuaments, i obstacles
+> segons NRZ002_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI] ([veure en pdf](docs/estesa_ED.pdf))
+
+
+
+
+### 3.2. Elements de protecció mecànica
+
+![fr](img/bressol.png "Imatge de l'IOC 🅭🅯🄏🄎")
+Els elements de protecció mecànica:
+
+- S’utilitzen en llocs on el cable està exposat a algun esforç mecànic
+  que pugui fer malbé l’aïllament.
+- Per protegir en angles i canvis de direcció.
+- Si la línia baixa dels 2,5 metres d’altura s'ha d'afegir una
+  protecció amb un tub metàl·lic.
+
+> [![c500](img/CAS_ED.png)](docs/CAS_ED.pdf)
+> **Fig. 5**
+> e-distribución (2020).
+> _Conversió aeria-subterrània segons NRZ002_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI] ([veure en pdf](docs/CAS_ED.pdf))
+
+
+### 3.3. Elements de terminació
+
+![fr](img/caputxons.png "Imatge de l'IOC 🅭🅯🄏🄎")
+Els elements de terminació o caputxons
+- Es posen als extrems finals dels cables per evitar que entri humitat.
+- Poden ser unipolars i multipolars.
+
+
+
+
+### 3.4. Traçat
+
+- A l’hora de decidir el traçat d’una xarxa posada sobre façana s’ha de
+complir amb la ITC-06, a més de complir les normes particulars de
+l’empresa distribuïdora i les normes urbanístiques del municipi.
+- Només es poden fer línies verticals i horitzontals.
+
+Les distàncies generals són:
+- Altura mínima de 2,5 metres, si no s’ha de protegir mecànicament
+  (segons indica la ITC-11).
+- Amb finestres: 30 cm a dalt, 50 cm a la resta.
+- Amb balcons: 30 cm a dalt, 1 m als laterals.
+- Amb altres elements metàl·lics de la façana: 5 cm de separació.
+
+Els encreuaments amb canalitzacions d’aigua i gas tindran 20 cm de
+separació en general i 1 m si hi ha juntes i empalmaments.
+
+Proximitats i paral·lelismes, és quan les instal·lacions discorren una
+a la vora de l'altre, en la mateixa o gairebé la mateixa direcció, en
+aquests casos és necessari garantir unes separacions de:
+- 10 cm amb línies de telecomunicacions o altres línies de baixa
+  tensió.
+- 20 cm amb canalitzacions d’aigua.
+- 1 m si hi ha juntes, empalmaments o són canonades principals.
+- 20 cm amb canalitzacions de gas
+- 40 cm amb canalitzacions de gas si la pressió és superior a 4 bars.
+- 1 m si hi ha juntes, empalmaments o són canonades principals.
+
+
+
+
+### 3.5. Derivacions i empalmaments
+
+> [![c500](img/empalmes_derivacions_posada_ED.png)](docs/empalmes_derivacions_posada_ED.pdf)
+> **Fig. 6**
+> e-distribución (2020).
+> _Empalmes i derivacions segons NRZ002_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI] ([veure en pdf](docs/empalmes_derivacions_posada_ED.pdf))
+
+Requisits:
+- Han de garantir la continuïtat elèctrica sense elevació addicional
+  de la temperatura per augment de la resistència elèctrica.
+- Han de garantir la resistència mecànica i la resistència a la
+  corrosió.
+- No es poden realitzar per soldadura o torsió dels conductors.
+
+Tècniques més utilitzades:
+- Connectors de perforació d’aïllament.
+- Maneguets d’unió.
+
+
+**Connectors de perforació d’aïllament:**
+![fr](img/petaca.png "Imatge derivada amb la mateixa llicència que
+ l'original de l'IOC 🅭🅯🄏🄎")
+
+- La instal·lació és fàcil i no és necessari pelar els cables.
+- Són elements on s’encaixen els dos cables unipolars que s’han
+  d’empalmar, cada un a un lateral.
+- Disposen d’uns caragols que quan s’estrenyen treuen una espècie de
+  dents de material conductor que perforen els aïllaments i creen
+  contacte elèctric. Aquests caragols s’han d’estrènyer fins que es
+  rompen.
+
+
+**Maniguets d’unió i premsa:**
+![fr](img/maniguet.png "Imatge derivada amb la mateixa llicència que
+ l'original de l'IOC 🅭🅯🄏🄎")
+
+- Requereix pelar els cables i recobrir l’empalmament amb un material
+  plàstic que garanteixi l’aïllament elèctric i l’estanquitat.
+- La instal·lació és més complicada que a l’anterior.
+
+
+
+
+### 3.6. Procediment de muntatge
+
+> ![c500](img/estesa_cable_façana.png)
+> **Fig. 7**
+> Autor desconegut.
+> _Estesa de cablejat_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 37bis (o de l'article 32 si es troba l'autor) de la [LPI]
+
+1. Comprovar que la paret és adequada (que aguantarà el pes).
+2. Marcar per on passarà la línia tenint en compte les distàncies
+   de seguretat del REBT.
+3. Marcar on aniran les brides i elements de subjecció i després
+   col·locar-los.
+4. Estesa dels cables
+    - Si tenim vehicle per moure la bobina → moure la bobina al llarg
+      del carrer i anar subjectant en cable.
+    - Sense vehicle:
+        + Col·locar politges per ajudar a passar els cables.
+        + Posar la bobina sobre cavallets perquè pugui girar.
+        + Passar primerament un cable guia sobre les politges.
+        + Després fermar-hi el cable amb una malla de tracció i anar
+          estirant per passar el cable.
+        + Subjectar el cable a les abraçadores.
+    - Vigilar en els canvis de direcció el radi de curvatura que marca
+      el fabricant del cable.
+5. Realitzar les derivacions i empalmaments.
+6. Col·locar els caputxons per evitar que entri humitat al final
+   de la línia i en les derivacions.
+
+
+
+
+## 4. Xarxes aèries tibades.
+
+Els cables aïllats van tibats entre suports.
+S'utilitza en llocs poc poblats on no hi ha continuïtat de façana,
+s’han de travessar carrers o fer-ho soterrat sortiria massa car.
+
+
+
+
+### 4.1. Elements d’amarratge
+
+**Pinces:**
+![fr250](img/pinces.png "Imatge derivada amb la mateixa llicència que
+l'original de l'IOC 🅭🅯🄏🄎")
+
+- Suporten el pes i la tracció dels cables.
+- S’utilitzen en canvis de direcció, al final de la línia, en suports
+ d’ancoratge i quan una xarxa posada ha de travessar el carrer.
+- Només subjecten el neutre fiador, NO LES FASES.
+
+&nbsp;
+
+
+**Tensors:**
+![fr](img/tensor.png "Imatge derivada amb la mateixa llicència que
+l'original de l'IOC 🅭🅯🄏🄎")
+
+- Se solen utilitzar juntament amb les pinces d’amarrament.
+- Se situen entre la pinça i l'ancoratge del suport, i permeten tensar
+ la línia.
+
+&nbsp;
+
+
+**Ganxos:**
+![fr](img/ganxos.png "Imatge derivada amb la mateixa llicència que
+l'original de l'IOC 🅭🅯🄏🄎")
+
+- Només suporten el pes del cable, no la tracció.
+- S’utilitzen en suports d’alineació.
+- Normalment, només se subjecta el fiador (sigui un fiador d'acer o
+ el neutre fiador).
+
+&nbsp;
+
+
+**Abraçadores o brides.**
+![fr](
+ img/brides.png
+ "Imatge derivada amb la mateixa llicència que l'original de l'IOC
+ 🅭🅯🄏🄎")
+
+- S’utilitzen per a mantenir la trena de cables unida.
+
+&nbsp;<br/>&nbsp;<br/>&nbsp;<br/>
+
+
+
+### 4.2. Suports
+
+> [![c500](img/fi_linia_ED.png)](docs/fi_linia_ED.pdf)
+> **Fig. 8**
+> e-distribución (2020).
+> _Amarre senzill / fi de línia segons NRZ002_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI] ([veure en pdf](docs/fi_linia_ED.pdf))
+
+**Suports metàl·lics.**
+- Poden ser d’estructura o tubulars.
+- Poden venir desmuntats de fàbrica per ocupar menys espai.
+- S’han de connectar a terra.
+
+
+**Suports de formigó armat.**
+- Són de formigó amb varetes d’acer a dins.
+- El seu transport és més complicat pel seu elevat pes i que venen
+ d’una sola peça.
+- També s’han de connectar a terra.
+
+
+**Suports de fusta.**
+- Actualment, s’utilitzen poc, ja que la seva duració és menor.
+- Són més barats que els anteriors i fàcils de transportar.
+- Suporten menys esforços que els anteriors.
+
+
+> ![c500](img/alineacio_suports.png)
+> **Fig. 9**
+> e-distribución (2020).
+> _Tipus de alineació de suports segons NRZ002_.
+> Imatge derivada d'altres amb copyright<sup>©</sup> utilitzada en
+> aplicació de l'article 32 de la [LPI]
+
+**Suports d'alineació.**
+
+Són els que es col·loquen en trams rectes i només suporten el pes del
+tram de cable, no la tensió a la qual està tibat el cable.
+
+
+**Suports d'ancoratge**
+
+Es col·loquen de tant en tant en les línies, suporten el pes del
+cable i també poden suportar la tensió a la qual estan tibats.
+La seva finalitat és que no caiguin tots els suports d’alineació quan
+un es rompi (com un efecte dominó).
+
+
+**Suports d'angle.**
+
+Són els que es col·loquen en cavis de direcció. Han de suportar el pes
+del cable i la tensió resultant.
+
+
+**Suports de final de línia.**
+
+Es col·loquen al principi i final de la línia, per suportar el pes del
+cable i tota la tensió cap a una direcció.
+
+
+
+
+### 4.3. Tirants i tornapuntes
+
+- **Tirants:** Són els cables que reforcen un suport per a que aguanti
+ una major tracció dels cables.
+- **Tornapuntes:** Són les barres que es col·loquen per reforçar un
+ suport.
+- El REBT en restringeix l’ús de forma que només es poden utilitzar si
+ són imprescindibles.
+
+
+
+
+### 4.4. Fonaments
+
+![fr250](img/fon_form_ED.png)
+Els fonaments o cimentacions és la forma d'ancorar el suport al sòl per
+a que no tombi.
+Aquests s’han de realitzar amb pendent per evitar l’acumulació d’aigua.
+
+- En suports de formigó. S’utilitzaran fonaments de formigó.
+- Els suports metàl·lics. S’instal·laran encastats en massissos de
+ formigó o altres procediments com perns.
+- Els pals de fusta. Es poden instal·lar:
+   + Directament ataconats a terra.
+   + Fixats a bases metàl·liques o de formigó per mitjà d'elements
+     d'unió apropiats que permetin la seva fàcil substitució, quedant
+     el pal separat del terra 0,15 m com a mínim.
+
+
+
+
+### 4.5. Traçat
+
+Per a tot el seu traçat una línia de BT tibada tindrà una **altura
+mínima de 4 metres**.
+
+
+**Distàncies mínimes en encreuaments:**
+
+- 6 metres d’altura amb carrers, carreteres i trens no elèctrics,
+ i sense cap empalmament.
+- Amb línies d’alta tensió s'aplica una fórmula
+   + V = voltatge en kV de la línia d’alta tensió.
+   + L1 i L2 és la distància en metres entre l'encreuament i el
+     suport més pròxim d’alta i baixa tensió.
+- Amb línies de baixa tensió:
+   + Si totes dues estan aïllades poden estar en contacte.
+   + Si una de les dues es nua: 0,5 metres en general.
+- Amb línies de telecomunicació els cables aïllats es poden tocar.
+- Amb trens elèctrics 2 metres respecte als cables del tren.
+
+
+**Distàncies mínimes en paral·lelismes i proximitats:**
+
+- 6 metres d’altura en llocs de circulació de vehicles.
+- Amb línies d’alta tensió:
+   + En general una distància horitzontal d'1,5 vegades l’altura del
+     suport més alt.
+   + En les proximitats de centres de transformació, subestacions i
+     centrals: 2 metres amb línies de fins a 66 kV i 3 metres amb
+     línies de tensions superiors.
+- 10 cm amb línies de telecomunicació i altres línies aïllades de BT.
+- 1,5 m de distància horitzontal amb les línies de trens elèctrics.
+
+
+### 4.6. Derivacions i empalmaments
+
+> ![c500](img/empalmes_derivacions_suport_ED.png)
+> **Fig. 10**
+> e-distribución (2020).
+> _Empalmaments i derivacións sobre suports NRZ002_.
+> Imatge derivada d'altres amb copyright<sup>©</sup> utilitzada en
+> aplicació de l'article 32 de la [LPI]
+
+
+Es fan utilitzant les mateixes tècniques que en xarxes posades, però
+s’han de realitzar en llocs pròxims als suports on els cables no
+estiguin sotmesos a tracció.
+
+### 4.7. Procés de muntatge
+
+1. Explorar el terreny per decidir el traçat exacte de la línia i
+  comprovar que es compleixen les distàncies que marca el REBT.
+2. Muntatge dels suports:
+   - Marcar on aniran.
+   - Realitzar l’excavació.
+   - Realitzar la instal·lació de terra si és necessari.
+   - Muntar i fonamentar els suports.
+   - Connectar el suport a terra si és necessari.
+3. Estesa dels conductors
+   - Instal·lar una politja a cada suport.
+   - Si es disposa de vehicle per moure la bobina es pot col·locar el
+     cable directament sobre les politges.
+   - Si no es disposa de vehicle:
+   - Posar la bobina sobre un suport per a que pugui girar.
+   - Passar primer un cable guia d’acer sobre les politges.
+   - Fermar el cable elèctric a la guia a través d’una malla de
+     tracció.
+   - Estirar la guia amb una màquina de tracció per anar passant el
+     cable.
+4. Tensat i subjecció dels cables:
+   - Tensar NOMÉS el neutre fiador o el fiador d’acer amb l’ajuda de
+     la màquina de tracció i un dinamòmetre.
+   - El fiador s’ha de tensar a la tensió adequada en funció de la
+     temperatura ambient, la secció i la distància entre postes.
+   - Subjectar el fiador a les pinces i ganxos.
+5. Realitzar les derivacions i empalmaments i col·locar els caputxons.
+
+
+
+
+## 5. Xarxes tibades amb cable nu
+
+Els cables es subjecten als suports a través d’aïlladors.
+Actualment estan en desús.
+
+Els aïlladors són les peces on es subjecta el cable nu per mantenir-lo
+aïllat del suport.
+Solen ser de porcellana, encara que antigament s’utilitzaven de vidre.
+
+**Altura mínima:**
+- 4 metres en general.
+- 5 metres en vies públiques.
+- 6 metres en trams pròxims a carrers on circulin vehicles.
+
+**Distàncies mínimes amb edificis:**
+- 1,5 m sobre les teulades o 1 m si està inclinada més de 45°.
+- 3 m sobre les terrasses i balcons.
+- 20 cm horitzontals respecte a les façanes sense obertures (finestres i
+ similars).
+- 1 m horitzontal de les obertures de les façanes.
+- 1 m als laterals de les obertures, 30 cm a sobre i 3 m a sota.
+
+**Distància entre fases i neutre.**
+- Depèn de la distància entre els suports, segons especifica
+  l’apartat 3.2.2.
+- En cas de derivacions es pot reduir un 50%, deixant 10 cm com a mínim.
+- 20 cm com a mínim si els suports estan col·locats a la façana.
+
+**Distàncies mínimes en encreuaments:**
+- S’ha de complir tot el que s’ha especificat per a xarxes tibades amb
+ cable aïllat, i a més:
+- Amb altres línies de baixa tensió:
+   + 0,5 metres en general.
+   + El que especifica l’apartat 3.2.2 si utilitzen suports comuns.
+- Amb línies de telecomunicació:
+   + 1 metre en suports diferents.
+   + 0,5 metres si utilitzen suports comuns.
+
+**Distàncies mínimes en encreuaments:**
+- 1 metre amb antenes de ràdio i televisió.
+- 1 metre amb canonades de gas i aigua.
+
+**Distàncies mínimes en paral·lelismes:**
+- S’ha de complir tot el que s’ha especificat per a xarxes tibades amb
+ cable aïllat, i a més:
+- Amb altres línies de baixa tensió i telecomunicació:
+   + 1 metre en suports diferents.
+   + 0,5 metres si utilitzen suports comuns.
+
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca
+[CC4.0-by-nc-nd]: https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1
+[LPI]: https://www.boe.es/eli/es/rdlg/1996/04/12/1/con
 
 
 </textarea>
@@ -97,7 +708,7 @@ tensada entre suports
 <!-- C. SCRIPT ==================================================== -->
 <script>
 
-const titol = "UT01 - Caracterització de les xarxes de baixa tensió"; // MODIFICAR
+const titol = "UT02 - Caracterització de les xarxes de baixa tensió"; // MODIFICAR
 
 let txtEnunciat = "";   // l'enunciat de l'apartat B.
 window.onload = function (){
