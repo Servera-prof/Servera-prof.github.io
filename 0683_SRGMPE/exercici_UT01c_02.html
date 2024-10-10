@@ -107,7 +107,7 @@ function estableixParametres(){
 function calcula(){
 
     d = (8 * pe / (ηm * ηe * cp * ρ * π * v**3))**0.5;
-    b = d * c * cos(β);
+    b = d/2 * c * cos(β);
     r = d/2;
     a = π * r**2;
     s = 3 * b / a;
