@@ -1,0 +1,324 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <style>
+        p{
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        img[alt="c"]{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img[alt="c500"]{
+            width: 500px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        img[alt="c250"]{
+            width: 250px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img[alt="250"]{
+            width: 250px;
+        }
+        img[alt="fr250"]{
+            width: 250px;
+            float: right;
+            margin: 0 0 0 0.7em;
+        }
+        img[alt="fr"]{
+            float: right;
+            margin: 0 0 0 0.7em;
+        }
+        img[alt="fl250"]{
+            width: 250px;
+            float: left;
+            margin: 0 .7em 0 0;
+        }
+        img[alt="fl"]{
+            float: left;
+            margin: 0 5px 0 0;
+        }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+$$
+\begin{gather}
+P = 1013{,}25 \cdot \left( 1-z \cdot 2{,}2569 \cdot 10^{-5} \right)^{5{,}2561}
+\end{gather}
+$$
+
+A on:
+
+- $P$ és la pressió en $\text{mbar}$
+- $z$ és l'altura sobre nivell del mar en $\text{m}$.
+
+&nbsp;<br/>&nbsp;
+
+
+
+
+**Formula de la temperatura**
+
+$$
+\begin{gather}
+T = 20 - 0{,}0065 \cdot z
+\end{gather}
+$$
+
+A on:
+
+- $T$ és la temperatura en $^{\circ}\text{C}$
+- $z$ és l'altura sobre nivell del mar en $\text{m}$.
+
+&nbsp;<br/>&nbsp;
+
+
+
+
+**Potència generador**
+
+$$
+\begin{gather}
+P_{gen} =\dfrac{\rho \cdot A} {4} \cdot (v_1^2-v_2^2)
+\cdot (v_1 + v_2)
+\end{gather}
+$$
+
+A on:
+
+- $P_{gen}$ és la potència del generador en $\text{W}$
+- $\rho$ és la densitat de l'aire en $\text{kg/m}^3$
+- A és l'àrea de l'aerogenerador en $m^2$
+- $v_1$ és la velocitat d'entrada en $\text{m/s}$
+- $v_2$ és la velocitat de sortida en $\text{m/s}$
+
+&nbsp;<br/>&nbsp;
+
+
+
+
+**Potència eòlica**
+
+$$
+\begin{gather}
+P_{eòlica} = \dfrac {\rho \cdot \pi \cdot R^2 \cdot v^3} {2}
+\end{gather}
+$$
+
+A on:
+
+- $P_{eòlica}$ és la potència eòlica en $\text{W}$
+- $\rho$ és la densitat de l'aire en $\text{kg/m}^3$
+- $R$ és el radi de l'aerogenerador en $\text{m}$.
+- $v$ és la velocitat mitja en $\text{m/s}$
+
+&nbsp;<br/>&nbsp;
+
+
+
+
+**Coeficient de potència**
+
+$$
+\begin{gather}
+C_P = \dfrac{P_{gen}}{P_{eòlica}}
+\end{gather}
+$$
+
+&nbsp;<br/>&nbsp;
+
+
+
+
+**Altura de la boixa**
+
+$$
+\begin{gather}
+h = 0{,}75 \cdot D + 10
+\end{gather}
+$$
+
+A on:
+
+- $h$ és l'altura de la boixa en $\text{m}$
+- $D$ és el diàmetre de les pales en $\text{m}$
+
+&nbsp;<br/>&nbsp;
+
+
+
+
+**Velocitat d'arrosegament**
+
+$$
+\begin{gather}
+v_t = \Omega \cdot r \\[5 mm]
+\overrightarrow{v} = \overrightarrow{v_1} + \overrightarrow{v_t}
+ \\[5 mm]
+v = \sqrt{v_1^2 + v_t^2} = \sqrt{v_1^2 + (\Omega \cdot r)^2} \\[5 mm]
+\delta = \alpha + \beta
+\end{gather}
+$$
+
+A on:
+
+- $\overrightarrow{v}$ és la velocitat total del flux d'aire en
+ $\text{m/s}$
+- $\overrightarrow{v_1}$ és la velocitat d'entrada en $\text{m/s}$
+- $\overrightarrow{v_t}$ és la velocitat tangencial en $\text{m/s}$
+- $\Omega$ és la velocitat angular del rotor en $\text{rad/s}$
+- $r$ es la distància d'un punt a la boixa en $\text{m}$
+- $\alpha$ és l'angle d'atac
+- $\beta$ és l'angle de pas
+- $\delta$ és l'angle constructiu
+
+&nbsp;<br/>&nbsp;
+
+
+
+
+**Forces**
+
+$$
+\begin{gather}
+F_s = \dfrac {1}{2} \cdot \left( C_a \cdot \rho \cdot A \cdot v^2
+ \right) \\[5 mm]
+F_r = \dfrac {1}{2} \cdot \left( C_b \cdot \rho \cdot A \cdot v^2
+ \right) \\[5 mm]
+E = \dfrac {C_a}{C_b} \\[5 mm]
+F_m = F_s \cdot \sin \delta - F_r \cdot \cos \delta \\[5 mm]
+F_a = F_s \cdot \cos \delta + F_r \cdot \sin \delta
+\end{gather}
+$$
+
+A on:
+
+- $F_s$ és la força de sustentació en $\text{N}$
+- $F_r$ és la força de resistència en $\text{N}$
+- $C_a$ és el coeficient de sustentació
+- $C_b$ és el coeficient d'arrossegament
+- $\rho$ és la densitat de l'aire en $kg/m^3$
+- $A$ és l'àrea de l'aerogenerador en $m^2$
+- $v$ és la velocitat en $m/s$
+- $E$ és l'eficiència
+- $F_m$ és la força de motriu en $\text{N}$
+- $F_a$ és la força axial en $\text{N}$
+- $\delta$ és l'angle constructiu
+
+&nbsp;<br/>&nbsp;
+
+
+
+
+**Potència**
+
+$$
+\begin{gather}
+P=\dfrac{1}{2} \cdot \rho \cdot A \cdot v^3 \cdot C_p \\[5 mm]
+P=\dfrac{1}{2} \cdot \rho \cdot A \cdot v^3 \cdot C_p \cdot \eta_m
+ \\[5 mm]
+P=\dfrac{1}{2} \cdot \rho \cdot A \cdot v^3 \cdot C_p \cdot \eta_m
+\eta_e
+\end{gather}
+$$
+
+A on:
+
+- $P$ és la potència en $\text{W}$
+- $\rho$ és la densitat de l'aire en $\text{kg/m}^3$
+- $A$ és l'àrea de l'aerogenerador en $m^2$
+- $v$ és la velocitat en $\text{m/s}$
+- $C_p$ és el coeficient de potència o d'aprofitament
+- $\eta_m$ i $eta_e$ són els rendiments mecànic i elèctric
+respectivament
+
+
+$$
+\begin{gather}
+D = \sqrt{\frac{8 \cdot P_e}
+{\eta_m \cdot \eta_e \cdot C_p \cdot \rho \cdot \pi \cdot v^3}}
+\end{gather}
+$$
+
+A on:
+
+- $P_e$ és la potència elèctrica en $\text{W}$
+- $\rho$ és la densitat de l'aire en $\text{kg/m}^3$
+- $D$ és el diàmetre de l'aerogenerador en $m$
+- $v$ és la velocitat en $\text{m/s}$
+- $C_p$ és el coeficient de potència o d'aprofitament
+- $\eta_m$ i $eta_e$ són els rendiments mecànic i elèctric
+respectivament
+
+&nbsp;<br/>&nbsp;
+
+
+
+
+**Solidesa**
+
+$$
+\begin{gather}
+S = \frac {n \cdot b}{A}
+\end{gather}
+$$
+
+A on:
+
+- $S$ és la solidesa
+- $n$ és el nombre de pales
+- $b$ és l'àrea projectada per cada pala en $\text{m}^2$
+- AS$ és l'àrea que abasta el rotor en $m$
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+const titol = "Formulari UT01"; // MODIFICAR
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>

@@ -1,0 +1,187 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <style>
+        p{
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        img[alt="c"]{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img[alt="c500"]{
+            width: 500px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        img[alt="c250"]{
+            width: 250px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img[alt="250"]{
+            width: 250px;
+        }
+        img[alt="fr250"]{
+            width: 250px;
+            float: right;
+            margin: 0 0 0 0.7em;
+        }
+        img[alt="fr"]{
+            float: right;
+            margin: 0 0 0 0.7em;
+        }
+        img[alt="fl250"]{
+            width: 250px;
+            float: left;
+            margin: 0 .7em 0 0;
+        }
+        img[alt="fl"]{
+            float: left;
+            margin: 0 5px 0 0;
+        }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+$$
+\begin{gather}
+P = 1013{,}25 \cdot \left( 1-z \cdot 2{,}2569 \cdot 10^{-5} \right)^{5{,}2561}
+\end{gather}
+$$
+
+
+$$
+\begin{gather}
+T = 20 - 0{,}0065 \cdot z
+\end{gather}
+$$
+
+
+$$
+\begin{gather}
+P_{gen} =\dfrac{\rho \cdot A} {4} \cdot (v_1^2-v_2^2)
+\cdot (v_1 + v_2)
+\end{gather}
+$$
+
+
+$$
+\begin{gather}
+P_{eòlica} = \dfrac {\rho \cdot \pi \cdot R^2 \cdot v^3} {2}
+\end{gather}
+$$
+
+
+$$
+\begin{gather}
+C_P = \dfrac{P_{gen}}{P_{eòlica}}
+\end{gather}
+$$
+
+
+$$
+\begin{gather}
+h = 0{,}75 \cdot D + 10
+\end{gather}
+$$
+
+
+$$
+\begin{gather}
+v_t = \Omega \cdot r \\[5 mm]
+\overrightarrow{v} = \overrightarrow{v_1} + \overrightarrow{v_t}
+ \\[5 mm]
+v = \sqrt{v_1^2 + v_t^2} = \sqrt{v_1^2 + (\Omega \cdot r)^2} \\[5 mm]
+\delta = \alpha + \beta
+\end{gather}
+$$
+
+
+$$
+\begin{gather}
+F_s = \dfrac {1}{2} \cdot \left( C_a \cdot \rho \cdot A \cdot v^2
+ \right) \\[5 mm]
+F_r = \dfrac {1}{2} \cdot \left( C_b \cdot \rho \cdot A \cdot v^2
+ \right) \\[5 mm]
+E = \dfrac {C_a}{C_b} \\[5 mm]
+F_m = F_s \cdot \sin \delta - F_r \cdot \cos \delta \\[5 mm]
+F_a = F_s \cdot \cos \delta + F_r \cdot \sin \delta
+\end{gather}
+$$
+
+
+$$
+\begin{gather}
+P=\dfrac{1}{2} \cdot \rho \cdot A \cdot v^3 \cdot C_p \\[5 mm]
+P=\dfrac{1}{2} \cdot \rho \cdot A \cdot v^3 \cdot C_p \cdot \eta_m
+ \\[5 mm]
+P=\dfrac{1}{2} \cdot \rho \cdot A \cdot v^3 \cdot C_p \cdot \eta_m
+\eta_e
+\end{gather}
+$$
+
+
+$$
+\begin{gather}
+D = \sqrt{\frac{8 \cdot P_e}
+{\eta_m \cdot \eta_e \cdot C_p \cdot \rho \cdot \pi \cdot v^3}}
+\end{gather}
+$$
+
+
+$$
+\begin{gather}
+S = \frac {n \cdot b}{A}
+\end{gather}
+$$
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+const titol = "Formulari UT01"; // MODIFICAR
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>
