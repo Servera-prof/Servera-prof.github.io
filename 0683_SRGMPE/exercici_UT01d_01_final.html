@@ -257,7 +257,7 @@ function calcula(){
     cp_max = 0.593;
     p_max = p_aire * cp_max = ${xs(p_max/1e3)} kW;
     p_gen = p_aire * cp = ${xs(p_gen/1e3)} kW;
-    ω = λ * v / r ${xs(ω)} rad/s = ${xs(s4)} rpm;
+    ω = λ * v / r = ${xs(ω)} rad/s = ${xs(s4)} rpm;
 
     `;
 
@@ -362,7 +362,7 @@ function calcula(){
     Exercici 4
     ----------
 
-    temp = p27 + KELVIN = ${l(temp)}
+    temp = temp + KELVIN = ${l(temp)}
     p_mbar = 1013.25 * (1 - (msnm+z)*2.2569e-5)**5.2561 = ${l(p_mbar)};
     p_pa = 100 * p_mbar = ${l(p_pa)};
     ρ = p_pa/(RPRIMA * temp) = ${l(ρ)};

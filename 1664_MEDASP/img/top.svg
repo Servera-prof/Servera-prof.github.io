@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="33.032867mm"
+   viewBox="0 0 210 33.032868"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   sodipodi:docname="top.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.799523"
+     inkscape:cx="564.59406"
+     inkscape:cy="162.54307"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g8" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient1"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#d9d9d9;stop-opacity:0;"
+         offset="0.22242551"
+         id="stop1" />
+      <stop
+         style="stop-color:#d9d9d9;stop-opacity:1;"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1"
+       id="linearGradient2"
+       x1="0"
+       y1="10"
+       x2="30"
+       y2="10"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-130.70417)">
+    <g
+       id="g8"
+       transform="translate(0,130.70417)">
+      <rect
+         style="fill:#175e17;fill-opacity:1;stroke:none;stroke-width:0.247106;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         id="rect12641"
+         width="40"
+         height="10"
+         x="30"
+         y="5" />
+      <rect
+         style="fill:url(#linearGradient2);stroke:none;stroke-width:0.214;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         id="rect1"
+         width="30"
+         height="10"
+         x="1.7763568e-15"
+         y="5" />
+      <rect
+         style="fill:#d9d9d9;fill-opacity:1;stroke:none;stroke-width:0.462293;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         id="rect2"
+         width="140"
+         height="10"
+         x="70"
+         y="5" />
+      <path
+         style="fill:#9e2050;fill-opacity:1;stroke:none;stroke-width:0.396875"
+         d="M 147.83011,0.82005968 166.23802,1.0600412"
+         id="path3" />
+      <path
+         style="fill:#639c63;fill-opacity:1;stroke:none;stroke-width:0.396875"
+         d="m 170.33085,6.6195226 16,-0.327 L 210,26.292523 h -11.66915 z"
+         id="path5"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#32cd32;fill-opacity:1;stroke:none;stroke-width:0.396875"
+         d="m 155,0 h 16 l 28,20 h -16 z"
+         id="path4"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#175e17;fill-opacity:1;stroke:none;stroke-width:0.396875"
+         d="m 168,0 42,30 V 0 Z"
+         id="path2"
+         sodipodi:nodetypes="cccc" />
+      <path
+         style="fill:#32cd32;fill-opacity:1;stroke-width:0.453039"
+         d="m 121.77029,23.960473 -1.04883,-0.621991 v -1.282656 -1.282657 l 1.03013,-0.606301 c 0.56657,-0.333464 1.05912,-0.606302 1.09454,-0.606302 0.0354,0 0.54456,0.274768 1.1314,0.610596 l 1.067,0.610597 -0.0339,1.276309 -0.0339,1.27631 -1.01887,0.62102 c -0.56037,0.34156 -1.04583,0.62238 -1.0788,0.624043 -0.033,0.0018 -0.5319,-0.276874 -1.10876,-0.618968 z"
+         id="path54" />
+      <path
+         style="fill:#175e17;fill-opacity:1;stroke-width:0.453039"
+         d="m 116.40626,28.183481 c -1.52217,-0.258082 -3.24923,-1.434107 -4.14571,-2.822988 -1.24597,-1.930316 -1.25861,-4.617247 -0.0308,-6.544433 1.18502,-1.859999 3.0516,-2.888746 5.25529,-2.896407 1.38743,-0.0048 2.42195,0.305661 3.51829,1.055929 0.72519,0.496268 1.7588,1.616886 1.75271,1.900243 -0.002,0.07994 -0.57311,0.456822 -1.26976,0.837524 l -1.26664,0.692184 -0.44348,-0.456985 c -1.20527,-1.241942 -3.08776,-1.315171 -4.35594,-0.169445 -0.73918,0.667801 -0.98621,1.243595 -0.98621,2.298659 0,1.021412 0.23513,1.596834 0.9129,2.234078 0.58123,0.546474 1.13199,0.786398 1.95726,0.852646 0.9432,0.07571 1.77891,-0.265857 2.46102,-1.00585 l 0.48764,-0.529036 1.25317,0.751437 c 0.68924,0.413294 1.25317,0.814342 1.25317,0.891227 0,0.295966 -1.10866,1.481124 -1.8257,1.951686 -1.2784,0.83895 -3.03835,1.211969 -4.52722,0.959531 z"
+         id="path50" />
+      <path
+         style="fill:#32cd32;fill-opacity:1;stroke-width:0.453039"
+         d="m 112.07582,31.94473 c -0.67028,-0.415994 -0.70395,-0.595628 -0.70395,-3.755486 V 25.28779 l 0.52014,0.706559 c 0.56997,0.774247 1.32969,1.474133 2.02703,1.867393 l 0.44949,0.253493 v 1.422279 c 0,1.546289 -0.10412,1.911216 -0.67303,2.358718 -0.38821,0.305366 -1.16815,0.328721 -1.61968,0.0485 z"
+         id="path1" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.22924px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.14523"
+         x="155.6357"
+         y="24.762119"
+         id="text74"><tspan
+           sodipodi:role="line"
+           id="tspan74"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.22924px;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';stroke-width:0.14523"
+           x="155.6357"
+           y="24.762119">Pau Casesnoves</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.8768px;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.1798"
+         x="155.56671"
+         y="28.355568"
+         id="text77"><tspan
+           sodipodi:role="line"
+           id="tspan77"
+           style="font-size:2.8768px;stroke-width:0.1798"
+           x="155.56671"
+           y="28.355568">Centre Integrat de Formació Professional</tspan></text>
+    </g>
+  </g>
+</svg>
