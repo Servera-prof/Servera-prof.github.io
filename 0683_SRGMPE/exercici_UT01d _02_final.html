@@ -452,7 +452,7 @@ t_aire = p31;
 Ω = Ω_rpm * 2*π/60;
 v = Ω * r / λ;
 p_rot = p_traf_in / η_alt / η_mult;
-p_aire = 0.5 * ρ * π * 35**2 * v**3 * 1e-6;
+p_aire = 0.5 * ρ * π * r**2 * v**3 * 1e-6;
 cp = p_rot / p_aire;
 p_mec_eix_lent = p_rot*1e3;
 Ω_eix_gran_par = Ω;
@@ -481,7 +481,7 @@ t_aire = ${l(p31)};
 Ω = Ω_rpm * 2*π/60 = ${l(Ω)};
 v = Ω * r / λ = ${l(v)};
 p_rot = p_traf_in / η_alt / η_mult = ${l(p_rot)};
-p_aire = 0.5 * ρ * π * 35**2 * v**3 * 1e-6 = ${l(p_aire)};
+p_aire = 0.5 * ρ * π * r**2 * v**3 * 1e-6 = ${l(p_aire)};
 
 cp = p_rot / p_aire = ${l(cp)};
 p_mec_eix_lent = p_rot * 1e3 = ${l(p_mec_eix_lent)};
