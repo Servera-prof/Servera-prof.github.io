@@ -200,7 +200,7 @@ const p05 = xs(aleat (85, 95)/100, 2);  // η_mult
 
 const p06 = xs(aleat (75, 90)/100, 2);  // η_ele
 const p07 = aleat (20, 30);             // t_aire
-const p08 = xs(aleat (10, 12)/10, 2);   // ρ
+const p08 = xs(aleat (100, 113)/100, 3); // ρ
 const p09 = aleat(30, 100);             // z0
 const p10 = aleat(5, 15);               // z_ref
 
@@ -299,7 +299,7 @@ p = ρ * RPRIMA * (t_aire+273.15);
 p_mbar = p/100;
 msnm = (1-(p_mbar/1013.25)**(1/5.2561))/2.2569e-5;
 p2_mbar = 1013.25*(1-(z+msnm)*2.2569e-5)**5.2561;
-t2 = 27-0.0065*(z)+273.15;
+t2 = t_aire-0.0065*(z)+273.15;
 ρ2 = p2_mbar*100/RPRIMA/t2;
 
 v = v_ref * ln(z/z0)/ln(z_ref/z0);
@@ -335,7 +335,7 @@ p2_mbar = 1013.25*(1-(z+msnm)*2.2569e-5)**5.2561 =
         = 1013.25*(1-(${l(z)}+${l(msnm)})*2.2569e-5)**5.2561 =\
  ${l(p2_mbar)};
 
-t2 = 27-0.0065*(z+msnm)+273.15 = 27-0.0065*(${l(z)}+${l(msnm)})+273.15\
+t2 = ${l(t_aire)}-0.0065*(z+msnm)+273.15 = 27-0.0065*(${l(z)}+${l(msnm)})+273.15\
  = ${l(t2)};
 ρ2 = p2_mbar*100/RPRIMA/t2 = ${l(p2_mbar)}*100/RPRIMA/${l(t2)}\
  = ${l(ρ2)};
