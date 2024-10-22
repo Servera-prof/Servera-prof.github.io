@@ -122,20 +122,20 @@ _b_) (_1 punt_) Potència entrant al generador elèctric: [[i5]] MW
 
 Dades:
 - Longitud de la pala [[p13]] metres
-- Altura de la nacelle sobre el sol [[p14]] m
+- Altura de la naveta sobre el sol [[p14]] m
 - Emplaçament a [[p15]] metres sobre el nivell del mar
 - Velocitat característica de la turbina: [[p16]]
 - Rendiment de la multiplicadora: [[p17]]%
 - Rendiment del generador [[p18]]%
 - Rendiment del trafo [[p19]]%
 - Rendiment del rotor [[p20]]%
-- Temperatura del aire [[p21]]˚C
+- Temperatura de l'aire [[p21]]˚C
 - La longitud de la rugositat del terreny (z0) es desconeix
-- Per a la densitat del aire consultar gràfica
+- Per a la densitat de l'aire consultar gràfica
 
 ![c500](img/densitat_aire.png)
 
-**8.** Si la potència que obtenim a l’entrada del trafo quan el rotor
+**8.** Si la potència que obtenim a l’entrada del trafo durant el rotor
 de la màquina gira a [[p23]] rpm és de [[p24]] MW, calcula:
 
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -143,9 +143,11 @@ _a_) (_3 punts_) Rendiment aerodinàmic de la turbina [[i6]]
   <br/>&nbsp;&nbsp;&nbsp;&nbsp;
 _b_) (_1 punt_) La potència mecànica a l’eix lent [[i7]] kW
   <br/>&nbsp;&nbsp;&nbsp;&nbsp;
-_c_) (_1 punt_) La velocitat de gir de l’eix de major par torsor [[i8]] rad/s
+_c_) (_1 punt_) La velocitat de gir de l’eix de major par torsor [[i8]]
+  rad/s
   <br/>&nbsp;&nbsp;&nbsp;&nbsp;
-_d_) (_1 punt_) La potència a la sortida de l’alternador elèctric [[i9]] kW
+_d_) (_1 punt_) La potència a la sortida de l’alternador elèctric [[i9]]
+  kW
   <br/>&nbsp;&nbsp;&nbsp;&nbsp;
 
 Dades:
@@ -153,9 +155,9 @@ Dades:
 - Naveta a [[p26]] metres sobre el nivell del mar
 - Velocitat característica de la turbina: [[p27]]
 - Rendiment de la multiplicadora: [[p28]]%
-- Rendiment del alternador [[p29]]%
+- Rendiment de l'alternador [[p29]]%
 - Rendiment del transformador [[p30]]%
-- Temperatura del aire [[p31]]°C
+- Temperatura de l'aire [[p31]]°C
 - Per a la densitat de l’aire consultar gràfica de l'exercici anterior
 - Relació de velocitats de la multiplicadora 1:40
 
@@ -330,13 +332,17 @@ msnm = (1-(p_mbar/1013.25)**(1/5.2561))/2.2569e-5 =
      = (1-(${l(p_mbar)}/1013.25)**(1/5.2561))/2.2569e-5 = ${l(msnm)};
 
 p2_mbar = 1013.25*(1-(z+msnm)*2.2569e-5)**5.2561 =
-        = 1013.25*(1-(${l(z)}+${l(msnm)})*2.2569e-5)**5.2561 = ${l(p2_mbar)};
+        = 1013.25*(1-(${l(z)}+${l(msnm)})*2.2569e-5)**5.2561 =\
+ ${l(p2_mbar)};
 
-t2 = 27-0.0065*(z+msnm)+273.15 = 27-0.0065*(${l(z)}+${l(msnm)})+273.15 = ${l(t2)};
-ρ2 = p2_mbar*100/RPRIMA/t2 = ${l(p2_mbar)}*100/RPRIMA/${l(t2)} = ${l(ρ2)};
+t2 = 27-0.0065*(z+msnm)+273.15 = 27-0.0065*(${l(z)}+${l(msnm)})+273.15\
+ = ${l(t2)};
+ρ2 = p2_mbar*100/RPRIMA/t2 = ${l(p2_mbar)}*100/RPRIMA/${l(t2)}\
+ = ${l(ρ2)};
 
 v = v_ref * ln(z/z0)/ln(z_ref/z0) =
-  = ${l(v_ref)} * ln(${l(z)}/${l(z0)})/ln(${l(z_ref)}/${l(z0)}) = ${l(v)};
+  = ${l(v_ref)} * ln(${l(z)}/${l(z0)})/ln(${l(z_ref)}/${l(z0)})\
+ = ${l(v)};
 a = π * d**2/4 = ${l(π)} * ${l(d)}**2/4 = ${l(a)};
 p_aire = 0.5*ρ2*a*v**3 = 0.5*${l(ρ2)}*${l(a)}*${l(v)}**3 = ${l(p_aire)};
 p_gen = p_mult/η_mult = ${l(p_mult)}/${l(η_mult)} = ${l(p_gen)};
@@ -615,7 +621,8 @@ function resetejar(){
 function renderAvaluacio(){
     let txt = "";
     txt += '<h1 align="center"> Avaluació</h1>\n' +
-           '<h2 align="center" style="color: #888">' + titol + "</h2>\n&nbsp;\n\n"
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
     txt += [
     "## Presentació de resultats",
     "",
