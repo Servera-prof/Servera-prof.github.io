@@ -1,0 +1,285 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <style>
+        p{
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        img[alt="c"]{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img[alt="c500"]{
+            width: 500px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        img[alt="c250"]{
+            width: 250px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img[alt="250"]{
+            width: 250px;
+        }
+        img[alt="fr250"]{
+            width: 250px;
+            float: right;
+            margin: 0 0 0 0.7em;
+        }
+        img[alt="fr"]{
+            float: right;
+            margin: 0 0 0 0.7em;
+        }
+        img[alt="fl250"]{
+            width: 250px;
+            float: left;
+            margin: 0 .7em 0 0;
+        }
+        img[alt="fl"]{
+            float: left;
+            margin: 0 5px 0 0;
+        }
+
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+## 1. Càlcul de la intensitat màxima admissible d'una XSBT segons UNE 211435
+
+A la taula A-1 (veure _fig. 1_) es troben les intensitats màximes
+admissibles en ampers per als cables de distribució RV, XZ, o XZ1(AS)
+de 0,6/1 kV.
+
+> ![c500](img/UNE211435ta1.png)
+> **Fig. 1**
+> AENOR (2007)
+> _Taula A.1 − Cables de distribució tipus RV o XZ1 de 0,6/1 kV de
+> l'UNE211435_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+Aquests valors s'han de corregir si alguna de les condicions
+d'instal·lació difereix del que s'indica a la imatge.
+És a dir, si la temperatura del terreny no és de 25 °C, la temperatura
+ambient no és 40 °C, la resistivitat del terreny no és d'1,5 K·m/W,
+o la profunditat no és 0,7 m.
+
+A les _fig. 2_, _fig. 3_, _fig. 4_, _fig. 5_, _fig. 6_ i _fig. 7_
+es poden trobar aquests factors.
+
+> ![c500](img/UNE211435ta6.png)
+> **Fig. 2**
+> AENOR (2007)
+> _Taula A.6 − Factors de correcció per a diferents temperatures_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+> ![c500](img/UNE211435ta7_1de2.png)
+> **Fig. 3**
+> AENOR (2007)
+> _Taula A.7 − Factors de correcció per a resistivitats dermiques
+> diferents de 1,5 k·m/W per a conductors a dins tub soterrat_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+> ![c500](img/UNE211435ta7_2de2.png)
+> **Fig. 4**
+> AENOR (2007)
+> _Taula A.7 − Factors de correcció per a resistivitats dermiques
+> diferents de 1,5 k·m/W per a conductors directament soterrat_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+> ![c500](img/UNE211435ta8.png)
+> **Fig. 5**
+> AENOR (2007)
+> _Taula A.8 − Factors de correcció per a diferents profunditats de
+> soterrament_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+> ![c500](img/UNE211435ta9_1de2.png)
+> **Fig. 6**
+> AENOR (2007)
+> _Taula A.9 − Factors de correcció per a agrupaments de cables de
+> 0,6/1 kV directament soterrats_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+> ![c500](img/UNE211435ta9_2de2.png)
+> **Fig. 7**
+> AENOR (2007)
+> _Taula A.9 − Factors de correcció per a agrupaments de cables de
+> 0,6/1 kV en tubs soterrats_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+> ![c500](img/UNE211435ta10.png)
+> **Fig. 8**
+> AENOR (2007)
+> _Taula A.10 − Factors de correcció per a agrupaments de cables de
+> a l'aire lliure o galeries_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+Pel que fa a la _fig. 8_ l'UNE 211435 ens marca que:
+- Els valors són la mitjana per als tipus de cables i la gamma de
+  seccions considerades. La dispersió de valors és inferior al 5% en general
+- Els factors s'apliquen a cables en capes separades, o en cables en
+  triangle en capes separades. No s'apliquen si els cables s'instal·len
+  en diverses capes en contacte.
+  En aquest cas els factors poden ser sensiblement inferiors.
+- Els valors estan prevists per a una separació entre les safates
+  verticals de 300 mm.
+  Per a espais inferiors cal reduir els factors.
+- Els valors estan prevists per a una separació de les safates
+  horitzontals de 225 mm amb les safates muntades d'esquena a
+  esquena. Si la separació és menor cal reduir els factors.
+- Per a circuits que tinguin més d'un cable en paral·lel per fase, és
+  convenient considerar cada conjunt de tres cables com a un circuit en
+  el sentit d'aplicació d'aquesta taula.
+
+## 2. Càlcul de la cdt
+
+### 2.1. Càlcul de la cdt segons REBT
+
+Segons l'REBT la conductivitat del coure i de l'alumini a 90 °C és:
+- Coure: $\gamma_{90} = 45{,}49~\text{m} / (\Omega \cdot \text{mm}^2)$
+- Alumini: $\gamma_{90} = 27{,}80~\text{m} / (\Omega \cdot \text{mm}^2)$
+
+Tot i que habitualment es pren 44 i 28, ja que són més fàcils de
+recordar.
+
+Amb aquests valors es calcula la resistència com a:
+
+> $$
+R = \dfrac {L}{\gamma \cdot S}
+$$
+> A on:
+> - $R$ és la resistència en $\Omega$
+> - $L$ és la longitud en $\text{m}$
+> - $S$ és la secció en $\text{mm}^2$
+> - $\gamma$ és la conductivitat
+>   en $\text{m} / (\Omega \cdot \text{mm}^2)$
+
+Per altra banda, la reactància s'estima en 0,1 Ω/km si no es tenen dades
+del fabricant.
+
+Una vegada es coneix la resistència i la reactància, la caiguda de
+tensió per una línia monofàsica és
+
+> $$
+\Delta U = 2 \cdot \dfrac{P}{U} \cdot (R_L + X_L \cdot \tan \varphi_R)
+$$
+> A on:
+> - $\Delta U$ és la resistència en $\text{V}$
+> - $P$ és la potència transportada en $\text{W}$
+> - $U$ és la tensió de línia en $\text{V}$
+> - $R_L$ és la resistència de la línia en $\Omega$
+> - $X_L$ és la reactància de la línia en $\Omega$
+
+La caiguda de tensió per una línia trifàsica és:
+
+> $$
+\Delta U = \dfrac{P}{U} \cdot (R_L + X_L \cdot \tan \varphi_R)
+$$
+> A on:
+> - $\Delta U$ és la cdt en $\text{V}$
+> - $P$ és la potència transportada en $\text{W}$
+> - $U$ és la tensió de línia en $\text{V}$
+> - $R_L$ és la resistència de la línia en $\Omega$
+> - $X_L$ és la reactància de la línia en $\Omega$
+> - $\tan \varphi_R$ és el factor de potència de la càrrega
+
+## 2.2. Càlcul de la cdt segons NRZ002:
+
+S'obtenen els valors de $R$ i de $X$ de les següents taules.
+**Alerta**: No tenen res a veure amb els valors de l'anterior mètode,
+aquests valors són en $\Omega / \text{km}$
+
+> ![c500](img/NRZ002t6.png)
+> **Fig. 9**
+> edistribución (2020)
+> _Taula 6 − Resistència dels conductors_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+> ![c500](img/NRZ002t7.png)
+> **Fig. 10**
+> edistribución (2020)
+> _Taula 7 − Reactància dels conductors_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+Amb aquests valors es calcula la cdt amb les següents fórmules:
+
+> $$
+U_C = \dfrac{P \cdot L}{U} \cdot (R_{90} + X \cdot \tan \varphi)
+$$
+> $$
+U_C (\%) = \dfrac{P \cdot L}{10 \cdot U^2} \cdot (R_{90} + X \cdot \tan \varphi)
+$$
+> A on:
+> - $U_C$ és la cdt en $\text{V}$
+> - $P$ és la potència transportada en $\text{W}$
+> - $U$ és la tensió de línia en $\text{V}$
+> - $R_{90}$ és la resistència per quilòmetre de la línia
+>   en $\Omega/\text{km}$
+> - $X$ és la reactància per quilòmetre de la línia
+>   en $\Omega / \text{km}$
+> - $\tan \varphi$ és el factor de potència de la càrrega
+
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca
+[CC4.0-by-nc-nd]: https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1
+[LPI]: https://www.boe.es/eli/es/rdlg/1996/04/12/1/con
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+const titol = "UT03 - Configuració de les xarxes de baixa tensió"; // MODIFICAR
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>
