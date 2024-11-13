@@ -35,9 +35,14 @@ Calcula segons el REBT la intensitat màxima admissible d'un conductor
 [[p1]] de [[p2]] mm². Instal·lat a una rasa sota [[p3]], [[p4]] de
 [[p5]] m de longitud.
 
-La rasa té una profunditat de [[p6]] cm de profunditat, però la
+Si la instal·lació es entubada considera que
+la rasa té una profunditat de [[p6]] cm de profunditat, però la
 generatriu superior del tub està a [[p7]] cm, la paret del tub té un
 gruix de [[p8]] mm i el seu diàmetre exterior és ø[[p9]].
+
+En cas de que hagi sortit que el conductor està directament enterrat
+considera que la rasa té una profunditat [[p14]] i que el conductor es
+troba a una profunditat de [[p15]].
 
 Segons un model simplificat de l'estàndard IEC 60287, la temperatura
 màxima del terreny a la profunditat de [[p10]] cm, és de [[p11]] °C.
@@ -285,6 +290,8 @@ const p13 = num_cir_par === 0 ?
  "sol, sense circuits en paral·lel" :
  "amb uns altres " + num_cir_par + " circuits a " + dist_cir_par +
  " mm de distància";
+const p14 = p06;
+const p15 = gen_sup + øt/10 - et/10;
 
 
 
