@@ -1,0 +1,774 @@
+<!-- MOLT IMPORTANT: Al final del document es poden trobar les
+instruccions sobre la utilització d'aquesta eina.-->
+
+
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+
+    <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    p{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    p.ul_a{
+        text-align: left;
+    }
+    img[alt="c"]{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img[alt="c500"]{
+        width: 500px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    img[alt="c250"]{
+        width: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img[alt="250"]{
+        width: 250px;
+    }
+    img[alt="fr250"]{
+        width: 250px;
+        float: right;
+        margin: 0 0 0 0.7em;
+    }
+    img[alt="fr"]{
+        float: right;
+        margin: 0 0 0 0.7em;
+    }
+    img[alt="fl250"]{
+        width: 250px;
+        float: left;
+        margin: 0 .7em 0 0;
+    }
+    img[alt="fl"]{
+        float: left;
+        margin: 0 5px 0 0;
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+## Enunciat
+
+**1.** Se'ns ha demanat dibuixar el PERT del següent projecte.
+Si s'ha de fer algun càlcul, el resultat tindrà 2 decimals:
+
+<table> <!-- ~~~~ TAULA TASQUES PROJECTE ~~~~ -->
+<tr>
+    <th>Activitat</th>
+    <th>Temps optimista (d)</th>
+    <th>Temps més probable (d)</th>
+    <th>Temps pessimista (d)</th>
+    <th>Activitat precedent</th>
+</tr>
+<tr>
+    <td>A. Compra i recepció de materials</td>
+    <td>8</td>
+    <td>11</td>
+    <td>20</td>
+    <td>---</td>
+</tr>
+<tr>
+    <td>B. Elaboració dels plans (SS, PQ, PMA)</td>
+    <td>8</td>
+    <td>15</td>
+    <td>16</td>
+    <td>---</td>
+</tr>
+<tr>
+    <td>C. Excavació fonaments</td>
+    <td>5</td>
+    <td>8</td>
+    <td>17</td>
+    <td>B</td>
+</tr>
+<tr>
+    <td>D. Fonaments</td>
+    <td>7</td>
+    <td>10</td>
+    <td>19</td>
+    <td>A, C</td>
+</tr>
+<tr>
+    <td>E. Muntatge i anclatge de la torre.</td>
+    <td>5</td>
+    <td>6</td>
+    <td>13</td>
+    <td>D</td>
+</tr>
+<tr>
+    <td>F. Proves de la naveta a altura 0</td>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>B</td>
+</tr>
+<tr>
+    <td>G. Elevació i muntatge de la naveta</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>E, F</td>
+</tr>
+<tr>
+    <td>H. Calibració i posada en funcionament</td>
+    <td>6</td>
+    <td>9</td>
+    <td>18</td>
+    <td>G</td>
+</tr>
+<tr>
+    <td>I. Xerrades informatives</td>
+    <td>6</td>
+    <td>9</td>
+    <td>18</td>
+    <td>---</td>
+</tr>
+<tr>
+    <td>J. Visites a la fàbrica</td>
+    <td>6</td>
+    <td>9</td>
+    <td>18</td>
+    <td>I</td>
+</tr>
+<tr>
+    <td>I. Visita al parcs</td>
+    <td>6</td>
+    <td>9</td>
+    <td>18</td>
+    <td>H<sub>II+3</sub>, J</td>
+</tr>
+</table>
+
+**2.** Identifica tots els camins crítics
+
+**3.** Troba la probabilitat de que el projecte s'acabi en 50 dies.
+Suposant que la empresa té recursos de personals il·limitats
+
+**4.** El personal necessari per a cada activitat és el següent:
+
+- Activitats B, J, K: 1 treballador
+- Activitat A, C, F, H, I: 2 treballadors
+- Activitat D: 3 treballadors
+- Activitas E, G: 5 treballadors
+
+Amb aquesta informació i aplicant l'algoritme de Burgess-Killebrew:
+<p class="ul_a">
+&nbsp;&nbsp;&nbsp;&nbsp; <i>a</i>) troba la quantitat mínima de
+treballadors necessaris per a executar el projecte sense endarreriment.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp; <i>b</i>) si l'empresa compta amb 6
+treballadors troba el temps d'execució mínim del projecte.
+</p>
+
+**5.** Utilitzant el software Gantt Project, crea el diagrama de Gantt
+del projecte.
+
+**6.** Si el personal necessari fos:
+- Activitats A, I: 1 enginyer 1 i 1 tècnic superior.
+- Activitat B: 1 enginyer
+- Activitat C: 2 oficials de la construcció
+- Activitat F, H: 1 tècnic superior 1 oficial elèctricista
+- Activitat D: 3 oficials de la construcció
+- Activitat E: 2 oficials de la construcció, 2 tècnics superiors
+   i 1 enginyer.
+   - Activitat G: 2 oficials electricistes, 2 tècnics superiors
+      i 1 enginyer.
+- Activitats J, K: 1 enginyer o tècnic superior.
+
+
+L'empresa compta amb 2 enginyers i 2 tècnics superiors i 2 oficials de
+la construcció i 2 oficials electricistes. Si el projecte no es pot
+endarrerir més del que s'ha trobat a l'exercici 4.b és necessari
+subcontractar personal? quina quantitat i de quin perfil?
+
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Simulacre";
+const puntuacions = ["",
+    3, 2, 1,
+];
+const π = 3.141592654;
+const RPRIMA = 287.04;                  // unitats en J/(kg*K)
+const KELVIN = 273.15;                  // 0°C = 273,15 K
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+
+
+
+
+// Exercici 1 ----------------------------------------------------------
+
+const p01 = aleat(0, 10);                          // t_hiv
+const p02 = aleat(30, 40);                         // t_est
+
+const p03 = aleat(7, 14);                          // z_ref
+const p04 = aleat(10, 20);                         // v_ref
+const p05 = xs(aleat(35, 45)/100);                 // cp
+const p06 = aleat(20, 30);                         // r
+const p07 = aleat(40, 70);                         // z
+const p08 = xs(aleat(20, 30)/100);                 // z0
+const p09 = aleat(200,300);                        // msnm
+
+// Exercici 2 ----------------------------------------------------------
+
+ρ_array = [
+    [ 200, 15, 1.2],
+    [ 500,  5, 1.2],
+    [ 300, 35, 1.1],
+    [ 600, 25, 1.1],
+    [ 900, 15, 1.1],
+    [1200,  5, 1.1],
+    [1400, 25,   1],
+    [1700, 15,   1],
+    [2000,  5,   1],
+    [2000, 35, 0.9],
+];
+
+ρ_id = aleat(0, ρ_array.length-1);
+
+const p10 = xs(aleat(20, 30)/10, 2);        // P_ele
+const p11 = aleat(25, 30);                  // r
+const p12 = xs(0.75 * p11*2 + 10, 2);       // z
+const p13 = ρ_array[ρ_id][0] - p12;         // msnm
+const p14 = xs(aleat (400, 450)/100, 3);    // λ
+const p15 = aleat (85, 95);                 // η_mult
+const p16 = aleat (75, 90);                 // η_gen
+const p17 = aleat (94, 98);                 // η_trafo
+const p18 = aleat (35, 45);                 // cp
+const p19 = ρ_array[ρ_id][1];               // t_aire
+const p20 = ρ_array[ρ_id][2];               // ρ
+
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+// !!! CONVERTIR si és necessari les unitats a les unitats que requereix
+// el nostre enunciat.
+
+function estableixParametres(){
+    array = [
+      p01, p02, p03, p04, p05,          p06, p07, p08, p09, p10,
+      p11, p12, p13, p14, p15,          p16, p17, p18, p19, p20,
+      /*p21, p22, p23, p24, p25,          p26, p27, p28, p29, p30,
+      p31, p32, p33
+      */
+    ]; // actualitzar entre []
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+    tlog += "~~~\n";
+
+
+
+// Exercici 1 -----------------------------------------------------
+
+t_hiv = p01 + KELVIN;
+t_est = p02 + KELVIN;
+z_ref = p03;
+v_ref = p04;
+cp = p05;
+r = p06;
+z = p07;
+z0 = p08;
+msnm = p09;
+
+p_mbar = 1013.25 * (1 - (msnm + z)*2.2569e-5)**5.2561;
+p_pa = 100 * p_mbar;
+ρ_hiv = p_pa / (RPRIMA*t_hiv);
+ρ_est = p_pa / (RPRIMA*t_est);
+a = π * r**2;
+v = v_ref * ln(z/z0) / ln(z_ref/z0);
+p_gen_hiv = 0.5 * cp * ρ_hiv * a * v**3;
+p_gen_est = 0.5 * cp * ρ_est * a * v**3;
+ΔP = p_gen_hiv - p_gen_est;
+
+const s01 = ΔP/1e3;
+
+tlog += `
+Exercici 1
+----------
+
+const RPRIMA = 287.04;
+const KELVIN = 273.15;
+
+t_hiv = t_hiv + KELVIN = ${xs(t_hiv)};
+t_est = t_est + KELVIN; = ${xs(t_est)};
+
+p_mbar = 1013.25 * (1 - msnm*2.2569e-5)**5.2561 =
+       = ${xs(p_mbar)} mbar;
+p_pa = 100 * p_mbar = ${xs(p_pa)} Pa;
+ρ_hiv = p_pa/(RPRIMA*t_hiv) = ${xs(ρ_hiv)} kg/m³;
+ρ_est = p_pa/(RPRIMA*t_est) = ${xs(ρ_est)} kg/m³;
+a = π * r**2 = ${xs(a)} m²;
+v = v_ref * ln(z/z0) / ln(z_ref/z0) = ${xs(v)} m/s;
+p_gen_hiv = 0.5 * cp * ρ_hiv * a * v**3 = ${xs(p_gen_hiv/1e3)} kW;
+p_gen_est = 0.5 * cp * ρ_est * a * v**3 = ${xs(p_gen_est/1e3)} kW;
+ΔP = p_gen_hiv - p_gen_est = ${xs(ΔP/1e3)} kW;
+
+`;
+
+
+
+// Exercici 2 ----------------------------------------------------------
+
+p_ele = p10;
+r = p11;
+z = p12;
+msnm = p13;
+λ = p14;
+η_mult = p15/100;
+η_gen = p16/100;
+η_trafo = p17/100;
+cp = p18/100;
+t_aire = p19;
+ρ = p20;
+
+p_elegen = p_ele / η_trafo / η_gen;
+p_rot = p_elegen / η_mult / cp * 1e6;
+
+a = π * r**2;
+v = (2 * p_rot / ρ / a)**(1/3);
+vt = v * λ;
+Ω = vt / r;
+Ω_rpm = Ω / 2 / π * 60;
+
+const s02 = Ω_rpm;
+const s03 = p_elegen;
+
+tlog += `
+Exercici 2
+----------
+
+p_ele = ${l(p10)};
+r = ${l(p11)};
+z = ${l(p12)};
+msnm = ${l(p13)};
+λ = ${l(p14)};
+η_mult = ${l(p15)}/100;
+η_gen = ${l(p16)}/100;
+η_trafo = ${l(p17)}/100;
+cp = ${l(p18)}/100;
+t_aire = ${l(p19)};
+ρ = ${l(p20)};
+
+p_elegen = p_ele / η_trafo / η_gen =\
+ ${l(p_ele)} / ${l(η_trafo)} / ${l(η_gen)} = ${l(p_elegen)};
+p_rot = p_elegen / η_mult / cp * 1e6 =\
+ ${l(p_elegen)} / ${l(η_mult)} / ${l(cp)} * 1e6 = ${l(p_rot)} ;
+
+a = π * r**2 = π * ${l(r**2)} = ${l(a)};
+v = (2 * p_rot / ρ / a)**(1/3) =\
+ (2 * ${l(p_rot)} / ${l(ρ)} / ${l(a)})**(1/3) = ${l(v)};
+vt = v * λ = ${l(v)} * ${l(λ)} = ${l(vt)};
+Ω = vt / r = ${l(vt)} / ${l(r)} = ${l(Ω)};
+Ω_rpm = Ω / 2 / π * 60 = ${l(Ω)} / 2 / π * 60 = ${l(Ω_rpm)};
+
+`;
+
+solucions = [""].concat([
+    s01, s02, s03,
+].map(xsMap));
+
+tlog += "\n~~~";
+
+}
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS Técnic Superior en Energies Renovables",
+    anys: "2024/2025"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = l(parametres[i]);
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="number" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 80px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    let r = [""];
+    alumne.nom = document.getElementById("nom").value;  // veure C.2.1
+    for (let i = 1; i < puntuacions.length; i++){
+        r[i] = document.getElementById("i"+i).value;
+    }
+    respostes = r.map(xsMap);                           // veure C.2.1
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+    "",
+    "> [[nota]]"
+    ].join("\n") + "\n";
+    txt += txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    let ptsAlumne = 0, ptsTotal = 0;
+    let canvi = "", patro = "";
+    let a = 0, b = 0;
+    for (let i = 1; i < puntuacions.length; i++){
+        a = respostes[i];
+        b = solucions[i];
+        ptsTotal += puntuacions[i];
+        canvi =
+            '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">'
+            + coma(a) + '</span>';
+        if ((b*0.99) < a && a < (b*1.01)) {
+            ptsAlumne += puntuacions[i];
+            canvi +=
+                ' <span style="color: green">(' +
+                coma(b) +') OK (+' + puntuacions[i] + ')</span>';
+        }else{
+            canvi +=
+                ' <span style="color: red;"> (' +
+                coma(b) +')</span>';
+        }
+        patro = "[[i" + i + "]]";
+
+        txt = txt.replace(patro, canvi);
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function ln(a){
+    return Math.log(a);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar (φ en graus)
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a){  // log abreviat a l totsol
+    if (!a.toPrecision) return a;
+    return coma(xs(a));
+}
+
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return Number(a);
+}
+
+function coma(a){
+    a = a + "";
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+/**********************************************************************
+ * - Establir les puntuacions, que han de correspondre amb la quantitat
+ * de respostes que l'alumne pot contestar.
+ *
+ * - Establir els paràmetres. En general serà una funció per a generar
+ * nombres aleatoris, però també es poden fixar. Aquest últim cas és
+ * interessant per a testejar els càlculs. IMPORTANT: Al finalitzar
+ * tots els parametres hauran de concatenarse al vector parametres.
+ *
+ * -  El mateix succeeix amb els càlculs. Tot haura de volcar-se al
+ * vector solucions.
+ * *******************************************************************/
+-->
