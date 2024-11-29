@@ -1,7 +1,3 @@
-<!-- MOLT IMPORTANT: Al final del document es poden trobar les
-instruccions sobre la utilització d'aquesta eina.-->
-
-
 <!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
 <!DOCTYPE html>
 <head>
@@ -25,45 +21,6 @@ instruccions sobre la utilització d'aquesta eina.-->
         overflow-wrap: break-word;
     }
 
-    img[alt="c"]{
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    img[alt="c500"]{
-        width: 500px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    img[alt="c250"]{
-        width: 250px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    img[alt="250"]{
-        width: 250px;
-    }
-    img[alt="fr250"]{
-        width: 250px;
-        float: right;
-        margin: 0 0 0 0.7em;
-    }
-    img[alt="fr"]{
-        float: right;
-        margin: 0 0 0 0.7em;
-    }
-    img[alt="fl250"]{
-        width: 250px;
-        float: left;
-        margin: 0 .7em 0 0;
-    }
-    img[alt="fl"]{
-        float: left;
-        margin: 0 5px 0 0;
-    }
     </style>
 </head>
 
@@ -83,22 +40,12 @@ window.texme = {
 
 <!-- B. ENUNCIAT ================================================== -->
 <textarea id="enunciat">
-~~~
-&nbsp;
-    Permutació: [[p2]]
-&nbsp;
-~~~
 
-
-## Preguntes
-
-[[p1]]
-
-## Resposta
-
+Introdueix aquí la teva permutació: <br/>
 [[i1]]
 
-
+Introdueix aquí la teva resposta: <br/>
+[[i2]]
 
 </textarea>
 <!-- FI ENUNCIAT ================================================== -->
@@ -114,20 +61,18 @@ window.texme = {
 
 
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Examen UT01 - MEDASP";
+const titol = "Comprovador de nota - UT01 MEDASP";
 const puntuacions = ["",
-    10
 ];
-const π = 3.141592654;
-const RPRIMA = 287.04;                  // unitats en J/(kg*K)
-const KELVIN = 273.15;                  // 0°C = 273,15 K
+
 
 
 // # 2. PARÀMETRES ====================================================
 
 // ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+let txtav = "";
+let ptos = 0;
 
-let p01 = "";
 const preguntes = [
     [
     "Per què es va desenvolupar la cultura «d'un sol ús» en el segle XX?",
@@ -236,51 +181,22 @@ const preguntes = [
     ],
 ];
 
+const solucions_test = [
+    2, 3, 2, 1, 4,
+    4, 3, 2, 4, 2,
+    3, 1, 2, 3, 3
+];
+const opcions_test = [1, 2, 3, 4];
+
 let permutacio = "";
-const num_preg = preguntes.length;
-const num_resp = preguntes[0].length-1;
-const fact_np = factorial(num_preg);
-const fact_nr = factorial(num_resp);
-/*let ordre_preg = Math.floor(aleat(0, fact_np - 1)/1e16)*/;
-let ordre_preg = aleat(0, fact_np - 1);
-
-console.log(ordre_preg)
-permutacio += ordre_preg + "_";
-//ordre_preg *= 1e16;
-
-const preg_ordenades = obtenirPermutacio(preguntes, ordre_preg);
-
-for (let i = 0; i < num_preg; i++){
-    p01 += "**" + (i+1) + ".**&nbsp;" + preg_ordenades[i][0] + "<br/>";
-    let ordre_resp = aleat (0, fact_nr - 1);
-    permutacio += ordre_resp + ".";
-
-    let resp = obtenirPermutacio(preg_ordenades[i].slice(1), ordre_resp);
-    for (let j = 0; j < num_resp; j++){
-        p01 += "&nbsp;&nbsp;&nbsp;&nbsp;_" + nombreALletra(j+1) + "_)&nbsp;" +
-               resp[j] + "<br/>"
-    }
-    p01 += "<br/>"
-}
-
-p02 = permutacio;
-
-
-
+const num_preg = solucions_test.length;
+const num_resp = opcions_test.length;
 
 
 // ## 2.2 FUNCIO (actualitzar) ----------------------------------------
-// !!! CONVERTIR si és necessari les unitats a les unitats que requereix
-// el nostre enunciat.
 
 function estableixParametres(){
-    array = [
-      p01, p02, /*p03, p04, p05,          p06, p07, p08, p09, p10,
-      p11, p12, p13, p14, p15,          p16, p17, p18, p19, p20,
-      p21, p22, p23, p24, p25,          p26, p27, p28, p29, p30,
-      p31, p32, p33
-      */
-    ]; // actualitzar entre []
+    array = [/* p01, p02, p03, p04, p05 */]; // actualitzar entre []
     parametres = parametres.concat(array);  // no tocar aquesta línia
 }
 
@@ -291,8 +207,61 @@ function estableixParametres(){
 
 // ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
 function calcula(){
+    const permutacio = respostes [0];
 
-}
+    const permpreg = permutacio.split("_")[0];
+    const permresp = permutacio.split("_")[1].split(".");
+    const respostes_alumne = respostes [1].split("");
+
+    const preg_ordenades = obtenirPermutacio(preguntes, permpreg);
+    const sol_ordenades = obtenirPermutacio(solucions_test, permpreg);
+
+
+    for (let i = 0; i < num_preg; i++){
+        preg = preg_ordenades[i][0];
+        txtav += "**" + (i+1) + ".** " + preg + "<br/>\n";
+
+        let resp =
+         obtenirPermutacio(preg_ordenades[i].slice(1), permresp[i]);
+
+        let pr = permresp[i];
+        let opcions_permutades = obtenirPermutacio(opcions_test, pr);
+
+        let st = sol_ordenades[i];
+        let opcio_correcta = opcions_permutades.indexOf(st) + 1;
+        let opcio_marcada = lletraANombre(respostes_alumne[i]);
+        let color = "black";
+        let marcador = "";
+
+        //debugger;
+
+        for (let j = 0; j < num_resp; j++){
+            a = j + 1;
+            if (a === opcio_correcta && opcio_marcada > num_resp){
+                color = "gray";
+                marcador = "⇦";
+            } else if (a != opcio_correcta && opcio_marcada > num_resp){
+                color = "gray";
+            } else if (a === opcio_correcta && a === opcio_marcada){
+                color = "green";
+                marcador = "⇦";
+                ptos += 1;
+            } else if (a === opcio_correcta && a != opcio_marcada){
+                marcador = "⇦";
+            } else if (a != opcio_correcta && a === opcio_marcada){
+                color = "red";
+                ptos -= 1/(num_resp-1);
+            } else if (a != opcio_correcta && a != opcio_marcada){
+            }
+            txtav += '&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: ' +
+             color + '"><i>' + nombreALletra(j+1) + "</i>)&nbsp;" +
+             resp[j] + marcador + "</span><br/>\n"
+            color = "black";
+            marcador = "";
+        } // fi for respostes
+        txtav += "<br/>\n";
+    } // fi for preguntes
+} //fi calcula();
 
 
 
@@ -317,8 +286,6 @@ let tlog = "";          // log que apareix al final de l'avaluació.
 
 
 // # 2. FUNCIONS ======================================================
-// Función para generar permutaciones de un arreglo
-
 
 
 window.onload = function (){
@@ -329,7 +296,7 @@ window.onload = function (){
 
 function renderEnunciat(){
     let txt = "";
-    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    estableixParametres();
     txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
           txtEnunciat;
     txt = exportarParametres(txt);
@@ -353,12 +320,20 @@ function exportarParametres(txt){
 
 function crearInputs(txt){
     let patro = "", canvi = "";
-    for (let i = 1; i < puntuacions.length; i++) {
+    patro = "[[i1]]";
+    canvi = '<input type="text" onwheel="return false;" ';
+    canvi += 'id="i1" style="width: 300px">';
+    txt = txt.replace(patro, canvi);
+    patro = "[[i2]]";
+    canvi = '<input type="text" onwheel="return false;" ';
+    canvi += 'id="i2" style="width: 300px">';
+    txt = txt.replace(patro, canvi);
+    /*for (let i = 1; i < puntuacions.length; i++) {
         patro = "[[i" + i +"]]";
         canvi = '<input type="text" onwheel="return false;" ';
         canvi += 'id="i'+ i +'" style="width: 300px">';
         txt = txt.replace(patro, canvi);
-    }
+    }*/
     return txt;
 }
 
@@ -394,14 +369,9 @@ function avalua(){
 }
 
 function importaRespostes(){
-    respostes[0] = document.getElementById("i1").value
-    /*let r = [""];
-    alumne.nom = document.getElementById("nom").value;  // veure C.2.1
-    for (let i = 1; i < puntuacions.length; i++){
-        r[i] = document.getElementById("i"+i).value;
-    }
-    respostes = r.map(xsMap);                           // veure C.2.1
-    */
+    respostes[0] = document.getElementById("i1").value;
+    respostes[1] = document.getElementById("i2").value;
+    alumne.nom = document.getElementById("nom").value;
 }
 
 function resetejar(){
@@ -420,19 +390,16 @@ function renderAvaluacio(){
     txt += [
     "## Presentació de resultats",
     "",
-    //"L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
-    //"qualificació de:",
-    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) serà qualificat manualment.",
-    "",
-    //"> [[nota]]"
-    ].join("\n") + "\n";
-    txt += txtEnunciat;
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+
+    "> [[nota]]"
+    ].join("\n") + "\n\n\n";
 
     txt = identificarAlumne(txt);
     txt = puntua(txt);
-    txt = txt.replace("## Identificació de l'alumne:\n\n"+
-        "[[identificacio]]", "");
-    txt +=  "\n" + tlog + "\n";
+
+    console.log(txt);
     document.getElementById("avaluacio").innerHTML = txt;
     texme.renderPage();
 }
@@ -447,12 +414,14 @@ function identificarAlumne(txt){
 function puntua(txt){
     calcula();
 
-    txt = exportarParametres(txt);
+    txt += txtav;
 
-    patro = "[[i1]]";
-    canvi = "~~~\n    " + respostes[0] + "\n\n\n~~~";
+    let ptsAlumne = ptos, ptsTotal = num_preg;
+    let canvi = "", patro = "";
 
-    txt = txt.replace(patro, canvi);
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
 
     /*
     let ptsAlumne = 0, ptsTotal = 0;
@@ -671,6 +640,10 @@ function nombreALletra(nombre) {
     } else {
         return null; // Retornar null si el número está fuera de rango
     }
+}
+
+function lletraANombre(lletra){
+    return lletra.toLowerCase().charCodeAt(0) - 96;
 }
 
 </script>
