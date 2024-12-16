@@ -1,0 +1,570 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+
+    <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    pre{
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+    }
+
+    img[alt="c"]{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img[alt="c500"]{
+        width: 500px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    img[alt="c250"]{
+        width: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img[alt="250"]{
+        width: 250px;
+    }
+    img[alt="fr350"]{
+        width: 350px;
+        float: right;
+        margin: 0 0 0 0.7em;
+    }
+    img[alt="fr"]{
+        float: right;
+        margin: 0 0 0 0.7em;
+    }
+    img[alt="fl350"]{
+        width: 350px;
+        float: left;
+        margin: 0 .7em 0 0;
+    }
+    img[alt="fl"]{
+        float: left;
+        margin: 0 5px 0 0;
+    }
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+~~~
+&nbsp;
+    Permutació: [[p2]]
+&nbsp;
+~~~
+
+## Normes:
+- S'ha de gravar la pantalla COMPLETA, sense micròfon, webcam ni so.
+  Pots utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/)
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Està terminantment prohibit copiar o mirar al company.
+- No es poden fer preguntes. Part de l'avaluació és la comprensió del
+  text. Si hi ha algun error es parlarà una vegada l'examen hagi
+  finalitzat, i en el seu cas s'anul·larà la pregunta.
+- L'examen dura el que indiqui la tasca associada i es tanca automàticament. ENTREGUEU-HO ABANS o serà un zero.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten 1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen ni resten.
+
+## Com fer aquest examen:
+- Agafa paper
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis copia les respostes sense espais i tot seguit, al camp «resposta», si no la saps n. Per exemple: abnaac
+- Omple el teu nom i clica a avaluar.
+- Imprimeix la pàgina com a pdf fent «Ctrl + P»
+- Adjunta-la com a tasca.
+- Fotografia el paper utilitzat (la fotografia és per a tu, per a poder revisar l'examen si ho necessitessis).
+- Entrega els papers utilitzats.
+
+## Preguntes
+
+[[p1]]
+
+## Resposta
+
+[[i1]]
+
+
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Recuperació UT01 - SEDXE";
+const puntuacions = ["", 10];
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+
+let p01 = "";
+const preguntes = [
+    [
+    "Quin és l'objectiu de les centrals generadores?",
+    "Transformar energia mecànica en energia elèctrica per mitjà d'un alternador.",
+    "Transformar qualsevol classe d'energia en energia elèctrica per mitjà d'un alternador.",
+    "Transformar qualsevol classe d'energia en energia elèctrica, pel mitjà que sigui.",
+    "Transformar energia mecànica en energia elèctrica per mitjà d'una turbina connectada a un generador (en general generador síncron)",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "La principal forma d’emmagatzemar energia a Espanya, és:",
+    "L’energia no es pot emmagatzemar, per això existeixen les xarxes de transport.",
+    "Centrals hidroelèctriques reversibles (quan sobra energia bomben aigua i funcionen com una hidroelèctrica normal quan en falta).",
+    "Sals foses (s’encalenteixen sals fins a fondre-les per a després utilitzar la calor per a produir vapor que mou una turbina).",
+    "Hidrogen (s’utilitza l'excedent energètic per a fer hidròlisis de l’aigua i després consumir aquest gas)",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Completa aquest text sobre el sistema elèctric: «A les centrals la tensió surt dels generadors a _______, però insuficient, per tant, s’eleva fins a tensions d’entre ___________. Es repartida per tot el territori nacional, fins a arribar a ________ reductores on minva la seva tensió per passar a la xarxa de distribució en alta tensió, passant si cal per subestacions de repartiment. Finalment, arriba a les subestacions de distribució on torna a reduir-se la tensió fins als _________ l’anomenada xarxa de distribució en mitja tensió. Finalment, arriba als _________ o CT d’on baixa la tensió a sota dels 1000V, normalment 230/400V»",
+    "alta tensió, 110kV-380kV, subestacions, 3-30kV, centres de transformació.",
+    "baixa tensió, 110kV-380kV, subestacions, 3-30kV, centres de transformació.",
+    "alta tensió, 25-110kV, subestacions, 15kV, centres de transformació.",
+    "baixa tensió, 25-110kV, subestacions, 15kV, centres de transformació.",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Marca la resposta falsa",
+    "És difícil emmagatzemar l'energia elèctrica en grans quantitats.",
+    "L’electricitat que ens arriba de la xarxa és 230/400V",
+    "L’alternador produeix una tensió sinusoidal sobre la bobina de l’induït",
+    "Totes les centrals elèctriques utilitzen l’energia mecànica per a moure un generador elèctric síncron.",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Què vol dir que la xarxa de transport sigui mallada i quin avantatge té?",
+    "Vol dir sempre van com a mínim 3 conductors (xarxa trifàsica) d’un lloc a un altre i així si se’n romp un sempre n’hi ha dos més.",
+    "La xarxa de transport no és mallada, sinó en bucle que permet alimentar des de dos llocs diferents una subestació.",
+    "Actualment, no té cap avantatge, tot i que per raons històriques, sobretot al continent europeu es manté mallada.",
+    "Vol dir que existeixen diferents camins per arribar al mateix lloc, així si un camí es talla existeixen camins alternatius, com la xarxa de carreteres.",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Una central nuclear que utilitza per fer girar el generador elèctric?",
+    "Vapor.",
+    "Partícules alfa que provenen de la desintegració de l’urani 235.",
+    "L'expansió adiabàtica de l’aire que les envolta.",
+    "Marca aquesta si hi ha tres respostes certes",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "A quin rang de voltatge sol funcionar un generador?",
+    "a 150kV (a més voltatge, menys secció del cablejat).",
+    "entre 10kV i 22kV ni molt poc",
+    "a 400V per seguretat, a la sortida de la central és transforma a alta tensió pel seu transport",
+    "a 15kV a les Illes Balears 20kV a la península",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Si es comparen les pèrdues a un conductor el qual ha de transportar una potència de 5MW a 30kV o a un conductor igual que l’anterior que ha de transportar 2MW a 1kV (es requereix desenvolupament):",
+    "El segon conductor perd més, però no es pot saber com més, ja que no es té la resistència",
+    "Les pèrdues són iguals en ambdós conductors",
+    "El segon conductor perd 10 vegades més",
+    "El segon conductor perd 30 vegades més",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Quina d’aquestes no és una tensió normalitzada de la xarxa de Mitja Tensió.",
+    "10kV",
+    "15kV",
+    "20kV",
+    "25kV",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Com es coneix el sistema de transport d’energia elèctrica en tensió continua i alts voltatges?",
+    "HDCN",
+    "HVDC",
+    "VDC",
+    "ACDC",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "A on s’utilitzen les xarxes de transport d’alt voltatge en tensió continua?",
+    "Connexió península-Balears",
+    "Central hidroelèctrica Xina de les Tres Gorgues (22,5 GW), on s’ha de transportar l’energia grans distàncies.",
+    "Central hidroelèctrica Itaipú (Brasil-Paraguai), on a més de les distàncies, cada país funciona a una freqüència diferent.",
+    "Marca aquesta si hi ha tres respostes certes",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Com es fa per transmetre informació a través dels mateixos conductors elèctrics.?",
+    "Se superposa un senyal de la mateixa freqüència que la xarxa (50Hz) però desfasat (120°), en arribar al destí simplement es filtra l’ona no desfasada amb selectors asíncrons.",
+    "Se superposa un senyal de freqüència inversa, per tant, la informació va en sentit contrari a l'electricitat. Per aquest motiu només serveix per a fer telemesures dels comptadors.",
+    "Se superposa un senyal d’alta freqüència, que després es filtra amb un filtre passa-alts",
+    "No es pot transmetre informació pels conductors elèctrics per aquest motiu s’utilitza fibra òptica.",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Quina diferència hi ha entre el cablejat OPWG (Optical Ground Wire) i el ADSS (All Dielectric Self Suported?",
+    "Al primer les fibres òptiques van connectades a terra (ground en anglès) i al segon no.",
+    "El primer està recobert de fils conductors de l’electricitat i s’utilitza com a conductor de terra entre les torres, i a l'interior té les fibres òptiques i el segon no és conductor, està fet d’aramida.",
+    "El primer s’ha d’aguantar entre suports (actuant com a cable de terra), el segon no necessita suports, ja que és autosuportant (self suported en anglès)",
+    "No hi ha diferència, són nomenclatures diferents per una mateixa cosa, fibra òptica.",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Identifica el número 5 de la imatge.4\n\n![c500](img/OPGW.svg)",
+    "Farciment antihumitat",
+    "Cintes sintètiques per a lligar el nucli",
+    "Tub d'alumini",
+    "Recobriment d'alumini",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Identifica el tipus de xarxa segons l'estructura \n\n ![c500](img/xarxa_espiga_recolzada.png)",
+    "Espiga doble connectada",
+    "Espiga múltiple",
+    "Espiga recolzada",
+    "Bucle múltiple",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+];
+
+let permutacio = "";
+const num_preg = preguntes.length;
+const num_resp = preguntes[0].length-1;
+const fact_np = factorial(num_preg);
+const fact_nr = factorial(num_resp);
+/*let ordre_preg = Math.floor(aleat(0, fact_np - 1)/1e16)*/;
+let ordre_preg = aleat(0, fact_np - 1);
+
+console.log(ordre_preg)
+permutacio += ordre_preg + "_";
+//ordre_preg *= 1e16;
+
+const preg_ordenades = obtenirPermutacio(preguntes, ordre_preg);
+
+for (let i = 0; i < num_preg; i++){
+    p01 += '<p><b>' + (i+1) + '.</b> ' + preg_ordenades[i][0] + '</p>';
+    let ordre_resp = aleat (0, fact_nr - 1);
+    permutacio += ordre_resp + ".";
+
+    let resp = obtenirPermutacio(preg_ordenades[i].slice(1), ordre_resp);
+    p01 += '<ol style="list-style-type: none;">'
+    for (let j = 0; j < num_resp; j++){
+        p01 += '<li class="preg"><span><i>' + nombreALletra(j+1) +
+               '</i>) </span><span style="flex: 1;">' +
+               resp[j] + "</span></li>"
+    }
+    p01 += "</ol>"
+}
+
+p02 = permutacio;
+
+
+
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+// !!! CONVERTIR si és necessari les unitats a les unitats que requereix
+// el nostre enunciat.
+
+function estableixParametres(){
+    array = [
+      p01, p02
+    ];
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+}
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS Tècnic superior en sistemes electrotècnics i automàtics",
+    anys: "2024/2025"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    respostes[0] = document.getElementById("i1").value
+    alumne.nom = document.getElementById("nom").value;
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) serà qualificat manualment.",
+    "",
+    ].join("\n") + "\n";
+    txt += txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    patro = "[[i1]]";
+    canvi = "~~~\n    " + respostes[0] + "\n\n\n~~~";
+
+    txt = txt.replace(patro, canvi);
+
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+</script>
