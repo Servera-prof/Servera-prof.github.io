@@ -148,7 +148,7 @@ window.texme = {
 
 
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Examen UT03 - SRGMPE";
+const titol = "Examen UT03 - SRGMPE (amb suport)";
 const puntuacions = ["", 10];
 
 
@@ -159,109 +159,46 @@ const puntuacions = ["", 10];
 let p01 = "";
 const preguntes = [
     [
-    "Quin factor limita la distància dels parcs eòlics marins a la costa?",
-    "L’impacte visual.",
-    "El cost de les fonamentacions.",
-    "La capacitat de transmissió elèctrica.",
-    "La tecnologia dels aerogeneradors.",
+    "Segons les disposicions mínimes de seguretat i salut en les obres de construcció. Els treballadors sempre han de tenir vestuaris?",
+    "Sí.",
+    "Només si han de dur roba de treball especial.",
+    "Només si han d'anar vestits.",
+    "Només en condicions de baixa salubritat.",
     ],
     [
-    "Quin és el principal avantatge dels parcs eòlics marins respecte als terrestres?",
-    "Menor cost d'instal·lació.",
-    "Major generació d'energia gràcies a vents més constants.",
-    "Major proximitat als centres urbans.",
-    "Menor impacte ambiental.",
+    "Segons el RD 661/2007 a partir de quina potencia a les instal·lacions incloses en l'article 30.5 de la llei 54/1997 se'ls determina una prima que complementa el règim retributiu?",
+    "10 kW",
+    "10 MW",
+    "50 mw",
+    "50 MW.",
     ],
     [
-    "Quin tipus de fonamentació s'utilitza freqüentment en aigües profundes per als aerogeneradors marins?",
-    "Fonamentació flotant.",
-    "Fonamentació tripilot.",
-    "Fonamentació monopilot.",
-    "Fonamentació per gravetat.",
+    "Segons la normativa vigent sobre la llei d'impacte ambiental, un estudi d'impacte ambiental ha de ...",
+    "Fer una avaluació dels efectes previsibles directes o indirectes del projecte sobre la població, la flora, la fauna, el sòl, l'aire, l'aigua, els factors climàtics, el paisatge i els béns materials, inclòs el patrimoni històric artístic i l'arqueològic. Així mateix, es tindrà en compte la interacció entre tots aquests factors.",
+    "El RDL 1/2008 està derogat, segons la llei que el substitueix ha de fer-se una avaluació i, si escau, una quantificació dels efectes previsibles directes o indirectes, acumulatius i sinèrgics del projecte sobre la població, la salut humana, la flora, la fauna, la biodiversitat, la geodiversitat, el sòl, el subsol, l'aire, l'aigua, els factors climàtics, el canvi climàtic, el paisatge, els béns materials, inclòs el patrimoni cultural, i la interacció entre tots els factors esmentats, durant les fases d'execució, explotació i, si escau, durant la demolició o l'abandonament del projecte.",
+    "Està derogat i, per tant, ja no és necessari fer un estudi d'impacte ambiental.",
+    "Està derogat, però com que no existeix cap normativa que els substitueixi encara segueix vigent.",
     ],
     [
-    "Quin tipus de vaixell és utilitzat per al muntatge dels aerogeneradors en els parcs marins?",
-    "Vaixells de transport i muntatge industrial.",
-    "Vaixells Jack-up.",
-    "Plataformes submergibles.",
-    "Vaixells de càrrega amb remolc.",
+    "Quan va ser derogat el Reial decret 1028/2007,",
+    "Al 2024",
+    "Al 2020",
+    "Al 2018",
+    "Al 2017",
     ],
     [
-    "Quants MW i aerogeneradors tenia el primer parc marí a Dinamarca?",
-    "4,95 MW i 11 aerogeneradors",
-    "5,35 kW i 11 aerogeneradors.",
-    "4,95 MW i 101 aerogeneradors.",
-    "5,35 kW i 101 aerogeneradors.",
+    "L'enllaç al pdf (document amb validesa legal) de la Directiva 2009/28/CE a la web del BOE acaba en...",
+    "00062.pdf",
+    "76213.pdf",
+    "00002.pdf",
+    "200928.pdf",
     ],
     [
-    "La infraestructura d'evacuació consta de...",
-    "Subestació offshore, subestació onshore, xarxa marina AT, xarxa subterrània AT.",
-    "Subestació offshore, xarxa marina AT, xarxa subterrània AT.",
-    "Subestació offshore, subestació onshore, xarxa subterrània AT.",
-    "Subestació offshore, subestació onshore, xarxa marina AT.",
-    ],
-    [
-    "La batimetria és...",
-    "L'estudi de les profunditats i el relleu del fons marí.",
-    "L'estudi del potencial del fons marí per suportar una cimentació d'un aerogenerador.",
-    "L'estudi de la pressió batimètrica (és a dir, que depèn de la concentració de sals dissoltes) en un entorn marí.",
-    "L'estudi de l'onatge, les marees i la salinitat d'un entorn marí proper a la costa (deriva del llatí _batis_ que significa costa).",
-    ],
-    [
-    "Quin percentatge d'augment en el potencial eòlic es pot obtenir del mar en comparació a terra?",
-    "Un 25 % més.",
-    "Un 50 % més.",
-    "Un 100 % més.",
-    "un 5 % més.",
-    ],
-    [
-    "Què permet utilitzar torres de menor alçària en parc eòlics marins?",
-    "Menor impacte visual",
-    "Major potencial eòlic a cotes baixes.",
-    "L'afirmació és falsa, les torres als parcs eòlics marins han de ser considerablement més altes a causa de la presència d'onatge que pot fer malbé les pales.",
-    "Major estabilitat del fons marí en comparació a terrenys sotmesos a l'erosió.",
-    ],
-    [
-    "Quin és un dels objectius futurs per als parcs eòlics marins?",
-    "Utilitzar materials transparents (o translúcids) per a disminuir l'impacte visual, ja que la tecnologia de cimentacions flotants encara no està desenvolupada.",
-    "Dissenyar turbines més petites per reduir costos.",
-    "Limitar l’expansió a zones de menys de 5 km de la costa.",
-    "Construir turbines amb capacitat de 10-20 MW.",
-    ],
-    [
-    "Quan es va construir el primer parc eòlic marí?",
-    "1991",
-    "2001",
-    "2011",
-    "2021",
-    ],
-    [
-    "Quina és una de les limitacions més importants en els parcs eòlics marins?",
-    "La logística de trasllat i muntatge de peces grans.",
-    "La manca de normatives específiques.",
-    "La velocitat del vent.",
-    "La complexitat del cablejat.",
-    ],
-    [
-    "Quina és la profunditat òptima màxima per a la instal·lació de parcs marins?",
-    "5 km",
-    "10 m",
-    "40 m",
-    "≥ 50 m",
-    ],
-    [
-    "Quin tipus de cimentació és aquesta?\n\n![](img/cimentacio.png)",
-    "Gravetat.",
-    "Jacked.",
-    "Monopilot.",
-    "Micropilot.",
-    ],
-    [
-    "Quin és un dels principals problemes de les cimentacions metàl·liques tubulars de tipus trípode?",
-    "L'oxidació metàl·lica que pateixen als 10 anys.",
-    "L'elevat manteniment per a evitar l'oxidació, que requereix principalment equips de busseig per a pintar l'estructura.",
-    "La seva sensibilitat a incendis.",
-    "Els xocs amb els vaixells.",
+    "Segons la normativa de senyalització de SyS industrial, quina senyal prohibeix encendre foc?",
+    '<img src="img/senyal-a.png"',
+    '<img src="img/senyal-b.png"',
+    '<img src="img/senyal-c.png"',
+    '<img src="img/senyal-d.png"',
     ],
 ];
 
