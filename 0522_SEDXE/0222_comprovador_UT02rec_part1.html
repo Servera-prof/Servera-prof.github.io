@@ -1,0 +1,672 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <meta charset="UTF-8">
+</head>
+
+<script>
+    window.texme = {
+        renderOnLoad: false,
+        style: 'none',
+        markdownURL: 'js/marked/marked.min.js',
+        MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+    }
+    const titol = "Comprovador recuperació UT02 - part 1"; // MODIFICAR
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+Introdueix aquí la teva permutació: <br/>
+[[i1]]
+
+Introdueix aquí la teva resposta: <br/>
+[[i2]]
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+
+const puntuacions = ["",
+];
+
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+let txtav = "";
+let pts = 0;
+let ptsTotals = 0;
+
+const preguntes = [
+    [
+     "La normativa urbanística em diu que he de reasfaltar el carril sencer per a rases longitudinals. Si faig un encreuament (transversal) de carrer, edistribución em diu que la rasa ha de tenir un ample de 40 cm amb, però la demolició del paviment ha de tenir 10 cm extres a l'ample de la rasa i el reglament em diu que la rasa ha de ser de 40 cm. Si l'encreuament mesura 6 m quants de metres quadrats hauré de reasfaltar?",
+     "2,4 m²",
+     "3 m²",
+     "18 m²",
+     "1,8 m²",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Segons la NRZ002, en general es poden fer derivacions (T) subterrànies?",
+     "No, en general les derivacions de les XSBT es fan a CDU o a armaris de derivació",
+     "Sí.",
+     "Només es permet utilitzant petaques subterrànies.",
+     "Només a Petra",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Quin tipus d'esforç es fa als suports de final de línia",
+     "Longitudinal i transversal",
+     "Vertical i longitudinal",
+     "Longitudinal, transversal i vertical",
+     "Longitudinal, transversal, tensional i vertical.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Quin és el radi de curvatura d'un conductor «Al Voltalene Flamex CPRO (S) | AL XZ1 (S) | Eca» de 150 mm² segons la seva fitxa tècnica?\n\n![](img/Prysmian_RZ1-Al_UNE_605-X.png)",
+     "9,65 cm",
+     "19,3 cm",
+     "17 mm",
+     "87 mm",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Si un conductor té un radi de curvatura mínim d'1 m, pot fer la corba a una arqueta de 0,7 x 2 m",
+     "Sí.",
+     "No.",
+     "Depen de la profunditat de l'arqueta.",
+     "Depen de la secció del conductor.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+
+
+
+
+     [
+     "Hi poden haver altres serveis a les galeries elèctriques visitables, a part dels cables elèctrics?",
+     "No, només es pot si no és una galeria elèctrica sinó una galeria de serveis urbans.",
+     "Sí, de telecomunicacions i d'aigua sempre que aquestes vagin per sota i hi hagi un desguàs.",
+     "Sí, de telecomunicacions, d'aigua sempre que aquestes vagin per sota i hi hagi un desguàs i de gas sempre que l'aire es renovi 6 vegades i la temperatura no sobrepassi els 40 °C.",
+     "Sí, només de telecomunicacions.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Si instal·lem un cable aïllat a una xarxa aèria, llavors podem assegurar que ...",
+     "... a xarxa no pot ser aèria.",
+     "... la xarxa aèria és tensada.",
+     "... el neutre es d'almelec.",
+     "... la xarxa aèria és aïllada.",
+     "... marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "A una línia tibada sobre suports a on es poden fer els empalmaments i derivacions?",
+     "Lluny del suport, ja que és la zona on els cables estan sotmesos a una major tracció.",
+     "A prop del suport, ja que és la zona on els cables no estan sotmesos a tracció.",
+     "A prop del suport, ja que és la zona on els cables estan sotmesos a una major tracció.",
+     "Lluny del suport, ja que és la zona on els cables no estan sotmesos a tracció",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "A quin tipus de xarxa el cable pot conduir més corrent?",
+     "Entubades i formigonades.",
+     "Directament enterrades.",
+     "Entubades.",
+     "Entubades amb cable nu.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Quina afirmació és certa?",
+     "Les xarxes aèries els hi afecten més els llamps, ja que el terra transmet més l'electricitat que l'aire.",
+     "Les xarxes soterrades tenen major impacte visual",
+     "Les xarxes aèries actualment són obligatories a zones pot poblades, com foravila, ja que requereixen menys inversió.",
+     "Les xarxes torerrades, es solen fer de coure ja que el robatori del conductor és molt més complicat al estar enterrades.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+
+
+
+
+     [
+     "Què vol dir CDU?",
+     "Caja de Distribucion para Urbanizaciones",
+     "Centro de Datos Unificado",
+     "Conductor para Derivaciones Unipolares.",
+     "Coaxial Derivative Unit",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Quan la intensitat que ha de circular per una XSBT és superior a la màxima admissible pel conductor de més secció disponible (suposarem 240 mm²)?",
+     "Es poden posar més conductors de la mateixa secció.",
+     "La xarxa no es pot realitzar i s'ha de repartir la potència a més d'una xarxa.",
+     "Es poden posar més conductors de la mateixa secció a la fase més carregada.",
+     "Es poden posar més conductors de la secció necessària per a absorbir l'excés de corrent. Per exemple associar un 240 mm² amb un 25 mm².",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Segons la teva experiència quin tipus de CAS és més comú a Inca?\n\n![250](img/CAS_tub.png)&nbsp;&nbsp;&nbsp;![250](img/CAS_Canal.png)",
+     "La primera.",
+     "Ambdues.",
+     "El percentatge és similar, però un poc més la primera.",
+     "La segona.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Quin d'aquests suports segons la teva experiència, és el més comú a Inca?\n\n![](img/abraçadores.png)",
+     "Senzill",
+     "Doble",
+     "Sintètic",
+     "D'embrancament",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Quan es fa l'estesa del cablejat...",
+     "Si s'estira amb medis mecànics s'ha d'utilitzar un dinamòmetre per a evitar que el cable pateixi.",
+     "S'han de col·locar elements que permetin que el cable llisqui per damunt d'ells.",
+     "El radi de curvatura ha de ser igual o més gran que el recomanat pel fabricant.",
+     "Hi ha tres respostes correctes. Quatre si s'inclou aquesta.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+];
+
+const solucions_test = [
+    2, 1, 3, 1, 2,
+    2, 5, 2, 2, 5,
+    1, 1, 1, 3, 4
+];
+const opcions_test = [1, 2, 3, 4, 5];
+
+let permutacio = "";
+const num_preg = solucions_test.length;
+const num_resp = opcions_test.length;
+ptsTotals = num_preg;
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+
+function estableixParametres(){
+    array = [/* p01, p02, p03, p04, p05 */]; // actualitzar entre []
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+    const permutacio = respostes [0];
+
+    const permpreg = permutacio.split("_")[0];
+    const permresp = permutacio.split("_")[1].split(".");
+    const respostes_alumne = respostes [1].split("");
+
+    const preg_ordenades = obtenirPermutacio(preguntes, permpreg);
+    const sol_ordenades = obtenirPermutacio(solucions_test, permpreg);
+
+
+    for (let i = 0; i < num_preg; i++){
+        preg = preg_ordenades[i][0];
+
+
+        let resp =
+         obtenirPermutacio(preg_ordenades[i].slice(1), permresp[i]);
+
+        let pr = permresp[i];
+        let opcions_permutades = obtenirPermutacio(opcions_test, pr);
+
+
+        let st = sol_ordenades[i];
+        let opcio_correcta = opcions_permutades.indexOf(st) + 1;
+        let opcio_marcada = lletraANombre(respostes_alumne[i]);
+        let color = "black";
+        let marcador = "";
+
+        if (opcio_correcta === 0) {
+            ptsTotals -= 1;
+            color = "gray";
+            txtav += '\n\n<div>\n'+
+             '<p><b>' + (i+1) + '.</b> ' + preg + '</p>' +
+             '<img src="img/anul·lada.png" alt="segell"/>\n' +
+             '<div class="bgtxt">\n'
+        }else{
+            txtav += "<p><b>" + (i+1) + '.</b> ' + preg + '</p>';
+        }
+        txtav += '<ol style="list-style-type: none;">\n';
+
+
+        for (let j = 0; j < num_resp; j++){
+            a = j + 1;
+            if (opcio_correcta === 0){
+                color = "gray";
+            } else if (a === opcio_correcta && a === opcio_marcada){
+                color = "green";
+                marcador = "⇦";
+                pts += 1;
+            } else if (a === opcio_correcta && a != opcio_marcada){
+                marcador = "⇦";
+            } else if (a != opcio_correcta && a === opcio_marcada){
+                color = "red";
+                pts -= 1/(num_resp-1);
+            } else if (a != opcio_correcta && a != opcio_marcada){
+            }
+            txtav += '<li class="preg"><span style="color: ' +
+             color + ';"><i>' + nombreALletra(j+1) + '</i>) </span><span style="flex: 1; color: ' + color + ';">' +
+             resp[j] + marcador + "</span></li>"
+            color = "black";
+            marcador = "";
+        } // fi for respostes
+        if (opcio_correcta === 0) {
+            txtav += '</div>\n</div></ol><br/>\n\n'
+        }else{
+            txtav += "</ol>\n";
+        }
+    } // fi for preguntes
+} //fi calcula();
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS Técnic Superior en Energies Renovables",
+    anys: "2024/2025"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres();
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = l(parametres[i]);
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    patro = "[[i1]]";
+    canvi = '<input type="text" onwheel="return false;" ';
+    canvi += 'id="i1" style="width: 300px">';
+    txt = txt.replace(patro, canvi);
+    patro = "[[i2]]";
+    canvi = '<input type="text" onwheel="return false;" ';
+    canvi += 'id="i2" style="width: 300px">';
+    txt = txt.replace(patro, canvi);
+    /*for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }*/
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    respostes[0] = document.getElementById("i1").value;
+    respostes[1] = document.getElementById("i2").value;
+    alumne.nom = document.getElementById("nom").value;
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+
+    "> [[nota]]"
+    ].join("\n") + "\n\n\n";
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+
+    console.log(txt);
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt += txtav;
+
+    let ptsAlumne = pts;
+    let canvi = "", patro = "";
+
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotals, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotals*10, 2) + "**");
+
+    /*
+    let ptsAlumne = 0, ptsTotal = 0;
+    let canvi = "", patro = "";
+    let a = 0, b = 0;
+    for (let i = 1; i < puntuacions.length; i++){
+        a = respostes[i];
+        b = solucions[i];
+        ptsTotal += puntuacions[i];
+        canvi =
+            '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">'
+            + coma(a) + '</span>';
+        if ((b*0.99) < a && a < (b*1.01)) {
+            ptsAlumne += puntuacions[i];
+            canvi +=
+                ' <span style="color: green">(' +
+                coma(b) +') OK (+' + puntuacions[i] + ')</span>';
+        }else{
+            canvi +=
+                ' <span style="color: red;"> (' +
+                coma(b) +')</span>';
+        }
+        patro = "[[i" + i + "]]";
+
+        txt = txt.replace(patro, canvi);
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    */
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function ln(a){
+    return Math.log(a);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar (φ en graus)
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a){  // log abreviat a l totsol
+    if (!a.toPrecision) return a;
+    return coma(xs(a));
+}
+
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return Number(a);
+}
+
+function coma(a){
+    a = a + "";
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+function lletraANombre(lletra){
+    return lletra.toLowerCase().charCodeAt(0) - 96;
+}
+
+</script>
