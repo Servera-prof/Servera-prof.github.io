@@ -14,8 +14,10 @@
         markdownURL: 'js/marked/marked.min.js',
         MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
     }
-    const titol = "Comprovador recuperació UT02 - part 1"; // MODIFICAR
+
+    const titol = "Comprovador recuperació UT02 - part 2"; // MODIFICAR
 </script>
+
 <script src="js/texme/texme.js"></script>
 
 <!-- FI NO TOCAR ================================================== -->
@@ -60,142 +62,88 @@ let pts = 0;
 let ptsTotals = 0;
 
 const preguntes = [
-    [
-     "La normativa urbanística em diu que he de reasfaltar el carril sencer per a rases longitudinals. Si faig un encreuament (transversal) de carrer, edistribución em diu que la rasa ha de tenir un ample de 40 cm amb, però la demolició del paviment ha de tenir 10 cm extres a l'ample de la rasa i el reglament em diu que la rasa ha de ser de 40 cm. Si l'encreuament mesura 6 m quants de metres quadrats hauré de reasfaltar?",
-     "2,4 m²",
-     "3 m²",
-     "18 m²",
-     "1,8 m²",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
-     [
-     "Segons la NRZ002, en general es poden fer derivacions (T) subterrànies?",
-     "No, en general les derivacions de les XSBT es fan a CDU o a armaris de derivació",
-     "Sí.",
-     "Només es permet utilitzant petaques subterrànies.",
-     "Només a Petra",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
-     [
-     "Quin tipus d'esforç es fa als suports de final de línia",
-     "Longitudinal i transversal",
-     "Vertical i longitudinal",
-     "Longitudinal, transversal i vertical",
-     "Longitudinal, transversal, tensional i vertical.",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
-     [
-     "Quin és el radi de curvatura d'un conductor «Al Voltalene Flamex CPRO (S) | AL XZ1 (S) | Eca» de 150 mm² segons la seva fitxa tècnica?\n\n![](img/Prysmian_RZ1-Al_UNE_605-X.png)",
-     "9,65 cm",
-     "19,3 cm",
-     "17 mm",
-     "87 mm",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
-     [
-     "Si un conductor té un radi de curvatura mínim d'1 m, pot fer la corba a una arqueta de 0,7 x 2 m",
-     "Sí.",
-     "No.",
-     "Depen de la profunditat de l'arqueta.",
-     "Depen de la secció del conductor.",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
+
+        [
+        "Quantes pinces i petaques necessitaré per a fer una derivació a un suport de gelosia?",
+        "3 i 4 respectivament.",
+        "3 i 12 respectivament.",
+        "3 i 3 respectivament.",
+        "El neutre NO es pot seccionar.",
+        ],
+        [
+        "Quants de metres cúbics de terra compactada necessito per a 10 m de rasa a vorera (_acera_ en castellà)?",
+        "3 m³",
+        "2,4 m³",
+        "2,1 m³",
+        "0,5 m³",
+        ],
+        [
+        "Quin ample té una arqueta oculta tipus A1",
+        "90 cm",
+        "0,9 cm",
+        "210 cm",
+        "2,1 cm",
+        ],
+        [
+        "Quin ordre té l'execució d'un «empalme punzonamiento profundo»",
+        "4, 3, 2, 1, 5, 6, 7, 8",
+        "1, 2, 4, 3",
+        "1, 3, 2, 4",
+        "1, 3, 5, 7, 2, 4, 6, 8",
+        ],
+        [
+        "Com s'han de transportar les bobines de les XSBT?",
+        "Dret, perquè el cable no pateixi.",
+        "Tombada, per a evitar que rodi.",
+        "Suspesa mitjançant una barra d'acer.",
+        "Marca aquesta si no pots marcar cap de les altres.",
+        ],
 
 
 
 
-     [
-     "Hi poden haver altres serveis a les galeries elèctriques visitables, a part dels cables elèctrics?",
-     "No, només es pot si no és una galeria elèctrica sinó una galeria de serveis urbans.",
-     "Sí, de telecomunicacions i d'aigua sempre que aquestes vagin per sota i hi hagi un desguàs.",
-     "Sí, de telecomunicacions, d'aigua sempre que aquestes vagin per sota i hi hagi un desguàs i de gas sempre que l'aire es renovi 6 vegades i la temperatura no sobrepassi els 40 °C.",
-     "Sí, només de telecomunicacions.",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
-     [
-     "Si instal·lem un cable aïllat a una xarxa aèria, llavors podem assegurar que ...",
-     "... a xarxa no pot ser aèria.",
-     "... la xarxa aèria és tensada.",
-     "... el neutre es d'almelec.",
-     "... la xarxa aèria és aïllada.",
-     "... marca aquesta si no pots marcar cap de les altres."
-     ],
-     [
-     "A una línia tibada sobre suports a on es poden fer els empalmaments i derivacions?",
-     "Lluny del suport, ja que és la zona on els cables estan sotmesos a una major tracció.",
-     "A prop del suport, ja que és la zona on els cables no estan sotmesos a tracció.",
-     "A prop del suport, ja que és la zona on els cables estan sotmesos a una major tracció.",
-     "Lluny del suport, ja que és la zona on els cables no estan sotmesos a tracció",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
-     [
-     "A quin tipus de xarxa el cable pot conduir més corrent?",
-     "Entubades i formigonades.",
-     "Directament enterrades.",
-     "Entubades.",
-     "Entubades amb cable nu.",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
-     [
-     "Quina afirmació és certa?",
-     "Les xarxes aèries els hi afecten més els llamps, ja que el terra transmet més l'electricitat que l'aire.",
-     "Les xarxes soterrades tenen major impacte visual",
-     "Les xarxes aèries actualment són obligatories a zones pot poblades, com foravila, ja que requereixen menys inversió.",
-     "Les xarxes torerrades, es solen fer de coure ja que el robatori del conductor és molt més complicat al estar enterrades.",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
-
-
-
-
-     [
-     "Què vol dir CDU?",
-     "Caja de Distribucion para Urbanizaciones",
-     "Centro de Datos Unificado",
-     "Conductor para Derivaciones Unipolares.",
-     "Coaxial Derivative Unit",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
-     [
-     "Quan la intensitat que ha de circular per una XSBT és superior a la màxima admissible pel conductor de més secció disponible (suposarem 240 mm²)?",
-     "Es poden posar més conductors de la mateixa secció.",
-     "La xarxa no es pot realitzar i s'ha de repartir la potència a més d'una xarxa.",
-     "Es poden posar més conductors de la mateixa secció a la fase més carregada.",
-     "Es poden posar més conductors de la secció necessària per a absorbir l'excés de corrent. Per exemple associar un 240 mm² amb un 25 mm².",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
-     [
-     "Segons la teva experiència quin tipus de CAS és més comú a Inca?\n\n![250](img/CAS_tub.png)&nbsp;&nbsp;&nbsp;![250](img/CAS_Canal.png)",
-     "La primera.",
-     "Ambdues.",
-     "El percentatge és similar, però un poc més la primera.",
-     "La segona.",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
-     [
-     "Quin d'aquests suports segons la teva experiència, és el més comú a Inca?\n\n![](img/abraçadores.png)",
-     "Senzill",
-     "Doble",
-     "Sintètic",
-     "D'embrancament",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
-     [
-     "Quan es fa l'estesa del cablejat...",
-     "Si s'estira amb medis mecànics s'ha d'utilitzar un dinamòmetre per a evitar que el cable pateixi.",
-     "S'han de col·locar elements que permetin que el cable llisqui per damunt d'ells.",
-     "El radi de curvatura ha de ser igual o més gran que el recomanat pel fabricant.",
-     "Hi ha tres respostes correctes. Quatre si s'inclou aquesta.",
-     "Marca aquesta si no pots marcar cap de les altres."
-     ],
+        [
+        "Per una cimentació <b>no armada</b> per a XABT quin tipus de formigó he d'utilitzar?",
+        "HM-20",
+        "HA-25",
+        "P-350",
+        "HA-30",
+        ],
+        [
+        "**En general** segons REBT a quina distància ha de tenir una XSBT respecte a un cable de telecos de fibra òptica a un encreuament?",
+        "20 cm",
+        "1 m",
+        "No cal mantenir distància si les cobertes són dielèctriques i aïllant.",
+        "Marca aquesta si no pots marcar cap de les altres.",
+        ],
+        [
+        "Quines consideracions he de tenir en compte per al càlcul de XABT segons REBT?",
+        "Càrregues permanents, sobrecàrregues per vent, sobrecàrregues per gel.",
+        "Càrregues permanents, sobrecàrregues per vent, sobrecàrregues per gel, càrregues per ocells.",
+        "Càrregues permanents, sobrecàrregues per gel, carregues per ocells.",
+        "Càrregues permanents, sobrecàrregues per vent, sobrecàrregues per gel, càrregues per ocells, sobrecàrregues per vandalisme.",
+        ],
+        [
+        "Segons l'REBT s'han de posar a terra els neutres?",
+        "Només a les XSBT.",
+        "Només a les XABT.",
+        "Sí.",
+        "No.",
+        ],
+        [
+        "Quant de temps ha d'haver passat després del formigonatge dels suports?",
+        "7 dies, tot i que 28 és l'òptim.",
+        "11 dies.",
+        "11 dies, tot i que 28 és l'òptim.",
+        "Marca aquesta si no pots marcar cap de les altres.",
+        ],
 ];
 
 const solucions_test = [
-    2, 1, 3, 1, 2,
-    2, 5, 2, 2, 5,
-    1, 1, 1, 3, 4
+    1, 3, 1, 2, 1,
+    1, 3, 1, 3, 1
 ];
-const opcions_test = [1, 2, 3, 4, 5];
+const opcions_test = [1, 2, 3, 4];
 
 let permutacio = "";
 const num_preg = solucions_test.length;
@@ -301,7 +249,7 @@ let solucions = [""];   // els valors que ha donat el programa.
 let respostes = [""];   // els valors que ha donat l'alumne.
 let alumne = {
     nom: "",
-    cicle: "CFGS Técnic Superior en Energies Renovables",
+    cicle: "CFGS Tècnic superior en sistemes electrotècnics i automàtics",
     anys: "2024/2025"
 }
 let tlog = "";          // log que apareix al final de l'avaluació.
