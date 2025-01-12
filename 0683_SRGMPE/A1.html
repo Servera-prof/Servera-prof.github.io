@@ -1,0 +1,429 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <style>
+
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: left;
+        text-justify: inter-word;
+
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+
+
+## 1. Context normatiu
+
+La legislació aplicable en aquest àmbit és el RAT <sup>[1]</sup> i
+el LAT <sup>[2]</sup> i les seves respectives ITC.
+A més per al cas que es tractarà aquí s'ha seguit un document de
+reconegut prestigi com són les guies tècniques de la
+ITC-LAT 05 <sup>[3]</sup> i la guia tècnica de la ITC-RAT-23.
+
+Segons la guia tècnica de la ITC-RAT-23 <sup>[4]</sup> (verificacions
+i inspeccions):
+
+> S'haurà de mesurar el valor de la resistència de connexió a terra de
+> la instal·lació.
+> La mesura de la resistència de connexió a terra d'una instal·lació
+> es realitza desconnectant de la instal·lació de posada de terra
+> qualsevol altre element connectat a terra.
+> Per a vigilar la seva evolució en les comprovacions periòdiques es pot
+> prendre com a referència el valor de resistència de connexió a terra
+> del projecte o un altre valor la idoneïtat del qual s'hagi demostrat
+> mitjançant mesuraments de tensions de pas i contacte.
+>
+> En centres de transformació es mesuraran tant la connexió a terra
+> general del centre com la connexió a terra del neutre.
+>
+> Les mesures de resistència de connexió a terra d'instal·lacions de
+> gran extensió, com ara subestacions poden realitzar-se pel mètode
+> d'injecció d'alt corrent. La norma UNE-EN 50522 inclou un resum de
+> tècniques de mesura de resistència de connexió a terra.
+
+Novament, segons la mateixa guia:
+
+> Per a les verificacions o inspeccions de centres de transformació,
+> el titular de la qual no sigui una entitat de transport i
+> distribució, i per a centres de transformació pertanyents a les
+> instal·lacions elèctriques de producció d'energia elèctrica
+> d'origen eòlic o solar de potència menor de 100 MVA, resulta
+> d'aplicació  la norma següent:
+>
+> UNE 192014-1:2023. Procediment per a la inspecció reglamentària
+> d'instal·lacions elèctriques d'alta tensió que no siguin propietat
+> d'entitats de transport i distribució d'energia elèctrica.
+> Part 1: Centres de transformació i els seus annexos tècnics.
+
+A l'UNE 192014-1:2023 <sup>[5]</sup> es pot comprovar que una de
+les proves a realitzar és efectivament la mesura de la resistència
+a terra.
+
+
+
+
+
+
+## 2. Elecció de mètode de mesura a terra.
+
+De les diferents mesures que prescriu l'UNE 50522 <sup>[6]</sup>
+de posada a terra la més adient per a les terres dels
+transformadors dels aerogeneradors és la del tel·luròmetre i pinça.
+Aquest mètode es pot aplicar en instal·lacions en les quals les
+pantalles dels conductors estiguin posades a terra a cada transformador.
+
+En cas contrari, quan les pantalles no estan connectades a terra a
+cada centre o bé es decideix fer la mesura amb el pont seccionador
+desconnectat, serà suficient amb un tel·luròmetre.
+Però s'hauran de fer moltes més mesures i es requereix dedicar més
+temps a portar a terme cada una d'elles.
+
+Finalment, si la instal·lació de terres és de gran extensió com és
+el cas de la mesura de terres a les subestacions llavors s'ha
+d'utilitzar a més el mètode d'injecció d'alt corrent.
+
+
+
+
+
+
+
+
+## 3. Execució de la mesura de terra amb el mètode de pinça amperimètrica i tel·luròmetre.
+
+### 3.1. Part 1 de 2. Tel·luròmetre
+
+Es desprèn de la jornada tècnica feta per J. Moreno del
+COGITI <sup>[7]</sup> i de l'UNE 50522 <sup>[6]</sup> la
+següent metodologia.
+
+S'haurà de disposar el tel·luròmetre connectant una de les entrades a la
+connexió de terres. Habitualment al pont de terres estant el pont
+**connectat**.
+El terminal de tensió es connecta a la pica de tensió a una distància
+de 0,6 vegades el diàmetre equivalent de la superfície a mesurar,
+i com a mínim a 20 m.
+El terminal de corrent es connecta a la pica de corrent a una distància
+de 5 vegades el diàmetre equivalent i 40 m com a mínim i alineada amb
+la primera piqueta i la terra.
+
+Respectar aquestes distàncies és essencial si la mesura del
+tel·luròmetre fos l'única que es fa (que s'hauria de fer llavors amb
+el pont desconnectat). En el cas de centres interconnectats no és
+estrictament necessari.
+
+> ![c500](img/mesura_terra_tel·luròmetre.png)
+> **Fig. 1**.
+> COGITI (2022).
+> _Mètode de la pinça amperimètrica i el tel·luròmetre, mesura amb el
+> tel·luròmetre_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+Això vol dir que si la malla de terres mesura 6 x 4 m, la superfície
+serà de 24 m² i el diàmetre equivalent 5,528 m.
+Es calcula com:
+
+$$
+S = \pi \cdot r^2 = \pi \cdot \left ( \dfrac {D}  {2} \right ) ^ 2
+= \pi \cdot \dfrac {D^2}{4} \rightarrow D
+= \sqrt{\dfrac {4 \cdot S}{\pi}}
+= \dfrac {4 \cdot 24}{\pi}
+= 5{,}528~m
+$$
+
+Per tant, les piquetes estarien en aquest exemple a 20 i 40 metres
+respectivament.
+Es fa la mesura i s'obté la resistència a terra global ($R_G$).
+Aquesta terra global és la suma en paral·lel de totes les terres
+interconnectades la del centre ($R_C$) i la resta de terres ($R_P$).
+És a dir:
+
+$$
+R_G = \dfrac {R_C \cdot R_P}{R_C + R_P}
+$$
+
+Aquesta mesura serveix per a tots els aerogeneradors del parc eòlic.
+**No és necessari fer-la de nou.** Ja que sempre s'obtindrien
+valors similars.
+
+
+
+
+### 3.2. Part 2 de 2. Pinça amperimètrica
+
+A continuació es farà la mesura amb la pinça amperimètrica per a
+mesures de terra,
+aquesta pinça té dos transformadors, un d'intensitat i un de tensió.
+
+Per a fer aquesta mesura se situa la pinça al voltant d'un conductor
+connectat directament a terra, com el conductor que fa de pont
+seccionador.
+És a dir, no pot haver-hi bifurcacions aigües avall que no acabin a
+l'elèctrode de terra<sup>[8]</sup> i, per altra banda, el cable sobre el qual es
+mesura no pot ser una branca cap a terra, per aquest conductor hi ha de
+circular la mateixa intensitat que circularia pel pont seccionador.
+Aigües amunt el pont de terres ha d'estar connectat, així com les
+pantalles dels conductors.<sup>[9]</sup>
+
+> ![c500](img/mesura_terra_bucle.png)
+> **Fig. 2**.
+> COGITI (2022).
+> _Mètode de la pinça amperimètrica i el tel·luròmetre, mesura amb la
+> pinça_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+El transformador de tensió indueix una fem que va cap al
+terreny, del terreny passa de nou a la instal·lació a través
+de les altres instal·lacions de terra interconnectades a través de
+les pantalles i torna a on està la pinça que mesura la intensitat.
+Sabent la intensitat i la tensió la pinça calcula la resistència
+de bucle ($R_B$), que és la suma en sèrie de la resistència del
+centre i la resistència en paral·lel de la resta de terres.
+És a dir:
+
+$$
+R_B = R_C + R_P
+$$
+
+Amb ambdues dades es pot trobar la resistència del centre com:
+
+$$
+R_C = R_B \cdot \left ( \dfrac{1}{2}+\sqrt{\dfrac{1}{4}-\dfrac{R_G}{R_B}}\right )
+$$
+
+Ara bé, com que la resistència global és molt més petita que la de
+bucle:
+
+$$
+R_C \approx R_B
+$$
+
+La mesura de bucle **s'ha de fer per a tots els aerogeneradors**.
+Ja que depèn fortament de la terra local, que és precisament la que es
+vol mesurar.
+
+# Bibliografia
+
+<ol style="list-style-type: none;">
+<li class="preg"><span>
+    [1]
+</span><span style="flex: 1;">
+Ministerio de Industria, Energía y Turismo
+Real Decreto 337/2014, de 9 de mayo, por el que se aprueba el
+Reglamento sobre condiciones técnicas y garantías de seguridad en
+instalaciones eléctricas de alta tensión y sus instrucciones técnicas
+complementarias ITC-RAT 01 a 23,
+<i>
+    Boletín Oficial del Estado, núm. 139, de 9 de junio de 2014,
+    páginas 43598 a 43728
+</i>.
+Accedit el 10 de gener de 2025. [En línia].
+Disponible:
+<a href="https://www.boe.es/eli/es/rd/2014/05/09/337">
+         https://www.boe.es/eli/es/rd/2014/05/09/337
+</a>
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [2]
+</span><span style="flex: 1;">
+Ministerio de Industria, Turismo y Comercio
+«Real Decreto 223/2008, de 15 de febrero, por el que se aprueban
+el Reglamento sobre condiciones técnicas y garantías de
+seguridad en líneas eléctricas de alta tensión y sus instrucciones
+técnicas complementarias ITC-LAT 01 a 09.»
+<i>
+    Boletín Oficial del Estado, núm. 68, de 19 de marzo de 2008,
+    páginas 16436 a 16554
+</i>.
+Accedit el 10 de gener de 2025. [En línia]. Disponible:
+<a href="https://www.boe.es/eli/es/rd/2008/02/15/223">
+         https://www.boe.es/eli/es/rd/2008/02/15/223
+</a>
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [3]
+</span><span style="flex: 1;">
+Ministerio de Industria, Turismo y Comercio (2022, novembre)
+«Guía de la Instrucción Técnica Complementaria ITC - LAT 05
+Verificaciones e inspecciones»
+<i>
+    industria.gob.es
+</i>.
+[En línia]. Disponible:
+<a href="https://industria.gob.es/Calidad-Industrial/seguridadindustrial/instalacionesindustriales/lineas-alta-tension/Documents/GUIA%20ITC%20LAT%2005%20act%20-%20112-21-32-1.pdf">
+         https://industria.gob.es/Calidad-Industrial/seguridadindustrial/instalacionesindustriales/lineas-alta-tension/Documents/GUIA%20ITC%20LAT%2005%20act%20-%20112-21-32-1.pdf
+</a>
+[Consulta 10 de gener de 2025]
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [4]
+</span><span style="flex: 1;">
+Ministerio de Industria y Turismo (2024, març)
+«Guía de la Instrucción Técnica Complementaria ITC - RAT 23
+Verificaciones e inspecciones»
+<i>industria.gob.es</i>.
+[En línia]. Disponible:
+<a href="https://industria.gob.es/Calidad-Industrial/seguridadindustrial/instalacionesindustriales/instalaciones-alta-tension/Documents/guia-itc-rat-23-rev-2.pdf">
+         https://industria.gob.es/Calidad-Industrial/seguridadindustrial/instalacionesindustriales/instalaciones-alta-tension/Documents/guia-itc-rat-23-rev-2.pdf
+</a>
+[Consulta 10 de gener de 2025]
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [5]
+</span><span style="flex: 1;">
+Asociación Española de Normalización (2023, 26 juliol)
+«UNE 192014-1:2023 Procedimiento para la inspección reglamentaria
+de instalaciones eléctricas de alta tensión que no sean propiedad
+de entidades de transporte y distribución de energía eléctrica.
+Parte 1: Centros de transformación y sus anexos técnicos.»
+<i>une.org</i>
+[En línia]. Disponible:
+<a href="https://www.une.org/encuentra-tu-norma/busca-tu-norma/norma?c=norma-une-192014-1-2023-n0071664">
+         https://www.une.org/encuentra-tu-norma/busca-tu-norma/norma?c=norma-une-192014-1-2023-n0071664
+</a>
+[Consulta 10 de gener de 2025]
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [6]
+</span><span style="flex: 1;">
+Asociación Española de Normalización (2012, 11 juliol)
+«UNE-EN 50522:2012 Puesta a tierra en instalaciones de tensión
+superior a 1 kV en corriente alterna.»
+<i>une.org</i>
+[En línia]. Disponible:
+<a href="https://www.une.org/encuentra-tu-norma/busca-tu-norma/norma?c=N0049660">
+         https://www.une.org/encuentra-tu-norma/busca-tu-norma/norma?c=N0049660
+</a>
+[Consulta 10 de gener de 2025]
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [7]
+</span><span style="flex: 1;">
+J. Moreno Mohíno, COGITI (2022, 3 gener)
+«Jornada de presentación de la norma UNE 192014-1:2021»
+<i>une.org</i>
+[En línia]. Disponible:
+<a href="https://cogiti.es/wp-content/uploads/2022/01/Presentacion-COGITI-Jorge.pdf">
+         https://cogiti.es/wp-content/uploads/2022/01/Presentacion-COGITI-Jorge.pdf
+</a>
+[Consulta 10 de gener de 2025]
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [8]
+</span><span style="flex: 1;">
+Sonel, (2023)
+«Medición de resistencia a tierra – caída de potencial,
+método con pinzas»
+<i>sonel.pl</i>
+[En línia]. Disponible:
+<a href="https://sonel.pl/es/centro-de-conocimiento/articulos/telurometros/medicion-de-resistencia-a-tierra-caida-de-potencial-metodo-con-pinzas/">
+         https://sonel.pl/es/centro-de-conocimiento/articulos/telurometros/medicion-de-resistencia-a-tierra-caida-de-potencial-metodo-con-pinzas/
+</a>
+[Consulta 10 de gener de 2025]
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [9]
+</span><span style="flex: 1;">
+R. Capella, (2000, novembre)
+«A3 Medida y control de la intensidad y de la tensión. TC y TT»
+en <i>
+Publicación Técnica Schneider Electric PT 004 Centros de
+transforamción MT/BT
+</i>,
+Centro de Formación Schneider, Ed., Barcelona: 2000, pp 122-138
+
+</span></li>
+</ol>
+
+
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca
+[CC4.0-by-nc-nd]: https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1
+[LPI]: https://www.boe.es/eli/es/rdlg/1996/04/12/1/con
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+const titol = "Annex I: Mesura de resistència de posada a terra als CT dels aerogeneradors"; // MODIFICAR
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>

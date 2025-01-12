@@ -1,0 +1,382 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <style>
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: left;
+        text-justify: inter-word;
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+
+
+
+## 1. Context normatiu
+
+La legislació aplicable en aquest àmbit és el RAT <sup>[1]</sup> i
+el LAT <sup>[2]</sup> i les seves respectives ITC.
+A més per al cas que es tractarà aquí s'ha seguit un document de
+reconegut prestigi com són les guies tècniques de la
+ITC-LAT 05 <sup>[3]</sup> i la guia tècnica de la ITC-RAT-23.
+
+Segons la guia tècnica de la ITC-RAT-23 <sup>[4]</sup> (verificacions
+i inspeccions):
+
+> Conforme al prescrit en l'ITC-LAT 05 del Reglament de línies
+> d'alta tensió (RD 223/2008) ha de comprovar-se l'aïllament principal
+> de les terminacions de les línies amb cables abans de la seva
+> posada en servei.
+> Per a tal fi la guia de la ITC-LAT 05 recomana la utilització d'algun
+> dels mètodes descrits en la norma UNE 211006.
+>
+> Els ponts amb cables aïllats d'alta tensió que interconnecten
+> diferents elements de la instal·lació que s'executin en obra i per
+> tant no s'hagin pogut assajar en fàbrica, hauran d'assajar-se també
+> segons un dels mètodes descrits en la norma UNE 211006 per a
+> comprovar l'estat de l'aïllament principal i de la coberta.
+>
+> Per als casos en els quals es comprovi l'aïllament principal
+> mitjançant la mesura de descàrregues parcials a la tensió de xarxa
+> durant 24 hores, aquest assaig podrà realitzar-se amb o sense
+> càrrega.
+>
+> Per a la comprovació de la coberta s'utilitzarà el megòhmetre de
+> 10 kV de l'Annex 1 de la ITC-RAT 23, que haurà de ser capaç de
+> subministrar el corrent establert en la norma UNE 21006 per km
+> de longitud de cable.
+>
+> En cas de realitzar-se l'assaig opcional de mesura de la resistència
+> del circuit principal o de la pantalla s'utilitzarà el miliohmímetro
+> de 50 A, indicat en l'Annex 1 de la ITC-RAT 23.
+
+Segons la mateixa guia:
+
+> Conforme al prescrit en la ITC-LAT 05 del Reglament de línies
+> d'alta tensió (RD 223/2008) les línies elèctriques d'alta tensió
+> propietat d'empreses de transport i distribució d'energia
+> elèctrica seran objecte de verificacions periòdiques, almenys una
+> vegada cada tres anys, realitzant les comprovacions que permetin
+> conèixer l'estat dels diferents components d'aquestes.
+>
+> Conforme al prescrit en la ITC-LAT 05 del Reglament de línies
+> d'alta tensió (RD 223/2008) es comprovarà almenys cada tres anys
+> l'aïllament principal i de la coberta de les línies elèctriques amb
+> conductors aïllats que no siguin propietat d'empreses de transport
+> i distribució d'energia elèctrica.
+> Es podran utilitzar els mètodes d'assaig descrits en la norma
+> UNE 211006.
+>
+> Per a instal·lacions de tensió nominal major o igual de 220 kV
+> es comprovarà l'estat de l'aïllament de les terminacions i dels
+> ponts amb cables aïllats que interconnecten diferents elements de la
+> instal·lació d'alta tensió.
+> Es podran utilitzar els mètodes d'assaig descrits en la norma
+> UNE 211006.
+
+A l'UNE 192014-1:2023 <sup>[5]</sup> es pot comprovar que una de
+les proves a realitzar és efectivament la mesura de la resistència
+d'aïllament dels conductors.
+
+
+
+## 2. Elecció de mètode de mesura d'aïllament.
+
+Del que s'ha exposat anteriorment al punt 1 del present document,
+s'ha de mesurar l'aïllament principal i les cobertes.
+
+
+
+### 2.1. Mesura de l'aïllament principal
+
+Es tria l'assaig a freqüència industrial, ja que és d'aplicació
+general <sup>[6]</sup>. I tot i que requereix l'aturada del generador,
+i, per tant, el subministrament cap a l'exterior del transformador.
+No és un problema greu en les instal·lacions típiques dels parcs eòlics,
+en els quals les aturades dels generadors per falta de vent són
+habituals.
+
+El mètode de descàrregues parcials durant 24 h tot i no requerir
+l'aturada del sistema té una complexitat més elevada i requereix
+d'instrumentació molt precisa.
+
+
+
+
+### 2.2. Mesura de la coberta
+
+Només hi ha un tipus d'assaig normalitzat.
+
+
+
+
+
+
+## 3. Execució de la mesura d'aïllament a freqüència industrial.
+
+Els assajos que es descriuen a continuació segueixen
+l'UNE 211006 <sup>[6]</sup>
+
+### 3.1. Aïllament principal.
+
+Es deixa fora de servei la instal·lació. El conductor ha d'estar
+completament aïllat de la resta d'instal·lacions.
+Es connecta un generador mòbil d'AT.
+Es connecta un terminal del mesurador d'aïllament al conductor a
+mesurar i l'altre extrem als conductors de la pantalla del cable.
+
+Si la tensió assignada dels cables és inferior a 26/45 (52 kV) s'haurà
+d'aplicar $\sqrt{3} \cdot U_o$ durant 15 minuts a una freqüència que es
+trobi entre els 20 Hz i els 300 Hz.
+
+Si l'aïllament és superior es farà durant 60 minuts a una
+freqüència que es trobi entre els 20 Hz i els 300 Hz i amb una tensió
+d'assaig segons la següent taula:
+
+<table>
+    <tr>
+        <th>Tensió assignada (kV)</th>
+        <th>Tensió d'assaig (kV)</th>
+    </tr>
+    <tr>
+        <td>26/45</td>
+        <td>52</td>
+    </tr>
+    <tr>
+        <td>36/66</td>
+        <td>72</td>
+    </tr>
+    <tr>
+        <td>64/110</td>
+        <td>128</td>
+    </tr>
+    <tr>
+        <td>76/132</td>
+        <td>132</td>
+    </tr>
+    <tr>
+        <td>86/150</td>
+        <td>150</td>
+    </tr>
+</table>
+
+Si és satisfactori (250 MΩ/km<sup>[7]</sup>) no és necessari fer l'assaig de
+la terminació.
+
+
+### 3.2. Assaig de rigidesa dielèctrica de la coberta.
+
+Es posa a terra i en curtcircuit el conductor i la pantalla a provar
+per a alliberar l'estàtica.
+Es desconnecten les pantalles de terra.
+S'aplica progressivament una tensió de 4 kV DC (corrent continu)
+per mil·límetre de gruix de la coberta entre la pantalla i terra,
+amb un màxim de 10 kV, durant 1 minut.
+
+La mesura és satisfactòria si no es perfora l'aïllament
+(R<sub>a</sub> < 100 MΩ)
+i el corrent de fuga per fase no supera els 2 mA per km de longitud
+als cables amb coberta DMZ 1
+i 5 mA al de coberta DMZ 2.
+Hi ha altra documentació que refereix 1,5 mA/km per uns altres tipus
+d'aïllaments com HEPR.
+
+
+
+
+
+
+# Bibliografia.
+
+
+<ol style="list-style-type: none;">
+<li class="preg"><span>
+    [1]
+</span><span style="flex: 1;">
+Ministerio de Industria, Energía y Turismo
+Real Decreto 337/2014, de 9 de mayo, por el que se aprueba el
+Reglamento sobre condiciones técnicas y garantías de seguridad en
+instalaciones eléctricas de alta tensión y sus instrucciones técnicas
+complementarias ITC-RAT 01 a 23,
+<i>
+    Boletín Oficial del Estado, núm. 139, de 9 de junio de 2014,
+    páginas 43598 a 43728
+</i>.
+Accedit el 10 de gener de 2025. [En línia].
+Disponible:
+<a href="https://www.boe.es/eli/es/rd/2014/05/09/337">
+         https://www.boe.es/eli/es/rd/2014/05/09/337
+</a>
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [2]
+</span><span style="flex: 1;">
+Ministerio de Industria, Turismo y Comercio
+«Real Decreto 223/2008, de 15 de febrero, por el que se aprueban
+el Reglamento sobre condiciones técnicas y garantías de
+seguridad en líneas eléctricas de alta tensión y sus instrucciones
+técnicas complementarias ITC-LAT 01 a 09.»
+<i>
+    Boletín Oficial del Estado, núm. 68, de 19 de marzo de 2008,
+    páginas 16436 a 16554
+</i>.
+Accedit el 10 de gener de 2025. [En línia]. Disponible:
+<a href="https://www.boe.es/eli/es/rd/2008/02/15/223">
+         https://www.boe.es/eli/es/rd/2008/02/15/223
+</a>
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [3]
+</span><span style="flex: 1;">
+Ministerio de Industria, Turismo y Comercio (2022, novembre)
+«Guía de la Instrucción Técnica Complementaria ITC - LAT 05
+Verificaciones e inspecciones»
+<i>
+    industria.gob.es
+</i>.
+[En línia]. Disponible:
+<a href="https://industria.gob.es/Calidad-Industrial/seguridadindustrial/instalacionesindustriales/lineas-alta-tension/Documents/GUIA%20ITC%20LAT%2005%20act%20-%20112-21-32-1.pdf">
+         https://industria.gob.es/Calidad-Industrial/seguridadindustrial/instalacionesindustriales/lineas-alta-tension/Documents/GUIA%20ITC%20LAT%2005%20act%20-%20112-21-32-1.pdf
+</a>
+[Consulta 10 de gener de 2025]
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [4]
+</span><span style="flex: 1;">
+Ministerio de Industria y Turismo (2024, març)
+«Guía de la Instrucción Técnica Complementaria ITC - RAT 23
+Verificaciones e inspecciones»
+<i>industria.gob.es</i>.
+[En línia]. Disponible:
+<a href="https://industria.gob.es/Calidad-Industrial/seguridadindustrial/instalacionesindustriales/instalaciones-alta-tension/Documents/guia-itc-rat-23-rev-2.pdf">
+         https://industria.gob.es/Calidad-Industrial/seguridadindustrial/instalacionesindustriales/instalaciones-alta-tension/Documents/guia-itc-rat-23-rev-2.pdf
+</a>
+[Consulta 10 de gener de 2025]
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [5]
+</span><span style="flex: 1;">
+Asociación Española de Normalización (2023, 26 juliol)
+«UNE 192014-1:2023 Procedimiento para la inspección reglamentaria
+de instalaciones eléctricas de alta tensión que no sean propiedad
+de entidades de transporte y distribución de energía eléctrica.
+Parte 1: Centros de transformación y sus anexos técnicos.»
+<i>une.org</i>
+[En línia]. Disponible:
+<a href="https://www.une.org/encuentra-tu-norma/busca-tu-norma/norma?c=norma-une-192014-1-2023-n0071664">
+         https://www.une.org/encuentra-tu-norma/busca-tu-norma/norma?c=norma-une-192014-1-2023-n0071664
+</a>
+[Consulta 10 de gener de 2025]
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [6]
+</span><span style="flex: 1;">
+Asociación Española de Normalización (2010, 17 març)
+«UNE 211006:2010 Ensayos previos a la puesta en servicio de sistemas de
+cables eléctricos de alta tensión en corriente alterna.»
+<i>une.org</i>
+[En línia]. Disponible:
+<a href="https://www.une.org/encuentra-tu-norma/busca-tu-norma/norma/?c=N0044965">
+         https://www.une.org/encuentra-tu-norma/busca-tu-norma/norma/?c=N0044965
+</a>
+[Consulta 10 de gener de 2025]
+
+</span></li>
+
+
+
+<li class="preg"><span>
+    [7]
+</span><span style="flex: 1;">
+Hidroeléctrica del Cantabrico (2012, 8 maig)
+«Ensayos previos a la puesta en servicio de líneas eléctricas de conductores
+aislados con pantalla y de BT» pp 5-11.
+<i>eredesdistribucion.es</i>
+[En línia]. Disponible:
+<a href="https://www.eredesdistribucion.es/recursos/doc/distribucion-luz/20190320/instalaciones-alta-tensio/etrd-dr-00008-ed4.pdf">
+        https://www.eredesdistribucion.es/recursos/doc/distribucion-luz/20190320/instalaciones-alta-tensio/etrd-dr-00008-ed4.pdf
+</a>
+[Consulta 10 de gener de 2025]
+
+</span></li>
+
+</ol>
+
+
+
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca
+[CC4.0-by-nc-nd]: https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1
+[LPI]: https://www.boe.es/eli/es/rdlg/1996/04/12/1/con
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+const titol = "Annex II: Mesura de resistència de l'aïllament de les terminaciions de línies camb cables i ponts de cables als CT dels aerogeneradors"; // MODIFICAR
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>
