@@ -67,7 +67,7 @@ trobats a les Illes Balears segons el CTE i comptant amb la composició
 del terreny d'aquesta zona, la conductivitat es troba al voltant
 de [[p12]] W/(m·K).
 
-Aquest circuit circularà amb uns altres dos circuits, a la distància
+Aquest circuit circularà amb un altre circuit, a la distància
 que marquen els plànols. La distància a considerar per a aquest càlcul
 és la que hi ha entre les parets dels tubs.
 
@@ -76,8 +76,7 @@ que marquen els plànols. La distància a considerar per a aquest càlcul
 _a_) La intensitat màxima admissible abans
   d'aplicar els coeficients és [[i1]] A (_0,5 punts_)
 
-_b_) La intensitat màxima admissible abans
-  els coeficients de temperatura,resistivitat, profunditat, i
+_b_) Els coeficients de temperatura,resistivitat, profunditat, i
   agrupament són respectivament:
 - [[i2]] (_0,5 punts_)
 - [[i3]] (_0,5 punts_)
@@ -95,7 +94,7 @@ Observa el següent esquema unifilar.
 ![](img/unifilar2.png)
 
 Es demana calcular la potència perduda **en watts** a tota la xarxa i
-la caiguda de tensió **en volts** que mesurarem en el punt D
+la caiguda de tensió **en volts** que mesurarem en el punt F
 segons el mètode de càlcul de la NRZ002.
 Pots suposar un factor de potència de 0,8 i que la secció i material
 són els mateixos que en el cas anterior.
@@ -111,7 +110,7 @@ Les longituds són:
 - Tram A-B: [[p20]] m
 - Tram B-C: [[p21]] m
 - Tram C-D: [[p22]] m
-- Tram D-E: [[p23]] m
+- Tram B-E: [[p23]] m
 - Tram C-F: [[p24]] m
 - Tram F-G: [[p25]] m
 
@@ -688,18 +687,18 @@ let p_bc = p_cf + p_cd;
 let p_be = p17;
 let p_ab = p_bc + p_be + p15;
 
-let uc_ab = p_ab * (p20/1e3) / 0.4 * (0.160 + tan(acos(0.8))* 0.085);
-let uc_bc = p_bc * (p21/1e3) / 0.4 * (0.160 + tan(acos(0.8))* 0.085);
-let uc_cf = p_cf * (p24/1e3) / 0.4 * (0.160 + tan(acos(0.8))* 0.085);
+let uc_ab = p_ab * (p20/1e3) / 0.4 * (0.264 + tan(acos(0.8))* 0.087);
+let uc_bc = p_bc * (p21/1e3) / 0.4 * (0.264 + tan(acos(0.8))* 0.087);
+let uc_cf = p_cf * (p24/1e3) / 0.4 * (0.264 + tan(acos(0.8))* 0.087);
 
 let uc_f = uc_ab + uc_bc + uc_cf;
 
-let pp_ab = p_ab**2 * (p20/1e3) * 0.160 / 0.4**2 / 0.8**2;
-let pp_bc = p_bc**2 * (p21/1e3) * 0.160 / 0.4**2 / 0.8**2;
-let pp_cd = p_cd**2 * (p22/1e3) * 0.160 / 0.4**2 / 0.8**2;
-let pp_de = p_be**2 * (p23/1e3) * 0.160 / 0.4**2 / 0.8**2;
-let pp_cf = p_cf**2 * (p24/1e3) * 0.160 / 0.4**2 / 0.8**2;
-let pp_fg = p_fg**2 * (p25/1e3) * 0.160 / 0.4**2 / 0.8**2;
+let pp_ab = p_ab**2 * (p20/1e3) * 0.264 / 0.4**2 / 0.8**2;
+let pp_bc = p_bc**2 * (p21/1e3) * 0.264 / 0.4**2 / 0.8**2;
+let pp_cd = p_cd**2 * (p22/1e3) * 0.264 / 0.4**2 / 0.8**2;
+let pp_de = p_be**2 * (p23/1e3) * 0.264 / 0.4**2 / 0.8**2;
+let pp_cf = p_cf**2 * (p24/1e3) * 0.264 / 0.4**2 / 0.8**2;
+let pp_fg = p_fg**2 * (p25/1e3) * 0.264 / 0.4**2 / 0.8**2;
 
 let pp_tot = pp_ab + pp_bc + pp_cd + pp_de + pp_cf + pp_fg;
 
@@ -717,17 +716,17 @@ p_bc = ${l(p_cf)} + ${l(p_cd)} = ${l(p_bc)};
 p_be = ${l(p17)};
 p_ab = ${l(p_bc)} + ${l(p17)} + ${l(p15)} = ${l(p_ab)};
 
-uc_ab = ${l(p_ab)} * (${l(p20)}/1e3) / 0,4 * (0,160 + tan(acos(0,8))* 0,085) = ${l(uc_ab)};
-uc_bc = ${l(p_bc)} * (${l(p21)}/1e3) / 0,4 * (0,160 + tan(acos(0,8))* 0,085) = ${l(uc_bc)};
-uc_cf = ${l(p_cf)} * (${l(p24)}/1e3) / 0,4 * (0,160 + tan(acos(0,8))* 0,085) = ${l(uc_cf)};
+uc_ab = ${l(p_ab)} * (${l(p20)}/1e3) / 0,4 * (0,264 + tan(acos(0,8))* 0,087) = ${l(uc_ab)};
+uc_bc = ${l(p_bc)} * (${l(p21)}/1e3) / 0,4 * (0,264 + tan(acos(0,8))* 0,087) = ${l(uc_bc)};
+uc_cf = ${l(p_cf)} * (${l(p24)}/1e3) / 0,4 * (0,264 + tan(acos(0,8))* 0,087) = ${l(uc_cf)};
 uc_f = ${l(uc_ab)} + ${l(uc_bc)} + ${l(uc_cf)} = ${l(uc_f)};
 
-pp_ab = ${l(p_ab)}**2 * (${l(p20)}/1e3) * 0,160 / 0,4**2 / 0,8**2 = ${l(pp_ab)};
-pp_bc = ${l(p_bc)}**2 * (${l(p21)}/1e3) * 0,160 / 0,4**2 / 0,8**2 = ${l(pp_bc)};
-pp_cd = ${l(p_cd)}**2 * (${l(p22)}/1e3) * 0,160 / 0,4**2 / 0,8**2 = ${l(pp_cd)};
-pp_de = ${l(p_be)}**2 * (${l(p23)}/1e3) * 0,160 / 0,4**2 / 0,8**2 = ${l(pp_de)};
-pp_cf = ${l(p_cf)}**2 * (${l(p24)}/1e3) * 0,160 / 0,4**2 / 0,8**2 = ${l(pp_cf)};
-pp_fg = ${l(p_fg)}**2 * (${l(p25)}/1e3) * 0,160 / 0,4**2 / 0,8**2 = ${l(pp_fg)};
+pp_ab = ${l(p_ab)}**2 * (${l(p20)}/1e3) * 0,264 / 0,4**2 / 0,8**2 = ${l(pp_ab)};
+pp_bc = ${l(p_bc)}**2 * (${l(p21)}/1e3) * 0,264 / 0,4**2 / 0,8**2 = ${l(pp_bc)};
+pp_cd = ${l(p_cd)}**2 * (${l(p22)}/1e3) * 0,264 / 0,4**2 / 0,8**2 = ${l(pp_cd)};
+pp_de = ${l(p_be)}**2 * (${l(p23)}/1e3) * 0,264 / 0,4**2 / 0,8**2 = ${l(pp_de)};
+pp_cf = ${l(p_cf)}**2 * (${l(p24)}/1e3) * 0,264 / 0,4**2 / 0,8**2 = ${l(pp_cf)};
+pp_fg = ${l(p_fg)}**2 * (${l(p25)}/1e3) * 0,264 / 0,4**2 / 0,8**2 = ${l(pp_fg)};
 pp_tot = ${l(pp_ab)} + ${l(pp_bc)} + ${l(pp_cd)} + ${l(pp_de)} + ${l(pp_cf)} + ${l(pp_fg)} = ${l(pp_tot)};
 
 
