@@ -1,0 +1,223 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <style>
+
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    li.cita {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: left;
+        text-justify: inter-word;
+
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+
+
+## 1. Estudi del recurs eòlic
+
+### 1.1. Distribució de Weibull
+
+Per a realitzar l'estudi del recurs Eòlic, primer hem de determinar
+quina distribució de probabilitat s'ajusta més al comportament del vent.
+En general, se sol prendre la distribució de Weibull, ja que ajusta
+millor que altres distribucions probabilístiques com la distribució de
+Gauss.
+
+L'equació que regeix la freqüència en funció de la velocitat de la
+distribució de Weibull és:
+
+$$ \begin {gather}
+
+f(v) = \dfrac{k}{\lambda} \left ( \frac {v}{\lambda} \right ) ^{k-1}
+e ^ {- (v / \lambda)  ^ k}
+
+\end{gather} $$
+
+### 1.2. Descàrrega de les dades d'atles eòlics
+
+La descàrrega es realitzarà d'una base de dades dels històrics de vent
+al punt que ens interessi.
+Els formats habituals solen ser xls, csv o nc.
+
+Els dos primers es poden tractar directament amb un full de càlcul
+com MS Excel o LO calc.
+El segon s'ha de convertir prèviament a csv amb l'ajut d'algun script
+o el programa Panoply (requereix java 11).
+
+### 1.3. Obtenció dels paràmetres de la distribució de Weibull
+
+En algunes bases de dades ja ens donaran el paràmetre $k$ i $\lambda$.
+Si no fos el cas es poden aproximar segons les següents fórmules:
+
+$$ \begin {gather}
+\overline v = \dfrac{1}{n} \sum_{i=1}^n v_i \\[5mm]
+ \sigma = \sqrt {\dfrac{1}{n} \sum_{i=1}^n (v_i - \overline v)^2} \\[5mm]
+k = \left ( \dfrac {\sigma}{\overline v }\right)^{-1.086} \\[5mm]
+\lambda = \dfrac {\overline v}{\Gamma(1+\frac {1}{k})}
+
+\end{gather} $$
+
+A on:
+
+- $\Gamma(x)$ és la funció gamma de x
+- $\overline v$ és la velocitat mitjana.
+
+## 2. Elecció d'un candidat
+
+Amb les fitxes tècniques dels fabricants d'aerogeneradors es triarà un
+que compleixi que la seva velocitat màxima sigui adient a la
+instal·lació i la velocitat nominal propera a la mitjana.
+
+### 2.1. Càlcul de la potència mitjana anual generada
+
+Calcular la potència generada segons les següents fórmules:
+
+$$ \begin {gather}
+
+P(v) = 0 & \text {si} ~~ v \lt v_{min} \\[5mm]
+P(v) = \dfrac{1}{2} \rho A v^3C_p & \text{si} ~~ v_{min} \le v \le v_n \\[5mm]
+P(v) = P_n ~~ \text{si} & v_n \le v \lt v_{max}\\[5mm]
+P(v) = 0 & \text {si} ~~ v \ge v_{max} \\[5mm]
+
+\end{gather} $$
+
+Amb la potència generada per velocitats i la distribució de Weibull
+es pot fer el càlcul de l'energia generada segons:
+
+$$ \begin {gather}
+
+P_{mitja} = \int_0^\infty P(v)f(v)dv
+
+\end{gather} $$
+
+Aquesta integral es pot calcular amb programes informàtics com wolfram
+o bé es pot aproximar utilitzant la integral de Riemann.
+
+$$ \begin {gather}
+
+P_{mitja} \approx \sum_{k=1}^n P(t_k)f(t_k) \cdot (v_k-v_{k-1})
+
+\end{gather} $$
+
+A on:
+
+ - $v_0 = v_{min}$
+ - $v_n = v_{max}$
+ - $v_{k-1} \le t_k \le v_k$
+
+
+### 2.2. Calcular l'energia anual generada
+
+Una vegada trobada la potència mitjana, es pot calcular l'energia anual
+com:
+
+$$ \begin {gather}
+
+E_{anual} = P_{mitja} \cdot t
+
+\end{gather} $$
+
+Tenint en compte que un any té 8760 hores
+
+### 2.3. Comprovació del candidat
+
+Si el candidat genera menys energia que la necessària, s'haurà de triar
+un altre candidat amb millor $C_p$, menor $v_{min}$, major $P_n$ o
+fins i tot major $v_{max}$
+
+
+### 3. Dimensionament de les bateries.
+
+El dimensionament de les bateries requereix conèixer la probabilitat
+de nombre de dies amb producció inferior al consum diari.
+
+Per això es calcularà la potència mitjana diària necessària per a cobrir
+les necessitats energètiques del dia de més consum.
+
+$$ \begin {gather}
+
+P_{m~dia} = \dfrac {E_{max~dia}}{t_{dia}}
+
+\end{gather} $$
+
+A on:
+- $t_{dia}$ són 24 h
+
+Es busca la velocitat que fa que la potència sigui la que s'ha
+trobat aïllant les equacions del punt 2.1. Amb aquesta velocitat
+es podrà calcular la probabilitat acumulada amb la distribució de
+Weibull integrant-la.
+
+Amb aquesta probabilitat i multiplicant-la pels dies que té un any
+podem calcular en una primera aproximació per quants de dies s'hauria
+de dimensionar el sistema d'emmagatzemament d'energia.
+
+Si aquest nombre surt massa elevat (més de 5 dies) es pot:
+
+- Refinar el càlcul. És a dir, la producció energètica, tot i ser
+inferior a la mitjana mínima diària, no és zero i, per tant, es poden fer
+intervals. Probabilitat que l'energia sigui inferior a 80 kWh però
+superior a 50 kWh, inferior a 50 kWh i superior a 20 kWh, etc.
+- Augmentar la potència de l'aerogenerador.
+- Instal·lar sistemes de generació auxiliar (alternadors)
+- Combinar la instal·lació amb una fotovoltaica
+
+
+
+
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca
+[CC4.0-by-nc-nd]: https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1
+[LPI]: https://www.boe.es/eli/es/rdlg/1996/04/12/1/con
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+const titol = "Ut05b - càlcul d'una minieòlica"; // MODIFICAR
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>
