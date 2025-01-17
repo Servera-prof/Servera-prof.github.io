@@ -234,64 +234,14 @@ subcontractar personal? quina quantitat i de quin perfil?
 
 
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Simulacre";
+const titol = "Exercici UT02 - problemes";
 const puntuacions = ["",
-    3, 2, 1,
-];
-const π = 3.141592654;
-const RPRIMA = 287.04;                  // unitats en J/(kg*K)
-const KELVIN = 273.15;                  // 0°C = 273,15 K
 
+];
 
 // # 2. PARÀMETRES ====================================================
 
 // ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
-
-
-
-
-// Exercici 1 ----------------------------------------------------------
-
-const p01 = aleat(0, 10);                          // t_hiv
-const p02 = aleat(30, 40);                         // t_est
-
-const p03 = aleat(7, 14);                          // z_ref
-const p04 = aleat(10, 20);                         // v_ref
-const p05 = xs(aleat(35, 45)/100);                 // cp
-const p06 = aleat(20, 30);                         // r
-const p07 = aleat(40, 70);                         // z
-const p08 = xs(aleat(20, 30)/100);                 // z0
-const p09 = aleat(200,300);                        // msnm
-
-// Exercici 2 ----------------------------------------------------------
-
-ρ_array = [
-    [ 200, 15, 1.2],
-    [ 500,  5, 1.2],
-    [ 300, 35, 1.1],
-    [ 600, 25, 1.1],
-    [ 900, 15, 1.1],
-    [1200,  5, 1.1],
-    [1400, 25,   1],
-    [1700, 15,   1],
-    [2000,  5,   1],
-    [2000, 35, 0.9],
-];
-
-ρ_id = aleat(0, ρ_array.length-1);
-
-const p10 = xs(aleat(20, 30)/10, 2);        // P_ele
-const p11 = aleat(25, 30);                  // r
-const p12 = xs(0.75 * p11*2 + 10, 2);       // z
-const p13 = ρ_array[ρ_id][0] - p12;         // msnm
-const p14 = xs(aleat (400, 450)/100, 3);    // λ
-const p15 = aleat (85, 95);                 // η_mult
-const p16 = aleat (75, 90);                 // η_gen
-const p17 = aleat (94, 98);                 // η_trafo
-const p18 = aleat (35, 45);                 // cp
-const p19 = ρ_array[ρ_id][1];               // t_aire
-const p20 = ρ_array[ρ_id][2];               // ρ
-
 
 
 // ## 2.2 FUNCIO (actualitzar) ----------------------------------------
@@ -300,9 +250,9 @@ const p20 = ρ_array[ρ_id][2];               // ρ
 
 function estableixParametres(){
     array = [
-      p01, p02, p03, p04, p05,          p06, p07, p08, p09, p10,
+      /* p01, p02, p03, p04, p05,          p06, p07, p08, p09, p10,
       p11, p12, p13, p14, p15,          p16, p17, p18, p19, p20,
-      /*p21, p22, p23, p24, p25,          p26, p27, p28, p29, p30,
+      p21, p22, p23, p24, p25,          p26, p27, p28, p29, p30,
       p31, p32, p33
       */
     ]; // actualitzar entre []
@@ -320,113 +270,8 @@ function calcula(){
 
 
 
-// Exercici 1 -----------------------------------------------------
-
-t_hiv = p01 + KELVIN;
-t_est = p02 + KELVIN;
-z_ref = p03;
-v_ref = p04;
-cp = p05;
-r = p06;
-z = p07;
-z0 = p08;
-msnm = p09;
-
-p_mbar = 1013.25 * (1 - (msnm + z)*2.2569e-5)**5.2561;
-p_pa = 100 * p_mbar;
-ρ_hiv = p_pa / (RPRIMA*t_hiv);
-ρ_est = p_pa / (RPRIMA*t_est);
-a = π * r**2;
-v = v_ref * ln(z/z0) / ln(z_ref/z0);
-p_gen_hiv = 0.5 * cp * ρ_hiv * a * v**3;
-p_gen_est = 0.5 * cp * ρ_est * a * v**3;
-ΔP = p_gen_hiv - p_gen_est;
-
-const s01 = ΔP/1e3;
-
-tlog += `
-Exercici 1
-----------
-
-const RPRIMA = 287.04;
-const KELVIN = 273.15;
-
-t_hiv = t_hiv + KELVIN = ${xs(t_hiv)};
-t_est = t_est + KELVIN; = ${xs(t_est)};
-
-p_mbar = 1013.25 * (1 - msnm*2.2569e-5)**5.2561 =
-       = ${xs(p_mbar)} mbar;
-p_pa = 100 * p_mbar = ${xs(p_pa)} Pa;
-ρ_hiv = p_pa/(RPRIMA*t_hiv) = ${xs(ρ_hiv)} kg/m³;
-ρ_est = p_pa/(RPRIMA*t_est) = ${xs(ρ_est)} kg/m³;
-a = π * r**2 = ${xs(a)} m²;
-v = v_ref * ln(z/z0) / ln(z_ref/z0) = ${xs(v)} m/s;
-p_gen_hiv = 0.5 * cp * ρ_hiv * a * v**3 = ${xs(p_gen_hiv/1e3)} kW;
-p_gen_est = 0.5 * cp * ρ_est * a * v**3 = ${xs(p_gen_est/1e3)} kW;
-ΔP = p_gen_hiv - p_gen_est = ${xs(ΔP/1e3)} kW;
-
-`;
-
-
-
-// Exercici 2 ----------------------------------------------------------
-
-p_ele = p10;
-r = p11;
-z = p12;
-msnm = p13;
-λ = p14;
-η_mult = p15/100;
-η_gen = p16/100;
-η_trafo = p17/100;
-cp = p18/100;
-t_aire = p19;
-ρ = p20;
-
-p_elegen = p_ele / η_trafo / η_gen;
-p_rot = p_elegen / η_mult / cp * 1e6;
-
-a = π * r**2;
-v = (2 * p_rot / ρ / a)**(1/3);
-vt = v * λ;
-Ω = vt / r;
-Ω_rpm = Ω / 2 / π * 60;
-
-const s02 = Ω_rpm;
-const s03 = p_elegen;
-
-tlog += `
-Exercici 2
-----------
-
-p_ele = ${l(p10)};
-r = ${l(p11)};
-z = ${l(p12)};
-msnm = ${l(p13)};
-λ = ${l(p14)};
-η_mult = ${l(p15)}/100;
-η_gen = ${l(p16)}/100;
-η_trafo = ${l(p17)}/100;
-cp = ${l(p18)}/100;
-t_aire = ${l(p19)};
-ρ = ${l(p20)};
-
-p_elegen = p_ele / η_trafo / η_gen =\
- ${l(p_ele)} / ${l(η_trafo)} / ${l(η_gen)} = ${l(p_elegen)};
-p_rot = p_elegen / η_mult / cp * 1e6 =\
- ${l(p_elegen)} / ${l(η_mult)} / ${l(cp)} * 1e6 = ${l(p_rot)} ;
-
-a = π * r**2 = π * ${l(r**2)} = ${l(a)};
-v = (2 * p_rot / ρ / a)**(1/3) =\
- (2 * ${l(p_rot)} / ${l(ρ)} / ${l(a)})**(1/3) = ${l(v)};
-vt = v * λ = ${l(v)} * ${l(λ)} = ${l(vt)};
-Ω = vt / r = ${l(vt)} / ${l(r)} = ${l(Ω)};
-Ω_rpm = Ω / 2 / π * 60 = ${l(Ω)} / 2 / π * 60 = ${l(Ω_rpm)};
-
-`;
-
 solucions = [""].concat([
-    s01, s02, s03,
+    /* s01, s02, s03, */
 ].map(xsMap));
 
 tlog += "\n~~~";

@@ -1,0 +1,789 @@
+<!-- MOLT IMPORTANT: Al final del document es poden trobar les
+instruccions sobre la utilització d'aquesta eina.-->
+
+
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+
+    <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    p{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    img[alt="c"]{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img[alt="c500"]{
+        width: 500px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    img[alt="c250"]{
+        width: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img[alt="250"]{
+        width: 250px;
+    }
+    img[alt="fr250"]{
+        width: 250px;
+        float: right;
+        margin: 0 0 0 0.7em;
+    }
+    img[alt="fr"]{
+        float: right;
+        margin: 0 0 0 0.7em;
+    }
+    img[alt="fl250"]{
+        width: 250px;
+        float: left;
+        margin: 0 .7em 0 0;
+    }
+    img[alt="fl"]{
+        float: left;
+        margin: 0 5px 0 0;
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+## Preguntes
+
+[[p1]]
+
+## Anota aquí la teva resposta
+
+[[i1]]
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Exercici UT02 - test";
+const puntuacions = ["",
+    10
+];
+const π = 3.141592654;
+const RPRIMA = 287.04;                  // unitats en J/(kg*K)
+const KELVIN = 273.15;                  // 0°C = 273,15 K
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+
+let p01 = "";
+const preguntes = [
+    [
+    "Quina és la tendència actual en el disseny d’aerogeneradors?",
+    "Utilitzar caixes multiplicadores per augmentar la potència",
+    "Accionament directe, sense utilitzar caixes multipilcadores",
+    "Agumentar la quantitat de renou associat als aerogeneradors",
+    "Reduir la fiabilitat del sistema a causa de l’us de caixes multiplicadores",
+    ],
+    [
+    "El sistema de control d’un aerogenerador s’encarrega d’aturar la turbina si detecta un funcionament no esperat.",
+    "Vertader;",
+    "Fals",
+    "",
+    "",
+    ],
+    [
+    "Quin és un dels avantatges de la connexió indirecta en un aerogenerador?",
+    "Major complexitat en el sistema de control",
+    "Menor producció anual d’energia",
+    "Possibilitat de treballar a velocitat variable del rotor",
+    "Absència de pèrdua d’energia en la conversió",
+    ],
+    [
+    "Quin no es un avantatge dels Aerogeneradors de velocitat de rotació variable.",
+    "Millora l’eficiència",
+    "Millora la qualitat de potència abocada ",
+    "Redueix les tensión mecàniques suportades",
+    "No presenten pèrdudes de potència derivades de l’us del convertidor",
+    ],
+    [
+    "Quina afirmació es correcta sobre els generadors síncrons emprats en aerogeneradors?",
+    "No permeten el control de la tensió generada ni de la potència reactiva",
+    "Semprees refreden mitjançant aire, sense altres alternatives",
+    "Necessiten un convertidor de potència de dues etapes per mantenir constant la freqüencia de xarxa",
+    "Son més econòmics que altres tipus de generadors utilitzats en grans centrals elèctriques",
+    ],
+    [
+    "Què permeten eliminar els generadors síncrons multipolars de velocitat variable?",
+    "L’eix secundari, el de alta velocitat.",
+    "La multiplicadora.",
+    "El rotor.",
+    "Els sistemes d’orientació.",
+    ],
+    [
+    "En els de velocitat variable,quin element ajuda a mantenir la freqüència de la xarxa constant?",
+    "El generador síncron multipolar.",
+    "Un inversor de dues etaes (CA-CC-CA).",
+    "La refrigeració per aire.",
+    "El convertidor de rotor",
+    ],
+    [
+    "Quina de les següents afiermaciones sobre el sistema de control d’un aerogenerador és correcta?",
+    "El sistema de control regula només la potència generada.",
+    "El sistema de control només actua en cas de fallada mecànica.",
+    "El sistema de control pot desconnectar l’aerogenerador en cas d’anomailes.",
+    "El sistema de control sempre inclou un inversor CA-CC.",
+    ],
+    [
+    "Quin és un inconvenient dels aerogeneradors amb velocitat de rotació variable?",
+    "Major eficiència.",
+    "Major cost de l’equip elèctric.",
+    "No poden controlar la potència reactiva.",
+    "Menor qualitat de la potència injectada a la xarxa.",
+    ],
+    [
+    "Quina característica diferencia principalment a un generador síncron d’un asíncronr?",
+    "El síncron necessita un sistema de refigeració d’oli",
+    "El síncron permet un control directe de la potència reactiva.",
+    "El generador asíncron és més car de fabricar.",
+    "El síncron no requereix convertidor de potència. ",
+    ],
+    [
+    "Cual de estos generadores no es asíncrono?",
+    "Generador de jaula de ardilla",
+    " Generador de rotor devanado",
+    "Generador de imanes permanentes",
+    "Generador doblemente alimentado",
+    ],
+    [
+    "¿Qué estrategia de regulación de potencia utiliza un ángulo fijo de las palas?",
+    " Pitch regulation",
+    "TSR regulation",
+    "Speed regulation",
+    "Stall regulation",
+    ],
+    [
+    "¿Cuál es una desventaja de los aerogeneradors de velocitat variable?",
+    "Mayor coste del equipo eléctrico",
+    " Menor eficiencia",
+    "Mayor consumo de potencia reactiva",
+    " Menor calidad de la energía",
+    ],
+    [
+    "¿Cuál es una ventaja de la conexión indirecta de un generador a la red?",
+    "Menor coste",
+    "Mayor fiabilidad",
+    "Posibilidad de trabajar a velocidad variable del rotor",
+    "Menor producción anual",
+    ],
+    [
+    "¿Cuál es una desventaja de los aerogeneradores con regulación por stall?",
+    "Sistema de control muy complejo",
+    "Aparición de vibraciones",
+    "Necesidad de un sistema de rodamientos exigente",
+    "Mayor costo del equipo eléctrico asociado",
+    ],
+    [
+    "Quin és un generador asíncron?",
+    "WRSG",
+    "WRIG",
+    "MPSG",
+    "Totes son correctes",
+    ],
+    [
+    "Quina és vertadera?",
+    "Els generadors de velocitat fixa s’utilitzen normalment en entors industrials",
+    "Els generadors de velocitat fixa no s’utilitzen en entors industrials",
+    "Els generadors de velocitat fixa s’utilitzen sempre en entors industrials",
+    "Els generadors de velocitat variable s’utilitzen normalment en entors industrials",
+    ],
+    [
+    "Quina sol ser la velocitat màxima del vent per motius de sguretat en els aerogeneradors?",
+    "25KM/h",
+    "30m/s",
+    "25m/s",
+    "30KM/h",
+    ],
+    [
+    "Quin és un avantatge dels aerogeneradors de velocitat de rotació variable?",
+    "Millora la sustentació",
+    "Millora l’eficiencia",
+    "Pedues de potència emprades per encalentir aigua",
+    "Totes son correctes",
+    ],
+    [
+    "Quines maneres hi ha de connectar un denerador d’una turbina a la xarxa?",
+    "Estrella",
+    "Triangle",
+    "Estrella-Triangle",
+    "Directe o indirecte",
+    ],
+    [
+    "Els generadors asíncrons també s’anomenen",
+    "D’inducció",
+    "Fricció",
+    "Potenciats",
+    "Caixa d’esquirol",
+    ],
+    [
+    "Una desventaja dels aerogeneradors de velocitat fixa és que…",
+    "Consumeixen potència reactiva",
+    "Generen potència activa",
+    "Formen camps magnètics",
+    "Produeixen molt poc",
+    ],
+    [
+    "La velocitat màxima del vent sol ser de ",
+    "25 km/h",
+    "25m/s",
+    "30m/s",
+    "20m/s",
+    ],
+    [
+    "Un generador síncron, format per un rotor, en el qual es crea el camp magnètic mitjançant…",
+    "un corrent continu que circula pels bobinats a l’inductor. ",
+    " un corrent altern que circula pels bobinats a l’inductor. ",
+    " un corrent continu que circula pels bobinats al rotor. ",
+    "la caixa d’esquirol",
+    ],
+    [
+    "Una de les principals funcions del sistema de control és…",
+    "regular el procés d’arrancada, aturada i transformar l’energia",
+    "vigilar el correcte funcionament de les parts elèctriques",
+    "aturar la turbina en ocasions extremes",
+    "el mateniment de la part mecànica",
+    ],
+    [
+    "Tipus de generador és el més utilitzat actualment en turbines eòliques modernes?",
+    "Generador asíncron de gàbia d’esquirol ",
+    "Generador asíncron de rotor debanat ",
+    "Generador asíncron doblement alimentat ",
+    "Generador síncron multipol ",
+    ],
+    [
+    "Desavantatges dels generadors de gàbia d’esquirol en aerogeneradors de rotació fixa? ",
+    "La complexitat del sistema de control. ",
+    "Consum de potència reactiva, necessitant ús de bateries de condensadors.",
+    "La necessitat de múltiples components mecànics mòbils. ",
+    "La baixa robustesa i fiabilitat. ",
+    ],
+    [
+    "Quin és un dels desavantatges dels aerogeneradors amb stall regulation? ",
+    "Necessitat parts mòbils per al control de rotació de les pales. ",
+    "L'aparició de vibracions durant el funcionament. ",
+    "La manca d'eficiència a baixes velocitats de vent. ",
+    "La necessitat d'un sistema de control de rotació de les pales. ",
+    ],
+    [
+    "Quin és un dels avantatges del sistema pitch regulation en aerogeneradors? ",
+    "Simplifica el sistema de control. ",
+    "No requereix sistema de rodaments per a les pales. ",
+    "Augmenta rendiment de la instal·lació ajustant contínuament l'angle del vent. ",
+    "No és necessari monitoritzar la velocitat del vent. ",
+    ],
+    [
+    "Una de les raons per les quals s'utilitzen aerogeneradors de velocitat de rotació variable?",
+    "Millora eficiència per poder extreure una major potència del vent.",
+    "Redueixen els costos de manteniment de l’equip elèctric. ",
+    "No presenten pèrdues de potència degut a l'ús de convertidors. ",
+    "Utilitzen exclusivament generadors síncrons sense convertidors. ",
+    ],
+];
+
+loglog = "";
+loglog += "~~~\n";
+loglog += "PERMUTACIO: ";
+
+const num_preg = preguntes.length;
+const num_resp = preguntes[0].length-1;
+const fact_np = factorial(num_preg);
+const fact_nr = factorial(num_resp);
+const ordre_preg = aleat(0, fact_np - 1);
+console.log(ordre_preg)
+loglog += ordre_preg + "_";
+
+const preg_ordenades = obtenirPermutacio(preguntes, ordre_preg);
+
+for (let i = 0; i < num_preg; i++){
+    p01 += "**" + (i+1) + ".**&nbsp;" + preg_ordenades[i][0] + "<br/>";
+    let ordre_resp = aleat (0, fact_nr - 1);
+    loglog += ordre_preg + ".";
+
+    let resp = obtenirPermutacio(preg_ordenades[i].slice(1), ordre_resp);
+    for (let j = 0; j < num_resp; j++){
+        p01 += "&nbsp;&nbsp;&nbsp;&nbsp;_" + nombreALletra(j+1) + "_)&nbsp;" +
+               resp[j] + "<br/>"
+    }
+    p01 += "<br/>"
+
+}
+
+
+
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+// !!! CONVERTIR si és necessari les unitats a les unitats que requereix
+// el nostre enunciat.
+
+function estableixParametres(){
+    array = [
+      p01, /*p02, p03, p04, p05,          p06, p07, p08, p09, p10,
+      p11, p12, p13, p14, p15,          p16, p17, p18, p19, p20,
+      p21, p22, p23, p24, p25,          p26, p27, p28, p29, p30,
+      p31, p32, p33
+      */
+    ]; // actualitzar entre []
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+tlog += loglog + "\n~~~";
+}
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS Técnic Superior en Energies Renovables",
+    anys: "2024/2025"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+// Función para generar permutaciones de un arreglo
+
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = l(parametres[i]);
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    let r = [""];
+    alumne.nom = document.getElementById("nom").value;  // veure C.2.1
+    for (let i = 1; i < puntuacions.length; i++){
+        r[i] = document.getElementById("i"+i).value;
+    }
+    respostes = r.map(xsMap);                           // veure C.2.1
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+    "",
+    "> [[nota]]"
+    ].join("\n") + "\n";
+    txt += txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    let ptsAlumne = 0, ptsTotal = 0;
+    let canvi = "", patro = "";
+    let a = 0, b = 0;
+    for (let i = 1; i < puntuacions.length; i++){
+        a = respostes[i];
+        b = solucions[i];
+        ptsTotal += puntuacions[i];
+        canvi =
+            '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">'
+            + coma(a) + '</span>';
+        if ((b*0.99) < a && a < (b*1.01)) {
+            ptsAlumne += puntuacions[i];
+            canvi +=
+                ' <span style="color: green">(' +
+                coma(b) +') OK (+' + puntuacions[i] + ')</span>';
+        }else{
+            canvi +=
+                ' <span style="color: red;"> (' +
+                coma(b) +')</span>';
+        }
+        patro = "[[i" + i + "]]";
+
+        txt = txt.replace(patro, canvi);
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function ln(a){
+    return Math.log(a);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar (φ en graus)
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a){  // log abreviat a l totsol
+    if (!a.toPrecision) return a;
+    return coma(xs(a));
+}
+
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return Number(a);
+}
+
+function coma(a){
+    a = a + "";
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+/**********************************************************************
+ * - Establir les puntuacions, que han de correspondre amb la quantitat
+ * de respostes que l'alumne pot contestar.
+ *
+ * - Establir els paràmetres. En general serà una funció per a generar
+ * nombres aleatoris, però també es poden fixar. Aquest últim cas és
+ * interessant per a testejar els càlculs. IMPORTANT: Al finalitzar
+ * tots els parametres hauran de concatenarse al vector parametres.
+ *
+ * -  El mateix succeeix amb els càlculs. Tot haura de volcar-se al
+ * vector solucions.
+ * *******************************************************************/
+-->
