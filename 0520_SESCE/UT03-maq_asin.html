@@ -1,36 +1,32 @@
 <!DOCTYPE html>
-<html lang="es">
-
-<!-- ============================================================== -->
 <head>
-
-<meta charset="UTF-8">
-
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-</style>
-
-<link rel="stylesheet" type="text/css" href="css/main.css" />
-
-<title>Resums - CIFP Politecnic de Llevant</title>
-
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <meta charset="UTF-8">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
-<!-- ============================================================== -->
 
 <script>
-window.texme = {
+    window.texme = {
+    renderOnLoad: false,
+    style: 'none',
     markdownURL: 'js/marked/marked.min.js',
     MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
-}
+    }
+    const titol = "UT03 - Màquines asíncrones"; // MODIFICAR
 </script>
+<script src="js/texme/texme.js"></script>
 
 
-<script src="js/texme/texme.min.js"></script>
-<textarea>
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
 
 
 
@@ -507,6 +503,27 @@ $$
 
 [1]: https://personales.unican.es/rodrigma/ "M.A. Rodríguez Pozueta"
 [2]: https://web.unican.es/ "Universidad de Cantabria"
+[3]: http://creativecommons.org/licenses/by-nc-sa/3.0/ "Llicencia Creative Commons 3.0 atribució, no comercial, compartir"
 
-[3]: http://creativecommons.org/licenses/by-nc-sa/3.0/ "Llicencia Creative Commons 3.0 atribució, no comercial, compartir
 </textarea>
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>
