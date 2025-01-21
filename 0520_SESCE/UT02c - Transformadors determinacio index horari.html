@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ============================================================== -->
+<head>
+
+<meta charset="UTF-8">
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+</style>
+
+<link rel="stylesheet" type="text/css" href="css/main.css" /> 
+
+<title>Resums - CIFP Politecnic de Llevant</title>
+
+</head>
+<!-- ============================================================== -->
+
+<script>
+window.texme = {
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+
+<script src="js/texme/texme.min.js"></script>
+<textarea>
+ 
+
+
+# Determinació de l'índex horari
+
+## Introducció basada en l'anàlisi d'un exemple
+
+El fluxos magnètics dels bobinats del primari i del secundari, en un transformador monofàsic, tenen la mateixa direcció i sentit. Això significa que estan en fase, i són proporcionals al nombre d'espires.
+
+Aquest fet es produeix també als debanaments d'una mateixa columna d'un transformador trifàsic. Així, per a la determinació de l'índex horari el primer a fer serà determinar els terminals homòlegs del transformador trifàsic. És a dir aquells que estan en la mateixa columna.
+
+![](img/identificacio_bobines.png)
+
+A continuació s'estudiarà l'aplicació a un transformador triangle-estrella, com els que àmpliament s'utilitzen en distribució.
+
+![](img/connexio_Dy.png) 
+
+Es determinen els segments AA', BB' i CC', corresponents a les tensions als bobinats primaris. L'extrem A es connecta a L1, mentre que A' es connecta a L2. Es procedeix anàlogament en tots els altres segments. Després es determina la direcció del segment aa', que haurà de ser la mateixa que la del AA', i de manera similar es determinen les altres.
+
+ ![](img/paralelismes_segments.png)
+
+Atès que el secundari està connectat en estrella, els extrems a', b' i c' estan connectats a un mateix punt neutre al centre del triangle. El vector que representa la tensió l1 (ela minúscula 1), l2 i l3 tenen com origen el neutre. És a dir es dibuixa una fletxa que va del neutre a la sortida de cada fase.
+
+![](img/construccio_estrella.png)
+
+Si es superposen ambdues figures, l'hora que marquen les fletxes, sempre que s'hagi orientat L1 (que s'utilitza de referència) a les 12h, és l'índex horari.
+
+![](img/superposicio_segments.png)
+
+En aquest cas l'índex horari serà 11 i per tant aquest serà un transformador Dy11.
+
+## Metodologia
+
+La metodologia a aplicar és la generalització del cas anterior. El cas anterior era un triangle estrella. 
+
+### Estrella-triangle
+
+Si s'analitza el cas estrella triangle com el que segueix s'arriba a la conclusió de que l'índex horari de nou és 11. Per tant es tracta d'un Yd11.
+
+![](img/Yd11.png)
+
+### Triangle-triangle
+
+Analitzant ara la següent connexió es pot observar que si bé tan el secundari com el primari estan connectats en triangle, el segon esta «invertit» respecte al primer, això es deu a les connexions del secundari. Per exemple al primari A' està connectat a C, en canvi al secundari a' està connectat a b. D'aquesta manera s'obté una connexió Dd2.
+
+![](img/Dd2.png)
+
+### Estrella-zig-zag
+
+Els segments AA', a1a1', a2a2' tenen el mateix sentit 
+
+![](img/Yz5.png)
+
+Ara es dibuixa l'estrella dels segments a2a2', b2b2' i c2c2', i a continuació el segment de la bobina a la que es connecta, superposant les figures i marcant L1 i l1 s'obté Yz5.
+
+### Triangle-zig-zag
+
+Aquest cas Dz6, és anàleg als altres estudiats.
+
+![](img/Dz6.png)
+
+## Variacions entrada i sortida
+
+Ja s'han analitzat totes les possibilitats. No obstant es poden aconseguir els 12 índex horaris variant les connexions d'entrada i sortida. Per exemple donada una configuració Dy, s'analitzarà que succeeix si la seqüència de sortida és l1, l2, l3; l3, l1, l2; o l2, l3, l1
+
+![](img/Dy11Dy3Dy7.png)
+
+A la figura es pot observar que s'obtenen els índex Dy11 (com ja havíem obtingut al primer punt), però també Dy3 i Dy7.
+
+A més si s'inverteixen dues de les alimentacions del triangle anterior, s'obtenen els índexs Dy1 Dy5 i Dy9
+
+![](img/Dy1Dy5Dy9.png)
+
+Si s'analitzes s'arribaria a casos idèntic a totes les connexions a les que hem obtingut índexs horaris senars (es a dir connexions Dy, Yd i Yz).
+
+Ara es pot observar que amb la configuració Dd, variant la seqüència de sortida. Es poden obtenir les configuracions Dd10, Dd2 i Dd6.
+
+![](img/Dd10Dd2Dd6.png)
+
+Finalment només queda pensar en els grups de connexió 0, 4 i 8 (que són trivials).
+</textarea>
+

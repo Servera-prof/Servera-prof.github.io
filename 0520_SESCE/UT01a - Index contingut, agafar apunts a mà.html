@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <meta charset="UTF-8">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<script>
+    window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+    }
+    const titol = "UT01"; // MODIFICAR
+</script>
+<script src="js/texme/texme.js"></script>
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+
+
+1.- Determinació de paràmetres característics en circuits de corrent altern (c.a.)
+==============================================================================
+
+A aquest tema (i només a aquest tema) **no se vos proporcionaran
+apunts**,
+excepte al punt que fa referència als harmònics.
+Haureu d'agafar vosaltres mateixos partir de les explicacions.
+Tindreu disponible el següent índex a la web.
+
+Índex
+-----
+
+- Corrent altern.
+  + Magnituds elèctriques en c.a.
+  + Tipus de corrents alterns.
+  + Avantatges enfront de la c. c.
+- Generació de corrents alterns. Valors característics de la c.a.
+- Simbologia elèctrica.
+- Circuits de c.a. monofàsica. Comportament dels receptors elementals en c.a. monofàsica.
+- Potències en c.a. monofàsica. Cos  φ. Ressonància.
+- Sistemes trifàsics. Característiques dels sistemes trifàsics.
+- Avantatges enfront dels sistemes monofàsics.
+- Distribució a tres i quatre fils.
+  + Connexió de receptors trifàsics.
+  + Correcció del cos φ d'una instal·lació trifàsica.
+  + Càlcul de magnituds de línia i de fase en sistemes trifàsics.
+  + Potències en sistemes trifàsics.
+  + Càlcul de la bateria de condensadors en sistemes monofàsics i trifàsics.
+- Correcció del cos φ d'una instal·lació trifàsica.
+- Mesures en circuits de c.a. Tensió, Intensitat, potència, freqüència i factor de potència.
+- Harmònics: causes i efectes
+- Paràmetres característics dels harmònics en les magnituds elèctriques: Intensitat, tensió, freqüència, distorsió, factor de potència, cos φ, entre altres. Filtrat d'harmònics.
+
+
+</textarea>
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>

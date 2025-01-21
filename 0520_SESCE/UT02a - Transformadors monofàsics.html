@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- ============================================================== -->
+<head>
+
+<meta charset="UTF-8">
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+</style>
+
+<link rel="stylesheet" type="text/css" href="css/main.css" /> 
+
+<title>Resums - CIFP Politecnic de Llevant</title>
+
+</head>
+<!-- ============================================================== -->
+
+<script>
+window.texme = {
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+
+<script src="js/texme/texme.min.js"></script>
+<textarea>
+ 
+
+
+# Transformadors
+
+## 1.- Introducció
+
+Un transformador és una màquina elèctrica estàtica que transmet energia elèctrica d'un circuit a un altre, modificant la tensió (u₁) i la corrent (i₁) del circuit anomenat primari a la tensió (u₂) i la corrent (i₂) del circuit anomenat secundari.
+
+![img 1](img/transformador_ideal_3d_cat.svg)
+
+Bàsicament, està format per dos o més circuits elèctrics acoblats magnèticament mitjançant un flux comú, és a dir, per dues o més bobines acoblades. El de dues bobines acoblades es diu transformador monofàsic.
+
+Per a aconseguir un flux comú entre les bobines es pot utilitzar un nucli d'aire, encara que resulta molt més adequat utilitzar un nucli de ferro o un altre material  ferromagnètic (en aquest cas, el camí a través de l'aire també existeix, però és negligible). Per a que un bobinat indueixi tensió a l'altre, el flux comú ha de ser variable i, per això, també ha de ser-ho la corrent que el crea (amb corrent contínua constant no es pot induir tensió).
+
+Com altres màquines elèctriques, el transformador és reversible. Això vol dir que també es pot alimentar pel costat u₂, i₂ cedir energia al costat u₁, i₁. Sovint es considera que el primari del transformador és el costat que es connecta a l'alimentació (a tensió) mentre que el secundari és el que es connecta al consum, és a dir, la transferència de potència és del primari al secundari. No obstant això, aquesta definició té una certa ambigüitat en el cas de transformadors connectats en xarxes mallades, en els quals la transferència de potència es pot produir en qualsevol dels dos sentits, depenent de com es distribueixi la potència de tota la xarxa.
+
+El transformador no modifica la freqüència de les tensions i corrents, per la qual cosa la freqüència de les tensions i corrents del secundari serà la mateixa que les del primari.
+
+L'aplicació més significativa dels transformadors és en els sistemes elèctrics de potència, en els quals fa possible que la generació, el transport i el consum es facin a les tensions més rendibles en cada cas. També s'utilitza en circuits de baixa potència i tensió per a altres aplicacions com, per exemple, la igualació de les impedàncies de càrrega i font per tenir la màxima transferència de potència, l'aïllament de circuits o l'aïllament front a la corrent contínua, sense perdre la continuïtat de la corrent alterna. Una altra aplicació és com a dispositiu auxiliar dels aparells de mesura, reduint la tensió o corrent d'un circuit per adequar-la a la que accepten els aparells de mesura: són els transformadors de mesura.
+
+# 2.- El transformador monofàsic
+
+Les tensions nominals del primari i secundari, $U_{N1}/U_{N2}$, juntament amb la seva potència nominal, $S_N$, caracteritzen el transformador, i a partir d'aquests valors es poden calcular les corrents nominals, $I_{N1}/I_{N2}$
+
+$$
+S_N=U_{N1} \cdot I_{N1}
+$$
+
+Els valors nominals són aquells pels quals s'ha calculat el transformador, i superar-los comporta el risc de danyar-lo. La distinció entre l'enrotllament d'alta i baixa tensió, així com si el transformador és elevador (400V / 6 kV) o reductor (25 / 6 kV), depèn de quina de les tensions nominals sigui més gran.
+
+La relació de transformació es defineix com el quocient entre les tensions nominals del primari i el secundari, el qual coincideix amb el quocient entre les espires d'ambdós enrotllaments i és inversament proporcional al quocient entre les corrents nominals.
+
+$$
+r_t = \frac {U_{N1}}{U_{N2}} = \frac {N_1} {N_2} = \frac {I_{N2}}{I_{N1}}
+$$
+
+### 2.1. Transformador monofàsic ideal
+
+Tot i que el transformador ideal no existeix, serveix com una primera aproximació per explicar el funcionament del transformador real. Un transformador monofàsic ideal, representat a la Figura 2, consta de dues bobines acoblades amb les següents característiques:
+
+- Els enrotllaments no tenen resistència interna.
+- No hi ha flux de dispersió, és a dir, tenen un acoblament perfecte.
+- El nucli magnètic manca de cicle d'histèresi i no hi ha corrents de Foucault (sense pèrdues en el ferro);
+- el mitjà magnètic té una permeabilitat relativa infinita.
+
+![img 2](img/esquema_transformador_ideal.svg)
+
+En el transformador ideal, es compleix la següent relació:
+
+$$
+r_t = \frac{N_1}{N_2} = \frac{u_1(t)}{u_2(t)} = \frac{i_2(t)}{i_1(t)}
+$$
+
+Aquesta expressió mostra que la relació entre les tensions instantànies del primari i secundari, $u_1~u_2$, és constant i és igual al quocient del nombre d'espires d'ambdós enrotllaments (és a dir, la relació de transformació). El mateix succeeix amb les intensitats instantànies del secundari i primari, $i_2 ~ i_1$.
+
+L'expressió de la relació de tensions, $u_1(t) / u_2(t)=r_t$, s'obté fàcilment ja que el transformador ideal no té flux de dispersió ni resistència interna als seus enrotllaments. A més, com que no té pèrdues ni emmagatzema energia en forma de camp elèctric o magnètic la potència instantània neta que s'absorbeix és nul·la. Això equival a dir que la potència instantània que absorbeix el primari, $p(t)$, es cedeix instantàniament al secundari i viceversa:
+
+$$
+p(t) = u_1(t) \cdot i_1(t) = u_2(t) \cdot i_2(t)
+$$
+
+D'aquesta equació i de la relació de tensions, $u_1(t) / u_2(t)=r_t$, s'obté la relació entre les intensitats instantànies de primari i secundari: $i_2(t) / i_1(t)=r_t$
+
+Atès que la relació entre tensions i intensitats instantànies és un nombre real constant, si les tensions i intensitats del primari són sinusoïdals, també ho seran les del secundari (seran tensions i intensitats de valor eficaç, proporcionals a la relació de transformació, de la mateixa freqüència i d'igual fase que les corresponents del primari). Fasorialment es pot escriure,
+
+$$
+r_{t}=\frac{\underline{U}_{1}}{\underline{U}_{2}}=\frac{N_{1}}{N_{2}}=\frac{\underline{I}_{2}}{\underline{I}_{1}}
+$$
+
+Les tensions de primari i secundari d'un transformador ideal compleixen la relació de transformació mentre que, com es veurà en punts posteriors, en un transformador real no la compleixen (només si està en buit; quan està en càrrega, la relació entre les tensions varia lleugerament, a causa de la caiguda de tensió a la impedància de curtcircuit). La relació de transformació en el transformador ideal també és igual a la relació entre intensitats, cosa que tampoc passa en el transformador real (excepte si es menysté la branca del ferro).
+
+Per a il·lustrar la forma de treballar amb el transformador ideal, es pot suposar que es disposa d'un transformador ideal monofàsic de 6 kV / 380 V, 10 kVA connectat a una xarxa de 6 kV i que alimenta una càrrega de potència activa P = 5 kW amb un factor de potència de 0.9.
+
+Abans d'iniciar qualsevol càlcul, es pot comprovar que la tensió d'alimentació no supera la tensió nominal del transformador i que la potència que ha de transferir és inferior també a la nominal,
+
+$$
+U_1 = 6000~V = U_{N1}
+$$
+
+$$
+S_2 = \frac{5\cdot10^3}{0,9} = 5555.\overline{5}~\text{VA} < S_{N} = 10000~\text{VA}
+$$
+
+Utilitzant la relació de transformació, es pot determinar la tensió als borns de la càrrega,
+
+$$
+U_2= \frac {U_1}{r_t} = 6000\cdot\frac{380}{6000}=380~\text{V}
+$$
+
+S'observa que el transformador ideal transforma la tensió que se li aplica a l'entrada en una altra tensió a la sortida, segons la relació de transformació (en aquest cas, per cada 6000 V a l'entrada, es tenen 380 V a la sortida).
+
+Coneguda la tensió als borns de la càrrega, es pot determinar la intensitat absorbida per aquesta,
+
+$$
+I_{2} = \frac {P_2} {U_2 cos~\varphi_2} = \frac {5000} {380 \cdot 0.9} = 14.62~\text{A}
+$$
+
+I a partir d'aquesta intensitat es pot determinar la intensitat del primari del transformador utilitzant la relació de transformació,
+
+$$
+I_{1}=\frac{I_{2}}{r_{t}}=14.62\cdot\frac{380}{6000}=0.926~A
+$$
+
+De la mateixa manera que succeeix amb les tensions, el transformador ideal ajusta les corrents segons la relació de transformació. A més a més, es pot observar que la intensitat en el costat del transformador amb un nivell de tensió més alt serà menor que la del costat amb un nivell de tensió més baix (bobinat d'alta), mentre que la intensitat més elevada estarà en l'enrotllament amb un nivell de tensió més baix (bobinat de baixa).
+
+Cal destacar que treballar amb transformadors implica l'existència de dos circuits diferents corresponents als dos costats del transformador, cadascun amb un nivell de tensió específic assignat. Per exemple, no és el mateix considerar una càrrega de 10Ω al costat de baixa (U<sub>N2</sub> = 380 V) que tractar-la al costat d'alta (U<sub>N1</sub> = 6 kV).
+
+Es podria dur a terme un exercici senzill per a calcular les corrents i tensions dels petits transformadors domèstics (220/125 V, 200 VA) que encara es troben en instal·lacions antigues. Això es podria aconseguir coneixent la tensió d'alimentació (220 V a l'endoll) i els dispositius connectats al secundari (com ara estufes, batedores, etc.). És important tenir present que aquests transformadors s'allunyen molt més de la idealitat en comparació amb un transformador d'alta potència.
+
+Es fa notar que el secundari i el primari del transformador estan elèctricament separats, és a dir, no hi ha cap punt en els seus circuits connectat per conductors, i la relació entre tots dos s'estableix a través del circuit magnètic. Aquesta característica es coneix com aïllament galvànic, i permet la separació de qualsevol fenomen elèctric entre el primari i el secundari.
+
+### 2.2 Transformador monofàsic real
+
+El transformador monofàsic real es diferencia de l'ideal pel fet que:
+
+- els bobinats tenen resistència interna,
+- hi ha flux de dispersió en el nucli magnètic,
+- aquest té un cicle d'histèresi i hi ha corrents de Foucault (amb pèrdues en el ferro);
+- a més, el medi magnètic té una permeabilitat relativa finita.
+
+![img 3](img/transformador_real_circuit_equivalent.svg)
+
+El seu esquema equivalent per al règim permanent sinusoidal és el de la Figura 3. Inclou un transformador ideal, dues resistències i dues reactàncies. La branca formada per R<sub>Fe</sub>'' i X<sub>M</sub>'' representa el ferro, la potència consumida a R<sub>Fe</sub>'' són les pèrdues al ferro i la intensitat que circula per X<sub>M</sub>'' és la necessària per a crear el flux magnètic. Aquesta branca sol situar-se al costat de BT. La branca formada per R'' i X'' representa les resistències dels bobinats i la caiguda de tensió deguda al flux de dispersió. La resistència i la reactància de l'esquema corresponen a la suma de la resistència i la reactància del primari i secundari.
+
+$$
+R^{\prime\prime}=R_{1}^{\prime\prime}+R_{2}^{\prime\prime}
+$$
+
+$$
+X^{\prime\prime}=X_{1}^{\prime\prime}+X_{2}^{\prime\prime}
+$$
+
+La doble prima en les variables indiquen que són variables vistes des del secundari. Normalment, es desestima la branca del ferro per a realitzar els càlculs elèctrics i només es té en compte en calcular les potències activa i reactiva consumides pel transformador. L'esquema resultant és el de la Figura 4.
+
+![img 3](img/transformador_real_circuit_equivalent_menystenint_el_ferro.svg)
+
+### 2.3.- Reducció de circuit amb transformador monofàsic ideal
+
+Quan es disposa d'un circuit que inclou un transformador monofàsic ideal (com ara el circuit de la Figura 4, que en conté un d'ideal), no es fan servir directament les equacions associades al transformador (com es va fer a l'exemple anterior). En lloc d'això, es procedeix a eliminar el transformador ideal, un procés conegut com a reducció del circuit. Reduir un circuit implica dividir totes les magnituds del mateix per uns valors base específics. Aquests valors base no poden ser arbitraris, sinó que han de complir amb determinats criteris.
+
+$$
+\begin{array}{ccc}
+& S_b~(\text{VA}) & \\\\[5mm]
+U_{b1}~(\text{V}) & U_{b1}/U_{b2} = r_t & U_{b2}~(\text{V}) \\\\[5mm]
+I_{b1} = \dfrac{S_b}{U_{b1}}~(\text{A}) & & I_{b2} = \dfrac{S_b}{U_{b2}}~(\text{A}) \\\\[5mm]
+Z_{b1} = \dfrac{U_{b1}^2}{S_b}~(\Omega) & & Z_{b2} = \dfrac{U_{b2}^2}{S_b}~(\Omega)
+\end{array}
+$$
+
+Anem a dur a terme la reducció del transformador real, el qual té el seu primari connectat a través d'una línia i una càrrega al seu secundari. Totes les variables (potències, tensions, intensitats i impedàncies) i components (fonts de tensió o corrent, impedàncies o càrregues) de cada costat del transformador han de ser dividits pel seu corresponent valor base. Al circuit resultant es pot observar que el transformador ideal s'ha convertit en dos fils.
+
+![img 4](img/reduccio_transformador_monofasic_real.svg)
+
+$$
+\begin{array}{ccc}\underline{u}_G^r=\dfrac{\underline{U}_G}{U_{b1}}&;
+& \underline{s}_G^r = \dfrac{\underline{S}_G}{S_{b}} = 
+\dfrac{\underline{U}_G\underline{I}_1^*}{S_{b}}&;
+& \underline{z}_L^r = \dfrac{\underline{Z}_L}{Z_{b1}}&;
+& \underline{i}_1^r = \dfrac{\underline{I}_1}{I_{b1}} = 
+\dfrac {\underline{I}_1^{\prime\prime}}{I_{b2}}\\\\
+\end{array}
+$$
+
+$$
+\begin{array}{ccc} 
+\underline{u}_1^r = \dfrac{\underline{U}_1}{U_{b1}} =
+\dfrac{\underline{U}_1^{\prime\prime}}{U_{b2}}&;
+&x^r = \dfrac{X^{\prime\prime}}{Z_{b2}}&;
+&r^r = \dfrac{R^{\prime\prime}}{Z_{b2}}&;
+&\underline{u}_2^r=\dfrac{\underline{U}_2}{U_{b2}}
+\end{array}
+$$
+
+$$
+\begin{array}{ccc}
+\underline{z}_c^r=\dfrac{\underline{Z}_c}{Z_{b2}}&;
+&\underline{s}_c^r = \dfrac{\underline{S}_c}{S_{b}} =
+\dfrac{\underline{U}_2\underline{I}_2^*}{S_b}
+\end{array}
+$$
+
+El circuit simplificat té l'avantatge de ser més fàcil de resoldre en comparació amb aquell que inclou el transformador ideal. Un cop resolt, és necessari obtenir els valors reals de tensions, corrents i potències desfent les simplificacions realitzades.
+
+De totes les bases possibles, es solen utilitzar:
+
+- la reducció al primari
+- la reducció al secundari
+- la reducció amb la base referida als valors nominals del transformador, coneguda com reducció a p.u.
+
+Aquesta darrera serà la que s'utilitzarà en aquesta assignatura.
+
+$$
+\begin{array}{ccc}
+& S_b^{p.u.} = S_N~(\text{VA}) & \\\\[5mm]
+U_{b1}^{p.u.} = U_{N1}~(\text{V}) & U_{b1}^{p.u.}/U_{b2}^{p.u.} = r_t&U_{b2}^{p.u.} = U_{N2}~(\text{V}) \\\\[5mm]
+I_{b1}^{p.u.} = \dfrac{S_N}{U_{N1}}~(\text{A})&&I_{b2}^{p.u.} = \dfrac{S_N}{U_{N2}}~(\text{A})\\\\[5mm]
+Z_{b1}^{p.u.} = \dfrac{U_{N1}^{2}}{S_N}~(\Omega)&&Z_{N2}^{p.u.} = \dfrac{U_{N2}^{2}}{S_N}~(\Omega)
+\end{array}
+$$
+
+Cada una d'aquestes simplificacions té les seves avantatges. És important assenyalar que com que els valors base tenen unitats els valors reduïts són adimensionals (s'hauria d'indicar p.u.), no obstant per deformació es solen utilitzar unitats (V, A, Ω, VA).
+
+### 2.4.- Placa de característiques del transformador monofàsic
+
+Els **valors nominals** d'una màquina elèctrica són aquells per als quals ha estat dissenyada. Els més importants d'un transformador dissenyat per treballar en règim sinusoidal són:
+
+- Potència nominal.
+- Tensió nominal de primari i secundari.
+- Intensitat nominal de primari i secundari.
+- Relació de transformació.
+- Freqüència nominal.
+
+Com en altres màquines elèctriques, la potència màxima que pot subministrar el transformador està limitada per la qualitat dels seus aïllants, els quals poden deteriorar-se per un excés de tensió o temperatura.
+
+La tensió màxima dels aïllants fixa la tensió màxima del transformador.
+
+La temperatura màxima dels aïllants, juntament amb la capacitat de dissipació de calor del transformador, fixa les pèrdues màximes que es poden produir al seu interior (pèrdues en el ferro i en el coure). Per a una tensió determinada (amb pèrdues en el ferro constants) i una secció de conductor determinada (resistència constant, R = ρ · L / S), la temperatura màxima dels aïllants fixa una intensitat màxima al transformador.
+
+La **potència nominal**, representada com a S, és la potència aparent (VA, kVA o MVA) que s'obté a partir de la tensió i la corrent nominals dels dos debanaments del transformador. Pel que fa a un transformador monofàsic, s'expressa de la següent manera:
+
+$$
+S_N=U_{N1}\cdot I_{N1}=U_{N2}\cdot I_{N2}
+$$
+
+Es refereix a la capacitat de subministrar potència al secundari del transformador en règim permanent sense que l'escalfament sigui excessiu. Si la càrrega al secundari té un factor de potència igual a la unitat, tota la potencia aparent és, de fet, potència activa; per tant la potència nominal és també la màxima potència activa que pot desenvolupar el transformador. En condicions intermitents de funcionament, com ara connexions i desconnexions periòdiques, el transformador pot subministrar fins a 1,5 vegades la potència nominal. Això es deu al fet que durant el temps de desconnexió, el transformador es refreda fins a la temperatura ambient (o altres intermèdies entre la de funcionament i la ambient), i un transformador pot subministrar potència superior a la nominal mentre es reescalfa fins a arribar a la seva temperatura màxima.
+
+Les **tensions nominals**, representades per U, són les tensions per a les quals s'han calculat els debanats del transformador. Aquestes tensions no han de superar-se per evitar el deteriorament dels aïllaments.
+
+Les **corrents nominals**, representades per I, són les corrents màximes que poden circular pels debanaments del transformador sense deteriorament. En condicions intermitents, es poden admetre sobrecàrregues.
+
+La **relació de transformació** és la proporció entre les tensions nominals primària i secundària. Aquesta relació es manté fins i tot quan la primària està alimentada i la secundària està en buit (sense càrrega). Coincideix amb la relació entre el nombre d'espires de primària i secundària, inversament proporcional a la relació de tensions.
+
+$$
+r_t=\frac{U_{N1}}{U_{N2}}=\frac{N_1}{N_2}=\frac{I_{N2}}{I_{N1}}
+$$
+
+La **freqüència nominal** és la freqüència corresponent a la resta dels valors nominals.
+
+Els valors nominals d'un transformador són els valors de funcionament estàndard, però també pot funcionar correctament amb altres valors diferents. Per exemple:
+
+- Pot subministrar potències inferiors a les nominals (les potències estan limitades per la càrrega), o el que és el mateix, pot subministrar intensitats inferiors a les nominals, que és el que normalment succeeix.
+
+- Pot treballar amb tensions inferiors a les nominals, encara que no podrà subministrar llavors la potència nominal (tot i que sí podrà subministrar la intensitat nominal).
+
+- Pot treballar amb una altra freqüència f, tot i que si és superior a la nominal, es produiran majors pèrdues al nucli de ferro, la qual cosa reduirà la potència màxima a menys de la nominal. Si és inferior, la corrent magnetitzant o el flux seran majors. Per evitar la saturació del transformador, caldrà treballar amb una tensió U inferior a la nominal, complint així amb les especificacions.
+
+$$
+\frac{U_N}{f_N}=\frac{U}{f}=cte
+$$
+
+La **placa de característiques** d'un transformador conté, entre d'altres, els següents valors.
+
+- Potència nominal:  $S_N$
+- Tensions nominals de primari i secundari: $U_{N1}$ y $U_{N2}$
+- Intensitats nominals de primari i secundari: $I_{N1}$ y $I_{N2}$
+- Relació de transformació: $r_t$
+- Freqüència nominal: $f$
+- Dades dels assaigs en buit i en curtcircuit  
+  - Pèrdues en curtcircuit i tensió de curtcircuit, $W_{cc} \text{(W)}$ i $\varepsilon_{cc} \text{(p.u.)}$. També es poden proporcionar $\varepsilon_{cc}$ i $\cos  \varphi_{cc}$  
+  - Pèrdues en buit i el factor de potència de buit del transformador, $W_0 \text{(W)}$ i $\cos \varphi_0$. O bé es tenen la potència $W_0$ i la corrent de buid en p.u. $i_0$
+
+Pel que fa als primers datos de la placa de característiques, és important recordar que en realitat hi ha algunes dades redundants. Per exemple, si es coneix la potència nominal i les tensions nominals de tots dos bobinats, les intensitats nominals queden caracteritzades per la relació $I_{Nt} = S_N/U_{Nt}$, $(t = 1, 2)$. I amb les tensions nominals conegudes, la relació de transformació també queda definida: $r_t = U_1/U_2$.
+
+Les dades de la placa de característiques permeten determinar els paràmetres del transformador real.
+
+L'assaig de curtcircuit possibilita calcular la impedància conjunta dels dos bobinats (resistència i reactància), també coneguda com a impedància de curtcircuit, a través de les pèrdues mesurades en l'assaig, $W_{cc}$, i de la tensió relativa utilitzada per a la realització de l'assaig $\varepsilon_{cc}$.
+
+En treballar en reducció a pu, la impedància coincideix amb la tensió de curtcircuit reduïda i la resistència amb la potència de l'assaig reduïda:
+
+$$
+\begin{array}{ccccc}
+z = \varepsilon_{cc} & ; & r = w_{cc} = \dfrac{W_{cc}}{S_b^{p.u.}} = \dfrac{W_{cc}}{S_N} & ; & x = \sqrt{z^2-r^2} \\\\[2mm]
+z = \varepsilon_{cc} & ; & r = z\cos\varphi_{cc} & ; & x = z\sin\varphi_{cc} 
+\end{array}
+$$
+
+L'assaig de buit (pèrdues mesurades en l'assaig, $W_0$, i corrent de buit, $i_0$ factor de potència, $\cos\varphi_0$) caracteritza el ferro del transformador. Les pèrdues en el ferro es determinen considerant que depenen del quadrat de la tensió i, si el transformador és elevador (BT/AT) o reductor (AT/BT), per ubicar la branca del ferro en el costat BT.
+
+Treballant en pu, l'admitància del ferro coincideix amb la corrent de buit i la conductància del ferro amb les pèrdues de l'assaig.
+
+$$
+\begin{array}{ccccc}
+y_{Fe} = \dfrac{1}{z_{Fe}}=i_0 & ; & g_{Fe} = \dfrac{1}{r_{Fe}} = w_0 = \dfrac {W_0}{S_b^{p.u.}} = \dfrac{W_0}{S_N} & ; & b_M = \dfrac {1}{x_M} = \sqrt{y_{Fe}^2-g_{Fe}^2} \\\\[2mm]
+g_{Fe} = w_0 & ; & y_{Fe} = \dfrac{g_{Fe}}{\cos\varphi_0} & ; & b_M = y_{Fe}\sin\varphi_0 
+\end{array}
+$$
+
+Donat que la branca del ferro és sol colocar en el costat de BT, les pèrdues en el ferro i la potència reactiva que consumeix la branca magnetitzant del transformador (potència reactiva necessaria per a crear el flux en el ferro) es calculen:
+
+$$
+\begin{array}{cccc}
+p_{Fe} = u^2_1g_{Fe} & , & q_{Fe} = u_1^2b_M & \text {Si 1 és el costat BT}\\\\[2mm]
+p_{Fe} = u^2_2g_{Fe} & , & q_{Fe} = u_2^2b_M & \text {Si 2 és el costat BT}
+\end{array}
+$$
+
+### 2.5 Transformador en càrrega i en curtcircuit
+
+#### Exemple de l'estudi d'un transformador:
+
+S'ha de trobar:
+
+- l'índex de càrrega
+- la c.d.t.
+- el rendiment
+- les intensitats de curtcircuit en cas de curtcircuit al secundari
+
+A la placa de característiques es poden trobar les següents dades:
+
+- $500~\text{kVA}$
+- $25000/380~\text{V}$
+- $\varepsilon_{cc}=0.05$
+- $W_{cc}=10~\text{kW}$
+- $W_0=1~\text{kW}$
+- $\cos\varphi_0=0.2$
+
+El primari, no obstant no es connecta a 25000 V sino a 24500 V i la impedància te un valor $\underline{Z_2}=0.305+j0.5 ~\Omega$. 
+
+#### Resolució
+
+La primera passa per a resoldre aquest circuit és trobar els valors base:
+
+$$
+\begin{array}{ccc}
+S_b^{p.u.}=S_N=500~\text{kVA}\\\\
+U_{b1}^{p.u.}=U_{N1}=25000~\text{V} & ; & U_{b2}^{p.u.}=U_{N2}=380~\text{V} \\\\
+I_{b1}^{p.u.}=I_{N1}=500\cdot10^3/25000=20~\text{A} & ; & I_{b2}^{p.u.}=I_{N2}=500\cdot10^3/380=1315.79~\text{A}\\\\
+Z_{b1}^{p.u.}=25000^2/500\cdot10^3=1250~\Omega & ; & Z_{b2}^{p.u.}=380^2/500\cdot10^3=0.2888~\Omega
+\end{array}
+$$
+
+Així, les impedàncies reduïdes del coure del transformador són:
+
+$$
+\begin{array}{ccccc}
+z = \varepsilon_{cc} = 0.05~\text{p.u.} & ; &
+r = w_{cc} = \dfrac{10}{500} = 0.02~\text{p.u.} & ; &
+x = \sqrt{0.05^2-0.02^2} = 0.04583~\text{p.u.}
+\end{array}
+$$
+
+Les admitàncies reduïdes del ferro del transformador són:
+
+$$
+\begin{array}{ccc}
+g_{Fe} = w_0 = \dfrac{1}{500}=0.002~\text{p.u.} & ; &
+y_{Fe} = \dfrac{g_{Fe}}{\cos\varphi_0} = \dfrac{0.002}{0.2}=0.01~\text{p.u.}
+\end{array}
+$$
+
+$$
+b_M = y_{Fe}\sin\varphi_0 = y_{Fe}sqrt{1-\cos^2\varphi_0} = 0.01\sqrt{1-0.2^2}=0.009798~\text{p.u.}
+$$
+
+Degut a que la càrrega $\underline{Z_2}$ es troba al secundari del transformador, per a reduir la seva impedància s'ha d'utilitzar la impedància base del secundari:
+
+$$
+\underline{z_2} = r_2 + jx_2 = \dfrac{0.305+j0.5}{0.2888} = 1.0561 + j1.7313~\text{p.u.}
+$$
+
+Seguint la mateixa norma, per a reduir la tensió d'alimentació (situada al primari), s'utilitza la tensió base del primari:
+
+$$
+u_1 = \dfrac{24.5}{25}=0.98~\text{p.u.}
+$$
+
+L'index de càrrega és la relació entre les corrents que circulen pel transformador i les màximes que aquest admet, per tant, l'index de càrrega coincideix am les intensitats reduïdes a p.u.
+
+$$
+\begin{array}{ccc}i_1=\dfrac{I_1}{I_{N1}} & ; & i_2=\dfrac{I_2}{I_{N2}}\end{array}
+$$
+
+L'índex de càrrega dona una idea d'on està treballant el transformador (per sota de la seva potència nominal, a la potència nominal i inclús per sobre, ja que el transformador pot estar sobrecarregat, breus períodes de temps si està fred.
+
+Si la branca del ferro és negligigle, llavors 
+
+$$
+i_1=i_2=i
+$$
+
+Si es resol el circuit equivalent a les figures anteriors però sense $\underline{Z_L}$:
+
+$$
+\underline{i} = \dfrac{\underline{u_1}}{r+jx+\underline{z_2}} = 0.4717 \angle -58.8^\circ
+$$
+
+Per tant ja es pot resoldre la primera qüestió, l'index de càrrega és $i=0.4717~\text{p.u.}$, és a dir el transformador està funcionant a menys de la seva capacitat.
+
+Ara, amb les dades ja obtingudes és senzill calcular la $\underline{u_2}$:
+
+$$
+\underline {u_2}=\underline{z_2}\cdot\underline{i}=0.9566\angle0.187^\circ~\text{p.u.}
+$$
+
+La caiguda de tesnsió es defineix com la diferencia entre la tensió en el secundari a l'assaig de buid (que coincideix amb la nominal, i amb la que tindria si fos ideal) i la que es té en càrrega:
+
+$$
+c.d.t. = \left|\underline{U}_{2,~buid}\right| - \left|\underline{U}_{2,~carrega} \right| = \left(\left|\underline{u_1^r}\right| - \left|\underline{u_2^r}\right|\right)\cdot U_{b2}^r
+$$
+
+Per al cas de la reducció a p.u.
+
+$$
+c.d.t. = \left(\left|\underline{u_1}\right| - \left|\underline{u_2}\right|\right)\cdot U_{N2}
+$$
+
+$$
+c.d.t. (\%) = \left(\left|\underline{u_1}\right| - \left|\underline{u_2}\right|\right)\cdot 100
+$$
+
+Així doncs en el cas del present transformador:
+
+$$
+\begin{array}{ccc}c.d.t. (\%) = 2.34~\% & ; & c.d.t. = 0.0234 \cdot 380 = 8.88V \end{array}
+$$
+
+Per a aquest exemple és interessant calcular la caiguda de tensió a partir del valor de les tensions en buid i en càrrega:
+
+$$
+\begin{array}{ccc}U_{2,~buid}=u_1 \cdot U_{b2}^{p.u.}=372.4V & ; & U_{2,~carrega}=u_2 \cdot U_{b2}^{p.u.}=363.5V \end{array}
+$$
+
+$$
+c.d.t. (\%) = \frac{\left|\underline{U}_{2,~buid}\right| - \left|\underline{U}_{2,~carrega} \right|}{U_{N2}} = \frac{372.4-363.5}{380} = 2.34~\%
+$$
+
+El rendiment del transformador no és si no la relació entre la potència de sortida respecte a la potència d'entrada. La diferència entre ambdues potències són les pèrdues del coure i del ferro. És a dir:
+
+$$
+\eta = \frac {\text{Potencia util}}{\text{Potencia absorbida}} = \frac{p_2}{p_2+p_{Fe}+p_{Cu}}
+$$
+
+Les pèrdues en el coure es calculen segons:
+
+$$
+p_{Cu}=r \cdot i^2
+$$
+
+Les pèrdues del ferro són:
+
+- $p_{Fe}=g_{Fe}\cdot\left(u_1\right)^2$ Si 1 es el costat BT
+- $p_{Fe}=g_{Fe}\cdot\left(u_2\right)^2$ Si 1 es el costat BT
+
+Els transformadors solen tenir un rendiment prou elevat. De fet, en el cas dels transformadors de potència aquest ronda el 99%.
+
+En el cas que ens ocupa:
+
+$$
+p_2 = r_2i^2 = \text{Re}\{\underline{s_2}\} = 
+\text{Re}\{\underline{u}_2\underline{i}_2^*\}=
+\text{Re}\{\left(u_2\right)^2\underline{y}_2^*\}=0.23499
+$$
+
+$$
+p_{Cu}=r\cdot i^2=0.00445
+$$
+
+$$
+p_{Fe} = (u_2)^2g_{Fe}=0.00183
+$$
+
+$$
+\eta = \dfrac{0.23499}{0.23499+0.00445+0.00183}100=97.4~\%
+$$
+
+Finalment, en cas de curtcircuit, la corrent reduida val:
+
+$$
+i_{cc} = \dfrac {u_1}{z}=19.6
+$$
+
+Per tant, aquest resultat indica que les corrents de curtcircuit són 19.6 vegades la nominal. Conseqüentment el transformador haurà de comptar amb les proteccions adients.
+
+Per a obtenir tots els valors reals s'haurà de multiplicar per les corresponents bases:
+
+$$
+\begin{array}{ccc}
+I_1 = i\cdot I_{b1}^{p.u.}=9.434~\text{A}&;
+& I_2 = i\cdot I_{b2}^{p.u.}=620.7~\text{A}\\\\
+U_2 = u_2 \cdot U_{b2}^{p.u.} = 363.5~\text{V}&;
+& P_2 = p_2 \cdot S_b^{p.u.} = 117.5\text{kW}
+\end{array}
+$$
+
+$$
+\begin{array}{ccc}
+P_{Cu}=p_{Cu}\cdot S_b^{p.u.} = 2.225\text{kW}&;
+&P_{Fe}=p_{Fe}\cdot S_b^{p.u.} = 0.915\text{kW}
+\end{array}
+$$
+
+$$
+\begin{array}{ccc}
+I_{cc1} = i_{cc}\cdot I_{b1}^{p.u.}=392~\text{A}&;
+& I_{cc2} = i_{cc}\cdot I_{b2}^{p.u.}=25.79~\text{kA}
+\end{array}
+$$
+</textarea>
+
