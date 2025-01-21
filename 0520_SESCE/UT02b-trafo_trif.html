@@ -33,46 +33,46 @@
 
 ## 1. Introducció
 
-Es crea connectant (magnèticament) tres transformadors monofàsics. Poden tenir 3 o 5 columnes. Tres d'aquestes columnes tindran un bobinat primari i un secundari. Tot i que el de tres columnes té el desavantatge de crear asimetries en el circuit magnètic, l'estalvi que suposa utilitzar menys material (estalvi en pes, i preu) en front a la pèrdua d'asimetria (un desavantatge només en càrregues baixes), fa que tots els transformadors utilitzin un banc de tres columnes
+Es crea connectant (magnèticament) tres transformadors monofàsics. Poden tenir 3 o 5 columnes. Tres d'aquestes columnes tindran un bobinat primari i un secundari. Tot i que el de tres columnes té el desavantatge de crear asimetries en el circuit magnètic, l'estalvi que suposa utilitzar menys material (estalvi en pes, i preu) enfront de la pèrdua d'asimetria (un desavantatge només en càrregues baixes), fa que tots els transformadors utilitzin un banc de tres columnes.
 
 Bàsicament, està format per dos o més circuits elèctrics acoblats magnèticament mitjançant un flux comú, és a dir, per dues o més bobines acoblades. El de dues bobines acoblades es diu transformador monofàsic.
 
-Per a aconseguir un flux comú entre les bobines es pot utilitzar un nucli d'aire, encara que resulta molt més adequat utilitzar un nucli de ferro o un altre material  ferromagnètic (en aquest cas, el camí a través de l'aire també existeix, però és negligible). Per a que un bobinat indueixi tensió a l'altre, el flux comú ha de ser variable i, per això, també ha de ser-ho la corrent que el crea (amb corrent contínua constant no es pot induir tensió).
+Per a aconseguir un flux comú entre les bobines es pot utilitzar un nucli d'aire, encara que resulta molt més adequat utilitzar un nucli de ferro o un altre material  ferromagnètic (en aquest cas, el camí a través de l'aire també existeix, però és negligible). Perquè un bobinat indueixi tensió a l'altre, el flux comú ha de ser variable i, per això, també ha de ser-ho el corrent que el crea (amb corrent continu constant no es pot induir tensió).
 
 Com altres màquines elèctriques, el transformador és reversible. Això vol dir que també es pot alimentar pel costat u₂, i₂ cedir energia al costat u₁, i₁. Sovint es considera que el primari del transformador és el costat que es connecta a l'alimentació (a tensió) mentre que el secundari és el que es connecta al consum, és a dir, la transferència de potència és del primari al secundari. No obstant això, aquesta definició té una certa ambigüitat en el cas de transformadors connectats en xarxes mallades, en els quals la transferència de potència es pot produir en qualsevol dels dos sentits, depenent de com es distribueixi la potència de tota la xarxa.
 
 El transformador no modifica la freqüència de les tensions i corrents, per la qual cosa la freqüència de les tensions i corrents del secundari serà la mateixa que les del primari.
 
-L'aplicació més significativa dels transformadors és en els sistemes elèctrics de potència, en els quals fa possible que la generació, el transport i el consum es facin a les tensions més rendibles en cada cas. També s'utilitza en circuits de baixa potència i tensió per a altres aplicacions com, per exemple, la igualació de les impedàncies de càrrega i font per tenir la màxima transferència de potència, l'aïllament de circuits o l'aïllament front a la corrent contínua, sense perdre la continuïtat de la corrent alterna. Una altra aplicació és com a dispositiu auxiliar dels aparells de mesura, reduint la tensió o corrent d'un circuit per adequar-la a la que accepten els aparells de mesura: són els transformadors de mesura.
+L'aplicació més significativa dels transformadors és en els sistemes elèctrics de potència, en els quals fa possible que la generació, el transport i el consum es facin a les tensions més rendibles en cada cas. També s'utilitza en circuits de baixa potència i tensió per a altres aplicacions com, per exemple, la igualació de les impedàncies de càrrega i font per tenir la màxima transferència de potència, l'aïllament de circuits o l'aïllament enfront del corrent continu, sense perdre la continuïtat del corrent altern. Una altra aplicació és com a dispositiu auxiliar dels aparells de mesura, reduint la tensió o corrent d'un circuit per adequar-la a la que accepten els aparells de mesura: són els transformadors de mesura.
 
 ## 2. Connexions. Propietats.
 
 El transformador es pot connectar en triangle (D), estrella (Y) o zig-zag (Z). Cada una d'elles amb unes propietats i relacions de transformació diferents.
 
-La connexió estrella permet tenir accessible el neutre i distribuir 2 tensions. EL debanaments suporten la mateixa corrent que la línia.
+La connexió estrella permet tenir accessible el neutre i distribuir 2 tensions. Els debanaments suporten el mateix corrent que la línia.
 
-La connexió en triangle no te neutre. La corrent de cada debanament és la de línia  dividida per $ \sqrt{3} $. Els debanaments suporten la tensió composta. Per a igual tensió de línia i igual potencia, cada debanament ha de tenir 1.73 vegades més espires que en estrella (la tensió és superior), però de secció 1.73 vegades inferior (la corrent és inferior), per tant la quantitat de coure és la mateixa.
+La connexió en triangle no té neutre. El corrent de cada debanament és la de línia  dividida per $ \sqrt{3} $. Els debanaments suporten la tensió composta. Per a igual tensió de línia i igual potencia, cada debanament ha de tenir 1,73 vegades més espires que en estrella (la tensió és superior), però de secció 1.,73 vegades inferior (el corrent és inferior), per tant, la quantitat de coure és la mateixa.
 
-Per a una connexió en zig-zag és necessiten dues bobines iguals per fase, per les que circula la intensitat de línia. Per a igual tensió es necessiten $ 2 / \sqrt{3} =1.15 $ més espires que en estrella, de la mateixa secció, cada una de les espires suporta una tercera part de la tensió composta.
+Per a una connexió en zig-zag es necessiten dues bobines iguals per fase, per les que circula la intensitat de línia. Per a igual tensió es necessiten $ 2 / \sqrt{3} =1,15 $ més espires que en estrella, de la mateixa secció, cada una de les espires suporta una tercera part de la tensió composta.
 
-En general, la connexió en triangle té una bona resposta en front dels desequilibris de càrregues no simètriques, mentre que en estrella no tant. La connexió en zig-zag es comporta bé sota desequilibris tot i que necessita un 15% més de coure. També tenen el neutre accessible.
+En general, la connexió en triangle té una bona resposta enfront dels desequilibris de càrregues no simètriques, mentre que en estrella no tant. La connexió en zig-zag es comporta bé sota desequilibris tot i que necessita un 15% més de coure. També tenen el neutre accessible.
 
 En general:
 
 - Les connexions Y-Y s'utilitzen poc degut als desequilibris.
 - Les connexions Y-D, D-Y funcionen bastant bé amb càrregues desequilibrades.
-- La D-D es comporta bé sota càrregues desequilibrades, tot i que no tenir neutre sol ser un problema en la distribució. Si hi ha un banc trifàsic, es pot desconnectar un transformador per a realitzar operacions de manteniment.
-- Les connexions Y-Z i D-Z tenen un excel·lent comportament front a desequilibris. La connexió Y-Z és preferible a Y-Y.
+- La D-D es comporta bé sota càrregues desequilibrades, tot i que no tenir neutre sol ser un problema en la distribució. Si hi ha un banc trifàsic, es pot desconnectar un transformador per a efectuar operacions de manteniment.
+- Les connexions Y-Z i D-Z tenen un excel·lent comportament enfront de desequilibris. La connexió Y-Z és preferible a Y-Y.
 
 ### 2.1 Índex horari
 
-En un transformador monofàsic les tensions només poden estar en fase o en contrafase, o 0° o 180°, ja que ambdós debanaments estan travessats pel mateix flux magnètic. Per a un transformador trifàsic els debanaments de cada columna estan en fase o contrafase, però al fer les connexions apareixen  desfases diferents segons la connexió.
+En un transformador monofàsic les tensions només poden estar en fase o en contrafase, o 0° o 180°, ja que ambdós debanaments estan travessats pel mateix flux magnètic. Per a un transformador trifàsic els debanaments de cada columna estan en fase o contrafase, però en fer les connexions apareixen  desfases diferents segons la connexió.
 
 L'índex horari caracteritza l'angle de la tensió entre dues fases del primari amb les mateixes fases del secundari. Es refereix sempre a un sistema trifàsic de seqüència directa, amb el transformador en buit.
 
-Degut a les simetries dels sistemes trifàsics cada desfasament serà múltiple de $ %pi/6 $ per tant hi ha 12 possibles posicions, d'on prové el nom d'índex horari.
+A causa de les simetries dels sistemes trifàsics cada desfasament serà múltiple de $ %pi/6 $, per tant, hi ha 12 possibles posicions, d'on prové el nom d'índex horari.
 
-l'índex horari és molt important a l'hora de fer connexions de transformadors en paral·lel ja que connectar dues tensions del mateix voltatge però diferent angle són curtcircuits. Per tant **han de tenir el mateix índex horari**.
+L'índex horari és molt important a l'hora de fer connexions de transformadors en paral·lel, ja que connectar dues tensions del mateix voltatge, però diferent angle són curtcircuits. Per tant, **han de tenir el mateix índex horari**.
 
 ### 2.2. Grup de connexió
 
@@ -82,7 +82,7 @@ El grup de connexió indica el tipus de debanaments i l'índex horari. Consta de
 - La segona lletra és la connexió del debanament de tensió més baixa i s'escriu en minúscula.
 - El nombre és l'índex horari.
 
-Per exemple, un transformador Yd11 està en estrella a la part d'alta en triangle a baixa i te un índex horari de 11, això vol dir que el desfasament entre les tensions és de $ 11 %pi / 6 $
+Per exemple, un transformador Yd11 està en estrella a la part d'alta en triangle a baixa i té un índex horari d'11, això vol dir que el desfasament entre les tensions és de $ 11 %pi / 6 $
 
 Una nomenclatura més completa indica si el neutre està accessible. Per exemple Dyn11 YNd1.
 
@@ -105,21 +105,21 @@ $$
   U_{N2,fase}}=\dfrac{N_1}{\sqrt 3 \cdot N_2}=\dfrac{I_{N2}}{I_{N1}}
   $
   Si no hi ha connexió en estrella no cal el $ \sqrt 3 $.
-- **Freqüència nominal:** és la freqüència a la que corresponen els diferents valors nominals.
+- **Freqüència nominal:** és la freqüència a la qual corresponen els diferents valors nominals.
 - **Placa de característiques:**
   + Potència nominal
   + Tensions nominals del primari i secundari
-  + Intensitat nominals del primari i secundari
+  + Intensitat nominal del primari i secundari
   + Relació de transformació
   + Freqüència nominal
   + Dades dels assajos en buit i en curtcircuit
   + Grup de connexió
 
-L'estudi d'un transformador trifàsic equilibrat es realitza només a una de les fases (amb el neutre) i l'estratègia a seguir és similar a la del monofàsic. Els desfasaments deguts a l'índex horari no són necessaris al transformador reduït, però si al tornar als valors reals.
+L'estudi d'un transformador trifàsic equilibrat es realitza només a una de les fases (amb el neutre) i l'estratègia a seguir és similar a la del monofàsic. Els desfasaments deguts a l'índex horari no són necessaris al transformador reduït, però sí en tornar als valors reals.
 
-Degut a això els desfasaments entre primari i secundari són els desfasaments de l'índex horari més els desfasaments de l'esquema reduït (provocat per les impedàncies del sistema.
+A causa de això els desfasaments entre primari i secundari són els desfasaments de l'índex horari més els desfasaments de l'esquema reduït (provocat per les impedàncies del sistema.
 
-El resultat representa una de les fases, les altres dues fases estaran desfasades 120°i -120°.
+El resultat representa una de les fases, les altres dues fases estaran desfasades 120° i -120°.
 
 ## 4. Reducció del transformador trifàsic
 
@@ -157,11 +157,11 @@ $$
 
 Novament estudiarem el transformador monofàsic mitjançant un exemple:
 
-S'ha de calcular la c.d.t., el rendiment i l'índex de càrrega d'un transformador trifàsic Dyn5 de 500 kVA, 25/6 kV, ε<sub>cc</sub> = 0.05, W<sub>cc</sub> = 10 kW, W<sub>0</sub> = 1 kW i i<sub>0</sub> = 0.01, el seu primari està connectat a una xarxa de 24kV i sabent que el seu secundari alimenta una càrrega en triangle constituïda per tres impedàncies iguals de valor $ \underline Z_2 = 215 + j200 ~\omega $. S'han de determinar també els valors en cas de curtcircuit del secundari.
+S'ha de calcular la c.d.t., el rendiment i l'índex de càrrega d'un transformador trifàsic Dyn5 de 500 kVA, 25/6 kV, ε<sub>cc</sub> = 0.05, W<sub>cc</sub> = 10 kW, W<sub>0</sub> = 1 kW i i<sub>0</sub> = 0.01, el seu primari està connectat a una xarxa de 24 kV i sabent que el seu secundari alimenta una càrrega en triangle constituïda per tres impedàncies iguals de valor $ \underline Z_2 = 215 + j200 ~\omega $. S'han de determinar també els valors en cas de curtcircuit del secundari.
 
 #### Resolució
 
-La primera passa es trobar els diferents valors base.
+La primera passa és trobar els diferents valors base.
 
 $$
 \begin{array}{ccc}
@@ -174,7 +174,7 @@ $$
 
 Per a trobar les impedàncies de l'esquema equivalent, es poden utilitzar les mateixes expressions que al transformador monofàsic:
 
-Gracies a l'assaig de curt-circuit coneixem:
+Gràcies a l'assaig de curt-circuit coneixem:
 
 $$
 \begin{array}{ccccc}
@@ -190,7 +190,7 @@ z = \varepsilon_{cc} & ; & r = z\cos\varphi_{cc} & ; & x = z\sin\varphi_{cc}
 \end{array}
 $$
 
-Per altra banda, gràcies a l'assaig de buid sabem podem trobar:
+Per altra banda, gràcies a l'assaig de buit sabem podem trobar:
 
 $$
 \begin{array}{ccccc}
@@ -270,13 +270,13 @@ $$
 \eta=\dfrac{p_2}{p_2+p_{Cu}+p_{Fe}}\cdot 100=97{,}7~\text{\%}
 $$
 
-La corrent de curtcircuit en aquest cas
+El corrent de curtcircuit en aquest cas
 
 $$
 i_{cc} = \dfrac {u_1}{z}=19{,}2~\text{p.u.}
 $$
 
-Per tant, aquest resultat indica que les corrents de curtcircuit són 19.2 vegades la nominal. Conseqüentment el transformador haurà de comptar amb les proteccions adients.
+Per tant, aquest resultat indica que els corrents de curtcircuit són 19,2 vegades la nominal. En conseqüència, el transformador haurà de comptar amb les proteccions adients.
 
 Per a obtenir tots els valors reals s'haurà de multiplicar per les corresponents bases:
 
