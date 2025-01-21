@@ -1,37 +1,32 @@
 <!DOCTYPE html>
-<html lang="es">
-
-<!-- ============================================================== -->
 <head>
-
-<meta charset="UTF-8">
-
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-</style>
-
-<link rel="stylesheet" type="text/css" href="css/main.css" /> 
-
-<title>Resums - CIFP Politecnic de Llevant</title>
-
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <meta charset="UTF-8">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
-<!-- ============================================================== -->
 
 <script>
-window.texme = {
+    window.texme = {
+    renderOnLoad: false,
+    style: 'none',
     markdownURL: 'js/marked/marked.min.js',
     MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
-}
+    }
+    const titol = "UT02 a- Transformadors trifàsics"; // MODIFICAR
 </script>
+<script src="js/texme/texme.js"></script>
 
 
-<script src="js/texme/texme.min.js"></script>
-<textarea>
- 
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
 
 
 # Transformadors trifàsics
@@ -106,7 +101,7 @@ $$
 - **Relació de transformació:** Relació entre tensions nominals.
   Per exemple per un Dy, es té:
   $
-  r_t = \dfrac{U_{N1}}{U_{N2}} = \dfrac{U_{N1,fase}}{\sqrt 3 \cdot 
+  r_t = \dfrac{U_{N1}}{U_{N2}} = \dfrac{U_{N1,fase}}{\sqrt 3 \cdot
   U_{N2,fase}}=\dfrac{N_1}{\sqrt 3 \cdot N_2}=\dfrac{I_{N2}}{I_{N1}}
   $
   Si no hi ha connexió en estrella no cal el $ \sqrt 3 $.
@@ -128,7 +123,7 @@ El resultat representa una de les fases, les altres dues fases estaran desfasade
 
 ## 4. Reducció del transformador trifàsic
 
-De manera anàloga al transformador monofàsic, els valors base han de complir una sèrie de criteris: 
+De manera anàloga al transformador monofàsic, els valors base han de complir una sèrie de criteris:
 
 $$
 \begin{array}{ccc}
@@ -191,7 +186,7 @@ o també:
 
 $$
 \begin{array}{ccccc}
-z = \varepsilon_{cc} & ; & r = z\cos\varphi_{cc} & ; & x = z\sin\varphi_{cc} 
+z = \varepsilon_{cc} & ; & r = z\cos\varphi_{cc} & ; & x = z\sin\varphi_{cc}
 \end{array}
 $$
 
@@ -207,7 +202,7 @@ o també:
 
 $$
 \begin{array}{ccccc}
-g_{Fe} = w_0 & ; & y_{Fe} = \dfrac{g_{Fe}}{\cos\varphi_0} & ; & b_M = y_{Fe}\sin\varphi_0 
+g_{Fe} = w_0 & ; & y_{Fe} = \dfrac{g_{Fe}}{\cos\varphi_0} & ; & b_M = y_{Fe}\sin\varphi_0
 \end{array}
 $$
 
@@ -267,7 +262,7 @@ $$
 $$
 
 $$
-\begin{array}{ccccc}p_2 = r_2 \cdot i^2 = 0{,}4644 & ; & p_{Cu}=r\cdot i^2 = 0{,}0093~\text{p.u.} & ; & p_{Fe} = u_2^2 \cdot g_{Fe} = 0{,}0017~\text{p.u.}  
+\begin{array}{ccccc}p_2 = r_2 \cdot i^2 = 0{,}4644 & ; & p_{Cu}=r\cdot i^2 = 0{,}0093~\text{p.u.} & ; & p_{Fe} = u_2^2 \cdot g_{Fe} = 0{,}0017~\text{p.u.}
 \end{array}
 $$
 
@@ -308,5 +303,26 @@ I_{cc1} = i_{cc}\cdot I_{b1}^{p.u.}=221{,}7~\text{A}&;
 & I_{cc2} = i_{cc}\cdot I_{b2}^{p.u.}=923{,}76~\text{kA}
 \end{array}
 $$
+
 </textarea>
 
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>
