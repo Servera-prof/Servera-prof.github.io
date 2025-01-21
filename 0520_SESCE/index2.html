@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <meta charset="UTF-8">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<script>
+    window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+    }
+    const titol = "05220 - Sistemes i circuits elèctrics"; // MODIFICAR
+</script>
+<script src="js/texme/texme.js"></script>
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+## 1. Coneixements previs
+
+Per a aquest mòdul es necessita tenir uns mínims coneixements
+tan els alumnes que provenen de grau mitjà com els que provenen de
+batxillerat, tenen aquests coneixements. Així i tot si els necessita
+un suport es pot visitar el seguent
+[repàs de matemàtiques d'ESO](UT00a-repas_mate.html)
+
+També es requereix uns coneixements bàsics de circuits elèctrics.
+En aquest cas, els alumnes que provenen de grau mitjà els haurien de
+tenir, però no així els de Batxillerat. Abans de començar el temari
+es dedicaran 2 hores a fer una breu
+[introducció a l'electricitat](UT00b-intro_elec.html)
+i a repassar el concepte de
+[resistències equivalents](UT00d-exem_resi_equi.html)
+
+Les següents 2 hores es dedicaran a repassar Kirchhoff en corrent
+continua:
+- [Exemple detallat](UT00c-exem_kirch.html)
+- [Exemple senzill](UT00f-exem_kirch_02.html)
+- [Exemple amb 5 incògnites](UT00g-exem_kirch_5_inco.html)
+
+Finalment també es requereix coneixements i maneig de nombres complexos.
+Aquests coneixements els haurien de tenir els alumnes de Batxillerat
+però es posible que els de grau mitjà no els tenguin. Sigui com sigui
+Aquest coneiments s'adquiriran en el transcurs del temari, i no s'ha
+considerat necessari fer un repàs.
+
+
+
+## 2. Index
+
+- UT01a Determinació de paràmetres característics en circuits de
+  corrent altern (c.a.) → No hi ha material didactic d'aquest tema,
+  donada la seva senzillesa. En el següent enllaç es pot trobar
+  [l'index](UT01a-index.html) i alguns
+  [exercicies senzills](UT01b-exer_senz.html)
+- [UT01c - harmònics](UT01c-harm.html)
+- [UT02a - transformadors monofàsics](UT02a-trafo_mono.html)
+- [UT02b - transformadors trifàsics](UT02b-trafo_trif.html)
+- [UT02c - determinació de l'index horari](UT02c-index_hora.html)
+- [UT03 - màquines asíncrones](UT03-maq_asin.html)
+
+</textarea>
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>
