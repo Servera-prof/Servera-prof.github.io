@@ -1,0 +1,90 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <style>
+
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: left;
+        text-justify: inter-word;
+
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+ 1. Elegeix un punt al teu poble, de la web
+  (https://map.neweuropeanwindatlas.eu/). S’han de descarregar 2 anys de
+  dades (els dos darrers anys possibles, per al punt seleccionat),
+  que son aproximadament 35000 punts. Amb les variables time (comprova
+  la data a la que comença a comptar i en quines unitats ho fa), Wind
+  Direction (WD) a 10 metres i Wind Speed (WS) a 10 metres. (_1 punt_).
+
+2. Passa l’arxiu que t’has descarregat que està en format .nc a .xls
+  (_2 punts_).
+
+3. Dona format a la columna time, per tal de poder carregar les
+  dades el software WRPLOT i generar l’arxiu .sam. (_4 punts_).
+
+4. Carrega l’arxiu .sam al software i visualitza les dades (_1 punt_)
+
+5. Posa la rosa dels vents amb els colors de l’arc de sant marti,
+  ajusta els eixos de vent si fa falta, perque es vegin diferents
+  colors (per cada velocitat del vent per les dades que tens) i fes
+  una captura de pantalla en png. (_2 punts_)
+
+6. Al moodle puja els quatre arxius que has generat al llarg de la
+  prova pràctica (.nc, .xls, .sam i .png). Si no es pugen els 4
+  arxius, **no s’avaluarà la prova**, ja que s’avalúa que es pugui fer
+  tot el procés, fins almanco aconseguir una rosa dels vents amb el
+  software.
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+const titol = "Examen UT04 - SRGMPE (rosa dels vents WRPLOT)"; // MODIFICAR
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>
