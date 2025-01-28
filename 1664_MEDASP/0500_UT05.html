@@ -1,0 +1,314 @@
+
+<!DOCTYPE html><head> <title id="titol"></title> <link rel="icon" type="image/x-icon" href=img/favicon.png> <meta charset="UTF-8"><style></style></head><script>window.texme = {renderOnLoad: false, markdownURL: 'js/marked/marked.min.js', MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'}</script><script src="js/texme/texme.js"></script> <textarea id="enunciat">
+
+## 0. Introducció
+
+Quan el vostre professor era petit jugava a videojoc a una Game Boy
+amb pantalla monocroma i sense retroil·luminació, alimentada amb
+4 bateries AA no recarregables.
+Amb el temps va estalviar prou per a comprar una SNES que
+s'endollava a la tele de tub i unes 15 polsades.
+
+Ara els seus fills tot i que encara tenen jocs físic gairebé la meitat
+són descarregats des de la tenda online. L'altre dia un alumne seu va
+explicar-li l'existència de Geforce NOW un servei de subscripció
+per accedir a un servei d'_streaming_ de jocs.
+
+Tot això no deixa de ser similar als serveis de Google Drive o Google
+Docs que s'utilitzen al centre.
+
+## 0.1. Exercicis
+
+- Quins canvis aprecies entre els videojocs dels 90 amb els actuals?
+- Què és el núvol (_cloud_)?
+- Coneixes més serveis que estiguin basats en el núvol?
+- On s'emmagatzemen totes les dades que pugem al núvol?
+- Per què creus que en general es prefereix allotjar documents en el
+  núvol?
+- Sabies que existeix el _fog computing_ o «la boira»? Busca informació
+  al respecte.
+
+## 1. El núvol
+
+Imaginem que a causa d'un pols electromagnètic d'una tempesta solar
+perdem totes les nostres dades digitals.
+Totes les fotografies, els treballs per a entregar,
+els telèfons dels nostres amics. Anys de records i de feina a zero.
+
+Les empreses afronten aquest problema i a una major escala.
+Perdre la quantitat de material que s'ha instal·lat a una obra
+(per tal de cobrar-lo). El projecte signat per un enginyer, en el qual
+es basa un treball. Un correu electrònic on el client afirmava que
+volia llums LED i no dicroiques com ara afirma.
+
+Queda clar que la redundància i les còpies de seguretat poden evitar
+el problema. Però no són a prova de foc, mai millor dit. Els mitjans
+externs on s'emmagatzema la informació es poden cremar. Poden
+estar infectats per un virus en estat latent. O tenir les dades
+encriptades per malware.
+
+Una altra via d'evitar el problema és emmagatzemar-ho a Internet.
+De fet, si has utilitzat un Chromebook, Google Drive, o Dropbox
+sabràs que aquest emmagatzemament està en línia.
+Aquest recurs és gratuït per als petits usuaris però es paga
+per aquells que l'utilitzen professionalment o que necessiten més
+quantitat de memòria.
+
+### 1.1. Utilitat
+
+El núvol presenta l'avantatge de sincronització permanent, i guardat
+de versions.
+És a dir, si un arxiu es canvia accidentalment, s'esborra
+s'infecta o es perd, les probabilitats de poder recuperar la informació
+són altes.
+A més, en estar a Internet aquestes dades estan disponibles en qualsevol
+moment a qualsevol lloc.
+
+Això fa que les empreses es puguin centrar a fer l'activitat que fan
+i no en com emmagatzemar les dades.
+
+### 1.2. Seguretat de les dades
+
+La seguretat de les dades és una obligació legal, comercial i moral.
+La pèrdua de dades pot representar un risc o haver de fer front a una
+responsabilitat.
+
+El motiu pel qual es perden en general les dades es pot resumir en:
+- Virus: Els virus poden esborrar els arxius, modificar-los, robar-la
+  informació que hi ha continguda a dins, encriptar la informació i
+  exigir un rescat.
+- Error humà: És el més habitual. Per error un treballador o usuari
+  pot esborrar o modificar irreversiblement un arxiu.
+- Avaries mecàniques. També molt freqüent. Se sol dir que la pregunta
+  no ha de ser si un disc dur fallarà sinó quan fallarà. Donant per fet
+  que la pèrdua de dades en un medi mecànic és inevitable.
+- Avaria elèctrica imprevista.
+
+### 1.3. Protecció de les dades.
+
+L'Agència Europea de Medicaments, Orange, Netflix, Wallapop han sofert
+atacs que han permès el robatori de dades personals.
+Per tant, en el moment que pugem les nostres dades al núvol les
+possibilitats que es robin pugen.
+
+Imaginem que tenim totes les nostres fotografies al núvol. I hi ha una
+organització criminal que es dedica al robatori de bicicletes de
+competició.
+Si aquests individus volen robar bicicletes bones, primer
+han de conèixer qui les té i a on viu la persona que les té, a més
+ha de conèixer els seus hàbits, i el tipus de bicicleta per prioritzar
+les víctimes.
+
+Si poden accedir a les fotografies del núvol poden buscar, aficionats
+al ciclisme, que tinguin una bicicleta dins d'un rang de preus, saber
+quan el propietari sol anar a fer feina, a on viu, planejar el robatori,
+anar a la ciutat on hi ha tres o quatre bicicletes interessants,
+robar-les i tornar al seu amagatall que potser està a cents de
+quilòmetres.
+
+Aquest és un exemple naïf, però ens serveix perquè entenguem
+l'interès en el robatori de dades. Sobretot de grans empreses o
+organitzacions governamentals.
+
+
+## 2. Funcionament del núvol
+
+La paraula núvol prové de la indústria de les tecnologies, el conjunt
+de màquines interconnectades a una xarxa externa se solia dibuixar
+com un núvol per simplificar l'esquema.
+
+A poc a poc aquest terme va escapar de l'àmbit tècnic i va passar a la
+societat.
+
+### 2.1. Context històric
+
+Quan van aparèixer els primers ordinadors, eren màquines grans i cares.
+La memòria RAM es feia amb anells de ferrita cosits a mà, és a dir
+podies literalment tocar un bit de memòria.
+
+Tot el processament es portava a terme en aquestes grans màquines
+anomenades _mainframe_ i els usuaris rebien a través de la xarxa local
+a un terminal la resposta. Aquest terminal era pràcticament una màquina
+d'escriure amb capacitat només d'introduir dades i llegir dades,
+però no de processar-les.
+
+L'accelerada millora en l'electrònica va permetre l'aparició de màquines
+amb la capacitat de processament local i varen sorgir els primers PC.
+A partir d'aquell moment, no calia estar a una gran empresa per a
+accedir als beneficis de la computació.
+El públic general, així com petites empreses van poder començar a
+utilitzar Excel per a dur la comptabilitat domèstica, planejar-la
+hipotèca, grafiar la pluviometria de l'hort de casa. També
+varen poder escriure i guardar texts, sense disposar de grans
+estanteries, jugar a videojocs, inclús els més experts iniciar-se en
+la programació.
+
+Temps després aquestes màquines es varen començar a connectar de manera
+remota entre si, al principi, molt lentament, viable per intercanviar
+només text i petites quantitats de dades, els primers correus
+electrònics. Però, a poc a poc aquesta connexió es va fer més ample,
+en un parell d'hores es podia transferir una cançó, amb un parell de
+dies una pel·lícula. Poc després amb un parell d'hores. Arribà un
+moment que descarregar la pel·lícula durava menys que la pel·lícula en
+si mateixa.
+
+Això va fer plantejar-se a la indústria quina necessitat hi havia de
+proporcionar el mateix programari perquè s'executés localment,
+quan es podia executar centralment i transmetre les dades de manera
+instantània?
+
+Això és el que passa quan s'utilitza Google Docs o Google Calc,
+comparant-ho amb LibreOffice o MS Office (Word, Excel, etc.).
+Fins a cert punt, s'ha tornat als orígens, tot i que ara la informació
+no viatja per la xarxa local sinó per tot el món. I la quantitat
+de dades transmeses i processades és molts ordres de magnitud superior.
+
+### 2.2. Estructura
+
+- **Client:** És la màquina que rep la informació del servidor. Com
+un ordinador, o un mòbil.
+- **Servidor:** És la màquina que proporciona els recursos als
+«clients», com espai d'emmagatzematge o processament de dades. Depenent
+de la funció es parla de servidors web, servidors de correu electrònic,
+etc.
+- **Protocol de xarxa:** Són les regles per les quals les màquines
+envien reben i interpreten els senyals transmesos. El TCP/IP, l'HTTP, o
+l'FTP és algun d'ells.
+
+### 2.3. Diferències entre model local i _cloud_.
+
+- **Emmagatzematge:** Els programes ocupen memòria així com els arxius.
+  Quan la memòria s'acaba, s'ha de comprar un dispositiu extern o
+  substituir el disc dur per un de major capacitat. Al núvol
+  quan s'acaba l'espai sempre se'n pot contractar més. A part, el
+  programari, no està instal·lat a l'ordinador local, per tant, tampoc
+  s'utilitza memòria per aquest costat.
+- **Accés:** L'accés és limitat, necessites estar al teu ordinador,
+  portar la informació a un dispositiu extern o estar a una xarxa
+  local. Els arxius del núvol es poden consultar des de qualsevol
+  dispositiu amb connexió a internet.
+- **Actualització:** El programari s'ha d'actualitzar sovint, i
+  en conseqüència també el maquinari. Amb el núvol no cal actualitzar
+  el programari, però sí que s'ha d'actualitzar el maquinari, tot i que
+  no tan sovint.
+
+### 2.4. Exemples
+
+En Moha, administratiu d'una empresa té una sèrie de documents, el seu
+cicle de feina és obrir el document modificar-lo i guardar-lo.
+Un dia hi va haver un problema amb el subministrament elèctric i ho
+va perdre tot.
+El Biel utilitza Google Docs, com que cada 5 minuts ho guarda al núvol
+automàticament no té aquest problema. No obstant això, sempre està
+fermat a Google, ja que si intenta transferir els documents a un altre
+suite ofimàtica, el format es desvirtua.
+
+En Sergi volia consultar un document de fa cinc anys. No obstant per
+falta de memòria al disc dur va decidir esborrar els documents antics.
+N'Emma ho té disponible al núvol, ja que ha adquirit espai
+d'emmagatzematge.
+
+## 3. El treball en el núvol
+
+El núvol té l'avantatge que permet accedir a dades i aplicacions
+des d'internet. Per un usuari la utilitat potser és limitada,
+però per una empresa tenir la informació accessible és vital.
+
+- Diferents empleats poden consultar si al magatzem queda stock d'un
+  material
+- Diferents empleats poden treballar en remot, sense necessitat d'estar
+  en un mateix espai físic.
+- L'emmagatzematge és flexible i segur.
+
+La flexibilitat de la qual es parla al darrer punt queda més manifesta,
+de nou, si ho comparem alb el sistema anterior. Si per motius de puntes
+de feina necessitem més espai o més capacitat de processament,
+simplement el podem contractar. Quan deixa de ser necessari el podem
+deixar de contractar.
+
+El sistema s'assembla més amb el _leasing_ o _renting_ de vehícles,
+comparant-lo amb l'adquisició del vehícle. Amb els seus avantatges i
+inconvenients.
+
+A més la protecció de les dades la fa l'empresa tecnològica, més
+habituada a resoldre aquest tipus de problemes, compra el maquinari
+a millor preu, ja que ho fa en grans quantitats, i s'encarrega de fer
+les còpies de seguretat.
+
+### 3.1. Resum dels avantatges del _cloud computing_
+
+- Es poden contractar servidors a mesura que es necessiten
+- Representen còpies de seguretat
+- Es pot accedir a les dades de manera segura des de qualsevol lloc,
+  amb qualsevol dispositiu.
+- Hi ha eines i plataformes per crear i provar aplicacions, reduint el
+  temps de llançament.
+- Es disposen de grans recursos per al processament de dades.
+- Tenen integrada la protecció enfront de ciberatacs.
+
+### 3.2. Exemple: Què passa quan cau el núvol?
+
+Quan hi ha un problema al núvol, els serveis que depenen d'ell queden
+paralitzats. Pensem quan anem al metge i triguen molt a atendre'ns
+perquè ha caigut el sistema informàtic. O els problemes per a accedir
+al GestIB després de l'atac de l'estiu de 2024.
+
+Per aquest motiu les empreses poden invertir en redundàncies, sistemes
+de treball en local a més del núvol o dobles proveïdors de servei en
+el núvol.
+
+### 3.3. Activitats
+
+- A casa, feu còpies de seguretat? És important?
+- T'has quedat sense capacitat al correu electrònic o al Dropbox?
+  Has mirat els preus de contractar més espai?
+- Debateu sobre els avantatges i els inconvenients del núvol.
+- Has perdut mai cap fotografia o fitxer important?
+
+## 4. Problemes en el núvol
+
+Treballar al núvol no està exempt de problemes.
+
+- **Alta latència** o _ping_ elevat, és quan es triga a obtenir la
+  resposta una vegada feta la sol·licitud.
+- **Poca amplada de banda** La quantitat de dades que arriben per segon
+  pot ser insuficient per a segons quin tipus de servei.
+- **Sobrecàrrega dels servidors** En moments punta els servidors
+  poden no fer front a totes les peticions.
+
+### 4.1. Possibles solucions
+
+- **_Edge computing_**, a on part del processament de les dades es troba
+  a prop del client.
+- **_Fog computing_**, a on diferents nodes interactuen per a
+  proporcionar el servei.
+- **_Mist computing_**. A on part del processament de les dades es fa al
+  mateix dispositiu.
+
+### 4.2. Àmbit del núvol
+
+- Núvol públic com _Amazon Web Services_, o _Github_. Seria
+  assimilable a una biblioteca pública.
+- Núvol privat, com _IBM Cloud Private_ a on el núvol pertany a una
+  empresa. Es podria assimilar a la biblioteca d'un CIFP, tots els
+  alumnes poden accedir als llibres però no persones externes al centre.
+- Núvol híbrid. Com _Microsoft Azure_ tentn part del núvol privat i
+  altra part pública.
+
+### 4.3. Activitats
+
+- Sabies que Amazon guanya més diners amb Amazon Web Services que amb
+  la tenda _online_? Busca informació sobre aquest servei.
+- Pensa si a aquestes organitzacions es podrien beneficiar molt,
+  bastant, poc o gens del núvol:
+    + _Startup_ que ha crescut exponencialment.
+    + Negoci familiar des de fa generacions
+    + Empresa a espai de cotreball (_coworking_)
+    + Grans volums de dades
+    + Empleats a diferents comunitats autònomes
+    + Treballadors que viatgen sovint
+    + Empresa unipersonal a on el fundador està a punt de jubilar-se.
+
+</textarea><script>const titol = "UT05 - Sistemes basats en el núvol";
+
+let txtEnunciat = ""; window.onload = function (){txtEnunciat = document.getElementById("enunciat").value; renderEnunciat();}; function renderEnunciat(){let txt = ""; txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" + txtEnunciat; document.getElementById("enunciat").innerHTML = txt; document.getElementById("titol").innerText = titol; texme.renderPage();}</script>
