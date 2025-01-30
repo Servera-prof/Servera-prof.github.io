@@ -1,0 +1,214 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <style>
+
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    li.cita {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: left;
+        text-justify: inter-word;
+
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+## Format de l'entrega (_1 punt_)
+
+- S'entregarà un únic full de càlcul i un pdf,
+- El full de càlcul tindrà tres pestanyes, una per a cada
+  problema.
+- El títol del full de càlcul serà «càlculs.ods»
+- Es generarà un pdf DIN A4 amb les tres taules com si s'hagués
+  d'adjuntar al projecte.
+- Les pàgines estaran apaïsades.
+- Totes les columnes han d'ocupar tot l'ample de la pàgina. És a dir
+  el nombre de pàgines ve determinat per les files, no per les columnes.
+- El títol del pdf serà «annex de càlcul.pdf»
+- Les dades tindran 4 xifres significatives, per motius d'estètica es
+  recomana no forçar les 4 xifres si les quantitats només són de 2
+  xifres (si les velocitats són 1,2; 1,3 no forceu 1,200; 1,300), però
+  si són 1,4567237425 hauria d'aparèixer 1,457.
+- Utilitzeu encapçalaments per indicar què és cada columna. Aquests
+  encapçalaments tindran color de fons corporatiu (en
+  hexadecimal es RGB 175e17), negreta i color de lletra blanc,
+- Totes les columnes tindran mida similar, en cas necessari utilitzeu
+  Ctrl + Intro per a que tinguin més d'una línia.
+- Totes les cel·les tindran vores grises amb gruix de 0,75 pt.
+- Per obtenir els punts d'aquest apartat només es pot fallar en un dels
+  requeriments com a màxim.
+
+## Problema 1 (_4 punts_)
+
+Al [següent enllaç](doc/E70_ft.pdf),
+trobaràs una fitxa tècnica, d'un aerogenerador
+Enair E70 de 4 kW de potència nominal.
+Agafa les dades de 2 anys per a crear un model basat en la distribució
+de Weibull per a predir quina energia es generaria (en MWh) si
+s'instal·la a Son Servera.
+
+Per a fer l'exercici no es pot utilitzar la funció DIST.WEIBULL del full
+de càlcul si no que s'ha de fer amb la fórmula de **Weibull
+del formulari**.
+Tot i això, sí que es permet utilitzar la funció DIST.WEIBULL per a
+comprovar que no hi hagi errors.
+
+Al full de càlcul l'energia anual generada en MWh **ha d'estar
+ressaltada**.
+(-1 punt si no es fa).
+
+
+## Problema 2 (_3 punts_)
+
+Una vegada fet això, a una altra pestanya simuleu el comportament que
+tindria el sistema si s'instal·len unes bateries dimensionades per a
+3 dies sense vent en el moment més desfavorable de l'any.
+
+La simulació ha de ser amb una resolució de 0,5 h o 1 h. La potència
+de l'aerogenerador a velocitats inferiors a la nominal es pot fer amb
+fórmula (deduint Cp) o amb la corba de la fitxa tècnica, però en el
+segon cas s'haurà de fer amb una resolució de 2 m/s entre la velocitat
+mínima i la nominal.
+
+Els consums de l'habitatge són:
+
+- 600 kWh cada mes al primer trimestre de l'any (1800 kWh durant tot el
+  trimestre).
+- 400 kWh cada mes al segon trimestre.
+- 500 kWh cada mes al tercer trimestre.
+- 350 kWh cada mes al quart trimestre.
+
+Al full de calcul el nombre d'hores amb càrrega 0 **ha d'estar
+ressaltat**.
+(-1 punt si no es fa).
+
+## Problema 3 (_2 punts_)
+
+Proposa i simula una solució que faci que el nombre d'hores
+en les quals les bateries estan descarregades sigui inferior
+a 50 h en tot l'any.
+Intenta canviar l'aerogenerador (aquí tens les fitxes tècniques de
+l'[Enair E30](doc/E30_ft.pdf) i l'[Enair E200L](doc/E30_ft.pdf)),
+també augmentar el nombre d'aerogeneradors (fins a 5) o la capacitat
+del sistema d'emmagatzemament (fins a 7 dies).
+
+Al full de càlcul el nombre d'hores amb càrrega 0, així com els
+paràmetres que s'han canviat **han d'estar ressaltats**.
+(-1 punt si no es fa).
+
+
+## Formulari
+
+
+### F.1. Weibul
+
+$$ \begin {gather}
+
+f(v) = \dfrac{k}{\lambda} \left ( \frac {v}{\lambda} \right ) ^{k-1}
+e ^ {- (v / \lambda)  ^ k}
+
+\end{gather} $$
+
+
+
+$$ \begin {gather}
+
+\overline v = \dfrac{1}{n} \sum_{i=1}^n v_i \\[5mm]
+ \sigma = \sqrt {\dfrac{1}{n} \sum_{i=1}^n (v_i - \overline v)^2} \\[5mm]
+k = \left ( \dfrac {\sigma}{\overline v }\right)^{-1.086} \\[5mm]
+\lambda = \dfrac {\overline v}{\Gamma(1+\frac {1}{k})}
+
+\end{gather} $$
+
+### F.2. Potència Aerogenerador
+
+$$ \begin {gather}
+
+P(v) = 0 & \text {si} ~~ v \lt v_{min} \\[5mm]
+P(v) = \dfrac{1}{2} \rho A v^3C_p & \text{si} ~~ v_{min} \le v \le v_n \\[5mm]
+P(v) = P_n ~~ \text{si} & v_n \le v \lt v_{max}\\[5mm]
+P(v) = 0 & \text {si} ~~ v \ge v_{max} \\[5mm]
+
+\end{gather} $$
+
+
+### F.3. Potència mitja anual i energia anual
+
+$$ \begin {gather}
+
+P_{mitja} = \int_0^\infty P(v)f(v)dv
+
+\end{gather} $$
+
+
+
+$$ \begin {gather}
+
+P_{mitja} \approx \sum_{k=1}^n P(t_k)f(t_k) \cdot (v_k-v_{k-1})
+
+\end{gather} $$
+
+A on:
+
+ - $v_0 = v_{min}$
+ - $v_n = v_{max}$
+ - $v_{k-1} \le t_k \le v_k$
+
+
+
+$$ \begin {gather}
+
+E_{anual} = P_{mitja} \cdot t
+
+\end{gather} $$
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+const titol = "Exàmen UT05 (part 2)"; // MODIFICAR
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>
