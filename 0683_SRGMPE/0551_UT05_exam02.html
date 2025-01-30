@@ -85,8 +85,9 @@ ressaltada**.
 ## Problema 2 (_3 punts_)
 
 Una vegada fet això, a una altra pestanya simuleu el comportament que
-tindria el sistema si s'instal·len unes bateries dimensionades per a
-3 dies sense vent en el moment més desfavorable de l'any.
+tindria el sistema durant un any si s'instal·len unes bateries
+dimensionades per a 3 dies sense vent en el moment més desfavorable
+de l'any.
 
 La simulació ha de ser amb una resolució de 0,5 h o 1 h. La potència
 de l'aerogenerador a velocitats inferiors a la nominal es pot fer amb
@@ -94,6 +95,9 @@ fórmula (deduint Cp) o amb la corba de la fitxa tècnica, però en el
 segon cas s'haurà de fer amb una resolució de 2 m/s entre la velocitat
 mínima i la nominal.
 
+S'han de tenir en compte que el consum no és constant al llarg de l'any.
+Hi ha trimestres en els que es consumeix més que altres. A la simulació
+s'ha de respectar aquesta variabilitat.
 Els consums de l'habitatge són:
 
 - 600 kWh cada mes al primer trimestre de l'any (1800 kWh durant tot el
@@ -113,7 +117,7 @@ en les quals les bateries estan descarregades sigui inferior
 a 50 h en tot l'any.
 Intenta canviar l'aerogenerador (aquí tens les fitxes tècniques de
 l'[Enair E30](doc/E30_ft.pdf) i l'[Enair E200L](doc/E200L_ft.pdf)),
-també augmentar el nombre d'aerogeneradors (fins a 5) o la capacitat
+augmentar el nombre d'aerogeneradors (fins a 5) i/o la capacitat
 del sistema d'emmagatzemament (fins a 7 dies).
 
 Al full de càlcul el nombre d'hores amb càrrega 0, així com els
