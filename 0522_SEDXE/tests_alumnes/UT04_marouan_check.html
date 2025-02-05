@@ -115,81 +115,81 @@ let ptos = 0;
 
 const preguntes = [
     [
-    "¿Cual de estos tipos de CT ya no se usa?",
-    "En edificio prefabricado",
-    "Convencional de obra",
-    "Subterraneo prefabricado",
-    "A la interperie",
-    ],
-    [
-    "¿Cual no es una parte fundamental de un CT?",
-    "Puesta a tierra",
-    "Transformado de distribución",
-    "Obra civil",
-    "Rampa de acceso",
-    ],
-    [
-    "¿Cual de estos no es un código de grupo de conexión?",
-    "D",
-    "X",
-    "Z",
-    "Y",
-    ],
-    [
-    "¿Cual es la principal desventaja de los transformadores de baño de aceite?",
-    "No pueden usarse a la interperie",
-    "Tienen un alto riesgo de incendio",
-    "No pueden soportar sobrecargas",
-    "Son más caros que los encapsulados",
-    ],
-    [
-    "¿Cual no es una condición para conectar transformadores en paralelo?",
-    "Potencias similares",
-    "Mismo grupo de conexión",
-    "Mismo índice horario",
-    "Mismo tipo de refrigeración",
-    ],
-    [
-    "¿Qué material forma el nuclio magnético del transformador?",
-    "Chapas de acero aísladas eléctricamente",
-    "Alumini puro",
-    "Cobre esmaltado",
-    "Plásico conductor",
-    ],
-    [
-    "¿Cual es la principal ventaja de un CT subterráneo prefabricado?",
-    "Menor impacto visual",
-    "Bajo costo de mantenimiento",
-    "No requiere ventilación",
-    "Mayor facilidad de acceso",
-    ],
-    [
-    "¿Qué significa el código ONAN en un transformador?",
-    "Regulación de tensión automática",
-    "Transformador con núcleo de hierro sin pérdidas",
-    "Circulación de aceite y aire de forma natural",
-    "Transformador sin refrigeración",
-    ],
-    [
-    "¿Que quiere decir el código «D»?",
-    "Estrella",
-    "Zig-zag",
-    "Triangulo",
-    "Ninguna de las anteriores",
-    ],
-    [
-    "¿Que celda se encarga de dejar una parte del CT sin tensión?",
-    "Celda de línea",
-    "Celda de remonte",
-    "Celda de medida",
-    "Celda de interruptor pasante",
-    ],
+"Tipus de CT – D’intempèrie",
+"S'utilitzen molt actualment, només en zones rurals.",
+"Els transformadors son de poca potència (màxim 150 kVA).",
+"Es situen sobre suports de fusta o de formigó armat",
+"Les proteccions i elements de maniobra també es situen a fora.",
+],
+[
+"Tipus de CT – Subterrani prefabricat",
+"Han de disposar de reixes de ventilació sota el nivell del sòl.",
+"S’utilitzen en llocs sense gaire densament poblats.",
+"Tenen l’avantatge de tenir un mayor impacte visual.",
+"S’instal·len davall la via pública.",
+],
+[
+"Nucli magnètic",
+"El nucli magnètic condueix el flux magnètic i està format per xapes d’acer aïllades elèctricament entre elles.",
+"El nucli magnètic d’un transformador de distribució està fet d’un sol bloc massís d’acer.",
+"El nucli magnètic transporta corrent elèctric entre les seves columnes.",
+"El nucli d’un transformador de distribució només té dues columnes.",
+],
+[
+"Enrotllaments",
+"Els enrotllaments d’un transformador només es poden fer amb fil de ferro.",
+"Els enrotllaments poden ser de coure o alumini esmaltat i es fan de manera concèntrica o alterna, sent la primera la més utilitzada.",
+"Els enrotllaments d’alta tensió tenen poques voltes i de gran secció.",
+"L’única manera de fer els enrotllaments és de forma alterna.",
+],
+[
+"Passatapes",
+"Els passatapes permeten la connexió elèctrica dels enrotllaments amb l’exterior i aïllen les parts actives de les masses metàl·liques del transformador.",
+"Els passatapes d’alta tensió tenen una part conductora més gran que els de baixa tensió.",
+"Els passatapes només serveixen per fixar els enrotllaments al nucli del transformador.",
+"Tots els passatapes d’un transformador són iguals, independentment de la tensió.",
+],
+[
+"Que significa Dy11?",
+"Triangle-Estrella-330º",
+"Estrella-Triangle-300º",
+"Triangle-ZigZag-330º",
+"ZigZag-Triangle-300º",
+],
+[
+"Que significa Dd6?",
+"Triangle-Estrella-180º",
+"Triangle-Triangle-160º",
+"Estrella-Estrella-160º",
+"Estrella-Triangle-180º",
+],
+[
+"Tipus de CT – En edificis d’altres usos",
+"Els edificis amb una previsió de potència instal·lada de més de 25 kW han de reservar un local pel CT, o almenys ho han de consultar a l’empresa distribuïdora",
+"Els edificis amb una previsió de potència instal·lada de més de 10 kW han de reservar un local pel CT, o almenys ho han de consultar a l’empresa distribuïdora",
+"Els edificis amb una previsió de potència instal·lada de més de 100 kW han de reservar un local pel CT, o almenys ho han de consultar a l’empresa distribuïdora",
+"Els edificis amb una previsió de potència instal·lada de més de 50 kW han de reservar un local pel CT, o almenys ho han de consultar a l’empresa distribuïdora",
+],
+[
+"Transformador de distribució",
+"Les potències dels transformadors solen estar normalitzades. Solen ser de 150, 240 o 400 kVA els més utilitzats per les empreses distribuïdores.",
+"Les potències dels transformadors solen estar normalitzades. Solen ser de 250, 400 o 630 kVA els més utilitzats per les empreses distribuïdores.",
+"Les potències dels transformadors solen estar normalitzades. Solen ser de 270, 420 o 630 kVA els més utilitzats per les empreses distribuïdores.",
+"Les potències dels transformadors solen estar normalitzades. Solen ser de 230, 400 o 630 kVA els més utilitzats per les empreses distribuïdores.",
+],
+[
+"Que significa Yz2?",
+"ZigZag-Estrella-60º",
+"Triangle-ZigZag-60º",
+"Estrella-ZigZag-60º",
+"ZigZag-Triangle-60º",
+],
 
 
 ];
 
 const solucions_test = [
-1, 4, 2, 2, 4, 1, 1, 3, 2, 2,
+4, 4, 1, 2, 1, 1, 2, 3, 2, 3, 
 ];
 const opcions_test = [1, 2, 3, 4];
 

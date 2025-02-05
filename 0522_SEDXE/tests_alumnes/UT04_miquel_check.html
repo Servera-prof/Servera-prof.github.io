@@ -115,81 +115,93 @@ let ptos = 0;
 
 const preguntes = [
     [
-    "¿Cual de estos tipos de CT ya no se usa?",
-    "En edificio prefabricado",
-    "Convencional de obra",
-    "Subterraneo prefabricado",
-    "A la interperie",
+    "En els CT d'intempèrie...",
+    "Són barats de construir i de fàcil manteniment",
+    "Són de poca potència (250 kV)",
+    "S'utilitzen poc habitualment, sobretot en zones urbanes",
+    "Les proteccions i elements de maniobra es situen a fora",
     ],
     [
-    "¿Cual no es una parte fundamental de un CT?",
-    "Puesta a tierra",
-    "Transformado de distribución",
-    "Obra civil",
-    "Rampa de acceso",
+    "Què és un transformador de distribució",
+    " És una màquina elèctrica que transforma l’energia d’alta tensió (20 kV a  Balears) a baixa tensió (230 V entre fases).",
+    "No existeix",
+    " És una màquina elèctrica que transforma l’energia d’alta tensió (15 kV a  Balears) a baixa tensió (400 V entre fases).",
+    "Constitueix el camí pel qual s’estableix el flux  magnètic, i està format per xapes d’acer aïllades elèctricament entre  elles.",
     ],
     [
-    "¿Cual de estos no es un código de grupo de conexión?",
-    "D",
-    "X",
-    "Z",
-    "Y",
+    "Els enrotllaments...",
+    "Estan formats per les bobines de fil d'alumini o coure
+    esmaltat.",
+    "Els de baixa tensió tenen moltes voltes de poca secció, i els d'alta tensió a l’inrevés",
+    "Són les peces que permeten fer la connexió elèctrica dels
+    enrotllaments amb l’exterior",
+    "Estan formats per les bobines de fil de coure o alumini
+    esmaltat",
     ],
     [
-    "¿Cual es la principal desventaja de los transformadores de baño de aceite?",
-    "No pueden usarse a la interperie",
-    "Tienen un alto riesgo de incendio",
-    "No pueden soportar sobrecargas",
-    "Son más caros que los encapsulados",
+    "La part del transformador anomenada Cuba...",
+    "Té carcassa d'alumini",
+    "És una carcassa estanca que
+    conté el líquid aïllant (normalment sodi líquid)",
+    "és on va immers el nucli i els
+    enrotllaments, i que serveix per lubricar el cablejat",
+    "on va immers el nucli i els
+    enrotllaments, i que serveix per
+    refrigerar",
     ],
     [
-    "¿Cual no es una condición para conectar transformadores en paralelo?",
-    "Potencias similares",
-    "Mismo grupo de conexión",
-    "Mismo índice horario",
-    "Mismo tipo de refrigeración",
+    "El transformador de bany d’oli",
+    "Són més cars i silenciosos.",
+    "Es poden instal·lar a la intempèrie però esisteixen pitjor sobrecàrregues i curtcircuits.",
+    "Necessiten que el centre de transformació, just davall del transformador,
+    dugui un dipòsit per recollir l’oli en cas de fuga.",
+    "No necessiten manteniment ja que l’oli és biodegradable.",
     ],
     [
-    "¿Qué material forma el nuclio magnético del transformador?",
-    "Chapas de acero aísladas eléctricamente",
-    "Alumini puro",
-    "Cobre esmaltado",
-    "Plásico conductor",
+    "Quan s’utilitza un relé de gasos o Buchholz?",
+    "quan etecta els gasos que desprèn
+    l’oli quan hi ha curtcircuits o mal contactes que
+    provoquen arcs elèctrics.",
+    "detecta els gasos que desprèn
+    la silicona quan hi ha curtcircuits o mal contactes que
+    provoquen arcs elèctrics.",
+    "quan detecta els gasos que desprèn
+    l’oli quan hi ha sobrecàrregues.",
+    "quan detecta que hi ha curtcircuits o mal contactes que provoquen arcs elèctrics.",
     ],
     [
-    "¿Cual es la principal ventaja de un CT subterráneo prefabricado?",
-    "Menor impacto visual",
-    "Bajo costo de mantenimiento",
-    "No requiere ventilación",
-    "Mayor facilidad de acceso",
+    "Quin objectiu té un transformador trifàsic?",
+    "transformar un sistema trifàsic a un monofàsic",
+    "Transformar un sistema trifàsic equilibrat en un altre sistema trifàsic i també equilibrat",
+    "Transformar un sistema trifàsic no equilibrat en un trifàsic equilibrar",
+    "Transformar un sistema trifàsic no equilibrat en un monofàsic equilibrat",
     ],
     [
-    "¿Qué significa el código ONAN en un transformador?",
-    "Regulación de tensión automática",
-    "Transformador con núcleo de hierro sin pérdidas",
-    "Circulación de aceite y aire de forma natural",
-    "Transformador sin refrigeración",
+    "Quina és la funció principal d'un centre de transformació? ",
+    "Generar electricitat per a la xarxa de distribució. ",
+    "Convertir baixa tensió a alta tensió per al seu transport. ",
+    "Transformar mitjana tensió a baixa tensió per a la distribució i ús. ",
+    "Emmagatzemar energia per a emergències. ",
     ],
     [
-    "¿Que quiere decir el código «D»?",
-    "Estrella",
-    "Zig-zag",
-    "Triangulo",
-    "Ninguna de las anteriores",
+    "Quin tipus de centre de transformació és més utilitzat actualment en zones urbanes per la seva integració visual? ",
+    "D'intempèrie ",
+    "Subterrani prefabricat ",
+    "De superfície prefabricat ",
+    "Convencional d'obra ",
     ],
     [
-    "¿Que celda se encarga de dejar una parte del CT sin tensión?",
-    "Celda de línea",
-    "Celda de remonte",
-    "Celda de medida",
-    "Celda de interruptor pasante",
+    "Quina protecció es fa servir per detectar gasos deguts a curtcircuits en transformadors de bany d'oli? ",
+    "Relé Buchholz ",
+    "Relé DGPT ",
+    "Termistor ",
+    "Vàlvula de sobrepressió ",
     ],
-
 
 ];
 
 const solucions_test = [
-1, 4, 2, 2, 4, 1, 1, 3, 2, 2,
+4, 3, 4, 4, 3, 1, 2, 3, 2, 1, 
 ];
 const opcions_test = [1, 2, 3, 4];
 
