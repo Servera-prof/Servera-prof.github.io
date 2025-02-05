@@ -107,88 +107,124 @@ const puntuacions = ["", 10];
 let p01 = "";
 const preguntes = [
     [
-    "En els CT d'intempèrie...",
-    "Són barats de construir i de fàcil manteniment",
-    "Són de poca potència (250 kV)",
-    "S'utilitzen poc habitualment, sobretot en zones urbanes",
-    "Les proteccions i elements de maniobra es situen a fora",
-    ],
-    [
-    "Què és un transformador de distribució",
-    " És una màquina elèctrica que transforma l’energia d’alta tensió (20 kV a  Balears) a baixa tensió (230 V entre fases).",
-    "No existeix",
-    " És una màquina elèctrica que transforma l’energia d’alta tensió (15 kV a  Balears) a baixa tensió (400 V entre fases).",
-    "Constitueix el camí pel qual s’estableix el flux  magnètic, i està format per xapes d’acer aïllades elèctricament entre  elles.",
-    ],
-    [
-    "Els enrotllaments...",
-    "Estan formats per les bobines de fil d'alumini o coure
-    esmaltat.",
-    "Els de baixa tensió tenen moltes voltes de poca secció, i els d'alta tensió a l’inrevés",
-    "Són les peces que permeten fer la connexió elèctrica dels
-    enrotllaments amb l’exterior",
-    "Estan formats per les bobines de fil de coure o alumini
-    esmaltat",
-    ],
-    [
-    "La part del transformador anomenada Cuba...",
-    "Té carcassa d'alumini",
-    "És una carcassa estanca que
-    conté el líquid aïllant (normalment sodi líquid)",
-    "és on va immers el nucli i els
-    enrotllaments, i que serveix per lubricar el cablejat",
-    "on va immers el nucli i els
-    enrotllaments, i que serveix per
-    refrigerar",
-    ],
-    [
-    "El transformador de bany d’oli",
-    "Són més cars i silenciosos.",
-    "Es poden instal·lar a la intempèrie però esisteixen pitjor sobrecàrregues i curtcircuits.",
-    "Necessiten que el centre de transformació, just davall del transformador,
-    dugui un dipòsit per recollir l’oli en cas de fuga.",
-    "No necessiten manteniment ja que l’oli és biodegradable.",
-    ],
-    [
-    "Quan s’utilitza un relé de gasos o Buchholz?",
-    "quan etecta els gasos que desprèn
-    l’oli quan hi ha curtcircuits o mal contactes que
-    provoquen arcs elèctrics.",
-    "detecta els gasos que desprèn
-    la silicona quan hi ha curtcircuits o mal contactes que
-    provoquen arcs elèctrics.",
-    "quan detecta els gasos que desprèn
-    l’oli quan hi ha sobrecàrregues.",
-    "quan detecta que hi ha curtcircuits o mal contactes que provoquen arcs elèctrics.",
-    ],
-    [
-    "Quin objectiu té un transformador trifàsic?",
-    "transformar un sistema trifàsic a un monofàsic",
-    "Transformar un sistema trifàsic equilibrat en un altre sistema trifàsic i també equilibrat",
-    "Transformar un sistema trifàsic no equilibrat en un trifàsic equilibrar",
-    "Transformar un sistema trifàsic no equilibrat en un monofàsic equilibrat",
-    ],
-    [
-    "Quina és la funció principal d'un centre de transformació? ",
-    "Generar electricitat per a la xarxa de distribució. ",
-    "Convertir baixa tensió a alta tensió per al seu transport. ",
-    "Transformar mitjana tensió a baixa tensió per a la distribució i ús. ",
-    "Emmagatzemar energia per a emergències. ",
-    ],
-    [
-    "Quin tipus de centre de transformació és més utilitzat actualment en zones urbanes per la seva integració visual? ",
-    "D'intempèrie ",
-    "Subterrani prefabricat ",
-    "De superfície prefabricat ",
-    "Convencional d'obra ",
-    ],
-    [
-    "Quina protecció es fa servir per detectar gasos deguts a curtcircuits en transformadors de bany d'oli? ",
-    "Relé Buchholz ",
-    "Relé DGPT ",
-    "Termistor ",
-    "Vàlvula de sobrepressió ",
-    ],
+"En els CT d'intempèrie...",
+"Són barats de construir i de fàcil manteniment",
+"Són de poca potència (250 kV)",
+"S'utilitzen poc habitualment, sobretot en zones urbanes",
+"Les proteccions i elements de maniobra es situen a fora",
+],
+[
+"Què és un transformador de distribució",
+" És una màquina elèctrica que transforma l’energia d’alta tensió (20 kV a  Balears) a baixa tensió (230 V entre fases).",
+"No existeix",
+" És una màquina elèctrica que transforma l’energia d’alta tensió (15 kV a  Balears) a baixa tensió (400 V entre fases).",
+"Constitueix el camí pel qual s’estableix el flux  magnètic, i està format per xapes d’acer aïllades elèctricament entre  elles.",
+],
+[
+"Els enrotllaments...",
+"Estan formats per les bobines de fil d'alumini o coure
+esmaltat.",
+"Els de baixa tensió tenen moltes voltes de poca secció, i els d'alta tensió a l’inrevés",
+"Són les peces que permeten fer la connexió elèctrica dels
+enrotllaments amb l’exterior",
+"Estan formats per les bobines de fil de coure o alumini
+esmaltat",
+],
+[
+"La part del transformador anomenada Cuba...",
+"Té carcassa d'alumini",
+"És una carcassa estanca que
+conté el líquid aïllant (normalment sodi líquid)",
+"és on va immers el nucli i els
+enrotllaments, i que serveix per lubricar el cablejat",
+"on va immers el nucli i els
+enrotllaments, i que serveix per
+refrigerar",
+],
+[
+"El transformador de bany d’oli",
+"Són més cars i silenciosos.",
+"Es poden instal·lar a la intempèrie però esisteixen pitjor sobrecàrregues i curtcircuits.",
+"Necessiten que el centre de transformació, just davall del transformador,
+dugui un dipòsit per recollir l’oli en cas de fuga.",
+"No necessiten manteniment ja que l’oli és biodegradable.",
+],
+[
+"Quan s’utilitza un relé de gasos o Buchholz?",
+"quan etecta els gasos que desprèn
+l’oli quan hi ha curtcircuits o mal contactes que
+provoquen arcs elèctrics.",
+"detecta els gasos que desprèn
+la silicona quan hi ha curtcircuits o mal contactes que
+provoquen arcs elèctrics.",
+"quan detecta els gasos que desprèn
+l’oli quan hi ha sobrecàrregues.",
+"quan detecta que hi ha curtcircuits o mal contactes que provoquen arcs elèctrics.",
+],
+[
+"Quin objectiu té un transformador trifàsic?",
+"transformar un sistema trifàsic a un monofàsic",
+"Transformar un sistema trifàsic equilibrat en un altre sistema trifàsic i també equilibrat",
+"Transformar un sistema trifàsic no equilibrat en un trifàsic equilibrar",
+"Transformar un sistema trifàsic no equilibrat en un monofàsic equilibrat",
+],
+[
+"Quina és la funció principal d'un centre de transformació? ",
+"Generar electricitat per a la xarxa de distribució. ",
+"Convertir baixa tensió a alta tensió per al seu transport. ",
+"Transformar mitjana tensió a baixa tensió per a la distribució i ús. ",
+"Emmagatzemar energia per a emergències. ",
+],
+[
+"Quin tipus de centre de transformació és més utilitzat actualment en zones urbanes per la seva integració visual? ",
+"D'intempèrie ",
+"Subterrani prefabricat ",
+"De superfície prefabricat ",
+"Convencional d'obra ",
+],
+[
+"Quina protecció es fa servir per detectar gasos deguts a curtcircuits en transformadors de bany d'oli? ",
+"Relé Buchholz ",
+"Relé DGPT ",
+"Termistor ",
+"Vàlvula de sobrepressió ",
+],
+[
+"Quin és el codi de connexió més utilitzat en transformadors trifàsics? ",
+"Dyn11 ",
+"Yzn0 ",
+"Dd0 ",
+"Yy11 ",
+],
+[
+"Quin tipus de centre de transformació només s'utilitza actualment en zones rurals per la seva construcció econòmica? ",
+"De superfície prefabricat ",
+"Subterrani prefabricat ",
+"D'intempèrie ",
+"En edificis d'altres usos ",
+],
+[
+"Quina funció té un seccionador en un centre de transformació? ",
+"Obrir el circuit en curtcircuit ",
+"Connectar els elements actius a terra ",
+"Obrir o tancar el circuit en buit ",
+"Protegir contra sobretensions ",
+],
+[
+"Quina característica diferencia els transformadors en sec dels de bany d'oli? ",
+"Funcionen millor a l'exterior ",
+"Són més econòmics i silenciosos ",
+"No necessiten dipòsit d'oli ni tenen perill d'incendi ",
+"Requereixen un dipòsit per absorbir fuites ",
+],
+[
+"Quina és la finalitat del quadre de baixa tensió en un centre de transformació? ",
+"Reduir la tensió a nivells de mitjana tensió ",
+"Distribuir l'energia elèctrica fins als consumidors finals ",
+"Protegir el transformador contra sobrecàrregues ",
+"Ampliar la potència del centre de transformació ",
+],
+
 
 ];
 
