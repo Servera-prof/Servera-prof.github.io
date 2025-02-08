@@ -1,0 +1,470 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=../img/favicon.png>
+    <meta charset="UTF-8">
+
+    <style>
+
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: '../js/marked/marked.min.js',
+    MathJaxURL: '../js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="../js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+~~~
+&nbsp;
+    Permutació: [[p2]]
+&nbsp;
+~~~
+
+## Preguntes
+
+[[p1]]
+
+## Resposta
+
+[[i1]]
+
+
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Test fet per alumnes";
+const puntuacions = ["", 10];
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+
+let p01 = "";
+const preguntes = [
+    [
+    "Quins equips es consideren excluïts de la definició d'equip de protecció individual (EPI) segons la Llei de Prevenció de Riscs Laborals? ",
+    "Ropa de treball específica per a la protecció física ",
+    "Equip de protecció per a mitjans de transport per carretera ",
+    "Equip de protecció per a tasques agrícoles ",
+    "Equip de protecció per a treballadors forestals ",
+    ],
+    [
+    "Quins són els protectors de les vies respiratòries mencionats en el text? ",
+    "Ulleres universals, ulleres integrals, pantalles de soldadura ",
+    "Guants de protecció mecànica, química o tèrmica ",
+    "Equips filtrants de partícules, o contra gasos i vapors, o mixtes ",
+    "Cascos de seguretat, cascos de protecció contra xocs ",
+    ],
+    [
+    "Quina de les següents opcions és una categoria de roba de protecció específica mencionada? ",
+    "Roba de protecció contra el vent ",
+    "Roba de protecció davant risc químic ",
+    "Roba de protecció davant riscs acústics ",
+    "Roba de protecció contra impactes ",
+    ],
+    [
+    "Quines són les principals recomanacions per a la protecció davant el risc elèctric segons? ",
+    "b) Respectar la senyalització i evitar el pas de persones innecessàries ",
+    "a) Utilitzar qualsevol tipus d'equip de protecció sense importar l'entorn ",
+    "c) Manipular les instal·lacions sense l'autorització pertinent ",
+    "d) Treballar amb equips elèctrics només amb eines humides ",
+    ],
+    [
+    "Quina és la recomanació per a prevenir incendis d’origen elèctric? ",
+    "Utilitzar materials inflamables per millorar el funcionament dels equips ",
+    "Realitzar treballs amb equips elèctrics sense protocols específics ",
+    "Mantindre les instal·lacions elèctriques sense protecció per facilitar les reparacions ",
+    "Tenir un bon disseny i manteniment de les instal·lacions, i evitar substàncies inflamables a la zona ",
+    ],
+    [
+    "Quina és la condició mínima per a l'ús d'equips de protecció individual contra caigudes en alçada? ",
+    "El personal encarregat de la instal·lació ha de tenir la qualificació professional adequada i instruccions específiques ",
+    "La càrrega màxima de la grua s'ha de superar per obtenir més seguretat ",
+    "Els punts d'anclatge poden ser qualsevol, sense requeriments de resistència mínima ",
+    "No es necessita fer proves de càrrega o inspecció dels equips abans d'usar-los ",
+    ],
+    [
+    "Quina és la norma aplicable als arnesos anti-caigudes ?",
+    "EN 358 ",
+    "EN 397 ",
+    "EN 361 ",
+    "EN 795 ",
+    ],
+    [
+    "Quin tipus de sistema utilitza comunicacions via satèl·lit en parcs eòlics offshore?",
+    "SCADA ",
+    "Telefonia analògica ",
+    "Ràdio AM ",
+    "Emissora portàtil ",
+    ],
+    [
+    "Quina és la finalitat principal de la senyalització en zones de seguretat elèctrica?",
+    "Delimitar zones de lliure accés ",
+    "Marcar zones de protecció contra caigudes ",
+    "Determinar la zona protegida segons el Reglament de Centrals i Subestacions Elèctriques ",
+    "Indicar el camí més curt per a les emergències ",
+    ],
+    [
+    "Quina és la característica principal de les armilles salvavides amb flotabilitat per inflat de càmares amb gas",
+    "Es poden utilitzar només en aigües tranquil·les ",
+    "La flotabilitat depèn d'espumes ",
+    "Estan dissenyades per a condicions de mal temps i alta mar ",
+    "Són adequades per a persones que saben nedar ",
+    ],
+
+];
+
+let permutacio = "";
+const num_preg = preguntes.length;
+const num_resp = preguntes[0].length-1;
+const fact_np = factorial(num_preg);
+const fact_nr = factorial(num_resp);
+/*let ordre_preg = Math.floor(aleat(0, fact_np - 1)/1e16)*/;
+let ordre_preg = aleat(0, fact_np - 1);
+
+console.log(ordre_preg)
+permutacio += ordre_preg + "_";
+//ordre_preg *= 1e16;
+
+const preg_ordenades = obtenirPermutacio(preguntes, ordre_preg);
+
+for (let i = 0; i < num_preg; i++){
+    p01 += '<p><b>' + (i+1) + '.</b> ' + preg_ordenades[i][0] + '</p>';
+    let ordre_resp = aleat (0, fact_nr - 1);
+    permutacio += ordre_resp + ".";
+
+    let resp = obtenirPermutacio(preg_ordenades[i].slice(1), ordre_resp);
+    p01 += '<ol style="list-style-type: none;">'
+    for (let j = 0; j < num_resp; j++){
+        p01 += '<li class="preg"><span><i>' + nombreALletra(j+1) +
+               '</i>) </span><span style="flex: 1;">' +
+               resp[j] + "</span></li>"
+    }
+    p01 += "</ol>"
+}
+
+p02 = permutacio;
+
+
+
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+// !!! CONVERTIR si és necessari les unitats a les unitats que requereix
+// el nostre enunciat.
+
+function estableixParametres(){
+    array = [
+      p01, p02
+    ];
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+}
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS Técnic Superior en Energies Renovables",
+    anys: "2024/2025"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    respostes[0] = document.getElementById("i1").value
+    alumne.nom = document.getElementById("nom").value;
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) serà qualificat manualment.",
+    "",
+    ].join("\n") + "\n";
+    txt += txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    patro = "[[i1]]";
+    canvi = "~~~\n    " + respostes[0] + "\n\n\n~~~";
+
+    txt = txt.replace(patro, canvi);
+
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+/**********************************************************************
+ * - Establir les puntuacions, que han de correspondre amb la quantitat
+ * de respostes que l'alumne pot contestar.
+ *
+ * - Establir els paràmetres. En general serà una funció per a generar
+ * nombres aleatoris, però també es poden fixar. Aquest últim cas és
+ * interessant per a testejar els càlculs. IMPORTANT: Al finalitzar
+ * tots els parametres hauran de concatenarse al vector parametres.
+ *
+ * -  El mateix succeeix amb els càlculs. Tot haura de volcar-se al
+ * vector solucions.
+ * *******************************************************************/
+-->
