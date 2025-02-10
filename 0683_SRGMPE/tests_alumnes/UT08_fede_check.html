@@ -146,7 +146,7 @@ const preguntes = [
 ];
 
 const solucions_test = [
-3, 3, 4, 2, 1, 3, 3, 3, 2, 2, 
+3, 3, 4, 2, 1, 3, 3, 3, 2, 2,
 ];
 const opcions_test = [1, 2, 3, 4];
 
@@ -218,7 +218,7 @@ function calcula(){
             txtav +=  '<li class="preg"><span style="color: ' +
                color + '"><i>' + nombreALletra(j+1) +
                '</i>) </span><span style="flex: 1; color: ' +
-               color + '">' + resp[j] + "</span></li>";
+               color + '">' + resp[j] + marcador + "</span></li>";
 
             color = "black";
             marcador = "";
@@ -611,31 +611,3 @@ function lletraANombre(lletra){
 }
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-/**********************************************************************
- * - Establir les puntuacions, que han de correspondre amb la quantitat
- * de respostes que l'alumne pot contestar.
- *
- * - Establir els paràmetres. En general serà una funció per a generar
- * nombres aleatoris, però també es poden fixar. Aquest últim cas és
- * interessant per a testejar els càlculs. IMPORTANT: Al finalitzar
- * tots els parametres hauran de concatenarse al vector parametres.
- *
- * -  El mateix succeeix amb els càlculs. Tot haura de volcar-se al
- * vector solucions.
- * *******************************************************************/
--->
