@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <meta charset="UTF-8">
+</head>
+<textarea id="enunciat">
+
+
+~~~
+&nbsp;
+    Permutació: [[p2]]
+&nbsp;
+~~~
+
+## Ponderació
+
+Aquest examen pondera un 45 % de la nota de l'examen de la UT04
+
+## Normes:
+- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
+  Pots utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/).
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Si en aquest examen es pot utilitzar reglaments o documentació tècnica
+  també es poden tenir oberts. S'especifica a la tasca associada.
+- Està terminantment prohibit copiar o mirar al company.
+- No es poden fer preguntes. Part de l'avaluació és la comprensió del
+  text. Si hi ha algun error es parlarà una vegada l'examen hagi
+  finalitzat, i en el seu cas s'anul·larà la pregunta.
+- L'examen dura el que indiqui la tasca associada i **es tanca
+  automàticament. ENTREGUEU-HO ABANS** o serà un zero.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes
+  resten 1/(numrespostes - 1) punts, les que es deixen en blanc,
+  ni sumen ni resten.
+
+## Com fer aquest examen:
+- Ves a [Screen Capture](https://www.screencapture.com/es/).
+- Recorda llevar micròfon, so i webcam.
+- Clica a «iniciar grabación».
+- Clica a la pestanya «toda la pantalla».
+- Ara clica a la miniimatge del teu escriptori que posa de nou
+  «toda la pantalla».
+- Clica compartir.
+- Agafa paper
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis copia les respostes sense espais i tot seguit, al camp
+  «resposta», si no la saps n. Per exemple: abnaac
+- Omple el teu nom i clica a avaluar.
+- Imprimeix la pàgina com a pdf fent «Ctrl + P»
+- Atura el vídeo fent click a «volver a la configuración».
+- Descarrega el vídeo  clicant a «descargar».
+- Adjunta-la com a tasca.
+- Adjunta el vídeo.
+- Fotografia el paper utilitzat (la fotografia és per a tu, per a
+  poder revisar l'examen si ho necessitessis).
+- Entrega els papers utilitzats.
+
+## Preguntes
+
+[[p1]]
+
+## Resposta
+
+[[i1]]
+
+
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+    window.texme = {
+        renderOnLoad: false,
+        style: 'none',
+        markdownURL: 'js/marked/marked.min.js',
+        MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+    }
+    const titol = "Examen UT04 - part 3"; // MODIFICAR
+</script>
+<script src="js/texme/texme.js"></script>
+
+<script>
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const puntuacions = ["", 10];
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+
+let p01 = "";
+const preguntes = [
+    [
+     "Un proveïdor ens ha fet una oferta per un fusible segons norma UNE 21120, és apte aquest per al nostre CT integrat en edifici?",
+     "Només per als ponts del quadre de baixa",
+     "Només per a MT",
+     "Només per a les cel·les de línia.",
+     "Només a les Balears.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Ens han encarregat una obra d'un CT a Esporles, quin voltatge hauria de suportar en cas d'un impuls com el d'un llamp?",
+     "125 kV",
+     "170 kV",
+     "240 kV",
+     "15 kV",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Un CT integrat en edifici pot obviar el Codi Tècnic de l'Edificació (CTE) i les ordenances municipals?",
+     "Sí, ja que la normativa que li aplica és el FYZ10000",
+     "No, ja que la FYZ exigeix que s'hi ajusti.",
+     "Només en cas de contradicció, en tal cas preval l'FYZ10000",
+     "El CTE si, les OM no.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "A un CT integrat en edifici necessitem preveure",
+     "3 tubs ø 160 per als cables d'MT.",
+     "4 tubs ø 160 per a BT.",
+     "1 tub de fibra òptica ø 160.",
+     "Hi ha tres respostes certes.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Les línies de MT que entren al CT serán",
+     "De coure",
+     "De 15/24 kV",
+     "D'aïllament sec termoplàstic.",
+     "Hi ha tres respostes certes.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+
+
+
+
+     [
+     "Quina afirmació és certa",
+     "Ha de garantir una tensió de contacte inferior a 24 V.",
+     "Si és de 28 Ω és vàlida.",
+     "Es sol executar amb cable nu.",
+     "El neutre no es connecta a terra en el CT, es podrien transmetre tensions de 15 kV en cas de fuga.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Qui ha de vetllar per a que un material disposi d'un certificat de conformitat?",
+     "EDE.",
+     "El director d'obra.",
+     "El projectista.",
+     "El transportista.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Indica l'afirmació <b>falsa</b>.",
+     "Amb caràcter previ al muntatge electromecànic es presentarà a EDE el Certificat visat de compliment de requisits estructurals i un Mesurament de l'adequació acústica del local que contindrà el CT realitzat per una entitat homologada.",
+     "El cable de Baixa Tensió haurà d'estar tallat amb tisora o cisalla i no amb serra, col·locant-se en els extrems el terminal a compressió corresponent a la secció del cable, no permetent en cap cas ampliar el diàmetre primitiu de l'orifici d'aquest terminal.",
+     "Les cel·les de MT se situaran sobre l'arqueta prevista per a tal efecte, s'alinearà el bloc segons les instruccions de muntatge del fabricant, i es fixaran per a evitar lliscaments.",
+     "La càrrega s'estibarà de manera que no es produeixin deformacions permanents evitant l'ús de cadenes o <i>eslingas</i> no protegides.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Quin plànol haurem d'utilitzar per a representar l'esquema unifilar d'un transformador a les Balears amb una entrada de MT i dues sortides de MT",
+     "Plànol núm. FYZ10102 (fulla 1 de 4)",
+     "Plànol núm. FYZ10102 (fulla 2 de 4)",
+     "Plànol núm. FYZ10102 (fulla 3 de 4)",
+     "Plànol núm. FYZ10102 (fulla 4 de 4)",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Quines són les dimensions interiors mínimes d'un CT de façana estreta integrat en edifici?",
+     "3,3 x 5 i 2,6 d'altura des de la zona transitable",
+     "4,5 x 2,8 i 2,6 d'altura des de la zona transitable",
+     "3,3 x 5 i 3 d'altura des de la zona transitable",
+     "4,5 x 2,8 i 3 d'altura des de la zona transitable",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+];
+
+let permutacio = "";
+const num_preg = preguntes.length;
+const num_resp = preguntes[0].length-1;
+const fact_np = factorial(num_preg);
+const fact_nr = factorial(num_resp);
+/*let ordre_preg = Math.floor(aleat(0, fact_np - 1)/1e16)*/;
+let ordre_preg = aleat(0, fact_np - 1);
+
+console.log(ordre_preg)
+permutacio += ordre_preg + "_";
+//ordre_preg *= 1e16;
+
+const preg_ordenades = obtenirPermutacio(preguntes, ordre_preg);
+
+for (let i = 0; i < num_preg; i++){
+    p01 += '<p><b>' + (i+1) + '.</b> ' + preg_ordenades[i][0] + '</p>';
+    let ordre_resp = aleat (0, fact_nr - 1);
+    permutacio += ordre_resp + ".";
+
+    let resp = obtenirPermutacio(preg_ordenades[i].slice(1), ordre_resp);
+    p01 += '<ol style="list-style-type: none;">'
+    for (let j = 0; j < num_resp; j++){
+        p01 += '<li class="preg"><span><i>' + nombreALletra(j+1) +
+               '</i>) </span><span style="flex: 1;">' +
+               resp[j] + "</span></li>"
+    }
+    p01 += "</ol>"
+}
+
+p02 = permutacio;
+
+
+
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+// !!! CONVERTIR si és necessari les unitats a les unitats que requereix
+// el nostre enunciat.
+
+function estableixParametres(){
+    array = [
+      p01, p02
+    ];
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+}
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS Tècnic superior en sistemes electrotècnics i automàtics",
+    anys: "2024/2025"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    respostes[0] = document.getElementById("i1").value
+    alumne.nom = document.getElementById("nom").value;
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) serà qualificat manualment.",
+    "",
+    ].join("\n") + "\n";
+    txt += txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    patro = "[[i1]]";
+    canvi = "~~~\n    " + respostes[0] + "\n\n\n~~~";
+
+    txt = txt.replace(patro, canvi);
+
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+</script>

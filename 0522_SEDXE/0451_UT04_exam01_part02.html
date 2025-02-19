@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <meta charset="UTF-8">
+</head>
+<textarea id="enunciat">
+
+
+~~~
+&nbsp;
+    Permutació: [[p2]]
+&nbsp;
+~~~
+
+## Ponderació
+
+Aquest examen pondera un 35 % de la nota de l'examen de la UT04
+
+## Normes:
+- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
+  Pots utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/).
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Si en aquest examen es pot utilitzar reglaments o documentació tècnica
+  també es poden tenir oberts. S'especifica a la tasca associada.
+- Està terminantment prohibit copiar o mirar al company.
+- No es poden fer preguntes. Part de l'avaluació és la comprensió del
+  text. Si hi ha algun error es parlarà una vegada l'examen hagi
+  finalitzat, i en el seu cas s'anul·larà la pregunta.
+- L'examen dura el que indiqui la tasca associada i **es tanca
+  automàticament. ENTREGUEU-HO ABANS** o serà un zero.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes
+  resten 1/(numrespostes - 1) punts, les que es deixen en blanc,
+  ni sumen ni resten.
+
+## Com fer aquest examen:
+- Ves a [Screen Capture](https://www.screencapture.com/es/).
+- Recorda llevar micròfon, so i webcam.
+- Clica a «iniciar grabación».
+- Clica a la pestanya «toda la pantalla».
+- Ara clica a la miniimatge del teu escriptori que posa de nou
+  «toda la pantalla».
+- Clica compartir.
+- Agafa paper
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis copia les respostes sense espais i tot seguit, al camp
+  «resposta», si no la saps n. Per exemple: abnaac
+- Omple el teu nom i clica a avaluar.
+- Imprimeix la pàgina com a pdf fent «Ctrl + P»
+- Atura el vídeo fent click a «volver a la configuración».
+- Descarrega el vídeo  clicant a «descargar».
+- Adjunta-la com a tasca.
+- Adjunta el vídeo.
+- Fotografia el paper utilitzat (la fotografia és per a tu, per a
+  poder revisar l'examen si ho necessitessis).
+- Entrega els papers utilitzats.
+
+## Preguntes
+
+[[p1]]
+
+## Resposta
+
+[[i1]]
+
+
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+    window.texme = {
+        renderOnLoad: false,
+        style: 'none',
+        markdownURL: 'js/marked/marked.min.js',
+        MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+    }
+    const titol = "Examen UT04 - part 2"; // MODIFICAR
+</script>
+<script src="js/texme/texme.js"></script>
+
+<script>
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const puntuacions = ["", 10];
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+
+let p01 = "";
+const preguntes = [
+    [
+     "Tria l'afirmació <b>falsa</b>",
+     "Els CT d'intempèrie són més barats de construir, però les maniobres, reparacions i manteniment és més complicat",
+     "Els CT de superfície prefabricats substitueixen, avui en dia, als d’intempèrie",
+     "Els CT subterranis prefabricats s'utilitzen poc avui en dia degut al risc que s'aneguin quan plou",
+     "Els CT convencionals d'obra eren de grans dimensions, ja que utilitzaven aparells de protecció i maniobra de tall amb aire",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Els CT que empreses com Mercadona tenen són",
+     "CT de l'empresa distribuïdora, ja que és el cas més comú",
+     "CT d'abonat, que poden resultar més econòmics a partir de certa potència, ja que hi sol haver més tarifes a escollir i es compra l’energia en mitjana tensió",
+     "CT d'abonat, ja que tenen l'alimentació subterrània i estan connectats en anell.",
+     "CT de l'empresa distribuïdora, ja que des d’aquests centres s’alimenta a la xarxa pública de baixa tensió",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Marca l'afirmació <b>falsa</b>",
+     "Un transformador de distribució a les Balears és una màquina elèctrica que transforma l’energia d’alta tensió (15 kV) a baixa tensió (400 V entre fases)",
+     "Només funcionen en corrent altern.",
+     "Són màquines molt eficients, la potència de sortida és pràcticament igual a la potència d’entrada",
+     "Poden ser secs (també anomenats encapsulats) o de bany en líquid dielèctric (sol ser un oli)",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Quants passatapes d'Alta tensió hi ha en un transformador Dyn11 com el que sol utilitzar-se a distribució",
+     "1",
+     "2",
+     "3",
+     "4",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Puc alimentar a un transformador a les Balears amb 14,5 kV (tensió menor que la nominal a causa de caigudes de tensió)",
+     "No, ja que a la sortida tindria menys de 400 V en tots els casos.",
+     "Sí, ja que una diferència de 0,5 kV en alta representa menys d'un 3 %",
+     "Si ja que puc modificar la posició del commutador a una v<sub>in</sub> menor.",
+     "No, ja que 0,5 kV en passar a baixa seran 500 V i la sortida del transformador pràcticament no tindrà energia.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+
+
+
+
+     [
+     "Marca l'afirmació <b>falsa</b>",
+     "Els transformadors secs són més fàcils d’instal·lar (no necessitem dipòsit per l’oli) i sense perill d’incendi.",
+     "Els transformadors secs, són més barats i silenciosos",
+     "Els transformadors de bany d'oli, necessiten que el centre de transformació, just davall del transformador, dugui un dipòsit per recollir l’oli en cas de fuga. A més també ha d’incorporar un dispositiu per apagar les flames abans que l’oli caigui al dipòsit.",
+     "Els transformadors de bany d'oli, permeten un millor control de la temperatura, ja que l’oli facilita que la temperatura dels enrotllaments sigui més uniforme..",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Els transformadors s'encalenteixen per ",
+     "Pèrdues en el nucli, degudes a la histèresi magnètica del ferro i per corrents de Foucault",
+     "Pèrdues en els enrotllaments, ja que aquests tenen una certa resistència.",
+     "Pèrdues degudes a la degradació de l'oli, que cada vegada té menys comportament dielèctric i comença a deixar circular corrents elèctrics que l'encalenteixen per efecte Joule.",
+     "Hi ha dues respostes correctes",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "El relé Buchholz detecta ...",
+     "... gasos que desprèn l’oli quan hi ha curtcircuits o mal contactes que provoquen arcs elèctrics.",
+     "... gasos que desprèn l’oli quan hi ha degradació de l'oli per envelliment.",
+     "... gasos, temperatures excessives i sobrepressions.",
+     "... gasos, temperatures excessives i sobretensions.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Quina d'aquestes proves m'és útil per a detectar problemes d'aïllament a les bobines?",
+     "Resistència dels bobinats.",
+     "Relació de transformació.",
+     "Corrent d'excitació.",
+     "Resistència d'aïllament.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+     [
+     "Després de quina prova s'ha de desmagnetitzar el nucli?",
+     "Resistència dels bobinats",
+     "Relació de transformació.",
+     "Corrent d'excitació.",
+     "Resistència d'aïllament.",
+     "Marca aquesta si no pots marcar cap de les altres."
+     ],
+];
+
+let permutacio = "";
+const num_preg = preguntes.length;
+const num_resp = preguntes[0].length-1;
+const fact_np = factorial(num_preg);
+const fact_nr = factorial(num_resp);
+/*let ordre_preg = Math.floor(aleat(0, fact_np - 1)/1e16)*/;
+let ordre_preg = aleat(0, fact_np - 1);
+
+console.log(ordre_preg)
+permutacio += ordre_preg + "_";
+//ordre_preg *= 1e16;
+
+const preg_ordenades = obtenirPermutacio(preguntes, ordre_preg);
+
+for (let i = 0; i < num_preg; i++){
+    p01 += '<p><b>' + (i+1) + '.</b> ' + preg_ordenades[i][0] + '</p>';
+    let ordre_resp = aleat (0, fact_nr - 1);
+    permutacio += ordre_resp + ".";
+
+    let resp = obtenirPermutacio(preg_ordenades[i].slice(1), ordre_resp);
+    p01 += '<ol style="list-style-type: none;">'
+    for (let j = 0; j < num_resp; j++){
+        p01 += '<li class="preg"><span><i>' + nombreALletra(j+1) +
+               '</i>) </span><span style="flex: 1;">' +
+               resp[j] + "</span></li>"
+    }
+    p01 += "</ol>"
+}
+
+p02 = permutacio;
+
+
+
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+// !!! CONVERTIR si és necessari les unitats a les unitats que requereix
+// el nostre enunciat.
+
+function estableixParametres(){
+    array = [
+      p01, p02
+    ];
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+}
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS Tècnic superior en sistemes electrotècnics i automàtics",
+    anys: "2024/2025"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    respostes[0] = document.getElementById("i1").value
+    alumne.nom = document.getElementById("nom").value;
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) serà qualificat manualment.",
+    "",
+    ].join("\n") + "\n";
+    txt += txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    patro = "[[i1]]";
+    canvi = "~~~\n    " + respostes[0] + "\n\n\n~~~";
+
+    txt = txt.replace(patro, canvi);
+
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+</script>
