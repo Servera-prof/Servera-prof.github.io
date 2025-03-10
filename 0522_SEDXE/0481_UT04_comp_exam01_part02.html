@@ -1,0 +1,630 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <meta charset="UTF-8">
+</head>
+
+<script>
+    window.texme = {
+        renderOnLoad: false,
+        style: 'none',
+        markdownURL: 'js/marked/marked.min.js',
+        MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+    }
+    const titol = "Comprovador recuperació UT04 - part 2"; // MODIFICAR
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+Introdueix aquí la teva permutació: <br/>
+[[i1]]
+
+Introdueix aquí la teva resposta: <br/>
+[[i2]]
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+
+const puntuacions = ["",
+];
+
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+let txtav = "";
+let pts = 0;
+let ptsTotals = 0;
+
+const preguntes = [
+    [
+    "Tria l'afirmació correcta",
+    "Els CTs subterranis prefabricats s'utilitzen en llocs poc poblats",
+    "Els CTs convencionals d'obra són de petites dimensions, ja que fan servir aparellatge de protecció i maniobra de tall amb aire",
+    "Els CTs d'intempèrie són de gran potència, de 1000 kVA almenys, necessiten tanta refrigeració que han d'estar a la intempèrie",
+    "Els CT en edificis d'altres usos s'instal·len integrats en edificis residencials",
+     "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Per a fer el pressupost del projecte que has d'entregar el millor és analitzar com es construiria cada una de les parts fonamentals d'un CT, indica la que NO és una part fonamental d'un CT",
+    "Transformador de distribució amb les seves proteccions elèctriques i elements de maniobra",
+    "Posades a terra i serveis (il·luminació, ventilació, contraincendis)",
+    "Obra civil",
+    "Línies de MT que entren al CT i línies de BT que surten del CT",
+     "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Quants passatapes d'Alta tensió hi ha en un transformador Dyn11 com el que sol utilitzar-se a distribució",
+    "1",
+    "2",
+    "3",
+    "4",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Puc alimentar a un transformador a les Balears amb 14,5 kV (tensió menor que la nominal a causa de caigudes de tensió)",
+    "No, ja que a la sortida tindria menys de 400 V en tots els casos.",
+    "Sí, ja que una diferència de 0,5 kV en alta representa menys d'un 3 %",
+    "Si ja que puc modificar la posició del commutador a una v<sub>in</sub> menor.",
+    "No, ja que 0,5 kV en passar a baixa seran 500 V i la sortida del transformador pràcticament no tindrà energia.",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Marca l'afirmació <b>falsa</b>",
+    "Els transformadors secs són més fàcils d’instal·lar (no necessitem dipòsit per l’oli) i sense perill d’incendi.",
+    "Els transformadors secs, són més barats i silenciosos",
+    "Els transformadors de bany d'oli, necessiten que el centre de transformació, just davall del transformador, dugui un dipòsit per recollir l’oli en cas de fuga. A més també ha d’incorporar un dispositiu per apagar les flames abans que l’oli caigui al dipòsit.",
+    "Els transformadors de bany d'oli, permeten un millor control de la temperatura, ja que l’oli facilita que la temperatura dels enrotllaments sigui més uniforme..",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+
+
+
+
+    [
+    "El relé Buchholz detecta ...",
+    "... gasos que desprèn l’oli quan hi ha curtcircuits o mal contactes que provoquen arcs elèctrics.",
+    "... gasos que desprèn l’oli quan hi ha degradació de l'oli per envelliment.",
+    "... gasos, temperatures excessives i sobrepressions.",
+    "... gasos, temperatures excessives i sobretensions.",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Després de quina prova s'ha de desmagnetitzar el nucli?",
+    "Resistència dels bobinats",
+    "Relació de transformació.",
+    "Corrent d'excitació.",
+    "Resistència d'aïllament.",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Quina d'aquestes afirmacions és falsa respecte a aquesta imatge?" +
+    '<p><img src="img/UT04_recu01_03.png"></p>',
+    "És un quadre de BT",
+    "Tant les fases com el neutre van protegits amb fusible",
+    "Pot contenir un interruptor-seccionador per a deixar l'element sense servei",
+    "Des d'aquí es reparteixen les línies de BT cap als consumidors finals",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "Quina afirmació descriu millor aquest CT?" +
+    '<p><img src="img/UT04_recu01_02.png"></p>',
+    "CT en anell de companyia amb 3 transformadors",
+    "CT en punta de companyia amb 2 transformadors",
+    "CT en anell d'abonat amb 3 transformadors",
+    "CT en punta d'abonat amb 2 transformadors",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ],
+    [
+    "A què correspon aquesta imatge?" +
+    '<p><img src="img/UT04_recu01_01.png"></p>',
+    "cel·la de línia",
+    "cel·la de protecció amb fusibles",
+    "cel·la de remunt",
+    "cel·la de línia amb interruptor automàtic",
+    "Marca aquesta si no pots marcar cap de les altres."
+    ]
+];
+
+const solucions_test = [
+    4, 4, 3, 3, 2,
+    1, 1, 2, 3, 2
+];
+const opcions_test = [1, 2, 3, 4, 5];
+
+let permutacio = "";
+const num_preg = solucions_test.length;
+const num_resp = opcions_test.length;
+ptsTotals = num_preg;
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+
+function estableixParametres(){
+    array = [/* p01, p02, p03, p04, p05 */]; // actualitzar entre []
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+    const permutacio = respostes [0];
+
+    const permpreg = permutacio.split("_")[0];
+    const permresp = permutacio.split("_")[1].split(".");
+    const respostes_alumne = respostes [1].split("");
+
+    const preg_ordenades = obtenirPermutacio(preguntes, permpreg);
+    const sol_ordenades = obtenirPermutacio(solucions_test, permpreg);
+
+
+    for (let i = 0; i < num_preg; i++){
+        preg = preg_ordenades[i][0];
+
+
+        let resp =
+         obtenirPermutacio(preg_ordenades[i].slice(1), permresp[i]);
+
+        let pr = permresp[i];
+        let opcions_permutades = obtenirPermutacio(opcions_test, pr);
+
+
+        let st = sol_ordenades[i];
+        let opcio_correcta = opcions_permutades.indexOf(st) + 1;
+        let opcio_marcada = lletraANombre(respostes_alumne[i]);
+        let color = "black";
+        let marcador = "";
+
+        if (opcio_correcta === 0) {
+            ptsTotals -= 1;
+            color = "gray";
+            txtav += '\n\n<div>\n'+
+             '<p><b>' + (i+1) + '.</b> ' + preg + '</p>' +
+             '<img src="img/anul·lada.png" alt="segell"/>\n' +
+             '<div class="bgtxt">\n'
+        }else{
+            txtav += "<p><b>" + (i+1) + '.</b> ' + preg + '</p>';
+        }
+        txtav += '<ol style="list-style-type: none;">\n';
+
+
+        for (let j = 0; j < num_resp; j++){
+            a = j + 1;
+            if (opcio_correcta === 0){
+                color = "gray";
+            } else if (a === opcio_correcta && a === opcio_marcada){
+                color = "green";
+                marcador = "⇦";
+                pts += 1;
+            } else if (a === opcio_correcta && a != opcio_marcada){
+                marcador = "⇦";
+            } else if (a != opcio_correcta && a === opcio_marcada){
+                color = "red";
+                pts -= 1/(num_resp-1);
+            } else if (a != opcio_correcta && a != opcio_marcada){
+            }
+            txtav += '<li class="preg"><span style="color: ' +
+             color + ';"><i>' + nombreALletra(j+1) + '</i>) </span><span style="flex: 1; color: ' + color + ';">' +
+             resp[j] + marcador + "</span></li>"
+            color = "black";
+            marcador = "";
+        } // fi for respostes
+        if (opcio_correcta === 0) {
+            txtav += '</div>\n</div></ol><br/>\n\n'
+        }else{
+            txtav += "</ol>\n";
+        }
+    } // fi for preguntes
+} //fi calcula();
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS Tècnic superior en sistemes electrotècnics i automàtics",
+    anys: "2024/2025"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres();
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = l(parametres[i]);
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    patro = "[[i1]]";
+    canvi = '<input type="text" onwheel="return false;" ';
+    canvi += 'id="i1" style="width: 300px">';
+    txt = txt.replace(patro, canvi);
+    patro = "[[i2]]";
+    canvi = '<input type="text" onwheel="return false;" ';
+    canvi += 'id="i2" style="width: 300px">';
+    txt = txt.replace(patro, canvi);
+    /*for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }*/
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    respostes[0] = document.getElementById("i1").value;
+    respostes[1] = document.getElementById("i2").value;
+    alumne.nom = document.getElementById("nom").value;
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+
+    "> [[nota]]"
+    ].join("\n") + "\n\n\n";
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+
+    console.log(txt);
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt += txtav;
+
+    let ptsAlumne = pts;
+    let canvi = "", patro = "";
+
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotals, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotals*10, 2) + "**");
+
+    /*
+    let ptsAlumne = 0, ptsTotal = 0;
+    let canvi = "", patro = "";
+    let a = 0, b = 0;
+    for (let i = 1; i < puntuacions.length; i++){
+        a = respostes[i];
+        b = solucions[i];
+        ptsTotal += puntuacions[i];
+        canvi =
+            '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">'
+            + coma(a) + '</span>';
+        if ((b*0.99) < a && a < (b*1.01)) {
+            ptsAlumne += puntuacions[i];
+            canvi +=
+                ' <span style="color: green">(' +
+                coma(b) +') OK (+' + puntuacions[i] + ')</span>';
+        }else{
+            canvi +=
+                ' <span style="color: red;"> (' +
+                coma(b) +')</span>';
+        }
+        patro = "[[i" + i + "]]";
+
+        txt = txt.replace(patro, canvi);
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    */
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function ln(a){
+    return Math.log(a);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar (φ en graus)
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a){  // log abreviat a l totsol
+    if (!a.toPrecision) return a;
+    return coma(xs(a));
+}
+
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return Number(a);
+}
+
+function coma(a){
+    a = a + "";
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+function lletraANombre(lletra){
+    return lletra.toLowerCase().charCodeAt(0) - 96;
+}
+
+</script>
