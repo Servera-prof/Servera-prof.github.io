@@ -1,0 +1,601 @@
+<!-- MOLT IMPORTANT: Al final del document es poden trobar les
+instruccions sobre la utilització d'aquesta eina.-->
+
+
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <meta charset="UTF-8">
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.min.js"></script>
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+
+~~~
+Codi de l'examen: [[p1]]
+~~~
+
+### Avisos!!
+
+- Teniu esment a **què** és el que es demana. Per exemple és B1 o B2?
+- Comproveu en quines **unitats** s'ha de donar la resposta. És en ms?
+  o en kA?
+
+### Problema
+
+A un CT de [[p2]] kVA, connectat a una xarxa de MT de [[p3]] kV, i que
+el secundari és [[p4]], es demana (_0,5 punts_ per encert):
+
+- La intensitat nominal del primari (en A): [[i1]]
+- La intensitat nominal del costat de BT (en A): [[i2]]
+- La secció del costat de MT (en mm²): [[i3]]
+- La intensitat màxima que aguanta aquesta secció si està
+  [[p5]] (en A): [[i4]]
+- La composició del costat de baixa tensió
+  (utilitza el format <tt>0x0x000+0x000</tt>, tal com s'indica
+  **sense espais ni unitats**): [[itxt5]]
+- La intensitat màxima que aguanta aquesta configuració considerant
+  els factors de correcció: [[i6]]
+
+Per altra banda (_1 punt_ per encert):
+
+- Si un curtcircuit durés [[p6]] s, quina seria la intensitat màxima
+  de curtcircuit al costat d'alta (en kA): [[i7]]
+- Però en realitat, els curtcircuits previstos de 20 kA en realitat
+  duraran menys de (en ms): [[i8]].
+
+Consulta la
+<a href="docs/ft_ormazabal.pdf" target="_blank" rel="noopener noreferrer">fitxa tècnica d'Ormazabal</a>
+i pel teu transformador troba (_0,5 punts_ per encert):
+
+- Pèrdues en buit, $W_{Fe}$ (en W): [[i9]]
+- Pèrdues en càrrega, $W_{Cu}$ (en W): [[i10]]
+
+Amb les dades anteriors, per a una temperatura exterior de [[p7]] °C i
+una temperatura a l'interior del CT de [[p8]] °C, coneixent que
+la distància vertical entre reixes de ventilació del CT és de [[p9]] cm,
+calcula (_1 punt_):
+
+- La superfície del buit per a l'entrada d'aire (en m²): [[i11]]
+
+
+
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Examen UT05 - part 03";
+const puntuacions = ["",
+    0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
+      1,   1,
+    0.5, 0.5, 1
+];
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+const π = Math.PI;
+
+const s_arr = [250, 400, 630];      // Potències trafo
+const umt_arr = [15, 20, 25];       // Tensions MT
+const ubt_arr = [230, 400];         // Tensions BT
+const ubttxt_arr = ["B1", "B2"];    // Nomenclatura tensions BT
+const inst_arr = ["a l'aire",
+    "directament enterrada"];       // sistema d'instal·lació pont MT
+const tcc_arr = [0.1, 0.5, 1];      // Temps de curcircuit
+
+const js = aleat(0, 2);
+const s = s_arr[js];
+const jumt = aleat(0, 2);
+const umt = umt_arr[jumt];
+const jubt = aleat(0, 1);
+const ubt = ubt_arr[jubt];
+const ubttxt = ubttxt_arr[jubt];
+const jinst = aleat (0, 1);
+const inst = inst_arr[jinst];
+const jtcc = aleat(0, 2)
+const tcc = l(tcc_arr [jtcc], 1);
+const jte = aleat (0, 5);
+const te = 40 + jte;
+const jti = aleat (0, 5);
+const ti = 50 + jti;
+const jh = aleat (0, 5);
+const h = (17 + jh) * 10;
+const codi =    aleat (2000, 10000) + "~" +
+                js      + "." +
+                jumt    + "." +
+                jubt    + "." +
+                jinst   + "." +
+                jtcc    + "." +
+                jte     + "." +
+                jti     + "." +
+                jh;
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+function estableixParametres(){
+    p = [
+              codi,
+              s, umt, ubttxt,
+              inst,
+              tcc,
+              te, ti, h
+    ];
+    parametres = parametres.concat(p);
+}
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+    const imt_arr = [
+        [ 9.6,  7.2,  5.8],
+        [15.4, 11.5,  9.2],
+        [24.2, 18.2, 14.5]
+    ];
+
+    const secmt_arr = [
+        [ 95, 255, 205],
+        [150, 335, 260]
+    ];
+
+    const icc_arr = [
+        [28.2, 12.6,  8.9],
+        [44.6, 19.9, 14.1]
+    ];
+
+    const ibt_arr = [
+        [471, 753, 1186],
+        [361, 578,  910]
+    ];
+
+    const secbt_arr = [
+        [
+            ["3x2x240+1x240", 756],
+            ["3x3x240+2x240", 1134],
+            ["3x4x240+2x240", 1512]
+        ],
+        [
+            ["3x1x240+1x240", 378],
+            ["3x2x240+1x240", 756],
+            ["3x3x240+2x240", 1134]
+        ]
+    ];
+
+    const wfe_arr = [
+        [  297,   426, 594],
+        [342.1, 489.5, 683]
+    ];
+
+    const wcu_arr = [
+        [2350, 3250, 4600],
+        [2585, 3575, 5060]
+    ];
+
+    const imt = imt_arr[js][jumt];
+    const ibt = ibt_arr[jubt][js];
+    const jsecmt = umt <= 20 ? 0 : 1;
+    const secmt = secmt_arr[jsecmt][0];
+    const iadmmt = secmt_arr[jsecmt][jinst+1];
+    const secbt = secbt_arr[jubt][js][0];
+    const iadmbt = secbt_arr[jubt][js][1];
+
+    const icc = icc_arr[jsecmt][jtcc];
+    const tcc_real = 10;
+
+    const wfe = wfe_arr[jsecmt][js];
+    const wcu = wcu_arr[jsecmt][js];
+    const sup = (wfe + wcu)/1e3 / (0.24*0.4*(h/100*(ti-te)**3)**0.5);
+
+
+
+    solucions = [""].concat([
+           imt, ibt, secmt, iadmmt, secbt, iadmbt,
+           icc, tcc_real,
+           wfe, wcu, sup
+    ].map(xsMap));
+
+
+// ## 3.2 LOG ---------------------------------------------------------
+tlog +=
+`
+
+
+`
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS Tècnic Superior en Sistemes Electrotècnics i " +
+           "Automatitzats",
+    anys: "2023/2024"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="number" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 80px">';
+        txt = txt.replace(patro, canvi);
+    }
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[itxt" + i +"]]";
+        canvi = '<input type="text" ';
+        canvi += 'id="itxt'+ i +'" style="width: 200px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    let r = [""];
+    alumne.nom = document.getElementById("nom").value;  // veure C.2.1
+    for (let i = 1; i < puntuacions.length; i++){
+        a = document.getElementById("i"+i);
+        b = document.getElementById("itxt"+i);
+        r[i] = a != null ? a.value : b.value;
+    }
+    respostes = r.map(xsMap);                           // veure C.2.1
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol + "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+    "",
+    "> [[nota]]"
+    ].join("\n") + "\n";
+    txt += "## Enunciat\n\n" + txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    let ptsAlumne = 0, ptsTotal = 0;
+    let canvi = "", patro = "";
+    let a = 0, b = 0;
+    let acceptada = false;
+    for (let i = 1; i < puntuacions.length; i++){
+        esNombre = !isNaN(solucions[i]);
+        a = respostes[i];
+        b = solucions[i];
+        acceptada = esNombre ? (b*0.99) <= a && a <= (b*1.01) : a == b;
+        ptsTotal += puntuacions[i];
+        canvi =
+            '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">' +
+                (esNombre ? coma(a) : "" + a) + '</span>';
+        if (acceptada) {
+            ptsAlumne += puntuacions[i];
+            canvi +=
+                ' <span style="color: green">(' +
+                (esNombre ? coma(b) : "" + b) +
+                ') OK (+' + puntuacions[i] + ')</span>';
+        }else{
+            canvi +=
+                ' <span style="color: red;"> (' +
+                (esNombre ? coma(b) : "" + b) +
+                ')</span>';
+        }
+        patro = "[[i" + i + "]]";
+
+        txt = txt.replace(patro, canvi);
+        patro = "[[itxt" + i + "]]";
+
+        txt = txt.replace(patro, canvi);
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a, b = 4){  // log abreviat a l totsol
+    return coma(xs(a, b));
+}
+
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return a;
+}
+
+function coma(a){
+    a = a + "";
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    b = Number.isFinite(a) ? xs(a) : a;
+    return b;
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+/**********************************************************************
+ * - Establir les puntuacions, que han de correspondre amb la quantitat
+ * de respostes que l'alumne pot contestar.
+ *
+ * - Establir els paràmetres. En general serà una funció per a generar
+ * nombres aleatoris, però també es poden fixar. Aquest últim cas és
+ * interessant per a testejar els càlculs. IMPORTANT: Al finalitzar
+ * tots els parametres hauran de concatenarse al vector parametres.
+ *
+ * -  El mateix succeeix amb els càlculs. Tot haura de volcar-se al
+ * vector solucions.
+ * *******************************************************************/
+-->
