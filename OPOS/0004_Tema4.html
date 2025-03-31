@@ -1,0 +1,104 @@
+<!DOCTYPE html><head> <title id="titol"></title> <link rel="icon" type="image/x-icon" href=img/favicon.png> <meta charset="UTF-8"><style></style></head><script>window.texme = {renderOnLoad: false, markdownURL: 'js/marked/marked.min.js', MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'}</script><script src="js/texme/texme.js"></script> <textarea id="enunciat">
+
+## 1. Elements dels circuits
+### 1.1 Elements resistius i reactius
+
+Components bàsics:
+
+- Resistència (R):
+  $$ V_R = IR \quad \text{(Llei d'Ohm)} $$
+  Dissipa energia en forma de calor (P = I²R)
+
+- Inductor (L):
+  $$ V_L = L\frac{dI}{dt} \quad X_L = \omega L $$
+  Emmagatzema energia al camp magnètic (U = ½LI²)
+
+- Capacitor (C):
+  $$ I_C = C\frac{dV}{dt} \quad X_C = \frac{1}{\omega C} $$
+  Emmagatzema energia al camp elèctric (U = ½CV²)
+
+---
+
+## 2. Acoblament d'elements
+### 2.1 Configuracions bàsiques
+
+Sèrie:
+$$ R_{eq} = \sum R_i \quad L_{eq} = \sum L_i \quad \frac{1}{C_{eq}} = \sum \frac{1}{C_i} $$
+
+Paral·lel:
+$$ \frac{1}{R_{eq}} = \sum \frac{1}{R_i} \quad \frac{1}{L_{eq}} = \sum \frac{1}{L_i} \quad C_{eq} = \sum C_i $$
+
+Mixt:
+Combinació de les regles anteriors, resolent per parts.
+
+---
+
+## 3. Lleis i teoremes fonamentals
+### 3.1 Lleis de Kirchhoff
+
+1. Llei de tensions (KVL):
+   $$ \sum V_i = 0 \quad \text{(Malla tancada)} $$
+
+2. Llei de corrents (KCL):
+   $$ \sum I_{entrant} = \sum I_{sortint} \quad \text{(Node)} $$
+
+### 3.2 Teoremes clau
+
+Thévenin:
+Qualsevol xarxa lineal es pot substituir per:
+$$ V_{Th} \quad \text{i} \quad R_{Th} \quad \text{en sèrie} $$
+
+Norton:
+Equivalente a Thévenin però amb:
+$$ I_N \quad \text{i} \quad R_N \quad \text{en paral·lel} $$
+
+---
+
+## 4. Representació gràfica
+### 4.1 Diagrames fasorials (CA)
+
+Relacions fonamentals:
+- Resistència: Fasor V_R en fase amb I
+- Inductor: Fasor V_L endarrereix 90°
+- Capacitor: Fasor V_C avança 90°
+
+Impedància complexa:
+$$ Z = R + j(X_L - X_C) $$
+
+---
+
+## 5. Ressonància
+### 5.1 Condició de ressonància
+$$ X_L = X_C \implies \omega_0 = \frac{1}{\sqrt{LC}} $$
+
+Efectes:
+- Impedància purament resistiva (Z = R)
+- Corrent màxim en sèrie RLC
+- Tensió màxima en paral·lel RLC
+
+---
+
+## 6. Factor de potència
+### 6.1 Definició i càlcul
+$$ \text{FP} = \cos \phi = \frac{P}{S} = \frac{R}{|Z|} $$
+
+Tipus:
+- Endarrerit (inductiu: φ > 0)
+- Avançat (capacitiu: φ < 0)
+
+Correcció:
+Afegir capacitors en paral·lel per millorar FP.
+
+---
+
+Taula resum: Comportament en CC vs CA
+
+| Paràmetre      | CC                         | CA                     |
+|----------------|----------------------------|------------------------|
+| Resistència    | V=IR                      | V=IZ                  |
+| Potència       | P=VI                      | P=VIcosφ              |
+| Elements       | Només R rellevant         | R, L, C actius        |
+
+</textarea><script>const titol = "Tema 4: Anàlisi de circuits elèctrics";
+
+let txtEnunciat = ""; window.onload = function (){txtEnunciat = document.getElementById("enunciat").value; renderEnunciat();}; function renderEnunciat(){let txt = ""; txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" + txtEnunciat; document.getElementById("enunciat").innerHTML = txt; document.getElementById("titol").innerText = titol; texme.renderPage();}</script>

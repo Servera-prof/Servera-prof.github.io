@@ -1,0 +1,156 @@
+<!DOCTYPE html><head> <title id="titol"></title> <link rel="icon" type="image/x-icon" href=img/favicon.png> <meta charset="UTF-8"><style></style></head><script>window.texme = {renderOnLoad: false, markdownURL: 'js/marked/marked.min.js', MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'}</script><script src="js/texme/texme.js"></script> <textarea id="enunciat">
+
+## **1. Naturalesa de l'electricitat**
+L'electricitat és un fenomen físic causat per càrregues elèctriques en
+moviment.
+Es manifesta en forma de corrent elèctric, camps elèctrics i forces
+electromagnètiques.
+
+### **1.1 Càrrega elèctrica**
+Propietat fonamental de la matèria que determina la interacció
+electromagnètica.
+Es quantifica mitjançant:
+
+$$ Q = n \cdot e $$
+
+- $Q$: Càrrega total ($\text{C}$)
+- $n$: Nombre d'electrons (adimensional)
+- $e$: Càrrega elemental ($1.602 \times 10^{-19}$ $\text{C}$)
+
+**Explicació:**
+La càrrega elèctrica es mesura en Coulombs ($\text{C}$) i és
+quantitzada, és a dir, existeix en múltiples d'aquesta càrrega
+elemental $e$.
+Els electrons tenen càrrega negativa ($-e$) i els protons positiva
+($+e$).
+
+---
+
+## **2. Força electromotriu (FEM)**
+La FEM és l'energia que subministra una font d'alimentació per unitat
+de càrrega per mantenir un corrent elèctric.
+
+$$ \mathcal{E} = \frac{W}{Q} $$
+
+- $\mathcal{E}$: Força electromotriu ($\text{V}$)
+- $W$: Treball realitzat ($\text{J}$)
+- $Q$: Càrrega transportada ($\text{C}$)
+
+**Explicació:**
+La FEM no és una força sinó una mesura d'energia per càrrega. En un
+circuit tancat, la FEM ($\mathcal{E}$) d'una pila és igual a la suma
+de les caigudes de tensió en tots els components.
+
+---
+
+## **3. Resistència i Llei d'Ohm**
+
+### **3.1 Resistència elèctrica**
+Oposició que ofereix un material al pas del corrent elèctric.
+
+$$ R = \rho \frac{L}{A} $$
+
+- $R$: Resistència ($\Omega$)
+- $\rho$: Resistivitat del material ($\Omega\cdot\text{m}$)
+- $L$: Longitud del conductor ($\text{m}$)
+- $A$: Àrea transversal ($\text{m}^2$)
+
+**Explicació:**
+La resistència depèn de la naturalesa del material ($\rho$), la seva
+geometria ($L$, $A$) i la temperatura.
+Els materials amb baixa $\rho$ (com els metalls) són bons conductors.
+
+### **3.2 Llei d'Ohm**
+Relaciona la tensió, la intensitat i la resistència en un conductor
+ideal:
+
+$$ V = I \cdot R $$
+
+- $V$: Tensió ($\text{V}$)
+- $I$: Intensitat ($\text{A}$)
+- $R$: Resistència ($\Omega$)
+
+**Explicació:**
+Aquesta llei només és vàlida per a materials òhmics (que mantenen $R$
+constant amb canvis de $V$ o $I$).
+En semiconductors o diodes, la relació no és lineal.
+
+---
+
+## **4. Potència i energia elèctrica**
+
+### **4.1 Potència consumida**
+És l'energia elèctrica transferida per unitat de temps.
+
+$$ P = V \cdot I = I^2 R = \frac{V^2}{R} $$
+
+- $P$: Potència ($\text{W}$)
+
+**Explicació:**
+En un resistor, tota l'energia elèctrica es transforma en calor
+(efecte Joule).
+En motors, part es converteix en treball mecànic.
+
+### **4.2 Energia elèctrica**
+$$ E = P \cdot t $$
+
+- $E$: Energia ($\text{J}$)
+- $t$: Temps ($\text{s}$)
+
+**Explicació:**
+L'energia consumida per un dispositiu depèn de la seva potència i el
+temps d'ús.
+
+---
+
+## **5. Condensadors**
+Dispositius que emmagatzemen càrrega elèctrica i energia en un camp
+elèctric.
+
+### **5.1 Capacitat**
+$$ C = \frac{Q}{V} $$
+
+- $C$: Capacitat ($\text{F}$)
+- $Q$: Càrrega emmagatzemada ($\text{C}$)
+- $V$: Tensió entre plaques ($\text{V}$)
+
+**Explicació:**
+La capacitat augmenta amb l'àrea de les plaques ($A$) i disminueix amb
+la distància ($d$) entre elles: $C \propto \frac{A}{d}$.
+
+### **5.2 Energia emmagatzemada**
+$$ U = \frac{1}{2}CV^2 $$
+
+**Explicació:**
+L'energia es desa en el camp elèctric entre les plaques.
+En descarregar-se, allibera aquesta energia.
+
+---
+
+## **6. Piles i acumuladors**
+Fonts d'energia electroquímica que subministren corrent continu.
+
+### **6.1 Capacitat de càrrega**
+$$ Q = I \cdot t $$
+
+- $Q$: Capacitat ($\text{Ah}$)
+- $I$: Corrent de descàrrega ($\text{A}$)
+- $t$: Temps de descàrrega ($\text{h}$)
+
+**Explicació:**
+Les piles primàries (no recarregables) es basen en reaccions químiques
+irreversibles, mentre que els acumuladors (com les de liti) són
+recarregables.
+
+### **6.2 Rendiment energètic**
+$$ \eta = \frac{E_{out}}{E_{in}} \times 100\% $$
+
+**Explicació:**
+El rendiment és sempre menor del 100% degut a pèrdues per calor o
+resistència interna.
+
+
+
+</textarea><script>const titol = "Tema 1: Conceptes i fenòmens elèctrics.";
+
+let txtEnunciat = ""; window.onload = function (){txtEnunciat = document.getElementById("enunciat").value; renderEnunciat();}; function renderEnunciat(){let txt = ""; txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" + txtEnunciat; document.getElementById("enunciat").innerHTML = txt; document.getElementById("titol").innerText = titol; texme.renderPage();}</script>

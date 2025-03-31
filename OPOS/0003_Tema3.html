@@ -1,0 +1,130 @@
+<!DOCTYPE html><head> <title id="titol"></title> <link rel="icon" type="image/x-icon" href=img/favicon.png> <meta charset="UTF-8"><style></style></head><script>window.texme = {renderOnLoad: false, markdownURL: 'js/marked/marked.min.js', MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'}</script><script src="js/texme/texme.js"></script> <textarea id="enunciat">
+
+## **1. Inducció electromagnètica**
+### **1.1 Llei de Faraday-Lenz**
+$$ \mathcal{E} = -N \frac{d\Phi_B}{dt} $$
+
+**Variables:**
+- $\mathcal{E}$: FEM induïda ($\text{V}$)
+- $N$: Nombre d'espires
+- $\Phi_B$: Flux magnètic ($\text{Wb}$)
+
+**Explicació:**
+La variació temporal del flux magnètic a través d'un circuit genera una força electromotriu induïda. El signe negatiu reflecteix la llei de Lenz: la FEM indueix un corrent que s'oposa al canvi de flux original.
+
+**Cas particular:**
+En una bobina rotatòria en camp uniforme:
+$$ \mathcal{E}(t) = NBA\omega \sin(\omega t) $$
+
+---
+
+## **2. Autoinducció**
+### **2.1 Concepte fonamental**
+L'autoinducció és un fenomen pel qual un circuit elèctric amb corrent
+variable indueix una força electromotriu (FEM) en si mateix.
+Aquesta FEM autoinduïda s'oposa al canvi del corrent que la produeix,
+d'acord amb la llei de Lenz.
+
+**Expressió matemàtica:**
+$$ \mathcal{E}_{auto} = -L \frac{dI}{dt} $$
+
+**On:**
+- $L$: Coeficient d'autoinducció o inductància ($\text{H}$)
+- $\frac{dI}{dt}$: Taxa de variació temporal del corrent ($\text{A/s}$)
+
+
+### **2.2 Factors que afecten la inductància**
+La inductància $L$ d'un component depèn de:
+1. **Nombre d'espires ($N$):**
+   $$ L \propto N^2 $$
+2. **Àrea de la secció transversal ($A$):**
+   $$ L \propto A $$
+3. **Longitud del solenoide ($l$):**
+   $$ L \propto \frac{1}{l} $$
+4. **Permeabilitat magnètica del nucli ($\mu$):**
+   $$ L \propto \mu $$
+
+**Fórmula completa per a un solenoide:**
+$$ L = \frac{\mu N^2 A}{l} $$
+
+### **2.3 Energia emmagatzemada en un inductor**
+Un inductor amb corrent $I$ emmagatzema energia magnètica:
+$$ U = \frac{1}{2}LI^2 $$
+
+**On:**
+- $U$: Energia emmagatzemada ($\text{J}$)
+
+### **2.4 Aplicacions pràctiques**
+1. **Circuit RL:**
+   - En tancar l'interruptor, el corrent creix exponencialment:
+     $$ I(t) =
+     \frac{V}{R}(1 - e^{-t/\tau}) \quad \text{amb} \quad \tau =
+     \frac{L}{R} $$
+2. **Protecció contra pics de tensió:**
+   - Els inductors limiten canvis bruscos de corrent en circuits electrònics.
+3. **Filtres electrònics:**
+   - En combinació amb capacitors, formen filtres passa-baixos o passa-alts.
+
+### **2.5 Efectes no ideals**
+1. **Resistència paràsita:**
+   - Els inductors reals presenten resistència en els conductors ($R_{serie}$).
+2. **Capacitància paràsita:**
+   - Entre espires apareix capacitància no desitjada.
+3. **Saturació magnètica:**
+   - En nuclis ferromagnètics, $L$ disminueix a corrents alts.
+
+**Model realista d'un inductor:**
+$$ Z_{real} = R_{serie} + j\omega L $$
+
+## **3. Producció de corrent altern**
+### **3.1 Generació bàsica**
+$$ I(t) = I_0 \sin(\omega t + \phi) $$
+
+**Paràmetres:**
+- $I_0$: Amplitud del corrent ($\text{A}$)
+- $\omega = 2\pi f$: Freqüència angular ($\text{rad/s}$)
+- $\phi$: Angle de fase inicial ($\text{rad}$)
+
+---
+
+## **4. Propietats del corrent altern**
+### **4.1 Valors característics**
+| Concepte       | Expressió                     | Descripció                  |
+|----------------|-------------------------------|-----------------------------|
+| Valor instantani | $i(t) = I_0 \sin(\omega t)$ | Valor en un instant donat   |
+| Valor eficaç   | $I_{ef} = I_0/\sqrt{2}$      | Equivalent energètic a CC   |
+| Potència activa | $P = V_{ef}I_{ef}\cos\phi$   | Potència real consumida     |
+
+---
+
+## **5. Elements en CA**
+### **5.1 Reactàncies**
+| Element      | Reactància                     |
+|--------------|--------------------------------|
+| Resistència  | $X_R = R$                     |
+| Inductor     | $X_L = \omega L$              |
+| Capacitor    | $X_C = \frac{1}{\omega C}$    |
+
+### **5.2 Impedància complexa**
+$$ Z = R + j(X_L - X_C) $$
+$$ |Z| = \sqrt{R^2 + (X_L - X_C)^2} $$
+
+**Relació amb la llei d'Ohm:**
+$$ \vec{V} = Z\vec{I} $$
+
+---
+
+## **6. Aplicacions tecnològiques**
+### **6.1 Transformadors ideals**
+$$ \frac{V_1}{V_2} = \frac{N_1}{N_2} = \frac{I_2}{I_1} $$
+
+### **6.2 Resonància en circuits RLC**
+Freqüència de resonància:
+$$ f_r = \frac{1}{2\pi\sqrt{LC}} $$
+
+**Condició:**
+    $$ X_L = X_C \implies \omega_r = \frac{1}{\sqrt{LC}} $$
+
+</textarea><script>const titol = "Tema 3: Inducció electromagnètica i corrent altern";
+
+let txtEnunciat = ""; window.onload = function (){txtEnunciat = document.getElementById("enunciat").value; renderEnunciat();}; function renderEnunciat(){let txt = ""; txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" + txtEnunciat; document.getElementById("enunciat").innerHTML = txt; document.getElementById("titol").innerText = titol; texme.renderPage();}</script>
