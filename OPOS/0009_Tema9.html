@@ -1,0 +1,121 @@
+<!DOCTYPE html><head> <title id="titol"></title> <link rel="icon" type="image/x-icon" href=img/favicon.png>     <link rel="stylesheet" type="text/css" href="css/main.css" /> <meta charset="UTF-8"><style></style></head><script>window.texme = {renderOnLoad: false, markdownURL: 'js/marked/marked.min.js', MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'}</script><script src="js/texme/texme.js"></script> <textarea id="enunciat">
+
+## 1. Camp magnètic giratori
+### 1.1 Principi de generació
+**Condicions necessàries:**
+- Tres corrents desfasats 120° elèctrics:
+  $$ i_a(t) = I_m \sin(\omega t) $$
+  $$ i_b(t) = I_m \sin(\omega t - 120°) $$
+  $$ i_c(t) = I_m \sin(\omega t + 120°) $$
+
+**Velocitat de sincronisme:**
+$$ n_s = \frac{120 \cdot f}{P} $$
+- $n_s$: Velocitat síncrona (rpm)
+- $f$: Freqüència de xarxa (Hz)
+- $P$: Nombre de pols
+
+---
+
+## 2. Tipologia i constitució
+### 2.1 Classificació bàsica
+**Per tipus de rotor:**
+- **De galeta (jaula d'esquirol):**
+  - Barreres de coure/alumini colades
+  - Sense connexions externes
+- **De devanat (anells):**
+  - Resistències externes variables
+  - Major parell d'arrencada
+
+**Parts principals:**
+- **Estator:** Nucli laminat amb ranures per 3 debanats
+- **Rotor:** Nucli laminat amb conductors curcircuitats
+- **Entreferro:** 0.2-2 mm (depenent de potència)
+
+---
+
+## 3. Funcionament i característiques
+### 3.1 Lliscament
+$$ s = \frac{n_s - n}{n_s} \times 100\% $$
+- $s$: Lliscament (%)
+- $n$: Velocitat real (rpm)
+
+**Rang típic:**
+- En càrrega nominal: 2-5%
+- En arrencada: 100% (n=0)
+
+### 3.2 Circuit equivalent
+$$ \frac{R'_r}{s} = R'_r + R'_r \left(\frac{1-s}{s}\right) $$
+- $R'_r$: Resistència de rotor referida a estator (Ω)
+
+---
+
+## 4. Comportament operatiu
+### 4.1 En buit
+- **Corrent:** 25-40% del nominal
+- **Factor de potència:** < 0.3 (altament inductiu)
+- **Velocitat:** ≈$n_s$ (s≈0.1%)
+
+### 4.2 Amb càrrega nominal
+- **Parell electromagnètic:**
+  $$ \tau = \frac{3}{\omega_s} \cdot \frac{V^2_{th}}{(R_{th} + \frac{R'_r}{s})^2 + (X_{th} + X'_r)^2} \cdot \frac{R'_r}{s} $$
+- $V_{th}$: Tensió de Thévenin equivalent
+- $X_{th}$: Reactància de Thévenin
+
+### 4.3 Sobrecàrrega
+- **Màxim parell (pull-out):** Ocorre a $s_{max} ≈ \frac{R'_r}{\sqrt{R^2_{th} + (X_{th} + X'_r)^2}}$
+
+---
+
+## 5. Relacions elèctriques-mecàniques
+### 5.1 Equacions integrades
+**Potència transferida:**
+$$ P_{gap} = 3I^2_r \frac{R_r}{s} $$
+
+**Parell mecànic:**
+$$ \tau_{mec} = \frac{P_{mec}}{\omega_m} = \frac{(1-s)P_{gap}}{(1-s)\omega_s} $$
+
+**Eficiència:**
+$$ \eta = \frac{P_{sortida}}{P_{entrada}} = 1 - \frac{\sum P_{pèrdues}}{P_{entrada}} $$
+
+---
+
+## 6. Assaigs característics
+### 6.1 Assaig en buit
+- Determinació de pèrdues rotacionals ($P_{rot}$)
+- Càlcul de $X_m$ i $R_c$
+
+### 6.2 Assaig en curtcircuit
+- Mesura de $R_{eq}$ i $X_{eq}$
+- Corrent d'arrencada ($I_{arr} ≈ 5-7I_n$)
+
+**Corba parell-velocitat:**
+$$ \tau = \frac{2\tau_{max}}{\frac{s}{s_{max}} + \frac{s_{max}}{s}} $$
+
+---
+
+## 7. Aplicacions industrials
+### 7.1 Selecció per aplicació
+| Tipus motor       | Potència típica | Aplicació                 |
+|-------------------|-----------------|---------------------------|
+| IE1 (Standard)    | 0.75-375 kW     | Ventiladors, bombes       |
+| IE3 (Premium)     | 5.5-200 kW      | Compressors, transport    |
+| IE4 (Super Premium)| 0.25-160 kW    | Aplicacions de alta eficiència |
+
+**Factors de selecció clau:**
+- Classe d'aïllament (B, F, H)
+- Grau de protecció (IP55, IP65)
+- Cicl de treball (S1, S3, S6)
+
+---
+
+**Taula resum: Comportament dinàmic**
+| Situació       | Lliscament (%) | Parell (%τ_nom) | Corrent (%I_nom) |
+|----------------|----------------|-----------------|------------------|
+| Engegada       | 100            | 150-200         | 500-700          |
+| Nominal        | 2-5            | 100             | 100              |
+| Sobrecàrrega   | 15-20          | 200-250         | 300-400          |
+
+
+</textarea><script>const titol = "Tema 9: Motors trifàsics d'inducció de corren altern";
+
+let txtEnunciat = ""; window.onload = function (){txtEnunciat = document.getElementById("enunciat").value; renderEnunciat();}; function renderEnunciat(){let txt = ""; txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" + txtEnunciat; document.getElementById("enunciat").innerHTML = txt; document.getElementById("titol").innerText = titol; texme.renderPage();}</script>

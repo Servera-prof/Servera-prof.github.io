@@ -1,0 +1,142 @@
+<!DOCTYPE html><head> <title id="titol"></title> <link rel="icon" type="image/x-icon" href=img/favicon.png>     <link rel="stylesheet" type="text/css" href="css/main.css" /> <meta charset="UTF-8"><style></style></head><script>window.texme = {renderOnLoad: false, markdownURL: 'js/marked/marked.min.js', MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'}</script><script src="js/texme/texme.js"></script> <textarea id="enunciat">
+
+
+## 1. Tipologia i constitució
+### 1.1 Classificació per excitació
+- **Motor shunt:**
+  $$ I_t = I_a + I_{sh} $$
+  - $I_t$: Corrent total (A)
+  - $I_a$: Corrent d'induit (A)
+  - $I_{sh}$: Corrent d'excitació shunt (A)
+
+- **Motor sèrie:**
+  $$ I_t = I_a = I_{se} $$
+  - $I_{se}$: Corrent d'excitació sèrie (A)
+
+### 1.2 Components principals
+- **Estator:** Pols magnètics i bobines d'excitació
+- **Rotors:** Devanat induït, col·lector i escombretes.
+  Format per:
+    - $P$: Nombre de pols
+    - $Z$: Nombre de conductors
+    - $a$: Parells de camins paral·lels
+- **Commutador:** Segmentat en làmines de coure aïllades
+
+---
+
+## 2. Funcionament i característiques
+### 2.1 Principis bàsics
+
+**Força contraelectromotriu:**
+$$ E = K_e \phi \omega_m $$
+- $E$: Força contraelectromotriu (V)
+- $K_e$: Constant constructiva (V·s/rad)
+- $\phi$: Flux magnètic per pol (Wb)
+- $\omega_m$: Velocitat angular mecànica (rad/s)
+
+**Parell electromagnètic:**
+$$ \tau = K_t \phi I_a $$
+- $\tau$: Parell electromagnètic (N·m)
+- $K_t$: Constant de parell (N·m/A)
+- $I_a$: Corrent d'induit (A)
+
+**Relació velocitat-tensió:**
+$$ \omega_m = \frac{V_t - I_a R_a}{K_e \phi} $$
+- $V_t$: Tensió terminal (V)
+- $R_a$: Resistència d'induit (Ω)
+
+**Relació velocitat-tensió:**
+$$ \omega_m = \frac{V_t - I_a R_a}{K_e \phi} $$
+
+---
+
+## 3. Comportament operatiu
+### 3.1 En buit
+- **Corrent d'induit:**
+$$ I_{a0} = \frac{V_t - E_0}{R_a} $$
+- $I_{a0}$: Corrent en buit (A)
+- $E_0$: FEM en buit (V)
+- **Pèrdues dominants:** Mecàniques i magnètiques
+
+### 3.2 Amb càrrega nominal
+- **Caiguda de velocitat:**
+  $$ \Delta\omega = \frac{I_{a,nom} R_a}{K_e \phi} $$
+- **Eficiència màxima:**
+  $$ \eta_{max} \text{ quan } P_{pèrdues} = P_{cu} $$
+
+### 3.3 Variació de càrrega
+- **Motor shunt:** Velocitat quasi constant
+- **Motor sèrie:** Velocitat cau dràsticament
+- **Motor compound:** Comportament intermedi
+
+---
+
+## 4. Relacions elèctriques-mecàniques
+### 4.1 Equacions integrades
+**Sistema complet:**
+$$
+\begin{cases}
+V_t = E + I_a(R_a + R_s) \\
+\tau = \tau_{mec} + B\omega_m + J\frac{d\omega_m}{dt}
+\end{cases}
+$$
+- $R_s$: Resistència sèrie (Ω)
+- $\tau_{mec}$: Parell mecànic útil (N·m)
+- $B$: Coeficient de fricció viscosa (N·m·s/rad)
+- $J$: Moment d'inèrcia (kg·m²)
+
+**Constants:**
+- $K_e = \frac{PZ}{2\pi a}$ (Volt·s/rad)
+- $K_t = \frac{PZ}{2\pi a}$ (N·m/A)
+- $P$: Nombre de pols
+- $Z$: Nombre total de conductors
+- $a$: Nombre de parells de camins paral·lels
+
+---
+
+## 5. Assaigs característics
+### 5.1 Procediments estàndard
+**Assaig en buit:**
+- Determinació de $K_e\phi$:
+  $$ K_e\phi = \frac{V_t - I_{a0}R_a}{\omega_m} $$
+
+**Assaig en càrrega:**
+- Corba parell-velocitat:
+  $$ \tau = f(\omega_m) $$
+
+**Càlcul rendiment:**
+$$ \eta = \frac{P_{mec}}{P_{elèc}}
+        = \frac{\tau\omega_m}{V_t I_t} \times 100\% $$
+
+---
+
+## 6. Aplicacions industrials
+### 6.1 Ús segons tipologia
+| Tipus motor | Aplicació típica  | Avantatge clau          |
+|-------------|-------------------|-------------------------|
+| Shunt       | Màquines-eina     | Velocitat estable       |
+| Sèrie       | Tracció elèctrica | Alt parell inicial      |
+| Compound    | Compressors       | Compensació de caigudes |
+
+**Variables d'operació crítica:**
+- $V_t$: Controlada per reòstats o electrònica
+- $I_a$: Limitada per disseny tèrmic
+- $\omega_{max}$: Determinada per estabilitat mecànica
+
+### 6.2 Factors de selecció
+- Rang de velocitat requerit
+- Necessitat de control de parell
+- Entorn operatiu (temperatura, vibracions)
+
+---
+
+**Taula resum: Comparativa motors CC**
+| Paràmetre           | Motor Shunt | Motor Sèrie | Motor Compound |
+|---------------------|-------------|-------------|----------------|
+| Velocitat en buit   | Alta        | Molt alta   | Mitjana        |
+| Regulació velocitat | 5-15%       | >25%        | 10-20%         |
+| Parell inicial      | Moderat     | Alt         | Alt-moderat    |
+
+</textarea><script>const titol = "Tema 7: Motors de corrent continu";
+
+let txtEnunciat = ""; window.onload = function (){txtEnunciat = document.getElementById("enunciat").value; renderEnunciat();}; function renderEnunciat(){let txt = ""; txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" + txtEnunciat; document.getElementById("enunciat").innerHTML = txt; document.getElementById("titol").innerText = titol; texme.renderPage();}</script>

@@ -1,0 +1,142 @@
+<!DOCTYPE html><head> <title id="titol"></title> <link rel="icon" type="image/x-icon" href=img/favicon.png>     <link rel="stylesheet" type="text/css" href="css/main.css" /> <meta charset="UTF-8"><style></style></head><script>window.texme = {renderOnLoad: false, markdownURL: 'js/marked/marked.min.js', MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'}</script><script src="js/texme/texme.js"></script> <textarea id="enunciat">
+
+Els generadors de corrent continu (CC) són dispositius electromecànics que converteixen energia mecànica en energia elèctrica mitjançant el principi d'inducció electromagnètica de Faraday. Són fonamentals en aplicacions on es requereix una font de tensió contínua estable i fiable. Aquest document desenvolupa en profunditat els aspectes més importants d’aquests generadors.
+
+## Excitació
+
+L'excitació d'un generador de corrent continu es refereix a la manera
+com es genera el camp magnètic necessari per induir tensió en l'induït.
+Aquest camp es pot obtenir de diverses maneres, donant lloc a
+diferents tipus de generadors:
+
+- **Excitació independent**: El camp magnètic es produeix mitjançant
+  una font externa d'alimentació, la qual proporciona corrent als
+  enrotllaments d'excitació. Això permet un control més precís sobre
+  la generació de tensió.
+- **Autoexcitació**: En aquest cas, el propi generador proporciona el
+  corrent necessari per alimentar els seus enrotllaments d'excitació.
+  Dins d'aquest grup es distingeixen:
+    - **Generador sèrie**: L'enrotllament d'excitació es connecta en
+      sèrie amb la càrrega, de manera que la intensitat de l'excitació
+      depèn del corrent subministrat a la càrrega.
+    - **Generador derivació**: L'enrotllament d'excitació es connecta
+      en paral·lel amb l'induït, mantenint així una tensió d'excitació
+      relativament constant.
+    - **Generador compost**: Combinació dels dos anteriors, amb un
+      enrotllament d’excitació en sèrie i un altre en derivació,
+      aconseguint millors característiques de regulació.
+
+## Induït, Col·lector
+
+- **Induït**: És la part rotativa del generador, formada per un nucli
+  de làmines d'acer al silici per reduir pèrdues per corrents de
+  Foucault i un conjunt de conductors on es genera la força
+  electromotriu (fem).
+  Aquesta fem es produeix per la variació del flux magnètic seguint
+  la llei de Faraday:
+
+  $$e = -N \frac{d\Phi}{dt}$$
+
+  On $N$ és el nombre d'espires i $\Phi$ el flux magnètic.
+
+- **Col·lector**: És un conjunt de segments metàl·lics aïllats entre
+  si i connectats als conductors de l'induït. La seva funció
+  principal és rectificar la tensió generada, convertint-la d'alterna
+  a contínua mitjançant el contacte amb les escombretes de carbó.
+
+## Commutació
+
+La commutació és el procés pel qual la tensió generada en l'induït,
+inicialment alterna, es converteix en una tensió contínua a la sortida
+del generador. Això es fa mitjançant el col·lector i les escombretes.
+
+Els problemes de commutació poden provocar xispes en les escombretes,
+un desgast prematur d'aquestes i una pèrdua d'eficiència.
+Per evitar-ho, es fan servir **pols interpolars**, que ajuden a
+compensar els efectes de la reacció d’induït.
+
+## Reacció d’induït
+
+Quan un generador de CC està en funcionament, el corrent que circula
+per l'induït genera un segon camp magnètic que es combina amb el
+camp principal dels pols del generador.
+Aquest fenomen s'anomena **reacció d’induït** i té els efectes següents:
+
+- **Desplaçament de la zona neutra**, modificant la posició òptima
+  de les escombretes.
+- **Distorsió del camp magnètic principal**, provocant una disminució
+  de la tensió generada.
+- **Augment del desgast de les escombretes**, degut a les xispes
+  causades per la variació del flux magnètic.
+
+Per mitigar aquests efectes, es fan servir **pols interpolars** i
+**enrotllaments compensadors**.
+
+## Pèrdues
+
+Les pèrdues en un generador de CC es divideixen en diverses categories:
+
+- **Pèrdues elèctriques**: Produïdes per efecte Joule en els
+enrotllaments del rotor i l'estator. Es calculen amb la fórmula:
+
+  $$P_J = I^2 R$$
+
+  On $I$ és la intensitat i $R$ la resistència del circuit.
+
+- **Pèrdues magnètiques**: Inclouen la histèresi i els corrents de
+  Foucault en el nucli ferromagnètic.
+- **Pèrdues mecàniques**: Són degudes a la fricció en els coixinets
+  i la resistència de l’aire al moviment del rotor.
+- **Pèrdues diverses**: Comprenen les derivades d’irregularitats en
+  la commutació i altres fenòmens no quantificats.
+
+## Rendiment
+
+El rendiment d'un generador de CC es defineix com:
+
+$$\eta = \frac{P_{sortida}}{P_{entrada}} \times 100\%$$
+
+On:
+- $P_{sortida}$ és la potència útil subministrada a la càrrega.
+- $P_{entrada}$ és la potència mecànica aplicada a l'eix del generador.
+
+Un bon disseny del generador busca minimitzar les pèrdues per
+maximitzar el rendiment.
+
+## Assaigs
+
+Els assaigs permeten determinar les característiques del generador:
+
+- **Assaig en buit**: Determina la relació entre la tensió generada
+  i el corrent d'excitació.
+- **Assaig de curtcircuit**: Permet calcular la resistència interna
+  del generador.
+- **Assaig de càrrega**: S'utilitza per obtenir les corbes
+  característiques.
+
+## Corbes característiques
+
+Les corbes més importants en un generador de CC són:
+
+- **Corba d'excitació**: Relació entre la tensió generada i el
+  corrent d'excitació.
+- **Corba de regulació**: Relació entre la tensió de sortida i la
+  càrrega aplicada.
+- **Corba de rendiment**: Mostra com varia el rendiment amb la càrrega.
+
+## Aplicacions
+
+Els generadors de corrent continu es fan servir en múltiples
+aplicacions:
+
+- **Tracció elèctrica**: En trens, tramvies i metro.
+- **Càrrega de bateries**: Fonamental en sistemes d'energia autònoms.
+- **Sistemes d'energia d’emergència**: Per mantenir el subministrament
+  elèctric en hospitals i instal·lacions crítiques.
+- **Excitació d'alternadors**: En centrals elèctriques per mantenir el
+  camp magnètic en alternadors de gran potència.
+
+
+</textarea><script>const titol = "Tema 6: Generadors de corrent continu";
+
+let txtEnunciat = ""; window.onload = function (){txtEnunciat = document.getElementById("enunciat").value; renderEnunciat();}; function renderEnunciat(){let txt = ""; txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" + txtEnunciat; document.getElementById("enunciat").innerHTML = txt; document.getElementById("titol").innerText = titol; texme.renderPage();}</script>

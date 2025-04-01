@@ -1,4 +1,5 @@
-<!DOCTYPE html><head> <title id="titol"></title> <link rel="icon" type="image/x-icon" href=img/favicon.png> <meta charset="UTF-8"><style></style></head><script>window.texme = {renderOnLoad: false, markdownURL: 'js/marked/marked.min.js', MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'}</script><script src="js/texme/texme.js"></script> <textarea id="enunciat">
+<!DOCTYPE html><head> <title id="titol"></title> <link rel="icon" type="image/x-icon" href=img/favicon.png>     <link rel="stylesheet" type="text/css" href="css/main.css" /> <meta charset="UTF-8"><style></style></head><script>window.texme = {renderOnLoad: false, markdownURL: 'js/marked/marked.min.js', MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'}</script><script src="js/texme/texme.js"></script> <textarea id="enunciat">
+
 
 ## 1. Elements dels circuits
 ### 1.1 Elements resistius i reactius
@@ -23,10 +24,12 @@ Components bàsics:
 ### 2.1 Configuracions bàsiques
 
 Sèrie:
-$$ R_{eq} = \sum R_i \quad L_{eq} = \sum L_i \quad \frac{1}{C_{eq}} = \sum \frac{1}{C_i} $$
+$$ R_{eq} = \sum R_i \quad L_{eq} = \sum L_i \quad \frac{1}{C_{eq}} =
+\sum \frac{1}{C_i} $$
 
 Paral·lel:
-$$ \frac{1}{R_{eq}} = \sum \frac{1}{R_i} \quad \frac{1}{L_{eq}} = \sum \frac{1}{L_i} \quad C_{eq} = \sum C_i $$
+$$ \frac{1}{R_{eq}} = \sum \frac{1}{R_i} \quad \frac{1}{L_{eq}} =
+\sum \frac{1}{L_i} \quad C_{eq} = \sum C_i $$
 
 Mixt:
 Combinació de les regles anteriors, resolent per parts.
@@ -55,15 +58,72 @@ $$ I_N \quad \text{i} \quad R_N \quad \text{en paral·lel} $$
 ---
 
 ## 4. Representació gràfica
-### 4.1 Diagrames fasorials (CA)
+### 4.1 Diagrames fasorials (CA).
 
-Relacions fonamentals:
-- Resistència: Fasor V_R en fase amb I
-- Inductor: Fasor V_L endarrereix 90°
-- Capacitor: Fasor V_C avança 90°
+Els diagrames fasorials s'han de construir tinguent en compte que la
+intensitat és la mateixa per els elements en sèrie i la tensió és
+la mateixa per als elements en paral·lel.
 
-Impedància complexa:
-$$ Z = R + j(X_L - X_C) $$
+### 4.2 Impedàncies complexes:
+- Resistència: $Z_R = R$
+- Inductor: $Z_L = j\omega L$
+- Capacitor: $Z_C = \frac{1}{j\omega C} = -\frac{j}{\omega C}$
+
+**Suma d'impedàncies en sèrie:**
+$$ Z_{total} = \sum_{i=1}^n Z_i
+     = (R_1 + R_2 + \cdots) + j\left(\omega L_1 + \omega L_2 -
+     \frac{1}{\omega C_1} - \frac{1}{\omega C_2} - \cdots\right) $$
+
+**Exemple numèric (sèrie RLC):**
+$$ Z = R + j(X_L-X_C)
+     = R + j\left(\omega L - \frac{1}{\omega C}\right) $$
+
+**Suma d'impedàncies en paral·lel:**
+$$ \frac{1}{Z_{total}} = \sum_{i=1}^n \frac{1}{Z_i} $$
+$$ \frac{1}{Z} = \frac{1}{R} + \frac{1}{j\omega L} + j\omega C $$
+
+**Cas especial (dos elements en paral·lel):**
+$$ Z_{total} = \frac{Z_1 \cdot Z_2}{Z_1 + Z_2} $$
+
+4.3. Admitància (Y): Inversa de la impedància
+$$ Y = \frac{1}{Z} = G + jB $$
+- $G$: Conductància (part real)
+- $B$: Susceptància (part imaginària)
+
+**Components bàsics:**
+- **Resistència:**
+  $$ Y_R = \frac{1}{R} = G $$
+- **Inductor:**
+  $$ Y_L = \frac{1}{j\omega L} = -j\frac{1}{\omega L} $$
+- **Capacitor:**
+  $$ Y_C = j\omega C $$
+
+**Suma d'admitàncies en paral·lel:**
+$$ Y_{total}
+     = \sum_{k=1}^n Y_k
+     = \left(\sum G_k\right) + j\left(\sum B_k\right) $$
+
+**Exemple numèric (paral·lel RLC):**
+$$
+\begin{aligned}
+Y & = \frac{1}{R} + \frac{1}{j\omega L} + j\omega C \\
+  & = G - j\left(\frac{1}{\omega L} - \omega C\right)
+\end{aligned}
+$$
+
+**Relacions entre magnituds:**
+| Concepte     | Símbol | Relació                    |
+|--------------|--------|----------------------------|
+| Conductància | $G$    | $G = \frac{R}{R^2 + X^2}$  |
+| Susceptància | $B$    | $B = -\frac{X}{R^2 + X^2}$ |
+| Admitància   | $|Y|$  | $|Y| = \sqrt{G^2 + B^2}$   |
+
+**Conversió a impedància equivalent:**
+$$ Z_{eq} = \frac{1}{Y_{total}} = \frac{1}{G + jB}
+          = \frac{G - jB}{G^2 + B^2} $$
+
+**Cas especial (resistència + reactància):**
+$$ Y = \frac{1}{R + jX} = \frac{R}{R^2 + X^2} - j\frac{X}{R^2 + X^2} $$
 
 ---
 
@@ -93,11 +153,11 @@ Afegir capacitors en paral·lel per millorar FP.
 
 Taula resum: Comportament en CC vs CA
 
-| Paràmetre      | CC                         | CA                     |
-|----------------|----------------------------|------------------------|
-| Resistència    | V=IR                      | V=IZ                  |
-| Potència       | P=VI                      | P=VIcosφ              |
-| Elements       | Només R rellevant         | R, L, C actius        |
+| Paràmetre      | CC                | CA             |
+|----------------|-------------------|----------------|
+| Resistència    | V=IR              | V=IZ           |
+| Potència       | P=VI              | P=VIcosφ       |
+| Elements       | Només R rellevant | R, L, C actius |
 
 </textarea><script>const titol = "Tema 4: Anàlisi de circuits elèctrics";
 

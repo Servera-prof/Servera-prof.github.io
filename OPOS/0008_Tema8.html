@@ -1,0 +1,114 @@
+<!DOCTYPE html><head> <title id="titol"></title> <link rel="icon" type="image/x-icon" href=img/favicon.png>     <link rel="stylesheet" type="text/css" href="css/main.css" /> <meta charset="UTF-8"><style></style></head><script>window.texme = {renderOnLoad: false, markdownURL: 'js/marked/marked.min.js', MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'}</script><script src="js/texme/texme.js"></script> <textarea id="enunciat">
+
+
+
+## 1. Tipologia i constitució
+### 1.1 Classificació bàsica
+**Per nombre de fases:**
+- **Monofàsics:** 1 devanat altern (V~230V)
+- **Trifàsics:** 3 devanats desfasats 120° (V~400V)
+
+**Components principals:**
+- **Rotor:** Pols magnètics amb excitació DC
+- **Estator:** Devanat induït trifàsic (ranures laminades)
+- **Sistema de refrigeració:** Ventilació o circuits tancats
+
+---
+
+## 2. Funcionament i característiques
+### 2.1 Principi d'operació
+**Tensió induïda:**
+$$ E_{fase} = 4.44 \cdot f \cdot N \cdot \phi \cdot k_w $$
+- $f$: Freqüència (Hz)
+- $N$: Espires per fase
+- $\phi$: Flux per pol (Wb)
+- $k_w$: Factor de devanat (0.9-0.95)
+
+**Relació de velocitat:**
+$$ n_s = \frac{120 \cdot f}{P} $$
+- $n_s$: Velocitat síncrona (rpm)
+- $P$: Nombre de pols
+
+---
+
+## 3. Sistemes d'excitació
+### 3.1 Tipus d'excitadors
+| Tipus      | Tensió típica | Regulació          |
+|------------|---------------|--------------------|
+| Brushless  | 50-300V DC    | AVR automàtic      |
+| Amb anells | 12-48V DC     | Reòstat manual     |
+| Excitatrix | 400V AC       | Convertidor static |
+
+**Control de tensió:**
+$$ V_{terminal} = \sqrt{E^2 - (I_a X_s)^2} $$
+- $X_s$: Reactància síncrona (Ω)
+
+---
+
+## 4. Operació i regulació
+### 4.1 Seqüència d'engegada
+1. Verificació aïllaments (R > 1MΩ)
+2. Arrencada a 10% velocitat nominal
+3. Aplicació excitació progressiva
+4. Sincronització (en paral·lel)
+
+**Regulació de càrrega:**
+$$ \Delta V\% = \frac{V_{buida} - V_{càrrega}}{V_{nominal}} \times 100 $$
+
+---
+
+## 5. Rendiment i assaigs
+### 5.1 Balanç energètic
+**Pèrdues principals:**
+1. Joule a debanats ($3I^2R$)
+2. Magnètiques al nucli ($P_{Fe}$)
+3. Mecàniques (ventilació + fricció)
+
+**Rendiment típic:**
+$$ \eta = \frac{P_{elèctrica}}{P_{mecànica}} \times 100\% \quad (85-95\%) $$
+
+**Assaig de càrrega:**
+- Corba $V = f(I)$ a cosφ constant
+- Determinació de $X_s$ i regulació
+
+---
+
+## 6. Acoblaments i proteccions
+### 6.1 Configuracions típiques
+**En paral·lel requereix:**
+1. Igualtat de tensions ($\Delta V < 2\%$)
+2. Seqüència de fases idèntica
+3. Sincronisme freqüencial
+
+**Proteccions obligatòries:**
+- Sobretensions (>110% Vn)
+- Desequilibris (>5% entre fases)
+- Excés freqüència (51Hz màx)
+
+---
+
+## 7. Aplicacions específiques
+### 7.1 Àmbits d'ús
+| Tipus          | Potència típica   | Aplicació                 |
+|----------------|-------------------|---------------------------|
+| Monofàsic      | 1-50 kVA          | Emergències, zones rurals |
+| Trifàsic       | 50 kVA-500 MVA    | Centrals elèctriques      |
+
+**Dades operatives:**
+- Factor de potència: 0.8-1.0
+- Tensió nominal: 230V/400V (BT), 6-25kV (AT)
+- Freqüència: 50/60Hz (±0.5Hz)
+
+---
+
+**Taula resum: Comparativa alternadors**
+| Paràmetre       | Monofàsic       | Trifàsic         |
+|-----------------|-----------------|------------------|
+| Potència màxima | ≤100 kVA        | >500 MVA         |
+| Rendiment       | 80-88%          | 92-98%           |
+| Cost relatiu    | Baix            | Elevat           |
+| Distorsió       | Alta (THD 5-8%) | Baixa (THD < 3%) |
+
+</textarea><script>const titol = "Tema 8: Alternadors monofàsics i trifàsics";
+
+let txtEnunciat = ""; window.onload = function (){txtEnunciat = document.getElementById("enunciat").value; renderEnunciat();}; function renderEnunciat(){let txt = ""; txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" + txtEnunciat; document.getElementById("enunciat").innerHTML = txt; document.getElementById("titol").innerText = titol; texme.renderPage();}</script>
