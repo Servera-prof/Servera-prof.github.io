@@ -204,13 +204,13 @@ fdp = ${l(0.9)};
 
 
 uc_ab = p_ab * fdp * (l_ab/1e3) / u_l * (r + tan(acos(fdp))*x) = 
-      = ${l(p_ab)} * ${(lfdp)} * (${l(l_ab, 3)}/1e3) / ${l(u_l, 2)} * (${l(r, 3)} + tan(acos(${l(fdp, 1)}))*${l(x, 3)}) = ${l(uc_ab)};
+      = ${l(p_ab)} * ${l(fdp)} * (${l(l_ab, 3)}/1e3) / ${l(u_l, 2)} * (${l(r, 3)} + tan(acos(${l(fdp, 1)}))*${l(x, 3)}) = ${l(uc_ab)};
 uc_bc = p_bc * fdp * (l_bc/1e3) / u_l * (r + tan(acos(fdp))*x) = 
-      = ${l(p_bc)} * ${(lfdp)} * (${l(l_bc, 3)}/1e3) / ${l(u_l, 2)} * (${l(r, 3)} + tan(acos(${l(fdp, 1)}))*${l(x, 3)}) = ${l(uc_bc)}; 
+      = ${l(p_bc)} * ${l(fdp)} * (${l(l_bc, 3)}/1e3) / ${l(u_l, 2)} * (${l(r, 3)} + tan(acos(${l(fdp, 1)}))*${l(x, 3)}) = ${l(uc_bc)}; 
 uc_be = p_be * fdp * (l_be/1e3) / u_l * (r + tan(acos(fdp))*x) = 
-      = ${l(p_be)} * ${(lfdp)} * (${l(l_be, 3)}/1e3) / ${l(u_l, 2)} * (${l(r, 3)} + tan(acos(${l(fdp, 1)}))*${l(x, 3)}) = ${l(uc_be)};
+      = ${l(p_be)} * ${l(fdp)} * (${l(l_be, 3)}/1e3) / ${l(u_l, 2)} * (${l(r, 3)} + tan(acos(${l(fdp, 1)}))*${l(x, 3)}) = ${l(uc_be)};
 uc_cf = p_cf * fdp * (l_cf/1e3) / u_l * (r + tan(acos(fdp))*x) = 
-      = ${l(p_cf)} * ${(lfdp)} * (${l(l_cf, 3)}/1e3) / ${l(u_l, 2)} * (${l(r, 3)} + tan(acos(${l(fdp, 1)}))*${l(x, 3)}) = ${l(uc_cf)};
+      = ${l(p_cf)} * ${l(fdp)} * (${l(l_cf, 3)}/1e3) / ${l(u_l, 2)} * (${l(r, 3)} + tan(acos(${l(fdp, 1)}))*${l(x, 3)}) = ${l(uc_cf)};
 
 uc_f = uc_ab + uc_bc + uc_cf = ${l(uc_f)};
 uc_e = uc_ab + uc_be = ${l(uc_e)};
