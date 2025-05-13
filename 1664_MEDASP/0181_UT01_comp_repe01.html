@@ -1,0 +1,715 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+
+    <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    pre{
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+    }
+
+    img[alt="c"]{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img[alt="c500"]{
+        width: 500px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    img[alt="c250"]{
+        width: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img[alt="250"]{
+        width: 250px;
+    }
+    img[alt="fr350"]{
+        width: 350px;
+        float: right;
+        margin: 0 0 0 0.7em;
+    }
+    img[alt="fr"]{
+        float: right;
+        margin: 0 0 0 0.7em;
+    }
+    img[alt="fl350"]{
+        width: 350px;
+        float: left;
+        margin: 0 .7em 0 0;
+    }
+    img[alt="fl"]{
+        float: left;
+        margin: 0 5px 0 0;
+    }
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+Introdueix aquí la teva permutació: <br/>
+[[i1]]
+
+Introdueix aquí la teva resposta: <br/>
+[[i2]]
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Comprovador de nota - Recuperació de gràcia UT01 MEDASP";
+const puntuacions = ["",
+];
+
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+let txtav = "";
+let pts = 0;
+let ptsTotals = 0;
+
+const preguntes = [
+[
+"Per què una de les propostes inicials oposades al consumisme consistia a imitar la natura",
+"Perquè la natura no crea residus. Tot és biodegradable.",
+"Perquè la natura és la que crea els combustibles fòssils.",
+"Perquè és més senzill imitar la natura.",
+"Perquè som éssers naturals.",
+],
+[
+"Quina d'aquestes propostes seria una manera d'implementar la regla de les 3 R a la vida diària d'un estudiant de GM?",
+"Quan al temps de l'esplai es va al supermercat a comprar alguna cosa, no demanar bossa, si això no és possible utilitzar la mateixa cada dia, i si això tampoc fos possible llençar la bossa al contenidor groc.",
+"No comprar res, si es compra que sigui el més barat possible (requereix menys recursos), si no pot ser el més barat possible almenys llençar-lo a una paperera (reduir residus).",
+"Dissenyar un mòbil més sostenible que els telèfons que hi ha actualment al mercat.",
+"Marca aquesta si no pots marcar cap de les altres respostes",
+],
+[
+"L'economia lineal es caracteritza per...",
+"La prolongació de la vida útil dels productes.",
+"L'obtenció de guanys i cerca de l'eficiència sense considerar els costos socials i mediambientals",
+"El benestar social.",
+"La inversió en nous sistemes de producció sostenibles.",
+],
+[
+"Quin no seria un exemple de minimalisme?",
+"Pintar les parets de blanc.",
+"Comprar una motxilla de qualitat que duri tota la secundària.",
+"Tenir una taula a casa que serveixi per dinar, estudiar, jugar a cartes, etc. en lloc d'una taula per a cada cosa.",
+"Utilitzar el transport públic.",
+],
+[
+"Com a principal conseqüència associada als residus en l'economia lineal es pot destacar:",
+"L'acumulació de deixalles i la sobreexplotació i l'esgotament de recursos naturals.",
+"La contaminació de l'espai aeri per l'acumulació de productes defectuosos.",
+"L'aparició de tendències com el minimalisme o les compres compulsives.",
+"La creació de sistemes de distribució i consum més sostenibles.",
+],
+[
+"Quina fase de l'economia lineal està relacionada estretament amb la mineria?",
+"Extreure.",
+"Produir.",
+"Consumir.",
+"Descartar.",
+],
+[
+"A l'economia lineal es generen un seguit de residus. Quin final tenien tradicionalment (fins a finals del segle XX)?",
+"Enterrar-los, cremar-los.",
+"Reciclar-los.",
+"Reutilitzar-los.",
+"Fins a 1990 no es generaven residus, tot era biodegradable.",
+],
+[
+"No és una de les fases de l'economia lineal",
+"Reduir.",
+"Produir.",
+"Consumir.",
+"Descartar.",
+],
+[
+"Quina d'aquestes és una bona proposta per a un consum responsable",
+"Triar productes d'empreses que respectin el medi ambient i als treballadors.",
+"No canviar hàbits de la nostra vida quotidiana.",
+"Comprar productes d'empreses que afirmin ser «verdes», sense contrastar la informació.",
+"Comprar tants productes ecològics com es pugui, fins i tot si no els necessitem."
+],
+[
+"Una de les mesures adoptades a Espanya per a reduir el plàstic d'un sol ús és:",
+"El cobrament per les bosses de plàstic als supermercats.",
+"La prohibició de les bosses i recipients de plàstic.",
+"Prohibir la venda de productes biodegradables.",
+"Per ara no s'han adoptat mesures orientades a la reducció de l'ús de plàstic.",
+],
+[
+"Quina afirmació sobre la gran muralla verda a Àfrica és falsa",
+"És un projecte que va iniciar-se al segle XVII",
+"Ha posat d'acord a diversos països al sud del Sàhara",
+"Vol frenar la sequera i la desertificació",
+"Proporciona un mitjà de vida sostenible a les comunitats locals",
+],
+[
+"Quin d'aquest serien exemples d'economia col·laborativa?",
+"Blabla Car, espais de coworking.",
+"Cultura empresarial sostenible, energies renovables.",
+"Convenis col·laboratius entre empreses per a pactar preus de mercat.",
+"Col·laborar amb un company que està malalt i encarregar-nos de fer la seva feina.",
+],
+[
+"Què és l'obsolescència programada?",
+"Fabricar productes que de manera intencionada deixen de funcionar o disminueixen les seves prestacions passat un temps.",
+"Que els programes informàtics s'hagin de pagar cada any mitjançant una subscripció",
+"Fabricar productes de poca qualitat.",
+"Marca aquesta si no pots marcar cap de les altres respostes",
+],
+[
+"Quan varen aparèixer els primers abocadors tal com el coneixem avui dia?",
+"Al neolític.",
+"Al renaixement.",
+"Al segle IV.",
+"Al segle XIX.",
+],
+[
+"Quina d'aquestes creus que és una relació entra la revolució industrial i la cultura «d'un sol ús»?",
+"La revolució industrial va provocar un abaratiment i abundància de béns que feren que la gent comprés productes que ja tenia per a substituir els vells.",
+"A la revolució industrial es cremava carbó i, per tant, s'emetien molts de gasos contaminants.",
+"La revolució industrial es va desenvolupar la indústria que utilitzava materials nocius com el mercuri o l'urani.",
+"La revolució industrial va crear el concepte d'elements que només servien per a una cosa (per exemple un obre llaunes només serveis per a obrir llaunes), és a dir productes d'un sol ús",
+],
+];
+
+const solucions_test = [
+    1, 1, 2, 1, 1,
+    1, 1, 1, 1, 1,
+    1, 1, 1, 4, 1
+];
+const opcions_test = [1, 2, 3, 4];
+
+let permutacio = "";
+const num_preg = solucions_test.length;
+const num_resp = opcions_test.length;
+ptsTotals = num_preg;
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+
+function estableixParametres(){
+    array = [/* p01, p02, p03, p04, p05 */]; // actualitzar entre []
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+    const permutacio = respostes [0];
+
+    const permpreg = permutacio.split("_")[0];
+    const permresp = permutacio.split("_")[1].split(".");
+    const respostes_alumne = respostes [1].split("");
+
+    const preg_ordenades = obtenirPermutacio(preguntes, permpreg);
+    const sol_ordenades = obtenirPermutacio(solucions_test, permpreg);
+
+
+    for (let i = 0; i < num_preg; i++){
+        preg = preg_ordenades[i][0];
+
+
+        let resp =
+         obtenirPermutacio(preg_ordenades[i].slice(1), permresp[i]);
+
+        let pr = permresp[i];
+        let opcions_permutades = obtenirPermutacio(opcions_test, pr);
+
+
+        let st = sol_ordenades[i];
+        let opcio_correcta = opcions_permutades.indexOf(st) + 1;
+        let opcio_marcada = lletraANombre(respostes_alumne[i]);
+        let color = "black";
+        let marcador = "";
+
+        if (opcio_correcta === 0) {
+            ptsTotals -= 1;
+            color = "gray";
+            txtav += '\n\n<div>\n'+
+             '<p><b>' + (i+1) + '.</b> ' + preg + '</p>' +
+             '<img src="img/anul·lada.png" alt="segell"/>\n' +
+             '<div class="bgtxt">\n'
+        }else{
+            txtav += "<p><b>" + (i+1) + '.</b> ' + preg + '</p>';
+        }
+        txtav += '<ol style="list-style-type: none;">\n';
+
+
+        for (let j = 0; j < num_resp; j++){
+            a = j + 1;
+            if (opcio_correcta === 0){
+                color = "gray";
+            } else if (a === opcio_correcta && a === opcio_marcada){
+                color = "green";
+                marcador = "⇦";
+                pts += 1;
+            } else if (a === opcio_correcta && a != opcio_marcada){
+                marcador = "⇦";
+            } else if (a != opcio_correcta && a === opcio_marcada){
+                color = "red";
+                pts -= 1/(num_resp-1);
+            } else if (a != opcio_correcta && a != opcio_marcada){
+            }
+            txtav += '<li class="preg"><span style="color: ' +
+             color + ';"><i>' + nombreALletra(j+1) + '</i>) </span><span style="flex: 1; color: ' + color + ';">' +
+             resp[j] + marcador + "</span></li>"
+            color = "black";
+            marcador = "";
+        } // fi for respostes
+        if (opcio_correcta === 0) {
+            txtav += '</div>\n</div></ol><br/>\n\n'
+        }else{
+            txtav += "</ol>\n";
+        }
+    } // fi for preguntes
+} //fi calcula();
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGM Técnic en instal·lacions elèctriques i automàtiques",
+    anys: "2024/2025"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres();
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = l(parametres[i]);
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    patro = "[[i1]]";
+    canvi = '<input type="text" onwheel="return false;" ';
+    canvi += 'id="i1" style="width: 300px">';
+    txt = txt.replace(patro, canvi);
+    patro = "[[i2]]";
+    canvi = '<input type="text" onwheel="return false;" ';
+    canvi += 'id="i2" style="width: 300px">';
+    txt = txt.replace(patro, canvi);
+    /*for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }*/
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    respostes[0] = document.getElementById("i1").value;
+    respostes[1] = document.getElementById("i2").value;
+    alumne.nom = document.getElementById("nom").value;
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+
+    "> [[nota]]"
+    ].join("\n") + "\n\n\n";
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+
+    console.log(txt);
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt += txtav;
+
+    let ptsAlumne = pts;
+    let canvi = "", patro = "";
+
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotals, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotals*10, 2) + "**");
+
+    /*
+    let ptsAlumne = 0, ptsTotal = 0;
+    let canvi = "", patro = "";
+    let a = 0, b = 0;
+    for (let i = 1; i < puntuacions.length; i++){
+        a = respostes[i];
+        b = solucions[i];
+        ptsTotal += puntuacions[i];
+        canvi =
+            '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">'
+            + coma(a) + '</span>';
+        if ((b*0.99) < a && a < (b*1.01)) {
+            ptsAlumne += puntuacions[i];
+            canvi +=
+                ' <span style="color: green">(' +
+                coma(b) +') OK (+' + puntuacions[i] + ')</span>';
+        }else{
+            canvi +=
+                ' <span style="color: red;"> (' +
+                coma(b) +')</span>';
+        }
+        patro = "[[i" + i + "]]";
+
+        txt = txt.replace(patro, canvi);
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    */
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function ln(a){
+    return Math.log(a);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar (φ en graus)
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a){  // log abreviat a l totsol
+    if (!a.toPrecision) return a;
+    return coma(xs(a));
+}
+
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return Number(a);
+}
+
+function coma(a){
+    a = a + "";
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+function lletraANombre(lletra){
+    return lletra.toLowerCase().charCodeAt(0) - 96;
+}
+
+</script>
