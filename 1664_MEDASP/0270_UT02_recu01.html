@@ -1,0 +1,529 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+
+    <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    pre{
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+    }
+
+    img[alt="c"]{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img[alt="c500"]{
+        width: 500px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    img[alt="c250"]{
+        width: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img[alt="250"]{
+        width: 250px;
+    }
+    img[alt="fr250"]{
+        width: 250px;
+        float: right;
+        margin: 0 0 0 0.7em;
+    }
+    img[alt="fr"]{
+        float: right;
+        margin: 0 0 0 0.7em;
+    }
+    img[alt="fl250"]{
+        width: 250px;
+        float: left;
+        margin: 0 .7em 0 0;
+    }
+    img[alt="fl"]{
+        float: left;
+        margin: 0 5px 0 0;
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+~~~
+&nbsp;
+    Permutació: [[p2]]
+&nbsp;
+~~~
+
+## Normes:
+- **S'ha de gravar la pantalla durant l'examen.** Per a fer-ho podeu
+  utilitzar la web [Screen capture](https://www.screencapture.com/es/),
+  **recordeu a desmarcar el microfon i la webcam**
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Està terminantment prohibit copiar o mirar al company.
+- Per fer preguntes aixequeu la mà, NO US GIREU.
+- La durada de l'exàmen és la que s'indiqui al moodle o classroom. O la que indiqui el professor a l'inici de la prova.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten 1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen ni resten.
+
+## Com fer aquest examen:
+- Agafa paper
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis copia les respostes sense espais i tot seguit, al camp resposta. Per exemple: abnaac
+- Omple el teu nom i fes click a avaluar.
+- Imprimeix la pàgina com a pdf fent «Ctrl + P»
+- Adjunta-la com a tasca.
+- Entrega els papers utilitzats.
+
+## Preguntes
+
+[[p1]]
+
+## Resposta
+
+[[i1]]
+
+
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Recuperació UT02 - MEDASP";
+const puntuacions = ["",
+    10
+];
+const π = 3.141592654;
+const RPRIMA = 287.04;                  // unitats en J/(kg*K)
+const KELVIN = 273.15;                  // 0°C = 273,15 K
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+
+let p01 = "";
+const preguntes = [
+    [
+    "A  un exercici fet a classe, es va parlar de quatre accions que podia dur a terme una empresa per a ajudar a canviar cap a una economia més circular. Es va parlar de Jornades de sensibilització, teletreball, sistema de reciclatge i transport sostenible. D'aquestes possibilitats quina creus que dona més sentit a les jornades de sensibilització, amb relació a les altres?",
+    "Implementar un sistema de reciclatge és útil, però no serveix de res si els treballadors segueixen tirant tota la brossa a rebuig.",
+    "El transport sostenible és principalment regalar patinets elèctrics als empleats.",
+    "El teletreball és imprescindible, per aquest motiu tots els instal·ladors han de teletreballar tots els dies de la setmana.",
+    "Aquest no és un dels exercicis fets a classe.",
+    ],
+    [
+    "Quin és el terme que millor descriu aquell model econòmic responsable amb els treballadors i el medi ambient?",
+    "Economia circular",
+    "Economia basada en el reciclatge",
+    "Economia prolaboralistambiental",
+    "Economia lineal amb enfocament sociolaboral",
+    ],
+    [
+    "Quines són les 7 R de les que es parla a la UT02?",
+    "Redissenyar, reduir, reutilitzar, reparar, renovar, recuperar, reciclar.",
+    "Redissenyar, rescatar, reutilitzar, reparar, renovar, recuperar, reciclar.",
+    "Redissenyar, reduir, reutilitzar, reparar, raonar, recuperar, reciclar.",
+    "Redissenyar, reduir, reutilitzar, repicar, renovar, recuperar, reciclar.",
+    ],
+    [
+    "Què implica el concepte de «sostenibilitat» en l'economia circular?",
+    "L'ús racional dels recursos per a un desenvolupament més sostenible.",
+    "Sostenir en el temps el model d'un sol ús.",
+    "Emprar les fonts d'energia més barates, encara que contaminin més, ja que són econòmicament més sostenibles.",
+    "La reducció de costos per sobre de tot.",
+    ],
+    [
+    "L'empremta ambiental és:",
+    "Una mesura de l'impacte de l'activitat humana.",
+    "Una mesura de l'empremta de carboni.",
+    "Una puntuació amb la qual la Conselleria qualifica les indústries.",
+    "Una avaluació de la qualitat de l'empresa.",
+    ],
+    [
+    "Un dels principals avantatges de l'economia circular és:",
+    "L'estímul a la innovació.",
+    "La complexitat i els seus costos inicials.",
+    "La resiliència econòmica a curt termini.",
+    "L'ús ineficient dels recursos.",
+    ],
+    [
+    "Què és la transparència com a principi ètic",
+    "La rendició de comptes de les empreses a la societat.",
+    "La reducció de costos operatius.",
+    "Les limitacions tecnològiques.",
+    "La complexitat reguladora.",
+    ],
+    [
+    "D'aquestes opcions quina identifiques com un dels principals reptes de l'economia circular?",
+    "Conflicte entre objectius econòmics i ambientals.",
+    "Estimula la producció.",
+    "Redueix costos operatius.",
+    "Millora la competitivitat econòmica.",
+    ],
+    [
+    "Assolir nivells més alts de productivitat econòmica mitjançant la diversificació, la millora tecnològica i la innovació, incloent-hi un enfocament en sectors d'alt valor afegit i intensius en mà d'obra, és un indicador de l'objectiu...",
+    "ODS 8: Promoure un creixement econòmic sostingut, inclusiu i sostenible, una ocupació plena i productiva, i un treball digne per a tothom.",
+    "ODS 9: Construir infraestructures resilients, promoure la industrialització inclusiva i sostenible i fomentar la innovació.",
+    "ODS 6: Garantir l'accés a una energia assequible, fiable, sostenible i moderna per a tothom.",
+    "ODS 10: Reduir les desigualtats en els països i entre els països.",
+    ],
+    [
+    "Quants objectius de desenvolupament sostenible (ODS) hi ha?",
+    "17",
+    "20",
+    "12",
+    "24",
+    ],
+    [
+    "De tots els ODS quin és el principal",
+    "Erradicar la pobresa",
+    "Igualtat de gènere",
+    "Energia sostenible i no contaminant",
+    "Vida submarina",
+    ],
+    [
+    "Què és l'eutrofització?",
+    "L'acumulació de nutrients en un medi",
+    "La contaminació amb toxines d'un medi.",
+    "La falta d'éssers vius a un medi",
+    "El desequilibri en pH (en general àcid) d'un medi",
+    ],
+    [
+    "Enfortir la prevenció i el tractament de l'abús de substàncies, inclosos l'abús de narcòtics i l'ús perjudicial de l'alcohol, és un indicador de l'objectiu...",
+    "ODS 3: Garantir una vida sana i promoure el benestar de tots a totes les edats.",
+    "ODS 9: Construir infraestructures resilients, promoure la industrialització inclusiva i sostenible i fomentar la innovació.",
+    "ODS 6: Garantir l'accés a una energia assequible, fiable, sostenible i moderna per a tothom.",
+    "ODS 4: Garantir una educació inclusiva i equitativa de qualitat i promoure oportunitats d'aprenentatge permanent per a tothom.",
+    ],
+];
+
+let permutacio = "";
+const num_preg = preguntes.length;
+const num_resp = preguntes[0].length-1;
+const fact_np = factorial(num_preg);
+const fact_nr = factorial(num_resp);
+/*let ordre_preg = Math.floor(aleat(0, fact_np - 1)/1e16)*/;
+let ordre_preg = aleat(0, fact_np - 1);
+
+console.log(ordre_preg)
+permutacio += ordre_preg + "_";
+//ordre_preg *= 1e16;
+
+const preg_ordenades = obtenirPermutacio(preguntes, ordre_preg);
+
+for (let i = 0; i < num_preg; i++){
+    p01 += "**" + (i+1) + ".**&nbsp;" + preg_ordenades[i][0] + "<br/>";
+    let ordre_resp = aleat (0, fact_nr - 1);
+    permutacio += ordre_resp + ".";
+
+    let resp = obtenirPermutacio(preg_ordenades[i].slice(1), ordre_resp);
+    for (let j = 0; j < num_resp; j++){
+        p01 += "&nbsp;&nbsp;&nbsp;&nbsp;_" + nombreALletra(j+1) + "_)&nbsp;" +
+               resp[j] + "<br/>"
+    }
+    p01 += "<br/>"
+}
+
+p02 = permutacio;
+
+
+
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+// !!! CONVERTIR si és necessari les unitats a les unitats que requereix
+// el nostre enunciat.
+
+function estableixParametres(){
+    array = [
+      p01, p02
+    ];
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+}
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGM Técnic en instal·lacions elèctriques i automàtiques",
+    anys: "2024/2025"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    respostes[0] = document.getElementById("i1").value
+    alumne.nom = document.getElementById("nom").value;
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) serà qualificat manualment.",
+    "",
+    ].join("\n") + "\n";
+    txt += txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    patro = "[[i1]]";
+    canvi = "~~~\n    " + respostes[0] + "\n\n\n~~~";
+
+    txt = txt.replace(patro, canvi);
+
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+</script>
