@@ -1,0 +1,616 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+
+    <style>
+        li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+Introdueix aquí la teva permutació: <br/>
+[[i1]]
+
+Introdueix aquí la teva resposta: <br/>
+[[i2]]
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Comprovador de nota de la examen UT05 - MEDASP";
+const puntuacions = ["",
+];
+
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+let txtav = "";
+let pts = 0;
+let ptsTotals = 0;
+
+const preguntes = [
+ [
+"Els apunts mencionen que el núvol representa un retorn als mainframes (centralització), però també parla d'edge/fog computing (descentralització). Quina paradoxa il·lustra això?",
+"Encara que el núvol centralitza dades, la demanda d'eficiència obliga a descentralitzar-ne el processament.",
+"És una contradicció sense resolució en l'arquitectura de xarxes.",
+"El núvol sempre és centralitzat; fog/edge són excepcions marginals.",
+"La descentralització és un error històric que el núvol corregeix."
+],
+
+[
+"Segons els apunts, el núvol millora la redundància però augmenta el risc de robatori de dades. Com es pot gestionar aquesta tensió?",
+"Mitjançant xifratge de dades i protocols d'accés restringit, tot i que cap sistema és 100% segur.",
+"Evitant emmagatzemar dades sensibles al núvol en qualsevol cas.",
+"Contractant múltiples proveïdors de núvol per diluir el risc.",
+"La seguretat al núvol és un mite; sempre és inferior a l'emmagatzematge local."
+],
+
+
+[
+"A classe hem comparat la Game Boy (local) amb Geforce NOW (streaming). Quina limitació tècnica del núvol es revela en aquest contrast?",
+"La dependència de l'amplada de banda i la latència, inexistents en sistemes locals.",
+"Els jocs en núvol són menys divertits que els locals.",
+"Els dispositius locals necessiten més manteniment.",
+"Geforce NOW consumeix menys energia que una Game Boy."
+],
+
+
+[
+"Per què s'utilitza la metàfora de 'la boira' (fog) per a aquest model?",
+"Perquè els nodes de processament estan 'més a prop del terra' (dispositius finals) que el núvol.",
+"Perquè el fog computing és menys dens que el núvol.",
+"És un terme aleatori sense relació amb la tecnologia.",
+"Perquè la boira bloqueja l'accés a dades sensibles."
+],
+
+
+[
+"El document destaca l'escalabilitat del núvol, però també esmenta problemes de sobrecàrrega. Com s'explica aquesta contradicció?",
+"L'escalabilitat és teòricament infinita, però els límits físics dels servidors poden provocar colls d'ampolla.",
+"És un error de redacció; el núvol mai té sobrecàrregues.",
+"Només passa en núvols híbrids.",
+"Els usuaris abuseen dels recursos lliures."
+],
+
+[
+"A classe s'ha explicat que Google Docs pot desvirtuar formats en exportar. Quina implicació té això per a les empreses?",
+"Pot crear dependència del proveïdor (vendor lock-in) i problemes de compatibilitat.",
+"Google Docs és inferior a MS Office en tots els aspectes.",
+"Les empreses haurien d'evitar totes les eines al núvol.",
+"És un problema temporal que es resoldrà en pocs anys."
+],
+
+[
+"L'exemple del robatori de bicicletes amb dades del núvol il·lustra quina paradoxa ètica?",
+"Que la comoditat del núvol incrementa la vulnerabilitat dels usuaris enfront de ciberdelinqüents.",
+"El núvol no té cap relació amb la delinqüència.",
+"Les dades al núvol són anònimes per defecte.",
+"Només les grans empreses corren aquest risc."
+],
+
+[
+"Quina relació hi ha entre el mist computing i els dispositius IoT?",
+"El mist computing permet processar dades directament en dispositius IoT, reduint la dependència del núvol.",
+"Els IoT no poden funcionar sense núvol.",
+"És un terme antic que ja no s'usa.",
+"El mist computing només s'aplica a servidors centrals."
+],
+
+
+[
+"L'atac a GestIB de 2024 mostra quina debilitat inherent del núvol?",
+"La dependència d'un únic punt de fallada (single point of failure) en sistemes centralitzats.",
+"Els atacs només afecten a governs, no a empreses.",
+"El núvol és immune a ciberatacs amb les mesures correctes.",
+"El problema va ser la falta d'actualitzacions locals."
+],
+
+
+[
+"Els apunts assenyala que el núvol és 'gratuït per a petits usuaris', però les empreses paguen molt. Quina dinàmica econòmica reflecteix això?",
+"Els usuaris individuals subsidien els serveis gratuïts amb les seves dades, mentre les empreses paguen per recursos premium.",
+"El núvol és un frau comercial.",
+"Només les grans empreses necessiten núvol.",
+"Els costos del núvol són invisibles per a tothom."
+],
+];
+
+const solucions_test = [
+    1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1,
+
+];
+const opcions_test = [1, 2, 3, 4];
+
+let permutacio = "";
+const num_preg = solucions_test.length;
+const num_resp = opcions_test.length;
+ptsTotals = num_preg;
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+
+function estableixParametres(){
+    array = [/* p01, p02, p03, p04, p05 */]; // actualitzar entre []
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+    const permutacio = respostes [0];
+
+    const permpreg = permutacio.split("_")[0];
+    const permresp = permutacio.split("_")[1].split(".");
+    const respostes_alumne = respostes [1].split("");
+
+    const preg_ordenades = obtenirPermutacio(preguntes, permpreg);
+    const sol_ordenades = obtenirPermutacio(solucions_test, permpreg);
+
+
+    for (let i = 0; i < num_preg; i++){
+        preg = preg_ordenades[i][0];
+
+
+        let resp =
+         obtenirPermutacio(preg_ordenades[i].slice(1), permresp[i]);
+
+        let pr = permresp[i];
+        let opcions_permutades = obtenirPermutacio(opcions_test, pr);
+
+
+        let st = sol_ordenades[i];
+        let opcio_correcta = opcions_permutades.indexOf(st) + 1;
+        let opcio_marcada = lletraANombre(respostes_alumne[i]);
+        let color = "black";
+        let marcador = "";
+
+        if (opcio_correcta === 0) {
+            ptsTotals -= 1;
+            color = "gray";
+            txtav += '\n\n<div>\n'+
+             '<p><b>' + (i+1) + '.</b> ' + preg + '</p>' +
+             '<img src="img/anul·lada.png" alt="segell"/>\n' +
+             '<div class="bgtxt">\n'
+        }else{
+            txtav += "<p><b>" + (i+1) + '.</b> ' + preg + '</p>';
+        }
+        txtav += '<ol style="list-style-type: none;">\n';
+
+
+        for (let j = 0; j < num_resp; j++){
+            a = j + 1;
+            if (opcio_correcta === 0){
+                color = "gray";
+            } else if (a === opcio_correcta && a === opcio_marcada){
+                color = "green";
+                marcador = "⇦";
+                pts += 1;
+            } else if (a === opcio_correcta && a != opcio_marcada){
+                marcador = "⇦";
+            } else if (a != opcio_correcta && a === opcio_marcada){
+                color = "red";
+                pts -= 1/(num_resp-1);
+            } else if (a != opcio_correcta && a != opcio_marcada){
+            }
+            txtav += '<li class="preg"><span style="color: ' +
+             color + ';"><i>' + nombreALletra(j+1) + '</i>) </span><span style="flex: 1; color: ' + color + ';">' +
+             resp[j] + marcador + "</span></li>"
+            color = "black";
+            marcador = "";
+        } // fi for respostes
+        if (opcio_correcta === 0) {
+            txtav += '</div>\n</div></ol><br/>\n\n'
+        }else{
+            txtav += "</ol>\n";
+        }
+    } // fi for preguntes
+} //fi calcula();
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGM Técnic en instal·lacions elèctriques i automàtiques",
+    anys: "2024/2025"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres();
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = l(parametres[i]);
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    patro = "[[i1]]";
+    canvi = '<input type="text" onwheel="return false;" ';
+    canvi += 'id="i1" style="width: 300px">';
+    txt = txt.replace(patro, canvi);
+    patro = "[[i2]]";
+    canvi = '<input type="text" onwheel="return false;" ';
+    canvi += 'id="i2" style="width: 300px">';
+    txt = txt.replace(patro, canvi);
+    /*for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }*/
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    respostes[0] = document.getElementById("i1").value;
+    respostes[1] = document.getElementById("i2").value;
+    alumne.nom = document.getElementById("nom").value;
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+
+    "> [[nota]]"
+    ].join("\n") + "\n\n\n";
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+
+    console.log(txt);
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt += txtav;
+
+    let ptsAlumne = pts;
+    let canvi = "", patro = "";
+
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ punts(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotals, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + punts(ptsAlumne/ptsTotals*10, 2) + "**");
+
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function ln(a){
+    return Math.log(a);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar (φ en graus)
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a){  // log abreviat a l totsol
+    if (!a.toPrecision) return a;
+    return coma(xs(a));
+}
+
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return Number(a);
+}
+
+function coma(a){
+    a = a + "";
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+function punts(a, b=2){
+    a = xs(a, b);
+    a = a.toFixed(1);
+    return coma(a);
+}
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+function lletraANombre(lletra){
+    return lletra.toLowerCase().charCodeAt(0) - 96;
+}
+
+</script>

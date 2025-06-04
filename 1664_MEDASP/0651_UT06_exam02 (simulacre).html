@@ -1,14 +1,43 @@
-
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
 <!DOCTYPE html>
 <head>
     <title id="titol"></title>
     <link rel="icon" type="image/x-icon" href=img/favicon.png>
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
     <meta charset="UTF-8">
+
+    <style>
+
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    </style>
 </head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
 <textarea id="enunciat">
-
-
 ~~~
 &nbsp;
     Permutació: [[p2]]
@@ -18,45 +47,34 @@
 ## Normes:
 - S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
   Pots utilitzar la web
-  [Screen Capture](https://www.screencapture.com/es/).
+  [Screen Capture](https://www.screencapture.com/es/)
 - No es poden utilitzar apunts.
 - Només es pot tenir una finestra oberta (la del navegador Chrome).
 - Només es pot tenir una pestanya oberta (la de l'examen).
-- Si en aquest examen es pot utilitzar reglaments o documentació tècnica
-  també es poden tenir oberts. S'especifica a la tasca associada.
 - Està terminantment prohibit copiar o mirar al company.
 - No es poden fer preguntes. Part de l'avaluació és la comprensió del
   text. Si hi ha algun error es parlarà una vegada l'examen hagi
   finalitzat, i en el seu cas s'anul·larà la pregunta.
 - L'examen dura el que indiqui la tasca associada i **es tanca
-  automàticament. ENTREGUEU-HO ABANS** o serà un zero.
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
 - Qualsevol incompliment serà sancionat amb un zero.
-- Les preguntes correctes sumen 1 punt, les incorrectes
-  resten 1/(numrespostes - 1) punts, les que es deixen en blanc,
-  ni sumen ni resten.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
 
 ## Com fer aquest examen:
-- Ves a [Screen Capture](https://www.screencapture.com/es/).
-- Recorda llevar micròfon, so i webcam.
-- Clica a «iniciar grabación».
-- Clica a la pestanya «toda la pantalla».
-- Ara clica a la miniimatge del teu escriptori que posa de nou
-  «toda la pantalla».
-- Clica compartir.
 - Agafa paper
 - Comença a escriure les respostes al paper.
 - Si una resposta es vol deixar en blanc escriu una n.
 - Quan acabis copia les respostes sense espais i tot seguit, al camp
   «resposta», si no la saps n. Per exemple: abnaac
 - Omple el teu nom i clica a avaluar.
-- Imprimeix la pàgina com a pdf fent «Ctrl + P»
-- Atura el vídeo fent click a «volver a la configuración».
-- Descarrega el vídeo  clicant a «descargar».
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
 - Adjunta-la com a tasca.
-- Adjunta el vídeo.
 - Fotografia el paper utilitzat (la fotografia és per a tu, per a
   poder revisar l'examen si ho necessitessis).
 - Entrega els papers utilitzats.
+
 
 ## Preguntes
 
@@ -79,18 +97,10 @@
 
 <!-- C. SCRIPT ==================================================== -->
 <script>
-    window.texme = {
-        renderOnLoad: false,
-        style: 'none',
-        markdownURL: 'js/marked/marked.min.js',
-        MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
-    }
-    const titol = "Recuperació UT06 - part 1"; // MODIFICAR
-</script>
-<script src="js/texme/texme.js"></script>
 
-<script>
+
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Examen UT05 - MEDASP";
 const puntuacions = ["", 10];
 
 
@@ -100,78 +110,84 @@ const puntuacions = ["", 10];
 
 let p01 = "";
 const preguntes = [
-  [
-    "Quina és la tensió nominal màxima que s'aplica a les LSMT descrites en el DYZ10000?",
-    "30 kV.",
-    "20 kV.",
-    "36 kV.",
-    "50 kV."
-  ],
-  [
-    "Quin tipus d'aïllament utilitzen els cables de potència descrits en el DYZ10000?",
-    "Polietilè reticulat (XLPE).",
-    "PVC.",
-    "Paper impregnat.",
-    "EPR (Etilè Propilè)."
-  ],
-  [
-    "Quina és la temperatura màxima admissible en el conductor durant un curtcircuit de menys de 5 segons?",
-    "250 ºC.",
-    "90 ºC.",
-    "180 ºC.",
-    "120 ºC."
-  ],
-  [
-    "Els suports de LAMT han de estar connectats a terra?",
-    "Sí, ja que el neutre s'ha de posar reiteradament a terra.",
-    "No, ja que la terra està formada pel conductor de terra que va a dalt de les linies (a vegades associat a la fibra òptica).",
-    "Sí, excepte en els de fusta que no són conductors.",
-    "Només els suports amb tensions superiors a 20 kV.",
-  ],
-  [
-    "Identifica la creuera falsa",
-    "En bandera",
-    "En tresbolillo",
-    "Boveda",
-    "Zigzag",
-  ],
-  
-  
-  
-  [
-    "Es pot colocar una linia de MT a una safata?",
-    "Sí, sempre que estigui a més de 2,5 m d'altura.",
-    "No, sempre han d'anar soterrades, entubades o sobre aïlladors donat el seu elevat voltatge.",
-    "Sí, per exemple a les galeries visitables.",
-    "No, ja que les safates poden acumular aigua.",
-  ],
-  [
-    "Quina és la funció principal dels interruptors automàtics en una xarxa elèctrica de mitjana tensió?",
-    "Establir, mantenir i interrompre el corrent en condicions normals.",
-    "Establir, mantenir i interrompre el corrent en condicions normals i protegir contra sobretensions.",
-    "Seccionar una xarxa elèctrica fent visible el tall.",
-    "Establir, mantenir i interrompre el corrent en condicions normals, i protegir contra sobreintensitats i curtcircuits.",
-  ],
-  [
-    "Quin tipus d'interruptor utilitzen les cel·les d'un CT a interior d'edifici a les que arribaran les línies d'MT?",
-    "Interruptors amb hexafluorur de sofre (SF6).",
-    "Interruptors d'aire.",
-    "Interruptors d'oli.",
-    "Interruptors de buit.",
-  ],
-  [
-    'Fixa\'t en la imatge d\'aquesta cel·la de línia Ormazabal, quins elements de maniobra o protecció du?<br/><img src="img/UT06_exam01_02.png">',
-    "Dos interruptors",
-    "Interruptor seccionador el de l'esquerra, seccionador el de la dreta",
-    "Interruptors automàtic el de l'esquerra, interruptor el de la dreta.",
-    "Interruptor el de l'esquerra, interruptor automàtic el de la dreta. ",
-  ],
-  [
-    "Quina és la funció de les autovàlvules en la protecció contra sobretensions?",
-    "Limitar el valor de les sobretensions derivant el corrent a terra.",
-    "Augmentar la resistència dielèctrica dels aïlladors.",
-    "Refredar els conductors durant sobrecàrregues.",
-    "Millorar la conductivitat dels cables.",
+ [
+"El document esmenta que les TDF són clau per a la transformació digital, però també destaca la resistència als canvis. Com es pot resoldre aquesta contradicció en una empresa com Sorbus S.L.U.?",
+"Mitjançant formació gradual i demostració de ROI (retorn de la inversió) amb pilots a petita escala.",
+"Imposant les noves tecnologies sense consultar als empleats.",
+"Ignorant les queixes dels treballadors fins que s'acostumin.",
+"Abandonant les innovacions si generen mínima resistència."
+],
+
+[
+"L'exemple de la fleca que utilitza IoT per gestionar comandes mostra un risc ocult: quina vulnerabilitat de dades es podria explotar aquí?",
+"El robatori de dades de pagament (Bizum) o preferències dels clients a través de dispositius poc segurs.",
+"Els clients podrien rebre més entrepans dels que volen.",
+"El Spotify de la fleca podria ser hackejat per canviar la música.",
+"Els empleats podrien utilitzar WhatsApp per a usos personals."
+],
+
+[
+"Quin desavantatge tècnic no esmentat podria tenir l'ús de realitat virtual per a mostrar portes als clients?",
+"La desconnexió emocional: els clients podrien preferir tocar materials reals abans de decidir.",
+"Els equips de VR són més cars que les portes en si.",
+"La impressió 3D no és compatible amb sistemes de VR.",
+"Els colors en VR no són precisos."
+],
+
+[
+"El document proposa Bizum per a pagaments, però ¿per què no blockchain seria una solució òptima en aquest cas?",
+"Perquè la velocitat i cost de transaccions blockchain no justifiquen la seva utilitat en comandes d'entrepans.",
+"Blockchain només serveix per a criptomonedes, no per a negocis petits.",
+"La fleca no té accés a internet.",
+"Els clients no sabrien utilitzar wallets digitals."
+],
+
+[
+"L'impressió 3D a Sorbus redueix residus en prototips, però ¿quina nova font de despesa ambiental podria aparèixer?",
+"El consum energètic dels equips i la dificultat de reciclar materials d'impressió.",
+"Els clients rebutjarien productes no fets a mà.",
+"Els poms impresos són menys duradors.",
+"Requereix més espai d'emmagatzematge que els mètodes tradicionals."
+],
+
+[
+"Si Sorbus utilitzés AI per predir demandes de portes, quin error algorítmic podria ser catastròfic?",
+"Sobreestimar demandes basant-se en dades històriques post-inundació, portant a excés d'inventari.",
+"L'AI sempre tria materials més cars.",
+"No podria gestionar clients internacionals.",
+"Els dissenys generats per AI violarien patents."
+],
+
+[
+"Quin ús innovador no esmentat podrien tenir els wearables a la nau de Sorbus?",
+"Monitoritzar la fatiga dels treballadors en temps real per evitar accidents.",
+"Controlar l'accés a zones perilloses amb autenticació biomètrica.",
+"Rastrejar eines perdudes mitjançant sensors.",
+"Totes les anteriors són vàlides."
+],
+
+[
+"Per què Sorbus podria preferir AR sobre VR per als clients, segons el document?",
+"L'AR permet superposar models digitals en l'entorn real del client, sense necessitat d'immersió completa.",
+"La VR és massa cara per a PIMES.",
+"Els clients de Sorbus són majoritàriament ancians.",
+"L'AR no requereix cap inversió inicial."
+],
+
+[
+"Si la fleca connecta el forn a IoT per optimizar temperatures, quin atac podria ser més perillós?",
+"Un atac de 'ransomware' que bloquejï el forn durant l'hora punta.",
+"El robatori de receptes secretes emmagatzemades al núvol.",
+"Que els clients manipulin la temperatura via app.",
+"Un error al programar el timer del forn."
+],
+
+[
+"Quin problema ètic podria sorgir si Sorbus utilitza reconeixement facial per identificar clients recurrents?",
+"L'emmagatzematge no consentit de dades biomètriques, violant lleis com el GDPR.",
+"Els clients podrien confondre's amb els empleats.",
+"El sistema no distingiria entre bessons.",
+"Requereix una inversió inicial massa alta."
 ],
 ];
 
@@ -246,7 +262,7 @@ let solucions = [""];   // els valors que ha donat el programa.
 let respostes = [""];   // els valors que ha donat l'alumne.
 let alumne = {
     nom: "",
-    cicle: "CFGS Tècnic superior en sistemes electrotècnics i automàtics",
+    cicle: "CFGM Técnic en instal·lacions elèctriques i automàtiques",
     anys: "2024/2025"
 }
 let tlog = "";          // log que apareix al final de l'avaluació.

@@ -1,14 +1,43 @@
-
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
 <!DOCTYPE html>
 <head>
     <title id="titol"></title>
     <link rel="icon" type="image/x-icon" href=img/favicon.png>
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
     <meta charset="UTF-8">
+
+    <style>
+
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    </style>
 </head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
 <textarea id="enunciat">
-
-
 ~~~
 &nbsp;
     Permutació: [[p2]]
@@ -18,45 +47,34 @@
 ## Normes:
 - S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
   Pots utilitzar la web
-  [Screen Capture](https://www.screencapture.com/es/).
+  [Screen Capture](https://www.screencapture.com/es/)
 - No es poden utilitzar apunts.
 - Només es pot tenir una finestra oberta (la del navegador Chrome).
 - Només es pot tenir una pestanya oberta (la de l'examen).
-- Si en aquest examen es pot utilitzar reglaments o documentació tècnica
-  també es poden tenir oberts. S'especifica a la tasca associada.
 - Està terminantment prohibit copiar o mirar al company.
 - No es poden fer preguntes. Part de l'avaluació és la comprensió del
   text. Si hi ha algun error es parlarà una vegada l'examen hagi
   finalitzat, i en el seu cas s'anul·larà la pregunta.
 - L'examen dura el que indiqui la tasca associada i **es tanca
-  automàticament. ENTREGUEU-HO ABANS** o serà un zero.
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
 - Qualsevol incompliment serà sancionat amb un zero.
-- Les preguntes correctes sumen 1 punt, les incorrectes
-  resten 1/(numrespostes - 1) punts, les que es deixen en blanc,
-  ni sumen ni resten.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
 
 ## Com fer aquest examen:
-- Ves a [Screen Capture](https://www.screencapture.com/es/).
-- Recorda llevar micròfon, so i webcam.
-- Clica a «iniciar grabación».
-- Clica a la pestanya «toda la pantalla».
-- Ara clica a la miniimatge del teu escriptori que posa de nou
-  «toda la pantalla».
-- Clica compartir.
 - Agafa paper
 - Comença a escriure les respostes al paper.
 - Si una resposta es vol deixar en blanc escriu una n.
 - Quan acabis copia les respostes sense espais i tot seguit, al camp
   «resposta», si no la saps n. Per exemple: abnaac
 - Omple el teu nom i clica a avaluar.
-- Imprimeix la pàgina com a pdf fent «Ctrl + P»
-- Atura el vídeo fent click a «volver a la configuración».
-- Descarrega el vídeo  clicant a «descargar».
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
 - Adjunta-la com a tasca.
-- Adjunta el vídeo.
 - Fotografia el paper utilitzat (la fotografia és per a tu, per a
   poder revisar l'examen si ho necessitessis).
 - Entrega els papers utilitzats.
+
 
 ## Preguntes
 
@@ -79,18 +97,10 @@
 
 <!-- C. SCRIPT ==================================================== -->
 <script>
-    window.texme = {
-        renderOnLoad: false,
-        style: 'none',
-        markdownURL: 'js/marked/marked.min.js',
-        MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
-    }
-    const titol = "Recuperació UT06 - part 1"; // MODIFICAR
-</script>
-<script src="js/texme/texme.js"></script>
 
-<script>
+
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Examen UT05 - MEDASP";
 const puntuacions = ["", 10];
 
 
@@ -100,78 +110,89 @@ const puntuacions = ["", 10];
 
 let p01 = "";
 const preguntes = [
-  [
-    "Quina és la tensió nominal màxima que s'aplica a les LSMT descrites en el DYZ10000?",
-    "30 kV.",
-    "20 kV.",
-    "36 kV.",
-    "50 kV."
-  ],
-  [
-    "Quin tipus d'aïllament utilitzen els cables de potència descrits en el DYZ10000?",
-    "Polietilè reticulat (XLPE).",
-    "PVC.",
-    "Paper impregnat.",
-    "EPR (Etilè Propilè)."
-  ],
-  [
-    "Quina és la temperatura màxima admissible en el conductor durant un curtcircuit de menys de 5 segons?",
-    "250 ºC.",
-    "90 ºC.",
-    "180 ºC.",
-    "120 ºC."
-  ],
-  [
-    "Els suports de LAMT han de estar connectats a terra?",
-    "Sí, ja que el neutre s'ha de posar reiteradament a terra.",
-    "No, ja que la terra està formada pel conductor de terra que va a dalt de les linies (a vegades associat a la fibra òptica).",
-    "Sí, excepte en els de fusta que no són conductors.",
-    "Només els suports amb tensions superiors a 20 kV.",
-  ],
-  [
-    "Identifica la creuera falsa",
-    "En bandera",
-    "En tresbolillo",
-    "Boveda",
-    "Zigzag",
-  ],
-  
-  
-  
-  [
-    "Es pot colocar una linia de MT a una safata?",
-    "Sí, sempre que estigui a més de 2,5 m d'altura.",
-    "No, sempre han d'anar soterrades, entubades o sobre aïlladors donat el seu elevat voltatge.",
-    "Sí, per exemple a les galeries visitables.",
-    "No, ja que les safates poden acumular aigua.",
-  ],
-  [
-    "Quina és la funció principal dels interruptors automàtics en una xarxa elèctrica de mitjana tensió?",
-    "Establir, mantenir i interrompre el corrent en condicions normals.",
-    "Establir, mantenir i interrompre el corrent en condicions normals i protegir contra sobretensions.",
-    "Seccionar una xarxa elèctrica fent visible el tall.",
-    "Establir, mantenir i interrompre el corrent en condicions normals, i protegir contra sobreintensitats i curtcircuits.",
-  ],
-  [
-    "Quin tipus d'interruptor utilitzen les cel·les d'un CT a interior d'edifici a les que arribaran les línies d'MT?",
-    "Interruptors amb hexafluorur de sofre (SF6).",
-    "Interruptors d'aire.",
-    "Interruptors d'oli.",
-    "Interruptors de buit.",
-  ],
-  [
-    'Fixa\'t en la imatge d\'aquesta cel·la de línia Ormazabal, quins elements de maniobra o protecció du?<br/><img src="img/UT06_exam01_02.png">',
-    "Dos interruptors",
-    "Interruptor seccionador el de l'esquerra, seccionador el de la dreta",
-    "Interruptors automàtic el de l'esquerra, interruptor el de la dreta.",
-    "Interruptor el de l'esquerra, interruptor automàtic el de la dreta. ",
-  ],
-  [
-    "Quina és la funció de les autovàlvules en la protecció contra sobretensions?",
-    "Limitar el valor de les sobretensions derivant el corrent a terra.",
-    "Augmentar la resistència dielèctrica dels aïlladors.",
-    "Refredar els conductors durant sobrecàrregues.",
-    "Millorar la conductivitat dels cables.",
+ [
+"Els apunts mencionen que el núvol representa un retorn als mainframes (centralització), però també parla d'edge/fog computing (descentralització). Quina paradoxa il·lustra això?",
+"Encara que el núvol centralitza dades, la demanda d'eficiència obliga a descentralitzar-ne el processament.",
+"És una contradicció sense resolució en l'arquitectura de xarxes.",
+"El núvol sempre és centralitzat; fog/edge són excepcions marginals.",
+"La descentralització és un error històric que el núvol corregeix."
+],
+
+[
+"Segons els apunts, el núvol millora la redundància però augmenta el risc de robatori de dades. Com es pot gestionar aquesta tensió?",
+"Mitjançant xifratge de dades i protocols d'accés restringit, tot i que cap sistema és 100% segur.",
+"Evitant emmagatzemar dades sensibles al núvol en qualsevol cas.",
+"Contractant múltiples proveïdors de núvol per diluir el risc.",
+"La seguretat al núvol és un mite; sempre és inferior a l'emmagatzematge local."
+],
+
+
+[
+"A classe hem comparat la Game Boy (local) amb Geforce NOW (streaming). Quina limitació tècnica del núvol es revela en aquest contrast?",
+"La dependència de l'amplada de banda i la latència, inexistents en sistemes locals.",
+"Els jocs en núvol són menys divertits que els locals.",
+"Els dispositius locals necessiten més manteniment.",
+"Geforce NOW consumeix menys energia que una Game Boy."
+],
+
+
+[
+"Per què s'utilitza la metàfora de 'la boira' (fog) per a aquest model?",
+"Perquè els nodes de processament estan 'més a prop del terra' (dispositius finals) que el núvol.",
+"Perquè el fog computing és menys dens que el núvol.",
+"És un terme aleatori sense relació amb la tecnologia.",
+"Perquè la boira bloqueja l'accés a dades sensibles."
+],
+
+
+[
+"El document destaca l'escalabilitat del núvol, però també esmenta problemes de sobrecàrrega. Com s'explica aquesta contradicció?",
+"L'escalabilitat és teòricament infinita, però els límits físics dels servidors poden provocar colls d'ampolla.",
+"És un error de redacció; el núvol mai té sobrecàrregues.",
+"Només passa en núvols híbrids.",
+"Els usuaris abuseen dels recursos lliures."
+],
+
+[
+"A classe s'ha explicat que Google Docs pot desvirtuar formats en exportar. Quina implicació té això per a les empreses?",
+"Pot crear dependència del proveïdor (vendor lock-in) i problemes de compatibilitat.",
+"Google Docs és inferior a MS Office en tots els aspectes.",
+"Les empreses haurien d'evitar totes les eines al núvol.",
+"És un problema temporal que es resoldrà en pocs anys."
+],
+
+[
+"L'exemple del robatori de bicicletes amb dades del núvol il·lustra quina paradoxa ètica?",
+"Que la comoditat del núvol incrementa la vulnerabilitat dels usuaris enfront de ciberdelinqüents.",
+"El núvol no té cap relació amb la delinqüència.",
+"Les dades al núvol són anònimes per defecte.",
+"Només les grans empreses corren aquest risc."
+],
+
+[
+"Quina relació hi ha entre el mist computing i els dispositius IoT?",
+"El mist computing permet processar dades directament en dispositius IoT, reduint la dependència del núvol.",
+"Els IoT no poden funcionar sense núvol.",
+"És un terme antic que ja no s'usa.",
+"El mist computing només s'aplica a servidors centrals."
+],
+
+
+[
+"L'atac a GestIB de 2024 mostra quina debilitat inherent del núvol?",
+"La dependència d'un únic punt de fallada (single point of failure) en sistemes centralitzats.",
+"Els atacs només afecten a governs, no a empreses.",
+"El núvol és immune a ciberatacs amb les mesures correctes.",
+"El problema va ser la falta d'actualitzacions locals."
+],
+
+
+[
+"Els apunts assenyala que el núvol és 'gratuït per a petits usuaris', però les empreses paguen molt. Quina dinàmica econòmica reflecteix això?",
+"Els usuaris individuals subsidien els serveis gratuïts amb les seves dades, mentre les empreses paguen per recursos premium.",
+"El núvol és un frau comercial.",
+"Només les grans empreses necessiten núvol.",
+"Els costos del núvol són invisibles per a tothom."
 ],
 ];
 
@@ -246,7 +267,7 @@ let solucions = [""];   // els valors que ha donat el programa.
 let respostes = [""];   // els valors que ha donat l'alumne.
 let alumne = {
     nom: "",
-    cicle: "CFGS Tècnic superior en sistemes electrotècnics i automàtics",
+    cicle: "CFGM Técnic en instal·lacions elèctriques i automàtiques",
     anys: "2024/2025"
 }
 let tlog = "";          // log que apareix al final de l'avaluació.

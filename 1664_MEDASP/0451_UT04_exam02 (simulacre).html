@@ -1,14 +1,43 @@
-
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
 <!DOCTYPE html>
 <head>
     <title id="titol"></title>
     <link rel="icon" type="image/x-icon" href=img/favicon.png>
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
     <meta charset="UTF-8">
+
+    <style>
+
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    </style>
 </head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
 <textarea id="enunciat">
-
-
 ~~~
 &nbsp;
     Permutació: [[p2]]
@@ -18,45 +47,34 @@
 ## Normes:
 - S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
   Pots utilitzar la web
-  [Screen Capture](https://www.screencapture.com/es/).
+  [Screen Capture](https://www.screencapture.com/es/)
 - No es poden utilitzar apunts.
 - Només es pot tenir una finestra oberta (la del navegador Chrome).
 - Només es pot tenir una pestanya oberta (la de l'examen).
-- Si en aquest examen es pot utilitzar reglaments o documentació tècnica
-  també es poden tenir oberts. S'especifica a la tasca associada.
 - Està terminantment prohibit copiar o mirar al company.
 - No es poden fer preguntes. Part de l'avaluació és la comprensió del
   text. Si hi ha algun error es parlarà una vegada l'examen hagi
   finalitzat, i en el seu cas s'anul·larà la pregunta.
 - L'examen dura el que indiqui la tasca associada i **es tanca
-  automàticament. ENTREGUEU-HO ABANS** o serà un zero.
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
 - Qualsevol incompliment serà sancionat amb un zero.
-- Les preguntes correctes sumen 1 punt, les incorrectes
-  resten 1/(numrespostes - 1) punts, les que es deixen en blanc,
-  ni sumen ni resten.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
 
 ## Com fer aquest examen:
-- Ves a [Screen Capture](https://www.screencapture.com/es/).
-- Recorda llevar micròfon, so i webcam.
-- Clica a «iniciar grabación».
-- Clica a la pestanya «toda la pantalla».
-- Ara clica a la miniimatge del teu escriptori que posa de nou
-  «toda la pantalla».
-- Clica compartir.
 - Agafa paper
 - Comença a escriure les respostes al paper.
 - Si una resposta es vol deixar en blanc escriu una n.
 - Quan acabis copia les respostes sense espais i tot seguit, al camp
   «resposta», si no la saps n. Per exemple: abnaac
 - Omple el teu nom i clica a avaluar.
-- Imprimeix la pàgina com a pdf fent «Ctrl + P»
-- Atura el vídeo fent click a «volver a la configuración».
-- Descarrega el vídeo  clicant a «descargar».
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
 - Adjunta-la com a tasca.
-- Adjunta el vídeo.
 - Fotografia el paper utilitzat (la fotografia és per a tu, per a
   poder revisar l'examen si ho necessitessis).
 - Entrega els papers utilitzats.
+
 
 ## Preguntes
 
@@ -79,18 +97,10 @@
 
 <!-- C. SCRIPT ==================================================== -->
 <script>
-    window.texme = {
-        renderOnLoad: false,
-        style: 'none',
-        markdownURL: 'js/marked/marked.min.js',
-        MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
-    }
-    const titol = "Recuperació UT06 - part 1"; // MODIFICAR
-</script>
-<script src="js/texme/texme.js"></script>
 
-<script>
+
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Examen UT04 - MEDASP";
 const puntuacions = ["", 10];
 
 
@@ -101,78 +111,79 @@ const puntuacions = ["", 10];
 let p01 = "";
 const preguntes = [
   [
-    "Quina és la tensió nominal màxima que s'aplica a les LSMT descrites en el DYZ10000?",
-    "30 kV.",
-    "20 kV.",
-    "36 kV.",
-    "50 kV."
+    "Hi haurà més revolucions industrials?",
+    "No, el nivell assolit a l'actualitat és difícilment superable",
+    "Sí, no es pot dir que tinguem un nivell tecnològic tan elevat que no és susceptible de progrés.",
+    "No, la Terra està sobreexplotada",
+    "Hi haurà més revolucions però no seran industrials",
   ],
   [
-    "Quin tipus d'aïllament utilitzen els cables de potència descrits en el DYZ10000?",
-    "Polietilè reticulat (XLPE).",
-    "PVC.",
-    "Paper impregnat.",
-    "EPR (Etilè Propilè)."
+    "Identifica la resposta certa",
+    "Amb els avanços de l'anterior revolució es fonamenten les noves.",
+    "Totes les revolucions industrials representen la oposició a l'anterior (com el romanticisme al neoclassicisme).",
+    "Les revolucions industrials fins a l'actualitat són 5 per a tots els autors i bibliografia sobre el tema.",
+    "Totes són certes.",
   ],
   [
-    "Quina és la temperatura màxima admissible en el conductor durant un curtcircuit de menys de 5 segons?",
-    "250 ºC.",
-    "90 ºC.",
-    "180 ºC.",
-    "120 ºC."
+    "Identifica La tecnologia que no pertany a la 4a revolució industrial",
+    "Machine learning.",
+    "Blockchain.",
+    "Vehicles autònoms.",
+    "Electrònica de potència.",
   ],
   [
-    "Els suports de LAMT han de estar connectats a terra?",
-    "Sí, ja que el neutre s'ha de posar reiteradament a terra.",
-    "No, ja que la terra està formada pel conductor de terra que va a dalt de les linies (a vegades associat a la fibra òptica).",
-    "Sí, excepte en els de fusta que no són conductors.",
-    "Només els suports amb tensions superiors a 20 kV.",
+    "Quina <b>no</b> és una conseqüència de la 4a revolució industrial",
+    "Millores a la salut, educació i mobilitat.",
+    "Possibilitat de personalitzar productes. Per exemple: plantilles peus",
+    "Preocupacions sobre la ciberseguretat de les dades.",
+    "Radiactivitat",
   ],
   [
-    "Identifica la creuera falsa",
-    "En bandera",
-    "En tresbolillo",
-    "Boveda",
-    "Zigzag",
+    "A l'exemple dels apunt la ambulància acudia al lloc de l'accident i els metges ja havien llegit el teu historial, quina tecnologia ho permetia",
+    "Reconeixement facial.",
+    "Pagament per NFC.",
+    "Telèfons intel·ligents.",
+    "Detectors de moviment.",
   ],
   
   
   
+  
   [
-    "Es pot colocar una linia de MT a una safata?",
-    "Sí, sempre que estigui a més de 2,5 m d'altura.",
-    "No, sempre han d'anar soterrades, entubades o sobre aïlladors donat el seu elevat voltatge.",
-    "Sí, per exemple a les galeries visitables.",
-    "No, ja que les safates poden acumular aigua.",
+    "Per què és tan difícil reparar?",
+    "La falta de repercussió sobre el cost de l'esgotament de matèries primeres, fa que sigui més econòmic fabricar un objecte nou que reparar-lo.",
+    "Les fonts energètiques són molt econòmiques, el que fa que els processos realitzat per màquines que tenen gran pes en la fabricació siguin més barats que la mà d'obra humana que té molt de pes en la reparació.",
+    "La dificultat de la reparació per competir amb la fabricació fa que hi hagi pocs establiments especialitzats.",
+    "Totes són certes.",
   ],
   [
-    "Quina és la funció principal dels interruptors automàtics en una xarxa elèctrica de mitjana tensió?",
-    "Establir, mantenir i interrompre el corrent en condicions normals.",
-    "Establir, mantenir i interrompre el corrent en condicions normals i protegir contra sobretensions.",
-    "Seccionar una xarxa elèctrica fent visible el tall.",
-    "Establir, mantenir i interrompre el corrent en condicions normals, i protegir contra sobreintensitats i curtcircuits.",
+    "A quin format d'arxiu es solen convertir les cintes VHS?",
+    ".jpg",
+    ".avi o .mp4",
+    ".ogg",
+    ".pdf",
   ],
   [
-    "Quin tipus d'interruptor utilitzen les cel·les d'un CT a interior d'edifici a les que arribaran les línies d'MT?",
-    "Interruptors amb hexafluorur de sofre (SF6).",
-    "Interruptors d'aire.",
-    "Interruptors d'oli.",
-    "Interruptors de buit.",
+    "En el context de les màquines intel·ligents, la flexibilitat fa referència a ...",
+    "... que en segons quins sistemes només es notifica als humans quan hi ha una situació que no pot ser resolta per la màquina. Abans qualsevol entrebanc que es sortís del procediment habitual feia saltar una alarma.",
+    "... que la màquina està fabricada en plàstic, més flexible que l'acer.",
+    " ..que la màquina és pot reciclar, ja que té flexibilitat per a la reutilització",
+    "Totes són certes.",
   ],
   [
-    'Fixa\'t en la imatge d\'aquesta cel·la de línia Ormazabal, quins elements de maniobra o protecció du?<br/><img src="img/UT06_exam01_02.png">',
-    "Dos interruptors",
-    "Interruptor seccionador el de l'esquerra, seccionador el de la dreta",
-    "Interruptors automàtic el de l'esquerra, interruptor el de la dreta.",
-    "Interruptor el de l'esquerra, interruptor automàtic el de la dreta. ",
+  "Identifica un avantatge per a les empreses de la 4a revolució",
+  "Redueix errors i allibera temps per als humans.",
+  "Amenaces per ciberatacs: Encriptació de dades no desitjada, robatori de dades, virus, suplantacions.",
+  "Reptes: La dependència de la tecnologia pot fer que les empreses siguin vulnerables.",
+  "Privacitat: El gran maneig de dades poden provocar problemes de privacitat. Que poden conduir a sancions.",
   ],
   [
-    "Quina és la funció de les autovàlvules en la protecció contra sobretensions?",
-    "Limitar el valor de les sobretensions derivant el corrent a terra.",
-    "Augmentar la resistència dielèctrica dels aïlladors.",
-    "Refredar els conductors durant sobrecàrregues.",
-    "Millorar la conductivitat dels cables.",
-],
+    "Identifica un inconvenient per als clients",
+    "Falta d'interacció personal. Hi ha qui prefereix el tracte humà..",
+    "Complexitat tecnològica. Pot ser difícil per al client interactuar amb la plataforma digital.",
+    "Bretxa digital. Alguns clients són analfabets digitals i altres no tenen connexió o dispositius per a interactuar.",
+    "Personalització. Els productes oferits i els productes en si mateixos es poden adaptar a les preferències dels clients.",
+  ],
 ];
 
 let permutacio = "";
@@ -246,7 +257,7 @@ let solucions = [""];   // els valors que ha donat el programa.
 let respostes = [""];   // els valors que ha donat l'alumne.
 let alumne = {
     nom: "",
-    cicle: "CFGS Tècnic superior en sistemes electrotècnics i automàtics",
+    cicle: "CFGM Técnic en instal·lacions elèctriques i automàtiques",
     anys: "2024/2025"
 }
 let tlog = "";          // log que apareix al final de l'avaluació.

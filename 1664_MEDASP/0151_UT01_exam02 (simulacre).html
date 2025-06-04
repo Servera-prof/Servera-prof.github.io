@@ -1,14 +1,43 @@
-
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
 <!DOCTYPE html>
 <head>
     <title id="titol"></title>
     <link rel="icon" type="image/x-icon" href=img/favicon.png>
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
     <meta charset="UTF-8">
+
+    <style>
+
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    </style>
 </head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
 <textarea id="enunciat">
-
-
 ~~~
 &nbsp;
     Permutació: [[p2]]
@@ -18,45 +47,34 @@
 ## Normes:
 - S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
   Pots utilitzar la web
-  [Screen Capture](https://www.screencapture.com/es/).
+  [Screen Capture](https://www.screencapture.com/es/)
 - No es poden utilitzar apunts.
 - Només es pot tenir una finestra oberta (la del navegador Chrome).
 - Només es pot tenir una pestanya oberta (la de l'examen).
-- Si en aquest examen es pot utilitzar reglaments o documentació tècnica
-  també es poden tenir oberts. S'especifica a la tasca associada.
 - Està terminantment prohibit copiar o mirar al company.
 - No es poden fer preguntes. Part de l'avaluació és la comprensió del
   text. Si hi ha algun error es parlarà una vegada l'examen hagi
   finalitzat, i en el seu cas s'anul·larà la pregunta.
 - L'examen dura el que indiqui la tasca associada i **es tanca
-  automàticament. ENTREGUEU-HO ABANS** o serà un zero.
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
 - Qualsevol incompliment serà sancionat amb un zero.
-- Les preguntes correctes sumen 1 punt, les incorrectes
-  resten 1/(numrespostes - 1) punts, les que es deixen en blanc,
-  ni sumen ni resten.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
 
 ## Com fer aquest examen:
-- Ves a [Screen Capture](https://www.screencapture.com/es/).
-- Recorda llevar micròfon, so i webcam.
-- Clica a «iniciar grabación».
-- Clica a la pestanya «toda la pantalla».
-- Ara clica a la miniimatge del teu escriptori que posa de nou
-  «toda la pantalla».
-- Clica compartir.
 - Agafa paper
 - Comença a escriure les respostes al paper.
 - Si una resposta es vol deixar en blanc escriu una n.
 - Quan acabis copia les respostes sense espais i tot seguit, al camp
   «resposta», si no la saps n. Per exemple: abnaac
 - Omple el teu nom i clica a avaluar.
-- Imprimeix la pàgina com a pdf fent «Ctrl + P»
-- Atura el vídeo fent click a «volver a la configuración».
-- Descarrega el vídeo  clicant a «descargar».
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
 - Adjunta-la com a tasca.
-- Adjunta el vídeo.
 - Fotografia el paper utilitzat (la fotografia és per a tu, per a
   poder revisar l'examen si ho necessitessis).
 - Entrega els papers utilitzats.
+
 
 ## Preguntes
 
@@ -79,18 +97,10 @@
 
 <!-- C. SCRIPT ==================================================== -->
 <script>
-    window.texme = {
-        renderOnLoad: false,
-        style: 'none',
-        markdownURL: 'js/marked/marked.min.js',
-        MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
-    }
-    const titol = "Recuperació UT06 - part 1"; // MODIFICAR
-</script>
-<script src="js/texme/texme.js"></script>
 
-<script>
+
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Examen UT01 - MEDASP";
 const puntuacions = ["", 10];
 
 
@@ -101,78 +111,79 @@ const puntuacions = ["", 10];
 let p01 = "";
 const preguntes = [
   [
-    "Quina és la tensió nominal màxima que s'aplica a les LSMT descrites en el DYZ10000?",
-    "30 kV.",
-    "20 kV.",
-    "36 kV.",
-    "50 kV."
+    "Quan va tenir l'estil de vida basat en el consumisme el seu punt àlgid?",
+    "Al segle XX.",
+    "Al segle XIX.",
+    "Al segle XXI.",
+    "Al segle XVIII.",
   ],
   [
-    "Quin tipus d'aïllament utilitzen els cables de potència descrits en el DYZ10000?",
-    "Polietilè reticulat (XLPE).",
-    "PVC.",
-    "Paper impregnat.",
-    "EPR (Etilè Propilè)."
+    "Quins problemes implica",
+    "Sobreexplotació.",
+    "Esgotament de matèries primeres.",
+    "Grans quantitats de residus.",
+    "Totes són certes.",
   ],
   [
-    "Quina és la temperatura màxima admissible en el conductor durant un curtcircuit de menys de 5 segons?",
-    "250 ºC.",
-    "90 ºC.",
-    "180 ºC.",
-    "120 ºC."
+    "Per que els humans impulsaren el consumisme?",
+    "Eren males persones.",
+    "No eren conscients de les conseqüències, la tecnologia els permetia fabricar molt i barat. Es consumia molt simplement perquè podien.",
+    "Una societat secreta que desitja la destrucció del món va impulsar el consumisme per a esgotar els recursos naturals, colapsar els ecosistemes i degradar la vida a la terra.",
+    "Cap de les altres respostes és certa.",
   ],
   [
-    "Els suports de LAMT han de estar connectats a terra?",
-    "Sí, ja que el neutre s'ha de posar reiteradament a terra.",
-    "No, ja que la terra està formada pel conductor de terra que va a dalt de les linies (a vegades associat a la fibra òptica).",
-    "Sí, excepte en els de fusta que no són conductors.",
-    "Només els suports amb tensions superiors a 20 kV.",
+    "Quines són les característiques d'una economia lineal",
+    "Busca l'eficiència (màxim benefici, mínim cost), obtenir guany independentment del cost social (com la conciliació familiar o els riscos laborals) o mediambiental (genera contaminació i residus).",
+    "Segueix aquesta línia d'esdeveniments (fabrica, usa, recicla, fabrica usa recicla, etc.).",
+    "Depèn de d'utilització del carbó com a única font energètica.",
+    "Totes són certes.",
   ],
   [
-    "Identifica la creuera falsa",
-    "En bandera",
-    "En tresbolillo",
-    "Boveda",
-    "Zigzag",
+    "Què és el minimalisme?",
+    "Es basa en la reducció intencionada de les possessions materials i simplificació de l'espai físic i mental.",
+    "És la fabricació d'objectes cada vegada més petits.",
+    "És basa en consumir molt però poc a poc, fent compres molt petites però cada hora o inclus cada 20 minuts",
+    "Cap de les altres respostes és certa.",
   ],
   
   
   
+  
   [
-    "Es pot colocar una linia de MT a una safata?",
-    "Sí, sempre que estigui a més de 2,5 m d'altura.",
-    "No, sempre han d'anar soterrades, entubades o sobre aïlladors donat el seu elevat voltatge.",
-    "Sí, per exemple a les galeries visitables.",
-    "No, ja que les safates poden acumular aigua.",
+    "Per què és tan difícil reparar?",
+    "La falta de repercussió sobre el cost de l'esgotament de matèries primeres, fa que sigui més econòmic fabricar un objecte nou que reparar-lo.",
+    "Les fonts energètiques són molt econòmiques, el que fa que els processos realitzat per màquines que tenen gran pes en la fabricació siguin més barats que la mà d'obra humana que té molt de pes en la reparació.",
+    "La dificultat de la reparació per competir amb la fabricació fa que hi hagi pocs establiments especialitzats.",
+    "Totes són certes.",
   ],
   [
-    "Quina és la funció principal dels interruptors automàtics en una xarxa elèctrica de mitjana tensió?",
-    "Establir, mantenir i interrompre el corrent en condicions normals.",
-    "Establir, mantenir i interrompre el corrent en condicions normals i protegir contra sobretensions.",
-    "Seccionar una xarxa elèctrica fent visible el tall.",
-    "Establir, mantenir i interrompre el corrent en condicions normals, i protegir contra sobreintensitats i curtcircuits.",
+    "Blabla car és un exemple de ... ?",
+    "Economia col·laborativa.",
+    "Economia circular.",
+    "Economia lineal.",
+    "Economia verda",
   ],
   [
-    "Quin tipus d'interruptor utilitzen les cel·les d'un CT a interior d'edifici a les que arribaran les línies d'MT?",
-    "Interruptors amb hexafluorur de sofre (SF6).",
-    "Interruptors d'aire.",
-    "Interruptors d'oli.",
-    "Interruptors de buit.",
+    "Què és l'obsolescència programada?",
+    "L'envelliment natural dels essers vius",
+    "És la planificació de la fi de la vida útil d'un producte de manera que aquest es torni obsolet o inservible al cap d'un període calculat per endavant pel fabricant, durant la fase de disseny del producte o servei.",
+    "És una estratègia per a la reducció dels residus de tal manera que els residus es tornen obsolets i deixen de ser atractius disminuint el risc de robatori..",
+    "Totes són certes.",
   ],
   [
-    'Fixa\'t en la imatge d\'aquesta cel·la de línia Ormazabal, quins elements de maniobra o protecció du?<br/><img src="img/UT06_exam01_02.png">',
-    "Dos interruptors",
-    "Interruptor seccionador el de l'esquerra, seccionador el de la dreta",
-    "Interruptors automàtic el de l'esquerra, interruptor el de la dreta.",
-    "Interruptor el de l'esquerra, interruptor automàtic el de la dreta. ",
+  "Amb quines eines compten els governs per modificar la tendencia i portar l'economia a models més sostenibles",
+  "Prohibicions.",
+  "La promoció.",
+  "Prohibicions i promocions.",
+  "Cap de les altres respostes és certa.",
   ],
   [
-    "Quina és la funció de les autovàlvules en la protecció contra sobretensions?",
-    "Limitar el valor de les sobretensions derivant el corrent a terra.",
-    "Augmentar la resistència dielèctrica dels aïlladors.",
-    "Refredar els conductors durant sobrecàrregues.",
-    "Millorar la conductivitat dels cables.",
-],
+    "Que busca la gran muralla verda Africana o Xinesa",
+    "Aturar la desertificació.",
+    "Millorar el paisatge.",
+    "Obtenir fonts de fusta per a la fabricació de mobles.",
+    "Totes són certes.",
+  ],
 ];
 
 let permutacio = "";
@@ -246,7 +257,7 @@ let solucions = [""];   // els valors que ha donat el programa.
 let respostes = [""];   // els valors que ha donat l'alumne.
 let alumne = {
     nom: "",
-    cicle: "CFGS Tècnic superior en sistemes electrotècnics i automàtics",
+    cicle: "CFGM Técnic en instal·lacions elèctriques i automàtiques",
     anys: "2024/2025"
 }
 let tlog = "";          // log que apareix al final de l'avaluació.
