@@ -1,0 +1,516 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+
+    <style>
+
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+~~~
+&nbsp;
+    Permutació: [[p2]]
+&nbsp;
+~~~
+
+## Normes:
+- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
+  Pots utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/)
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Està terminantment prohibit copiar o mirar al company.
+- No es poden fer preguntes. Part de l'avaluació és la comprensió del
+  text. Si hi ha algun error es parlarà una vegada l'examen hagi
+  finalitzat, i en el seu cas s'anul·larà la pregunta.
+- L'examen dura el que indiqui la tasca associada i **es tanca
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
+
+## Com fer aquest examen:
+- Agafa paper
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis copia les respostes sense espais i tot seguit, al camp
+  «resposta», si no la saps n. Per exemple: abnaac
+- Omple el teu nom i clica a avaluar.
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
+- Adjunta-la com a tasca.
+- Fotografia el paper utilitzat (la fotografia és per a tu, per a
+  poder revisar l'examen si ho necessitessis).
+- Entrega els papers utilitzats.
+
+
+## Preguntes
+
+[[p1]]
+
+## Resposta
+
+[[i1]]
+
+
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Examen 2a convocatòria - Trimestre 1 - Part A";
+const puntuacions = ["", 10];
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+
+let p01 = "";
+const preguntes = [
+[
+  "Per què es va desenvolupar la cultura «d'un sol ús» en el segle XX?",
+  "Per la necessitat de crear nous llocs de treball.",
+  "Per la falta de consciència sobre els efectes del consumisme.",
+  "Per l'escassetat de recursos naturals determinats.",
+  "Per la conscienciació social amb el reciclatge i el medi ambient.",
+],
+[
+  "Qué intenta promoure l'economia circular?",
+  "Maximitzar el guanys de les empreses.",
+  "Emprar recursos naturals de manera ineficient.",
+  "Reduir, reutilitzar, reciclar i regenerar productes per a reduir residus.",
+  "Generar productes biodegradables.",
+],
+[
+  "L'economia lineal es caracteritza per...",
+  "La prolongació de la vida útil dels productes.",
+  "L'obtenció de guanys i cerca de l'eficiencia sense considerar els costos socials i mediambientals",
+  "El benestar social.",
+  "La inversió en nous sistemes de producció sostenibles.",
+],
+[
+  "Quines són les característiques d'una economia lineal",
+  "Busca l'eficiència (màxim benefici, mínim cost), obtenir guany independentment del cost social (com la conciliació familiar o els riscos laborals) o mediambiental (genera contaminació i residus).",
+  "Segueix aquesta línia d'esdeveniments (fabrica, usa, recicla, fabrica usa recicla, etc.).",
+  "Depèn de d'utilització del carbó com a única font energètica.",
+  "Totes són certes.",
+],
+[
+  "Què és el minimalisme?",
+  "Es basa en la reducció intencionada de les possessions materials i simplificació de l'espai físic i mental.",
+  "És la fabricació d'objectes cada vegada més petits.",
+  "És basa en consumir molt però poc a poc, fent compres molt petites però cada hora o inclus cada 20 minuts",
+  "Cap de les altres respostes és certa.",
+],
+
+
+
+
+[
+  "Per què és tan difícil reparar?",
+  "La falta de repercussió sobre el cost de l'esgotament de matèries primeres, fa que sigui més econòmic fabricar un objecte nou que reparar-lo.",
+  "Les fonts energètiques són molt econòmiques, el que fa que els processos realitzat per màquines que tenen gran pes en la fabricació siguin més barats que la mà d'obra humana que té molt de pes en la reparació.",
+  "La dificultat de la reparació per competir amb la fabricació fa que hi hagi pocs establiments especialitzats.",
+  "Totes són certes.",
+],
+[
+  "Blabla car és un exemple de ... ?",
+  "Economia col·laborativa.",
+  "Economia circular.",
+  "Economia lineal.",
+  "Economia verda",
+],
+[
+  "Què és l'obsolescència programada?",
+  "Fabricar productes que de manera intencionada deixen de funcionar o disminueixen les seves prestacions passat un temps.",
+  "Que els programes informàtics s'hagin de pagar cada any mitjançant una subscripció",
+  "Fabricar productes de poca qualitat.",
+  "Marca aquesta si no pots marcar cap de les altres respostes",
+],
+[
+  "Quan varen aparèixer els primers abocadors tal com el coneixem avui dia?",
+  "Al neolític.",
+  "Al renaixement.",
+  "Al segle IV.",
+  "Al segle XIX.",
+],
+[
+  "Quina d'aquestes creus que és una relació entra la revolució industrial i la cultura «d'un sol ús»?",
+  "La revolució industrial va provocar un abaratiment i abundància de béns que feren que la gent comprés productes que ja tenia per a substituir els vells.",
+  "A la revolució industrial es cremava carbó i, per tant, s'emetien molts de gasos contaminants.",
+  "La revolució industrial es va desenvolupar la indústria que utilitzava materials nocius com el mercuri o l'urani.",
+  "La revolució industrial va crear el concepte d'elements que només servien per a una cosa (per exemple un obre llaunes només serveis per a obrir llaunes), és a dir productes d'un sol ús",
+],
+
+
+
+
+[
+  "Quina fase de l'economia circular se centra més en la reducció del consum d'energia, de les matèries primeres i de les emissions?",
+  "Producció sostenible",
+  "Disseny sostenible",
+  "Distribució",
+  "Reutilització",
+],
+[
+  "Què implica el concepte de «sostenibilitat» en l'economia circular?",
+  "L'ús racional dels recursos per a un desenvolupament més sostenible.",
+  "Sostenir en el temps el model d'un sol ús.",
+  "Emprar les fonts d'energia més barates, encara que contaminin més, ja que són econòmicament més sostenibles.",
+  "La reducció de costos per sobre de tot.",
+],
+[
+  "L'empremta ambiental és:",
+  "Una mesura de l'impacte de l'activitat humana.",
+  "Una mesura de l'empremta de carboni.",
+  "Una puntuació amb la qual la Conselleria qualifica les indústries.",
+  "Una avaluació de la qualitat de l'empresa.",
+],
+[
+  "Quin és un dels desavantatges de l'economia circular esmentats als apunts?",
+  "Complexitat i costos inicials.",
+  "Falta d'interès per part dels consumidors.",
+  "Absència de beneficis econòmics.",
+  "Dependència excessiva de recursos no renovables.",
+],
+[
+  "Quin va ser el moviment inspirat per Greta Thunberg mencionat als apunts?",
+  "#Fridaysforfuture.",
+  "#SaveThePlanet.",
+  "#ClimateActionNow.",
+  "#ZeroWaste.",
+],
+];
+
+let permutacio = "";
+const num_preg = preguntes.length;
+const num_resp = preguntes[0].length-1;
+const fact_np = factorial(num_preg);
+const fact_nr = factorial(num_resp);
+/*let ordre_preg = Math.floor(aleat(0, fact_np - 1)/1e16)*/;
+let ordre_preg = aleat(0, fact_np - 1);
+
+console.log(ordre_preg)
+permutacio += ordre_preg + "_";
+//ordre_preg *= 1e16;
+
+const preg_ordenades = obtenirPermutacio(preguntes, ordre_preg);
+
+for (let i = 0; i < num_preg; i++){
+    p01 += '<p><b>' + (i+1) + '.</b> ' + preg_ordenades[i][0] + '</p>';
+    let ordre_resp = aleat (0, fact_nr - 1);
+    permutacio += ordre_resp + ".";
+
+    let resp = obtenirPermutacio(preg_ordenades[i].slice(1), ordre_resp);
+    p01 += '<ol style="list-style-type: none;">'
+    for (let j = 0; j < num_resp; j++){
+        p01 += '<li class="preg"><span><i>' + nombreALletra(j+1) +
+               '</i>) </span><span style="flex: 1;">' +
+               resp[j] + "</span></li>"
+    }
+    p01 += "</ol>"
+}
+
+p02 = permutacio;
+
+
+
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+// !!! CONVERTIR si és necessari les unitats a les unitats que requereix
+// el nostre enunciat.
+
+function estableixParametres(){
+    array = [
+      p01, p02
+    ];
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+}
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGM Técnic en instal·lacions elèctriques i automàtiques",
+    anys: "2024/2025"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    respostes[0] = document.getElementById("i1").value
+    alumne.nom = document.getElementById("nom").value;
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) serà qualificat manualment.",
+    "",
+    ].join("\n") + "\n";
+    txt += txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    patro = "[[i1]]";
+    canvi = "~~~\n    " + respostes[0] + "\n\n\n~~~";
+
+    txt = txt.replace(patro, canvi);
+
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+</script>
