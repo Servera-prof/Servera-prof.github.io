@@ -1,0 +1,126 @@
+<!DOCTYPE html><head> <link rel="icon" type="image/x-icon" href=img/favicon.png><meta charset="UTF-8"><link rel="stylesheet" type="text/css" href="css/main.css" /></head><textarea id="enunciat">
+
+# Configuració inicial Git i GitHub
+
+## Crear les claus ssh
+
+Crear un directori i a dins crear un parell de clau publica i privada
+
+```
+cd ~
+mkdir .ssh
+cd .ssh/
+ssh-keygen -t ed25519 -C "jservera@politecnicllevant.cat"
+wrgwergerg reg regqergqergrgqerg qgqeegg ergqergergq rgqregqregqer qgqergqrg qergqergqerg qrgqerg
+```
+
+Després d'executar la darrera ordre ens demanarà una clau, la introduïm.
+
+A continuació, s'executa l'agent ssh en segon pla (es important recalcar 
+que aquesta ordre que ve a continuació s'ha provat a Fedora i Linux 
+Mint, però Github avisa que potser se n'ha d'executar una altra, en 
+aquest cas consultar la documentació de GitHub és de gran ajuda).
+
+Després es demana un nom per l'arxiu, si no s'indica res queda el que 
+dona per defecte. Per exemple: `politec`
+
+```
+eval "$(ssh-agent -s)"
+```
+
+Afegim la clau a l'agent
+
+```
+ssh-add ~/.ssh/politec
+```
+
+## Afegir les claus a GitHub
+
+Per afegir la clau a GitHub es seguiran els següents pasos:
+
+1. Es copia la clau pública SSH al porta-retalls. Sense afegeir salts de 
+línia  ni espais en blanc.
+
+```
+cat ~/.ssh/politec.pub
+```
+
+2. A la cantonada superior dreta de qualsevol pàgina de GitHub, es fa 
+clic a la imatge de perfil i després a Paràmetres (Settings).
+3. A la secció «Accés» (Access) de la barra lateral, s'ha de fer clic a 
+Claus SSH i GPG (SSH and GPG keys).
+4. Clic a Nova clau SSH (New SSH key) o Afegeix clau SSH (Add SSH key).
+5. Al camp «Títol», s'escriu una etiqueta descriptiva per a la nova 
+clau. Per exemple `Politecnic Llevant 2025`.
+6. Seleccionar el tipus de clau, d’autenticació en aquest cas.
+7. Al camp «Clau», s'ha de enganxar la clau pública.
+8. Fer clic a Afegeix clau SSH (Add SSH key).
+
+Si es demana, confirma l’accés al teu compte de GitHub.
+
+## Clonar el repositori
+
+Clonant el repositori, es configuren automàticament una sèrie d'elements
+com el remot.
+
+```
+cd ~
+mkdir git
+cd git/
+git clone git@github.com:Servera-prof/Servera-prof.github.io.git
+cd Servera-prof.github.io/
+```
+
+## Configurar usuari i email global
+
+```
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+```
+
+
+## Modificar i actualitzar el repositori
+
+Es crea o modifica algun arxiu i després:
+
+```
+git add .
+git add -u
+git commit -m "missatge"
+git push -u origin main
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+</textarea>
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
