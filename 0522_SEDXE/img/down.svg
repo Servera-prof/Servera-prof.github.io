@@ -25,13 +25,13 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="0.44988075"
-     inkscape:cx="395.66041"
+     inkscape:cx="396.77181"
      inkscape:cy="-18.893896"
-     inkscape:window-width="1342"
-     inkscape:window-height="715"
-     inkscape:window-x="12"
-     inkscape:window-y="10"
-     inkscape:window-maximized="0"
+     inkscape:window-width="1366"
+     inkscape:window-height="707"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
      id="defs1">
@@ -84,12 +84,12 @@
        id="path6"
        sodipodi:nodetypes="ccccc" />
     <path
-       style="fill:#32cd32;fill-opacity:1;stroke:none;stroke-width:0.396875"
+       style="fill:#d42c6c;fill-opacity:1;stroke:none;stroke-width:0.396875"
        d="m 20.189449,173.78501 v -15 h 35 l 15,15 z"
        id="path8"
        sodipodi:nodetypes="ccccc" />
     <path
-       style="fill:#175e17;fill-opacity:1;stroke:none;stroke-width:0.396875"
+       style="fill:#9e2050;fill-opacity:1;stroke:none;stroke-width:0.396875"
        d="m 0.1894485,173.78501 v -20 H 30.189449 l 20,20 z"
        id="path7"
        sodipodi:nodetypes="ccccc" />

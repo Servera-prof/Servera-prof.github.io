@@ -7,7 +7,7 @@
    viewBox="0 0 210 33.032868"
    version="1.1"
    id="svg1"
-   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
    sodipodi:docname="top.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -24,11 +24,11 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="1.799523"
-     inkscape:cx="564.59406"
-     inkscape:cy="162.54307"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="444.59339"
+     inkscape:cy="148.13887"
      inkscape:window-width="1920"
-     inkscape:window-height="1011"
+     inkscape:window-height="988"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -66,7 +66,7 @@
        id="g8"
        transform="translate(0,130.70417)">
       <rect
-         style="fill:#175e17;fill-opacity:1;stroke:none;stroke-width:0.247106;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         style="fill:#9e2050;fill-opacity:1;stroke:none;stroke-width:0.247106;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
          id="rect12641"
          width="40"
          height="10"
@@ -91,54 +91,96 @@
          d="M 147.83011,0.82005968 166.23802,1.0600412"
          id="path3" />
       <path
-         style="fill:#639c63;fill-opacity:1;stroke:none;stroke-width:0.396875"
+         style="fill:#9a667c;fill-opacity:1;stroke:none;stroke-width:0.396875"
          d="m 170.33085,6.6195226 16,-0.327 L 210,26.292523 h -11.66915 z"
          id="path5"
          sodipodi:nodetypes="ccccc" />
       <path
-         style="fill:#32cd32;fill-opacity:1;stroke:none;stroke-width:0.396875"
+         style="fill:#d42c6c;fill-opacity:1;stroke:none;stroke-width:0.396875"
          d="m 155,0 h 16 l 28,20 h -16 z"
          id="path4"
          sodipodi:nodetypes="ccccc" />
       <path
-         style="fill:#175e17;fill-opacity:1;stroke:none;stroke-width:0.396875"
+         style="fill:#9e2050;fill-opacity:1;stroke:none;stroke-width:0.396875"
          d="m 168,0 42,30 V 0 Z"
          id="path2"
          sodipodi:nodetypes="cccc" />
-      <path
-         style="fill:#32cd32;fill-opacity:1;stroke-width:0.453039"
-         d="m 121.77029,23.960473 -1.04883,-0.621991 v -1.282656 -1.282657 l 1.03013,-0.606301 c 0.56657,-0.333464 1.05912,-0.606302 1.09454,-0.606302 0.0354,0 0.54456,0.274768 1.1314,0.610596 l 1.067,0.610597 -0.0339,1.276309 -0.0339,1.27631 -1.01887,0.62102 c -0.56037,0.34156 -1.04583,0.62238 -1.0788,0.624043 -0.033,0.0018 -0.5319,-0.276874 -1.10876,-0.618968 z"
-         id="path54" />
-      <path
-         style="fill:#175e17;fill-opacity:1;stroke-width:0.453039"
-         d="m 116.40626,28.183481 c -1.52217,-0.258082 -3.24923,-1.434107 -4.14571,-2.822988 -1.24597,-1.930316 -1.25861,-4.617247 -0.0308,-6.544433 1.18502,-1.859999 3.0516,-2.888746 5.25529,-2.896407 1.38743,-0.0048 2.42195,0.305661 3.51829,1.055929 0.72519,0.496268 1.7588,1.616886 1.75271,1.900243 -0.002,0.07994 -0.57311,0.456822 -1.26976,0.837524 l -1.26664,0.692184 -0.44348,-0.456985 c -1.20527,-1.241942 -3.08776,-1.315171 -4.35594,-0.169445 -0.73918,0.667801 -0.98621,1.243595 -0.98621,2.298659 0,1.021412 0.23513,1.596834 0.9129,2.234078 0.58123,0.546474 1.13199,0.786398 1.95726,0.852646 0.9432,0.07571 1.77891,-0.265857 2.46102,-1.00585 l 0.48764,-0.529036 1.25317,0.751437 c 0.68924,0.413294 1.25317,0.814342 1.25317,0.891227 0,0.295966 -1.10866,1.481124 -1.8257,1.951686 -1.2784,0.83895 -3.03835,1.211969 -4.52722,0.959531 z"
-         id="path50" />
-      <path
-         style="fill:#32cd32;fill-opacity:1;stroke-width:0.453039"
-         d="m 112.07582,31.94473 c -0.67028,-0.415994 -0.70395,-0.595628 -0.70395,-3.755486 V 25.28779 l 0.52014,0.706559 c 0.56997,0.774247 1.32969,1.474133 2.02703,1.867393 l 0.44949,0.253493 v 1.422279 c 0,1.546289 -0.10412,1.911216 -0.67303,2.358718 -0.38821,0.305366 -1.16815,0.328721 -1.61968,0.0485 z"
-         id="path1" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.22924px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.14523"
-         x="155.6357"
-         y="24.762119"
-         id="text74"><tspan
-           sodipodi:role="line"
-           id="tspan74"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.22924px;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';stroke-width:0.14523"
-           x="155.6357"
-           y="24.762119">Pau Casesnoves</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.8768px;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.1798"
-         x="155.56671"
-         y="28.355568"
-         id="text77"><tspan
-           sodipodi:role="line"
-           id="tspan77"
-           style="font-size:2.8768px;stroke-width:0.1798"
-           x="155.56671"
-           y="28.355568">Centre Integrat de Formació Professional</tspan></text>
+      <g
+         id="g11"
+         transform="translate(-5.0513941,-0.37417734)">
+        <g
+           id="g9-3"
+           transform="translate(0.95395779,0.17032817)"
+           style="fill:#9e2050;fill-opacity:1;stroke-width:0;stroke-dasharray:none">
+          <ellipse
+             style="fill:#9e2050;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+             id="path1-5"
+             cx="145.78944"
+             cy="20.42042"
+             rx="2"
+             ry="2.25" />
+          <path
+             style="fill:#9e2050;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+             d="m 149.80378,16.288411 c -0.94778,-0.70545 -3.75439,-0.44119 -3.6711,0.777214 0.0833,1.218404 3.25854,1.210639 2.71198,3.588412 -0.54657,2.377773 -2.24896,2.381249 -2.24896,2.381249 0,0 0.47666,3.593953 1.32292,3.753776 0.84625,0.159824 2.11667,10e-7 2.11667,10e-7 -0.2856,-0.516563 -1.58541,-0.728859 -1.58751,-2.513543 -0.002,-1.784683 1.48287,-2.153421 1.63711,-4.134114 0.15425,-1.980693 -1.84355,-1.930852 -1.93476,-2.563151 -0.0912,-0.632298 0.589,-0.942845 1.65365,-1.289844 z"
+             id="path6-6"
+             sodipodi:nodetypes="czzczczzzc" />
+          <ellipse
+             style="fill:#9e2050;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+             id="path7-2"
+             cx="142.16641"
+             cy="26.751173"
+             rx="1.375"
+             ry="1.5" />
+          <path
+             style="fill:#9e2050;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+             d="m 149.69265,27.62557 c 0,0 -1.91712,0.330649 -2.72327,-0.429032 -0.80616,-0.759681 -1.20251,-3.898568 -1.20251,-3.898568 0,0 -2.66338,-0.39174 -2.3908,1.14215 0.27257,1.533889 0.87581,1.30772 0.96284,2.968369 0.087,1.660649 -3.06241,1.370092 -3.06241,1.370092 0,0 -0.17815,1.198934 0.48994,1.997506 0.66809,0.798572 2.02207,1.029231 2.02207,1.029231 -0.12975,0.09268 2e-4,-2.930769 2.54271,-3.169646 2.54252,-0.238878 2.53891,3.986251 2.53891,3.986251 l 0.79488,-0.206214 z"
+             id="path8-9"
+             sodipodi:nodetypes="czczzczczccc" />
+          <ellipse
+             style="fill:#9e2050;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+             id="path9-1"
+             cx="146.25546"
+             cy="30.765623"
+             rx="0.89999998"
+             ry="1" />
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.30273px;line-height:0;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+           x="199.22313"
+           y="17.070284"
+           id="text9"
+           transform="scale(0.76123036,1.3136628)"><tspan
+             id="tspan9"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.30273px;line-height:0;font-family:'DIN Pro';-inkscape-font-specification:'DIN Pro';fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+             x="199.22313"
+             y="17.070284"
+             sodipodi:role="line">POLITÈCNIC</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.83894px;line-height:0;font-family:'DIN Pro';-inkscape-font-specification:'DIN Pro';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+           x="145.62457"
+           y="31.60535"
+           id="text10"
+           transform="scale(1.0419161,0.95977017)"><tspan
+             sodipodi:role="line"
+             id="tspan10"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+             x="145.62457"
+             y="31.60535">LLEVANT</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.35415px;line-height:0;font-family:'Bebas Neue';-inkscape-font-specification:'Bebas Neue';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+           x="178.33594"
+           y="27.541325"
+           id="text11"
+           transform="scale(0.85192024,1.1738188)"><tspan
+             sodipodi:role="line"
+             id="tspan11"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DIN Pro';-inkscape-font-specification:'DIN Pro';fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+             x="178.33594"
+             y="27.541325">CENTRE INTEGRAT DE FORMACIÓ PROFESSIONAL</tspan></text>
+      </g>
     </g>
   </g>
 </svg>
