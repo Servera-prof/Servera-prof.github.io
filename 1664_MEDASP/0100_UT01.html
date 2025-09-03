@@ -1,70 +1,9 @@
-<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
 <!DOCTYPE html>
 <head>
-    <title id="titol"></title>
     <link rel="icon" type="image/x-icon" href=img/favicon.png>
     <meta charset="UTF-8">
-    <style>
-        p{
-            text-align: justify;
-            text-justify: inter-word;
-        }
-        img[alt="c"]{
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        img[alt="c500"]{
-            width: 500px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        img[alt="c250"]{
-            width: 250px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        img[alt="250"]{
-            width: 250px;
-        }
-        img[alt="fr250"]{
-            width: 250px;
-            float: right;
-            margin: 0 0 0 0.7em;
-        }
-        img[alt="fr"]{
-            float: right;
-            margin: 0 0 0 0.7em;
-        }
-        img[alt="fl250"]{
-            width: 250px;
-            float: left;
-            margin: 0 .7em 0 0;
-        }
-        img[alt="fl"]{
-            float: left;
-            margin: 0 5px 0 0;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
 </head>
-
-<script>
-window.texme = {
-    renderOnLoad: false,
-    markdownURL: 'js/marked/marked.min.js',
-    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
-}
-</script>
-<script src="js/texme/texme.js"></script>
-<!-- FI NO TOCAR ================================================== -->
-
-
-
-
-<!-- B. ENUNCIAT ================================================== -->
 <textarea id="enunciat">
 
 ## 0. Introducció
@@ -238,22 +177,20 @@ s'han dut a terme per a reduir o limitar l'ús de plàstics.
 
 <!-- C. SCRIPT ==================================================== -->
 <script>
-
-const titol = "UT01 - Economia lineal i economia circular"; // MODIFICAR
-
-let txtEnunciat = "";   // l'enunciat de l'apartat B.
-window.onload = function (){
-    // txtEnunciat és una variable global
-    txtEnunciat = document.getElementById("enunciat").value;
-    renderEnunciat();
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
 }
+</script>
 
-function renderEnunciat(){
-    let txt = "";
-    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
-          txtEnunciat;
-    document.getElementById("enunciat").innerHTML = txt;
-    document.getElementById("titol").innerText = titol;
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
     texme.renderPage();
 }
 
