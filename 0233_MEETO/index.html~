@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+0233 - Electrònica per alumnes de CFGM
+======================================
+
+
+Temari
+------
+
+- [UT01 - Introducció a l'electrònica digital i sistemes de numeració.](0100_UT01.html)
+
+Exercicis
+---------
+
+### UT01 - Introducció a l'electrònica digital i sistemes de numeració
+
+- [Exercici 01](0110_UT01_exer01.html)
+
+
+[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

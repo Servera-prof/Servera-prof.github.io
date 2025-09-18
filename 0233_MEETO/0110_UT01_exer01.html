@@ -8,29 +8,10 @@
 </head>
 <textarea id="enunciat">
 
-**1.** Converteix el nombre [[p1]] de binari a decimal 
+Converteix el nombre [[p1]] de binari a decimal, aplicant el mètode
+vist a classe:
 
 [[itxt1]]
-
-**2.** Converteix el nombre [[p2]] de decimal a binari 
-
-[[itxt2]]
-
-**3.** Converteix el nombre [[p3]] d'hexadecimal a decimal 
-
-[[itxt3]]
-
-**4.** Converteix el nombre [[p4]] de decimal a hexadecimal
-
-[[itxt4]]
-
-**5.** Converteix el nombre [[p5]] de binari a hexadecimal
-
-[[itxt5]]
-
-**6.** Converteix el nombre [[p6]] d'hexadecimal a binari 
-
-[[itxt6]]
 
 
 </textarea>
@@ -57,9 +38,8 @@ window.texme = {
 
 <script>
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Exercici 01";
+const titol = "De binari a decimal - Exercici 01";
 const puntuacions = ["",
-    1, 1, 1, 1, 1,
     1,
 ];
 const π = 3.141592654;
@@ -69,24 +49,14 @@ const π = 3.141592654;
 // ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
 
 const nd1 = aleat(0,1023);          // Nombre decimal 1
-const nd2 = aleat(0,1023);          // Nombre decimal 2
-const nd3 = aleat(0,1023);          // Nombre decimal 3
-const nd4 = aleat(0,1023);          // Nombre decimal 4
-const nd5 = aleat(0,1023);          // Nombre decimal 5
-const nd6 = aleat(0,1023);          // Nombre decimal 6
 
 p01 = binari(nd1);
-p02 = nd2;
-p03 = hexadecimal(nd3);
-p04 = nd4;
-p05 = binari(nd5);
-p06 = hexadecimal(nd6);
+
 
 
 // ## 2.2 FUNCIO (actualitzar) ----------------------------------------
 function estableixParametres(){
-    p = [p01, p02, p03, p04, p05,
-         p06,
+    p = [p01
     ];
     parametres = parametres.concat(p);
 }
@@ -99,16 +69,10 @@ function estableixParametres(){
 function calcula(){
 
 s01 = nd1;
-s02 = binari(nd2);
-s03 = nd3;
-s04 = hexadecimal(nd4);
-s05 = hexadecimal(nd5);
-s06 = binari(nd6);
 
 
 solucions = [""].concat([
-    s01, s02, s03, s04, s05,
-    s06
+    s01
 ]);
 
 

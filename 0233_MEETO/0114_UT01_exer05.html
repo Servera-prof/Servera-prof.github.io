@@ -1,0 +1,472 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+Converteix el nombre [[p1]] de binari a hexadecimal
+
+[[itxt1]]
+
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT TEXME================================================ -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+
+
+<script>
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "De binari a hexadecimal - Exercici 5";
+const puntuacions = ["",
+    1
+];
+const π = 3.141592654;
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+
+
+const nd1 = aleat(0,1023);          // Nombre decimal 1
+
+
+p01 = binari(nd1);
+
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+function estableixParametres(){
+    p = [p01
+    ];
+    parametres = parametres.concat(p);
+}
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+
+s01= hexadecimal(nd1);
+
+
+
+solucions = [""].concat([
+    s01
+]);
+
+
+// ## 3.2 LOG ---------------------------------------------------------
+
+}
+
+
+
+
+
+
+
+/* *********************************************************************
+ *                                                                     *
+ *                    ~~~~ ENTRENADOR SERVERI ~~~~                     *
+ *                                                                     *
+ ******************************************************************** */
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGM Tècnic en instal·lacions elèctriques i automàtiques",
+    anys: "2024/2025"
+}
+let ptsTotal = 0;
+let ptsAlumne = 0;
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="number" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 80px">';
+        txt = txt.replace(patro, canvi);
+    }
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[itxt" + i +"]]";
+        canvi = '<input type="text" ';
+        canvi += 'id="itxt'+ i +'" style="width: 200px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    let r = [""];
+    alumne.nom = document.getElementById("nom").value;
+    for (let i = 1; i < puntuacions.length; i++){
+        a = document.getElementById("i"+i);
+        b = document.getElementById("itxt"+i);
+        if (a != null){
+          r[i] = xs(a.value);
+        } else{
+          r[i] = b.value;
+        }
+    }
+    respostes = r.slice(); 
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol + "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+    "",
+    "> [[nota]]"
+    ].join("\n") + "\n";
+    txt += "## Enunciat\n\n" + txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    let pts = 0;
+    let canvi = "", patro = "", resp = "", solu = "";
+    let acceptada = false;
+    for (let i = 1; i < puntuacions.length; i++){
+        pts = puntuacions [i];
+        resp = respostes[i];
+        solu = solucions[i];
+        ptsTotal += puntuacions[i];
+        
+        patro = "[[i" + i + "]]";
+        if (txt.includes(patro)){
+            canvi = fnum (resp, solu, pts);
+            txt = txt.replace(patro, canvi);
+        }
+        
+        patro = "[[itxt" + i + "]]";
+        if (txt.includes(patro)){
+            console.log(solu);
+            canvi = ftxt (resp, solu, pts);
+            txt = txt.replace(patro, canvi);
+        }
+        
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    return txt;
+}
+
+function fnum (resp, solu, pts){     // formata una resposta i solució numèrica
+    if (!isNaN(solu)){
+        acceptada = (solu*0.99) <= resp && resp <= (solu*1.01);
+    } else{
+        return "ERROR";
+    }
+    
+    canvi =
+    '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">' +
+        coma(resp) + '</span>';
+    if (acceptada) {
+        ptsAlumne += pts;
+        canvi +=
+            ' <span style="color: green">(' + coma(solu) + ') OK (+' + pts + 
+            ')</span>';
+    }else{
+        canvi +=
+            ' <span style="color: red;"> (' + coma(solu) + ')</span>';
+    }
+    return canvi;
+}
+
+function ftxt (resp, solu, pts){          // formata una resposta i solució de texte
+    acceptada = (resp == solu);
+    
+    canvi =
+    '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">' +
+        "" + resp + '</span>';
+    if (acceptada) {
+        ptsAlumne += pts;
+        canvi +=
+            ' <span style="color: green">(' + "" + solu + ') OK (+' + 
+            pts + ')</span>';
+    }else{
+        canvi +=
+            ' <span style="color: red;"> (' + "" + solu + ')</span>';
+    }
+    return canvi;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function tan(a){
+    return Math.tan(a*2*π/360);
+}
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function asin(a){
+    return Math.asin(a)*360/2/π;
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function acos(a){
+    return Math.acos(a)*360/2/π;
+}
+
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a, b = 4){  // log abreviat a l totsol
+    return coma(xs(a, b));
+}
+
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return a;
+}
+
+function coma(a){
+    a = a + "";
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+function binari(n) {
+    a = n;
+    return a.toString(2).toString();
+}
+
+function hexadecimal(n) {
+    a = n;
+    return a.toString(16).toUpperCase();
+}
+
+
+</script>

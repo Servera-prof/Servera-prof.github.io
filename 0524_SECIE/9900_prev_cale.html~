@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+# Previsió de calendari
+
+## UT01
+
+1. Reals decrets REBT i Articulat, CTE, NRZ, UNEs i Certificació energètica.
+2. ITC-BT06 i ITC BT-07. Relació amb les NRZ.
+3. Instal·lacions d'enllaç. Generalitats. Presentació NRZ103. ITC-BT 12 Esquemes
+4. ITC-BT-13 i NRZ103.5 i NRZ 103.7 (CGP i CPM)
+5. ITC-BT-14 i NRZ103.6 (LGA)
+6. ITC-BT-15 i NRZ103.9 (DI)
+7. ITC-BT-16 i NRZ103.8 (Comptadors)
+8. ICT-BT-17 i NRZ103.10 (IGA, ICP, etc.)
+9. Exercicis
+10. Equips de mesura. Comptador de lectura directa i semiindirecta. Comptadors electrònics i Tarificació.
+
+---
+
+11. Exercicis.
+12. ITC-BT-18 i ITC-BT 08 (Terres).
+13. ITC-BT-BT-19 i ITC-BT-20 (Instal·lacions Interiors, generalitats i sistemes d'instal·lació).
+14. ITC-BT-22, ITC-BT-23 i ITC-BT-24 (Proteccións sobrecàrregues i cc, sobretensións, contactes indirectes).
+15. ITC-BT-25, ITC-BT-26 i ITC-BT-27 (Instal·lacions a habitatges).
+16. ITC-BT-28 (Local pública concurrència i enllumenat d'emergències).
+17. Introducció pròxima UT (instal·lacions amb fins especials).
+18. ITC-BT-19, ITC-BT-20 i UNE-HD 60364-5-52:2014 (Cables).
+19. ITC-BT-21 Tubs i canals.
+20. UNE 20324, UNE-EN 50102, Annex I Guia Tècnica REBT (còdis IP i IK).
+
+---
+
+21. Examen RA1.
+22. Repàs.
+23. Exercicis.
+24. Recuperació RA1.
+
+
+
+
+## UT02
+
+1. ITC-BT-29 (Instal·lacions a locals amb risc d'incendi i explosió).
+2. ITC-BT-30 (Instal·lacions a locals de caracteristiques especials).
+3. ITC-BT-31 (Piscines i fonts).
+4. ITC-BT-38. Quirofans.
+5. ITC-BT-33 Instal·lacions temporals i d'obres. Quadres d'obra i elements de potència.
+6. ITC-BT-32, ITC-BT-34, ITC- BT-35, ITC-BT-39 (Màquines elevadores, Fires i Stands, Establiments hortícoles, tancats per animals).
+7. ITC-BT-36 i ITC-BT-37 (Instal·lacions a MBTS i Instal·lacions amb tensions especials).
+8. ITC-BT-40, ITC-BT-41, ITC-BT-42, ITC-BT-49, ITC-BT-50, ITC-BT-51, 52 (Altres ITCs).
+9. Exercicis
+10. Exercicis
+
+---
+
+11. Examen RA2
+12. Repàs
+13. Exercicis.
+14. Recuperació RA2
+
+## UT03
+
+De la sessió 1 fins a la 20 s'engloben a dins d'un projecte d'edifici
+ d'habitatges i de local de pública concurrencia
+
+1. Previsió de càrregues de l'edifici aplicant ITC-BT-10.
+2. Dimensionament CGP i LGA, aplicant NRZ103.5 i NRZ103.6 i ITC-BT-12, ITC-BT-13 i ITC-BT-14
+3. Dimensionament sistema de terres.
+4. Dimensionament Centralització Comptadors amplicant NRZ103.8 i NRZ103.9 I ITC-BT-16.
+5. Exercicis.
+6. Dimensionament de les DI dels habitatges i locals aplicant ITC-BT-15 i NRZ103.9.
+7. Exercicis.
+8. Determinació de la Potència instalada, PMA i potència a contractar. Coeficients de simultaneitat. IGA.
+9. Nombre de circuits a habitatges i càlcul de circuits aplicant ITC-BT-25. Nombre de circuits a locals de pública concurrència aplicant ITC-BT-28.
+10. Dimensionament de conductors.
+
+---
+
+11. Exercicis.
+12. Dimensionament de tubs.
+13. Exercicis.
+14. Dimensionament d'elements de protecció.
+15. Exercicis.
+16. Dimensionament de quadres.
+17. Primera entrega de projecte. Memòria.
+18. Segona entrega de projecte. Plantilla PPT.
+19. Tercera entrega de projecte. Descompost i Plantilla Pressupost i amidaments.
+20. Correcció de projecte.
+
+---
+
+21. 4a entrega de projecte. Memòria (2).
+22. 5a entrega de projecte. Plantilla PPT (2).
+23. 6a entrega de projecte. Descompost i Plantilla Pressupost i amidaments (2).
+24. Correcció de projecte.
+25. Exàmen RA 3.
+26. Repàs
+27. Exercicis.
+28. Exercicis.
+29. Recuperació RA 3.
+
+
+
+## UT04
+
+De la sessió 1 fins a la 30 s'engloben a dins d'un projecte d'edifici
+ d'habitatges i de local de pública concurrencia
+
+1. Incorporació a la memòria de les especificacions de disseny. CTE-DB-SUA 4, CTE-DB-SI 3, CTE-DB-HE 3, CTE-DB-HE 6.
+2. Plànol traçat i ubicació elements utilitzant simbologia específica i aplicant UNEs.
+3. Plànol traçat i ubicació elements utilitzant simbologia específica i aplicant UNEs.
+4. Annex de calculs. Circuits.
+5. Correcció.
+6. Annex de càlculs. cdt.
+7. Correcció
+8. Annex de càlculs. I_max.
+9. Correcció.
+10. Annex de càlculs. Canalitzacions i safates.
+
+---
+
+11. Correcció.
+12. Selecció d'equips a tenda online. Incorporació fitxes al PPT.
+13. Correcció
+14. Esquema unifilar.
+15. Correcció.
+16. Annex de calculs. Circuits (2).
+17. Correcció.
+18. Annex de càlculs. cdt (2).
+20. Correcció
+
+---
+
+21. Annex de càlculs. I_max (2).
+22. Correcció.
+23. Annex de càlculs. Canalitzacions i safates (2).
+24. Correcció.
+25. Selecció d'equips a tenda online. Incorporació fitxes al PPT (2).
+26. Correcció
+27. Esquema unifilar (2).
+28. Correcció.
+29. Inclusió d'un Pla d'Assegurament de la Qualitat. Proves i assajos de recepció.
+30. Inclusió d'un procediment de posada en servei.
+
+---
+
+31. Examen RA4
+32. Repàs
+33. Exercicis
+34. Recuperació RA4
+
+
+## UT05
+
+1. Luminotècnia. Candela, lumen, lux i nit.
+2. Luminotècnia. Especre, Temperatura de color, IRC.
+3. Luminotècnia. Altres conceptes (Classificacions, tipus de fonts de llum, efectes psiquics de la llum i harmonia, tipus d'enllumenat [interior, exterior, emergència]).
+4. Elements. Tipus de luminàries, làmpades (vsbp, vsap, LED, mercuri, halogenurs metàl·lics, incandescència), equips auxiliars, projectors, iluminació amb fibra òptica, il·luminació ornamental, rètols lluminosos)
+5. Elements. Pals, bàculs i columnes; connexió a terra, tipus de preses a terra; tècniques d'hissat; càlcul de pals i bàculs.
+6. Elements. Equips de regulació i control de l'enllumenat. Reactàncies.
+7. Càlculs luminotècnics a l'exterior.
+8. Eficiencia i estalvi energètic. Normativa.
+9. Càlculs mecànics.
+10. Instal·lació elèctrica. Dimensionament. ITC-BT-09
+
+---
+
+De la sessió 11 a la 15 s'engloba a dins un projecte de Dialux EVO
+
+11. Instal·lació. Descàrrega d'algunes lluminàries. Simulació senzilla 
+   (hello world).
+12. Simulació il·luminació de la zona ajardinada d'un hotel.
+13. Simulació il·luminació de la zona ajardinada d'un hotel.
+14. Memòria i PPT.
+15. Annex de càlculs lumínics.
+16. Annex de càlculs elèctrics.
+17. Pressupost.
+18. Examen RA 5
+19. Repàs.
+20. Exercicis.
+
+---
+
+21. Exercicis.
+22. Recuperació.
+
+## UT06
+
+1. Característiques de les instal·lacions solars aïllades, amb i sense grup electrògen.
+2. Característiques de les instal·lacions solars connectades a xarxa.
+3. ITC-BT-40 (generadors), ITC-BT-53 Instal·lacions en corrent continua. NRZ105 Generadors de baixa tensió.
+4. Exercici «identifica el tipus de panell i relaciona-ho amb les seves característiques», Exercici «cumplimenta el fórmulari del programa de càlcul a partir de les dades de la placa de caracteristiques». Exercici «Troba el bug al programa de càlcul, hi ha un error en el càlculs dels factors de correcció»
+5. Exercici «Introdueix la referència comercial del conductor que compleix amb el plec d'aquesta licitació».
+6. Exercici «l'OCA ha detectat un problema a la posada de terra de la instal·lació o al sistema de connexió del neutre».
+7. Tipus d'inversors. Regulador de càrrega. Acumuladors.
+8. Crossover amb domòtica «telegestió d'instal·lacions fotovoltàiques».
+9. Exercici «són rentables els sistemes de seguiment solar?».
+10. Examen.
+
+---
+
+11. Repàs.
+12. Exercicis.
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
