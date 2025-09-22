@@ -17,12 +17,35 @@ Temari
 
 - [UT01 - Introducció a l'electrònica digital i sistemes de numeració.](0100_UT01.html)
 
+
+
 Exercicis
 ---------
 
 ### UT01 - Introducció a l'electrònica digital i sistemes de numeració
 
-- [Exercici 01](0110_UT01_exer01.html)
+- [Exercici 01: De binari a decimal](0110_UT01_exer01.html)
+- [Exercici 02: De decimal a binari](0111_UT01_exer02.html)
+- [Exercici 03: D'hexadecimal a decimal](0112_UT01_exer03.html)
+- [Exercici 04: De decimal a hexadecimal](0113_UT01_exer04.html)
+- [Exercici 05: De binari a hexadecimal](0114_UT01_exer05.html)
+- [Exercici 06: De d'hexadecimal a binari](0115_UT01_exer06.html)
+- [Exercici 07: **Exercici global**](0116_UT01_exer07.html)
+
+
+
+Vídeos
+------
+
+### UT01 - Introducció a l'electrònica digital i sistemes de numeració
+
+
+(https://youtu.be/kUB7h4rcqGE)
+
+- Exercici 02: De decimal a binari (baixa qualitat de so)
+[![c250](img/vid_0102.png)](https://youtu.be/nkZqof4XzXQ)
+
+
 
 
 [CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
