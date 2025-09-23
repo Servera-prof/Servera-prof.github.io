@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+# Crea un Kahoot
+
+Per a crear un Kahoot és suficient fer-se un compte a [Kahoot][l1]
+o encara millor, utilitzar la [seva plantilla][l2] per a fer-ho.
+
+En el primer cas es poden afegir imatges, i configurar més detalladament
+el Kahoot. El segon cas és molt més ràpid i flexible (es pot crear un
+test com els dels examens per a compartir amb els companys).
+
+Si opteu per fer-ho amb la plantilla aquí teniu un 
+[video explicatiu][l3], i aquí la [plantilla][l4] que heu d'obrir amb 
+Libre Office Calc.
+
+
+
+
+
+[l1]: https://kahoot.com/
+[l2]: https://support.kahoot.com/hc/en-us/articles/115002812547-How-to-import-questions-from-a-spreadsheet-to-your-kahoot
+[l3]: https://vimeo.com/995718087?fl=pl&fe=sh
+[l4]: https://support.kahoot.com/hc/article_attachments/43995722248723
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
