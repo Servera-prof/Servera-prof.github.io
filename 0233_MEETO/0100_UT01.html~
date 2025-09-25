@@ -2,185 +2,520 @@
 <head>
     <link rel="icon" type="image/x-icon" href=img/favicon.png>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/temari.css" />
 </head>
-
-
-
-
-
-
-
 <textarea id="enunciat">
 
-# UT01b - Economia lineal i economia circular
 
-## 0. Introducció
 
-- Segle XX estil de vida basat en el consumisme: comprar, usar, llençar
-- Això implica sobreexplotació, esgotament matèries primeres i gran
-  quantitat de residus.
-- No és sostenible pel planeta → nou model econòmic circular.
 
-### 0.1. Exercici
 
-Pensa en què podria fer la cantina per millorar la gestió de residus.
-Quines iniciatives podria implementar i quins beneficis tindrien.
 
-## 1. Les arrels del consumisme
 
-- En el segle XX cultura «d'un sol ús».
-- No s'era conscient de les conseqüències.
-- Encara succeeix. Es compren capritxos (roba, mòbils, decoració)
-  simplement perquè es pot fer.
-- La fabricació contamina, els plàstics dels quals estan fets aquests
-  objectes no es degrada.
-- A finals del segle XX apareixen les veus d'alerta: les ciutats tenen
-  pol·lució, els oceans estan plens de plàstic, i hi ha muntanyes de
-  deixalles
-- La proposta és imitar la natura. No fa residus, ja que tot és
-  biodegradable.
 
-### 1.1. Exemple
 
-Una pila alcalina contamina 167.000 litres d'aigua. No podem deixar de
-utilitzar-les, però se'n poden comprar de recarregables.
 
-### 1.2. Nou estil de vida
 
-En oposició a l'economia lineal s'utilitza el concepte d'economia
-circular, similar a la «regla de les 3 R»: reduir, reciclar i
-reutilitzar.
+UT01 - Introducció a l'electrònica digital i sistemes de numeració.
+===================================================================
 
-### 1.3. Exercici
 
-- Pensa com pots aplicar la regla de les 3 R a la teva vida diària.
-- Pensa com pots liderar un petit canvi, explicant aquests conceptes a
-  altres persones.
 
-## 2. Economia lineal
 
-Qui decideix si l'economia és lineal o circular? Cada individu és
-lliure de prendre una decisió o una altra. Quan s'aprofiten les
-rebaixes i es compra més del que es necessita, estem aplicant una
-mentalitat lineal.
 
-Una economia lineal es caracteritza per:
 
-- Buscar l'eficiència. Màxim benefici i mínim cost.
-- Obtenir guany. Tenir beneficis sense considerar el cost ambiental o
-  social.
-- Deteriorament ambiental. Contaminació i residus
-- Impacte social. Èmfasis en els beneficis econòmics, no en els riscos
-  laborals, o la conciliació familiar.
 
-### 2.1. Minimalisme.
 
-El minimalisme sorgeix com a contrapunt al consumisme. Segueix la
-filosofia del «menys és més». Es basa en la reducció intencionada de les
-possessions materials i simplificació de l'espai físic i mental.
 
-### 2.2. Fases de l'economia lineal
 
-- Extreure
-- Produir
-- Consumir
-- Descartar
+## 1. Introducció a l'electrònica
 
-Els residus provenen d'empreses (transport, excés de matèries
-primeres, energia, productes defectuosos), com dels consumidors
-(transport, restes, embalatge).
+### 1.1. Per a què serveix l'electrònica?
 
-### 2.3. Exercici
+#### 1. Millora de la formació tècnica
 
-- De les quatre fases de l'economia lineal pensa quins són els efectes
-  en cada una d'elles
-- Què persegueix la campanya #DesnudaLaFruta?
+**Coneixement integral:** L’electrònica és la base de molts sistemes actuals. 
+Entendre com funcionen els components electrònics (díodes, transistors, 
+circuits integrats) ajuda a comprendre millor els quadres elèctrics, els
+automatismes i els sistemes de control.
 
-### 2.4. Residus
+**Aplicació pràctica:** Es treballa amb protoboards, fotoresistències que actuen 
+com a sensors, actuadors i circuits reals, cosa que dóna destresa en el
+muntatge i diagnosi d’instal·lacions.
 
-On s'acumulen els fems? Poden crear problemes de plagues (rates),
-olors, o contaminació del sòl? Cremar-la o enterrar-la és una bona
-solució?
 
-Aquestes preguntes incòmodes només es donen en una economia lineal. Ja
-que tota l'economia té un mateix final: la creació de deixalles.
+#### 2. Competències professionals més àmplies
 
-De fet, els primers abocadors es varen crear en el segle XIX, abans les
-restes s'enterraven i es degradaven de manera natural o romanien inerts
-en la seva major part.
+**Més oportunitats laborals:** Dominar electrònica t’obre portes a sectors com 
+la domòtica, la robòtica bàsica, l’automatització industrial o el manteniment 
+d’equips electrònics.
 
-### 2.5. Exercici
+**Diagnosi d’avaries:** Saber interpretar esquemes i utilitzar instruments 
+de mesura electrònics et permet resoldre més quantitat de problemes.
 
-- Mira el vídeo comprar, llençar, comprar. Tant la part 1 com la part 2.
 
-### 2.6. Consum responsable
+#### 3. Base per a estudis superiors
 
-- Com a consumidors podem exigir a les empreses respecte al medi ambient
-  i als treballadors, elegint productes que concordin amb aquesta visió.
-- Podem canviar hàbits de la nostra vida quotidiana.
-- Podem informar-nos de si realment una empresa és tan verda com sembla.
+Si després del grau mitjà es vol fer un cicle de grau superior en 
+Sistemes Electrotècnics i Automatitzats o en Automatització i Robòtica 
+Industrial, el mòdul d’electrònica dóna una base sòlida per entendre conceptes 
+més avançats.
 
-### 2.7. Exercici
 
-- Quan s'espatlla un electrodomèstic quin problema troben les famílies
-  que intenten reparar-lo? Per què creus que succeeix això.
-- Busca informació sobre el minimalisme. Exposa-la als teus companys.
-- Reflexiona sobre aquestes accions quotidianes:
-    + Quan t'acabes un refresc llences la llauna a la primera paperera
-      que trobes o la guardes fins a trobar un contenidor de plàstic.
-    + Al teu entorn es fa servir el cotxe o el transport públic? Per què
-      creus que passa això?
-    + Demanes bossa al supermercat?
-    + Tries productes sense embolcall?
-    + Recicles?
+#### 4. Desenvolupament d’habilitats transversals
 
-## 3. Els adjectius de l'economia
+**Pensament lògic i analític:** L’electrònica fomenta el raonament pas a pas 
+i la resolució de problemes. Fent una analogia amb el gimnàs anar al gimnàs
+et dona millor resultat en els esports en general.
 
-Economia circular, social, col·laborativa (blabla car coworkin),
-verda (cultura empresarial sostenible, energia renovable), o digital,
-reflecteixen diferents visions o èmfasis sobre aquests aspectes llevant
-el focus del benefici, principal objectiu de l'economia lineal.
+**Treball amb noves tecnologies:** Molts processos industrials estan 
+digitalitzats; conèixer l’electrònica ajuda a adaptar-se a aquesta realitat.
+De fet els coneixements d'electrònica es poden aplicar al Minecraft
 
-### 3.1. Prohibicions
 
-Els governs poden dur a terme accions en aquest sentit per evitar el
-«joc brut», és a dir impedir que empreses maximitzin el benefici a costa
-de perjudicar als altres o al medi ambient.
+#### 5. Creativitat i innovació
 
-D'aquesta manera sorgeixen lleis que limiten l'ús de certs materials
-(com el mercuri).
+Aprendre electrònica permet dissenyar petits projectes, com temporitzadors, 
+alarmes o sistemes de control bàsics, estimulant la creativitat i la capacitat 
+d’innovar.
 
-### 3.2. Promoció
 
-Els governs també poden actuar com agents de canvi, impulsant accions.
-O destinant recursos a la investigació.
 
-### 3.3 Exemple
 
-Gran muralla verda a africa ha posat d'acord a diversos països del sud
-del Sàhara per frenar la desertificació i la sequera, proporcionar un
-mitjà de vida sostenible a les comunitats locals i conservar
-la biodiversitat.
 
-## 4. Activitats
 
-**1.** Els mitjans de comunicació i les xarxes socials incentiven el
-consum. Ho has percebut en tu mateix? Has fet compres de coses qeu
-després te n'has penedit? Alguna d'aquestes compres ha respost a un
-incentiu publicitari?
 
-**2.** Quina relació veus entre la revolució industrial i la cultura
-«d'un sol ús»
 
-**3.** Ets un client responsable? Per què creus que és així?
 
-**4.** Què és l'obsolescència programada? Tria un producte que creguis
-que té aquest problema i quins problemes creus que pot crear.
 
-**5.** Busca informació de les mesures a escala nacional o europeu que
-s'han dut a terme per a reduir o limitar l'ús de plàstics.
 
+## 2. Què són els sistemes de numeració
+
+Els sistemes de numeració són maneres d’expressar els números utilitzant 
+diferents bases o conjunts de símbols. Cada sistema es caracteritza per la 
+base que utilitza, és a dir, pel nombre de dígits diferents que fa servir 
+abans de «passar» a la següent xifra.
+
+
+
+### 2.1. Sistema decimal (Base 10)
+
+El sistema decimal, amb els seus deu dígits, neix de l'instint natural de 
+comptar amb els dits. Per superar la limitació del deu, el sistema empra 
+posicions, on cada nou dígit afegit a l'esquerra descompta les unitats en 
+grups de deu, cent, mil, etc., permetent representar infinites quantitats.
+
+- **Base**: 10  
+- **Dígits**: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 
+  (però podria ser あ い う, え, お, か, が, き, ぎ, く o qualsevol conjunt de
+  10 símbols)
+- **Ús**: Sistema que utilitzem habitualment en la vida quotidiana.  
+- **Exemple**:  
+
+$$
+345_{10} = 3 \times 10^2 + 4 \times 10^1 + 5 \times 10^0
+$$
+
+
+
+### 2.2. Sistema binari (Base 2)
+
+- **Base**: 2  
+- **Dígits**: 0 i 1  
+- **Ús**: Fonamental en electrònica i informàtica, ja que els circuits 
+  digitals només tenen dos estats: **encès (1)** i **apagat (0)**.  
+- **Exemple**:  
+
+$$
+1011_{2} = 1 \times 2^3 + 0 \times 2^2 + 1 \times 2^1 + 1 \times 2^0 = 11_{10}
+$$
+
+El sistema binari només té dues xifres i per tant amb un dígit només es pot
+representar dos nombres: el 0 i 1. Si volem seguir, com que no tenim més
+símbols, hem d'afegir una xifra a l'esquerra (com faríem amb el decimal si
+volem escriure nombres superiors a 9).
+
+Així, després del 0 i l'1 vindria el 10. Després el 11 i després el 100.
+
+> ![c500](img/equivalencia_decimal_binari.png)
+> **Fig. 3.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/)
+> _Equivalències digital binari dels 16 primers nombres_.
+> Imatge d'elaboració pròpia sota llicència [CC3.0-by-nc-sa]
+
+Agrupar de quatre en quatre bits, començant per la dreta, ajuda a llegir els 
+nombres binaris llargs.
+
+- Sense agrupar: 101011110110010
+- Agrupat: 101 0111 1011 0010 (molt més fàcil de llegir)
+
+
+
+### 2.3. Sistema octal (Base 8)
+
+- **Base**: 8  
+- **Dígits**: 0, 1, 2, 3, 4, 5, 6, 7  
+- **Ús**: Representació compacta de valors binaris.  
+- **Exemple**:  
+
+$$
+157_{8} = 1 \times 8^2 + 5 \times 8^1 + 7 \times 8^0 = 111_{10}
+$$
+
+
+
+### 2.4. Sistema hexadecimal (Base 16)
+
+Els sistema hexadecimal necessita 16 símbols, per tant les xifres 0, 1, 2, són
+insuficients, després del 9 s'utilitzen lletres: A, B, ..., F
+
+- **Base**: 16  
+- **Dígits**: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F  
+- **Ús**: Molt utilitzat en informàtica i microcontroladors per representar 
+  nombres binaris més grans de manera compacta.  
+- **Exemple**:  
+
+$$
+2A_{16} = 2 \times 16^1 + A \times 16^0 = 2 \times 16 + 10 = 42_{10}
+$$
+
+
+
+### 2.5. Altres sistemes
+
+- Sexagesimal (bablilonia).
+
+> ![c500](img/nombres_babilonia.svg)
+> **Fig. 1.** 
+> [Josell7](https://commons.wikimedia.org/wiki/File:Babylonian_numerals.svg)
+> (2010). [via Wikimedia Commons] 
+> _Nombres babilònics_.
+> Imatge d'elaboració pròpia sota llicència [CC4.0-by-sa]
+
+- Base 20 (matricules cotxes).
+
+> ![c500](img/matricula_cotxe.jpg)
+> **Fig. 2.** 
+> [Grez](https://commons.wikimedia.org/wiki/User:Grez)
+> (2010). [via Wikimedia Commons] 
+> _Matricula de cotxe a España_.
+> Imatge d'elaboració pròpia sota llicència [CC3.0-by-sa]
+
+
+
+
+
+
+
+
+
+
+
+## 3. Convertir de binari a decimal
+
+### 3.1. Mètode
+El sistema binari (base 2) utilitza només dos dígits: **0** i **1**. 
+Per convertir un número binari a decimal (base 10), cal entendre el 
+**valor posicional** de cada bit.
+
+Un número binari de $n$ bits es pot expressar com:
+
+$$
+N_{10} = b_{n-1} \times 2^{n-1} + b_{n-2} \times 2^{n-2} + \cdots + 
+b_1 \times 2^1 + b_0 \times 2^0
+$$
+
+on $b_i$ és el bit a la posició $i$ (començant des de 0 a la dreta).
+
+**Passos detallats:**
+
+1. **Anotar el número binari**
+2. **Assignar potències de 2** a cada bit, començant des de la dreta:
+   - Bit més a la dreta: $2^0$
+   - Següent bit: $2^1$
+   - Següent bit: $2^2$
+   - I així successivament...
+3. **Multiplicar cada bit** per la seva potència de 2 corresponent
+4. **Sumar tots els resultats**
+
+
+
+### 3.2. Exemples pràctics
+
+> #### **Exemple 1:** Convertir \(10101_2\) a decimal
+> 
+> |   Bit   |    1   |   0   | 1     |   0   |   1   |
+> |---------|--------|-------|-------|-------|-------|
+> | Posició | $2^4$  | $2^3$ | $2^2$ | $2^1$ | $2^0$ |
+> |  Valor  |  16    |   8   | 4     | 2     |   1   |
+> |  Càlcul | $1×16$ | $0×8$ | $1×4$ | $0×2$ | $1×1$ |
+> 
+> **Càlcul final**:  
+> $16 + 0 + 4 + 0 + 1 = 21$
+> 
+> **Resultat**: \(10101_2 = 21_{10}\)
+
+> #### **Exemple 2:** Convertir \(11011_2\) a decimal
+> 
+> | Bit     |   1    |   1   |   0   |   1   |   1   |
+> |---------|--------|-------|-------|-------|-------|
+> | Posició | $2^4$  | $2^3$ | $2^2$ | $2^1$ | $2^0$ |
+> | Valor   | 16     |   8   |   4   |   2   |   1   |
+> | Càlcul  | $1×16$ | $1×8$ | $0×4$ | $1×2$ | $1×1$ |
+> 
+> **Càlcul final**:  
+> $16 + 8 + 0 + 2 + 1 = 27$
+> 
+> **Resultat**: \(11011_2 = 27_{10}\)
+
+### 💡 Consell Pràctic
+Per fer la conversió més ràpidament, és útil memoritzar les potències de 2:
+
+| Potència | $2^7$ | $2^6$ | $2^5$ | $2^4$ | $2^3$ | $2^2$ | $2^1$ | $2^0$ |
+|----------|-------|-------|-------|-------|-------|-------|-------|-------|
+| Valor    | 128   | 64    | 32    | 16    | 8     | 4     | 2     | 1     |
+
+
+## 4. Convertir de decimal a binari
+
+### 4.1. Mètode
+
+Per convertir un número decimal a binari, segueix aquests passos:
+
+1. **Divideix el número decimal entre 2**
+2. **Anota el residu** (0 o 1)
+3. **Torna a dividir el quocient entre 2**
+4. **Repeteix** fins que el quocient sigui 0
+5. **Llegeix els residus de baix a dalt** per obtenir el número binari
+
+
+### 4.2. Exemples pràctics
+
+> #### Convertir $25_{10}$ a binari
+> 
+> ~~~
+> 25 ÷ 2 = 12 | residu = 1  ← LSB (bit menys significatiu)
+> 12 ÷ 2 = 6  | residu = 0
+> 6 ÷ 2 = 3   | residu = 0
+> 3 ÷ 2 = 1   | residu = 1
+> 1 ÷ 2 = 0   | residu = 1  ← MSB (bit més significatiu)
+> ~~~
+> 
+> **Resultat:** 
+> 
+> $25_{10} = 11001_2$
+
+
+
+
+
+
+
+
+
+
+
+## 5. Convertir d'hexadecimal a decimal
+
+El sistema hexadecimal (base 16) utilitza 16 símbols:
+- **Dígits**: 0-9
+- **Lletres**: A-F (representen els valors 10-15)
+
+Per convertir un número hexadecimal a decimal:
+
+$$
+N_{10} = d_n \times 16^n + d_{n-1} \times 16^{n-1} + \cdots + d_1 \times 16^1 + d_0 \times 16^0
+$$
+
+on:
+- $d_i$ és el dígit hexadecimal a la posició $i$
+- $n$ és la posició més alta (començant des de 0 a la dreta)
+
+---
+
+
+
+### 5.1. Exemples Pràctics
+
+> #### Exemple 1: Convertir `2A7`ₕₑₓ a decimal
+> 
+> **Posicions**:
+> - `7` → posició 0 → $7 × 16^0 = 7 × 1 = 7$
+> - `A` → posició 1 → $10 × 16^1 = 10 × 16 = 160$
+> - `2` → posició 2 → $2 × 16^2 = 2 × 256 = 512$
+> 
+> **Càlcul**:
+> $$
+> 2A7_{16} = (2 × 16^2) + (10 × 16^1) + (7 × 16^0) = 512 + 160 + 7 = 679_{10}
+> $$
+> 
+> **Resultat**: `2A7`ₕₑₓ = `679`₁₀
+
+
+> #### Exemple 2: Convertir `F0D`ₕₑₓ a decimal
+> 
+> **Posicions**:
+> - `D` → posició 0 → $13 × 16^0 = 13 × 1 = 13$
+> - `0` → posició 1 → $0 × 16^1 = 0 × 16 = 0$
+> - `F` → posició 2 → $15 × 16^2 = 15 × 256 = 3840$
+> 
+> **Càlcul**:
+> $$
+> F0D_{16} = (15 × 16^2) + (0 × 16^1) + (13 × 16^0) = 3840 + 0 + 13 = 3853_{10}
+> $$
+> 
+> **Resultat**: `F0D`ₕₑₓ = `3853`₁₀
+
+**Nota**: Recorda que les lletres en hexadecimal sempre s'escriuen en majúscules per convenció.
+
+
+
+
+
+
+
+
+
+
+
+## 6. Convertir de decimal a hexadecimal
+
+Algorisme Bàsic
+Per convertir un número decimal a hexadecimal, segueix aquests passos:
+
+1. **Divideix el número decimal entre 16**
+2. **Anota el residu** (0-9, A-F)
+3. **Torna a dividir el quocient entre 16**
+4. **Repeteix** fins que el quocient sigui 0
+5. **Llegeix els residus de baix a dalt** per obtenir l'hexadecimal
+
+>#### Exemple 1: Convertir 1024 a hexadecimal
+>
+>~~~
+>1024 ÷ 16 = 64 (residu 0)
+>64 ÷ 16 = 4   (residu 0)
+>4 ÷ 16 = 0    (residu 4)
+>~~~
+>**Resultat:** 400
+
+
+> #### Exemple 3: Convertir 1234 a hexadecimal
+> 
+> ~~~
+> 1234 ÷ 16 = 77 (residu 2)
+> 77 ÷ 16 = 4    (residu 13 = D)
+> 4 ÷ 16 = 0     (residu 4)
+> ~~~
+> 
+> **Resultat:** 4D2
+
+
+
+
+
+
+
+
+
+
+
+## 7. Convertir de binari a hexadecimal i d'hexadecimal a binari
+
+Les conversion entre binari i hexadecimal i a l'inrevés són inmediates.
+Per això creant una taula de conversió podrem passar d'un sistema a un
+altre sense cap calcul.
+
+### 7.1. Taula de conversió binari hexadecimal:
+
+Obtenir aquesta taula és trivial.
+
+| Binari (4 bits) | Hexadecimal | Decimal |
+|-----------------|-------------|---------|
+| 0000            | 0           | 0       |
+| 0001            | 1           | 1       |
+| 0010            | 2           | 2       |
+| 0011            | 3           | 3       |
+| 0100            | 4           | 4       |
+| 0101            | 5           | 5       |
+| 0110            | 6           | 6       |
+| 0111            | 7           | 7       |
+| 1000            | 8           | 8       |
+| 1001            | 9           | 9       |
+| 1010            | A           | 10      |
+| 1011            | B           | 11      |
+| 1100            | C           | 12      |
+| 1101            | D           | 13      |
+| 1110            | E           | 14      |
+| 1111            | F           | 15      |
+
+
+### 7.2. Mètode per passar de binari a hexadecimal
+
+1. Agrupar els bits de 4 en 4 començant des de la dreta
+2. Si l'últim grup es queda amb menys de 4 bits, afegir zeros a l'esquerra
+3. Convertir cada grup de 4 bits al seu valor hexadecimal
+
+
+> #### Exemple 1: 11010111 binari
+> - Grups: 1101 0111
+> - Conversió: D 7
+> - Resultat: `D7`<sub>hex</sub>
+
+> #### Exemple 2: 1011101 binari
+> - Grups: 0101 1101 (afegim zero a l'esquerra)
+> - Conversió: 5 D
+> - Resultat: `5D`<sub>hex</sub>
+
+### 7.2. Mètode per passar de hexadecimal a binari
+
+1. Agafar cada dígit hexadecimal
+2. Convertir cada dígit als seus 4 bits binaris
+3. Juntar tots els bits
+
+> #### Exemple 1: `A3`<sub>hex</sub>
+> - A = 1010
+> - 3 = 0011
+> - Resultat: 10100011 binari
+
+> #### Exemple 2: `2F`<sub>hex</sub>
+> - 2 = 0010
+> - F = 1111
+> - Resultat: 00101111 binari
+
+
+
+### 7.4. Regles Importants:
+
+- Cada dígit hexadecimal representa exactament 4 bits
+- Els zeros a l'esquerra es poden ometre en el resultat final
+- És més fàcil convertir via hexadecimal que directe a decimal
+
+#### Exemple Complet:
+
+- Binari: 111010110101
+- Grups: 1110 1011 0101
+- Hex: E B 5
+- Resultat: `EB5`<sub>hex</sub>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
 </textarea>
 
 

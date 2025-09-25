@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+UT02 - Anàlisi de circuits amb portes llògiques.
+===================================================================
+
+
+
+
+
+
+
+
+
+
+## 1. Algebra de Boole
+
+L’àlgebra de Boole es fonamenta en els aspectes següents:
+
+- Un conjunt d’elements que només poden adoptar dos valors possibles, 
+designats com 0 i 1.
+- Tres operacions principals: la suma lògica, el producte lògic i la 
+negació.
+
+Cada element de l’àlgebra de Boole es representa mitjançant una lletra, 
+anomenada variable booleana o variable binària. Cada una d’aquestes 
+variables pot prendre un dels dos valors possibles: 0 o 1.
+
+Aquesta branca de les matemàtiques resulta especialment útil per al 
+tractament de sistemes en què només hi ha dos estats diferenciats, com 
+passa amb els sistemes digitals.
+
+
+### 1.1. Exemple
+
+Què representen els valors 1 i 0?
+
+Això depèn de cada aplicació concreta; l’únic que importa és que 
+serveixen per identificar dos estats perfectament diferenciats.
+
+Vegem-ho amb un altre exemple: molts habitatges moderns disposen d’un 
+sistema d’alarma que detecta si les finestres estan obertes o tancades.
+
+Com que cada finestra només pot trobar-se en dos estats possibles 
+(oberta o tancada), podem “traduir” aquesta informació al llenguatge 
+de l’àlgebra de Boole d’una manera molt senzilla.
+
+Podríem assignar una variable binària a cada finestra:
+
+- a: estat de la finestra del menjador
+- b: estat de la finestra de la cuina
+- c: estat de la finestra del dormitori principal
+- d: estat de la finestra del dormitori secundari
+
+Associarem el valor 1 a la finestra oberta i el valor 0 a la finestra 
+tancada. Aquesta assignació és totalment arbitrària; es podria fer a 
+la inversa sense problema.
+
+Així, si ens donessin la següent informació:
+
+- a = 0
+- b = 1
+- c = 1
+- d = 0
+
+sabem que la finestra del menjador i la del dormitori secundari estan 
+tancades, mentre que la cuina i el dormitori principal tenen les 
+finestres obertes.
+
+
+
+### 1.2. Operacions bàsiques
+
+#### Suma lògica
+
+S’indica amb el símbol + i necessita almenys dos operands. Per 
+exemple, en un circuit elèctric amb dos interruptors col·locats en 
+paral·lel per controlar una bombeta, aquesta s’encendrà si es prem 
+qualsevol dels dos interruptors. Matemàticament, això es pot 
+expressar com $a + b$.
+
+| \( a \) | \( b \) | \( a + b \) |
+|---------|---------|-------------|
+| 0       | 0       | 0           |
+| 0       | 1       | 1           |
+| 1       | 0       | 1           |
+| 1       | 1       | 1           |
+
+#### Producte lògic 
+
+Es representa amb el símbol $\cdot$ i necessita com a mínim dos 
+operands. Per exemple, si en un circuit elèctric col·loquem dos 
+interruptors en sèrie per encendre una bombeta, aquesta només 
+s’il·luminarà quan tots dos interruptors estiguin activats. 
+Matemàticament, això s’expressa com $a \cdot b$.
+
+| \( a \) | \( b \) | \( a \cdot b \) |
+|---------|---------|-----------------|
+| 0       | 0       | 0               |
+| 0       | 1       | 0               |
+| 1       | 0       | 0               |
+| 1       | 1       | 1               |
+
+La negació és una operació que actua sobre un únic operand. Si l’element és la variable a, una línia horitzontal sobre aquesta variable indica que es pren el seu valor complementari o negatiu ($\bar{a}$).
+
+| \( a \) | \( \bar{a} \) |
+|---------|---------------|
+| 0       | 1             |
+| 1       | 0             |
+
+L’àlgebra de Boole constitueix la base matemàtica per al disseny i 
+l’anàlisi de sistemes digitals i, com qualsevol àlgebra, es fonamenta 
+en un conjunt de propietats, postulats i teoremes. Entre els més 
+rellevants destaquen el teorema d’absorció, especialment útil per 
+simplificar expressions, i el teorema de DeMorgan, que estableix la 
+manera de transformar un producte lògic en una suma lògica i 
+viceversa.
+
+| Propietat       | Descripció                          | Formulació                             |
+|-----------------|-------------------------------------|----------------------------------------|
+| Idempotència    | Repetitivitat sense canvi           | \( a \cdot a = a \)<br>\( a + a = a \) |
+| Involució       | Doble negació s'anul·la             | \( \overline{\overline{a}} = a \)      |
+| Commutativitat  | Ordre indiferent                    | \( a \cdot b = b \cdot a \)<br>\( a + b = b + a \)   |
+| Associativitat  | Agrupació flexible                  | \( a \cdot (b \cdot c) = (a \cdot b) \cdot c \)<br>\( a + (b + c) = (a + b) + c \) |
+| Distributivitat | Producte sobre suma                 | \( (a + b) \cdot c = a \cdot c + b \cdot c \)        |
+| Absorció        | Eliminació termes redundants        | \( a + a \cdot b = a \)<br>\( a \cdot (a + b) = a \) |
+| DeMorgan        | Negació de producte/suma            | \( \overline{a \cdot b} = \overline{a} + \overline{b} \)<br>\( \overline{a + b} = \overline{a} \cdot \overline{b} \) |
+
+
+
+
+> ![c500](img/equivalencia_decimal_binari.png)
+> **Fig. 3.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/)
+> _Equivalències digital binari dels 16 primers nombres_.
+> Imatge d'elaboració pròpia sota llicència [CC3.0-by-nc-sa]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
