@@ -28,7 +28,8 @@ UT02 - Anàlisi de circuits amb portes llògiques.
 
 
 
-## 1. Algebra de Boole
+1. Algebra de Boole
+-------------------
 
 L’àlgebra de Boole es fonamenta en els aspectes següents:
 
@@ -140,6 +141,129 @@ viceversa.
 | Distributivitat | Producte sobre suma                 | \( (a + b) \cdot c = a \cdot c + b \cdot c \)        |
 | Absorció        | Eliminació termes redundants        | \( a + a \cdot b = a \)<br>\( a \cdot (a + b) = a \) |
 | DeMorgan        | Negació de producte/suma            | \( \overline{a \cdot b} = \overline{a} + \overline{b} \)<br>\( \overline{a + b} = \overline{a} \cdot \overline{b} \) |
+
+
+
+
+
+
+
+2. Funcions llògiques
+---------------------
+
+Anomenem **funció lògica** a una variable binària que obté el seu valor 
+a partir d’una expressió algebraica formada per altres variables 
+binàries, combinades mitjançant les operacions de **suma lògica**, 
+**producte lògic** i **negació**.
+
+### 2.1. Maneres d’escriure una funció lògica
+
+En molts llibres, al costat del nom de la funció s’indiquen entre 
+parèntesis les variables que hi intervenen. Per exemple:
+
+$$
+F(a,b,c) = a \cdot b + c
+$$
+
+Sovint, el signe del **producte lògic** ($\cdot$) no s’escriu perquè es 
+considera implícit. L’expressió anterior es pot escriure així:
+
+$$
+F(a,b,c) = ab + c
+$$
+
+### 2.2. Suma de productes i producte de sumes
+
+- Una **suma de productes** és una expressió on es fa la suma de diversos termes, i cada terme és un producte de variables.  
+  Exemple:
+  $$
+  F(a,b,c,d) = a \cdot b + c \cdot d
+  $$
+
+- Un **producte de sumes** és una expressió on es multipliquen diversos termes, i cada terme és una suma de variables.  
+  Exemple:
+  $$
+  F(a,b,c) = (a+b) \cdot (b+c)
+  $$
+
+> **Atenció:** En el producte de sumes, els parèntesis són obligatoris. Si escrivíssim  
+> $$
+> a+b \cdot b+c
+> $$  
+> es calcularia primer el producte i després les sumes, obtenint una 
+> **suma de productes** en lloc d’un producte de sumes.
+
+### 2.3. Avaluació d’una funció lògica
+
+Per trobar el valor d’una funció lògica, s’han de seguir aquests passos:
+
+1. Avaluar primer el que hi ha **dins dels parèntesis**  
+2. Fer les **negacions**  
+3. Realitzar els **productes lògics**  
+4. Acabar amb les **suma lògiques**
+
+> #### Exemple 1
+> 
+> Volem saber el valor de: $f(a,b,c,d) = a \cdot b + c \cdot d $,</br>
+> quan  $a = 0, \quad b = 1, \quad c = 1, \quad d = 1$
+> 
+> **Solució:**  
+> 1. No hi ha parèntesis ni negacions. Calculem primer els productes:  
+>  $$
+   a \cdot b = 0 \cdot 1 = 0
+   $$  
+   $$
+   c \cdot d = 1 \cdot 1 = 1
+   $$  
+
+> 2. Fem la suma lògica:  
+>    $$
+     0 + 1 = 1
+     $$  
+
+Resultat final:  
+$$
+F = 1
+$$
+
+---
+
+### Exemple 2
+
+Volem saber el valor de:
+
+$$
+F(a,b,c) = \overline{a} \cdot (b+c)
+$$
+
+quan  
+$$
+a = 1, \quad b = 1, \quad c = 1
+$$
+
+**Solució:**  
+1. Primer fem la suma dins del parèntesi:  
+   $$
+   b+c = 1+1 = 1
+   $$  
+
+2. Neguem la variable $a$:  
+   $$
+   \overline{a} = \overline{1} = 0
+   $$  
+
+3. Finalment, fem el producte:  
+   $$
+   0 \cdot 1 = 0
+   $$  
+
+Resultat final:  
+$$
+F = 0
+$$
+
+
+
 
 
 
