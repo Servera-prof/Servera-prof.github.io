@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <head>
     <title id="titol"></title>
-    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="icon" type="image/x-icon" href=../img/favicon.png>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/main.css" />
 </head>
@@ -10,6 +10,7 @@
 <script>
 window.texme = {
     renderOnLoad: false,
+    style: 'none',
     markdownURL: 'js/marked/marked.min.js',
     MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
 }
@@ -28,39 +29,6 @@ window.texme = {
     Permutació: [[p2]]
 &nbsp;
 ~~~
-
-## Ponderació
-
-- Aquest examen pondera una tercera part, que es sumarà al de la de la
-  UT06 i UT08.
-
-
-## Normes:
-- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
-  Pots utilitzar la web
-  [Screen Capture](https://www.screencapture.com/es/)
-- No es poden utilitzar apunts.
-- Només es pot tenir una finestra oberta (la del navegador Chrome).
-- Només es pot tenir una pestanya oberta (la de l'examen).
-- Està terminantment prohibit copiar o mirar al company.
-- No es poden fer preguntes. Part de l'avaluació és la comprensió del
-  text. Si hi ha algun error es parlarà una vegada l'examen hagi
-  finalitzat, i en el seu cas s'anul·larà la pregunta.
-- L'examen dura el que indiqui la tasca associada i **es tanca automàticament**. ENTREGUEU-HO ABANS o serà un zero.
-- Qualsevol incompliment serà sancionat amb un zero.
-- Les preguntes correctes sumen 1 punt, les incorrectes resten 1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen ni resten.
-
-## Com fer aquest examen:
-- Agafa paper
-- Comença a escriure les respostes al paper.
-- Si una resposta es vol deixar en blanc escriu una n.
-- Quan acabis copia les respostes sense espais i tot seguit, al camp «resposta», si no la saps n. Per exemple: abnaac
-- Omple el teu nom i clica a avaluar.
-- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
-- Adjunta-la com a tasca.
-- Fotografia el paper utilitzat (la fotografia és per a tu, per a poder revisar l'examen si ho necessitessis).
-- Entrega els papers utilitzats.
-
 
 ## Preguntes
 
@@ -86,7 +54,7 @@ window.texme = {
 
 
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Examen UT06 - SRGMPE";
+const titol = "Test identifica";
 const puntuacions = ["", 10];
 
 
@@ -96,86 +64,257 @@ const puntuacions = ["", 10];
 
 let p01 = "";
 const preguntes = [
-    [
-    "Per què el formigó convencional no és suficient per a moltes estructures?",
-    "Perquè només és resistent a la compressió, però molt feble a la tracció",
-    "Perquè s’endureix massa ràpid i dificulta el treball",
-    "Perquè és massa flexible i es deforma amb facilitat",
-    "Perquè absorbeix massa humitat i es desfà amb el temps",
-    ],
-    [
-    "Per què es realitza un registre automàtic de dades en un parc eòlic?",
-    "Per supervisar el rendiment i detectar fallades operatives",
-    "Per controlar la distribució de càrregues elèctriques en altres parcs",
-    "Per ajustar manualment la posició de la góndola cada cert temps",
-    "Per reduir la quantitat de manteniments anuals necessaris",
-    ],
-    [
-    "Quin és el propòsit del formigó de neteja?",
-    "Anivellar la virola",
-    "Protegir la cimentació",
-    "Facilitar l'encofrat",
-    "Totes les respostes són vàlides",
-    ],
-    [
-    "Què determina l'ample mínim dels vials i els radis de curvatura?",
-    "La longitud de les pales a transportar i de l'altura de la torre",
-    "L'altura de la torre a transportar",
-    "La góndola, especialment si té el transformador a la mateixa góndola",
-    "La longitud de les pales",
-    ],
+
+
+// AND
+[
+'Quina porta llògica és? </br><img style="margin-left: 37px; margin-top:20px"src="img/UT02_exer_test_01.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'Quina porta llògica és? </br><img style="margin-left: 37px; margin-top:20px" src="img/UT02_exer_test_02.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = a \\cdot b$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+['A quina porta llògica correspon la funció següent taula de la veritat?' +
+ '<table style="margin-left: 37px"><thead>'+
+    '<tr><td>a</td><td>b</td><td>f</td></tr>'+
+  '</thead><tbody>'+
+    '<tr><td>0</td><td>0</td><td>0</td></tr>'+
+    '<tr><td>0</td><td>1</td><td>0</td></tr>'+
+    '<tr><td>1</td><td>0</td><td>0</td></tr>'+
+    '<tr><td>1</td><td>1</td><td>1</td></tr>'+
+ '</tbody></table>',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
 
 
 
-    [
-    "El procés d'instal·lació del transformador en un aerogenerador pot realitzar-se en l'interior de la góndola o en la/el/l' _____",
-    "Torre de l'aerogenerador",
-    "Base de la torre",
-    "Subestació elèctrica",
-    "Exterior de la góndola",
-    ],
-    [
-    "Quina màquina és essencial per a l’hissat de les torres d’aerogeneradors? ",
-    "Retroexcavadora",
-    "Grues mòbils amb aparell d’elevació tipus ploma",
-    "Compactadora de sòl",
-    "Camió formigonera",
-    ],
-    [
-    "Quina tasca no forma part del procés d’execució de les cimentacions? ",
-    "Replanteig, desbrossat i excavació",
-    "Col·locació del primer tram de torre a sobre de la virola de la cimentació",
-    "Formigonat de la cimentació",
-    "Col·locació de tubs de cablejat de mitja tensió",
-    ],
-    [
-    "Quina és una de les funcions principals de la cel·la de protecció en el sistema elèctric d’un aerogenerador? ",
-    "Proporcionar protecció contra sobreintensitats i curtcircuits",
-    "Proporcionar protecció contra sobreintensitats, curtcircuits i sobretensions",
-    "Protegir contra velocitats anormalment elevades (que generin electricitat a freqüències diferents de 50 Hz)",
-    "Evitar que es cremi el rotor de l'aerogenerador per sobrecàrregues en pics de producció",
-    ],
-    [
-    "Quin fus pel sistema de coordenades UTM tenen les illes Balears? ",
-    "31",
-    "31416",
-    "2817182",
-    "7",
-    ],
-    [
-    'Anomena el que estan trepitjant els operaris en la imatge<br/><br/><img width="500px" src="img/exam_UT06_01.jpg">',
-    "Armadura del pedestal de la virola",
-    "Encofrat de la fonamentació de l'aerogenerador",
-    "Enferrat de sustentació i anivellament",
-    "Plataforma de neteja",
-    ],
-    [
-    'Per a què serveixen aquests petits cilindres que es veuen en les 4 últimes imatges<br/><br/><img width="500px" src="img/exam_UT06_02.jpg">',
-    "Són testimonis (<i>testigos</i> en castellà), en cas d'accident, els enginyers poden recórrer a ells per a comprovar si és un problema que té a veure amb el formigó. S'han de guardar 25 anys (la vida útil del parc)",
-    "Són assajos, s'aboca formigó i s'espera que sequi, si és satisfactori s'utilitza el formigó del camió, en cas contrari no.",
-    "Són provetes per a fer assajos al laboratori per certificar la qualitat del formigó.",
-    "Són petits suports de formigó, es fabriquen mitjançant motlles i s'utilitzen els cilindres per a muntatges complexos.",
-    ],
+
+
+
+
+
+
+// OR
+[
+'Quina porta llògica és? </br><img style="margin-left: 37px; margin-top:20px"src="img/UT02_exer_test_03.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'Quina porta llògica és? </br><img style="margin-left: 37px; margin-top:20px" src="img/UT02_exer_test_04.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = a + b$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+['A quina porta llògica correspon la funció següent taula de la veritat?' +
+ '<table style="margin-left: 37px"><thead>'+
+    '<tr><td>a</td><td>b</td><td>f</td></tr>'+
+  '</thead><tbody>'+
+    '<tr><td>0</td><td>0</td><td>0</td></tr>'+
+    '<tr><td>0</td><td>1</td><td>1</td></tr>'+
+    '<tr><td>1</td><td>0</td><td>1</td></tr>'+
+    '<tr><td>1</td><td>1</td><td>1</td></tr>'+
+ '</tbody></table>',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+
+
+
+
+
+
+
+// NOT
+[
+'Quina porta llògica és? </br><img style="margin-left: 37px; margin-top:20px"src="img/UT02_exer_test_05.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'Quina porta llògica és? </br><img style="margin-left: 37px; margin-top:20px" src="img/UT02_exer_test_06.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a}$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+['A quina porta llògica correspon la funció següent taula de la veritat?' +
+ '<table style="margin-left: 37px"><thead>'+
+    '<tr><td>a</td><td>f</td></tr>'+
+  '</thead><tbody>'+
+    '<tr><td>0</td><td>1</td></tr>'+
+    '<tr><td>1</td><td>0</td></tr>'+
+ '</tbody></table>',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+
+
+
+
+
+
+
+
+
+// XOR
+[
+'Quina porta llògica és? </br><img style="margin-left: 37px; margin-top:20px"src="img/UT02_exer_test_07.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'Quina porta llògica és? </br><img style="margin-left: 37px; margin-top:20px" src="img/UT02_exer_test_08.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = a \\oplus b$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+['A quina porta llògica correspon la funció següent taula de la veritat?' +
+ '<table style="margin-left: 37px"><thead>'+
+    '<tr><td>a</td><td>b</td><td>f</td></tr>'+
+  '</thead><tbody>'+
+    '<tr><td>0</td><td>0</td><td>0</td></tr>'+
+    '<tr><td>0</td><td>1</td><td>1</td></tr>'+
+    '<tr><td>1</td><td>0</td><td>1</td></tr>'+
+    '<tr><td>1</td><td>1</td><td>0</td></tr>'+
+ '</tbody></table>',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+
+
+// NAND i NOR
+[
+'Quina porta llògica és? </br><img style="margin-left: 37px; margin-top:20px"src="img/UT02_exer_test_09.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'Quina porta llògica és? </br><img style="margin-left: 37px; margin-top:20px" src="img/UT02_exer_test_010.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+['A quina porta llògica correspon la funció següent taula de la veritat?' +
+ '<table style="margin-left: 37px"><thead>'+
+    '<tr><td>a</td><td>b</td><td>f</td></tr>'+
+  '</thead><tbody>'+
+    '<tr><td>0</td><td>0</td><td>1</td></tr>'+
+    '<tr><td>0</td><td>1</td><td>0</td></tr>'+
+    '<tr><td>1</td><td>0</td><td>0</td></tr>'+
+    '<tr><td>1</td><td>1</td><td>0</td></tr>'+
+ '</tbody></table>',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+
+
+
+
 ];
 
 let permutacio = "";
@@ -249,8 +388,8 @@ let solucions = [""];   // els valors que ha donat el programa.
 let respostes = [""];   // els valors que ha donat l'alumne.
 let alumne = {
     nom: "",
-    cicle: "CFGS Técnic Superior en Energies Renovables",
-    anys: "2024/2025"
+    cicle: "CFGM Tècnic en instal·lacions elèctriques i automàtiques",
+    anys: "2025/2026"
 }
 let tlog = "";          // log que apareix al final de l'avaluació.
 
@@ -467,3 +606,6 @@ function nombreALletra(nombre) {
 }
 
 </script>
+
+
+

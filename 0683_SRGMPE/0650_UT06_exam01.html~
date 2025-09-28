@@ -4,7 +4,22 @@
     <title id="titol"></title>
     <link rel="icon" type="image/x-icon" href=img/favicon.png>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+    <style>
+
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    </style>
 </head>
 
 <script>
