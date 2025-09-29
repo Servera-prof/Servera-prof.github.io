@@ -7,7 +7,7 @@
 </head>
 <textarea id="enunciat">
 
-Donada la funció [[p81]], la seva taula de la veritat és:
+Donada la següent taula de la veritat:
 
 |    a    |    b    |    c    |    d    |    f    |
 |:-------:|:-------:|:-------:|:-------:|:-------:|
@@ -28,9 +28,13 @@ Donada la funció [[p81]], la seva taula de la veritat és:
 | [[p71]] | [[p72]] | [[p73]] | [[p74]] | [[p75]] |
 | [[p76]] | [[p77]] | [[p78]] | [[p79]] | [[p80]] |
 
-Indica quina seria la seva:
+S'obté la primera forma canònica:
 
-Utilitza el mètode de Karnaugh per a simplificar la funció i escriu a continuació la expressió resupltant: 
+[[p81]]
+
+No obstant aquesta forma és massa llarga i necessita massa portes llògiques.
+Utilitza el mètode de Karnaugh per a simplificar la funció i escriu a 
+continuació la expressió resultant: 
 
 [[itxt1]]
 
@@ -61,7 +65,7 @@ window.texme = {
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
 const titol = "Troba les formes canòniques";
 const puntuacions = ["",
-    1, 1
+    1
     
 ];
 const π = 3.141592654;
@@ -75,36 +79,39 @@ const f = [
    
 
     [
-        "ab+c'd+ab'c", 
-        [[0,0,0,0,0],[0,0,0,1,1],[0,0,1,0,0],[0,0,1,1,0],[0,1,0,0,0],[0,1,0,1,1],[0,1,1,0,0],[0,1,1,1,0],[1,0,0,0,0],[1,0,0,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,0,0,1],[1,1,0,1,1],[1,1,1,0,1],[1,1,1,1,1]]
+        "a'b'c'd+a'bc'd+ab'c'd+ab'cd'+ab'cd+abc'd'+abc'd+abcd'+abcd", 
+        [[0,0,0,0,0],[0,0,0,1,1],[0,0,1,0,0],[0,0,1,1,0],[0,1,0,0,0],[0,1,0,1,1],[0,1,1,0,0],[0,1,1,1,0],[1,0,0,0,0],[1,0,0,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,0,0,1],[1,1,0,1,1],[1,1,1,0,1],[1,1,1,1,1]],
+        "ab+c'd+ab'c"
     ],
 
     [
-        "a'bd+bcd+ab'c", 
-        [[0,0,0,0,0],[0,0,0,1,0],[0,0,1,0,0],[0,0,1,1,0],[0,1,0,0,0],[0,1,0,1,1],[0,1,1,0,0],[0,1,1,1,1],[1,0,0,0,0],[1,0,0,1,0],[1,0,1,0,1],[1,0,1,1,1],[1,1,0,0,0],[1,1,0,1,0],[1,1,1,0,0],[1,1,1,1,1]]
+        "a'bc'd+a'bcd+ab'cd'+ab'cd+abcd", 
+        [[0,0,0,0,0],[0,0,0,1,0],[0,0,1,0,0],[0,0,1,1,0],[0,1,0,0,0],[0,1,0,1,1],[0,1,1,0,0],[0,1,1,1,1],[1,0,0,0,0],[1,0,0,1,0],[1,0,1,0,1],[1,0,1,1,1],[1,1,0,0,0],[1,1,0,1,0],[1,1,1,0,0],[1,1,1,1,1]],
+        "a'bd+bcd+ab'c"
     ],
     [
-        "a''b'c+a'b'd", 
-        [[0,0,0,0,0],[0,0,0,1,1],[0,0,1,0,1],[0,0,1,1,1],[0,1,0,0,0],[0,1,0,1,0],[0,1,1,0,0],[0,1,1,1,0],[1,0,0,0,0],[1,0,0,1,0],[1,0,1,0,0],[1,0,1,1,0],[1,1,0,0,0],[1,1,0,1,0],[1,1,1,0,0],[1,1,1,1,0]]
+        "a'b'c'd+a'b'cd'+a'b'cd", 
+        [[0,0,0,0,0],[0,0,0,1,1],[0,0,1,0,1],[0,0,1,1,1],[0,1,0,0,0],[0,1,0,1,0],[0,1,1,0,0],[0,1,1,1,0],[1,0,0,0,0],[1,0,0,1,0],[1,0,1,0,0],[1,0,1,1,0],[1,1,0,0,0],[1,1,0,1,0],[1,1,1,0,0],[1,1,1,1,0]],
+        "a''b'c+a'b'd"
     ],
     [
-        "a'b'c'+bd'", 
-        [[0,0,0,0,1],[0,0,0,1,1],[0,0,1,0,0],[0,0,1,1,0],[0,1,0,0,1],[0,1,0,1,0],[0,1,1,0,1],[0,1,1,1,0],[1,0,0,0,0],[1,0,0,1,0],[1,0,1,0,0],[1,0,1,1,0],[1,1,0,0,1],[1,1,0,1,0],[1,1,1,0,1],[1,1,1,1,0]]
+        "a'b'c'd'+a'b'c'd+a'bc'd'+a'bcd'+abc'd'+abcd'", 
+        [[0,0,0,0,1],[0,0,0,1,1],[0,0,1,0,0],[0,0,1,1,0],[0,1,0,0,1],[0,1,0,1,0],[0,1,1,0,1],[0,1,1,1,0],[1,0,0,0,0],[1,0,0,1,0],[1,0,1,0,0],[1,0,1,1,0],[1,1,0,0,1],[1,1,0,1,0],[1,1,1,0,1],[1,1,1,1,0]],
+        "a'b'c'+bd'"
     ]
 
 ];
 
-// const num_f = aleat(0, f.length-1);
-const num_f = 3;
-p01 = f[num_f][1].flat();
-p02 = f[num_f][0]
+const num_f = aleat(0, f.length-1);
+p_taula = f[num_f][1].flat(); // parametres taula de la veritat
+p_form_cano = f[num_f][0]     // forma canònica
 
 
 
 
 // ## 2.2 FUNCIO (actualitzar) ----------------------------------------
 function estableixParametres(){
-    parametres = parametres.concat(p01).concat(p02);
+    parametres = parametres.concat(p_taula).concat(p_form_cano);
 }
 
 
@@ -115,12 +122,11 @@ function estableixParametres(){
 function calcula(){
 
 s01 = f[num_f][2];
-s02 = f[num_f][3];
 
 
 
 solucions = [""].concat([
-    s01, s02,
+    s01
 ]);
 
 
