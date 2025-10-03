@@ -8,14 +8,15 @@
 
 
 
-0233 - Electrònica per alumnes de CFGM
-======================================
+0233 - Electrònica
+==================
 
 
 Temari
 ------
 
 - [UT01 - Introducció a l'electrònica digital i sistemes de numeració.](0100_UT01.html)
+- [UT02 - Anàlisi de circuits amb portes llògiques.](0200_UT02.html)
 
 
 
@@ -30,7 +31,17 @@ Exercicis
 - [Exercici 04: De decimal a hexadecimal](0113_UT01_exer04.html)
 - [Exercici 05: De binari a hexadecimal](0114_UT01_exer05.html)
 - [Exercici 06: De d'hexadecimal a binari](0115_UT01_exer06.html)
-- [Exercici 07: **Exercici global**](0116_UT01_exer07.html)
+- [**Exercici 07: Exercici global**](0116_UT01_exer07.html)
+
+### UT02 - Anàlisi de circuits amb portes llògiques.
+
+- [Exercici 01: Avalua aquesta funció]((0210_UT02_exer01.html)
+- [Exercici 02: Troba la taula de la veritat]((0211_UT02_exer02.html)
+- [Exercici 03: Troba la taula de la veritat (versió per a valents 💪)](0212_UT02_exer03.html)
+- [Exercici 04: Troba les formes canòniques](0213_UT02_exer04.html)
+- [Exercici 05: Test - Identifica la porta lògica](0214_UT02_exer05_test.html) → [Comprova la teva resposta](0215_UT02_exer05_comp.html)
+- [Exercici 06: Simplifica utilitzant Karnaugh](0216_UT02_exer06.html)
+- [**Exercici 07: Exercici global](0217_UT02_exer07.html)
 
 
 
@@ -48,6 +59,13 @@ millora una mica.
 - [Exercici 04: De decimal a hexadecimal](https://youtu.be/z9jTgyOg-7w)
 - [Exercici 05: De binari a hexadecimal](https://youtu.be/6Sm3sWTAKbc)
 - [Exercici 06: D'hexadecimal a binari](https://youtu.be/6Sm3sWTAKbc)
+
+
+
+
+
+
+
 
 
 
