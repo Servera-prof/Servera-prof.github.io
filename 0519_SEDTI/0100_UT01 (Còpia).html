@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+
+GUIA PAS A PAS: COM CALCULAR LA FACTURA ELÈCTRICA PVPC A ESPANYA
+================================================================
+
+
+
+1. Components de la factura
+---------------------------
+
+La factura PVPC es compon de quatre parts principals: 
+1. **Cost de l’energia consumida (energia activa)** 
+. **Cost de la potència contractada** 
+3. **Peatges, càrrecs i ajustos del sistema** 
+4. **Impostos (electricitat + IVA)**
+
+
+
+2. Dades necessàries
+--------------------
+
+Per poder fer el càlcul cal conèixer: 
+- Potència contractada: \( P_c \) (en kW) 
+- Hores de consum en cada període: 
+- \( E_p \): kWh consumits en període punta 
+- \( E_l \): kWh consumits en període pla (o llar) 
+- \( E_v \): kWh consumits en període vall 
+
+- Preus horaris PVPC de cada període: 
+- \( p_p \), \( p_l \), \( p_v \) (€/kWh) 
+- Dies del període de facturació: \( D \) 
+
+
+
+3. Cost de l’energia consumida
+------------------------------
+
+El primer concepte és el cost variable segons el consum i el preu horari: 
+
+$$ C_E = E_p \cdot p_p + E_l \cdot p_l + E_v \cdot p_v $$
+
+**Exemple:** 
+| Període  | Consum (kWh)  | Preu (€/kWh)  | Cost (€)  | |----------|---------------|---------------|-----------| 
+| Punta    | 50            | 0,180         | 9,00      | 
+| Pla      | 70            | 0,130         | 9,10      | 
+| Vall     | 80            | 0,090         | 7,20      |
+
+$$ C_E = 9,00 + 9,10 + 7,20 = 25,30\ € $$ 
+
+
+
+4. Cost de la potència contractada
+----------------------------------
+
+La potència es paga fins i tot si no hi ha consum. 
+Hi ha dos trams de potència (punta i vall): 
+
+$$ C_P = (P_p \cdot p_{pot,p} + P_v \cdot p_{pot,v}) \cdot \frac{D}{365} $$ 
+
+On: 
+- \( P_p, P_v \) = potència contractada en cada període (normalment iguals) 
+- \( p_{pot,p}, p_{pot,v} \) = preus anuals del terme de potència (€/kW·any) **Valors habituals 2025 (referència REE/CNMC):** 
+- \( p_{pot,p} = 30,672 \ €/kW·any \) - \( p_{pot,v} = 1,428 \ €/kW·any \) 
+
+**Exemple:** 
+- Potència contractada = 4,6 kW 
+- Període = 30 dies 
+
+$$ C_P = (4,6 \cdot 30,672 + 4,6 \cdot 1,428) \cdot \frac{30}{365} = 12,25\ € $$ --- ## 5. Impost sobre l’electricitat Aquest impost és del **2,5 %** (rebaixat temporalment pel Govern, pot variar). $$ I_E = 0,025 \cdot (C_E + C_P) $$ **Exemple:** $$ I_E = 0,025 \cdot (25,30 + 12,25) = 0,94\ € $$ --- ## 6. IVA (Impost sobre el valor afegit) Actualment (2025), l’IVA de la llum és del **10 %** per a petits consumidors. $$ IVA = 0,10 \cdot (C_E + C_P + I_E) $$ **Exemple:** $$ IVA = 0,10 \cdot (25,30 + 12,25 + 0,94) = 3,85\ € $$ --- ## 7. Total de la factura Finalment, el total és la suma de tots els conceptes: $$ \text{TOTAL} = C_E + C_P + I_E + IVA $$ **Exemple:** $$ \text{TOTAL} = 25,30 + 12,25 + 0,94 + 3,85 = 42,34\ € $$ --- ## 8. Altres possibles conceptes - **Equip de mesura (contador)**: entre 0,8 i 1 €/mes. - **Ajustos o compensacions PVPC**: poden afegir-se petits imports segons mercat. --- ## 9. Eina útil per verificar - **Simulador oficial CNMC**: [https://comparador.cnmc.gob.es/facturaluz/inicio](https://comparador.cnmc.gob.es/facturaluz/inicio) Permet introduir el consum horari i comprovar el resultat. --- ## 10. Fórmula resum global $$ \text{Factura PVPC} = \underbrace{(E_p \cdot p_p + E_l \cdot p_l + E_v \cdot p_v)}_{\text{Cost energia}} + \underbrace{(P_p \cdot p_{pot,p} + P_v \cdot p_{pot,v}) \cdot \frac{D}{365}}_{\text{Cost potència}} + \underbrace{0,025 \cdot (C_E + C_P)}_{\text{Impost electricitat}} + \underbrace{0,10 \cdot (C_E + C_P + I_E)}_{\text{IVA}} $$
+
+
+
+
+
+
+
+
+
+
+
+
+[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
