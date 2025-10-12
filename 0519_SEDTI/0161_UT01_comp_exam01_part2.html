@@ -81,185 +81,50 @@ let pts = 0;
 let ptsTotals = 0;
 
 const preguntes = [
-    [
-"Quin és l’objectiu principal de l’avantprojecte?",
-"Definir el pressupost final de l’obra",
-"Definir les característiques generals de la instal·lació a executar",
-"Autoritzar la construcció de la instal·lació",
-"Certificar la seguretat elèctrica del projecte",
+  [
+"Segueix la estructura de la UNE157001?",
+"Sí",
+"No",
+"Només a la memòria",
+"Només al plec",
 ],
 
 [
-"Quin dels següents documents forma part de l’avantprojecte?",
-"Pressupost econòmic detallat",
-"Plànols i esquemes unifilars",
-"Plec de condicions",
-"Estat de mesuraments",
+"La parcel·la del projecte fa cap de cantó (<i>esquina</i> en castellà)?",
+"Sí",
+"No",
+"No es pot saber",
+"El projecte es compren de dues parcel·les, la que està més al nord sí",
 ],
 
 [
-"La norma UNE 157001 té caràcter…",
-"Obligatori en tots els casos",
-"Orientatiu i no obligatori",
-"Exclusivament tècnic",
-"Administratiu i sancionador",
+"S'utilitzen només diferencials d'alta sensibilitat (30 mA)?",
+"Sí",
+"No",
+"No es pot saber",
+"Sí, tot i que hi ha una nota que el projectista permet al director d'obra instal·lar diferencials de 10 mA",
 ],
 
 [
-"Quin dels següents documents NO forma part habitual d’un projecte?",
-"Memòria",
-"Annexos",
-"Estudi arqueologic de presservació del patrimoni històric",
-"Pressupost",
+"El punt de llum simple, quants de metres de tub inclou?",
+"10 m",
+"12 m",
+"15 m",
+"No es pot saber",
 ],
 
 [
-"Els projectes han d’estar estructurats en capítols numerats amb…",
-"Lletres gregues",
-"Xifres aràbigues",
-"Nombres romans",
-"Codis alfanumèrics",
+"Com calcula el projecte la intensitat als circuits monofàsics?",
+"I = P / V",
+"I = P / (√3·V·cosφ)",
+"I = P / (V·cosφ)",
+"I = P·α / (√3·V·cosφ)",
 ],
 
-
-
-
-
-
-
-
-
-
-
-[
-"Quina informació ha d’incloure cada plànol?",
-"Número de normativa d'aplicació",
-"Número d’edició i data d’aprovació",
-"Signatura del client",
-"Fotografia de l’emplaçament",
-],
-
-[
-"La memòria descriu…",
-"Els costos econòmics del projecte",
-"El problema a resoldre i la solució adoptada",
-"Els plànols de situació i detall",
-"Els contractes amb proveïdors",
-],
-
-[
-"Quin apartat de la memòria delimita l’àmbit de responsabilitat del projecte?",
-"Objecte",
-"Abast",
-"Antecedents",
-"Planificació",
-],
-
-[
-"L’apartat «Antecedents» de la memòria serveix per…",
-"Descriure l’estat previ i els requisits del client",
-"Fixar els preus de materials",
-"Definir les escales dels plànols",
-"Enumerar la normativa aplicable",
-],
-
-[
-"L’ordre de prioritat dels documents bàsics, si no s’indica el contrari, comença per…",
-"Memòria",
-"Plec de condicions",
-"Plànols",
-"Pressupost",
-],
-
-
-
-
-
-
-
-
-
-
-
-[
-"Els annexos serveixen per…",
-"Únicament per a adjuntar els càlculs",
-"Ampliar i justificar apartats concrets de la memòria",
-"Eliminar documents innecessaris",
-"Incloure catàlegs de fabricants utilitzat a l'obra o que serveixen de referència en cas de que el director d'obra els vulgui substituir",
-],
-
-[
-"Els primers plànols d’un projecte fan referència a…",
-"Els detalls constructius",
-"La situació i emplaçament del projecte",
-"Els esquemes elèctrics interns",
-"Els annexos de càlcul",
-],
-
-[
-"L’escala habitual per a plantes d’instal·lacions o edificació és…",
-"1:5000",
-"1:500 o 1:200",
-"1:100 o 1:50",
-"1:10",
-],
-
-[
-"El plec de condicions recull…",
-"Les especificacions tècniques, econòmiques i legals",
-"Els esquemes unifilars",
-"Els annexos de càlcul",
-"Els pressupostos detallats",
-],
-
-[
-"L’estat de mesuraments defineix…",
-"El cost final de l’obra",
-"Les unitats i característiques de cada partida",
-"De quins materials, ma d'obra i maquinaria de la que es composa cada partida",
-"Els criteris legals de seguretat",
-],
-
-
-
-
-
-
-
-
-
-
-
-[
-"En projectes senzills, l’estat de mesuraments i el pressupost…",
-"S’unifiquen en un sol document",
-"Es redacten per separat",
-"S’ometen completament",
-"Es substitueixen pels plànols",
-],
-
-[
-"Quin dels següents estudis pot ser obligatori per imperatiu legal?",
-"Estudi de disseny gràfic",
-"Estudi de seguretat i salut",
-"Estudi de rendibilitat econòmica",
-"Estudi de mercat energètic",
-],
-
-["Quin mòdul estas fent ara mateix?",
- "Documentació de Sistemes i Circuits",
- "Documentació electrotècnica de seguretat",
- "Configuració d'instal·lacions elèctriques",
- "Documentació Tècnica en instal·lacions elèctriques",
-]
 ];
 
 const solucions_test = [
- 2, 2, 2, 3, 2,
- 2, 2, 2, 1, 2,
- 2, 2, 3, 1, 2,
- 1, 2, 0
+ 2, 2, 2, 4, 1
 
 ];
 const opcions_test = [1, 2, 3, 4];
