@@ -8,8 +8,8 @@
 
 
 
-ESQUEMES DE QUADRES ELÈCTRICS I AUTOMATISMES
-==============================================
+UT02b - Esquemes de quadres elèctrics i automatismes
+====================================================
 
 
 
@@ -148,7 +148,8 @@ tindria sobre un format A3 apaïsat.
 
 #### 2.1.2. Gruixos de línia
 
-Els gruixos de línia a utilitzar estaran d'acord amb la següent expressió:
+Els gruixos de línia a utilitzar estaran d'acord amb la següent 
+expressió:
 
 $$0,1\cdot\left(\sqrt{2}\right)^n$$
 
@@ -529,11 +530,13 @@ Cada born es representa amb un número. Als seus costats s'indica:
 
 ![c](img/simb/aa_borner_4.png)
 
-Els esquemes de terminals amplien els de regleters incorporant-hi les connexions externes al quadre.
+Els esquemes de terminals amplien els de regleters incorporant-hi les 
+connexions externes al quadre.
 
 ![c](img/simb/aa_borner_5.png)
 
-La figura anterior mostra un esquema de terminals amb els polsadors i la llum externs al quadre. Es detalla per a cada element:
+La figura anterior mostra un esquema de terminals amb els polsadors i 
+la llum externs al quadre. Es detalla per a cada element:
 
 - El born on es connecta
 - El número del conductor
@@ -580,7 +583,8 @@ On:
 - **C:** Born i element connectat en un extrem.
 - **D:** Born i element connectat en l'altre extrem.
 
-**Exemple:** L'esquema de maneges per connectar els tres motors de l'exemple anterior és:
+**Exemple:** L'esquema de maneges per connectar els tres motors de 
+l'exemple anterior és:
 
 ![c](img/simb/aa_manegues_3.png)
 
@@ -590,19 +594,74 @@ On:
 9. Localització d'elements
 --------------------------
 
-Els projectes extensos d'automatització requereixen recursos gràfics per localitzar eficientment tots els components dels esquemes.
+Els projectes extensos d'automatització requereixen recursos gràfics 
+per localitzar eficientment tots els components dels esquemes.
 
 Les eines més utilitzades són:
 
 - Divisió del full per columnes
 - Referències encreuades (en forma de taula o gràfiques)
 
+![c](img/simb/aa_localitzacio_columnes_i_referencies_creuades.png)
+
+La primera eina divideix els fulls dels esquemes en columnes 
+definides per organitzar-hi els components.
+
+A l'esquema anterior es mostra com les columnes contenen els 
+diferents símbols del circuit:
+
+- S2 i S1 es troben a la columna 1
+- S3 està a la columna 3
+- S4 està a la columna 4
+
+Les referències creuades localitzen, per pàgina i columna, els 
+contactes (oberts i/o tancats) associats a un dispositiu de l'esquema.
+
+Es presenten en dos formats:
+
+- Format de taula (el més utilitzat)
+- Format gràfic
+
+Ambdós s'associen a l'òrgan motor (bobina) del dispositiu.
+
+Format de taula
+Taules de 2 o 3 columnes que indiquen amb codis numèrics la ubicació 
+dels contactes:
+
+- **NO:** Contactes oberts
+- **NC:** Contactes tancats
+- **MA:** Contactes de potència
+
+![c](img/simb/aa_referencies_creuades_1.png)
+
+Tot i ser menys habituals que les taules, alguns professionals i 
+programes de disseny elèctric utilitzen referències encreuades 
+gràfiques.
+
+En aquest format, es dibuixen sota de cada bobina tots els contactes 
+(oberts i tancats) que s'utilitzen a l'esquema, amb la seva 
+corresponent localització (pàgina i columna) indicada al costat.
+
+![c](img/simb/aa_referencies_creuades_2.png)
+
+Les referències creuades inverses permeten, visualitzant un contacte 
+a l'esquema, localitzar la seva bobina i la taula de referències 
+associada.
+
+S'implementa afegint al costat de cada contacte la pàgina i columna on 
+es troba la seva bobina corresponent.
+
+![c](img/simb/aa_referencies_creuades_3.png)
 
 
 
 
 
-Els projectes extensos d'automatització requereixen recursos gràfics per localitzar eficientment tots els components dels esquemes.
+
+
+
+
+
 [CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
 [CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
 [CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"

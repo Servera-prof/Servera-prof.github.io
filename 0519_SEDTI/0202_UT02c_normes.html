@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+UT02c - Normes de dibuix i croquització
+=======================================
+
+
+
+
+
+
+
+
+1. Normes generals de croquisació. Normes ISO.
+----------------------------------------------
+
+Un croquis és un dibuix ràpid i senzill, però ha de ser suficient per 
+conèixer allò que representa. Es pot servir de tècniques del dibuix 
+tècnic però tenint en compte que és a mà alçada.
+
+No es pretén entrar en el detall, i es representarà la realitat 
+utilitzant el mínim número de línies possibles. Com que és a mà alçada 
+tampoc segueix cap escala, tot i que s'han de respectar en la mesura 
+del possible les proporcions.
+
+
+
+### 1.1. Fases
+
+- **Anàlisis:** S'ha de fer un plantejament previ d'allò que es vol 
+  representar. No és el mateix dibuixar l'esquema d'un quadre elèctric 
+  de 4 carrils que la planta baixa d'un restaurant de 1000 m².
+- **Elecció de les vistes, seccions o perspectives:** Si hem de 
+  representar l'execució de l'obra civil d'una rasa per una LSMT ens 
+  interessarà la secció i el planta. Un CT ens interessarà l'alçat i la 
+  planta, a part de l'esquema elèctric de les cel·les.
+- **Replanteig:** El replanteig sobre el paper, la representació tindrà 
+  una mida tal que els detalls es representin correctament i alhora 
+  que la mida del paper sia suficient per a tota la representació. 
+  És aconsellable la representació de la longitud més important 
+  prèviament i després fer subdivisions. Tot i que també es pot agafar 
+  una mesura com a mòdul de les altres.
+- **Acotació i presa de mesures:** Posteriorment es prendran les 
+  mesures necessàries per a la definició d'allò que és vol representar.
+- **Anotacions:** Una de les darreres tasques a realitzar és anotar les 
+  especificacions, les funcions, o els comentaris de la peça, planta, 
+  esquema, etc. També la data de realització del croquis.
+- **Revisió i comprovació:** Una vegada finalitzat el croquis s'ha de 
+  revisar buscant incoherències, imprecisions o mancances, que s'hagin 
+  posat de manifest amb el croquis finalitzat. Per exemple quadres no 
+  visitats, mesures no preses, espais no revisats.
+
+
+### 1.2. Normes
+
+- Papers: UNE 1026, ISO 5457
+- Doblegat: UNE 1027 
+- Escriptura: UNE 1034
+- Línies: UNE 1032
+- Acotació: UNE 1039
+
+
+
+
+
+
+
+
+
+
+
+2. Tècniques
+------------
+
+- Línies clares i concises, negres i denses (excepte les auxiliars o de construcció)
+- Repassar les línies una vegada finalitzat el croquis
+- Abans de realitzar una recta es poden marcar els seus extrems per a 
+  una millor precisió.
+- Per a dibuixar corbes és millor utilitzar punts guies, arcs tangents 
+  circumscrits dins de quadrats, utilització de línies discontinues.
+- La distancia entre els dits i el paper ha de ser major que la que 
+  s'empra per a escriure.
+- Es pot girar el paper si és necessari.
+
+
+
+
+
+
+
+
+
+
+
+3. Simbologia
+-------------
+Per als esquemes multifilars, es recomana veure el document 
+ [UT02a - simbologia](0201_UT02a_simbologia.html)
+
+Per altra banda per al plànols en planta distingirem varis tipus de 
+plànols, principalment:
+
+- Els plànols de canalitzacions
+- Els plànols de planta d'elements elèctrics
+
+Dins d'aquests darrers la simbologia a utilitzar és la següent
+
+![c](img/simb/bb_simbologia_planta.jpg)
+
+
+
+
+
+
+
+
+
+
+
+4. Proporcions i escales
+------------------------
+L'escala és la proporció entre les mides del dibuix i les mides real. 
+És a dir:
+
+$$ e= \dfrac {S_{dib}} {S_{real}} $$
+
+Les escales es representen habitualment amb el següent format xx:yy, 
+que es llegiria xx unitats al dibuix són yy unitats a la realitat.
+
+Per tant hi hauria tres tipus d'escales:
+
+- Naturals (1:1)
+- De reducció (1:50)
+- D'ampliació (5:1)
+
+A la pràctica es pot utilitzar qualsevol escala, es recomanable 
+utilitzar alguna normalitzada, les quals comencen sempre per 1, 2 o 5. 
+Per exemple: 10:1, 5:1, 2:1, 1:20, 1:50, 1:100, 1:200, 1:500 o 1:1000
+
+
+
+
+
+
+
+
+
+
+
+5. Acotació. Normes. Retolació
+-----------------------------
+
+#### Papers: UNE 1026, ISO 5457
+
+La superfície del paper A0 és de 1m², el DIN A1 ocupa la meitat de la 
+superfície que l'A1 però manté les mateixes proporcions i a més s'ha 
+de poder crear dividint per la meitat el costat llarg del DIN A0
+
+$$
+\left. \begin{array}{r} 
+a \cdot b=1 \\
+c \cdot d=0.5 \\[15pt]
+\dfrac {a} {b} = \dfrac {c} {d} \\[15pt]
+a = d 
+\end{array} \right\}
+
+\rightarrow \left. \begin{array}{r}
+b = \dfrac {1} {a} \\[15pt]
+c = \dfrac {0.5} {a} \\[15pt]
+\dfrac {a} {b} = \dfrac {c} {a} 
+\end{array} \right\}\rightarrow
+$$
+
+$$
+\rightarrow \dfrac {a} {\dfrac{1}{a}} = \dfrac {\dfrac{0.5}{a}} {a}
+\rightarrow a^2 = \dfrac {1} {2a^2} 
+\rightarrow a^4= \dfrac {1} {2}
+\rightarrow a = \sqrt[4] {\dfrac{1}{2}} = 0.8409
+$$
+
+
+#### Doblegat: UNE 1027 
+
+Consultar la [UNE 1027](docs/norma_une_1027.pdf). Per als plànols 
+DIN A3 per exemple es tindran en compte les següents mesures:
+
+![c](img/simb/bb_doblegat_DINA3.png)
+
+
+#### Escriptura: UNE1034
+
++ Les altures de les lletres seran múltiples de √2, 2,5 - 3.5 - 5 -7 - 
+  10 - 14 - 20 mm
++ Es pren com a referència l'altura de les majúscules (h), per 
+  establir la mesura de totes les altres.
++ L'altura mínima de les majúscules o minúscules és 2.5, per tant, un 
+  text d'altura 2.5 mm només pot estar en majúscules.
++ Altura de les majúscules (14/14)h
++ Altura de les minúscules (10/14)h
++ Espai entre caràcters (2/14)h
++ Espai mínim entre línies d'escriptura (10/14)h
++ Espai mínim entre paraules (6/14)h
++ Ample de línia (1/14)h
+
+
+#### Línies: UNE 1032
+
++ Relació d'espessors entre gruix i fi és de 2 a 1 com a mínim.
++ Els gruixos normalitzats són 0.18; 0.25; 0.35; 0.5; 0.7; 1; 1.4; 2
++ La separació entre dues línies paral·leles no serà inferior a 2 
+  vegades el gruix màxim (inclosos els ombrejats).
++ Per a DINA A4 els gruixos recomanats són 0.18 mm (mínim) i 0.7 mm (màxim)
++ Per a DIN A3 els gruixos recomanats són 0.18 mm (mínim) i 1 mm (màxim)
+    
+    
+#### Acotació: UNE 1039
++ Es precisaran totes les cotes necessàries per a la completa 
+  definició d'allò representat
++ Només una cota per cosa mesurada
++ Les cotes es trobaran a les vistes que més clarament defineixin 
+  l'element
++ Totes s'expressen en la mateixa unitat. En casos excepcionals, si no 
+  fos possible, s'indicara després de la cota la unitat.
++ S'ha d'evitar que les línies de cota creuin les del dibuix
++ No s'indicaran més cotes de les necessàries.
++ Preferentment a l'exterior
++ És preferible no acotar sobre arestes ocultes. Millor utilitzar 
+  seccions.
++ S'han de distribuir en les vistes.
++ Evitar haver de deduir cotes per sumes o restes d'altre cotes.
++ Les línies auxiliars de cota són perpendiculars a l'aresta o formen 
+  60° amb aquesta
++ La separació de la línia de cota a l'aresta serà de 8 mm com a mínim.
++ La separació entre dues línies de cota serà de 5 mm
++ La cota (o xifra) es situa centrada per sobre de la línia de cota, 
+  tret que no hi hagi espai entre les fletxes, llavors es col·locarà 
+  a dalt i a la dreta. Si la cota es tallada per eixos o arestes, es 
+  desplaçarà lleugerament a la dreta.
++ S'admeten varis tipus de símbols de final de línia de cota, essent 
+  els més utilitzats la fletxa plena i el traç oblic a 45°
++ Les línies de referencia acaben en fletxa si el final és contra una 
+  aresta, punt si és contra una superfície i res si no és cap de les 
+  anteriors
++ Si no caben les fletxes a l'interior de les línies auxiliars, es 
+  dibuixaran per fora, si així i tot no cap la xifra aquesta es 
+  situarà a dalt i a la dreta, si, inclús així no cap, s'utilitzarà 
+  una línia de referència.
+
+![c](img/simb/bb_acotacions_properes.png) 
+
++ Es procedirà anàlogament amb els diàmetres i radis
+
+![c](img/simb/bb_acotacions_arcs.png)
+
+
+
+
+
+
+
+
+
+
+[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
