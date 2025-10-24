@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <meta charset="UTF-8">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<script>
+    window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+    }
+    const titol = "UT03 - Màquines asíncrones"; // MODIFICAR
+</script>
+<script src="js/texme/texme.js"></script>
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+## 0. Nota prèvia important.
+
+Les relacions
+
+$$
+\begin{gather}
+G=\dfrac{1}{R} \\
+B=\dfrac{1}{X}
+\end{gather}
+$$
+
+Només es donen en circuits resistius o reactius purs. Si es considera $G=\mathfrak{Re}\{\overrightarrow Y\}$ o també $B=\mathfrak{Im}\{Y\}$, llavors:
+
+$$
+\begin{gather}
+G=\dfrac{R}{R^2+X^2} && ; && B=\dfrac{-X}{R^2+X^2}
+\end{gather}
+$$
+
+## 1. Descripció
+
+Les màquines asíncrones trifàsiques s'anomenen també màquines d'inducció. El seu estator (anomenat també inductor) format per un conjunt de xapes d'acer al silici aïllades amb una capa de vernís aïllant. D'aquesta manera es redueixen les pèrdues per corrent de Foucault. Aquestes xapes es munten a una carcassa normalment de ferro colat (_fundición de acero_ en castellà, _cast iron_ en anglès) amb una sèrie de ranures. Aquestes ranures contindran els fils conductors que formaran els enrotllaments (_bobinado, devanado_ en castellà, _winding_ en anglès).
+
+> **Nota:** En català es prefereix el terme enrotllaments a debanaments tot i ser ambdós correctes.
+
+En un disseny senzill els tres enrotllaments se situen a 120°. Normalment, són de coure (tot i que de vegades poden ser d'alumini) de secció circular i aïllats. Els de mitja tensió són sempre de coure de secció rectangular i aïllats amb mica o fibra de vidre (_glass fibre_ en anglès, _Glasfaser_ en alemany), i aglomerats amb resina sintètica.
+
+El rotor de la màquina asíncrona (o induït) està constituït per un nucli de xapes d'acer que formen un cilindre solidari amb l'arbre (_shaft_ en anglès) o eix del motor. Hi ha, en general, dos tipus de motors:
+
+- **Rotor bobinat:** A les ranures (_slot wedge_ en anglès) s'hi trobaran enrotllaments iguals al de l'estator, amb més espires i menys secció. En general, seran enrotllaments trifàsics, connectats en estrella. Els extrems lliures es connecten a tres anells aïllats entre sí i solidaris al rotor anomenats anells col·lectors (_anillos rozantes_ en castellà, _slip ring_ en anglès). La connexió dels anells amb l'exterior es fa mitjançant escombretes (_escobillas_ en castellà, _brush_ en anglès), de carbó solidari a l'estator. Les bornes de les tres fases dels enrotllaments del rotor que surten a l'exterior des de les escombretes es curtcircuiten o bé es fan passar per una sèrie de càrregues.
+
+- **Rotor de gàbia d'esquirol:** Aquest tipus de rotor deu el seu nom (_jaula de ardilla_ en castellà _squirrell cage_ en anglès) a l'aspecte que tenen les barres conductores dins. A l'exterior de les ranures del cilindre de xapes que conforma el nucli del rotor i que és solidari a l'eix, es col·loquen una sèrie de barres de coure o alumini. Aquestes barres es curtcircuiten a ambdós extrems mitjançant un anell del mateix material donant l'aparença característica d'aquest tipus de rotor. Aquest rotor es pot considerar com d'una sola espira per bobina (_coil_ en anglès, __Bobine_ o _Spule_ en alemany).
+
+## 2. Funcionament com a motor
+
+### 2.1. Teorema de Ferraris. Camp magnètic a l'estator.
+
+Si s'analitza el que li succeeix a una única bobina travessada per un corrent sinusoidal es veurà que es crea un camp magnètic en la direcció de l'eix de la bobina el mòdul i sentit del qual segueix també una funció sinus. És a dir, en l'instant que el corrent és zero el camp magnètic és també zero i quan augmenta el camp magnètic també augmenta. Fins que arriba al màxim, moment en el qual comença a disminuir fins a arribar a zero, per tornar a augmentar. Tot i que ara ho farà en sentit contrari, en sentit negatiu si es prefereix fins a arribar al màxim negatiu (o mínim si es prefereix), a partir d'aquest moment la seva magnitud (com és de llarg el vector) torna a disminuir fins a zero, i es repeteix el cicle.
+
+Això no obstant, si en comptes d'una sola bobina se'n tenen tres desfasades 120° i alimentades per tres fases desfasades també 120°, es pot comprovar com el mòdul del camp magnètic resultat sempre és igual. És a dir, el vector té sempre la mateixa longitud, però la direcció no coincideix amb cap de les tres bobines tret d'un instant infinitesimal. És a dir, el vector és giratori amb velocitat angular constant $\omega_s = 2\pi f_s~(\text{rad/s})$. En una altra analogia, el camp magnètic equival a un imant giratori que gira a la velocitat angular de la xarxa elèctrica. Aquest comportament es coneix en alguna literatura com el teorema de Ferraris.
+
+La velocitat angular anterior es dona només en el cas que hi hagi dos pols per fase. Si s'augmenta el nombre de pols (que sempre han de ser parells) la velocitat de gir es divideix segons $\omega_s/p=\Omega_s$ a on p són el nombre de parells de pols. Aquesta relació s'anomena velocitat de sincronisme de la màquina.
+
+> ![](img/ferraris.gif)
+>
+> **Fig. 1a** _Visualització del teorema de Ferraris_ Creació pròpia (autor Joan Servera), mitjançant la animació de gràfiques estàtiques generades mitjançant LibreOffice.
+
+> ![c](img/ferrari_vectors.gif)
+>
+> **Fig. 1b** _Visualització del teorema de Ferraris_ Imatge creada per [M.A. Rodríguez Pozueta][1] de la [Universitat de Cantabria][2] sota llicencia [CC3.0 by-nc-sa][3]
+
+### 2.2. Inducció al rotor. Llei de Lenz
+
+Des del punt de vista del rotor quan està aturat, veu un camp magnètic giratori, i per tant el flux que travessa les espires que el conformen varia. La variació del flux magnètic indueix a les bobines un corrent de la mateixa freqüència que la velocitat de sincronisme $\omega_r=\omega_s/p$. Aquest corrent crearà un camp magnètic també rotatori la velocitat del qual serà la pulsació dels corrents del rotor dividit pel nombre de parells de pols $\omega_r/p = \Omega_r$.
+
+De nou, el comportament del rotor equival a un imant giratori. Això no obstant, si el rotor comença a girar a la rotació de l'imant se suma la rotació del mateix rotor $\omega_m+\omega_r/p$. Vist des de l'exterior el comportament de l'estator i del rotor equival a la de dos imants que es persegueixen i per tant les velocitats absolutes d'ambdós coincideixen, és a dir:
+
+$$
+\begin{align}
+\omega_m+\dfrac{\omega_r}{p}=\dfrac{\omega_s}{p} \\[4mm]
+\Omega_m + \Omega_r = \Omega_s
+\end{align}
+$$
+
+Per tant, quan el rotor està aturat es té que la velocitat de gir del camp del rotor i la del camp de l'estator coincideixen. Però, pel fet que una intensitat perpendicular a un camp genera una força perpendicular als dos, a causa de la llei de Lenz apareix un parell de forces. Si el parell d'arrencada que atorga el motor és superior a la càrrega aquest començarà a girar per a intentar seguir el camp de l'estator. Per tant, la velocitat de gir relativa del rotor disminueix per a conservar el sincronisme de la velocitat absoluta del camp del rotor amb la de l'estator.
+
+### 2.3. Lliscament.
+
+Si la velocitat del rotor arribés a la de sincronisme, la variació de flux que veu el rotor desapareix, i per tant desapareixen també el corrent induït a l'interior i el camp magnètic del rotor. Com a conseqüència, desapareixen el parell de forces i, per tant, la càrrega per petita que sia, o fins i tot el fregament dels rodaments de l'eix del motor frenaran el motor, fins a arribar a una velocitat estable però sempre inferior a la de sincronisme. Per aquest motiu aquests motors s'anomenen asíncrons.
+
+Es a dir, des de l'arrencada $\omega_m=0$ fins a la velocitat nominal (o de funcionament) $\omega_m=\omega_F$, el rotor sempre veu com el camp magnètic de l'estator l'avança. Sempre hi ha una diferència entre ambdues velocitats, al principi gran i cada cop més petita, però hi és. A aquesta velocitat se l'anomena velocitat de lliscament.
+
+$$
+\begin{align}
+\dfrac{\omega_r}{p}=\dfrac{\omega_s}{p}-\omega_m
+\end{align}
+$$
+
+Aquesta diferència de velocitats es caracteritza normalment amb un valor relatiu prenent com a referència la velocitat de sincronisme. Es defineix aquest concepte com lliscament (_slip_ en anglès) no confondre amb velocitat de lliscament).
+
+$$
+\begin{align}
+s=\dfrac{\dfrac{\omega_s}{p}-\omega_m}{\dfrac{\omega_s}{p}} =
+  \dfrac{\Omega_s-\Omega}{\Omega_s}
+\end{align}
+$$
+
+A partir d'aquesta definició, es poden extreure vàries relacions:
+
+$$
+\begin{align}
+\begin{array}{ccc}\omega_m=(1-s)\cdot\dfrac{\omega_s}{p} && ; && \omega_r=s\cdot\omega_s \end{array}
+\end{align}
+$$
+
+Per tant quan una màquina està aturada el lliscament és 1 quan arriba a la velocitat de funcionament el lliscament és proper a 0 (en general entre 0,02 i 0,07).
+
+### 2.4. Altres unitats de mesura.
+
+Habitualment, no es treballa amb rad/s, en els motors és freqüent utilitzar una altra unitat de mesura fora del S.I. les rpm o rev/min o min<sup>-1</sup> i s'identifiquen amb la lletra n.
+
+$$
+\begin{gather}
+n_s=\dfrac{60f_s}{p} \\
+n_r = \dfrac{60f_r}{p}=\dfrac{60\cdot (s\cdot f_s)}{p} \\
+n = \omega_m \cdot \dfrac{60}{2\cdot\pi}
+\end{gather}
+$$
+
+per tant, es poden establir les següents relacions:
+
+$$
+\begin{align}
+\begin{array}{ccccc}s=\dfrac{n_s-n}{n_s} && ; && n = (1-s)\cdot n_s && ;
+&& n_r = s\cdot n_s\end{array}
+\end{align}
+$$
+
+Si ens restringim a l'àmbit europeu, a on la freqüència sempre és de 50 Hz:
+
+$$
+\begin{align}
+n_s=\dfrac{3000}{p}
+\end{align}
+$$
+
+És a dir, que el camp de l'estator girarà a 3000 rpm, 1500 rpm si té dos parells de pols per fase, 1000 rpm si en té 3, etc. Per altra banda, el rotor d'una màquina amb un parell de pols girarà entre 2940 i 2790 rpm.
+
+### 2.5. Connexions habituals
+
+Un motor asíncron pot tenir totes les bornes secundàries de les bobines de l'estator internament connectades o disponibles per a la connexió. En aquest segon cas es podrà connectar el motor fàcilment en estrella o en triangle.
+
+> ![](img/con_maq_asinc_YD.png)
+> **Fig. 2**  _caixa de borns d'una màquina asíncrona trifàsica de gàbia d'esquirol_ Imatge creada per [M.A. Rodríguez Pozueta][1] de la [Universitat de Cantabria][2] sota llicencia [CC3.0 by-nc-sa][3]
+> _a_) Connexió estrella
+> _b_) Connexió triangle
+> _c_) Nomenclatura antiga
+
+Així es permet el funcionament del motor en dues tensions assignades de línia diferents, sempre que una sigui $\sqrt{3}$ de l'altra.
+
+Per exemple un motor de 400/230 V té una tensió de fase de 230 V, per tant, quan es connecti a una xarxa amb tensió de línia de 230 V haurà de connectar-se en triangle, i quan es connecti a una xarxa de 400 V, s'haurà de connectar en estrella, per tal d'assegurar que la tensió de fase segueix essent de 230 V.
+
+Quan en un motor s'observa a la placa de característiques que admet dues tensions la menor correspon sempre a la connexió en triangle i la major a la connexió en estrella.
+
+### 2.6. Curiositat. Ús com a transformadors de desfasament.
+
+Quan el motor està aturat i es connecta una càrrega elèctrica als bobinats del rotor, el motor es comportarà com un transformador en càrrega depenent del nombre d'enrotllaments de l'estator i del rotor.
+
+Si es controla la velocitat del rotor es poden fer circular per aquest corrents de freqüència arbraria:
+
+$$
+\begin{align}
+f_r=f_s-n\cdot p \cdot \dfrac{2\cdot\pi}{60}=
+n \cdot f_s
+\end{align}
+$$
+
+Aquest concepte és la base de la construcció de transformadors de desfasament (_transformador decalador_ en castellà o _phase-shifter transformer_ en anglès).
+
+## 3. Estudi de la màquina.
+
+### 3.1. Esquema equivalent
+
+> ![](img/circ_eq_maq_asinc_exacte.png)
+> **Fig. 3**  _Circuit equivalent exacte._ Imatge creada per [M.A. Rodríguez Pozueta][1] de la [Universitat de Cantabria][2] sota llicencia [CC3.0 by-nc-sa][3]
+
+És important fer notar que ara es marca amb el subíndex 1 la part que correspon a l'estator i amb 2 la part que correspon al rotor. La prima de la zona corresponent al rotor indica que s'ha fet una reducció al primari dels diferents valors.
+
+De manera anàloga als transformadors, es té que:
+
+$$
+\begin{gather}
+\overrightarrow I_1 = \overrightarrow I_0+\overrightarrow I_2^\prime \\
+\overrightarrow I_0 = \overrightarrow I_{Fe} + \overrightarrow I_\mu \\
+\overrightarrow V_1 =
+  \overrightarrow E_1 + \overrightarrow I_1(R_1+jX_1) \\
+\overrightarrow E_2^\prime = E_1 =
+  \overrightarrow I_2^\prime (R_2^\prime  +jX_2^\prime) +
+  I_2^\prime R_c^\prime
+\end{gather}
+$$
+
+La resistència $R_c^\prime$ és la resistència que representa la càrrega reduïda a l'estator. Aquesta resistència val:
+
+$$
+\begin{gather}
+R_c^\prime = R_2^\prime\left(\dfrac{1}{s}-1\right)
+\end{gather}
+$$
+
+Segons el circuit que es pretengui resoldre les resistències $R_c^\prime$ i $R_2^\prime$ s'associen complint-se la relació:
+
+$$
+\begin{gather}
+R_2^\prime + R_c^\prime = \dfrac{R_2^\prime}{s}
+\end{gather}
+$$
+
+Aquestes equacions es poden representar també mitjançant el diagrama de fasors:
+
+> ![](img/diag_fasorial_maq_asinc.png)
+> **Fig. 4**  _Diagrama fasorial motor asíncron polifàsic._ Imatge creada per [M.A. Rodríguez Pozueta][1] de la [Universitat de Cantabria][2] sota llicencia [CC3.0 by-nc-sa][3]
+
+### 3.2. Circuit aproximat.
+
+Això no obstant, no és possible conèixer tots els valors del circuit mitjançant assajos amb el motor ja fabricat. Els assajos de buit i de curtcircuit també anomenats sense càrrega i amb rotor bloquejat no permeten separar la $X_1​$ de la $X_2​$, per altra banda, tampoc es poden distingir la $R_1​$ de la $R_2$ amb aquests assajos, no obstant això, sí que es pot determinar la $R_1$ amb un assaig addicional i, per tant, distingir ambdues. Per aquest motiu sovint és interessant treballar amb un circuit aproximat.
+
+> ![](img/circ_eq_maq_asinc_aprox.png)
+> **Fig. 5**  _Circuit equivalent aproximat._ Imatge creada per [M.A. Rodríguez Pozueta][1] de la [Universitat de Cantabria][2] sota llicencia [CC3.0 by-nc-sa][3]
+
+$$
+\begin{gather}\begin{array}{ccc}
+R_{cc} = R_1 + R_2 && ; && X_{cc} = X_1 + X_2
+\end{array}\end{gather}
+$$
+
+A diferència dels transformadors el corrent de buit en els motors no és tan petita com en els transformadors i, per tant, l'error és notablement major. Tot i això, en motors trifàsics de més de 10 kW, es pot utilitzar el circuit equivalent aproximat sense problemes. Fins i tot, es poden utilitzar correccions sobre el circuit equivalent aproximat que encara redueixen més l'error <sup>[ref. 1]</sup>.
+
+## 4. Potències i rendiment
+
+### 4.1. Balanç de potències
+
+> ![](img/balanç_pot.png)
+> **Fig. 6**  _Circuit equivalent aproximat._ Imatge creada per [M.A. Rodríguez Pozueta][1] de la [Universitat de Cantabria][2] sota llicencia [CC3.0 by-nc-sa][3]
+
+Es considerarà en aquest balanç que l'estator es troba en marxa industrial. És a dir, que la tensió i la freqüència que veu l'estator són constants i iguals als valors nominals i que s és petit (és a dir la velocitat de gir és pròxima a la nominal).
+
+#### Potències a l'estator
+
+La potència que absorbeix l'estator és:
+
+$$
+\begin{gather}
+P_1 = 3 \cdot V_1 I_1 \cos \varphi_1
+\end{gather}
+$$
+
+La potència $P_1$ que absorbeix l'estator circula pels seus enrotllaments, encalentint-los per efecte Joule. Són les pèrdues en el coure de l'estator $P_{Cu1}$ i que depenen només de la resistència $R_1$:
+
+$$
+\begin{gather}
+P_{Cu1}=3 \cdot R_1 I_1^2
+\end{gather}
+$$
+
+En el circuit magnètic es produeixen pèrdues pels corrents de Foucault i per la histèresi. Aquestes pèrdues són les anomenades pèrdues en el ferro o $P_{Fe}$
+
+$$
+\begin{gather}
+P_{Fe} = 3 \cdot E_1I_{Fe} \approx 3\cdot V_1 I_{Fe}
+\end{gather}
+$$
+
+L'anterior fórmula només té en compte les pèrdues magnètiques de l'estator. La bibliografia indica que les pèrdues magnètiques en ser proporcionals al quadrat de la freqüència seran, en general molt més grans a l'estator que al rotor, segons els paràmetres d'aquesta anàlisi (a on estem pròxims al règim nominal).
+
+#### Potència de l'entreferro
+
+La potència restant s'anomena potència de l'entreferro $P_a$ (tot i que a alguna bibliografia apareix com $P_g$).
+
+$$
+\begin{gather}
+P_a=P_1-P_{Cu1}-P_{Fe}
+\end{gather}
+$$
+
+#### Potències al rotor
+
+La potència de l'entreferro (_air gap_ en anglès) es transmet al rotor, on part d'aquesta energia es perd de nou per efecte Joule.
+
+$$
+\begin{gather}
+P_{Cu2} = 3 \cdot R_2 I_2^2 = 3 \cdot R_2^\prime \cdot {I_2^\prime}^2
+\end{gather}
+$$
+
+En aquest punt, tota la potència romanent es transforma en energia mecànica, i se l'anomena potència mecànica interna $P_{mi}$ i equival a aquella consumida a la resistència de càrrega $R_c^\prime$
+
+$$
+\begin{gather}
+P_{mi} = 3 \cdot R_c^\prime \cdot {I_2^\prime}^2 =
+3 \cdot R_2^\prime \left( \dfrac{1}{s}-1\right){I_2^\prime}^2 =
+3 \cdot R_2^\prime \left( \dfrac{1-s}{s}\right){I_2^\prime}^2
+\end{gather}
+$$
+
+Finalment, part d'aquesta energia mecànica es perd en fregaments o és utilitzada per a impulsar el sistema de ventilació, altra es perd en un calaix de sastre anomenat pèrdues addicionals. Si aquestes últimes no es tenen en compte s'arriba finalment a l'anomenada com a potència útil o $P_u$
+
+$$
+\begin{gather}
+P_u = P_{mi} - P_m
+\end{gather}
+$$
+
+Manipulant les fórmules anteriors s'obtenen algunes fórmules ràpides per a alguns casos:
+
+$$
+\begin{gather}
+P_a = P_{mi}+P_{Cu2} = 3 \cdot (R_c^\prime + R_2^\prime) =
+  3 \cdot \dfrac{R_2^\prime}{s}{I_2^\prime}^2 \\
+P_{Cu2} = \dfrac{s}{1-s}P_{mi} = s \cdot P_a \\[4mm]
+P_a = \dfrac{P_{Cu2}}{s} = \dfrac{P_{mi}}{1-s}
+\end{gather}
+$$
+
+### 4.2. Rendiment
+
+Segons els paràmetres de partida d'aquesta anàlisi el motor funciona amb unes pèrdues fixes:
+
+$$
+\begin{gather}
+P_f = P_{Fe} + P_m
+\end{gather}
+$$
+
+I unes pèrdues variables:
+
+$$
+\begin{gather}
+P_v = P_{Cu1} + P_{Cu2}
+\end{gather}
+$$
+
+El rendiment, per tant, es defineix com:
+
+$$
+\begin{gather}
+\eta = \dfrac{P_u}{P_1}= \dfrac{P_u}{P_u+P_f+P_v} =
+\dfrac{P_u}{P_u+P_m+P_{Cu2}+P_{Fe}+P_{Cu1}}
+\end{gather}
+$$
+
+## 5. Parell
+
+### 5.1. Potència mecànica
+
+La potència mecànica es pot definir també de manera no elèctrica, sinó mecànica com el producte del parell $M$ per la velocitat angular $\omega$ (en alguna bibliografia es representa el parell com $T$ de _torque_ en anglès, i en altres es representa com $\Gamma$). Així es pot calcular la potència útil com:
+
+$$
+\begin{gather}
+P_u = M_u \omega_m = M_u\Omega = M_u\cdot \dfrac{2\pi}{60}n
+\end{gather}
+$$
+
+### 5.2. Parell intern i parell útil
+
+Operant,  el parell útil es pot definir com:
+
+$$
+\begin{gather}
+M_u = \dfrac{P_u}{\Omega} = \dfrac{P_u}{\dfrac{2\pi}{60}n}
+\end{gather}
+$$
+
+El parell intern, és a dir, les dues forces que ha de fer la màquina per a vèncer les pèrdues mecàniques i accelerar la càrrega és:
+
+$$
+\begin{gather}
+M = \dfrac{P_{mi}}{\Omega} = \dfrac{P_{mi}}{\dfrac{2\pi}{60}n}
+\end{gather}
+$$
+
+Operant amb les anteriors equacions:
+
+$$
+\begin{gather}
+M = \dfrac{P_{a}}{\Omega_1} = \dfrac{P_{a}}{\dfrac{2\pi}{60}n_1}
+\end{gather}
+$$
+
+Quan les pèrdues mecàniques són petites ($Pm \approx 0$), la potència útil és similar a la mecànica interna ($P_u \approx P_{mi}$) i per tant $M_u \approx M$
+
+### 5.3. Parell en funció del lliscament
+
+Si a més es treballa amb el circuit aproximat en lloc d'amb el circuit equivalent es pot arribar a la següent relació:
+
+$$
+\begin{gather}
+I_2^\prime = \dfrac{V_1}{\sqrt{\left(R_{cc}+R_c^\prime\right)^2 + X_{cc}^2}} =
+  \dfrac{V_1}{\sqrt{\left(R_1+\dfrac{R_2}{s}^\prime\right)^2 + X_{cc}^2}}
+\end{gather}
+$$
+
+On el denominador és la impedància equivalent del circuit aproximat. Finalment, es poden combinar les equacions anteriors per a tenir una expressió del parell en funció del lliscament, ja que tots els altres paràmetres es poden considerar constants en la majoria dels casos:
+
+$$
+\begin{gather}
+M = \dfrac {3 \dfrac{R_2^\prime}{s}}{\dfrac{2\pi}{60}n_1}\cdot
+  \dfrac{V_1^2}{\left(R_1+\dfrac{R_2^\prime}{s}\right)^2+X_{cc}^2}
+\end{gather}
+$$
+
+> **Exercici:**
+>
+> S'haurà d'utilitzar l'expressió anterior a un full de calcul per a generar uns 20 valors de parell en funció de la velocitat del rotor (en rpm), en lloc del lliscament. Els paràmetres $R_1, R_2^\prime, n_1, X_{cc}, V_1$ han d'estar a unes cel·les fixes per a poder-los canviar fàcilment i que tot es recalculi.
+>
+> Nota important: Es fa notar que l'expressió anterior està en funció del lliscament, i es demana el parell en funció de la velocitat del rotor.
+
+
+## 6. Règims de funcionament de la màquina asíncrona
+
+Tot i les simplificacions fetes, com s'ha pogut observar en l'exercici es pot obtenir una corba bastant similar a les corbes dels motors reals. De fet, es pot utilitzar per a explicar els 3 règims de funcionament del motor.
+
+> ![](img/graf_maq_asin.png)
+>
+> **Fig. 7** _Corba parell-velocitat d'una màquina asíncrona polifàsica a V<sub>1</sub> i f<sub>1</sub> constants_ Creació pròpia (autor Joan Servera), mitjançant la calculadora gràfica [Desmos], es pot consultar la grafica en el [següent enllaç](https://www.desmos.com/calculator/iekm0mrmjg)
+
+### 6.1. Funcionament com a motor
+
+Entre 0 i la velocitat de sincronisme, o expressat d'una altra manera, quan el lliscament es troba entre 1 i 0 la màquina gira en la mateixa direcció que el camp magnètic generat per l'estator, però a velocitat inferior. Aquest comportament està representat al gràfic en color vermell a la imatge anterior. En aquest règim de funcionament, el parell i la velocitat tenen el mateix signe, el que significa que la màquina produeix un treball. La màquina accelera fins a arribar a un punt on les forces s'igualen.
+
+### 6.2. Funcionament com a generador
+
+Si se supera la velocitat de sincronisme, o expressat d'una altra manera, si el lliscament és negatiu, és la zona blava de la gràfica. Això provoca que tant $P_{mi}$ com $P_a$ són  negatives, i per tant el motor produeix potència elèctrica en lloc de consumir-la. Per altra banda, la velocitat i el parell tenen signes oposats, això vol dir que es consumeix potència mecànica.
+
+És a dir, es comporta com una màquina que consumeix potència mecànica i produeix potència elèctrica, és a dir, es comporta com un generador.
+
+### 6.3. Funcionament com a fre a contracorrent
+
+Si la velocitat és negativa, o si parlem en funció del lliscament, si el lliscament és major que 1, el motor gira en sentit contrari al camp magnètic de l'estator. Si es comproven les equacions es veurà que la $P_a$ és positiva, i per tant la màquina consumeix energia elèctrica. Per la banda el parell i la velocitat tenen signes oposats, és a dir que consumeix energia mecànica frenant el moviment.
+
+Tota aquesta energia és rebuda pel rotor (rep energia tant de l'estator com de l'eix) que l'ha de dissipar en forma de calor a través de les seves resistències internes. Com a conseqüència, en aquest règim el motor pot arribar a escalfar-se en excés.
+
+## 7. Punts característics de la corba
+
+### 7.1. Parell màxim
+
+Derivant l'expressió del moment en funció del lliscament, i buscant els zeros de la funció derivada es trobarà el valor de s per als quals es donen els màxims i els mínims de la gràfica:
+
+$$
+\begin{gather}
+s_m = \pm \dfrac{R_2^\prime}{\sqrt{R_1^2+X_{cc}^2}}
+\end{gather}
+$$
+
+Aquest valor se sol trobar entre el 15% i el 30%. Ara substituint $s$ per $s_m$ es trobarà el valor del parell màxim M_{max}:
+
+$$
+\begin{gather}
+M_{max} = \pm\dfrac{3}{\dfrac{2\pi}{60}n_1}\cdot
+  \dfrac{V_1^2}{2\left( \pm R_1+\sqrt{R_1^2+X_{cc}^2} \right)}
+\end{gather}
+$$
+
+El valor positiu correspon amb el parell màxim que ofereix la màquina com a motor i el valor més negatiu el màxim parell demandat com a generador.
+
+### 7.2. Parell nul
+
+Pel fet que la gràfica representa $M(n)$ i no $M_u(n)$ el motor deixa d'aportar parell quan $n=n_1$ en realitat el par útil nul es produeix a una velocitat inferior a la de sincronisme.
+
+### 7.3. Parell d'arrencada
+
+El parell d'arrencada, és aquell que $n=0$ o bé quan $s=1$ substituint s per 1 a l'expressió $M(s)$ s'obtindrà el parrell d'arrencada. El parell d'arrencada ha de ser superior al parell de la càrrega perquè el motor pugui arrencar.
+
+### 7.4. Parell nominal
+
+El parell nominal és aquell en el qual el motor funciona a una velocitat assignada. Aquesta velocitat s'ha de trobar prou separada de $s_m$ per a evitar caure a la zona inestable del funcionament (part a l'esquerra del màxim). Per tant, la $s_N$ sempre es trobarà a la dreta del màxim. En aquesta zona, disminucions de la càrrega provoquen un petit augment de la velocitat, i alhora l'augment de velocitat disminueix el parell, trobant-se ràpidament i de nou un punt d'equilibri. El mateix succeeix si la càrrega augmenta. En general, s<sub>N</sub> es troba entre el 3% i el 8%, i a causa de la duresa de la corba en aquesta zona, la velocitat és com s'observa a la gràfica pràcticament constant independentment del parell.
+
+### 7.5. Capacitat de sobrecàrrega
+
+La capacitat de sobrecàrrega es defineix com el següent quocient:
+
+$$
+\text{csc} = \dfrac{M_{max}}{M_N}
+$$
+
+# Bibliografia:
+
+［1］ Kostenko i Piotrovski. 1979. _Máquinas eléctricas. Tomo II_. Moscú: Editorial Mir.
+
+[1]: https://personales.unican.es/rodrigma/ "M.A. Rodríguez Pozueta"
+[2]: https://web.unican.es/ "Universidad de Cantabria"
+[3]: http://creativecommons.org/licenses/by-nc-sa/3.0/ "Llicencia Creative Commons 3.0 atribució, no comercial, compartir"
+
+</textarea>
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat();
+}
+
+function renderEnunciat(){
+    let txt = "";
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+</script>
