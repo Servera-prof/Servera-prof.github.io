@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+UT03 - Circuits lògics combinacionals
+=====================================
+
+
+
+
+
+
+
+
+
+
+1. Resum d'UT previes
+---------------------
+
+En els temes passats s'ha utilitzat diferents mètodes per a
+**trobar una funció lògica** o al menys una taula de la veritat a partir
+d'unes necessitats. D'aquesta taula de la veritat se'n podia extreure
+una  funció lògiques:
+- utilitzant les formes canòniques
+- simplificant mitjançant Karnaugh
+- utilitzant l'àlgebra de Boole o raonant.
+
+Una vegada es té la funció hi ha **una porta lògica que executa
+cada una de les operacions**:
+
+- $ a \cdot b $ → AND
+- $ a + b $ → OR
+- $ a \oplus b $ → XOR
+- $ \overline a $ → NOT
+
+Representant la funció com a una combinació de portes lògiques **es crea
+un circuit que és comporta com requereix la taula** de la veritat.
+És a dir donades unes entrades sempre surt la mateixa sortida. Això
+és el que s'anomena un **circuit combinacional**.
+
+
+
+
+
+
+
+
+
+
+2. Circuits combinacionals bàsics
+---------------------------------
+
+L'estudi d'algunes funcions combinacionals bàsiques es durà a terme
+per mitjà d'alguns circuits simples.
+
+
+
+### 2.1. Circuits sumadors
+
+Un sumador és un circuit digital que realitza operacions aritmètiques 
+amb nombres binaris, essent fonamental per a unitats de procés i 
+sistemes digitals. Hi ha diferents tipus de sumadors:
+
+- Semisumador (Half Adder): Suma dos bits i genera un resultat i un 
+  ròssec (carry). És l'element bàsic.
+- Sumador complet (Full Adder): Suma tres bits (dos bits d'entrada i un 
+  ròssec anterior), generant un resultat i un nou ròssec.
+- Sumador en complement a 2: Especialitzat en operacions amb nombres 
+  negatius codificats en aquest sistema.
+
+El funcionament es basa en les regles de la suma binària, implementades mitjançant portes lògiques i circuits combinacionals.
+
+| B + A | _Carry_ (C) | Suma (S) |
+|-------|-------------|----------|
+| 0 + 0 | 0           | 0        |
+| 0 + 1 | 0           | 1        |
+| 1 + 0 | 0           | 1        |
+| 1 + 1 | 1           | 0        |
+
+En la suma binària 1 + 1, el resultat és 2, que en binari es representa 
+com "10". Això significa que la suma d'aquesta columna és 0 i es genera 
+un ròssec (_carry_) d'1 que es porta a la següent posició.
+
+Aquest fenomen és equivalent al que passa en suma decimal: per exemple, 
+6 + 4 = 10, on la xifra de les unitats és 0 i es porta 1 a les desenes.
+
+El terme carry (ròssec, arrossegament o transport) refereix precisament 
+a aquest valor que es propaga a la següent posició quan una suma supera 
+el valor màxim del dígit en una base numèrica.
+
+És crucial distingir entre suma lògica i suma aritmètica:
+
+- Suma lògica (OR): 1 + 1 = 1
+- Suma aritmètica (binària): 1 + 1 = 0 amb _carry_ 1
+
+La suma lògica segueix les regles de l'operador OR booleà, mentre que 
+la suma aritmètica obeeix les regles de la suma binària convencional, 
+generant un ròssec quan el resultat supera la base.
+
+
+#### Semisumador
+
+Si s'observa la columna del _carry_ de la taula de la veritat anterior,
+s'observarà que correspon a una porta AND, per altra banda, la columna
+S correspon a la porta XOR. Així el circuit semisumador es pot
+implementar de la següent manera:
+
+> ![c](img/semisumador.png)
+> **Fig. 1.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Circuit semisumador_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+S'anomena «semi»-sumador perquè només suma dos bits i no té en compte 
+un possible ròssec d'una operació anterior, ja que només disposa de 
+dues entrades. Per aquest motiu, només es pot utilitzar per sumar els 
+bits menys significatius d'una operació.
+
+
+#### Sumador total
+
+Per sumar nombres de diversos bits, cal un circuit capaç de gestionar 
+el ròssec (_carry_) de l'operació anterior. Aquest circuit, anomenat 
+sumador complet (_full adder_), realitza la suma de tres bits: els dos 
+bits corresponents i el ròssec provinent de la etapa precedent. La seva 
+sortida proporciona tant el resultat de la suma com el nou ròssec 
+generat.
+
+| B + A + C<sub>i</sub> | C<sub>o</sub> |  S  |
+|-----------------------|---------------|-----|
+| 0 + 0 + 0             | 0             | 0   |
+| 0 + 0 + 1             | 0             | 1   |
+| 0 + 1 + 0             | 0             | 1   |
+| 0 + 1 + 1             | 1             | 0   |
+| 1 + 0 + 0             | 0             | 1   |
+| 1 + 0 + 1             | 1             | 0   |
+| 1 + 1 + 0             | 1             | 0   |
+| 1 + 1 + 1             | 1             | 1   |
+
+> ![c](img/full_adder.png)
+> **Fig. 2.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Circuit sumador total_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+L'integrat 74283 conté quatre sumadors complets, permetent sumar dos 
+nombres de 4 bits. Aquest circuit, encapsulat en un xip de 16 pius, 
+gestiona automàticament la propagació del ròssec entre cada etapa de 
+suma.
+
+
+
+### 2.2. Multiplexor i desmultiplexor
+
+La transmissió de dades es pot realitzar de dues formes. La transmissió
+en paral·lel utilitza múltiples línies per enviar diverses dades
+simultàniament, sent més ràpida però també més costosa. En canvi, la
+transmissió en sèrie empra una sola línia, enviant les dades
+seqüencialment; és més lenta però més econòmica, especialment útil per 
+a grans distàncies.
+
+L'elecció entre ambdós sistemes es basa en un compromís entre 
+velocitat, distància i cost. La conversió de **paral·lel a sèrie 
+s'anomena multiplexació**, mentre que la conversió inversa de **sèrie a 
+paral·lel es denomina desmultiplexació**.
+
+
+
+
+
+#### Multiplexor
+
+Un multiplexor és un circuit que selecciona una de les $N$ entrades 
+d'informació i la connecta a una única sortida, mitjançant $ M $ 
+entrades de control. Es compleix que $ N = 2^M $
+
+En l'exemple, les entrades de control (ABC=010) seleccionen l'entrada 
+2. Com que aquesta entrada té un nivell alt (1), la sortida Y també 
+serà 1. Aquest procés converteix una entrada paral·lela en una sortida 
+sèrie.
+
+> ![c](img/multiplexor_01.png)
+> **Fig. 3.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Simplificació funcionament multiplexor_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+El circuit integrat 74151 implementa un multiplexor de vuit línies.
+
+| C₁ | C₀ | S  |
+|----|----|----|
+| 0  | 0  | E₁ |
+| 0  | 1  | E₂ |
+| 1  | 0  | E₃ |
+| 1  | 1  | E₄ |
+
+
+#### Desmultiplexor
+
+Un desmultiplexor és un circuit digital amb una única entrada i 
+múltiples sortides, on el nombre de sortides ($N$) ve determinat per les 
+entrades de control ($M$) segons la relació $N = 2^M$. Mitjançant 
+aquestes  entrades de control, el circuit connecta la senyal d'entrada a 
+una de les sortides seleccionades.
+
+> ![c](img/desmultiplexor.png)
+> **Fig. 4.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Simplificació funcionament desmultiplexor_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+Aquest procés realitza la conversió inversa al multiplexor: converteix 
+una senyal de sèrie (una entrada) a paral·lel (múltiples sortides).
+
+| C₁ | C₀ | Entrada | S₃ | S₂ | S₁ | S₀ |
+|----|----|---------|----|----|----|----|
+| 0  | 0  | E       | 0  | 0  | 0  | E  |
+| 0  | 1  | E       | 0  | 0  | E  | 0  |
+| 1  | 0  | E       | 0  | E  | 0  | 0  |
+| 1  | 1  | E       | E  | 0  | 0  | 0  |
+
+
+
+#### Utilització multiplexor-desmultiplexor
+
+El multiplexor (Mux) i desmultiplexor (Demux) s'utilitzen conjuntament 
+per a transmissió de dades. El Mux converteix múltiples senyals 
+d'entrada paral·leles en una única línia sèrie, mentre que el Demux 
+realitza el procés invers, convertint la senyal sèrie de tornada a 
+paral·lel.
+
+La sincronització entre ambdós dispositius és crucial: les mateixes 
+senyals de control han de seleccionar simultàniament l'entrada 
+corresponent en el multiplexor i la sortida equivalent en el 
+desmultiplexor. Quan el Mux selecciona E₂, el Demux ha d'activar S₂; 
+quan selecciona E₃, activa S₃, etc. Això garanteix que la informació es 
+transmeti fidelment a través del canal de comunicació.
+
+
+
+### 2.3. Descodificadors i codificadors
+
+Els sistemes digitals operen exclusivament amb valors binaris (1 i 0), 
+mentre que la interpretació de llargues seqüències d'uns i zeros resulta 
+complexa per als humans. Per resoldre aquesta divergència, s'utilitzen 
+convertidors de codi.
+
+En una calculadora es distingeixen tres blocs funcionals:
+
+- Un **codificador** que converteix l'entrada decimal (procedent del 
+  teclat) a codi binari.
+- La **unitat de procés** que executa les operacions utilitzant 
+  exclusivament binari.
+- Un **descodificador** que tradueix el resultat binari de tornada a 
+  decimal per a la seva visualització.
+
+Aquest flux permet la comunicació efectiva entre l'usuari i el sistema digital.
+
+> ![c](img/codificant_calculadora.png)
+> **Fig. 5.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Codificació i descodificació a una calculadora_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+
+##### Descodificadors
+
+Els descodificadors són circuits combinacionals amb $n$ entrades i fins 
+a $2^n$ sortides. Cada combinació d'entrades activa una única sortida 
+específica, traduint així un codi binari en una senyal única.
+
+| A | B | Q₃ | Q₂ | Q₁ | Q₀ |
+|---|---|----|----|----|----|
+| 0 | 0 | 0  | 0  | 0  | 1  |
+| 0 | 1 | 0  | 0  | 1  | 0  |
+| 1 | 0 | 0  | 1  | 0  | 0  |
+| 1 | 1 | 1  | 0  | 0  | 0  |
+
+> ![c](img/descodificador_4sort.png)
+> **Fig. 6.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Implementació d'un descodificador de 4 sortides_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+Els descodificadors BCD/decimal són els més utilitzats. Aquests 
+circuits disposen de quatre entrades per al codi BCD i deu sortides 
+corresponents als dígits decimals del 0 al 9.
+
+En funcionament, la sortida que coincideix amb el valor decimal 
+representat en les entrades s'activa a nivell alt (1), mentre les altres 
+romanen a 0. L'integrat 7442 és un exemple comercial que implementa 
+aquesta funció en un xip de catorze pius.
+
+| A | B | C | D | a | b | c | d | e | f | g |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 0 |
+| 0 | 0 | 0 | 1 | 0 | 1 | 1 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 1 | 0 | 1 | 1 | 0 | 1 | 1 | 0 | 1 |
+| 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 0 | 0 | 1 |
+| 0 | 1 | 0 | 0 | 0 | 1 | 1 | 0 | 0 | 1 | 1 |
+| 0 | 1 | 0 | 1 | 1 | 0 | 1 | 1 | 0 | 1 | 1 |
+| 0 | 1 | 1 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 |
+| 0 | 1 | 1 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 |
+| 1 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+| 1 | 0 | 0 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1 |
+
+Les entrades entre 1010 (10) i 1111 (15) no són codi BCD.
+
+
+#### Implementació de funcions amb descodificadors
+
+És possible implementar funcions lògiques només amb descodificadors
+
+Per a fer-ho s'utilitzarà el següent exemple. Suposem que volem 
+implementar la funció: $f = (a + \overline b) \cdot \overline c$.
+
+1. Es busca la taula de la veritat de la funció (escrita començant
+per la c i acabant amb l'a).
+
+| c | b | a | f |
+|---|---|---|---|
+| 0 | 0 | 0 | 1 |
+| 0 | 0 | 1 | 1 |
+| 0 | 1 | 0 | 0 |
+| 0 | 1 | 1 | 1 |
+| 1 | 0 | 0 | 0 |
+| 1 | 0 | 1 | 0 |
+| 1 | 1 | 0 | 0 |
+| 1 | 1 | 1 | 0 |
+
+2. Es tria un descodificador amb tantes entrades (o més) que el 
+nombre de variables de la funció. Per tres variables (a, b, c) es pot 
+utilitzar un descodificador BCD/decimal, ja que aquest disposa d'un 
+nombre d'entrades igual o superior al nombre 
+de variables. 
+
+3. Les entrades no utilitzades es connecten a massa.
+
+4. S'agafen les combinacions que donen 1:
+    - Q0 = 000
+    - Q1 = 001
+    - Q3 = 011
+
+5. Es combinen totes les sortides a una porta OR
+
+> ![c](img/descodificador_per_funcio.png)
+> **Fig. 7.** 
+> Imatge d'elaboració pròpia creada a partir d'una imatge de
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Utilització d'un descodificador per a implementar una funció_.
+> Imatge original sota llicència [CC3.0-by-nc-sa], imatge derivada
+> sota llicència [CC4.0-by-sa]
+
+
+#### Codificadors
+
+Els codificadors són circuits combinacionals que realitzen la funció 
+inversa als descodificadors. Convertixen un llenguatge comprensible 
+per als humans, com el codi decimal, al codi binari que utilitzen els 
+sistemes digitals.
+
+Aquests circuits disposen de $2^n$ entrades i $n$ sortides, 
+codificant les entrades actives en una combinació binaria equivalent 
+a la sortida.
+
+El codificador decimal/BCD és un dels més utilitzats. Quan s'activa 
+una entrada decimal, les sortides mostren el codi BCD corresponent. 
+Aquests codificadors són prioritaris, meaning que en cas d'múltiples 
+entrades actives, es selecciona la de major o menor pes segons el 
+disseny.
+
+L'integrat 74147 implementa aquesta funció en un xip de 16 pius. 
+Aquests codificadors inclouen una sortida Y0 que s'activa quan totes 
+les entrades són zero, permetent distingir entre aquest estat i les 
+altres combinacions.
+
+| E9 | E8 | E7 | E6 | E5 | E4 | E3 | E2 | E1 | E0 | Y0 | Q3 | Q2 | Q1 | Q0 |
+|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| 0  | 0  | 0  | 0  | 0  | 0  | 0  | 0  | 0  | 0  | 1  | 0  | 0  | 0  | 0  |
+| 0  | 0  | 0  | 0  | 0  | 0  | 0  | 0  | 0  | 1  | 0  | 0  | 0  | 0  | 0  |
+| 0  | 0  | 0  | 0  | 0  | 0  | 0  | 0  | 1  | X  | 0  | 0  | 0  | 0  | 1  |
+| 0  | 0  | 0  | 0  | 0  | 0  | 0  | 1  | X  | X  | 0  | 0  | 0  | 1  | 0  |
+| 0  | 0  | 0  | 0  | 0  | 0  | 1  | X  | X  | X  | 0  | 0  | 0  | 1  | 1  |
+| 0  | 0  | 0  | 0  | 0  | 1  | X  | X  | X  | X  | 0  | 0  | 1  | 0  | 0  |
+| 0  | 0  | 0  | 0  | 1  | X  | X  | X  | X  | X  | 0  | 0  | 1  | 0  | 1  |
+| 0  | 0  | 0  | 1  | X  | X  | X  | X  | X  | X  | 0  | 0  | 1  | 1  | 0  |
+| 0  | 0  | 1  | X  | X  | X  | X  | X  | X  | X  | 0  | 0  | 1  | 1  | 1  |
+| 0  | 1  | X  | X  | X  | X  | X  | X  | X  | X  | 0  | 1  | 0  | 0  | 0  |
+| 1  | X  | X  | X  | X  | X  | X  | X  | X  | X  | 0  | 1  | 0  | 0  | 1  |
+
+
+
+### 2.4. Comparadors
+
+Un comparador és un circuit combinacional que analitza dos nombres 
+binaris (A i B) del mateix nombre de bits i determina la relació entre 
+ells, indicant si A = B, A > B o A < B.
+
+El comparador més bàsic opera amb nombres d'un sol bit. Aquest circuit
+compara els dos bits d'entrada i activa la sortida corresponent a la 
+relació que es compleix entre ells.
+
+> ![c](img/comparador.png)
+> **Fig. 8.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Comparador d'un bit_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+Hi ha dues entrades (dos nombres d'un bit per comparar) i les possibles
+sortides (A = B, A > B o A < B) 
+
+| A | B | A > B | A = B | A < B |
+|---|---|-------|-------|-------|
+| 0 | 0 | 0     | 1     | 0     |
+| 0 | 1 | 0     | 0     | 1     |
+| 1 | 0 | 1     | 0     | 0     |
+| 1 | 1 | 0     | 1     | 0     |
+
+
+
+
+
+
+
+
+
+
+[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
