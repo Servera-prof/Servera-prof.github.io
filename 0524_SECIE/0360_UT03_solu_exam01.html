@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+#### 1. (_2 punts_) Calcula la Previsió de potències d’un edifici...
+
+
+- $P_{hab}=5{,}4 \cdot \dfrac{3 \cdot 5{,}75+3{,}92}{6}=40{,}37~\text{kW}$
+
+- $P_{LC}=16+15{,}5+3{,}45=34{,}95~\text{kW}$
+
+- $P_{ZC}=100 \cdot 0{,}8 = 80~\text{kW}$
+
+- $P_{G}=200\cdot20=4~\text{kW}$
+
+- $P_{VE}=\dfrac{200}{25} \cdot 0{,}1 \cdot 3{,}68=2{,}944~\text{kW}$
+
+- $P_{Total}=\sum P_{i}=40{,}37+34{,}95+0{,}8+4+2{,}944=83{,}064~\text{kW}$
+
+-----------------------------------
+
+#### 2. (_2 punts_) Dimensiona la LGA...
+
+La LGA ha de ser unipolar, trifàsica, amb amb emissió de fums i 
+opacitat reduïda i 0,6/1 kV per normativa.
+L'enunciat diu que discorre per tubs superficials. 
+Per tant:
+- és considera l'aïllament a 90 °C ($\gamma = 45{,}49$)
+- és un sistema B1
+- és considera 3 XLPE
+
+A més, segons NRZ103, per a edificis de menys de 12 plantes
+la centralització es troba totalment a la PB.
+
+Calculam $S$ i $I_b$
+- $ S = \dfrac {P\cdot L} {\gamma \cdot e \cdot U} 
+ = \dfrac 
+  {80\cdot10^{3}\cdot16} 4
+  {45{,}49\cdot0{,}005\cdot400\cdot40}
+ = 35{,}17~\text{mm}^{2}$
+ 
+- $I_b = \dfrac {P} {\sqrt 3 \cdot U \cdot \cos \varphi} 
+ = \dfrac {80 \cdot 10^3}{\sqrt 3 \cdot 400 \cdot 0{,}8}
+ = 144,34~\text{A}$
+    
+Segons ITC-BT-19 la secció per a un sistema d'instal·lació B1,
+i 3 conductors XLPE és $50 \text{mm}^2$ (superior al requerit per
+cdt), que té una $I_{max} = 151~\text{A}$
+
+Es calcula la $I_z$ a partir de la $I_{max}$ considerant els factors
+de correcció. Per a una temperatura ambient de 20 °C, el factor de correcció és 1,19.
+- $I_z = 151 \cdot 1{,}19 = 179{,}69~\text{A}$
+
+Suficient, comprovem, no obstant 35 mm² ja que potser amb factor de
+de correcció (favorables en aquest cas) podria ser suficient).
+- $I_z = 124 \cdot 1{,}19 = 147{,}56 ~\text{A}$
+
+No hi ha fusibles que encaixin per una secció de 35mm² (la
+intensitat seria inferior a $I_b$. Per tant es continua amb 
+50 mm²
+
+- $I_{n}\le0{,}91 \cdot I_{z}= 0{,}91\cdot 179{,}69 = 163{,}51~\text{A}$ 
+
+Es triaria un fusible de 160 A.
+
+Comprovam si $I_b \le I_n \le I_z$:
+
+- $144{,}34 \le 160 \le 179{,}69$ ✅
+
+Calculem la caiguda de tensió (e) per 50 mm²:
+ - $e = \dfrac {P \cdot L} {\gamma \cdot S \cdot U}
+ =\dfrac {80 \cdot 10^3 \cdot 16} {45{,}44 \cdot 50\cdot 400}
+ =1{,}40~\text{V} \rightarrow \dfrac{1{,}40}{400}=0{,}35\%$
+   
+---
+
+#### 3. Dimensiona el nínxol de la CS i la CGP... 
+
+Es considera la caixa **CS ample**, ja que és la recomanada per e-
+distribución i **CGP-7-160**.
+Les dimensions d'aquest material són:
+
+| Caixa | Alt   | Prof  | Ample |
+| :---: | :---: | :---: | :---: |
+| CS    | 530   | 530   | 230   |
+| CGP   | 289   | 530   | 153   |
+
+Els marges més amples són (no estan tots a la mateixa imatge):
+- 100 mm a dreta i esquerra.
+- 300 mm a sota
+- 150 a sobre
+
+**Cas 1:** Disposició Horitzontal
+
+Les mides necessàries pel material del nínxol han de ser:
+
+- Alt: $300+530+150 = 980 ~\text{mm}$
+- Ample: $100+530+289+100 = 1019 ~\text{mm}$
+- Fondària: 230 mm
+
+Les mides mínimes del nínxol han de ser:
+
+- Alt 1150 mm
+- Ample 1350 mm
+- Fondària 300 mm
+
+
+Per tant, les mides serien les mínimes exigibles segons NRZ103
+(1150, 1350, 300).
+
+**Cas 2:** Disposició Vertical
+
+Les mides necessàries pel material del nínxol han de ser:
+
+- Alt: $300+530+200+530+150 = 1710 ~\text{mm}$
+- Ample $100+530+100 = 730 ~\text{mm}$
+- Fondària 230 mm
+
+Excepte la fondària (que hauria de ser 300 mm), la resta són
+majors que el mínim que demana la NRZ103.
+
+**Nota**: També es consideraria vàlida una altura de +200 mm addicionals (1350 i 1910 respectivament), per haver considerat
+l'espai addicional ocult a sota.
+
+---
+
+#### 4. Armari o local de comptadors...
+
+Es tenen:
+- 6 habitatges monofàsics
+- 3 locals trifàsics
+- 1 servei comú
+- 1 equipament
+
+Com que és un edifici de més de 12 plantes, no s'ha de posar més
+de una centralització. Per tant, és suficient amb un mòdul que tingui
+8 comptadors monofàsics i 3 trifàsics.
+
+El model PNZ-8ME+3TE compleix aquest requeriment. Per altra banda
+és important recordar que la centralització ha de guardar espai
+per la unitat funcional de protecció de sobretensions.
+
+![](img/centr_comp.jpg)
+
+L'NRZ103 demana:
+- 200 mm per sobre 
+- 250 mm per sota
+- 200 mm a cada costat
+- 800 mm d'espai de reserva si a l'edifici hi ha locals.
+- 200 mm de distancia de la porta de l'armari a la pared del mòdul de
+  la unitat funcional
+
+Així:
+
+- Alt: $1350+200+250 = 1800 ~\text{mm}$
+- Ample: $1260+200+200+800 = 2460 ~\text{mm}$ 
+- Fondària $200+200 = 400 ~\text{mm}$ mm
+
+---
+
+#### 5. Comprovació Derivació Individual...
+
+És pren el circuit més habitual per a aquest tipus d'instal·lacions 
+(H07Z1-K entubat encastat en obra de paret no aïllant) per a fer
+els càlculs. NAturalment, els altres també són vàlids, sempre que 
+es calculi correctament).
+
+- $S = \dfrac {2 \cdot P\cdot L} {\gamma \cdot e \cdot U} 
+ = \dfrac 
+  {2 \cdot 9,2\cdot10^3 \cdot 25}
+  {48{,}47 \cdot 2{,}3 \cdot 230}
+ = 17{,}94~\text{mm}^2$ 
+
+**Conclusió:** No és suficient.
+
+La cdt per la línia de 10 mm² seria:
+
+- $ e = \dfrac {2 \cdot P\cdot L}{\gamma \cdot S\cdot U} 
+ = \dfrac
+  {2 \cdot 9{,}2\cdot10^3 \cdot 25}
+  {48{,}47 \cdot 10 \cdot 230} =4{,}13~\text{V}$
+
+
+
+
+
+
+
+
+
+
+
+
+
+[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
