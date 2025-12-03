@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+UT03 - Documentació gràfica i CAD en IE.			
+========================================
+
+Cada tasca val 1 punt excepte a on s'indiqui. La puntuació
+de l'exercici serà la suma dels punts obtinguts dividit pel total
+de punts multiplicat per deu 
+
+> $$ \dfrac {\sum\limits_{i=1}^n P_i}{\sum\limits_{i=1}^n Z_i} \cdot 10 $$
+> A on:
+> - $ n $ és el total de tasques
+> - $ P_i $ és la puntuació obtinguda a la tasca i-èssima
+> - $ Z_i $ és la puntuació màxima de la tasca i-èssima
+
+
+
+Exercici 1
+----------
+
+Per a fer el següent exercici s'han de realitzar tots els punts
+següents:
+
+- Descarrega el [següent plànol](docs/exercici1.dwg).
+  Copia'l a un nou dwg conservant les coordenades, és a dir
+  copiar mantenint l'origen.
+- Prepara un requadre a l'espai paper amb 10 mm de marge a tots els
+  costats, excepte a l'esquerra que ha de ser de 20 mm.
+  Ara fes un caixetí de 180 x 36 al cantó inferior dret. 
+  A dins aquest caixetí escriu el text «Pendent realitzar 
+  subdivisions», amb majúscules i minúscules i la mida mínima 
+  permesa segons normativa.
+- A dins de l'espai disponible del requadre (el que no està
+  ocupat pel caixetí) dibuixa un cercle de 100 mm de radi.
+  Converteix-lo en una finestra gràfica.
+- Fes una CAS a la xarxa aèria que ja està dibuixada. Després
+  esborra la directriu que diu «Aquí».
+- Fes una línia subterrània respectant la simbologia (línia 
+  discontinua per la XSBT i línies continues per a indicar que està 
+  enterrada, de color que toqui). 
+  La línia ha d'anar des de la CAS fins a la CGP+CS.
+- Dibuixa la voravia de les illes de cases a on hi hagi XABT o XSBT).
+- A la finestra gràfica rodona que has fet, fes que aparegui la
+  XSBT que acabes de fer a l'escala normalitzada més gran possible
+  (que surti amb el màxim de zoom).
+- Amb una directriu a l'espai paper (amb la mida de text normalitzada
+  menor possible) indica la longitud de la nova línia.
+
+
+
+
+
+
+
+
+
+[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
