@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+UT03 - Exercicis de dimensionament d'instal·lacions d'enllaç
+============================================================
+
+**1.** (_2 punts_) Calcula la Previsió de potències d’un edifici 
+destinat principalment a habitatges a on:
+
+- 12 habitatges són d’electrificació elevada (planta segona) i 5 
+  d’electrificació bàsica (planta primera).
+- Hi ha 3 locals comercials (planta baixa):
+    + La discoteca té una superfície de 250 m² i necessita per a dur a 
+      terme la seva activitat com a mínim 26 kW.
+    + La tenda records i _souvenirs_ tipics serverisn té una superfície 
+      de 50 m² i necessita 2451 W per a dur a terme la seva activitat.
+    + L’oficina d’atenció d’objectes perduts a torrents té una 
+      superfície de 23 m², necessita 2400 W per a dur a terme la seva 
+      activitat.
+- Les zones comunes són de 100 m² les zones comunes i 50 m² l'escala
+  i volen posar llum LED (assimilable a fluorescents).
+- L’aparcament (soterrani) té 200 m² amb ventilació forçada com 
+  sol ser habitual, i es necessiten aproximadament 25 m² per 
+  plaça d’aparcament a causa de la superfície necessària per a 
+  les maniobres.
+
+> Potència prevista: _____ kW
+      
+2. (_2 punts_) Dimensiona la LGA per  i per  sabent que aquesta anirà 
+soterrada dins tubs formigonats al llarg de 20 m a una temperatura 
+ambient de 40 °C, a una temperatura del terreny de 35 °C, i 
+resistivitat del terreny de 2 i profunditat de 1 metre.
+Servirà per alimentar a l'edifici del punt 1. 
+Pots considerar un cos φ de 0,9. 
+Qualsevol altra dada com el tipus de conductor, aïllament, etc. es pot 
+triar lliurement dins del permès per l’REBT. 
+Tria també la intensitat del fusible, si és necessari 
+augmenta la secció de la LGA.
+
+> - Secció LGA: _____ mm²
+> - Intensitat màxima que suporta la LGA (coeficients inclosos): 
+>   _____ A
+> - Intensitat del fusible: _____ A
+> - Intensitat demandada per l’edifici: _____ A
+> - cdt calculada: _____ %
+> - ø tub: _____                      
+
+
+3. (_2 punts_) Ves al catàleg de Pinazo i a la guia de la NRZ103 i 
+dimensiona el nínxol per a la CS, CGP i fusibles adients per a la LGA 
+de l'exercici anterior . 
+Utilitzant els marges més amples de les figures de la NRZ103.
+
+> - Ample nínxol: _____ mm
+> - Alt nínxol: _____ mm
+> - Profunditat nínxol: _____ mm
+
+
+4. (_2 punts_)  Ves al catàleg de Pinazo i a la guia de la NRZ103 i 
+dimensiona el local o armari de comptadors. No es pot utilitzar 
+local si amb un armari és suficient. De l’edifici del punt 1, 
+considerant que tots els comptadors són monofàsics excepte si superen
+la potència limit.
+
+> - Ample armari/local: _____ cm
+> - Alt armari/local: _____ cm
+> - Profunditat armari/local: _____ cm
+
+
+5. (_2 punts_) Comprova si una DI de és suficient per a un dels 
+habitatges d’electrificació elevada, suposant una distància de  i un , 
+tota la resta de variables pots triar-les dins del que permet l’REBT.
+
+> - Conductor: (per exemple H07Z1-K (AS), RZ1-K (AS), etc.) _____
+> - cdt: _____ V
+> - És suficient?: _____
+
+
+[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
