@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+#### 1. (_2 punts_) Calcula la Previsió de potències d’un edifici...
+
+
+- $P_{hab} = 13{,}1 \cdot \dfrac{5 \cdot 5{,}75 + 12 \cdot 9{,}2}{17}
+  =107{,}23~\text{kW}$
+
+- $P_{LC}=26+5{,}0+3{,}45=34{,}45~\text{kW}$
+
+- $P_{ZC}=100 \cdot 8 + 50 \cdot 4= 1000~\text{W} = 1{,}0~\text{kW}$
+
+- $P_{G}=200 \cdot 20 = 4~\text{kW}$
+
+- $P_{VE}=\dfrac{200}{25} \cdot 0{,}1 \cdot 3{,}68=2{,}944~\text{kW}$
+
+- $P_{Total}=\sum P_{i}=107{,}23+34{,}45+1{,}0+4+2{,}944=149{,}62~\text{kW}$
+
+-----------------------------------
+
+#### 2. (_2 punts_) Dimensiona la LGA...
+
+La LGA ha de ser unipolar, trifàsica, amb amb emissió de fums i 
+opacitat reduïda i 0,6/1 kV per normativa.
+L'enunciat diu que discorre per tubs enterrats. 
+Per tant:
+- és considera l'aïllament a 90 °C ($\gamma = 45{,}49$)
+- Es podria triar directament enterrada ja que no està sotmès a 
+  NRZ002, (no és una XSBT, sinó una LGA), però l'enunciat diu que 
+  va per tubs.
+- és considera 3 XLPE de coure
+
+A més, segons NRZ103, per a edificis de menys de 12 plantes
+la centralització es troba totalment a la PB.
+
+Calculem $S$ i $I_b$
+- $ S = \dfrac {P\cdot L} {\gamma \cdot e \cdot U} 
+ = \dfrac 
+  {149{,}62 \cdot10^{3} \cdot 20}
+  {45{,}49 \cdot 0{,}005 \cdot 400 \cdot 400}
+ = 82{,}23~\text{mm}^{2}$
+ 
+- $I_b = \dfrac {P} {\sqrt 3 \cdot U \cdot \cos \varphi} 
+ = \dfrac {149{,}62 \cdot 10^3}{\sqrt 3 \cdot 400 \cdot 0{,}9}
+ = 239{,}95~\text{A}$
+    
+Segons ITC-BT-07 la secció per a un conductor entubat de coure,
+i 3 conductors XLPE de $150 \text{mm}^2$ (superior al requerit per
+cdt), té una $I_{max} = 300~\text{A}$ superior al requerit per
+la $I_b$.
+
+Es calcula la $I_z$ a partir de la $I_{max}$ considerant els factors
+de correcció. Per a una temperatura del terreny de 35 °C, 
+resistivitat del terreny de 2 K·m/W, i profunditat d'1 m, els
+factors de correcció són respectivament 0,92, 0,93 i 0,97. Per tant:
+- $I_z = 300 \cdot 0{,}92 \cdot 0{,}93 \cdot 0{,}97 
+  = 248{,}97~\text{A}$.
+
+- $I_{n} \le 0{,}91 \cdot I_{z} = 0{,}91\cdot 248{,}97 = 226{,}57~\text{A}$ 
+
+Es triaria un fusible de 200 A. Ara bé 200 A és insuficient, perquè
+la intensitat del fusible seria inferior a la de la previsió de 
+càrregues. S'ha d'anar a una secció superior.
+
+Per a un conductor entubat de coure de $240 \text{mm}^2$, és té una $I_{max} = 400~\text{A}$
+
+Per a una temperatura del terreny de 35 °C, 
+resistivitat del terreny de 2 K·m/W, i profunditat d'1 m, els
+factors de correcció són respectivament 0,92, 0,92 i 0,97. Es fa
+notar que el factor de correcció per resistivitat del terreny ha 
+canviat (de 0,93 passa a 0,92):
+
+- $I_z = 400 \cdot 0{,}92 \cdot 0{,}92 \cdot 0{,}97 
+  = 328{,}40~\text{A}$.
+  
+- $I_{n} \le 0{,}91 \cdot I_{z} = 0{,}91\cdot 328{,}40 = 298{,}85~\text{A}$
+
+- ES tria un fusible de 250 A.
+
+Comprovam si $I_b \le I_n \le I_z$:
+
+- $239{,}95 \le 250 \le 328{,}40$ ✅
+
+Calculem la caiguda de tensió (e) per 240 mm²:
+ - $e = \dfrac {P \cdot L} {\gamma \cdot S \cdot U}
+ =\dfrac {149{,}62 \cdot 10^3 \cdot 20} {45{,}49 \cdot 240 \cdot 400}
+ =0{,}6852~\text{V} \rightarrow \dfrac{0{,}6852}{400}=0{,}17\%$
+ 
+ Trobem el tub per a S = 50 mm² a la taula 1 de la ITC-BT-14: ø200. 
+   
+---
+
+#### 3. Dimensiona el nínxol de la CS i la CGP... 
+
+Es considera la caixa **CS ample**, ja que és la recomanada per e-
+distribución i **CGP-7-250** o **CGP-9-250** depenent de si es vol
+muntar-ho en horitzontal o vertical. Tanmateix, les dimensions són
+les mateixes per CGP-7 i CGP-9.
+
+Les dimensions d'aquest material són:
+
+| Caixa | Ample   | Alt  | Prof  |
+| :---: | :-----: | :--: | :---: |
+| CS    | 530     | 530  | 230   |
+| CGP   | 318     | 530  | 153   |
+
+Els marges més amples són (no estan tots a la mateixa imatge):
+- 100 mm a dreta i esquerra.
+- 300 mm a sota
+- 150 a sobre
+
+**Cas 1:** Disposició Horitzontal
+
+Les mides necessàries pel material del nínxol han de ser:
+
+- Alt: $300+530+150 = 980 ~\text{mm}$
+- Ample: $100+530+318+100 = 1048 ~\text{mm}$
+- Fondària: 230 mm
+
+Les mides mínimes del nínxol han de ser:
+
+- Alt 1150 mm
+- Ample 1350 mm
+- Fondària 300 mm
+
+
+Per tant, les mides serien les mínimes exigibles segons NRZ103
+(1150, 1350, 300), ja que són superiors al necessari per les mides
+dels elements i marges.
+
+**Cas 2:** Disposició Vertical
+
+Les mides necessàries pel material del nínxol han de ser:
+
+- Alt: $300+530+200+530+150 = 1710 ~\text{mm}$
+- Ample $100+530+100 = 730 ~\text{mm}$
+- Fondària 230 mm
+
+Les mides mínimes són:
+
+- Alt: 1770 mm
+- Ample: 710 mm
+- Fondària 300 mm
+
+Per tant el buid haura de tenir 1770 x 730 x 300 mm 
+
+**Nota**: També es consideraria vàlida una altura de +150 mm addicionals (1300 i 1920 respectivament), per haver considerat
+l'espai addicional ocult a sota.
+
+---
+
+#### 4. Armari o local de comptadors...
+
+L'enunciat no obliga a utilitzar trifàsic, per tant es segueix el 
+criteri de potència màxima monofàsica.
+
+Es tenen:
+- 17 habitatges monofàsics
+- 1 locals trifàsic (el de 26 kW)
+- 2 locals monofàsics
+- 1 servei comú
+- 1 aparcament
+
+Com que és un edifici de més de 12 plantes, no s'ha de posar més
+de una centralització. Per tant, és necessita un mòdul que tingui
+8 comptadors monofàsics i 3 trifàsics i  a part dos mòduls de 8
+comptadors monofàsics.
+Per altra banda, com que el nombre de comptadors supera els 16,
+no es pot utilitzar armari, i s'ha d'anar a local.
+
+> **Nota:** Els espais reservats a comptadors trifàsics
+> poden ser utilitzats per monofàsic atès que tenen les dimensions
+> necessàries. No obstant això, el tècnic s'hauria d'assegurar amb
+> el proveïdor i e-distribucion de si hi ha algun impediment que
+> no conegui i valorar la resposta rebuda.
+
+> Per aquest motiu, al menys acadèmicament s'opta per afagir 2 mòduls
+> de 8 en lloc d'un de 12.
+
+El model PNZ-8ME+3TE amb dos PNZ-8ME compleixen els requeriments. 
+Per altra banda és important recordar que la centralització ha de 
+guardar espaiper la unitat funcional de protecció de sobretensions.
+
+Per tant la CC en si té:
+
+- Ample: $315 + 315 + 630 + 630 + 630 = 2520 \text{mm}$ 
+- Alt: $\text{MAX}[1215, 1620, 720, 360] = 1620 \text{mm}$
+
+L'NRZ103 demana (per a locals):
+- Distàncies de la CC a sostre: no determinada (és considera 200)
+- Distàncies de la CC a sostre: no determinada (és considera 250)
+- Distancies a parets 200 mm a cada costat
+- Espai de reserva: no exigit
+- 1100 mm de distancia del primer obstacle a la paret del mòdul 
+  de la unitat funcional
+
+Pel que fa a les mides mínimes el local farà 1500 x 1500 i 2300 d'alt.
+Així, les mides necessàries per a que l'aparellatge càpiga són:
+
+- Alt: $1620+200+250 = 2070 ~\text{mm}$
+- Ample: $2520+200+200+800 = 2920 ~\text{mm}$ 
+- Fondària $200 + 1100 = 1300 ~\text{mm}$ mm
+
+
+Per tant excepte l'ample, la resta és inferior a les mides mínimes.
+Per aquest motiu el local ha de tenir un:
+
+- Alt: 2300 mm
+- Ample: 2920 mm
+- Fondària: 1500 mm
+
+> **Nota:** Es poden utilitzar altres configuracions, per exemple
+> col·locar un dels mòduls o dos a una altra paret, bé per 
+> adaptar-se a la geometria disponible, bé per a optimitzar la 
+> superfície utilitzada.
+
+---
+
+#### 5. Comprovació Derivació Individual...
+
+És pren el circuit més habitual per a aquest tipus d'instal·lacions 
+(H07Z1-K entubat encastat en obra de paret no aïllant) per a fer
+els càlculs. Naturalment, els altres també són vàlids, sempre que 
+es calculi correctament).
+
+- $S = \dfrac {2 \cdot P\cdot L} {\gamma \cdot e \cdot U} 
+ = \dfrac 
+  {2 \cdot 9,2\cdot10^3 \cdot 10}
+  {48{,}47 \cdot 2{,}3 \cdot 230}
+ = 7{,}17~\text{mm}^2$ 
+
+No és pot determinar encara si és suficient. S'ha de comprovar també
+l'$I_{max}$. Per a una instal·lació tipus B1 i conductors assimilats
+a 2 PVC (al ser de 450/750 V) la taula C-52-1-bis de la UNE indica
+una intensitat de 46 A. L'enunciat no obliga a considerar temperatura
+ni agrupament, per tant es suposa factor de correcció 1.
+
+**Conclusió:** És suficient per cdt.
+
+La cdt per la línia de 10 mm² seria:
+
+- $ e = \dfrac {2 \cdot P\cdot L}{\gamma \cdot S\cdot U} 
+ = \dfrac
+  {2 \cdot 9{,}2\cdot10^3 \cdot 10}
+  {48{,}47 \cdot 10 \cdot 230} =1{,}65~\text{V}$
+
+
+
+
+
+
+
+
+
+
+
+
+
+[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
