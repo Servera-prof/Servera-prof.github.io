@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+UT04 - Circuits lògics seqüencials
+==================================
+
+
+
+
+
+
+
+
+
+
+1. Resum d'UT previes i introducció
+-----------------------------------
+
+En els temes passats hem vist una mena de circuits anomenats circuits 
+combinacionals, en aquests circuits independentment de quines eren les 
+entrades i les sortides de l'estat anterior sempre responen de la 
+mateixa manera donades unes entrades.
+
+Es a dir si a les 12:00 hi ha uns interruptors activats i llums LED 
+encesos (com amb el sumador) si a les 12:01 s'activen uns altres 
+interruptors els sistema respondra com si a les 12:00 no hagués passat 
+res. El sistema no té «memòria» per dir-ho així.
+
+Els circuits seqüencials són circuits digitals amb «memòria interna». A 
+diferència dels circuits combinacionals, les seves sortides no depenen 
+exclusivament de les entrades actuals, sinó també de l'estat intern 
+previ del circuit.
+
+Els circuits seqüencials es classifiquen en dos tipus:
+
+- Síncrons: Operen coordinats per un senyal de rellotge que marca els 
+  moments en què es llegeixen o actualitzen les dades.
+- Asíncrons: Funcionen sense rellotge, el que augmenta la complexitat 
+  del seu disseny.
+
+
+
+
+
+
+
+2. Biestables
+-------------
+
+Un biestable és un circuit digital seqüencial amb dos estats estables 
+de sortida (alt i baix), que pot mantenir indefinidament. El seu estat 
+de sortida depèn de les entrades actuals i de l'estat previ.
+
+Tipus de biestables:
+- Latches: Asíncrons. No utilitzen senyal de rellotge.
+- Flip-flops: Síncrons. Només canvien d'estat en un moment específic del senyal de rellotge (anomenat flanc).
+
+Tipus de flanc:
+- Flanc positiu: Transició de 0 a 1.
+- Flanc negatiu: Transició de 1 a 0.
+
+Classificació dels flip-flops:
+- Disparats per flanc positiu (canvien en 0 → 1).
+- Disparats per flanc negatiu (canvien en 1 → 0).
+
+
+
+
+
+
+
+[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

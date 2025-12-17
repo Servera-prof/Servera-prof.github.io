@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+UT03 - Exercicis de dimensionament d'instal·lacions d'enllaç
+============================================================
+
+**1.** (_2 punts_) Calcula la Previsió de potències d’un edifici 
+destinat principalment a habitatges a on:
+
+- 12 habitatges són d’electrificació elevada (planta tercera, quarta i 
+  cinquena) i 15 d’electrificació bàsica (planta primera i segona).
+- Hi ha 3 locals comercials (planta baixa):
+    + La papereria té una superfície de 100 m² i necessita per a dur a 
+      terme la seva activitat com a mínim 17 kW.
+    + La tenda congelats té una superfície de 170 m² i necessita 
+      2451 W per a dur a terme la seva activitat.
+    + L’oficina d’enginyeria de energies renovables té una 
+      superfície de 23 m², necessita 2400 W per a dur a terme la seva 
+      activitat.
+- Les zones comunes són de 230 m² les zones comunes i 80 m² l'escala
+  i volen posar llum LED (assimilable a fluorescents). A més té unes
+  màquines comunitàries de 1,5 kW. 
+- No té aparcament.
+
+> Potència prevista: _____ kW
+      
+2. (_2 punts_) Dimensiona la LGA sabent que aquesta anirà dins tubs 
+directament soterrats al llarg de 30 m a una temperatura 
+ambient de 10 °C, a una temperatura del terreny de 20 °C, i 
+resistivitat del terreny de 1 i profunditat de 0,8 metres.
+Servirà per alimentar a l'edifici del punt 1.
+Suposa que la potència prevista és de 147 kW.
+Pots considerar un cos φ de 0,85. 
+Qualsevol altra dada com el tipus de conductor, aïllament, etc. es pot 
+triar lliurement dins del permès per l’REBT. 
+Tria també la intensitat del fusible, si és necessari 
+augmenta la secció de la LGA.
+
+> - Secció LGA: _____ mm²
+> - Intensitat màxima que suporta la LGA (coeficients inclosos): 
+>   _____ A
+> - Intensitat del fusible: _____ A
+> - Intensitat demandada per l’edifici: _____ A
+> - cdt calculada: _____ %
+> - ø tub: _____                      
+
+
+3. (_2 punts_) Ves al catàleg de Pinazo i a la guia de la NRZ103 i 
+dimensiona el nínxol per a la CS, **CGP-9** adients suposant que has 
+obtingut una $I_n = 250A$. 
+Utilitzant els marges més amples de les figures de la NRZ103.
+
+Fes un planol de **l'alçat**, el més net que puguis. 
+Utilitza un paper doblegat com a regla si no en tens. 
+No cal que sigui proporcionat ni a escla.
+
+> - Ample nínxol: _____ mm
+> - Alt nínxol: _____ mm
+> - Profunditat nínxol: _____ mm
+
+
+4. (_2 punts_)  Ves al catàleg de Pinazo i a la guia de la NRZ103 i 
+dimensiona el local o armari de comptadors. No es pot utilitzar 
+local si amb un armari és suficient. De l’edifici del punt 1, 
+considerant que tots els comptadors són monofàsics excepte si superen
+la potència limit.
+
+Fes un planol de **l'alçat i de planta**, el més net que puguis. 
+Utilitza un paper doblegat com a regla si no en tens. 
+No cal que sigui proporcionat ni a escala.
+
+> - Ample armari/local: _____ cm
+> - Alt armari/local: _____ cm
+> - Profunditat armari/local: _____ cm
+
+
+5. (_2 punts_) Calcula la derivació individual per a un xalet de luxe
+que té una potència prevista de 39 kW (fixa't que aquesta potència
+supera els 14,49 kW). 
+Tenint en compte que va encastada dins tubs a paret de mamposteria no 
+aïllant, al llarg de 40 m.
+Considera un factor de potència de 0,9. 
+La DI va a parar a un IGA amb $I_n = 63~\text{A}$ i poder de tall de 
+110 kA, corba C.
+A més el propietari et demana utilitzar (si és possible) conductor
+RZ1-K unipolar, ja que li sobra d'una altra xalet que té a Costa dels 
+Pins (Son Servera).
+Tota la resta de variables pots triar-les dins del que permet l’REBT.
+
+> - S: _____ mm²
+> - $I_{max}$ (del conductor): _____ A
+> - cdt: _____ V
+
+
+[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
