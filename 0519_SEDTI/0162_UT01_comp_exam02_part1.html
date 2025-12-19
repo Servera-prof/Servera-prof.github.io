@@ -1,0 +1,750 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+
+    <style>
+
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    img[alt="segell"]{
+        position: absolute;
+        z-index: 2;
+    }
+    .bgtxt{
+        position: relative;
+        z-index: 1;
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<!-- FI NO TOCAR ================================================== -->
+
+
+
+
+<!-- B. ENUNCIAT ================================================== -->
+<textarea id="enunciat">
+
+Introdueix aquí la teva permutació: <br/>
+[[i1]]
+
+Introdueix aquí la teva resposta: <br/>
+[[i2]]
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+
+
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Comprovador de nota de l'examen UT06 - SRGMPE";
+const puntuacions = ["",
+];
+
+
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+let txtav = "";
+let pts = 0;
+let ptsTotals = 0;
+
+const preguntes = [
+
+[
+  "Què és un avantprojecte segons el RAT?",
+  "Un document executiu per a la direcció d’obra",
+  "Un document que defineix les característiques generals de la instal·lació",
+  "La portada del projecte (d'aquí el nom avantprojecte, que en llatí vol dir abans del projecte",
+  "Un tràmit previ a l’autorització administrativa",
+],
+
+[
+  "Quins documents mínims ha d’incloure un avantprojecte d’alta tensió?",
+  "Només memòria i pressupost",
+  "Memòria, plànols i plec de condicions",
+  "Memòria i plànols",
+  "Plànols i estat de mesuraments",
+],
+
+
+[
+  "Quin caràcter té la norma UNE 157001?",
+  "És obligatòria en tots els projectes",
+  "Només s’aplica a instal·lacions d’alta tensió",
+  "Té caràcter orientatiu",
+  "Substitueix el RAT",
+],
+
+[
+  "Quin dels següents NO és un document bàsic d’un projecte?",
+  "Memòria",
+  "Plànols",
+  "Certificat final d’obra",
+  "Pressupost",
+],
+
+[
+  "Quina funció té la memòria del projecte?",
+  "Definir el cost total de l’obra",
+  "Descriure el problema i la solució adoptada",
+  "Detallar totes les unitats d’obra",
+  "Incloure exclusivament els plànols",
+],
+
+
+
+
+
+
+
+[
+  "Quin document <b>NO</b> té prioritat en cas de contradicció segons l’ordre indicat?",
+  "La memòria",
+  "El pressupost",
+  "El plec de condicions",
+  "Els plànols",
+],
+
+[
+  "Quina és la funció de l’estat de mesuraments?",
+  "Establir les mides dels elements més significatius (seccions de cables diàmetres de tubs, etc.)",
+  "Definir les unitats i partides que configuren el projecte",
+  "Descriure la normativa aplicable",
+  "Valorar la viabilitat econòmica del projecte",
+],
+
+[
+  "Quina és la funció real de l’apartat «Abast» dins la memòria?",
+  "Descriure les característiques tècniques dels equips",
+  "Delimitar les responsabilitats del projecte",
+  "Definir el calendari d’execució",
+  "Justificar econòmicament la instal·lació",
+],
+
+[
+  "Per quin motiu la memòria no hauria d’incloure informació pròpia dels annexos de càlcul?",
+  "Perquè els annexos tenen rang normatiu superior",
+  "Per evitar redundàncies i preservar la claredat funcional dels documents",
+  "Perquè els càlculs només són obligatoris en baixa tensió",
+  "Perquè els annexos substitueixen la memòria",
+],
+
+[
+  "Per què els plànols tenen prioritat sobre la memòria segons l’ordre establert?",
+  "Perquè defineixen gràficament l’objecte construït amb precisió executiva",
+  "Perquè són més fàcils d’interpretar",
+  "Perquè sempre contenen els càlculs",
+  "Perquè són els primers documents redactats",
+],
+
+
+
+
+
+
+
+
+
+[
+"Quin document del projecte inclou la justificació de la necessitat de la instal·lació?",
+"Annexos",
+"Memòria de l’avantprojecte",
+"Plec de condicions",
+"Estat de mesuraments",
+],
+
+[
+"Quin d’aquests apartats forma part del contingut mínim d’un <b>projecte</b> segons la normativa vigent?",
+"Memòria, plànols, plec de condicions, estudi de seguretat i salut i pressupost",
+"Memòria, plànols, plec de condicions i pressupost",
+"Memòria, plànols, plec de condicions, estudi de seguretat i salut, estudi d'impacte mediambiental i pressupost",
+"Memòria, plànols i pressupost"
+],
+
+[
+"En quins projectes és <b>obligatori</b> incloure un calendari d’execució?",
+"En tots els projectes privats",
+"En projectes públics que superin els 750.000 €",
+"En cap cas, és opcional",
+"Només en projectes públics",
+],
+
+[
+"Per què és important l’apartat <b>«Anàlisi de solucions»</b> dins la memòria?",
+"Perquè permet comparar opcions i justificar la solució escollida",
+"Perquè permet comparar diferents pressuposts",
+"Perquè serveix per registrar l’autorització administrativa, ja que es obligatori en el RITE i en general a totes les normatives tècniques",
+"Perquè estableix els terminis legals",
+],
+
+[
+"Quin és l’ordre correcte dels documents bàsics segons el criteri de prioritat <b>si el projecte no indica un altre ordre</b>?",
+"Memòria → Plànols → Plec de condicions → Pressupost",
+"Plànols → Plec de condicions → Pressupost → Memòria",
+"Plec de condicions → Memòria → Plànols → Pressupost",
+"Pressupost → Memòria → Plec de condicions → Plànols",
+],
+
+
+
+
+
+
+
+
+
+[
+"Quin tipus d’informació s’ha d’evitar incloure dins la memòria del projecte?",
+"Fragments sencers de reglaments o textos legals sense adaptar",
+"Definicions tècniques i abreviatures",
+"Referències bibliogràfiques",
+"El programari utilitzat en els càlculs",
+],
+
+[
+"Quina escala és més adequada per a un <b>detall constructiu</b> en un projecte elèctric?",
+"1:1000",
+"1:100",
+"1:20",
+"1:2000",
+],
+
+[
+"Quan es recomana <b>unificar</b> l’estat de mesuraments i el pressupost?",
+"Quan es tracta d’un projecte senzill d’instal·lacions",
+"Quan hi ha més d’un contractista",
+"Quan el projecte és d’obra civil",
+"Quan es tracta d’un projecte públic",
+],
+
+[
+"Qui redacta i signa un projecte de baixa tensió?",
+"Un enginyer",
+"El pot redactar un tècnic superior amb coneixements avançats sobre electricitat, però ha d'estar revisat i signat per l'enginyer",
+"Un tècnic superior",
+"Un instal·lador amb carnet i que formi part d'una empresa instal·ladora",
+],
+
+[
+"Qui redacta i signa una MTD de baixa tensió?",
+"Un enginyer",
+"El pot redactar un tècnic superior amb coneixements avançats sobre electricitat, però ha de estar revisat i signat per l'enginyer",
+"Un tècnic superior",
+"Un instal·lador amb carnet i que formi part d'una empresa instal·ladora",
+],
+
+];
+
+const solucions_test = [
+ 2, 3, 3, 3, 2,
+ 1, 2, 2, 2, 1,
+ 2, 2, 4, 1, 2, 
+ 1, 3, 1, 2, 4,
+];
+const opcions_test = [1, 2, 3, 4];
+
+let permutacio = "";
+const num_preg = solucions_test.length;
+const num_resp = opcions_test.length;
+ptsTotals = num_preg;
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+
+function estableixParametres(){
+    array = [/* p01, p02, p03, p04, p05 */]; // actualitzar entre []
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+    const permutacio = respostes [0];
+
+    const permpreg = permutacio.split("_")[0];
+    const permresp = permutacio.split("_")[1].split(".");
+    const respostes_alumne = respostes [1].split("");
+
+    const preg_ordenades = obtenirPermutacio(preguntes, permpreg);
+    const sol_ordenades = obtenirPermutacio(solucions_test, permpreg);
+
+
+    for (let i = 0; i < num_preg; i++){
+        preg = preg_ordenades[i][0];
+
+
+        let resp =
+         obtenirPermutacio(preg_ordenades[i].slice(1), permresp[i]);
+
+        let pr = permresp[i];
+        let opcions_permutades = obtenirPermutacio(opcions_test, pr);
+
+
+        let st = sol_ordenades[i];
+        let opcio_correcta = opcions_permutades.indexOf(st) + 1;
+        let opcio_marcada = lletraANombre(respostes_alumne[i]);
+        let color = "black";
+        let marcador = "";
+
+        if (opcio_correcta === 0) {
+            ptsTotals -= 1;
+            color = "gray";
+            txtav += '\n\n<div>\n'+
+             '<p><b>' + (i+1) + '.</b> ' + preg + '</p>' +
+             '<img src="img/anul·lada.png" alt="segell"/>\n' +
+             '<div class="bgtxt">\n'
+        }else{
+            txtav += "<p><b>" + (i+1) + '.</b> ' + preg + '</p>';
+        }
+        txtav += '<ol style="list-style-type: none;">\n';
+
+
+        for (let j = 0; j < num_resp; j++){
+            a = j + 1;
+            if (opcio_correcta === 0){
+                color = "gray";
+            } else if (a === opcio_correcta && a === opcio_marcada){
+                color = "green";
+                marcador = "⇦";
+                pts += 1;
+            } else if (a === opcio_correcta && a != opcio_marcada){
+                marcador = "⇦";
+            } else if (a != opcio_correcta && a === opcio_marcada){
+                color = "red";
+                pts -= 1/(num_resp-1);
+            } else if (a != opcio_correcta && a != opcio_marcada){
+            }
+            txtav += '<li class="preg"><span style="color: ' +
+             color + ';"><i>' + nombreALletra(j+1) + '</i>) </span><span style="flex: 1; color: ' + color + ';">' +
+             resp[j] + marcador + "</span></li>"
+            color = "black";
+            marcador = "";
+        } // fi for respostes
+        if (opcio_correcta === 0) {
+            txtav += '</div>\n</div></ol><br/>\n\n'
+        }else{
+            txtav += "</ol>\n";
+        }
+    } // fi for preguntes
+} //fi calcula();
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS Técnic Superior en sistemes electrotècnics i automatitzats",
+    anys: "2025/2026"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres();
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = l(parametres[i]);
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    patro = "[[i1]]";
+    canvi = '<input type="text" onwheel="return false;" ';
+    canvi += 'id="i1" style="width: 300px">';
+    txt = txt.replace(patro, canvi);
+    patro = "[[i2]]";
+    canvi = '<input type="text" onwheel="return false;" ';
+    canvi += 'id="i2" style="width: 300px">';
+    txt = txt.replace(patro, canvi);
+    /*for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }*/
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    respostes[0] = document.getElementById("i1").value;
+    respostes[1] = document.getElementById("i2").value;
+    alumne.nom = document.getElementById("nom").value;
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+
+    "> [[nota]]"
+    ].join("\n") + "\n\n\n";
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+
+    console.log(txt);
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt += txtav;
+
+    let ptsAlumne = pts;
+    let canvi = "", patro = "";
+
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotals, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotals*10, 2) + "**");
+
+    /*
+    let ptsAlumne = 0, ptsTotal = 0;
+    let canvi = "", patro = "";
+    let a = 0, b = 0;
+    for (let i = 1; i < puntuacions.length; i++){
+        a = respostes[i];
+        b = solucions[i];
+        ptsTotal += puntuacions[i];
+        canvi =
+            '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">'
+            + coma(a) + '</span>';
+        if ((b*0.99) < a && a < (b*1.01)) {
+            ptsAlumne += puntuacions[i];
+            canvi +=
+                ' <span style="color: green">(' +
+                coma(b) +') OK (+' + puntuacions[i] + ')</span>';
+        }else{
+            canvi +=
+                ' <span style="color: red;"> (' +
+                coma(b) +')</span>';
+        }
+        patro = "[[i" + i + "]]";
+
+        txt = txt.replace(patro, canvi);
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    */
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function ln(a){
+    return Math.log(a);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar (φ en graus)
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a){  // log abreviat a l totsol
+    if (!a.toPrecision) return a;
+    return coma(xs(a));
+}
+
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return Number(a);
+}
+
+function coma(a){
+    a = a + "";
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+function lletraANombre(lletra){
+    return lletra.toLowerCase().charCodeAt(0) - 96;
+}
+
+</script>
