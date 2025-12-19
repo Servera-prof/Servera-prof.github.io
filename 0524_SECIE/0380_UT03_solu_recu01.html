@@ -72,8 +72,8 @@ Comprovam si $I_b \le I_n \le I_z$:
 
 Calculem la caiguda de tensió (e) per 150 mm²:
  - $e = \dfrac {P \cdot L} {\gamma \cdot S \cdot U}
- =\dfrac {147 \cdot 10^3 \cdot 20} {45{,}49 \cdot 150 \cdot 400}
- =1{,}077~\text{V} \rightarrow \dfrac{1{,}077}{400}=0{,}27\%$
+ =\dfrac {147 \cdot 10^3 \cdot 30} {45{,}49 \cdot 150 \cdot 400}
+ =1{,}061~\text{V} \rightarrow \dfrac{1{,}61}{400}=0{,}4039\%$
  
  Trobem el tub per a S = 150 mm² a la taula 1 de la ITC-BT-14: ø160. 
    
@@ -219,6 +219,14 @@ Per a una instal·lació tipus B1 i conductors assimilats
 a 3 XLPE (al ser de 450/750 V) la taula C-52-1-bis de la UNE indica
 una intensitat de 77 A. L'enunciat no obliga a considerar temperatura
 ni agrupament, per tant es suposa factor de correcció 1.
+
+Així:
+
+- $I_b = \dfrac {P}{\sqrt 3 \cdot U \cdot \cos \varphi} =
+  \dfrac {39 \cdot 10^3}{\sqrt 3 \cdot 400 \cdot 0{,}9} = 
+  62{,}55~\text{A}
+
+El que concorda amb l'IGA de 63 A.
 
 La cdt per la línia de 16 mm² seria:
 
