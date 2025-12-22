@@ -16,8 +16,8 @@
 
 
 
-UT04 - Circuits lògics seqüencials
-==================================
+UT04 - Biestables. Tipus, característiques i usos
+=================================================
 
 
 
@@ -30,6 +30,7 @@ UT04 - Circuits lògics seqüencials
 
 1. Resum d'UT previes i introducció
 -----------------------------------
+
 
 En els temes passats hem vist una mena de circuits anomenats circuits 
 combinacionals, en aquests circuits independentment de quines eren les 
@@ -52,6 +53,9 @@ Els circuits seqüencials es classifiquen en dos tipus:
   moments en què es llegeixen o actualitzen les dades.
 - Asíncrons: Funcionen sense rellotge, el que augmenta la complexitat 
   del seu disseny.
+  
+
+
 
 
 
@@ -62,21 +66,335 @@ Els circuits seqüencials es classifiquen en dos tipus:
 2. Biestables
 -------------
 
+
 Un biestable és un circuit digital seqüencial amb dos estats estables 
 de sortida (alt i baix), que pot mantenir indefinidament. El seu estat 
 de sortida depèn de les entrades actuals i de l'estat previ.
 
 Tipus de biestables:
-- Latches: Asíncrons. No utilitzen senyal de rellotge.
-- Flip-flops: Síncrons. Només canvien d'estat en un moment específic del senyal de rellotge (anomenat flanc).
+- **Latches:** Asíncrons, és a dir, no utilitzen senyal de rellotge.
+- **Flip-flops:** Síncrons. Només canvien d'estat en un moment específic del senyal de rellotge (anomenat flanc).
 
 Tipus de flanc:
-- Flanc positiu: Transició de 0 a 1.
-- Flanc negatiu: Transició de 1 a 0.
+- **Flanc positiu:** Transició de 0 a 1.
+- **Flanc negatiu:** Transició de 1 a 0.
 
-Classificació dels flip-flops:
-- Disparats per flanc positiu (canvien en 0 → 1).
-- Disparats per flanc negatiu (canvien en 1 → 0).
+> ![c](img/flancs.png)
+> **Fig. 1.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/),
+> modificació de Servera, J. (2025).
+> _Flanc de baixada (img esquerra) i pujada_.
+> Imatge original sota llicència [CC3.0-by-nc-sa], imatge derivada
+> sota llicència [CC4.0-by-sa]
+
+
+
+
+
+
+
+
+
+
+3. Latch S-R (SET-RESET)
+------------------------
+
+
+El funcionament del latch S-R es defineix pels següents estats:
+
+- Quan l'entrada **S [SET] es posa a 1** (mentre R [RESET] roman a 0), 
+  la sortida Q s'estableix a 1. Aquest estat es coneix com a SET.
+
+- Quan **R es posa a 1** (i S es manté a 0), la sortida Q es reinicia a 
+  0, passant a l'estat RESET.
+
+- Si **ambdues entrades S i R es mantenen a 0**, les sortides no 
+canvien i conserven l'estat anterior. Aquesta capacitat de retenir l'  
+informació anterior és el que permet que el latch "memoritzi" el seu 
+estat.
+
+> ![c](img/latch_SR.png)
+> **Fig. 2.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Símbol lògic latch SR_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+La sortida Q̅ sempre presenta el valor complementari a Q, de manera que 
+les dues sortides són inverses entre si.
+
+La **condició prohibida del latch S-R** es produeix quan les dues 
+entrades S i R es posen simultàniament a 1. 
+En aquest cas, el circuit esdevé impredictible i les sortides poden 
+adoptar valors indeterminats.
+
+Per aquest motiu, no s'ha d'activar mai aquesta combinació d'entrades, 
+ja que la incertesa resultant en les sortides podria provocar 
+malfuncionaments greus en el circuit connectat. 
+En els diagrames temporals (veure fig. 3), aquesta condició s'evita 
+meticulosament, garantint que S i R mai estiguin actives al mateix 
+temps.
+
+> ![c](img/ona_io_latch_SR.png)
+> **Fig. 3.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Formes d'ona de les entrades i la sortida d'un latch S-R_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+Així la taula de la veritat del latch S-R és la següent:
+
+| **S** | **R** | $Q+$ | $\bar{Q}+$ | Comentaris               |
+|-------|-------|------|------------|--------------------------|
+| 0     | 0     | $Q$  | $\bar{Q}$  | Les sortides no canvien. |
+| 1     | 1     | 1    | 0          | Estat de SET             |
+| 0     | 1     | 0    | 1          | Estat de RESET           |
+| 1     | 1     | ?    | ?          | **Condició no vàlida**   |
+
+
+
+
+
+
+
+
+
+
+
+4. Latch S-R amb entrada d'habilitació
+--------------------------------------
+
+
+El latch S-R pot incorporar una entrada d'habilitació (EN) que controla 
+el seu funcionament. Quan EN està a nivell alt, el latch opera 
+normalment com un S-R convencional, responent a les entrades SET i 
+RESET.
+
+> ![c](img/latch_SR-EN.png)
+> **Fig. 4.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Simbol lògic flip flop S-R amb entrada d'habilitació_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+En canvi, quan EN està a nivell baix, el latch roman inactiu: qualsevol 
+canvi en les entrades S i R s'ignora i les sortides mantenen l'estat 
+anterior. Aquesta entrada permet sincronitzar o bloquejar 
+l'actualització de l'estat del latch.
+
+Els diagrames temporals i simulacions mostren el de la fig. 5
+el senyal EN actua com a control per habilitar o deshabilitar la 
+resposta del circuit.
+
+> ![c](img/ona_io_latch_SR-EN.png)
+> **Fig. 5.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Formes d'ona de les entrades i la sortida d'un latch S-R amb 
+> habilitació_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+Així la taula de la veritat és la següent:
+
+| EN | **S** | **R** | $Q+$ | $\bar{Q}+$ | Comentaris               |
+|----|-------|-------|------|------------|--------------------------|
+| 1  | 0     | 0     | $Q$  | $\bar{Q}$  | Les sortides no canvien. |
+| 1  | 1     | 1     | 1    | 0          | Estat de SET             |
+| 1  | 0     | 1     | 0    | 1          | Estat de RESET           |
+| 1  | 1     | 1     | ?    | ?          | **Condició no vàlida**   |
+| 0  | X     | X     | $Q$  | $\bar{Q}$  | Les sortides no canvien. | 
+
+
+
+
+
+
+
+
+
+
+
+5. Flip flop S-R
+----------------
+
+
+El flip-flop S-R disparat per flanc positiu opera de manera similar al 
+latch S-R, però amb una sincronització estricta: les seves sortides 
+només poden actualitzar-se en el moment precís en què el senyal de 
+rellotge (CLK) passa de baix a alt. 
+Fora d'aquests flancs positius, l'estat es manté, independentment dels 
+canvis en les entrades S i R.
+
+flipflop_SR.png
+
+> ![c](img/flipflop_SR.png)
+> **Fig. 6.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/),
+> modificació Servera, J. (2025)
+> _Flip-flops S-R disparats per flanc positiu (esquerra) i per 
+> flanc negatiu (dreta)_.
+> Imatge original sota llicència [CC3.0-by-nc-sa], imatge derivada
+> sota llicència [CC4.0-by-sa]
+
+Igual que en el latch, la combinació S=1 i R=1 roman prohibida, ja que 
+produeix sortides impredictibles que podrien causar errors greus en el 
+circuit. 
+Els diagrames temporals il·lustren aquest comportament, mostrant com 
+les sortides només responen durant els flancs positius del rellotge.
+
+> ![c](img/ona_io_flipflop_SR.png)
+> **Fig. 7.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Formes d'ona de les entrades i la sortida d'un flip-flop S-R_,
+> disparat per flanc positiu_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+Així la taula de la veritat és la següent:
+
+| CLK | **S** | **R** | $Q+$ | $\bar{Q}+$ | Comentaris               |
+|-----|-------|-------|------|------------|--------------------------|
+| ↑   | 0     | 0     | $Q$  | $\bar{Q}$  | Les sortides no canvien. |
+| ↑   | 1     | 1     | 1    | 0          | Estat de SET             |
+| ↑   | 0     | 1     | 0    | 1          | Estat de RESET           |
+| ↑   | 1     | 1     | ?    | ?          | **Condició no vàlida**   |
+| X   | X     | X     | $Q$  | $\bar{Q}$  | Les sortides no canvien. | 
+
+
+
+
+
+
+
+
+
+
+
+6. Flip flop J-K
+----------------
+
+
+El flip-flop J-K és un dels més utilitzats. 
+Les seves entrades (J i K) són simplement dues lletres consecutives 
+de l'alfabet sense un significat especial.
+
+El seu funcionament és equivalent al del flip-flop S-R en els estats 
+SET, RESET i de retenció. 
+La diferència clau és que el flip-flop J-K no té condicions no vàlides: 
+l'estat J=1 i K=1 està permès i és funcional. 
+Aquesta possibilitat elimina les combinacions prohibides que existien 
+en el S-R.
+
+| CLK | **S** | **R** | $Q+$    |$\bar{Q}+$| Comentaris               |
+|-----|-------|-------|---------|----------|--------------------------|
+| ↑   | 0     | 0     |$Q$      | $\bar{Q}$| Les sortides no canvien. |
+| ↑   | 1     | 1     | 1       | 0        | Estat de SET             |
+| ↑   | 0     | 1     | 0       | 1        | Estat de RESET           |
+| ↑   | 1     | 1     |$\bar{Q}$| $Q$      | Sortides a estat oposat. |
+| X   | X     | X     | $Q$     | $\bar{Q}$| Les sortides no canvien. |
+
+El flip-flop J-K supera la limitació del S-R en no tenir combinacions 
+no vàlides. 
+Quan J=K=1, la sortida canvia d'estat en cada flanc de rellotge, 
+complementant-se. 
+Això permet dues situacions:
+
+- Si Q era 1 → es converteix en 0.
+- Si Q era 0 → es converteix en 1.
+
+Aquest comportament permet utilitzar-lo com a divisor de freqüència o 
+element bàsic per a comptadors. 
+Els diagrames temporals mostren clarament aquesta alternança en cada 
+flanc actiu.
+
+> ![c](img/ona_io_flipflop_JK.png)
+> **Fig. 8.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Formes d'ona de les entrades i la sortida d'un flip-flop J-K
+> disparat per flanc positiu_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+Al TinkerCAD utilitzarem el circuit integrat de 16 pius **74HC73** que 
+conté dos _flip-flops_ J-K disparats per flac descendent.
+
+
+
+
+
+
+
+
+
+
+
+7. Els flip-flops D i T
+-----------------------
+
+
+El **flip-flop D** es construeix a partir d'un flip-flop J-K connectant 
+les seves entrades J i K a través d'un inversor. 
+La seva taula de veritat és molt simple: en cada flanc actiu del 
+rellotge, la sortida Q adquireix el valor que té l'entrada D en aquell 
+instant.
+
+> ![c](img/flipflop_D.png)
+> **Fig. 9.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Flip-flop D construït a partir d’un flip-flop J-K_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+Aquesta propietat el converteix en un element de memòria ideal, ja que 
+"captura" i reté el valor present a D en el moment del flanc.
+
+| CLK | **D** | $Q+$    |$\bar{Q}+$| Comentaris               |
+|-----|-------|---------|----------|--------------------------|
+| ↑   | 1     | 1       | 0        | Estat de SET             |
+| ↑   | 0     | 0       | 1        | Estat de RESET           |
+
+Els diagrames temporals mostren com la sortida Q segueix el valor de D 
+sincronitzat amb el rellotge.
+
+> ![c](img/ona_io_flipflop_D.png)
+> **Fig. 10.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Formes d'ona de les entrades i la sortida d'un flip-flop D
+> disparat per flanc positiu_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+El **flip-flop T** es construeix connectant directament les entrades 
+J i K d'un flip-flop J-K. 
+La seva taula de veritat és simple: quan l'entrada T és 1, la sortida Q 
+canvia d'estat (es complementa) en cada flanc actiu del rellotge; 
+quan T és 0, la sortida es manté.
+
+> ![c](img/flipflop_T.png)
+> **Fig. 9.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Flip-flop T construït a partir d’un flip-flop J-K_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+Aquesta propietat de complementació controlada fa del flip-flop T un 
+element útil per a comptadors i per dividir la freqüència del rellotge.
+
+| CLK | **T** | $Q+$    |$\bar{Q}+$| Comentaris               |
+|-----|-------|---------|----------|--------------------------|
+| ↑   | 0     |$Q$      | $\bar{Q}$| Les sortides no canvien. |
+| ↑   | 1     |$\bar{Q}$| $Q$      | Sortides a estat oposat. |
+
+
+
+
+
+
+
+
+
 
 
 
