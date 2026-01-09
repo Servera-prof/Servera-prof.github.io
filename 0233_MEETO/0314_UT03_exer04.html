@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+Crea un semisumador
+===================
+
+Dissenya un circuit capaç de fer la suma de un bit. És a dir que
+quan: 
+
+- $a=1$ i $b=0$ les sortides siguin $s=1$ i $c=0$
+- $a=1$ i $b=1$ les sortides siguin $s=0$ i $c=1$
+- ...
+
+Fes la taula de la veritat. Abans de fer Karnaugh, fixa't amb la taula,
+creus que alguna de les columnes correspon a alguna porta lògica que 
+coneguis?
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

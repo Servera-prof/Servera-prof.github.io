@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+Crea un sumador total a partir de dos semisumadors
+==================================================
+
+A l'anterior exercici s'ha comprovat que aquella manera d'implementar 
+un  sumador, tot i la simplificació de Karnaugh és complexa.
+No obstant el circuit es pot optimitzar encara més. 
+
+Es pot construir un sumador total a partir de dos semisumadors, a on
+les entrades del primer son $a$ i $b$ i les del segon $s_1$ i $c_in$
+la sortida $s$ és $s_2$ directament i la sortida $c_out$ és 
+$c_1 \text{AND} c_2$.
+
+> ![c](img/full_adder.png)
+> **Fig. 1.** 
+> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
+> (2024). [IOC](https://ioc.xtec.cat/).
+> _Circuit sumador total_.
+> Sota llicència [CC3.0-by-nc-sa]
+
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

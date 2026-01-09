@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+Implementa un circuit a partir d'una funció llògica.
+====================================================
+
+Implementa el circuit $f = a \overline b + c$.
+
+Per a fer-ho pensa com ho fas matemàticament (primer les negacions de
+una sola variable, després els parèntesis, multiplicacions i finalment
+sumes.
+
+Ara sustitueix les tres variables d'entrada per tres interruptors, que 
+determinaran si la variable (a, b o c) val u o zero. Les operacions per
+portes llògiques, AND, OR, NOT, etc. I la sortida (f) per un LED.
+
+Construeix una taula de la veritat de la funció, i avalua si quan
+fas una seqüència dels interruptors que hagis utilitzat com a variables
+la resposta prevista a la taula coincideix amb l'estat del LED.
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

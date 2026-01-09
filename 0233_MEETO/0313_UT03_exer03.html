@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+Crear un circuit a partir d'uns requeriments
+============================================
+
+Dissenya una alarma (LED vermell) que s'encengui quan detecti 
+senyal de pluja i no detecti senyal de bombeig. O bé que no detecti 
+senyal d'alimentació.
+
+Per a fer-ho hi ha dues maneres, interpretant de manera lògica
+l'enunciat, per exemple: s'han de complir dues condicions alhora es a
+dir s'ha de complir una condició AND una altra condició; no s'ha de
+complir una condició, es a dir NOT s'ha de complir una condició, etc.
+
+L'altra és assignar variables a cada condició, i fer la taula de la
+veritat i després fer Karnaugh.
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+Sumador de 4 bits
+=================
+
+La potència del sumador total és que és escalable. 
+Combina diferents sumadors per a fer un sumador de 4 bits. 
+
+El _carry out_ del primer sumador ha de ser zero (ja que no arroseg res
+d'una anterior suma), i després cada _carry out_ ha de connectar al 
+_carry in_ del següent sumador.
+
+Les sortides $s$ han d'anar cada una a un LED, i el darrer _$c_out$ ha
+d'anar també a un LED.
+
+[Opcional] Podríes fer un sumador de 8 bits?
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

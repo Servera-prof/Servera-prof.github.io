@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+Crea un comparador de 2 bits
+============================
+
+Similar a l'anterior, però cada variable $a$ i $b$ té dos bits, és a 
+dir tant $a$ com $b$ poden valer `00`, `01`, `10` o `11`, per tant el
+circuit té 4 entrades (dues per els dos digits de $a$ i dues per $b$).
+Depenent d'aquests valors s'ha d'activar una de les tres sortides que 
+correspondran a les tres possibilitats comparatives: 
+- $a \gt b$
+- $a = b$
+- $a \lt b$
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

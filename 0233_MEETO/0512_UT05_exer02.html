@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+Crea un registre entrada serie sortida paral·lel
+================================================
+
+Crea un registre a partir de flip-flops D. Si no hi ha cap chip amb
+flip-flops D crea'l a partir de flip-flops J-K.
+
+Per a fer el circuit, pensa que cada vegada que a cada señal del 
+rellotge, s'ha de llegir l'estat de l'única entrada. A més, a cada señal
+del rellotge la sortida del flip-flop D s'ha de copiar al següent
+flip-flop.
+Pensa a posar el CLR (en alguns chips esta identificat com RST) i el PRE
+a 0 (o a 1 si el estan invertits).
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

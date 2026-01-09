@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+Crea un comptador
+=================
+
+Crea un comptador a partir de flip-flops T. Si no hi ha cap chip amb
+flip-flops T crea'l a partir de flip-flops J-K.
+
+Per a fer el circuit, pensa que cada vegada que la sortida del flip-flop
+passi de 1 a 0, la sortida del següent flip flop ha de passar de 0 a 1.
+Ves alerta en si es un flip-flop disparat per flanc de pujada o de 
+baixada. Pensa a posar el CLR (en alguns chips esta identificat com RST)
+a 0 (o a 1 si el CLR està invertit).
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
