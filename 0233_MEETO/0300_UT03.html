@@ -15,7 +15,6 @@
 
 
 
-
 UT03 - Circuits lògics combinacionals
 =====================================
 
@@ -82,7 +81,8 @@ sistemes digitals. Hi ha diferents tipus de sumadors:
 - Sumador en complement a 2: Especialitzat en operacions amb nombres 
   negatius codificats en aquest sistema.
 
-El funcionament es basa en les regles de la suma binària, implementades mitjançant portes lògiques i circuits combinacionals.
+El funcionament es basa en les regles de la suma binària, implementades 
+mitjançant portes lògiques i circuits combinacionals.
 
 | B + A | _Carry_ (C) | Suma (S) |
 |-------|-------------|----------|
@@ -120,11 +120,8 @@ S correspon a la porta XOR. Així el circuit semisumador es pot
 implementar de la següent manera:
 
 > ![c](img/semisumador.png)
-> **Fig. 1.** 
-> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
-> (2024). [IOC](https://ioc.xtec.cat/).
-> _Circuit semisumador_.
-> Sota llicència [CC3.0-by-nc-sa]
+> **Fig. 1.** [Cerezo _et al._] (2024). [IOC].
+> _Circuit semisumador_. Sota llicència [CC3.0-by-nc-sa]
 
 S'anomena «semi»-sumador perquè només suma dos bits i no té en compte 
 un possible ròssec d'una operació anterior, ja que només disposa de 
@@ -153,11 +150,8 @@ generat.
 | 1 + 1 + 1             | 1             | 1   |
 
 > ![c](img/full_adder.png)
-> **Fig. 2.** 
-> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
-> (2024). [IOC](https://ioc.xtec.cat/).
-> _Circuit sumador total_.
-> Sota llicència [CC3.0-by-nc-sa]
+> **Fig. 2.** [Cerezo _et al._] (2024). [IOC].
+> _Circuit sumador total_. Sota llicència [CC3.0-by-nc-sa]
 
 L'integrat 74283 conté quatre sumadors complets, permetent sumar dos 
 nombres de 4 bits. Aquest circuit, encapsulat en un xip de 16 pius, 
@@ -196,9 +190,7 @@ serà 1. Aquest procés converteix una entrada paral·lela en una sortida
 sèrie.
 
 > ![c](img/multiplexor_01.png)
-> **Fig. 3.** 
-> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
-> (2024). [IOC](https://ioc.xtec.cat/).
+> **Fig. 3.** [Cerezo _et al._] (2024). [IOC].
 > _Simplificació funcionament multiplexor_.
 > Sota llicència [CC3.0-by-nc-sa]
 
@@ -221,9 +213,7 @@ aquestes  entrades de control, el circuit connecta la senyal d'entrada a
 una de les sortides seleccionades.
 
 > ![c](img/desmultiplexor.png)
-> **Fig. 4.** 
-> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
-> (2024). [IOC](https://ioc.xtec.cat/).
+> **Fig. 4.** [Cerezo _et al._] (2024). [IOC].
 > _Simplificació funcionament desmultiplexor_.
 > Sota llicència [CC3.0-by-nc-sa]
 
@@ -272,12 +262,11 @@ En una calculadora es distingeixen tres blocs funcionals:
 - Un **descodificador** que tradueix el resultat binari de tornada a 
   decimal per a la seva visualització.
 
-Aquest flux permet la comunicació efectiva entre l'usuari i el sistema digital.
+Aquest flux permet la comunicació efectiva entre l'usuari i el sistema 
+digital.
 
 > ![c](img/codificant_calculadora.png)
-> **Fig. 5.** 
-> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
-> (2024). [IOC](https://ioc.xtec.cat/).
+> **Fig. 5.** [Cerezo _et al._] (2024). [IOC].
 > _Codificació i descodificació a una calculadora_.
 > Sota llicència [CC3.0-by-nc-sa]
 
@@ -296,9 +285,7 @@ específica, traduint així un codi binari en una senyal única.
 | 1 | 1 | 1  | 0  | 0  | 0  |
 
 > ![c](img/descodificador_4sort.png)
-> **Fig. 6.** 
-> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
-> (2024). [IOC](https://ioc.xtec.cat/).
+> **Fig. 6.** [Cerezo _et al._] (2024). [IOC].
 > _Implementació d'un descodificador de 4 sortides_.
 > Sota llicència [CC3.0-by-nc-sa]
 
@@ -365,13 +352,9 @@ de variables.
 
 > ![c](img/descodificador_per_funcio.png)
 > **Fig. 7.** 
-> Imatge d'elaboració pròpia creada a partir d'una imatge de
-> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
-> (2024). [IOC](https://ioc.xtec.cat/),
-> modificació de J. Servera (2025).
+> [Cerezo _et al._] (2024). [IOC], modificació J. Servera (2025)
 > _Utilització d'un descodificador per a implementar una funció_.
-> Imatge original sota llicència [CC3.0-by-nc-sa], imatge derivada
-> sota llicència [CC4.0-by-sa]
+> Sota llicència [CC4.0-by-nc-sa]
 
 
 #### Codificadors
@@ -415,31 +398,26 @@ altres combinacions.
 ### 2.4. Comparadors
 
 Un comparador és un circuit combinacional que analitza dos nombres 
-binaris (A i B) del mateix nombre de bits i determina la relació entre 
-ells, indicant si A = B, A > B o A < B.
+binaris ($a$ i $b$) del mateix nombre de bits i determina la relació 
+entre ells, indicant si $a = b$, $a \gt b$ o $a \lt b$.
 
 El comparador més bàsic opera amb nombres d'un sol bit. Aquest circuit
 compara els dos bits d'entrada i activa la sortida corresponent a la 
 relació que es compleix entre ells.
 
 > ![c](img/comparador.png)
-> **Fig. 8.** 
-> [Cerezo Salcedo, S. _et al._](https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html)
-> (2024). [IOC](https://ioc.xtec.cat/).
-> _Comparador d'un bit_.
-> Sota llicència [CC3.0-by-nc-sa]
+> **Fig. 8.** [Cerezo _et al._] (2024). [IOC].
+> _Comparador d'un bit_. Sota llicència [CC3.0-by-nc-sa]
 
 Hi ha dues entrades (dos nombres d'un bit per comparar) i les possibles
-sortides (A = B, A > B o A < B) 
+sortides ($a = b$, $a \gt b$ o $a \lt b$) 
 
-| A | B | A > B | A = B | A < B |
-|---|---|-------|-------|-------|
-| 0 | 0 | 0     | 1     | 0     |
-| 0 | 1 | 0     | 0     | 1     |
-| 1 | 0 | 1     | 0     | 0     |
-| 1 | 1 | 0     | 1     | 0     |
-
-
+|$a$|$b$|$a \gt b$|$a = b$|$a \lt b$|
+|---|---|---------|-------|---------|
+| 0 | 0 | 0       | 1     | 0       |
+| 0 | 1 | 0       | 0     | 1       |
+| 1 | 0 | 1       | 0     | 0       |
+| 1 | 1 | 0       | 1     | 0       |
 
 
 
@@ -448,9 +426,15 @@ sortides (A = B, A > B o A < B)
 
 
 
-[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
-[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
-[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+
+
+[Cerezo _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html "S. Cerezo Salcedo, X. Mesas Laserna, À. L. Miguel Rodríguez, J. M. Pallarés Serres, J. Perona Camacho, R. Rodríguez Coronel"
+
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+
+[CC4.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement - No comercial - CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+
 </textarea>
 
 

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+UT05 - Anàlisi de circuits lògics seqüencials
+=============================================
+
+
+
+
+
+
+
+
+
+
+1. Resum d'UT previes i introducció
+-----------------------------------
+
+
+Des de la UT 01 a la  UT03 s'han vist els circuits anomenats
+combinacionals. En la UT 04, s'han estudiat els biestables, la base
+dels circuits seqüencials. S'han estudiat biestables asíncrons 
+(_latches_) i síncrons (_flip-flops_).
+
+En aquesta unitat s'utilitzaran diferents biestables per a crear
+els circuits seqüencials més utilitzats. A més de crear-los s'aprendrà
+a utilitzar els que ja venen fabricats a dins chip.
+
+  
+
+
+
+
+
+
+
+
+
+2. Comptadors
+-------------
+
+Un comptador és un circuit digital que utilitza flip-flops per comptar 
+impulsos d'un senyal de rellotge (CLK). Les seves sortides representen 
+en binari el nombre d'impulsos rebuts, i té nombroses aplicacions com 
+ara el recompte d'objectes, cronometratge o control industrial.
+
+
+### 2.1. Característiques principals:
+
+- **Mòdul:** Nombre total de combinacions de sortida possibles. Per 
+  exemple, un comptador de 4 bits que va de 0000 a 1111 té mòdul 16 
+  (MOD16).
+- **Sentit del compte:** Pot ser ascendent (incrementa) o descendent 
+  (decrementa), normalment controlat per una entrada específica.
+
+
+### 2.2. Operació:
+
+- **Síncrona:** Tots els flip-flops reben el mateix senyal de rellotge 
+  simultàniament (els més utilitzats).
+- **Asíncrona:** Els flip-flops no comparteixen el mateix rellotge.
+- **Entrada d'esborrat** (RESET): Port que, en activar-se, posa totes 
+  les sortides a zero.
+- **Flanc d'activació:** Els comptadors poden respondre a flancs 
+  positius (de baix a alt) o negatius (d'alt a baix).
+
+Els comptadors de 4 bits es solen construir a partir de 4 flip-flops,
+tipus T, a cops, si no es disposa de flip-flops T, aquest és poden
+aconseguir a partir de flip-flops J-K pontejant la J i la K.
+
+> ![c](img/esq_comptador.png)
+> **Fig. 1.** J. Servera (2026).
+> _Esquema comptador a partir de flip-flops T_. 
+> Sota llicència [CC4.0-by-nc-sa]
+
+Per comptar nombres més grans, es connecten diversos comptadors de 4 
+bits en cascada.
+Molts autòmats programables (PLC) incorporen comptadors capaços de 
+gestionar valors molt alts, sovint per sobre dels 30.000 impulsos. 
+Aquesta capacitat és suficient per a la majoria d'aplicacions 
+industrials, com el recompte de peces, cicles de màquina o 
+esdeveniments en processos de llarga durada.
+
+### 2.3. Comptador 74HC93
+
+> ![c](img/74HC93.png)
+> **Fig. 2.**
+> Texas Instruments (2025)
+> _Esquema de pius i blocs funcionals del xip 74HC93_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+El xip 74HC93 és un circuit integrat comptador binari de quatre bits.
+Aquí es pot trobar la [fitxa tècnica 74HC93].
+
+Es descriu a continuació la utilitat de cada piu:
+
+- **Q<sub>0</sub>, Q<sub>1</sub>, Q<sub>2</sub> i Q<sub>3</sub>** 
+  (pius núm. 12, 9, 8 i 11, respectivament): sortides del comptador.
+  Q<sub>0</sub> correspon al bit de menys pes (LSB) i Q<sub>3</sub> al 
+  bit de més pes (MSB).
+  El comptador incrementa el seu valor binari amb cada impuls de 
+  rellotge, segons la connexió dels rellotges interns.
+- **CP0** (piu 14): entrada de rellotge del primer basculant (divideix 
+  per 2).
+  Cada flanc descendent del senyal de rellotge aplicat a CP0 commuta 
+  la sortida Q<sub>0</sub>.
+  Aquesta etapa actua com un divisor per 2.
+- **CP1** (piu 1): entrada de rellotge per al comptador de 3 bits 
+  (divideix per 8).
+  Quan es connecta Q<sub>0</sub> al pin CP1, les sortides 
+  Q<sub>1</sub>, Q<sub>2</sub> i Q<sub>3</sub> formen un comptador de 
+  3 bits que divideix per 8.
+  D’aquesta manera, connectant QA → CP1, s’obté un comptador complet 
+  de 4 bits (divideix per 16).
+- **MR1 i MR2** (pius núm. 2 i 3): entrades d’esborrat asíncron 
+  actives a nivell alt.
+  Quan ambdues entrades estan a nivell alt simultàniament, el comptador
+  es posa immediatament a zero (0000), independentment del senyal de 
+  rellotge.
+  Quan alguna d’elles és a nivell baix, el comptador pot funcionar 
+  normalment.
+- **V<sub>CC</sub>** (piu 5): alimentació del circuit integrat (+5 V 
+  habitualment).
+- **GND** (piu 10): connexió a massa del circuit integrat.
+
+
+3. Registres de desplaçament
+----------------------------
+
+
+Els registres de desplaçament són circuits seqüencials formats per 
+biestables connectats en cadena, dissenyats per a l'emmagatzematge i la 
+transferència de dades digitals.
+
+Aplicacions principals:
+- Emmagatzematge temporal de dades.
+- Conversió paral·lel/sèrie i sèrie/paral·lel.
+- Introducció de retards controlats en sistemes de comunicació.
+
+Classificació segons la direcció de les dades:
+- Entrada sèrie / Sortida sèrie (SISO)
+- Entrada sèrie / Sortida paral·lel (SIPO)
+- Entrada paral·lel / Sortida sèrie (PISO)
+- Entrada paral·lel / Sortida paral·lel (PIPO)
+
+Es poden implementar connectant biestables o utilitzant circuits 
+integrats específics. 
+La majoria dels registres de desplaçament s'implementen utilitzant 
+flip-flops tipus D, ja que la seva capacitat per capturar i retenir un 
+bit per cicle de rellotge els fa ideals per a aquesta funció.
+
+### 3.1 Registre SISO
+
+Un registre de desplaçament SISO de 4 bits (figura 3) està format per 
+quatre flip-flops D en cascada, amb una entrada d'esborrat comuna 
+(CLR). Les dades s'introdueixen en sèrie, es desplacen amb cada cicle 
+de rellotge i surten en sèrie per l'última etapa.
+
+> ![c](img/esq_registre_SISO.png)
+> **Fig. 3.** [Cerezo _et al._] (2024). [IOC].
+> _Esquema registre de desplaçament entrada serie sortida serie de 
+> quatre bits_. Sota llicència [CC3.0-by-nc-sa]
+
+El funcionament és senzill: les dades s'introdueixen seqüencialment 
+per l'entrada E. 
+A cada flanc ascendent del rellotge (CLK), cada bit es desplaça a 
+l'estat següent del registre. Després del quart pols de rellotge, la 
+seqüència emmagatzemada comença a sortir per l'últim flip-flop.
+
+
+
+### 3.2. Registre SIPO
+
+Un registre d'entrada sèrie/sortida paral·lel es construeix a partir 
+del registre sèrie/sèrie connectant les sortides dels flip-flops 
+(Q<sub>1</sub>, Q<sub>2</sub>, Q<sub>3</sub> i Q<sub>4</sub>) com a 
+sortides paral·leles.
+
+Funcionament:
+En cada flanc ascendent del rellotge, un nou bit entra per E i 
+s'emmagatzema a Q<sub>1</sub>, mentre que els bits existents es 
+desplacen a l'estat següent 
+(Q<sub>1</sub>→Q<sub>2</sub>, 
+ Q<sub>2</sub>→Q<sub>3</sub>, 
+ Q<sub>3</sub>→Q<sub>4</sub>).
+
+Després del quart pols de rellotge, els quatre bits introduïts estan disponibles simultàniament a les sortides paral·leles.
+
+> ![c](img/esq_registre_SIPO.png)
+> **Fig. 4.** [Cerezo _et al._] (2024). [IOC].
+> _Esquema registre de desplaçament SIPO de quatre bits_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+El diagrama temporal (figura 5) mostra aquest procés per a la 
+seqüència 1001, il·lustrant com els bits es desplacen a través dels 
+estats Q1, Q2, Q3 i Q4 en successió.
+
+> ![c500](img/diag_temp_registre_SISO.png)
+> **Fig. 5.** [Cerezo _et al._] (2024). [IOC].
+> _Esquema registre de desplaçament SIPO de quatre bits_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+
+### 3.2. El xip 74HC95
+
+El circuit integrat 74HC595 és un registre de desplaçament de 8 bits 
+amb sortida en latch i de 3 estats, molt utilitzat per a l'expansió de 
+sortides digitals.
+Aquí es pot trobar la [fitxa tècnica 74HC595].
+
+> ![c250](img/74HC595.png)
+> **Fig. 6.**
+> Texas Instruments (2025)
+> _Esquema de pius  del xip 74HC595_.
+> Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+> 32 de la [LPI]
+
+#### Funcionament dels pins:
+
+- Entrades de dades i control
+    + **SER** (pin 14): Entrada sèrie de dades. Els bits 
+      s'introdueixen aquí.
+    + **SRCLK** (pin 11): Rellotge del registre de desplaçament. En 
+      cada flanc ascendent, el bit a SER es desplaça al registre.
+    + **RCLK** (pin 12): Rellotge del registre d'emmagatzematge 
+      (latch). 
+      En un flanc ascendent, el contingut del registre de desplaçament 
+      es copia al registre d'emmagatzematge (i apareix a les sortides).
+    + **SRCLR** (pin 10, actiu baix): Neteja asíncrona del registre de 
+      desplaçament. Quan és LOW, buida el registre de desplaçament (no 
+      les sortides).
+    + **OE** (pin 13, actiu baix): Habilitació de sortida. 
+      Quan és HIGH, les sortides (QA-QH) estan en alta impedància (Z). 
+      Quan és LOW, les sortides mostren els valors del registre 
+      d'emmagatzematge.
+- Sortides
+    + **Q<sub>A</sub> a Q<sub>H</sub>** (pins 15, 1-7): Sortides 
+      paral·leles de 8 bits amb 3 estats (0, 1, Z), controlades per OE.
+    + **Q<sub>H'</sub>** (pin 9): Sortida sèrie per cascada. Conté el 
+      bit desplaçat fora del registre (bit més significatiu), per 
+      connectar a l'entrada SER d'un altre 74HC595.
+- Altres
+    + **V<sub>CC</sub>** (piu 16): alimentació del circuit integrat (+5 V 
+      habitualment).
+    + **GND** (piu 8): connexió a massa del circuit integrat.
+
+#### Seqüència d'operació típica:
+
+1. S'introdueixen 8 bits de forma sèrie per SER, un per cada flanc 
+   ascendent de SRCLK.
+2. Un cop carregats els 8 bits al registre de desplaçament, un flanc 
+   ascendent a RCLK els transfereix al registre d'emmagatzematge.
+3. Si OE està baix, els bits apareixen immediatament a 
+   Q<sub>A</sub>-Q<sub>H</sub>.
+
+
+
+
+
+[Cerezo _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html "S. Cerezo Salcedo, X. Mesas Laserna, À. L. Miguel Rodríguez, J. M. Pallarés Serres, J. Perona Camacho, R. Rodríguez Coronel"
+
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+[fitxa tècnica 74HC93]: docs/74HC93.pdf
+[fitxa tècnica 74HC595]: docs/74HC595.pdf
+
+[CC4.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement - No comercial - CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
