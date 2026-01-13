@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+UT06 - Rectificació i control. Elements passius
+===============================================
+
+
+
+
+
+
+
+
+
+
+1. Resum d'UT previes i introducció
+-----------------------------------
+
+
+Les anteriors UT s'han centrat en el que coneixem com electrònica 
+digital. S'han vist sistemes de numeració, algebra de Boole, portes
+lògiques, circuits combinacionals, biestables i circuits seqüencials.
+
+Això no obstant, el món és fonamentalment analògic, i tot i la 
+irrupció massiva dels sistemes digitals, l'electrònica analògica manté 
+una importància crítica en moltes aplicacions on la digitalització no 
+és viable o òptima.
+
+La base de l'electrònica analògica es construeix sobre dos tipus de 
+components, els components passius i els actius. En aquesta UT es 
+tractaran els passius.
+
+Components passius: Realitzen la seva funció per la seva pròpia 
+naturalesa física, governats per lleis ben definides (resistències, 
+condensadors, inductors).
+
+  
+
+
+
+
+
+
+
+
+
+2. Resistències
+---------------
+
+La **resistència elèctrica** és l'oposició que presenta un material al 
+pas del corrent. En els conductors, el seu valor depèn de tres factors:
+
+1. **Resistivitat ($\rho$):** Propietat intrínseca del material. Com 
+   més baixa, millor conductor.
+2. **Longitud ($L$):** Directament proporcional a la resistència.
+3. **Secció ($S$):** Inversament proporcional a la resistència.
+
+> $$\begin{gather} R = \rho \cdot \frac{L}{S} \end{gather} $$
+> 
+> On:
+> - $R$: Resistència (Ω)
+> - $\rho$: Resistivitat (Ω·m)
+> - $L$: Longitud (m)
+> - $S$: Secció (m²)
+
+La funció primària d'una resistència és **adaptar els nivells de 
+tensió i corrent** d'una font d'alimentació als valors requerits en 
+diferents punts d'un circuit.
+
+Per minimitzar la mida dels equips, la indústria produeix components 
+cada vegada més petits. En el cas de les resistències, l'objectiu és 
+aconseguir el valor de resistència necessari amb el **mínim volum 
+possible**, limitat per la potència que han de dissipar (una baixa 
+potència permet una mida reduïda).
+
+Es classifiquen en tres grups principals: lineals, variables i no 
+lineals.
+
+
+### 2.1. Resistències lineals fixes
+
+Són components de dos terminals amb un **valor nominal constant**, 
+predeterminat pel fabricant, i tenen un comportament lineal. Es 
+representen amb els símbols habituals (es mostra en la figura 
+corresponent).
+
+> ![c250](img/simb_resistencia.png)
+> **Fig. 1.** [Cerezo _et al._] (2024). [IOC].
+> _Símbol resistència lineal fixa_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+Les especificacions tècniques principals d'una resistència, segons els fulls de característiques del fabricant, són:
+
+- **Valor nominal ($R_n$):** Valor òhmic esperat del component.
+- **Tolerància:** Marge de variació permès respecte al valor nominal, 
+  expressat en percentatge (ex: ±5%). Reflecteix la precisió de 
+  fabricació.
+- **Potència nominal ($P_n$):** Potència màxima (en watts) que la 
+  resistència pot dissipar de forma continuada sense danyar-se, a la 
+  temperatura nominal.
+- **Tensió màxima de funcionament ($V_{max}$):** Màxima tensió 
+  (contínua o eficaç) que pot suportar de manera permanent.
+- **Temperatura màxima de funcionament ($T_{max}$):** Màxima 
+  temperatura ambient permesa per a un funcionament fiable. La 
+  capacitat de dissipació disminueix amb l'augment de la temperatura 
+  ambient.
+- **Coeficient de temperatura ($C_T$):** Mesura de com varia el valor 
+  de la resistència amb els canvis de temperatura.
+- **Soroll elèctric:** Senyal paràsit generat pel component que 
+  s'afegeix al senyal útil, provocant petites fluctuacions de tensió.
+
+#### Codi de colors
+
+El valor de les resistències sol indicar-se mitjançant un **codi de 
+colors**. 
+Consisteix en un conjunt de franges de colors imprimides sobre el cos 
+(figura 2) del component (normalment sobre un fons marró clar). 
+La majoria de resistències utilitzen **quatre franges**, tot i que 
+n'hi ha de **cinc** per a toleràncies iguals o inferiors al 2%.
+
+> ![c](img/colors_resistencia.png)
+> **Fig. 2.** [Cerezo _et al._] (2024). [IOC].
+> _Bandes de colors a una resistència_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+Cada color té un valor numèric associat, i la **posició de la franja** 
+determina el seu significat concret, segons s'especifica en la taula 
+del codi de colors per a resistències:
+
+| Color     | 1a Banda | 2a Banda | Multiplicador   | Tolerància (%) |
+|-----------|----------|----------|-----------------|----------------|
+| Negre     | 0        | 0        | × 1             |                |
+| Marró     | 1        | 1        | × 10            | 1%             |
+| Vermell   | 2        | 2        | × 100           | 2%             |
+| Taronja   | 3        | 3        | × 1.000         |                |
+| Groc      | 4        | 4        | × 10.000        |                |
+| Verd      | 5        | 5        | × 100.000       | 0,5%           |
+| Blau      | 6        | 6        | × 1.000.000     | 0,25%          |
+| Violeta   | 7        | 7        | × 10.000.000    | 0,10%          |
+| Gris      | 8        | 8        | × 100.000.000   | 0,05%          |
+| Blanc     | 9        | 9        | × 1.000.000.000 |                |
+| Or        |          |          | 0,1             | 5%             |
+| Argent    |          |          | 0,01            | 10%            |
+
+### 2.2. Resistències variables
+
+En aquest tipus de components, el valor de resistència pot ajustar-se 
+de manera contínua entre un valor mínim (teòricament 0 Ω) i un valor 
+màxim nominal (R).
+
+Per exemple, una resistència variable de 10 kΩ permet obtenir 
+qualsevol valor entre 0 Ω i 10.000 Ω.
+
+Aquesta funcionalitat s'aconsegueix mitjançant un tercer terminal, 
+connectat a un contacte mòbil (cursor) que es pot desplaçar al llarg 
+de l'element resistiu. 
+El moviment del cursor pot ser angular (giratori) o longitudinal 
+(lliscant), variant així la proporció de l'element resistiu inclòs al 
+circuit i, per tant, el seu valor ohmànic total.
+
+> ![c500](img/potenciometre.png)
+> **Fig. 3.** [Cerezo _et al._] (2024). [IOC].
+> _Resistència ajustable i potenciòmetre_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+Els components variables descrits es classifiquen segons la seva funció al circuit:
+
+- **Potenciòmetres:** Permeten a l'usuari variar la resistència des de 
+  l'exterior durant l'operació normal del dispositiu (ex: controls de 
+  volum o brillantor).
+- **Resistències ajustables (Trimmers):** S'ajusten una vegada durant 
+  la instal·lació o calibració i només són accessibles per a personal 
+  tècnic (ex: ajustos de guany o polarització). 
+  Són components de baixa potència.
+- **Reòstats:** Són resistències variables de **gran potència** 
+  dissenyades per a corrents elevats. 
+  En la seva configuració típica, un dels terminals extrems es deixa 
+  sense connectar (elèctricament anul·lat).
+
+**Nota:** Si en un potenciòmetre o trimmer es deixa un terminal extrem 
+a l'aire, es comporta com un reòstat, però no està dissenyat per 
+suportar els corrents elevats dels reòstats veritables.
+
+
+
+### 2.3. Resistències no lineals (sensors)
+
+Són components el valor òhmic dels quals varia de manera **no lineal** 
+en funció d'una magnitud física externa (temperatura, llum, tensió, etc.), motiu pel qual actuen com a **sensors**. 
+Els tipus més comuns són:
+
+- **Termistors:** La seva resistència varia amb la temperatura.
+    + **NTC** (Coeficient de Temperatura Negatiu): La resistència 
+      **disminueix** quan augmenta la temperatura.
+    + **PTC** (Coeficient de Temperatura Positiu): La resistència 
+      **augmenta** quan augmenta la temperatura.
+
+- **Varistors** (VDR): La seva resistència **disminueix dràsticament** 
+  quan la tensió aplicada als seus terminals supera un llindar. 
+  S'utilitzen principalment per a **protecció contra sobretensions** i 
+  supressió de transitoris.
+
+- **Fotoresistències (LDR):** La seva resistència **disminueix** quan 
+  augmenta la **llum** que hi incideix. 
+  S'apliquen en sistemes de control d'enllumenat, alarmes i circuits 
+  amb relés.
+
+
+
+
+
+
+
+
+
+
+
+3. Condensadors
+---------------
+
+Els condensadors són components formats per **dues plaques 
+metàl·liques** separades per un material aïllant anomenat 
+**dielèctric**. 
+Emmagatzemen energia en forma de **camp elèctric**, una propietat 
+coneguda com a **capacitat (C)**, mesurada en **farads (F)**.
+
+> ![c250](img/simb_condensador.png)
+> **Fig. 4.** [Cerezo _et al._] (2024). [IOC].
+> _Simbols del condensador_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+### 3.1. Factors que determinen la capacitat
+La capacitat depèn de tres característiques físiques:
+1. **Superfície de les plaques:** Directament proporcional a la 
+   capacitat.
+2. **Distància entre plaques:** Inversament proporcional a la 
+   capacitat.
+3. **Material dielèctric:** Determinat per la seva **permitivitat 
+   (ε)**. Una permitivitat més alta augmenta la capacitat.
+
+La seva propietat fonamental és **oposar-se als canvis bruscos de 
+tensió**, cosa que els fa útils en filtres i estabilitzadors.
+
+### 3.2. Reactància capacitiva
+En corrent altern, el condensador s'oposa al pas del corrent amb una 
+**reactància capacitiva ($X_C$)**, calculada com:
+
+> $$ \begin{gather} X_C = \frac{1}{2 \pi f C} \end{gather}$$
+> 
+> On:
+> - $f$: Freqüència (Hz)
+> - $C$: Capacitat (F)
+
+La reactància disminueix a freqüències més altes. A freqüència zero (corrent continu), el condensador es comporta com un **circuit obert**.
+
+### 3.3. Codificació de valors
+No hi ha un estàndard únic. Els mètodes més comuns són:
+- **Codificació directa:** Ex: `15p` = 15 pF, `6n8` = 6.8 nF.
+- **Mantissa i exponent (en pF):** La xifra indica el valor en picofarads.
+    - Ex: `334` = $33 \cdot 10^4$ pF = 330,000 pF = 330 nF.
+    - Ex: `102` = $10 \cdot 10^2$ pF = 1,000 pF = 1 nF.
+- (El codi de colors, similar al de les resistències, és ara obsolet).
+
+
+
+
+
+
+
+
+
+
+
+4. Bobines (Inductors)
+----------------------
+
+La bobina emmagatzema energia en forma de **camp magnètic**. 
+Aquesta propietat s'anomena **inductància (L)** i s'expressa en 
+**henrys (H)**.
+
+> ![c250](img/simb_bobina.png)
+> **Fig. 5.** [Cerezo _et al._] (2024). [IOC].
+> _Simbol d'una bobina o inductor_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+### 4.1. Principi de funcionament
+
+Quan circula corrent pel conductor (normalment arrollat en espires), es genera un camp magnètic concentrat al seu interior. La seva propietat fonamental és **oposar-se als canvis bruscos del corrent** que hi circula, tendint a mantenir el corrent anterior (inèrcia magnètica). Per això només reacciona davant el **corrent altern**.
+
+
+### 4.2. Reactància inductiva
+
+En corrent altern, la bobina s'oposa al pas del corrent amb una 
+**reactància inductiva ($X_L$)**, calculada com:
+
+> $$ \begin{gather}X_L = 2 \pi f L \end{gather}$$
+> 
+> On:
+> - $f$: Freqüència (Hz)
+> - $L$: Inductància (H)
+
+La reactància **augmenta** amb la freqüència. A freqüència zero 
+(corrent continu), la bobina es comporta pràcticament com un 
+**curtcircuit** (només presenta la resistència òhmica del fil).
+
+
+
+
+
+
+
+
+
+
+
+5. Filtre RLC
+-------------
+
+Un **filtre RLC** és un circuit que combina una **resistència (R)**, 
+una **bobina (L)** i un **condensador (C)** per seleccionar o eliminar 
+un rang de freqüències determinat d'un senyal. 
+El seu comportament depèn de la connexió dels components i del **punt 
+de sortida** del senyal filtrat.
+
+### Concepte clau: Freqüència de ressonància
+A la **freqüència de ressonància ($f_r$)**, la reactància inductiva 
+($X_L$) i la capacitiva ($X_C$) són iguals i s'anul·len mútuament, 
+deixant només la resistència R per determinar la impedància total del 
+circuit.
+
+> $$ \begin{gather}f_r = \frac{1}{2\pi\sqrt{LC}} \end{gather}$$
+> 
+> A on:
+> - $ f_r $: Freqüència de ressonància, en Hz (Hertz).
+> - $ L $: Inductància. Valor de la bobina del circuit, en H (Henris).
+> - $ C $: Capacitat. en F (Farads).
+
+
+### Tipus bàsics:
+
+1. **Filtre passa-baixes:** Deixa passar freqüències **menors** que 
+   $f_r$, atenuant la resta.
+2. **Filtre passa-altes:** Deixa passar freqüències **majors** que 
+   $f_r$, atenuant la resta.
+3. **Filtre passa-banda:** Deixa passar un **rang estret** al voltant 
+   de $f_r$, atenuant la resta.
+4. **Filtre rebutja-banda (Notch):** Atenua un **rang estret** al 
+   voltant de $f_r$, deixant passar la resta.
+
+
+> #### Exemple resolt: Càlcul de la freqüència de ressonància
+> 
+> **Enunciat:**
+> Calcula la freqüència de ressonància d'un circuit RLC sèrie amb els 
+> següents valors:
+> - Resistència: \( R = 100\ \Omega \)
+> - Inductància: \( L = 10\ \text{mH} = 10 \cdot 10^{-3}\ \text{H} \)
+> - Capacitat: \( C = 1\ \mu\text{F} = 1 \cdot 10^{-6}\ \text{F} \)
+> 
+> **Resolució pas a pas:**
+> 
+> 1.  **Aplicar la fórmula de ressonància:**
+>     $$ f_r = \frac{1}{2\pi\sqrt{LC}} $$
+> 
+> 2.  **Substituir els valors:**
+>     $$ f_r = \frac{1}{2\pi\sqrt{(10 \cdot 10^{-3}) \cdot (1 \cdot 
+      10^{-6})}} \approx 1{,}59 \cdot 10^{-7}\ \text{F} = 0{,}159\ 
+      \mu\text{F}$$
+> 
+> **Resultat:**
+> La freqüència de ressonància d'aquest circuit RLC és 
+> d'aproximadament **1.59 kHz**.
+
+
+
+
+
+[Cerezo _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html "S. Cerezo Salcedo, X. Mesas Laserna, À. L. Miguel Rodríguez, J. M. Pallarés Serres, J. Perona Camacho, R. Rodríguez Coronel"
+
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+
+[CC4.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement - No comercial - CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
