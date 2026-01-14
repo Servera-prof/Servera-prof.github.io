@@ -1,8 +1,19 @@
-<!DOCTYPE html><head> <link rel="icon" type="image/x-icon" href=img/favicon.png><meta charset="UTF-8"><link rel="stylesheet" type="text/css" href="css/main.css" /></head><textarea id="enunciat">
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+</head>
+<textarea id="enunciat">
 
-# Configuració inicial Git i GitHub
 
-## Crear les claus ssh
+Configuració inicial Git i GitHub
+=================================
+
+
+
+1. Crear les claus ssh
+----------------------
 
 Crear un directori i a dins crear un parell de clau publica i privada
 
@@ -57,10 +68,14 @@ clau. Per exemple `Politecnic Llevant 2025`.
 
 Si es demana, confirma l’accés al teu compte de GitHub.
 
-## Clonar el repositori
 
-Clonant el repositori, es configuren automàticament una sèrie d'elements
-com el remot.
+
+
+2. Clonar el repositori
+-----------------------
+
+Clonant el repositori, es configuren automàticament una sèrie 
+d'elements com el remot.
 
 ```
 cd ~
@@ -78,7 +93,8 @@ git config --global user.email johndoe@example.com
 ```
 
 
-## Modificar i actualitzar el repositori
+3. Modificar i actualitzar el repositori
+----------------------------------------
 
 Es crea o modifica algun arxiu i després:
 
@@ -88,38 +104,25 @@ git add -u
 git commit -m "missatge"
 git push -u origin main
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
 </textarea>
+
+
+
 
 <!-- C. SCRIPT ==================================================== -->
 <script>
 window.texme = {
     renderOnLoad: false,
     style: 'none',
-    markdownURL: 'js/marked/marked.min.js',
-    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+    markdownURL: '../js/marked/marked.min.js',
+    MathJaxURL: '../js/mathjax/es5/tex-mml-chtml.js'
 }
 </script>
 
-<script src="js/texme/texme.js"></script>
+<script src="../js/texme/texme.js"></script>
+
 <script>
-
-
-
 window.onload = function (){
     texme.renderPage();
 }
-
 </script>
