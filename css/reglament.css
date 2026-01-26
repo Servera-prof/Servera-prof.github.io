@@ -104,18 +104,27 @@ h4 em{
     font-style: normal;
 }
 
+table {
+  margin: 0 auto;
+}
+table tr:last-child {
+  border-bottom: 4px double black;
+
+}
+th,td {
+	border: 0px solid lightgrey;
+	padding: 0.25rem 0.75rem;
+}
+
 li::marker{
     color: #9e2050;
     font-weight: bold;    
 }
 
-p strong, li strong {
+p strong, li strong{
   color: red;
 }
 
-blockquote p strong {
-  color: black;
-}
 
 p em, li em {
   font-style: normal;
