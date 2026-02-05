@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+UT07 - Rectificació i filtrat. Components actius.											
+=================================================
+
+
+
+
+
+
+
+
+
+
+1. Resum d'UT previes i introducció
+-----------------------------------
+
+
+A l'anterior UT s'ha començat a tractar l'electrònica analògica 
+Aquesta manté una importància crítica en moltes aplicacions on la 
+digitalització no és viable o òptima.
+
+La base de l'electrònica analògica es construeix sobre dos tipus de 
+components, els components passius i els actius. En aquesta UT es 
+tractaran els passius.
+
+Components passius vist a la unitat anterior, realitzen la seva 
+funció per la seva pròpia naturalesa física, governats per lleis ben 
+definides (resistències, condensadors, inductors).
+
+Els components actius són aquells que poden dur a terme una o més de les
+funcions següents:
+
+- **Excitar circuits:** subministrar senyals d'alimentació o 
+  d'excitació al sistema. 
+  Proporcionar guany: amplificar l'amplitud d'un senyal elèctric.
+- **Controlar:** prendre decisions de manera automàtica per regular el
+  funcionament del circuit.
+
+En termes generals, es podria dir que els elements actius són aquells
+que requereixen una font d'alimentació externa per realitzar la seva
+funció (per exemple, una resistència funciona directament amb el senyal
+que rep, mentre que un amplificador necessita una font d'energia externa
+per poder augmentar el senyal d'entrada). Els components actius més
+comuns són:
+
+- **Díodes:** fabricats amb materials semiconductors, permeten el pas 
+  del corrent elèctric en una sola direcció i de manera controlada, 
+  segons les seves especificacions. 
+- **Tiristors o SCR:** són un tipus de díode que es pot activar 
+  mitjançant un senyal de control. 
+- **DIAC i TRIAC:** coneguts com a díodes i tríodes per a corrent 
+  altern, són dispositius semiconductors que permeten la conducció del 
+  corrent en les dues direccions.
+- **Transistors:** dispositius semiconductors que poden amplificar un 
+  senyal o actuar com a interruptor, obrint o tancant el pas del 
+  corrent.
+- **Amplificadors operacionals:** circuits integrats formats per 
+  diversos transistors, amb dues entrades i una sortida, dissenyats 
+  per realitzar operacions matemàtiques amb els senyals d'entrada. 
+  Són probablement els circuits més versàtils dins de l'electrònica 
+  analògica. 
+- **Components digitals:** inclouen circuits lògics i sistemes 
+  programables.
+  
+| Component              | Aplicacions principals             |
+|------------------------|------------------------------------|
+| **Díode**              | Rectificació, regulació            |
+| **Tiristor**           | Control de sistemes de potència    |
+| **DIAC, TRIAC**        | Control de sistemes de potència    |
+| **Transistor**         | Amplificació, oscil·lació, commutació, rectificació |
+| **Amplificador operacional** | Amplificació, oscil·lació, commutació, rectificació, filtratge, suma, resta, integració, derivació |
+| **Components digitals** | Sistemes lògics programables i no programables |
+
+
+
+
+
+
+
+
+2. Díodes
+---------
+
+### 2.1. Definició i característiques
+
+Un díode és un component electrònic que deixa circular el corrent només
+en un sentit. En termes bàsics, la seva corba característica de
+corrent-tensió (I-V) presenta dues zones diferenciades: per a tensions
+inferiors a un determinat llindar, el díode actua com un circuit obert
+(no hi ha pas de corrent), mentre que a tensions superiors es comporta
+com un circuit tancat amb una resistència molt baixa (similar a un
+curtcircuit). Aquesta propietat fa que s’anomenin rectificadors, atès
+que poden transformar un corrent altern en corrent continu.
+
+Estructuralment, el díode es forma mitjançant una unió P-N i té dos
+elèctrodes: l’ànode (A), unit a la regió P, i el càtode (K), connectat a
+la regió N. La figura adjunta mostra un esquema de la unió P-N i el
+símbol elèctric del díode.
+
+Quan està polaritzat directament, es connecta l’ànode (A) al pol 
+positiu de la font i el càtode (K) al pol negatiu. 
+En aquesta configuració, el díode permet el pas del corrent i
+es comporta com un curtcircuit o un interruptor tancat. 
+La resistència que presenta entre l’ànode i el càtode és molt petita, 
+pràcticament negligible.
+
+En polarització inversa, l’ànode es connecta al pol negatiu de la font i
+el càtode al pol positiu. En aquest cas, el díode bloqueja el pas del
+corrent i actua com un interruptor obert. La resistència entre l’ànode i
+el càtode és molt alta, equivalent a un circuit obert.
+
+
+
+### 2.2. Zones de funcionament
+
+Es diferencien la zona de conducció (en polarització directa) de la zona
+de tall (en polarització inversa). La **tensió de llindar** (Vₒₙ) és la
+tensió de polarització directa a partir de la qual el corrent comença a
+augmentar ràpidament. Per als díodes rectificadors convencionals de
+silici aquest valor és d’aproximadament **0,65 V** (0,7 V en termes
+generals), mentre que per als díodes de germani és d’uns **0,3 V**.
+
+En polarització directa cal superar aquest valor perquè el díode comenci
+a conduir de manera significativa. En altres tipus de díodes, aquesta
+tensió varia: en **LEDs**, la tensió de llindar pot pujar fins a **1,8
+V** per als LEDs vermells i fins a **3 V** per als LEDs blancs. En
+díodes rectificadors especials, com els **díodes Schottky**, aquesta
+tensió pot baixar fins a **0,2 V**.
+
+En polarització inversa, existeix una **tensió de ruptura** o tensió
+d’allau que no s’ha d’excedir; si es supera, el díode es danya i entra
+en conducció inversa de forma abrupta.
+
+> ![c250](img/corba_diode.png)
+> **Fig. 1.** [Cerezo _et al._] (2024). [IOC].
+> _Símbol resistència lineal fixa_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+
+3. Rectificació
+---------------
+
+La rectificació es refereix al procés de convertir un corrent altern
+(que alterna periòdicament la seva polaritat) en un corrent continu (que
+manté una mateixa polaritat, tot i que el seu valor pot fluctuar; no cal
+que sigui absolutament constant).
+
+El component fonamental per a aquesta funció és el **díode
+rectificador**, especialitzat precisament en convertir la corrent
+alterna en la corrent continua que requereix la majoria d'aparells
+electrònics. Aquests díodes poden processar la corrent alterna que
+arriba a les nostres llars, amb tensions relativament altes (fins a uns
+311 volts de pic per a una tensió alterna de 230 volts eficaços).
+
+A més, els trobem en els transformadors d'alta freqüència que utilitzen
+gairebé totes les fonts d'alimentació d'ordinadors, carregadors de
+telèfons intel·ligents i tauletes, televisors, etc.
+
+La disposició i el nombre de díodes rectificadors varien segons el tipus
+de rectificació requerit. Bàsicament, es distingeixen dues categories
+principals: 
+
+1. Rectificació de mitja ona. 
+2. Rectificació d'ona completa (també anomenada rectificació de doble 
+   ona).
+   
+### 3.1 Rectificació de mitja ona
+
+El rectificador de mitja ona és el circuit rectificador més bàsic i
+senzill que es pot utilitzar per convertir la corrent alterna en corrent
+continua, ja que només empra un únic díode.
+
+El seu principi de funcionament consisteix a suprimir un dels dos
+semicicles de l'ona d'entrada. Quan la tensió d'entrada és positiva, el
+potencial de l'ànode supera el del càtode, fent que el díode condueixi.
+En canvi, quan la tensió és negativa, el càtode està a un potencial més
+alt, de manera que el díode es bloqueja. Així, aquest rectificador
+**només permet passar el semicicle positiu** de la tensió alterna i
+**bloqueja completament el semicicle negatiu**.
+
+Durant el semicicle positiu, el díode es polaritza directament,
+permetent que el corrent flueixi a través de la càrrega i generant una
+tensió de sortida positiva. Durant el semicicle negatiu, el díode es
+polaritza inversament, tallant el corrent i fent que la sortida sigui
+nul·la. El resultat és un senyal de sortida que només conté la meitat
+(la part positiva) de l'ona d'entrada original.
+
+Aquest esquema té un inconvenient important: **la corrent de sortida és
+pulsant i es malgasta la meitat de la tensió d'entrada**, ja que el
+semicicle negatiu no s'aprofita. Aquest senyal pulsant sol requerir un
+filtratge posterior per a la majoria d'aplicacions que necessiten un
+corrent continu més estable.
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/rectificador_mitja.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 1.** Creat a partir de
+> [simulació](https://www.falstad.com/circuit/e-rectify.html).
+> [Paul Falstad] (2024).
+> _Rectificador de mitja ona_. 
+> Sota llicència [GNUv2]
+
+
+
+### 3.2. Rectificació d'ona completa
+
+Aquesta configuració aconsegueix transformar tant els semicicles
+positius com els negatius de la tensió d'entrada en una tensió de
+sortida sempre amb la mateixa polaritat (normalment positiva),
+aprofitant així tota l'ona d'entrada.
+
+El circuit més comú per dur a terme aquesta funció és el **pont de
+Graetz** o **pont de díodes**. Per a poder funcionar, aquest esquema
+necessita **dos díodes per cada línia de corrent altern**. En el cas més
+habitual, per a un sistema monofàsic s'utilitzen quatre díodes en total.
+En sistemes trifàsics, que tenen tres línies de tensió, s'empren sis
+díodes per a la rectificació completa.
+
+En el pont de díodes, sempre condueixen dos dels díodes simultàniament
+durant cada semicicle del senyal. Això introdueix una pèrdua de tensió
+d'aproximadament 2 volts, deguda als dos díodes polaritzats directament
+en sèrie amb la càrrega. Aquesta solució és tan estàndard que els quatre
+díodes es comercialitzen sovint integrats en un únic component
+encapsulat.
+
+El funcionament es basa en connectar els terminals de l'entrada
+d'alterna als dos nodes centrals del pont, mentre que la sortida es pren
+dels dos nodes restants. Els díodes es disposen per permetre la
+circulació del corrent en una única direcció a través de la càrrega.
+
+- **Durant el semicicle positiu** de l'entrada, un parell de díodes
+condueix, fent que el corrent flueixi a través de la càrrega i generant
+una tensió de sortida positiva. L'altre parell roman bloquejat. 
+- **Durant el semicicle negatiu**, la situació s'inverteix: l'altre parell
+de díodes condueix, però el sentit del corrent a través de la càrrega és
+el mateix, mantenint la polaritat positiva a la sortida. El primer
+parell queda ara bloquejat.
+
+En resum, la rectificació d'ona completa mitjançant un pont de díodes
+converteix tots els semicicles del senyal altern en una sortida d'una
+sola polaritat. Aquesta tècnica és fonamental en aplicacions com les
+fonts d'alimentació.
+
+A continuació es poden veure simulacions de dues configuracions de
+díodes. Ambdues són **elèctricament equivalents** i només es diferencien
+en la posició dels díodes al dibuix.
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/rectificador_completa.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 2.** Creat a partir de
+> [simulació](https://www.falstad.com/circuit/e-fullrect.html).
+> [Paul Falstad] (2024).
+> _Rectificador d'ona completa_. 
+> Sota llicència [GNUv2]
+
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/rectificador_completa2.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 3.** Creat a partir de
+> [simulació](https://picuino.github.io/es/electronic-diodo-rectificador.html).
+> [Carlos Félix Pardo Martín] (2024).
+> _Rectificador d'ona completa (colocació diferent)_. 
+> Sota llicència [GNUv2]
+
+És un montantge molt comú. Tant que hi ha dispositius que ja tenen el
+pont muntat
+
+
+<iframe width= 630px" height="310px" src="https://picuino.com/circuits/index.html?startCircuit=fullrect2.txt&hideMenu=true"></iframe>
+
+
+
+[Cerezo _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html "S. Cerezo Salcedo, X. Mesas Laserna, À. L. Miguel Rodríguez, J. M. Pallarés Serres, J. Perona Camacho, R. Rodríguez Coronel"
+[Paul Falstad]: http://www.falstad.com/
+[Carlos Félix Pardo Martín]: https://picuino.github.io/es/contacto.html
+
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+
+[CC4.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement - No comercial - CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+[GNUv2]: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

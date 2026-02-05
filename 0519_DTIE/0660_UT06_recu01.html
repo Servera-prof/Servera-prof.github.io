@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+UT06 - El projecte tècnic.			
+==========================
+
+Cada tasca val 1 punt excepte a on s'indiqui. La puntuació
+de l'exercici serà la suma dels punts obtinguts dividit pel total
+de punts multiplicat per deu 
+
+> $$ \dfrac {\sum\limits_{i=1}^n P_i}{\sum\limits_{i=1}^n Z_i} \cdot 10 $$
+> A on:
+> - $ n $ és el total de tasques
+> - $ P_i $ és la puntuació obtinguda a la tasca i-èssima
+> - $ Z_i $ és la puntuació màxima de la tasca i-èssima
+
+
+Recuperació 1
+-------------
+
+Per a fer el següent exercici s'han de realitzar tots els punts
+següents:
+
+- (_1 punt_) Descarrega les imatges següents i utilitza-les com a fons de 
+  pàgina:
+
+    + [portada](img/portada_CIFP_PL.png)
+    + [general](img/general_CIFP_PL.png)
+    
+- (_2 punts_) Encapçalaments. 
+  **Important** l'estil dels encapçalaments ha d'estar definit a 
+  l'encapçalament. 
+  Ha d'aparèixer automàticament, **no s'ha de modificar encapçalament 
+  per encapçalament**. 
+    + Crea dos encapçalaments de nivell 1 i canvia la mida de lletra a 37.
+      Canvia al color corporatiu 7dff53. 
+    + Crea 3 encapçalaments de nivell 2 a dins d'un dels encapçalaments 
+      de nivell 1.
+      Canvia la mida de la lletra a 24 i color corporatiu 7dff53.
+    + Crea 3 encapçalaments de nivell 3 a dins d'un dels encapçalaments 
+      de nivell 2.
+      Canvia la mida de la lletra a 18 i color corporatiu 7dff53.
+    + Numera manualment tots els encapçalaments segons normativa.
+- (_2 punts_) A dins crea el text normal que trobis (pot ser un lorem ipsum). I a 
+  sota una llista amb lletres i parèntesis a), b), etc.
+  El text ha d'ocupar mitja pàgina per apartat.
+- (_1 punt_) Crea un índex
+
+- (_2,5 punts_) Crea la fórmula següent, i la seva llegenda amb l'editor 
+  de fórmules:
+
+> $$ U_c \text{(%)} = \dfrac {P \cdot L} {10 \cdot U^2} \cdot (R_{90} + X \cdot \tan \varphi)$$
+> A on:
+> - $U_c$ és la caiguda de tensió del tram, en $\text{%}$.
+> - $P$ és la potència a transportar, en $\text{kW}$.
+> - $L$ és la longitud de la línia, en $\text{km}$.
+> - $U$ és la tensió nominal de la línia, en $\text{kV}$.
+> - $R_{90}$ és la resistència de la línia a 90 °C, en $Ω/ \text{km}$.
+> - $X$ és la reactància de la línia, en $Ω/ \text{km}$.
+> - $\tan \varphi$ és la tangent de l'angle definit per el factor de 
+>   potència.
+
+- (_2,5 punts_) Implementa la fórmula en LibreOffice Calc a una taula amb:
+    + 8 columnes de paràmetres (node in, node out, U, P<sub>node</sub>, 
+      L, cos φ, etc.)
+    + 4 columnes de càlculs (P<sub>tram</sub>, tan φ, 
+      U<sub>c-tram</sub>, U<sub>c-acum</sub>
+    + No és necessari fer tota la taula, només la primera línia. 
+    + No és necessari calcular (P<sub>tram</sub>, U<sub>c-acum</sub>),
+      només reservar l'espai.
+    + Dona-li un format sobri i professional.
+
+
+
+
+
+
+[CC4.0-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-sa]: https://creativecommons.org/licenses/by-sa/3.0/deed.ca "Llicencia Cretive Commons 3.0 Internacional - Reconeixement-CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement-CompartirIgual"
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
