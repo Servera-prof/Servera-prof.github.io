@@ -1,33 +1,35 @@
-<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
 <!DOCTYPE html>
 <head>
     <title id="titol"></title>
     <link rel="icon" type="image/x-icon" href=../img/favicon.png>
     <meta charset="UTF-8">
+    
     <style>
-      pre.wrap {
-        white-space: pre-wrap;   /* conserva salts i espais, i fa wrap quan cal */
-        word-break: break-all;  /* trenca paraules molt llargues si cal */
-        overflow-wrap: anywhere;
-      }
-</style>
+
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    </style>
 </head>
 
 <script>
 window.texme = {
     renderOnLoad: false,
-    markdownURL: '../js/marked/marked.min.js',
-    MathJaxURL: '../js/mathjax/es5/tex-mml-chtml.js'
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
 }
 </script>
-<script src="../js/texme/texme.js"></script>
+<script src="js/texme/texme.js"></script>
 
-<!-- FI NO TOCAR ================================================== -->
-
-
-
-
-<!-- B. ENUNCIAT ================================================== -->
 <textarea id="enunciat">
 ~~~
 &nbsp;
@@ -35,7 +37,7 @@ window.texme = {
 &nbsp;
 ~~~
 
-Puntuació: 65%
+Puntuació: 35%
 
 ## Normes:
 
@@ -71,8 +73,6 @@ Puntuació: 65%
   poder revisar l'examen si ho necessitessis).
 - Entrega els papers utilitzats.
 
-
-
 ## Preguntes
 
 [[p1]]
@@ -80,123 +80,53 @@ Puntuació: 65%
 ## Resposta
 
 [[i1]]
-
-
-
 </textarea>
-<!-- FI ENUNCIAT ================================================== -->
 
-
-
-
-
-
-
-<!-- C. SCRIPT ==================================================== -->
 <script>
 
-
-// # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Recuperació UT01 - DTIE";
+const titol = "Test UT01 - sense suport";
 const puntuacions = ["", 10];
-
-
-// # 2. PARÀMETRES ====================================================
-
-// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
 
 let p01 = "";
 const preguntes = [
-
-
 [
-"Quin document del projecte inclou la justificació de la necessitat de la instal·lació?",
-"Annexos",
-"Memòria de l’avantprojecte",
-"Plec de condicions",
-"Estat de mesuraments",
+"Es té una connexió de servei (<i>acometida</i> en castellà) subterrania, que surt d'una caixa de seccionament, i que arriba a una caixa, com es diu auqesta caixa? Quants cables sortiran d'aquesta capsa i com seran visualment? On arribaran? <b>Tria la resposta que no contengui CAP afirmació falsa</b>",
+"La caixa és una CGP, de la qual poden sortir 4 cables si és unipolar i un si és multipolar de color verd (no propagadors de l'incendi i amb emisió de fums i  opacitat reduïda de 0,6/1 kV), arribaran a la centralització de comptadors",
+"La caixa és una caixa de seccionament privada, de la qual poden sortir 4 cables (o 5 si també du la terra) de color verd (no propagadors de l'incendi i amb emisió de fums i  opacitat reduïda de 0,6/1 kV), arribaran a la centralització de comptadors o a una CPM (si és un o dos usuaris)",
+"La caixa és una CGP, de la qual poden sortir 4 cables de color verd (no propagadors de l'incendi i amb emisió de fums i  opacitat reduïda de 0,6/1 kV), arribaran a la centralització de comptadors",
+"La caixa és una CGP, de la qual poden sortir 1 cable de color verd (no propagadors de l'incendi i amb emisió de fums i  opacitat reduïda de 0,6/1 kV), arribaran a l'IGA de la CC",
 ],
 
 [
-  "Quins documents mínims ha d’incloure un avantprojecte d’alta tensió?",
-  "Només memòria i pressupost",
-  "Memòria, plànols i plec de condicions",
-  "Memòria i plànols",
-  "Plànols i estat de mesuraments",
+"En que s'assemblen i en que es diferencien els esquemes TT, TN i IT? <b>Tria la resposta que no contengui CAP afirmació falsa</b>",
+"Tan en el TT com en l'IT les masses estan connectades a terra, mentre que el TN no té masses a terra",
+"Tan en el TT com en l'TN les masses estan connectades a terra, mentre que el IT no té masses a terra",
+"Tan en el TT com en l'IT el neutre està connectat a terra, mentre que el TN el neutre no esta connectat a terra",
+"Marca aquesta resposta si no pots marcar cap de les altres.",
 ],
 
 [
-"Quina de les següents afirmacions sobre la norma <b>UNE 157001</b> és correcta?",
-"És obligatòria en totes les instal·lacions d’alta tensió",
-"És una guia pràctica d’aplicació voluntària",
-"És una guia que només s’aplica a instal·lacions de baixa tensió",
-"Només regula aspectes econòmics",
+"Si observo una CGP en superfície (fora de nínxol) a Caimari, puc assegurar que?",
+"És una CGP-7 (entrada i sortida per abaix)",
+"És una CGP-9 (entrada per abaix i sortida per adalt).",
+"Té el neutre a la dreta.",
+"El fusible del neutre té la meitat de la intensitat dels conductors de fase.",
 ],
 
 [
-"Quin d’aquests apartats forma part del contingut mínim d’un <b>projecte</b> segons la normativa vigent?",
-"Memòria, plànols, plec de condicions, estudi de seguretat i salut i pressupost",
-"Memòria, plànols, plec de condicions i pressupost",
-"Memòria, plànols, plec de condicions, estudi de seguretat i salut, estudi d'impacte mediambiental i pressupost",
-"Memòria, plànols i pressupost"
+"Quina afirmació és certa?",
+"Els conductors de la DI individual, si són unipolars només poden ser H07Z1-K",
+"Els conductors de la DI individual, si són monofàsics només poden ser RZ1-K",
+"Els conductors de la DI individual, si estan encastats directament a paret sense tub poden ser tant H07Z1-K con RZ1-K",
+"Marca aquesta resposta si no pots marcar cap de les altres.",
 ],
 
 [
-"En quins projectes és <b>obligatori</b> incloure un calendari d’execució?",
-"En tots els projectes privats",
-"En projectes pblics que superin els 750.000€",
-"En cap cas, és opcional",
-"Només en projectes públics",
-],
-
-
-
-
-
-
-
-
-
-
-
-[
-  "Quina funció té la memòria del projecte?",
-  "Definir el cost total de l’obra",
-  "Descriure el problema i la solució adoptada",
-  "Detallar totes les unitats d’obra",
-  "Incloure exclusivament els plànols",
-],
-
-[
-"Quina és la funció principal de l’apartat «Requisits de disseny» dins la memòria?",
-"Definir la normativa de seguretat industrial",
-"Establir condicionants tècnics, econòmics i normatius previs",
-"Descriure casos semblants i la seva solució",
-"Detallar els costos del projecte",
-],
-
-[
-"Per què és important l’apartat <b>«Anàlisi de solucions»</b> dins la memòria?",
-"Perquè permet comparar opcions i justificar la solució escollida",
-"Perquè permet comparar diferents pressuposts",
-"Perquè serveix per registrar l’autorització administrativa, ja que es obligatori en el RITE i en general a totes les normatives tècniques",
-"Perquè estableix els terminis legals",
-],
-
-[
-  "Per què els plànols tenen prioritat sobre la memòria segons l’ordre establert?",
-  "Perquè defineixen gràficament l’objecte construït amb precisió executiva",
-  "Perquè són més fàcils d’interpretar",
-  "Perquè sempre contenen els càlculs",
-  "Perquè són els primers documents redactats",
-],
-
-[
-"Quin tipus d’informació s’ha d’evitar incloure dins la memòria del projecte?",
-"Fragments sencers de reglaments o textos legals sense adaptar",
-"Definicions tècniques i abreviatures",
-"Referències bibliogràfiques",
-"El programari utilitzat en els càlculs",
+"Quin dels següents tubs <b>NO</b> cal que sigui «no propagador de la llama»",
+"Els enterrats de XSBT",
+"Els de les DI del habitatgel",
+"Els de les DI de locals de pública concurrència",
+"Els dels circuits interiors dels habitatges",
 ],
 
 
@@ -205,102 +135,44 @@ const preguntes = [
 
 
 
-
-
-
-
 [
-"En els annexos, quin tipus de <b>documentació</b> és adequada incloure?",
-"Catàlegs, annexos de càlcul i informació tècnica complementària",
-"Només pressupostos addicionals",
-"Correspondència amb clients",
-"Informe d’execució econòmica",
+"Quin d'aquest circuits no té secció mínima?",
+"XSBT",
+"LGA",
+"DI",
+"Marca aquesta resposta si no pots marcar cap de les altres.",
 ],
 
 [
-"En quins projectes és <b>obligatori</b> incloure un calendari d’execució?",
-"En tots els projectes privats",
-"En projectes públics que superin els 750.000€",
-"En cap cas, és opcional",
-"Només en projectes públics",
+"Si vull desconectar la terra de tota la CC a Villalba de los Barros (provincia de Badajoz) ho faré? per mesurar la resistència de l'elèctrode de terra, com ho faré",
+"Mai es pot desconnectar la terra",
+'Deixant l\'edifici complet sense tensió, i utilitzant l\'element de la següent imatge <br/><img src="img/repeUT01_01.png" width=300px">',
+"Amb la cutxilla del neutre (que està connectat a terra) després de deixar sense tensió les fases",
+"Marca aquesta resposta si no pots marcar cap de les altres.",
 ],
-
 [
-"Quina escala és més adequada per a un <b>detall constructiu</b> en un projecte elèctric?",
-"1:1000",
-"1:100",
-"1:20",
-"1:2000",
+"Si un fabricant m’indica que un tub és ø160 vol dir que",
+"El seu diàmetre exterior és de 160 mm.",
+"El seu diàmetre interior és de 160 mm.",
+"Que el seu diàmetre permet un conductor de 160 mm.",
+"Que el seu diàmetre interior és de 160 cm.",
 ],
-
 [
-"Quin és l’objectiu principal del plec de condicions?",
-"Establir les especificacions tècniques, econòmiques, administratives i legals del projecte",
-"Descriure els antecedents històrics de la instal·lació",
-"Detallar el pressupost econòmic",
-"Registrar els permisos administratius",
+"Quants de circuits com a màxim puc instalar aigües avall del diferencial d'un habitatge?",
+"5 sempre",
+"9 si subdivideixo el circuit C4",
+"5 si el diferencial és de 300 mA",
+"5 sempre que el diferencial no estigui sobrecarregat (pugui passar més intensitat que la del seu calibre)."
 ],
-
 [
-"Quan es recomana <b>unificar</b> l’estat de mesuraments i el pressupost?",
-"Quan es tracta d’un projecte senzill d’instal·lacions",
-"Quan hi ha més d’un contractista",
-"Quan el projecte és d’obra civil",
-"Quan es tracta d’un projecte públic",
+"El Volum 3 d’una dutxa...",
+"... és el més restrictiu.",
+"... és el menys restrictiu.",
+"tots els volums són de 3 dimensions (alt, ample, fons), la pregunta no té sentit.",
+"Marca aquesta resposta si no pots marcar cap de les altres.",
 ],
-
-
-
-
-
-
-
-
-
-
-
-[
-"Per què és recomanable <b>personalitzar</b> el plec de condicions?",
-"Per evitar textos genèrics i adaptar-lo al projecte concret",
-"Per reduir el temps de redacció",
-"Per eliminar apartats econòmics",
-"Per evitar la revisió del col·legi professional",
-],
-
-[
-"Qui redacta i signa un projecte de baixa tensió?",
-"Un enginyer",
-"El pot redactar un tècnic superior amb coneixements avançats sobre electricitat, però ha d'estar revisat i signat per l'enginyer",
-"Un tècnic superior",
-"Un instal·lador amb carnet i que formi part d'una empresa instal·ladora",
-],
-
-[
-"Qui redacta i signa una MTD de baixa tensió?",
-"Un enginyer",
-"El pot redactar un tècnic superior amb coneixements avançats sobre electricitat, però ha de estar revisat i signat per l'enginyer",
-"Un tècnic superior",
-"Un instal·lador amb carnet i que formi part d'una empresa instal·ladora",
-],
-
-[
-"Què <b>NO</b> es necessita per a donar d'alta una empresa com a empresa instal·ladora?",
-"Un enginyer.",
-"Un instal·lador amb carnet i que formi part d'una empresa instal·ladora.",
-"Un analitzador trifàsic de xarxes com l'aparell amb el que vàrem intentar fer les mesures i que li mancaven piles.",
-"Una assegurança de responsabilitat civil.",
-],
-
-[
-"Què <b>NO</b> es necessita per a donar d'alta una empresa com a empresa instal·ladora?",
-"Un enginyer.",
-"Un instal·lador amb carnet i que formi part d'una empresa instal·ladora.",
-"Un analitzador trifàsic de xarxes com l'aparell amb el que vàrem intentar fer les mesures i que li mancaven piles.",
-"Una assegurança de responsabilitat civil.",
-],
-
-
 ];
+
 
 let permutacio = "";
 const num_preg = preguntes.length;
@@ -591,31 +463,3 @@ function nombreALletra(nombre) {
 }
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-/**********************************************************************
- * - Establir les puntuacions, que han de correspondre amb la quantitat
- * de respostes que l'alumne pot contestar.
- *
- * - Establir els paràmetres. En general serà una funció per a generar
- * nombres aleatoris, però també es poden fixar. Aquest últim cas és
- * interessant per a testejar els càlculs. IMPORTANT: Al finalitzar
- * tots els parametres hauran de concatenarse al vector parametres.
- *
- * -  El mateix succeeix amb els càlculs. Tot haura de volcar-se al
- * vector solucions.
- * *******************************************************************/
--->
