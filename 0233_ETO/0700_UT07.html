@@ -109,6 +109,11 @@ com un circuit tancat amb una resistència molt baixa (similar a un
 curtcircuit). Aquesta propietat fa que s’anomenin rectificadors, atès
 que poden transformar un corrent altern en corrent continu.
 
+> ![c250](img/simbol_diode.png)
+> **Fig. 1.** [Cerezo _et al._] (2024). [IOC].
+> _Unió P-N i Símbol del díode_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
 Estructuralment, el díode es forma mitjançant una unió P-N i té dos
 elèctrodes: l’ànode (A), unit a la regió P, i el càtode (K), connectat a
 la regió N. La figura adjunta mostra un esquema de la unió P-N i el
@@ -149,7 +154,7 @@ d’allau que no s’ha d’excedir; si es supera, el díode es danya i entra
 en conducció inversa de forma abrupta.
 
 > ![c250](img/corba_diode.png)
-> **Fig. 1.** [Cerezo _et al._] (2024). [IOC].
+> **Fig. 2.** [Cerezo _et al._] (2024). [IOC].
 > _Símbol resistència lineal fixa_. 
 > Sota llicència [CC3.0-by-nc-sa]
 
@@ -279,7 +284,7 @@ en la posició dels díodes al dibuix.
 > El teu navegador no suporta el vídeo HTML5.</video>
 >
 > **Vid. 3.** Creat a partir de
-> [simulació](https://picuino.github.io/es/electronic-diodo-rectificador.html).
+> [simulació](https://picuino.github.io/circuits/index.html?startCircuit=fullrect2.txt).
 > [Carlos Félix Pardo Martín] (2024).
 > _Rectificador d'ona completa (colocació diferent)_. 
 > Sota llicència [GNUv2]
@@ -287,10 +292,470 @@ en la posició dels díodes al dibuix.
 És un montantge molt comú. Tant que hi ha dispositius que ja tenen el
 pont muntat
 
+> ![c250](img/ponts_diodes.png)
+> **Fig. 3.** [Cerezo _et al._] (2024). [IOC].
+> _Ponts de díodes integrats_. 
+> Sota llicència [CC3.0-by-nc-sa]
 
-<iframe width= 630px" height="310px" src="https://picuino.com/circuits/index.html?startCircuit=fullrect2.txt&hideMenu=true"></iframe>
 
 
+
+
+4. Filtres
+----------
+
+En fonts d'alimentació, el filtre té com a objectiu reduir la tensió
+d'arrissament i augmentar el valor mitjà de l'ona rectificada, per
+obtenir una sortida el més estable i constant possible.
+
+El filtre més emprat consisteix en un **condensador connectat en
+paral·lel amb la càrrega**.
+
+**Funcionament:** El condensador es carrega fins al valor màxim de l'ona
+rectificada. Quan la tensió del rectificador cau, el condensador es
+descarrega sobre la càrrega, mantenint la tensió de sortida. Quan l'ona
+rectificada torna a superar la tensió del condensador, aquest es
+recarrega. El cicle es repeteix periòdicament.
+
+El pendent de descàrrega —i per tant l'arrissament— és inversament
+proporcional a la capacitat: com més gran és el condensador, més lenta
+és la descàrrega i més plana és la tensió de sortida.
+
+Existeixen filtres més complexos, com els **filtres LC**, que permeten
+reduir encara més l'arrissament.
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/recificador_complet_amb_filtre.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 4.** Creat a partir de
+> [simulació](https://www.falstad.com/circuit/e-fullrectf.html).
+> [Paul Falstad] (2024).
+> _Rectificador d'ona completa_. 
+> Sota llicència [GNUv2]
+
+
+
+
+
+5. Díode Zener
+--------------
+
+El díode Zener disposa dels mateixos terminals que un díode rectificador
+convencional, tot i que la seva representació simbòlica presenta algunes
+variants.
+
+> ![c250](img/simbol_zener.png)
+> **Fig. 4.** [Cerezo _et al._] (2024). [IOC].
+> _Simbologia Zener_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+Els paràmetres més importants d'aquest dispositiu són: 
+- **Tensió Zener
+  (Vz)**: valor nominal de tensió inversa al qual estabilitza. 
+- **Potència màxima (Pz)**: en díodes de baixa potència, típicament 
+  0,4 W o 1,3 W.
+
+En polarització directa, el seu comportament és idèntic al d'un díode
+estàndard. La diferència fonamental apareix en polarització inversa:
+quan la tensió assoleix el valor d'allau, el dispositiu entra en la
+regió de Zener sense destruir-se. En aquest punt, la tensió entre càtode
+i ànode es manté pràcticament constant al valor anomenat **tensió Zener
+(Vz)**, amb independència de les variacions de corrent que hi puguin
+circular.
+
+> ![c250](img/corba_v-i_zener.png)
+> **Fig. 5.** [Cerezo _et al._] (2024). [IOC].
+> _Ponts de díodes integrats_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+La corba característica corrent-tensió (I-V) d'un díode Zener típic
+mostra clarament aquest comportament. En la zona esquerra de la gràfica
+(tensions negatives, corresponents a polarització inversa), no s'observa
+una ruptura destructiva sinó una regió de Zener on la tensió roman
+gairebé invariable malgrat els canvis de corrent. El díode es «clava» a
+aquest valor de tensió un cop l'assoleix.
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/corba_v-i_zener.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 5.** Creat a partir de
+> [simulació](https://www.falstad.com/circuit/e-zeneriv.html).
+> [Paul Falstad] (2024).
+> _Corba V-I Díode Zenner_. 
+> Sota llicència [GNUv2]
+
+Aquestes propietats converteixen el díode Zener en un component ideal 
+per a l'**estabilització de tensions**, aprofitant precisament la seva
+capacitat de mantenir Vz fixa encara que el corrent fluctui.
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/estabilitzador_zener.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 6.** Creat a partir de
+> [simulació](https://www.falstad.com/circuit/e-zenerref.html).
+> [Paul Falstad] (2024).
+> _Corba V-I Díode Zenner_. 
+> Sota llicència [GNUv2]
+
+
+
+
+
+6. Transistors
+--------------
+
+El transistor és un component semiconductor de tres terminals que
+controla el corrent entre dos d'ells mitjançant un petit senyal al
+tercer. Emprat per amplificar o commutar, és el fonament de
+l'electrònica actual i el dispositiu més utilitzat des de la seva
+invenció.
+
+> ![c250](img/encapsulats_transistors.png)
+> **Fig. 6.** [Cerezo _et al._] (2024). [IOC].
+> _Diferents transistors amb diferents encapsulacions_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+Existeixen dues famílies principals de transistors —bipolars (BJT) i
+d'efecte camp (FET)— amb principis de funcionament distints.
+
+El transistor fou inventat als Laboratoris Bell el desembre de 1947 per
+John Bardeen, Walter Brattain i William Shockley (Premi Nobel de Física,
+1956). L'objectiu inicial era realitzar un FET, predit per Julius
+Lilienfeld el 1925, però el treball dugué a l'amplificació per contacte,
+que evolucionà fins al BJT.
+
+El transistor bipolar (BJT) és un dispositiu semiconductor de tres
+regions dopades que opera com a amplificador o interruptor. Segons
+l'estructura del dopatge, pot ser de tipus NPN o PNP.
+
+> ![c350](img/pnp_npn.png)
+> **Fig. 7.** [Cerezo _et al._] (2024). [IOC].
+> _Transistors NPN i PNP_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+El dopatge tipus **P** s'aconsegueix afegint al silici impureses del
+grup 3 (indi, gal·li); el tipus **N**, amb elements del grup 5
+(arsènic). Un transistor NPN combina dues regions N i una P; un PNP,
+dues regions P i una N.
+
+Els tres terminals **—base (b), col·lector (c) i emissor (e)—**
+connecten internament amb cadascuna d'aquestes regions.
+
+En amplificar, el transistor presenta tres terminals però requereix
+quatre punts per als circuits d'entrada i sortida. Per això, un terminal
+es fa comú a ambdós circuits. Això dona lloc a tres configuracions:
+**emissor comú (EC)**, **base comuna (BC)** i **col·lector comú (CC)**.
+
+
+
+### 6.1. Utilització com amplificador
+
+El circuit il·lustra el funcionament d'un amplificador típic amb
+transistor.
+La unió base-emissor es comporta com un díode i requereix 0,65 V per
+conduir.
+
+El control lliscant de la dreta ajusta la resistència de base, que
+determina el corrent d'entrada. El transistor amplifica aquest corrent
+multiplicant-lo pel guany, permetent un corrent molt més elevat entre
+col·lector i emissor.
+
+<iframe width= 630px" height="350px" src="https://picuino.github.io/circuits/index.html?startCircuit=bjt-simple.txt&hideMenu=true"></iframe>
+
+En un transistor típic, el corrent de col·lector és de 50 a 300 vegades
+el corrent de base. Aquesta relació s'anomena **guany** ($\beta$ o
+hfe).
+
+La relació s’expressa mitjançant l’equació:
+
+> \begin{gather}\beta = \text{hfe} = \frac{I_C}{I_B}\end{gather}
+> 
+> A on:
+> 
+> - $\beta$ o hfe és guany del transistor (adimensional) 
+> - $I_C$ és corrent de col·lector en amperes $\text{A}$
+> - $I_B$ és corrent de base en amperes $\text{A}$
+
+Els transistors de potència ($I_c \gt 1 \text{A}$) solen tenir un guany
+inferior a 50. Els transistors d'alta freqüència també redueixen el
+guany en apropar-se a la seva freqüència límit.
+
+
+#### Configuració d'emisor comú (EC)
+
+**Configuració d'emissor comú (EC)** El transistor té l'emissor
+connectat a massa. El senyal d'entrada arriba per la base i la sortida
+amplificada s'obté pel col·lector. Aquesta configuració amplifica tant
+tensió com corrent, cosa que la fa adequada per a etapes d'entrada o
+intermèdies.
+
+A la simulació:
+- Un transistor NPN en EC amplifica un senyal d'entrada de
+  0,25 V pic. 
+- **R1** limita el corrent de base (40–80 µA). 
+- **R2** proporciona el corrent de polarització continu perquè el 
+  transistor només amplifica corrents positives. 
+- El transistor amplifica el corrent
+  de base (guany típic ~100) i el corrent de col·lector circula per
+  **R3**, convertint-se en tensió de sortida.
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/transistor_ec.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 7.** Creat a partir de
+> [simulació](https://picuino.github.io/circuits/index.html?startCircuit=bjt-common-e.txt).
+> [Carlos Félix Pardo Martín] (2024).
+> _Transistor en emisor comú_. 
+> Sota llicència [GNUv2]
+
+#### Configuració de col·lector comú (CC) 
+
+També anomenat **seguidor d'emissor**, el col·lector està connectat a 
+tensió positiva. 
+El senyal d'entrada arriba per la base i la sortida surt per l'emissor. 
+Amplifica corrent però no tensió: la tensió de sortida és 
+aproximadament la d'entrada menys 0,65 V (caiguda base–emissor). 
+És ideal per a etapes de sortida que requereixen corrent elevat 
+(p. ex. altaveus).
+
+A la simulació: 
+- Senyal d'entrada de 2 V pic + 4 V de polarització contínua per 
+  evitar tensions negatives. 
+- El transistor reprodueix a
+  l'emissor la mateixa tensió que a la base (menys 0,65 V), però amb
+  corrent amplificat. 
+- **R2** converteix el corrent d'emissor en tensió de sortida.
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/transistor_cc.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 8.** Creat a partir de
+> [simulació](https://picuino.github.io/circuits/index.html?startCircuit=bjt-common-c.txt).
+> [Carlos Félix Pardo Martín] (2024).
+> _Transistor en colector comú_. 
+> Sota llicència [GNUv2]
+
+
+
+#### Configuració de base comuna (BC) 
+
+La base està connectada a una tensió fixa. El senyal d'entrada entra per
+l'emissor i la sortida surt pel col·lector. Amplifica tensió però no
+corrent. Útil quan es disposa de corrent però es necessita augmentar la
+tensió (p. ex., amplificar senyal d'un altaveu com a micròfon).
+
+A la simulació: 
+- Senyal d'entrada: 0,05 V pic. 
+- **R1** i **R2** fixen la polarització de base per garantir corrents 
+  positives. 
+- El transistor transfereix el corrent d'emissor al col·lector. 
+- **R3** converteix el corrent de col·lector en tensió de sortida. 
+  El guany de tensió augmenta amb el valor d'aquesta resistència.
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/transistor_bc.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 9.** Creat a partir de
+> [simulació](https://picuino.github.io/circuits/index.html?startCircuit=bjt-common-b.txt).
+> [Carlos Félix Pardo Martín] (2024).
+> _Transistor en base comú_. 
+> Sota llicència [GNUv2]
+
+
+### 6.3. Polarització
+
+Per operar en zona activa com a amplificador, el transistor bipolar
+requereix una polarització adequada mitjançant una xarxa de resistències
+que fixi el punt de treball.
+
+La polarització difereix segons el tipus de transistor: 
+- En un **transistor NPN**, el col·lector ha de ser positiu respecte a
+  l'emissor. 
+- En un **transistor PNP**, la polaritat és inversa:
+  l'emissor és positiu respecte al col·lector.
+
+Aquesta configuració genera tres corrents (base, col·lector i emissor)
+que compleixen les relacions característiques del transistor en zona
+activa.
+
+> \begin{gather} I_e = I_c + I_b \end{gather}
+>
+> On:
+> 
+> - \( I_e \) és el corrent que surt per l'elèctrode d'emissor.
+> - \( I_c \) és el corrent que entra per l'elèctrode de col·lector.
+> - \( I_b \) és el corrent que entra per l'elèctrode de base.
+
+### 6.4. Recta de càrrega i punt de treball
+
+Per analitzar el comportament d'un transistor en configuració
+d'**emissor comú (EC)** —la més emprada— s'utilitzen les **corbes
+característiques** proporcionades pel fabricant, que relacionen $I_C$
+amb $V_{CE}$ per a diferents valors d'$I_B$.
+
+La **recta de càrrega** es dedueix del circuit de polarització (a partir
+de les resistències i tensions d'alimentació) i es representa sobre
+aquestes corbes. La intersecció de la recta amb la corba corresponent al
+corrent de base fixa el **punt de treball Q**.
+
+Segons la posició de Q sobre la recta, el transistor opera en una de
+tres zones: 
+- **Activa**: amplificació lineal. 
+- **Saturació**: interruptor tancat. 
+- **Tall**: interruptor obert.
+
+En el circuit de polarització universal, l'equació de la recta de
+càrrega ve donada per:
+
+> \begin{gather} V_{ce} = V_{CC} - I_c \cdot (R_c + R_e) \end{gather}
+> 
+> On:
+> 
+> - \( V_{ce} \) és la tensió entre col·lector i emissor.
+> - \( V_{CC} \) és la tensió d'alimentació del circuit.
+> - \( I_c \) és el corrent de col·lector.
+> - \( R_c \) és la resistència de col·lector.
+> - \( R_e \) és la resistència d'emissor.
+
+Per traçar la recta de càrrega d'un circuit de polarització, es 
+determinen dos punts característics:
+
+1.  **Tall amb l'eix** $V_{ce}$ ($I_c = 0$):  
+    En aquest punt, el transistor equival a un circuit obert, de 
+    manera que tota la tensió d'alimentació queia entre col·lector i 
+    emissor.  
+    \begin {gather}
+    V_{ce} = V_{CC}
+    \end{gather}
+
+2.  **Tall amb l'eix** $I_c$ ($V_{ce} = 0$):  
+    En aquest punt, el transistor equival a un curtcircuit, i el 
+    corrent de col·lector queda limitat només per les resistències del 
+    circuit.  
+    \begin {gather}
+    I_c = \frac{V_{CC}}{R_c + R_e}
+    \end{gather}
+
+Aquests dos punts defineixen la recta de càrrega en continua, sobre la 
+qual es situa el punt de treball $Q$ en funció del corrent de base 
+$I_b$.
+
+> ![c250](img/transistor_recta_treball.png)
+> **Fig. 8.** [Cerezo _et al._] (2024). [IOC].
+> _Recta treball d'un transistor_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+
+
+7. Zona de treball en tall-saturació
+------------------------------------
+
+Fins ara s'ha tractat el transistor en la seva zona activa.
+Això no obstant, el transistor pot treballar en la zona de saturació
+a on la guany passa a ser més petit i $V_ce$ és petit o bé en tall
+a on $V_ce$ és màxim. El transistor, en aquesta configuració és comporta
+com un interruptor controlat per la base.
+
+Aquests són els fonament de la construcció de les portes llàgiques
+vistes a les UTs anteriors.
+
+A continuació és pot veure un esquema de la fabricació d'una porta
+NAND:
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/transistor_nand.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 10.** Creat per J. Servera (2026).
+> _Porta NAND RTL_. 
+> Sota llicència [CC4.0-by-nc-sa]
+
+### 7.1. Les portes universals
+
+També anomenada completitud funcional, les portes lògiques universals 
+són la **NAND** i la **NOR**. 
+Aquestes portes tenen la propietat de poder implementar
+qualsevol funció booleana o circuit lògic (com ara AND, OR, NOT, XOR)
+utilitzant només portes del mateix tipus, sense necessitat de recórrer a
+altres portes diferents.
+
+Aquesta capacitat es deu al fet que combinen una operació lògica bàsica
+(AND o OR) amb el NOT. Aquesta característica permet simplificar els
+disseny de circuits i reduir costos en la fabricació de circuits
+integrats, ja que es pot estandarditzar la producció utilitzant un sol
+tipus de porta universal.
+
+Per exemple a partir de la porta NAND es poden construir les portes NOT,
+AND i OR de la seguent manera:
+
+- Si s'uneixen les dues entrades de la NAND, és té una porta que fa la
+  operació $\overline {a \cdot a}$ que per la propietat d'idempotència
+  ($a \cdot a = a$), 
+
+  \begin{gather} \overline {a \cdot a} = \overline a\end{gather}
+  
+- Si és nega la sortida d'una NAND (amb la porta NOT creada en el punt
+  anterior es té una AND.
+  
+  \begin{gather} \overline {\overline {a \cdot b}} = a \cdot b \end{gather}
+
+- Si s'aprofita la propietat de De Morgan que diu que 
+  $\overline{a + b} = \overline{a} \cdot \overline{b}$, si es nega a 
+  ambdos costats de l'igual, s'observa que una porta OR és una porta 
+  NAND amb les entrades negades:
+
+  \begin{gather}\overline{\overline{a + b}} = \overline{\overline{a} \cdot 
+  \overline{b}} \rightarrow a+b = \overline{\overline{a} \cdot 
+  \overline{b}}\end{gather}
+ 
+ > <video autoplay loop muted playsinline width="500">
+> <source src="vid/nand_universal.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 10.** Creat per J. Servera (2026).
+> _Completitud funcional de la porta NAND_. 
+> Sota llicència [CC4.0-by-nc-sa]
+
+### 7.2. Llògica amb NAND
+
+Si la NAND es una porta amb completitud funcional i qualsevol taula de
+la veritat sempre es pot expressar amb una funció que és suma de
+productes. Amb portes NAND es pot expressar qualsevol funció utilitzant
+els mètodes ja tractats.
+
+- Agafis per exemple la funció 
+  $$f = (a \cdot b) + (c \cdot d)$$
+- El producte (AND) es pot espresar com una NAND seguida d'una NOT,  
+  com ja s'ha vist, per tant:
+  $$a = (a \cdot b) + (c \cdot d) = \overline{ \overline{a \cdot b}} + 
+  \overline{ \overline{c \cdot d}}$$
+- La suma (OR) pot utilitzar la propietat de De Morgan:
+  $$ 
+  f = 
+  \overline{\overline{a \cdot b}} + 
+  \overline{\overline{c \cdot d}} = 
+  \overline{
+    \overline{\overline{\overline{a \cdot b}}} 
+    \cdot 
+    \overline{\overline{\overline{c \cdot d}}}
+  } 
+  $$
+- Anul·lant dobles negacions
+  $$f = \overline{\overline {a \cdot b} \cdot \overline { c \cdot d}}$$
+
+El procés matemàtic es pot veure il·lustrat a la següent imatge amb
+portes lògiques
+
+> ![c500](img/circuits_amb_nand.png)
+> **Fig. 9.** Servera J. (2026).
+> _Suma de productes amb NAND_. 
+> Sota llicència [CC4.0-by-nc-sa]
 
 [Cerezo _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html "S. Cerezo Salcedo, X. Mesas Laserna, À. L. Miguel Rodríguez, J. M. Pallarés Serres, J. Perona Camacho, R. Rodríguez Coronel"
 [Paul Falstad]: http://www.falstad.com/

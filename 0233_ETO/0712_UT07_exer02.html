@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+Utilitzant el díode zenner
+==========================
+
+
+Introdueix una señal positiva al mitjançant el generador de funcions
+de TInkerCAD, pensa a afegir el _DC Offset_ necessari per a que la
+señal d'entrada sempre sia possitiva i superior a la tensió Zener.
+
+Col·loca una resistència (R1) amb serie amb aquesta señal per tal de 
+limitar el corrent que circula (pot ser d'1kΩ). 
+En serie a aquesta resistència però en paral·lel entre ells coloca una
+càrrega d'elevada resistència i un díode zener amb polarització
+inversa.
+
+A la sortida coloca un oscil·loscopi i un voltímetre.
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

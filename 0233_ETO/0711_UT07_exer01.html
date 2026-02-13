@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+Exercicis sobre rectificadors d'ona
+===================================
+
+
+**1.** Crea un rectificador de mitja ona utilitzan un díode.
+
+Col·loca un oscil·loscòpi a la sortida i un generador de funcions a 
+l'entrada. El generador de funcions pot estar a 100 Hz i amplitud de 
+5V, pensa que no ha de tenir _DC Offset_. La càrrega pot ser d'1 kΩ.
+
+Si no veus bé el que surt a l'oscil·loscopi intenta ajustar els ms 
+per divisió a un submúltiple del període.
+
+Fixa't en la part plana de l'ona de l'oscil·loscopi, per què creus que
+és un poc més gran que el que ocupa el semiperíode?
+
+**2.** Crea un rectificador d'ona completa muntant un pont de Graetz, 
+amb quatre díodes.
+
+Fixat que l'osciloscopi encara mostra una part plana (molt més petita
+que abans, però no innexistent). Per què creus que passa?
+
+**3.** Crea un rectificador d'ona completa (o utilitza el que ja tens 
+fet) i amb un condensador allisa l'arrissament.
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

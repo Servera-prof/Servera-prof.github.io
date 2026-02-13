@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+UT08 - Fonts d'alimentació											
+==========================
+
+1. Diferències entre fonts commutades i no commutades (lineals)
+---------------------------------------------------------------
+
+Les fonts d'alimentació es classifiquen principalment en dos tipus: 
+lineals (no commutades) i commutades. 
+La diferència fonamental rau en la tècnica de regulació de la tensió 
+de sortida.
+
+<table>
+<thead><tr>
+    <th>Característica</th>
+    <th>Font No Commutada (Lineal)</th>
+    <th>Font Commutada (SMPS)</th>
+</tr></thead>
+
+<tbody>
+
+<tr>
+    <td><strong>Principi de regulació</strong></td>
+    <td>Utilitza un transistor en la seva <strong>regió activa</strong> (com una resistència variable) per dissipar l'excés de potència en forma de calor.</td>
+    <td>Utilitza transistors com a <strong>commutadors</strong> (en tall o saturació) a alta freqüència per controlar el flux d'energia.</td>
+</tr>
+
+<tr>
+    <td><strong>Eficiència</strong></td>
+    <td>Baixa (generalment 30-60%), especialment amb grans diferències entre tensió d'entrada i sortida.</td>
+    <td>Alta (normalment 70-95%), ja que els transistors estan saturats o tallats, minimitzant la dissipació.</td>
+</tr>
+
+<tr>
+    <td><strong>Mida i pes</strong></td>
+    <td>Grans i pesades a causa del transformador de baixa freqüència (50/60 Hz).</td>
+    <td>Petites i lleugeres gràcies a l'ús de transformadors d'alta freqüència (20 kHz - 1 MHz) i components passius més reduïts.</td>
+</tr>
+
+<tr>
+    <td><strong>Complexitat del circuit</strong></td>
+    <td>Simple. Consta principalment de transformador, rectificador, filtre i regulador lineal.</td>
+    <td>Complexa. Inclou circuits de control PWM, transistors commutadors, transformadors d'alta freqüència i filtres específics.</td>
+</tr>
+
+<tr>
+    <td><strong>Soroll / Interferències</strong></td>
+    <td>Molt baix. Ideal per a circuits analògics sensibles (àudio, RF).</td>
+    <td>Genera soroll elèctric d'alta freqüència (EMI/RFI) que requereix blindatges i filtres addicionals.</td>
+</tr>
+
+<tr>
+    <td><strong>Tipus de transformador</strong></td>
+    <td>Transformador de ferro, gran i pesat, que opera a la freqüència de xarxa.</td>
+    <td>Transformador de ferrita, petit i lleuger, que opera a alta freqüència.</td>
+</tr>
+
+<tr>
+    <td><strong>Capacitat de sortida</strong></td>
+    <td>Pot generar tensions de sortida només més baixes que l'entrada no rectificada.</td>
+    <td>Pot generar tensions de sortida més baixes, més altes o fins i tot invertides respecte a l'entrada.</td>
+</tr>
+
+<tr>
+    <td><strong>Cost</strong></td>
+    <td>Generalment més baix per a potències petites.</td>
+    <td>Generalment més alt per la complexitat, però més competitiu a potències mitjanes i altes.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+2. Blocs Funcionals d'un Sistema Comple d'Alimentació
+-----------------------------------------------------
+
+Tant les fonts lineals com les commutades es poden descompondre en blocs 
+funcionals.
+
+### 2.1. Font d'Alimentació Lineal
+
+Segueix l'esquema clàssic:\
+Transformador → Rectificador → Filtre → Regulador → Sortida. 
+
+- **Transformador**: Adapta la tensió de la xarxa (230V AC) a una tensió alterna més adequada per al circuit. Proporciona aïllament galvànic. 
+- **Rectificador**: Converteix el corrent altern (AC) en corrent continu polsant. Sol ser un pont de díodes. 
+- **Filtre**: Suavitza la tensió contínua polsant per reduir el component d'arrissat (_ripple_). Normalment és un condensador electrolític de gran capacitat. 
+- **Regulador (Lineal)**: Manté la tensió de sortida constant, independentment de les variacions de la xarxa o del corrent demandat per la càrrega. Ho fa dissipant l'excés de potència. Un exemple clàssic és el CI LM78xx. 
+
+### 2.2. Font d'Alimentació Commutada (SMPS)
+
+L'esquema és diferent:
+
+Rectificador d'entrada → Commutador → Transformador d'alta freqüència → 
+Rectificador de sortida → Filtre → Sortida. 
+
+- **Rectificador d'entrada i Filtre**: Converteix la tensió AC de xarxa 
+  en una tensió DC no regulada (uns 325 V DC). Aquesta etapa 
+  pot incloure un filtre per eliminar les interferències 
+  electromagnètiques (EMI). 
+- **Commutador (Inversor)**: Utilitza transistors (MOSFETs o IGBTs) que 
+  commuten a alta freqüència (20 kHz - 1 MHz) per convertir la DC en una 
+  ona quadrada d'alta freqüència. El control es fa per modulació per 
+  amplada de polsos (PWM). 
+- **Transformador d'Alta Freqüència**: Transfereix l'energia del primari 
+  al secundari. En treballar a alta freqüència, el nucli pot ser de 
+  ferrita, molt més petit i lleuger que un transformador de 50 Hz. Pot 
+  tenir múltiples secundaris per generar diverses tensions de sortida. 
+- **Rectificador de sortida i Filtre**: L'ona quadrada d'alta freqüència 
+  es rectifica (amb díodes ràpids o Schottky) i es filtra (amb bobines i 
+  condensadors) per obtenir una tensió DC estable i sense soroll. 
+- **Circuit de Control i Realimentació (_Feedback_)**: Mostreja la 
+  tensió de sortida i l'ajusta variant l'ample de pols (PWM) del 
+  commutador per mantenir-la constant. Sovint utilitza un optoacoblador 
+  per aïllar el secundari (sortida) del primari (xarxa). 
+
+
+
+
+
+
+3. Característiques més rellevants proporcionades pels fabricants
+-----------------------------------------------------------------
+
+Els fabricants especifiquen les fonts amb una sèrie de paràmetres clau 
+perquè els dissenyadors puguin triar la més adequada. 
+
+- **Tensions d'entrada i sortida (\(V_{in}, V_{out}\))**: Rang de 
+  tensions d'entrada que pot admetre i tensions nominals de sortida.
+- **Corrent de sortida màxim (\(I_{out,max}\))**: El corrent màxim que 
+  pot subministrar la font de manera continuada sense malmetre's.
+- **Potència nominal (\(P_{out}\))**: Producte de la tensió per el 
+  corrent màxim. És un límit fonamental.
+- **Regulació de línia i de càrrega**: Mesuren la capacitat de la font 
+  de mantenir la tensió de sortida estable davant variacions de la 
+  tensió d'entrada o del corrent de sortida. 
+- **Rissat (_Ripple_) i soroll**: Valor del component AC no desitjat 
+  superposat a la tensió de sortida DC. Es mesura en \(mV_{pp}\). Les 
+  fonts lineals tenen un rissat molt baix (desenes de mV), mentre que 
+  les commutades poden tenir un rissat d'alta freqüència més elevat. 
+- **Eficiència (\(\eta\))**: Relació percentual entre la potència de 
+  sortida i la potència activa d'entrada. Una eficiència del 85% 
+  significa que el 15% de l'energia es perd en forma de calor. 
+- **Factor de Potència (PF)**: Relació entre la potència activa i la 
+  potència aparent. Un PF proper a 1 indica un ús eficient del corrent 
+  de la xarxa. Les fonts commutades simples tenen un PF baix, però les 
+  de qualitat incorporen correcció del factor de potència (PFC). 
+- **Aïllament**: Tensió màxima que pot suportar l'aïllament entre el 
+  primari (xarxa) i el secundari (sortida) sense fer-se malbé.
+
+
+
+
+
+
+4. Configuracions de Circuits Reguladors Integrats
+--------------------------------------------------
+
+Els reguladors integrats són el cor de les fonts d'alimentació. N'hi ha 
+per a fonts lineals i per a fonts commutades.
+
+
+### 4.1. Reguladors Lineals Integrats
+
+- **Reguladors de 3 terminals (fixos)**: Com el popular LM78xx (tensió 
+  positiva) i LM79xx (tensió negativa). Són molt fàcils d'usar. 
+  Internament consten d'un transistor de pas, una font de referència, un 
+  amplificador error i un divisor resistiu de realimentació. 
+- **Reguladors ajustables**: Com el **LM317** (positiu) i el **LM337** 
+  (negatiu). Permeten ajustar la tensió de sortida amb un divisor extern 
+  de dues resistències. Es poden trobar configuracions avançades com el 
+  control digital mitjançant xarxes de relés.  O fins i tot reguladors 
+  de 3 terminals que s'ajusten digitalment mitjançant una interfície 
+  sèrie d'1 fil, integrant un convertidor D/A i memòria no volàtil dins 
+  del xip. 
+- **Reguladors LDO (Low Dropout)**: Una variant dels lineals que pot 
+  funcionar amb una diferència de tensió molt petita entre l'entrada i 
+  la sortida (_dropout voltage_), la qual cosa els fa ideals per a 
+  aplicacions amb bateries. 
+
+
+### 4.2. Reguladors Commutats Integrats
+
+Són circuits integrats especialitzats que implementen el control d'una 
+font commutada. No inclouen els transistors de potència grans, sinó el 
+circuit de control (oscil·lador, modulador PWM, amplificador d'error, 
+proteccions). Exemples: el popular UC3842 per a fonts _flyback_, o 
+circuits més complexos per a convertidores _resonants_ que generen 
+senyals de control PWM en funció dels senyals de mesura. 
+
+
+
+
+
+5. Instruments de mesura adequats
+---------------------------------
+
+Per verificar i diagnosticar el funcionament de les fonts d'alimentació 
+es necessiten els següents instruments:
+
+- **Multímetre**: És l'eina bàsica.
+    + **Per mesurar**: Tensions i corrents DC i AC. Especialment útil 
+      per comprovar si les tensions de sortida són correctes, mesurar el 
+      consum d'un circuit i verificar la continuïtat dels fusibles.
+    + **Limitació**: No pot mesurar el rissat d'alta freqüència d'una 
+      font commutada amb precisió, ja que el seu ample de banda és 
+      limitat.
+- **Oscil·loscopi**: És l'instrument clau per analitzar fonts commutades.
+    + **Per mesurar**: Visualitzar la forma d'ona del rissat a la 
+      sortida, mesurar-ne l'amplitud i freqüència. Permet veure la forma 
+      d'ona als terminals del commutador (drenador del MOSFET) per 
+      detectar problemes de commutació o pics de tensió. També és 
+      imprescindible per veure la forma d'ona PWM del circuit de control.
+- **Pinça amperimètrica de corrent continu**: Permet mesurar corrents 
+  grans sense trencar el circuit. Útil per mesurar el corrent d'entrada 
+  d'una font o el corrent de sortida cap a una càrrega potent.
+- **Analitzador d'espectre**: Per a un anàlisi profund de les 
+  interferències electromagnètiques (EMI) generades per la font 
+  commutada i verificar que es compleixen les normatives.
+- **Càrrega electrònica**: Permet simular diferents condicions de 
+  càrrega de manera controlada per provar la regulació, l'estabilitat i 
+  els límits de la font.
+
+
+
+
+
+
+6. Aplicacions reals
+--------------------
+
+Cada tipus de font té el seu camp d'aplicació ideal.
+
+- **Fonts Lineals**:
+    + Equips d'àudio d'alta fidelitat i estudis de gravació, on el 
+      soroll zero és crític.
+    + Equips de laboratori i instruments de mesura de precisió.
+    + Carregadors de bateries senzills i de baixa potència.
+    + Petits electrodomèstics que no requereixen gran eficiència.
+
+- **Fonts Commutades**:
+    + **Ordinadors i servidors**: La font ATX d'un PC és l'exemple més 
+      clar. Necessita alta eficiència i múltiples tensions de sortida 
+      (+3.3V, +5V, +12V). 
+    + **Electrònica de consum**: Televisors, monitors, reproductors Blu-
+      ray, videoconsoles, on la compacitat i l'estalvi d'energia són 
+      claus. 
+    + **Carregadors de dispositius mòbils**: Petits, lleugers i 
+      eficients.
+    + **Il·luminació LED**: Drivers per a LEDs de potència.
+    + **Equips industrials**: Variadors de freqüència per a motors, 
+      fonts per a autòmats programables (PLCs), sistemes d'alimentació 
+      ininterrompuda (SAIs). 
+    + **Energies renovables**: Inversors solars (que converteixen el 
+      corrent continu de les plaques en corrent altern per a la xarxa) o 
+      convertidors DC/CC per a sistemes d'emmagatzematge amb bateries. 
+
+
+
+
+
+
+7. Funcionament Detallat de les Fonts Commutades
+------------------------------------------------
+
+El funcionament d'una font commutada es basa en l'emmagatzematge i 
+transferència d'energia en elements reactius (bobines i condensadors) 
+mitjançant la commutació ràpida.
+
+**Principi Clau:**
+En lloc de dissipar l'excés d'energia (com fa una lineal), una font 
+commutada agafa paquets d'energia, els emmagatzema temporalment i els 
+lliura a la sortida a la tensió desitjada. 
+
+**Control per PWM:**
+El cor de la font és el **circuit de control PWM (Modulació per Amplada 
+de Polsos)**. 
+Aquest circuit genera un senyal quadrat que obre i tanca el 
+transistor commutador. La relació entre el temps que el transistor està 
+tancat (conduint, \( T_{on} \)) i el període total de l'ona (\( T \)) 
+s'anomena **cicle de treball** (_duty cycle_, \( D = T_{on} / T \)).
+ 
+- Si la tensió de sortida baixa (perquè la càrrega demana més 
+  corrent),  el circuit de control augmenta el cicle de treball, fent 
+  que el transistor estigui més temps tancat i transferint més energia.
+- Si la tensió de sortida puja, el circuit redueix el cicle de treball.
+
+**Procés Pas a Pas:**
+1. **Entrada**: La tensió AC de xarxa es rectifica i filtra, obtenint una 
+  tensió DC d'uns 325V (anomenada "bus DC").
+2. **Commutació**: Un transistor MOSFET commuta aquesta alta tensió DC a 
+  una freqüència molt alta (p. ex., 100.000 vegades per segon). Això 
+  genera una ona quadrada d'alta freqüència.
+3. **Transformació**: Aquesta ona quadrada s'aplica al primari del 
+  transformador de ferrita. A causa de l'alta freqüència, el 
+  transformador pot ser molt petit. La relació d'espires del transformador determina si la tensió de sortida serà més alta o més baixa que la tensió del primari.
+4. **Rectificació i filtrat**: Al secundari, l'ona quadrada es rectifica amb díodes ràpids i es filtra amb una bobina i un condensador per obtenir una tensió DC neta. La bobina i el condensador actuen com a dipòsit d'energia, allisant el corrent polsant que prové del secundari.
+5. **Realimentació**: La tensió de sortida es mostreja i s'envia (normalment a través d'un optoacoblador per aïllament elèctric) al circuit de control PWM del primari. El circuit de control ajusta el cicle de treball per mantenir la sortida constant, tanqui així el llaç de control. 
+
+---
+
+### Referències i Enllaços a les Fonts Utilitzades
+
+- [Viquipèdia. (2015). *Font commutada*.](https://ca.wikipedia.org/wiki/Font_commutada) [Consulta: 13 febrer 2026]. (Informació de base, classificació i comparació) 
+- [Toshiba Electronic Devices & Storage Corporation. (n.d.). *1-8. Circuit configuration of a series regulator*.](https://toshiba.semicon-storage.com/us/semiconductor/knowledge/e-learning/basics-of-low-dropout-ldo-regulators/chap1/chap1-8.html) [Consulta: 13 febrer 2026]. (Blocs d'un regulador lineal) 
+- [Viquipèdia. (n.d.). *Usuari:Mcapdevila/Font d'alimentació*.](https://ca.m.wikipedia.org/wiki/Usuari:Mcapdevila/Font_d%27alimentaci%C3%B3) [Consulta: 13 febrer 2026]. (Esquemes de blocs i especificacions) 
+- [Morimoto, H., Koike, H., & Nakamura, K. (2011). *An Electrically Adjustable 3-Terminal Regulator for Post-Fabrication Level-Trimming with a Reliable 1-Wire Serial I/O*. IEICE Transactions on Electronics.](https://pt.globals.ieice.org/en_transactions/electronics/10.1587/transele.E94.C.945/_p) [Consulta: 13 febrer 2026]. (Configuracions avançades de reguladors) 
+- [Van Bodegraven, T. C., & Elferich, R. (2004). *Circuit configuration comprising a control loop*. Patent Application.](https://www.freepatentsonline.com/y2004/0145923.html) [Consulta: 13 febrer 2026]. (Control PWM i realimentació en fonts) 
+- [Newton C. Braga. (n.d.). *Fonte 1,25 a 15 V Controlada Digitalmente (ART1396)*.](https://newtoncbraga.com.br/projetos/11988-fonte-1-25-a-15-v-controlada-digitalmente-art1396.html) [Consulta: 13 febrer 2026]. (Exemple de configuració de regulador ajustable LM317) 
+- [Guardiola Escrihuela, A. (2010). *Disseny d'una font commutada amb correcció del factor de potència*. UPC.](https://upcommons.upc.edu/entities/publication/5e2bef76-d333-4433-8a59-49ba03d1f5e5/full) [Consulta: 13 febrer 2026]. (Aplicacions i PFC) 
+
+
+
+
+
+
+
+
+[Cerezo _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html "S. Cerezo Salcedo, X. Mesas Laserna, À. L. Miguel Rodríguez, J. M. Pallarés Serres, J. Perona Camacho, R. Rodríguez Coronel"
+[Paul Falstad]: http://www.falstad.com/
+[Carlos Félix Pardo Martín]: https://picuino.github.io/es/contacto.html
+
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+
+[CC4.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement - No comercial - CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+[GNUv2]: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

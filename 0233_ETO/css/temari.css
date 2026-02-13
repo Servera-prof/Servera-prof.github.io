@@ -137,6 +137,13 @@ img[alt="c500"]{
     margin-right: auto;
 }
 
+img[alt="c350"]{
+    width: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 img[alt="c250"]{
     width: 250px;
     display: block;

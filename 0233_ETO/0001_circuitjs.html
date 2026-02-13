@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+Simulador de circuits											
+=====================
+
+<iframe width= 630px" height="630px" src="https://www.falstad.com/circuit/circuitjs.html"></iframe>
+
+Aquest és l'excel·lent simmulador fet en JavaScript per [Ian Sharp], a
+partir de l'applet java de [Paul Falstad]
+
+Es **molt recomanable** utilitzar la versió a 
+[**PANTALLA COMPLETA**](https://www.falstad.com/circuit/circuitjs.html)
+
+Es tracta d'un simulador de circuits electrònics. En executar
+l'aplicació, es visualitza un esquema animat d'un circuit LRC simple,
+a mode d'exemple (es pot tancar o crear un nou arxiu). El
+color verd representa tensió positiva, el gris indica connexió a terra i
+el vermell denota tensió negativa. Els punts grocs en moviment
+simbolitzen el flux de corrent elèctric.
+
+Per commutar un interruptor, n'hi ha prou a fer clic sobre seu. En
+situar el cursor sobre qualsevol component del circuit, a la part
+inferior dreta de la finestra es mostra una descripció succinta del
+component juntament amb el seu estat actual. Per editar un component,
+s'ha de fer clic amb el botó dret del ratolí (o Control+clic en sistemes
+Mac) i seleccionar l'opció "Edita".
+
+El menú "Circuits" conté una àmplia col·lecció de circuits d'exemple
+disponibles per a l'assaig.
+
+
+
+
+
+
+> **Vid. 6.** Creat a partir de
+> [simulació](https://www.picuino.com/es/electronic-diodo-zener.html#referencia-de-tension).
+> [Paul Falstad] (2024).
+> _Corba V-I Díode Zenner_. 
+> Sota llicència [GNUv2]
+
+
+
+[Ian Sharp]: https://lushprojects.com/circuitjs/
+[Paul Falstad]: http://www.falstad.com/
+[Carlos Félix Pardo Martín]: https://picuino.github.io/es/contacto.html
+
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+
+[CC4.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement - No comercial - CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+[GNUv2]: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
