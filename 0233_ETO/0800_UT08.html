@@ -103,10 +103,29 @@ funcionals.
 Segueix l'esquema clàssic:\
 Transformador → Rectificador → Filtre → Regulador → Sortida. 
 
+> ![c500](img/blocs_fa_lineal.png)
+> **Fig. 1.** [Cerezo _et al._] (2024). [IOC]
+> _Blocs font d'alimentació lineal_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
 - **Transformador**: Adapta la tensió de la xarxa (230V AC) a una tensió alterna més adequada per al circuit. Proporciona aïllament galvànic. 
 - **Rectificador**: Converteix el corrent altern (AC) en corrent continu polsant. Sol ser un pont de díodes. 
 - **Filtre**: Suavitza la tensió contínua polsant per reduir el component d'arrissat (_ripple_). Normalment és un condensador electrolític de gran capacitat. 
-- **Regulador (Lineal)**: Manté la tensió de sortida constant, independentment de les variacions de la xarxa o del corrent demandat per la càrrega. Ho fa dissipant l'excés de potència. Un exemple clàssic és el CI LM78xx. 
+- **Regulador (Lineal)**: Manté la tensió de sortida constant, independentment de les variacions de la xarxa o del corrent demandat per la càrrega. Ho fa dissipant l'excés de potència. Un exemple clàssic és el CI LM78xx.
+
+> ![c500](img/fa_lineal_78xx.png)
+> **Fig. 3.** [Cerezo _et al._] (2024). [IOC]
+> _fa_lineal_78xx_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+El regulador és pot substituir per un estabilitzador, aquest tipus de
+font tenen un arrissat més pronunciat.
+
+> ![c500](img/fa_lineal_zenner.png)
+> **Fig. 3.** [Cerezo _et al._] (2024). [IOC]
+> _Esquema de FA amb díode Zener_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
 
 ### 2.2. Font d'Alimentació Commutada (SMPS)
 
@@ -114,6 +133,11 @@ L'esquema és diferent:
 
 Rectificador d'entrada → Commutador → Transformador d'alta freqüència → 
 Rectificador de sortida → Filtre → Sortida. 
+
+> ![c500](img/blocs_fa_commutada.png)
+> **Fig. 4.** [Cerezo _et al._] (2024). [IOC]
+> _Blocs font d'alimentació lineal_. 
+> Sota llicència [CC3.0-by-nc-sa]
 
 - **Rectificador d'entrada i Filtre**: Converteix la tensió AC de xarxa 
   en una tensió DC no regulada (uns 325 V DC). Aquesta etapa 
@@ -284,39 +308,29 @@ Cada tipus de font té el seu camp d'aplicació ideal.
 7. Funcionament Detallat de les Fonts Commutades
 ------------------------------------------------
 
-El funcionament d'una font commutada es basa en l'emmagatzematge i 
-transferència d'energia en elements reactius (bobines i condensadors) 
-mitjançant la commutació ràpida.
+Els diferents blocs de les fonts commutades s'han explicat a UT o
+apartats anteriors. 
 
-**Principi Clau:**
-En lloc de dissipar l'excés d'energia (com fa una lineal), una font 
-commutada agafa paquets d'energia, els emmagatzema temporalment i els 
-lliura a la sortida a la tensió desitjada. 
+El segon bloc, l'inversor d'alta freqüencia, constitueix el nucli de la font commutada i pot implementar-se en tres topologies fonamentals: reductora (*buck*), elevadora (*boost*) i reductora-elevadora (*buck-boost*).
 
-**Control per PWM:**
-El cor de la font és el **circuit de control PWM (Modulació per Amplada 
-de Polsos)**. 
-Aquest circuit genera un senyal quadrat que obre i tanca el 
-transistor commutador. La relació entre el temps que el transistor està 
-tancat (conduint, \( T_{on} \)) i el període total de l'ona (\( T \)) 
-s'anomena **cicle de treball** (_duty cycle_, \( D = T_{on} / T \)).
- 
-- Si la tensió de sortida baixa (perquè la càrrega demana més 
-  corrent),  el circuit de control augmenta el cicle de treball, fent 
-  que el transistor estigui més temps tancat i transferint més energia.
-- Si la tensió de sortida puja, el circuit redueix el cicle de treball.
+**Configuració reductora (*buck*)**
 
-**Procés Pas a Pas:**
-1. **Entrada**: La tensió AC de xarxa es rectifica i filtra, obtenint una 
-  tensió DC d'uns 325V (anomenada "bus DC").
-2. **Commutació**: Un transistor MOSFET commuta aquesta alta tensió DC a 
-  una freqüència molt alta (p. ex., 100.000 vegades per segon). Això 
-  genera una ona quadrada d'alta freqüència.
-3. **Transformació**: Aquesta ona quadrada s'aplica al primari del 
-  transformador de ferrita. A causa de l'alta freqüència, el 
-  transformador pot ser molt petit. La relació d'espires del transformador determina si la tensió de sortida serà més alta o més baixa que la tensió del primari.
-4. **Rectificació i filtrat**: Al secundari, l'ona quadrada es rectifica amb díodes ràpids i es filtra amb una bobina i un condensador per obtenir una tensió DC neta. La bobina i el condensador actuen com a dipòsit d'energia, allisant el corrent polsant que prové del secundari.
-5. **Realimentació**: La tensió de sortida es mostreja i s'envia (normalment a través d'un optoacoblador per aïllament elèctric) al circuit de control PWM del primari. El circuit de control ajusta el cicle de treball per mantenir la sortida constant, tanqui així el llaç de control. 
+El convertidor reductor és una de les configuracions bàsiques de l'etapa de potència. El circuit commuta l'alimentació per generar una ona quadrada d'amplada de pols variable, que posteriorment és filtrada mitjançant un filtre LC passabaix. La tensió de sortida es controla mitjançant la freqüència de commutació del transistor. La característica essencial d'aquesta topologia és que la tensió de sortida (\(V_{out}\)) és inferior a la tensió d'entrada (\(V_{in}\)).
+
+En la pràctica, aquesta regulació sol ser suficient, i només cal ajustar lleugerament la relació d'espires del transformador per compensar les pèrdues per efecte resistiu, la caiguda de tensió en els díodes i la tensió de saturació dels transistors en commutació.
+
+**Configuració elevadora (*boost*)**
+
+El convertidor elevador és una altra topologia fonamental de l'etapa de potència. El seu principi de funcionament és més complex: emmagatzema energia en una bobina durant el temps de conducció i, a continuació, l'allibera sumant-la a la tensió d'alimentació per lliurar-la a la càrrega. Aquest procediment s'utilitza àmpliament en sistemes de flaix fotogràfic, circuits d'encesa d'automoció (per carregar condensadors d'alt voltatge) i com a carregador de bateries d'alt rendiment. Aplica una potència constant a la càrrega independentment de la seva impedància. La característica essencial d'aquesta topologia és que la tensió de sortida (\(V_{out}\)) és superior a la tensió d'entrada (\(V_{in}\)).
+
+**Configuració reductora-elevadora (*buck-boost* o *flyback*)**
+
+El convertidor reductora-elevador, també conegut com a *flyback*, és una evolució de les topologies anteriors. La diferència fonamental és que només aplica a la càrrega l'energia prèviament emmagatzemada en la inductància, sense transmetre directament l'energia de l'entrada durant el cicle de commutació.
+
+A diferència del convertidor elevador, que només pot regular quan \(V_{out} > V_{in}\), el convertidor *flyback* és capaç de regular la tensió de sortida tant si aquesta és inferior com superior a la tensió d'entrada.
+
+
+
 
 ---
 
