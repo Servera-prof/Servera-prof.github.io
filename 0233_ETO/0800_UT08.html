@@ -311,38 +311,56 @@ Cada tipus de font té el seu camp d'aplicació ideal.
 Els diferents blocs de les fonts commutades s'han explicat a UT o
 apartats anteriors. 
 
-El segon bloc, l'inversor d'alta freqüencia, constitueix el nucli de la font commutada i pot implementar-se en tres topologies fonamentals: reductora (*buck*), elevadora (*boost*) i reductora-elevadora (*buck-boost*).
+El segon bloc, l'inversor d'alta freqüencia, constitueix el nucli de la font commutada i pot implementar-se en tres topologies fonamentals: reductora (_buck_), elevadora (_boost_) i reductora-elevadora (_buck-boost_).
 
-**Configuració reductora (*buck*)**
+**Configuració reductora (_buck_)**
 
 El convertidor reductor és una de les configuracions bàsiques de l'etapa de potència. El circuit commuta l'alimentació per generar una ona quadrada d'amplada de pols variable, que posteriorment és filtrada mitjançant un filtre LC passabaix. La tensió de sortida es controla mitjançant la freqüència de commutació del transistor. La característica essencial d'aquesta topologia és que la tensió de sortida (\(V_{out}\)) és inferior a la tensió d'entrada (\(V_{in}\)).
 
 En la pràctica, aquesta regulació sol ser suficient, i només cal ajustar lleugerament la relació d'espires del transformador per compensar les pèrdues per efecte resistiu, la caiguda de tensió en els díodes i la tensió de saturació dels transistors en commutació.
 
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/buck_converter.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 1.** Creat a partir de
+> [simulació](https://www.falstad.com).
+> [Paul Falstad] (2024).
+> _Configuració reductora_. 
+> Sota llicència [GNUv2]
+
 **Configuració elevadora (*boost*)**
 
 El convertidor elevador és una altra topologia fonamental de l'etapa de potència. El seu principi de funcionament és més complex: emmagatzema energia en una bobina durant el temps de conducció i, a continuació, l'allibera sumant-la a la tensió d'alimentació per lliurar-la a la càrrega. Aquest procediment s'utilitza àmpliament en sistemes de flaix fotogràfic, circuits d'encesa d'automoció (per carregar condensadors d'alt voltatge) i com a carregador de bateries d'alt rendiment. Aplica una potència constant a la càrrega independentment de la seva impedància. La característica essencial d'aquesta topologia és que la tensió de sortida (\(V_{out}\)) és superior a la tensió d'entrada (\(V_{in}\)).
 
-**Configuració reductora-elevadora (*buck-boost* o *flyback*)**
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/boost_converter.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 2.** Creat a partir de
+> [simulació](https://www.falstad.com).
+> [Paul Falstad] (2024).
+> _Configuració elevadora_. 
+> Sota llicència [GNUv2]
+
+**Configuració reductora-elevadora (_buck-boost_ o _flyback_)**
 
 El convertidor reductora-elevador, també conegut com a *flyback*, és una evolució de les topologies anteriors. La diferència fonamental és que només aplica a la càrrega l'energia prèviament emmagatzemada en la inductància, sense transmetre directament l'energia de l'entrada durant el cicle de commutació.
 
-A diferència del convertidor elevador, que només pot regular quan \(V_{out} > V_{in}\), el convertidor *flyback* és capaç de regular la tensió de sortida tant si aquesta és inferior com superior a la tensió d'entrada.
+A diferència del convertidor elevador, que només pot regular quan \(V_{out} > V_{in}\), el convertidor _flyback_ és capaç de regular la tensió de sortida tant si aquesta és inferior com superior a la tensió d'entrada.
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/flyback_converter.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 3.** Creat a partir de
+> [simulació](https://www.falstad.com).
+> [Paul Falstad] (2024).
+> _Configuració reductora-elevadora_. 
+> Sota llicència [GNUv2]
 
 
 
-
----
-
-### Referències i Enllaços a les Fonts Utilitzades
-
-- [Viquipèdia. (2015). *Font commutada*.](https://ca.wikipedia.org/wiki/Font_commutada) [Consulta: 13 febrer 2026]. (Informació de base, classificació i comparació) 
-- [Toshiba Electronic Devices & Storage Corporation. (n.d.). *1-8. Circuit configuration of a series regulator*.](https://toshiba.semicon-storage.com/us/semiconductor/knowledge/e-learning/basics-of-low-dropout-ldo-regulators/chap1/chap1-8.html) [Consulta: 13 febrer 2026]. (Blocs d'un regulador lineal) 
-- [Viquipèdia. (n.d.). *Usuari:Mcapdevila/Font d'alimentació*.](https://ca.m.wikipedia.org/wiki/Usuari:Mcapdevila/Font_d%27alimentaci%C3%B3) [Consulta: 13 febrer 2026]. (Esquemes de blocs i especificacions) 
-- [Morimoto, H., Koike, H., & Nakamura, K. (2011). *An Electrically Adjustable 3-Terminal Regulator for Post-Fabrication Level-Trimming with a Reliable 1-Wire Serial I/O*. IEICE Transactions on Electronics.](https://pt.globals.ieice.org/en_transactions/electronics/10.1587/transele.E94.C.945/_p) [Consulta: 13 febrer 2026]. (Configuracions avançades de reguladors) 
-- [Van Bodegraven, T. C., & Elferich, R. (2004). *Circuit configuration comprising a control loop*. Patent Application.](https://www.freepatentsonline.com/y2004/0145923.html) [Consulta: 13 febrer 2026]. (Control PWM i realimentació en fonts) 
-- [Newton C. Braga. (n.d.). *Fonte 1,25 a 15 V Controlada Digitalmente (ART1396)*.](https://newtoncbraga.com.br/projetos/11988-fonte-1-25-a-15-v-controlada-digitalmente-art1396.html) [Consulta: 13 febrer 2026]. (Exemple de configuració de regulador ajustable LM317) 
-- [Guardiola Escrihuela, A. (2010). *Disseny d'una font commutada amb correcció del factor de potència*. UPC.](https://upcommons.upc.edu/entities/publication/5e2bef76-d333-4433-8a59-49ba03d1f5e5/full) [Consulta: 13 febrer 2026]. (Aplicacions i PFC) 
 
 
 

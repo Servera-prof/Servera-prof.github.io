@@ -10,11 +10,12 @@
 
 Comprova la següent imatge:
 
-> <canvas id="c1" width="500" height="400" style="border:3px solid grey; display:block; margin:auto"></canvas>
+> <canvas id="c1" width="100" height="120" style="border:3px solid grey; display:block; margin:auto"></canvas>
 
-Quin serà el voltatge V<sub>2</sub> mesurat pel voltimetre?
+1. (_3 punts_) Quin és el valor nominal del condensador?
 
-[[i1]] V
+[[i1]] nF
+
 
 </textarea>
 <!-- FI ENUNCIAT ================================================== -->
@@ -40,7 +41,7 @@ window.texme = {
 
 <script>
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Divisor de tensió - Exercici 01";
+const titol = "Identificació de condensadors - Exercici 03";
 const puntuacions = ["", 1];
 const π = 3.141592654;
 
@@ -48,9 +49,14 @@ const π = 3.141592654;
 
 // # 2. PARÀMETRES ====================================================
 
-const v1 = aleat(0, 24);
-const r1 = aleat (1, 99);
-const r2 = aleat (1, 99);
+const tc = aleat (0, 1);            // tipo de codificació
+const pe = ["p", "n", "μ", "m"];    // prefixe d'escala
+const ipe = aleat (0, 3);           // index prefixe escala
+const m10 = aleat (0, 1);           // la mantisa o valor menor que 10 
+const m1 = aleat(0, 9);             // mantissa 1
+const m2 = aleat(0, 9);             // mantissa 2
+const e = aleat (0, 9);             // exponent
+
 
 
 // # 3. VARIABLES GLOBALS =============================================
@@ -58,6 +64,7 @@ const r2 = aleat (1, 99);
 let canvas;
 let ctx;                            // context
 let color;
+let color2;
 let gruix;
 
 
@@ -76,114 +83,91 @@ function dibuixaCanvas(){
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "black";
-    color = "black";
+    color = "brown";
+    color2 = "khaki"
+    tancat = true;
+    omple = true;
+    vores = true;
     gruix = 1;
-    bat(50, 200, 1, v1);
-    pl([50, 200,   50, 25,   200, 25,   200, 70]);
-    res(200, 70, 1, r1);
-    pl([200, 150, 200, 250]);
-    res(200, 250, 2, r2);
-    pl([200, 320,   200, 375,   50, 375,   50, 210]);
-    pl([200, 200,   350, 200,   350, 250]);
-    volt(350, 250);
-    ctx.font = "16px sans";
-    ctx.fillText("V  = ???", 390, 295);
-    ctx.font = "10px sans";
-    ctx.fillText("" + 2, 400, 297);
-    pl([350, 330,   350, 375,   200, 375]);
+    alt_text = 10;
+    tip_text = "sans";
+    
+
+    circ (30, [50, 50]);
+    gruix = 2;
+    tancat = false;
+    omple = false;
+    pl([20, 100,    20, 80,   29,  71]);
+    pl([71,  71,    80, 80,   80, 100]);
+    
+    let codi = codifica_condensador();
+    ctx.fillStyle = "black";
+    ctx.font = "16px mono";
+    ctx.fillText(codi, 36, 56);
+
 }
 
 function pl (vector){
+    a = gruix/2;
     ctx.beginPath();
-    ctx.moveTo(vector[0]+0.5, vector[1]+0.5);
+    ctx.moveTo(vector[0]+a, vector[1]+a);
 
     for (let i = 1; i < (vector.length/2); i++) {
-        const x = vector[i*2]+0.5;
-        const y = vector[i*2+1]+0.5;
+        const x = vector[i*2]+a;
+        const y = vector[i*2+1]+a;
         ctx.lineTo(x, y);
     }
+    if (tancat) ctx.closePath();
     ctx.strokeStyle = color;
+    ctx.fillStyle = color2;
     ctx.lineWidth = gruix;
+    if (vores) ctx.stroke();
+    if (omple) ctx.fill();
+}
+
+function rect (vector){
+    a = gruix/2;
+    ctx.beginPath();
+    ctx.rect(vector[0]+a, vector[1]+a, 
+             vector[2]-vector [0], vector[3] - vector[1]);
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color2;
+    ctx.fill();
+}
+
+function circ (r, c){
+
+    ctx.beginPath();
+    
+    ctx.arc(c[0], c[1], r, 0, 2*Math.PI);
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color2;
+    ctx.lineWidth = gruix;
+    if (vores) ctx.stroke();
+    if (omple) ctx.fill();
     ctx.stroke();
 }
 
-function bat(x, y, id, v){
-    x = x+0.5;
-    y = y+0.5;
-    ctx.strokeStyle = color;
-    ctx.lineWidth = gruix;
-    
-    ctx.beginPath();
-    ctx.moveTo(x-20, y);
-    ctx.lineTo(x+20, y);
-    ctx.moveTo(x-10, y+10);
-    ctx.lineTo(x+10, y+10);
-    ctx.moveTo(x+5, y-10);
-    ctx.lineTo(x+15, y-10);
-    ctx.moveTo(x+10, y-5);
-    ctx.lineTo(x+10, y-15);
-
-    ctx.stroke();
-    ctx.font = "16px sans";
-    ctx.fillText("V  = " + v + " V", x+30, y+10);
-    ctx.font = "10px sans";
-    ctx.fillText("" + id, x+40, y+12);
+function codifica_condensador(){
+    let t;
+    if (tc == 0 && m10 == 0) t = "" + m1 + pe[ipe] + m2;
+    else if (tc == 0 && m10 == 1) t = "" + m1 + m2 + pe[ipe];
+    else t = "" + m1 + m2 + e;
+    return t;
+        
 }
-
-function res (x, y, id, r){
-    x = x+0.5;
-    y = y+0.5;
-    ctx.strokeStyle = color;
-    ctx.lineWidth = gruix;
-    
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x, y+10);
-    ctx.rect(x-8, y+10, 16, 60);
-    ctx.moveTo(x, y+70);
-    ctx.lineTo(x, y+80);
-    ctx.stroke();
-    
-    ctx.font = "16px sans";
-    ctx.fillText("R  = " + r + " Ω", x+20, y+45);
-    ctx.font = "10px sans";
-    ctx.fillText("" + id, x+30, y+47);
-}
-
-
-function volt(x, y){
-    x = x+0.5;
-    y = y+0.5;
-    ctx.strokeStyle = color;
-    ctx.lineWidth = gruix;
-    
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x, y+10);
-    ctx.moveTo(x, y+70);
-    ctx.lineTo(x, y+80);
-    ctx.stroke();
-    
-    ctx.beginPath();
-    ctx.arc(x, y+40, 30, 0, 25*Math.PI);
-    ctx.stroke();
-    ctx.font = "32px sans";
-    ctx.fillText("V", x-10, y+52);
-}
-
-
 
 
 // # 3. CALCULS =======================================================
 
 // ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
 function calcula(){
-
-v2 = r2/(r1+r2)*v1;
-v2 = xs(v2);
-
-s01 = v2;
-
+    let c;
+    if (tc == 0 && m10 == 0) c = (m1 + m2*0.1) * 10**(ipe*3);
+    else if (tc == 0 && m10 == 1) c = (m1*10 + m2) * 10**(ipe*3);
+    else c = (m1*10 + m2) * 10**e;
+    c = c/1e3;
+    s01 = c;
 
 solucions = [""].concat([
     s01
