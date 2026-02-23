@@ -14,7 +14,7 @@ Comprova la següent imatge:
 
 Quina és la freqüència de resonància?
 
-[[i1]] V
+[[i1]] Hz
 
 </textarea>
 <!-- FI ENUNCIAT ================================================== -->
@@ -48,8 +48,8 @@ const π = 3.141592654;
 
 // # 2. PARÀMETRES ====================================================
 
-const c = aleat(1, 9999)/10;
-const l = aleat(1, 9999)/10;
+const c_μF = aleat(1, 9999)/100;
+const l_mH = aleat(1, 9999)/10;
 
 
 // # 3. VARIABLES GLOBALS =============================================
@@ -71,8 +71,8 @@ function dibuixaCanvas(){
         
     font_ac([50, 100], "h", "10 V", "??? Hz");
     res([75, 50], "h", "R1", "250 Ω");
-    cond([200, 100], "v", "C1", c + " μF");
-    induc([350, 100], "v", "L1", l + " mH");
+    cond([200, 100], "v", "C1", l(c_μF) + " μF");
+    induc([350, 100], "v", "L1", l(l_mH) + " mH");
     pl([50, 100, 50,50, 75,50]);
     pl([175, 50, 275, 50, 275, 100]);
     pl([200, 100, 350, 100]);
@@ -193,8 +193,8 @@ function arc (radi, centre, θi, θf){
     const r = radi;
     const cx = centre[0];
     const cy = centre[1];
-    const θ1 = θi/360*2*Math.PI;
-    const θ2 = θf/360*2*Math.PI;
+    const θ1 = θi/360*2*π;
+    const θ2 = θf/360*2*π;
     
     ctx.beginPath();
     ctx.arc(cx, cy, r, θ1, θ2);
@@ -227,7 +227,7 @@ function circ (radi, centre){
     const cy = centre[1];
     ctx.beginPath();
     
-    ctx.arc(cx, cy, r, 0, 2*Math.PI);
+    ctx.arc(cx, cy, r, 0, 2*π);
     ctx.strokeStyle = color;
     ctx.fillStyle = color2;
     ctx.lineWidth = gruix;
@@ -251,10 +251,9 @@ function text (s, pto, tfont=font){
 // ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
 function calcula(){
 
-v2 = r2/(r1+r2)*v1;
-v2 = xs(v2);
+let fr = 1/(2*π*(l_mH*1e-3*c_μF*1e-6)**0.5);
 
-s01 = v2;
+s01 = fr;
 
 
 solucions = [""].concat([
@@ -450,7 +449,6 @@ function puntua(txt){
         
         patro = "[[itxt" + i + "]]";
         if (txt.includes(patro)){
-            console.log(solu);
             canvi = ftxt (resp, solu, pts);
             txt = txt.replace(patro, canvi);
         }
@@ -475,11 +473,11 @@ function fnum (resp, solu, pts){     // formata una resposta i solució numèric
     if (acceptada) {
         ptsAlumne += pts;
         canvi +=
-            ' <span style="color: green">(' + coma(solu) + ') OK (+' + pts + 
+            ' <span style="color: green">(' + l(solu) + ') OK (+' + pts + 
             ')</span>';
     }else{
         canvi +=
-            ' <span style="color: red;"> (' + coma(solu) + ')</span>';
+            ' <span style="color: red;"> (' + l(solu) + ')</span>';
     }
     return canvi;
 }
