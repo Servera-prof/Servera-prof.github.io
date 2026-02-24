@@ -16,6 +16,9 @@ Quina és la freqüència de resonància?
 
 [[i1]] Hz
 
+Quan trobis la freqüència, ves al simulador de circuits, simula'l i
+fes una captura de pantalla de quan el circuit entra en resonància.
+
 </textarea>
 <!-- FI ENUNCIAT ================================================== -->
 
@@ -113,8 +116,12 @@ function font_ac(pto, β, txt_1, txt_2){
     const y = pto[1];
     pl([x, y, x, y+20]);
     circ(30, [x, y+50]);
-    pl([x, y+80, x, y+100]);     
-    text("∿", [x-13, y+60], "40px sans");    
+    pl([x, y+80, x, y+100]);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';     
+    text("∿", [x, y+50], "40px sans");  
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'alphabetic';       
     text(txt_1,  [x+40, y+48], "10px mono"); 
     text(txt_2, [x+40, y+62], "10px mono");    
     if (lim_elem) rect([x-50, y, x+100, y+100]);
