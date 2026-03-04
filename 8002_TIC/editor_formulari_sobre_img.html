@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Editor Visual</title>
+<style>
+body {
+    font-family: Arial; 
+    display: flex; 
+    height: 100vh; 
+    margin: 0; 
+    overflow: hidden; 
+}
+
+.blocs_indep {
+    background: white; 
+    padding: 15px; 
+    border-radius: 8px; 
+    margin-bottom: 20px;
+}
+.boto_verd{
+    background: green; 
+    color: white; 
+    border: 1px solid darkgreen; 
+    border-radius: 5px;
+    cursor: pointer;
+}
+.boto_gris2{
+    background: lightgrey; 
+    color: black; 
+    border: 1px solid darkgrey; 
+    border-radius: 5px;
+    cursor: pointer;
+}
+.boto_gris{
+    background: #999; 
+    color: white; 
+    border: none; 
+    cursor: pointer;
+}
+.boto_blau{
+    background: dodgerblue; 
+    color: white; 
+    border: none; 
+    cursor: pointer;
+}
+.boto_vermell{
+    background: red; 
+    color: white; 
+    border: none; 
+    cursor: pointer;
+}
+.contenidor_botons{
+    display: flex; 
+    gap: 10px;
+}
+
+.contenidor {
+    position: relative; 
+    max-width: 1000px; 
+    width: 100%; 
+    border: 1px solid #ccc; 
+    background: white;
+    display: none;
+}
+
+.contenidor.activa {
+    display: block;
+}
+
+.contenidor img {
+    width: 100%; 
+    display: block; 
+    pointer-events: none;
+}
+
+.casella {
+    position: absolute; 
+    border: 2px dashed blue; 
+    background: rgba(255,255,255,0.5); 
+    box-sizing: border-box;
+}
+
+.editor-area {
+    flex: 1; 
+    padding: 20px; 
+    overflow-y: auto; 
+    background: #f0f0f0;
+}
+
+.handle {
+    position: absolute; 
+    width: 12px; 
+    height: 12px; 
+    background: blue; 
+    right: -6px; 
+    bottom: -6px; 
+    cursor: se-resize;
+}
+
+.panel-lateral {
+    width: 280px; 
+    border-left: 2px solid #ddd; 
+    padding: 20px; 
+    background: #fff;
+    flex-shrink: 0; 
+    height: 100vh;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    position: sticky;
+    right: 0;
+    top: 0;
+    overflow-y: auto;
+}
+
+input, textarea, button {
+    width: 100%; 
+    margin-bottom: 10px; 
+    padding: 8px; 
+    box-sizing: border-box;
+}
+
+textarea { height: 100px; }
+
+.etiqueta {
+    position: absolute; 
+    top: -20px; 
+    left: 0; 
+    font-size: 11px; 
+    background: blue; 
+    color: white; 
+    padding: 2px 5px; 
+    border-radius: 3px;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+#nav { margin-bottom: 15px; }
+#nav button { width: auto; margin-right: 5px; padding: 5px 15px; }
+
+
+
+/* Contenidor principal per mantenir-ho tot en línia */
+.switch {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-family: Arial;
+}
+
+/* Amaguem el checkbox real */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+/* El cos del botó (el fons) */
+.slider {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: .4s;
+}
+
+/* El cercle blanc que es mou */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+/* Estil quan està activat (checked) */
+input:checked + .slider {
+  background-color: dodgerblue;
+}
+
+/* Movem el cercle a la dreta quan està activat */
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+</style>
+    
+</head>
+
+
+<body>
+
+<!-- ===== EDITOR ================================================= -->
+<div class="editor-area">
+
+<h2>Editor Visual</h2>
+<p>Codi i idea de T. Bassa</p>
+
+<div class="blocs_indep">
+    <label><b>1. Carregar imatges (fins a 4):</b></label>
+    <input type="file" id="imgLoader" multiple accept="image/*">
+    
+    <label><b>2. O obrir HTML previ:</b></label>
+    <input type="file" id="htmlLoader" accept=".html">
+</div>
+
+<div id="nav"></div>
+<div id="areaPagines"></div>
+
+
+
+<div class="blocs_indep">
+
+    Nom del fitxer: 
+    <input type="text" id="nomFitxer" placeholder="exer_01" 
+           style="width: 200px;">
+           
+           
+    <div class="contenidor_botons">
+        <button onclick="exportar()" class="boto_blau">
+            Exportar HTML Alumnes
+        </button>
+        
+        <button onclick="exportarJSON()" class="boto_blau">
+            Exportar JSON Solucions
+        </button>
+        
+        <button onclick="netejar()" class="boto_gris">
+        Netejar tot</button>
+    </div>
+    
+</div>
+
+</div><!-- ==== FI EDITOR ========================================== -->
+
+
+
+
+
+
+<!-- ====== PANELL LATERAL ========================================= -->
+<div class="panel-lateral">
+
+<h3>Editar Casella</h3>
+
+Nom / ID: <input id="edit_id" onchange="guardar()">
+
+Solucions [separades per ; ]: 
+<textarea id="edit_sol" 
+          placeholder="respostat1; resposta 2"
+          onchange="guardar()">
+</textarea>
+
+
+<label class="switch">
+  <input type="checkbox" id="toggleEtiqueta"  onchange="aplicarVisibilitat()" checked>
+  <span class="slider"></span>
+  <span class="label-text">Mostrar etiqueta</span>
+</label>
+
+<div class="contenidor_botons">
+    <button onclick="mostrar_totes()" class="boto_blau">Totes les etiquetes</button>
+    <button onclick="ocultar_totes()" class="boto_blau">Cap etiqueta</button>
+</div>
+
+
+<button onclick="eliminar()" class="boto_gris">Eliminar Casella</button>
+</div>
+
+
+
+
+<!-- ===== SCRIPT ================================================== -->
+<script>
+let contador = 1;  // generar noms per def. de les caselles (q1, q2)
+let seleccionada = null; // casella seleccionada
+let paginaActual = 0; // index de la pàgina que es mostra
+let arrossegant = false; // evita efectes colaterals mentre s'arrossega
+let imatgesBase64 = []; // guarda img en base64 per a cada pàgina.
+
+// init referències DOM
+const nav = document.getElementById("nav");
+const areaPagines = document.getElementById("areaPagines");
+
+
+
+//  ====== CARREGAR IMATGES ===========
+document.getElementById("imgLoader").addEventListener("change", e => {
+    const files = [...e.target.files].slice(0, 4);
+    if (files.length === 0) return;
+    netejar();
+    files.forEach((file, index) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        
+        reader.onload = ev => {
+            
+            imatgesBase64[index] = ev.target.result;
+            crearContenidorPagina(ev.target.result, index);
+            if (index === 0) mostrarPagina(0);
+        };
+    });
+});
+
+
+
+//  ===== CARREGAR HTML PREVI =========
+document.getElementById("htmlLoader").addEventListener("change", e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.readAsText(file);
+    
+    reader.onload = ev => {
+        const temp = document.createElement("div");
+        temp.innerHTML = ev.target.result;
+        const conts = temp.querySelectorAll(".contenidor");
+        if (conts.length === 0) return alert("HTML no vàlid");
+        netejar();
+        conts.forEach((c, i) => {
+            const src = c.querySelector("img").src;
+            imatgesBase64[i] = src;
+            const cont = crearContenidorPagina(src, i);
+            c.querySelectorAll(".casella").forEach(cc => {
+                const div = reconstruirCasella(cc, i, cont);
+                cont.appendChild(div);
+            });
+        });
+        mostrarPagina(0);
+    };
+});
+
+function crearContenidorPagina(src, i) {
+    const cont = document.createElement("div");
+    cont.className = "contenidor";
+    cont.dataset.pagina = i;
+    const img = document.createElement("img");
+    img.src = src;
+    cont.appendChild(img);
+    areaPagines.appendChild(cont);
+    cont.addEventListener("click", e => crearCasella(e, cont, i));
+    const b = document.createElement("button");
+    b.textContent = "Pàgina " + (i + 1);
+    b.onclick = () => mostrarPagina(i);
+    nav.appendChild(b);
+    return cont;
+}
+
+function reconstruirCasella(cc, pagina, cont) {
+
+    const div = document.createElement("div");
+    div.className = "casella";
+    
+    div.style.left = cc.style.left;
+    div.style.top = cc.style.top;
+    div.style.width = cc.style.width;
+    div.style.height = cc.style.height;
+    
+    div.dataset.id = cc.dataset.id;
+    div.dataset.sol = cc.dataset.sol || "";
+    div.dataset.pagina = pagina;    
+    
+    const etiqueta = document.createElement("span");
+    etiqueta.className = "etiqueta";
+    etiqueta.textContent = cc.dataset.id;
+    div.appendChild(etiqueta);
+    
+    const handle = document.createElement("div");
+    handle.className = "handle";
+    div.appendChild(handle);
+    
+    div.onclick = (e) => { 
+        e.stopPropagation(); 
+        seleccionarCasella(div); 
+    };
+    
+    ferDrag(div, cont);
+    ferResize(div, handle, cont);
+    return div;
+}
+
+function crearCasella(e, cont, pagina) {
+    /* Si estem acabant d'arrossegar una casella existent, no en creis 
+    una de nova */
+    if (arrossegant) return; 
+    
+    if (e.target.closest(".casella")) return;
+    
+    const rect = cont.getBoundingClientRect();
+    let x = ((e.clientX - rect.left) / rect.width * 100);
+    let y = ((e.clientY - rect.top) / rect.height * 100);
+    let nom = prompt("Nom casella:", "q" + contador++);
+    if (!nom) return;
+    
+    const div = document.createElement("div");
+    div.className = "casella";
+    div.style.left = x + "%";
+    div.style.top = y + "%";
+    div.style.width = "8%";
+    div.style.height = "5%";
+    div.dataset.id = nom;
+    div.dataset.sol = "";
+    div.dataset.pagina = pagina;
+    
+    const etiqueta = document.createElement("span");
+    etiqueta.className = "etiqueta";
+    etiqueta.textContent = nom;
+    div.appendChild(etiqueta);
+    
+    const handle = document.createElement("div");
+    handle.className = "handle";
+    div.appendChild(handle);
+    div.onclick = (ev) => { 
+        ev.stopPropagation(); 
+        seleccionarCasella(div); 
+    };
+    ferDrag(div, cont);
+    ferResize(div, handle, cont);
+    cont.appendChild(div);
+    seleccionarCasella(div);
+}
+
+function seleccionarCasella(div) {
+    guardar();
+    if(seleccionada) seleccionada.style.borderColor = "blue";
+    seleccionada = div;
+    seleccionada.style.borderColor = "red";
+    document.getElementById("edit_id").value = div.dataset.id;
+    document.getElementById("edit_sol").value = div.dataset.sol;
+    // Actualitzar toggle segons l'estat actual de la casella
+    const et = div.querySelector(".etiqueta");
+    document.getElementById("toggleEtiqueta").checked = 
+        (window.getComputedStyle(et).display !== "none");
+}
+
+function aplicarVisibilitat() {
+    const visible = document.getElementById("toggleEtiqueta").checked;
+    const displayVal = visible ? "block" : "none";
+    if (seleccionada) {
+        seleccionada.querySelector(".etiqueta").style.display = displayVal;
+    }
+}
+
+function mostrar_totes(){
+    document.querySelectorAll(`.contenidor[data-pagina="${paginaActual}"] .etiqueta`).forEach(et => {
+                et.style.display = "block";
+            });
+    document.getElementById("toggleEtiqueta").checked = true;
+}
+
+function ocultar_totes(){
+    document.querySelectorAll(`.contenidor[data-pagina="${paginaActual}"] .etiqueta`).forEach(et => {
+                et.style.display = "none";
+            });
+    document.getElementById("toggleEtiqueta").checked = false;
+}
+
+function guardar() {
+    if (!seleccionada) return;
+    const nouId = document.getElementById("edit_id").value.trim();
+    const novaSol = document.getElementById("edit_sol").value.trim();
+    seleccionada.dataset.id = nouId;
+    seleccionada.dataset.sol = novaSol;
+    seleccionada.querySelector(".etiqueta").textContent = nouId;
+    aplicarVisibilitat();
+}
+
+function eliminar() {
+    if (seleccionada) { seleccionada.remove(); seleccionada = null; }
+}
+
+function mostrarPagina(i) {
+    paginaActual = i;
+    document.querySelectorAll(".contenidor").forEach((c, idx) => {
+        c.classList.toggle("activa", idx === i);
+    });
+}
+
+function ferDrag(el, cont) {
+let dragging = false;
+
+    el.addEventListener("mousedown", e => {
+        if (e.target === el) {
+            e.preventDefault();
+            dragging = true;
+            arrossegant = false; // false fins que no hi hagi moviment
+        }
+    });
+
+    document.addEventListener("mouseup", () => {
+        if (dragging) {
+            // Fem servir un mini-timeout perquè el clic de 'crearCasella' 
+            // no s'executi just després de deixar anar el ratolí
+            setTimeout(() => { arrossegant = false; }, 50);
+        }
+        dragging = false;
+    });
+
+    document.addEventListener("mousemove", e => {
+        if (!dragging) return;
+        
+        arrossegant = true; // Si s'ha mogut el ratolí, estem arrossegant
+        e.preventDefault();
+
+        const rect = cont.getBoundingClientRect();
+        const elWidth = parseFloat(el.style.width) || 0;
+        const elHeight = parseFloat(el.style.height) || 0;
+
+        let left = ((e.clientX - rect.left) / rect.width) * 100;
+        let top = ((e.clientY - rect.top) / rect.height) * 100;
+
+        left = Math.max(0, Math.min(100 - elWidth, left));
+        top = Math.max(0, Math.min(100 - elHeight, top));
+
+        el.style.left = left + "%";
+        el.style.top = top + "%";
+    });
+}
+
+function ferResize(el, handle, cont) {
+    let resizing = false;
+
+    handle.addEventListener("mousedown", e => {
+        e.preventDefault(); // Evita selecció
+        e.stopPropagation();
+        resizing = true;
+    });
+
+    document.addEventListener("mouseup", () => {
+        resizing = false;
+    });
+
+    document.addEventListener("mousemove", e => {
+        if (!resizing) return;
+        e.preventDefault(); // Evita selecció de text mentre es redimensiona
+
+        const rect = cont.getBoundingClientRect();
+
+        // Posició actual del ratolí respecte al contenidor en píxels
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        /* Posició actual de la cantonada superior esquerra de la 
+        casella en píxels */
+        const currentLeftPx = (parseFloat(el.style.left) / 100) * rect.width;
+        const currentTopPx = (parseFloat(el.style.top) / 100) * rect.height;
+
+        /* Calcular nova amplada i alçada en píxels (des de la cantonada 
+        superior esquerra fins al ratolí) */
+        let newWidthPx = mouseX - currentLeftPx;
+        let newHeightPx = mouseY - currentTopPx;
+
+        /* Establir mides mínimes (per exemple 2% en píxels, però ho 
+        farem relatiu) */
+        const minWidthPx = rect.width * 0.02; // 2% ampl d contenidor
+        const minHeightPx = rect.height * 0.02; // 2% de l'alçada
+
+        if (newWidthPx < minWidthPx) newWidthPx = minWidthPx;
+        if (newHeightPx < minHeightPx) newHeightPx = minHeightPx;
+
+        // Convertir a percentatges
+        let newWidth = (newWidthPx / rect.width) * 100;
+        let newHeight = (newHeightPx / rect.height) * 100;
+
+        /* Limitar perquè la casella no surti del contenidor per la 
+        dreta o inferior
+        La posició left i top no canvien, però l'amplada no pot fer que 
+        la casella superi el límit dret. */
+        const maxWidth = 100 - parseFloat(el.style.left);
+        const maxHeight = 100 - parseFloat(el.style.top);
+        if (newWidth > maxWidth) newWidth = maxWidth;
+        if (newHeight > maxHeight) newHeight = maxHeight;
+
+        el.style.width = newWidth + "%";
+        el.style.height = newHeight + "%";
+    });
+}
+
+
+
+
+
+// ===== EXPORTACIÓ ==========
+
+function exportar() {
+    
+    // Preguntes inicials
+    const auto = confirm("Incloure botó d'autocorrecció?");
+    const enviar = confirm("Incloure botó d'enviar al professor?");
+    const ignorarBuides = auto ? confirm("Ignorar caselles sense" +     
+      "solució?\n\n"+
+      "OK = Ignorar-les.\n"+
+      "Cancel = Buit és correcte.") : false;
+    const nomFitxer = 
+      document.getElementById("nomFitxer").value || "activitat";
+
+    // Execució segmentada
+    const { sols, htmlPagines } = prepararDadesIContingut(auto); // #1
+    const htmlFinal = generarPlantillaHTML(htmlPagines, sols, auto,
+      enviar, ignorarBuides); // #2
+
+    // Descarregar HTML per l'alumne
+    descarregarFitxer(htmlFinal, `${nomFitxer}.html`, "text/html"); //#3
+
+    // Descarregar JSON per al professor
+    setTimeout(() => {
+        descarregarFitxer(JSON.stringify(sols, null, 2), `SOLUCIONS_${nomFitxer}.json`, "application/json");
+    }, 500);
+}
+
+/* 1. Recull les solucions i genera el codi HTML de les caselles per a cada pàgina */
+function prepararDadesIContingut(auto) {
+    let sols = {};
+    let htmlPagines = "";
+
+    imatgesBase64.forEach((img, i) => {
+        let inputs = "";
+        document.querySelectorAll(
+          `.casella[data-pagina="${i}"]`).forEach(c => {
+            const { id, sol } = c.dataset;
+            const teSol = sol && sol.trim() !== "";
+
+            if (teSol) {
+                sols[id] = sol.split(";").map(s => s.trim());
+            }
+
+            const atributSol = (auto && teSol) ? `data-sol="${sol}"` : '';
+            inputs += `
+                <div class="casella" data-id="${id}" data-te-sol="${teSol}" ${atributSol} 
+                     style="left:${c.style.left};top:${c.style.top};width:${c.style.width};height:${c.style.height};">
+                    <input name="${id}">
+                </div>`;
+        });
+        htmlPagines += `<div class="contenidor" data-pagina="${i}"><img src="${img}">${inputs}</div>`;
+    });
+
+    return { sols, htmlPagines };
+}
+
+/* 2. Construeix el string complet del document HTML final*/
+function generarPlantillaHTML(contingutPagines, dadesSols, auto, enviar, ignorar) {
+    return `
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<style>
+
+body{
+    font-family:Arial; 
+    background:#f0f0f0; 
+    margin:0; 
+    padding:20px;
+}
+.contenidor{
+    position:relative;
+    max-width:1000px;
+    margin:20px auto;
+    background:white;
+    display:none;
+    border:1px solid #ccc;
+}
+.contenidor.activa{
+    display:block;
+}
+.contenidor img{
+    width:100%;
+    display:block;
+}
+.casella{
+    position:absolute;
+    box-sizing:border-box;
+}
+.casella input{
+    width:100%; 
+    height:100%; 
+    border:1px solid #000; 
+    font-size:1.1em; 
+    text-align:center;
+}
+.correcte input{
+    border:3px solid green !important;
+    background:#eaffea !important;
+}
+.incorrecte input{
+    border:3px solid red !important;
+    background:#ffeaea !important;
+}
+.nav{
+    margin:10px;
+    text-align:center;
+}
+button{
+    padding:10px 20px; 
+    cursor:pointer; 
+    font-weight:bold; 
+    margin:5px;
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="nav" id="n"></div>${contingutPagines}<div class="nav" id="b">
+</div>
+
+
+
+
+<!-- ===== SCRIPT ================================================== -->
+<script>
+
+const sols = ${JSON.stringify(dadesSols)};
+const ignorar = ${ignorar};
+const conts = document.querySelectorAll(".contenidor");
+
+conts.forEach((c,i)=>{
+    let btn=document.createElement("button"); 
+    btn.textContent="Pàgina "+(i+1);
+    btn.onclick=()=>{
+        conts.forEach(x=>x.classList.remove("activa"));    
+        c.classList.add("activa")
+    };
+    document.getElementById("n").appendChild(btn);
+});
+if(conts.length>0) conts[0].classList.add("activa");
+
+if(${auto}){
+    let btn=document.createElement("button"); 
+    btn.textContent="autocorregir";
+    btn.style.background="#4CAF50"; btn.style.color="white";
+    btn.onclick=()=> {
+        let e=0, t=0;
+        document.querySelectorAll(".casella").forEach(c=>{
+            let v = c.querySelector("input").value;
+            v = v.trim().toUpperCase().normalize("NFD");
+            v = v.replace(/[\\u0300-\\u036f]/g,"");
+            let s = c.dataset.teSol === "true";
+            if(!s && ignorar) {
+                c.classList.remove("correcte","incorrecte");
+                return;
+            }
+            t++;
+            let ok = false;
+
+            // 1. Validació de la resposta
+            if (s) {
+                // Si la casella té solució
+                ok = sols[c.dataset.id].some(ans => {
+                    let s_norm = ans.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    return s_norm === v;
+                });
+            } else {
+                // Si la casella ha d'estar buida
+                if (v === "") {
+                    ok = true;
+                } else {
+                    ok = false;
+                }
+            }
+
+            // 2. Assignació d'estils i comptador
+            if (ok) {
+                c.classList.add("correcte");
+                c.classList.remove("incorrecte");
+                e++; 
+            } else {
+                c.classList.add("incorrecte");
+                c.classList.remove("correcte");
+            }
+
+            // 2. Apliquem visualment si és correcte o incorrecte
+            if (ok) {
+                c.classList.add("correcte");
+                c.classList.remove("incorrecte");
+                e++; // Sumem un encert
+            } else {
+                c.classList.add("incorrecte");
+                c.classList.remove("correcte");
+            }
+        });
+        alert("Encerts: "+e+"/"+t);
+    };
+    document.getElementById("b").appendChild(btn);
+}
+
+if(${enviar}){
+    let btn=document.createElement("button"); 
+    btn.textContent="enviar al professor";
+    btn.style.background="#2196F3"; 
+    btn.style.color="white";
+    
+    btn.onclick=()=>{
+        let nom=prompt("Nom:"); if(!nom)return;
+        let c1=prompt("Primer cognom:"); if(!c1)return;
+        let c2=prompt("Segon cognom:"); if(!c2)return;
+        let curs=prompt("Curs:"); if(!curs)return;
+        let res="<h2>Respostes de l'alumne</h2><p><b>Alumne:</b> " + 
+                nom + " " +c1+ " " +c2+ 
+                "<br><b>Curs:</b> " +curs+ "</p><hr>";
+        document.querySelectorAll(".casella").forEach(c=>{
+            res+="<p><b>" +c.dataset.id+ 
+                 " :</b> " +c.querySelector("input").value+ 
+                 "</p>";
+        });
+        descarregarFitxer(res, nom+"_"+c1+"_"+c2+"_"+curs+
+                          ".html", "text/html");
+    };
+    document.getElementById("b").appendChild(btn);
+}
+<\/script></body></html>`;
+}
+
+// 3. Funció genèrica per descarregar qualsevol blob
+function descarregarFitxer(contingut, nomFitxer, tipus) {
+    const blob = new Blob([contingut], { type: tipus });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = nomFitxer;
+    a.click();
+    URL.revokeObjectURL(a.href);
+}
+
+function netejar() {
+    areaPagines.innerHTML = "";
+    nav.innerHTML = "";
+    imatgesBase64 = [];
+    contador = 1;
+    seleccionada = null;
+    document.getElementById("edit_id").value = "";
+    document.getElementById("edit_sol").value = "";
+}
+</script>
+</body>
+</html>

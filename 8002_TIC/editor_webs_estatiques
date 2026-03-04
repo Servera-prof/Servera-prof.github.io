@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Editor Científic MD & SVG</title>
+    <style>
+        :root { --dark: #2c3e50; --accent: #3498db; --bg: #f8f9fa; }
+        body { margin: 0; display: flex; flex-direction: column; height: 100vh; font-family: 'Segoe UI', sans-serif; background: #ddd; }
+        
+        .toolbar { background: var(--dark); color: white; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+        .tool-group { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
+        .group-label { font-size: 11px; text-transform: uppercase; opacity: 0.7; width: 100%; margin-bottom: 2px; }
+        
+        button { cursor: pointer; border: none; background: #444; color: white; padding: 6px 10px; border-radius: 3px; font-size: 13px; }
+        button:hover { background: var(--accent); }
+        .btn-math { background: #555; font-family: serif; font-style: italic; }
+        .btn-export { background: #27ae60; font-weight: bold; }
+        .btn-md { background: #e67e22; font-weight: bold; }
+        .file-input { display: none; }
+        
+        .container { display: flex; flex: 1; overflow: hidden; gap: 2px; }
+        textarea, #preview { flex: 1; padding: 25px; box-sizing: border-box; overflow-y: auto; background: white; border: none; }
+        textarea { font-family: 'Consolas', 'Courier New', monospace; outline: none; font-size: 14px; border-right: 1px solid #ccc; resize: none; }
+        #preview { line-height: 1.6; }
+        
+        svg { vertical-align: middle; }
+        img { max-width: 100%; height: auto; display: block; margin: 10px 0; border: 1px solid #eee; }
+        
+        .appendix { margin-top: 50px; padding-top: 20px; border-top: 2px solid #ccc; font-size: 12px; color: #555; }
+        .appendix-item { margin-bottom: 10px; word-break: break-all; }
+    </style>
+</head>
+<body>
+
+<div class="toolbar">
+    <div class="group-label">Markdown</div>
+    <div class="tool-group">
+        <button onclick="insertSmart('# ', '')">H1</button>
+        <button onclick="insertSmart('**', '**')"><b>B</b></button>
+        <button onclick="insertSmart('_', '_')"><i>I</i></button>
+        <button onclick="document.getElementById('imageLoader').click()">📷 Img</button>
+        <input type="file" id="imageLoader" class="file-input" accept="image/*" onchange="handleImage(this)">
+    </div>
+
+    <div class="group-label">Equacions (LaTeX)</div>
+    <div class="tool-group">
+        <button onclick="insertSmart('$', '$')">$ Math $</button>
+        <button class="btn-math" onclick="insertSmart('\\frac {', '} {den}')">a/b</button>
+        <button class="btn-math" onclick="insertSmart('\\cdot ', '')">·</button>
+        <button class="btn-math" onclick="insertSmart(' + ', '')">+</button>
+        <button class="btn-math" onclick="insertSmart('\\pi', '')">π</button>
+        
+        <div style="flex-grow:1"></div>
+        <button class="btn-md" onclick="exportFile('md')">💾 .md</button>
+        <button class="btn-export" onclick="exportFile('html')">💾 .html</button>
+    </div>
+</div>
+
+<div class="container">
+    <textarea id="editor" oninput="render()" placeholder="Escriu aquí..."></textarea>
+    <div id="preview"></div>
+</div>
+
+<script>
+    const editor = document.getElementById('editor');
+    const preview = document.getElementById('preview');
+    let imageRegistry = [];
+
+    function insertSmart(pre, post) {
+        const start = editor.selectionStart;
+        const end = editor.selectionEnd;
+        const text = editor.value;
+        const selection = text.substring(start, end);
+        const newContent = pre + selection + post;
+        editor.setRangeText(newContent, start, end, 'end');
+        let newPos = (selection.length > 0) ? start + newContent.length : start + pre.length;
+        editor.setSelectionRange(newPos, newPos);
+        editor.focus();
+        render();
+    }
+
+    function handleImage(input) {
+        const file = input.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const id = 'img_' + Date.now();
+            imageRegistry.push({id: id, data: e.target.result});
+            insertSmart(`\n[Referència Imatge: ${id}]\n`, "");
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function createMathSVG(latex) {
+        let clean = latex.trim()
+            .replace(/\\cdot/g, '·')
+            .replace(/\\pi/g, 'π')
+            .replace(/\\alpha/g, 'α')
+            .replace(/\\beta/g, 'β');
+        const fontSize = 17;
+        const charW = 10;
+        const fracRegex = /\\frac\s*\{([^}]*)\}\s*\{([^}]*)\}/;
+        const fMatch = clean.match(fracRegex);
+
+        if (fMatch) {
+            const num = fMatch[1].trim();
+            const den = fMatch[2].trim();
+            const width = Math.max(num.length, den.length) * charW + 15;
+            const lineY = 27.5; 
+            return `<svg width="${width}" height="52" viewBox="0 0 ${width} 52" xmlns="http://www.w3.org/2000/svg">
+                <text x="50%" y="20" text-anchor="middle" font-family="serif" font-style="italic" font-size="${fontSize}" fill="black">${num}</text>
+                <line x1="2" y1="${lineY}" x2="${width-2}" y2="${lineY}" stroke="black" stroke-width="1"/>
+                <text x="50%" y="46" text-anchor="middle" font-family="serif" font-style="italic" font-size="${fontSize}" fill="black">${den}</text>
+            </svg>`;
+        }
+        const width = Math.max(15, clean.length * charW + 5);
+        return `<svg width="${width}" height="32" viewBox="0 0 ${width} 32" xmlns="http://www.w3.org/2000/svg">
+            <text x="5" y="22" font-family="serif" font-style="italic" font-size="${fontSize}" fill="black">${clean}</text>
+        </svg>`;
+    }
+
+    function render() {
+        const lines = editor.value.split('\n');
+        let html = "";
+        for (let line of lines) {
+            if (line.startsWith('# ')) html += `<h1>${processInline(line.substring(2))}</h1>`;
+            else if (line.startsWith('[Referència Imatge: ')) {
+                const idMatch = line.match(/\[Referència Imatge: (.*)\]/);
+                if (idMatch) {
+                    const imgObj = imageRegistry.find(img => img.id === idMatch[1]);
+                    if (imgObj) html += `<img src="${imgObj.data}" alt="${imgObj.id}">`;
+                }
+            }
+            else if (line.trim() === "") html += `<br>`;
+            else html += `<p>${processInline(line)}</p>`;
+        }
+        if (imageRegistry.length > 0) {
+            html += `<div class="appendix"><h3>Apèndix: Dades de les Imatges</h3>`;
+            imageRegistry.forEach(img => {
+                html += `<div class="appendix-item"><strong>${img.id}:</strong> ${img.data}</div>`;
+            });
+            html += `</div>`;
+        }
+        preview.innerHTML = html;
+    }
+
+    function processInline(text) {
+        let res = "";
+        let i = 0;
+        while (i < text.length) {
+            if (text[i] === '$') {
+                let j = text.indexOf('$', i + 1);
+                if (j !== -1) {
+                    res += createMathSVG(text.substring(i + 1, j));
+                    i = j + 1; continue;
+                }
+            }
+            if (text.substring(i, i+2) === '**') {
+                let j = text.indexOf('**', i + 2);
+                if (j !== -1) {
+                    res += `<b>${text.substring(i + 2, j)}</b>`;
+                    i = j + 2; continue;
+                }
+            }
+            res += text[i];
+            i++;
+        }
+        return res;
+    }
+
+    function exportFile(type) {
+        let content, fileName, mimeType;
+        if (type === 'md') {
+            content = editor.value;
+            fileName = "document.md";
+            mimeType = "text/markdown";
+        } else {
+            content = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+                body{font-family:sans-serif;padding:40px;max-width:850px;margin:auto;}
+                svg{vertical-align:middle;}
+                img{max-width:100%;height:auto;margin:20px 0;}
+                h1{border-bottom: 1px solid #ccc; padding-bottom: 10px;}
+                .appendix { margin-top: 50px; padding-top: 20px; border-top: 2px solid #ccc; font-size: 10px; color: #777; }
+                .appendix-item { margin-bottom: 5px; word-break: break-all; }
+            </style></head><body>${preview.innerHTML}</body></html>`;
+            fileName = "document.html";
+            mimeType = "text/html";
+        }
+        const blob = new Blob([content], {type: mimeType});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = fileName;
+        a.click();
+    }
+</script>
+</body>
+</html>

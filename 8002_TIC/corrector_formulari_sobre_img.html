@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Corrector Massiu d'Activitats</title>
+<style>
+body { 
+    font-family: sans-serif; 
+    margin: 20px; 
+    background: #f4f4f9; 
+}
+.config-box { 
+    background: white; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    margin-bottom: 20px; 
+}
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    background: white; 
+    margin-top: 20px; 
+}
+th, td { 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    text-align: center; 
+}
+th { 
+    background: #eee; 
+}
+.btn { 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    border: none; 
+    border-radius: 4px; 
+    font-weight: bold; 
+    margin-right: 10px; 
+}
+.btn-primary { 
+    background: #2196F3; 
+    color: white; 
+}
+.btn-success { 
+    background: #4CAF50; 
+    color: white; 
+}
+.btn-pdf { 
+    background: #e91e63; 
+    color: white; 
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+</head>
+
+
+<body>
+
+<h2>Corrector Massiu Caselles</h2>
+
+<div class="config-box">
+    <h3>1. Paràmetres de Puntuació</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 600px;">
+        Punts per resposta correcta: <input type="number" id="p_be" value="1" step="0.1">
+        Punts per resposta incorrecta: <input type="number" id="p_mal" value="0" step="0.1">
+        <label><input type="checkbox" id="ignorar_buides"> Comptar caselles en blanc com a correcte (si no tenen solució al JSON)</label>
+    </div>
+</div>
+
+<div class="config-box">
+    <h3>2. Carregar Fitxers</h3>
+    <label><b>JSON de Solucions:</b></label>
+    <input type="file" id="jsonFile" accept=".json"><br><br>
+    <label><b>HTMLs dels Alumnes:</b></label>
+    <input type="file" id="htmlFiles" accept=".html" multiple>
+</div>
+
+<button class="btn btn-primary" onclick="corregirTot()">Corregir Activitats</button>
+<button class="btn btn-success" onclick="exportarCSV()">Exportar a CSV</button>
+<button class="btn btn-pdf" onclick="exportarPDF()">Generar PDF de Notes</button>
+
+<div id="resultatsArea">
+    <table id="taulaResultats">
+        <thead>
+            <tr>
+                <th>Alumne</th>
+                <th>Curs</th>
+                <th>Encerts</th>
+                <th>Errors</th>
+                <th>Nota Final</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+
+<!-- =====SCRIPT =================================================== -->
+<script>
+let solucionsGlobals = null;
+let dadesResultats = [];
+
+// Llegir el JSON
+document.getElementById('jsonFile').onchange = function(e) {
+    const reader = new FileReader();
+    reader.onload = function(ev) { solucionsGlobals = JSON.parse(ev.target.result); };
+    reader.readAsText(e.target.files[0]);
+};
+
+async function corregirTot() {
+if (!solucionsGlobals) return alert("Primer carrega el fitxer JSON de solucions!");
+const files = document.getElementById('htmlFiles').files;
+if (files.length === 0) return alert("Selecciona els fitxers HTML dels alumnes.");
+
+const pBe = parseFloat(document.getElementById('p_be').value);
+const pMal = parseFloat(document.getElementById('p_mal').value);
+const comptarBlancsSenseSolucio = document.getElementById('ignorar_buides').checked;
+
+dadesResultats = [];
+const tbody = document.querySelector("#taulaResultats tbody");
+
+// Actualitzem la capçalera de la taula si no ho has fet manualment a l'HTML
+const thead = document.querySelector("#taulaResultats thead tr");
+thead.innerHTML = `<th>Alumne</th><th>Curs</th><th>Encerts</th><th>Errors</th><th>Total Preg.</th><th>Nota Final</th>`;
+
+tbody.innerHTML = "";
+
+for (let file of files) {
+    const text = await file.text();
+    
+    // 1. Extraure dades de l'alumne
+    const nomMatch = text.match(/<b>Alumne:<\/b>\s*(.*?)\s*<br>/i);
+    const cursMatch = text.match(/<b>Curs:<\/b>\s*(.*?)<\/p>/i);
+    const alumneNom = nomMatch ? nomMatch[1].trim() : file.name;
+    const curs = cursMatch ? cursMatch[1].trim() : "---";
+
+    // 2. Mapejar respostes de l'alumne
+    const respostesAlumne = {};
+    const parser = new DOMParser();
+    const docAlumne = parser.parseFromString(text, 'text/html');
+    const paragrafs = docAlumne.querySelectorAll('p');
+    
+    paragrafs.forEach(p => {
+        const negreta = p.querySelector('b');
+        if (negreta && negreta.textContent.includes(':')) {
+            const clau = negreta.textContent.replace(':', '').trim();
+            const valor = p.textContent.replace(negreta.textContent, '').trim();
+            respostesAlumne[clau] = valor;
+        }
+    });
+
+    // 3. Lògica de Correcció
+    let encerts = 0;
+    let errors = 0;
+    let totalPreguntes = 0;
+
+    // Primer pas: Validar tot el que hi ha al JSON (les preguntes obligatòries)
+    for (let id in solucionsGlobals) {
+        totalPreguntes++;
+        const resAlumneRaw = respostesAlumne[id] || "";
+        const vAlumne = resAlumneRaw.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();
+        
+        const esCorrecte = solucionsGlobals[id].some(s => {
+            const vJson = s.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();
+            return vJson === vAlumne;
+        });
+
+        if (esCorrecte && vAlumne !== "") {
+            encerts++;
+        } else {
+            // Si està buit o no coincideix, és error (perquè és al JSON)
+            errors++;
+        }
+    }
+
+    // Segon pas: Gestionar les caselles que NO estan al JSON (opcionals/blanques)
+    if (comptarBlancsSenseSolucio) {
+        for (let idAlumne in respostesAlumne) {
+            if (!solucionsGlobals.hasOwnProperty(idAlumne)) {
+                totalPreguntes++; // Augmentem el total només si hem triat comptar-les
+                const vAlumneExtra = respostesAlumne[idAlumne].trim();
+                if (vAlumneExtra === "") {
+                    encerts++; // Blanc correcte
+                } else {
+                    errors++; // Ha escrit on no tocava
+                }
+            }
+        }
+    }
+
+    let nota = (encerts * pBe) + (errors * pMal);
+    
+    const fila = { 
+        alumne: alumneNom, 
+        curs: curs, 
+        encerts: encerts, 
+        errors: errors, 
+        total: totalPreguntes,
+        nota: nota.toFixed(2) 
+    };
+    dadesResultats.push(fila);
+
+    tbody.innerHTML += `<tr>
+        <td>${fila.alumne}</td>
+        <td>${fila.curs}</td>
+        <td>${fila.encerts}</td>
+        <td>${fila.errors}</td>
+        <td>${fila.total}</td>
+        <td><b>${fila.nota}</b></td>
+    </tr>`;
+}
+}
+
+function exportarCSV() {
+if (dadesResultats.length === 0) {
+    return alert("No hi ha dades per exportar. Primer corregeix els exàmens.");
+}
+
+// 1. Definim la capçalera (separada per punts i coma per compatibilitat amb Excel en espanyol/català)
+let csvContent = "Alumne;Curs;Encerts;Errors;Total Preguntes;Nota Final\n";
+
+// 2. Afegim les files de dades
+dadesResultats.forEach(r => {
+    // Netegem possibles punts i coma dins dels noms per no trencar les columnes
+    let alumneNeteja = r.alumne.replace(/;/g, ",");
+    let cursNeteja = r.curs.replace(/;/g, ",");
+    
+    csvContent += `${alumneNeteja};${cursNeteja};${r.encerts};${r.errors};${r.total};${r.nota}\n`;
+});
+
+// 3. Creem el Blob. Incloem \uFEFF (BOM) per a que l'Excel detecti correctament la codificació UTF-8
+const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
+
+// 4. Generem l'enllaç de descàrrega
+const link = document.createElement("a");
+if (link.download !== undefined) {
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    
+    // Nom del fitxer amb la data d'avui
+    const data = new Date().toLocaleDateString().replace(/\//g, "-");
+    link.setAttribute("download", `notes_activitat_${data}.csv`);
+    
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+}function exportarPDF() {
+const { jsPDF } = window.jspdf;
+const doc = new jsPDF();
+doc.text("Resultats de l'Activitat", 14, 15);
+
+const rows = dadesResultats.map(r => [r.alumne, r.curs, r.encerts, r.errors, r.total, r.nota]);
+doc.autoTable({
+    head: [['Alumne', 'Curs', 'Encerts', 'Errors', 'Total', 'Nota']],
+    body: rows,
+    startY: 20
+});
+doc.save("notes.pdf");
+}
+</script>
+</body>
+</html>
