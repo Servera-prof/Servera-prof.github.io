@@ -420,67 +420,1043 @@ restringides a aplicacions puntuals per la seva baixa eficiència
   prohibides en moltes aplicacions per normativa d’eficiència.
 
 
-## 9. Equips auxiliars i components
+### 2.3. Equips auxiliars i components
 
 Els equips auxiliars són els components que acompanyen la làmpada 
-per garantir el seu funcionament correcte, estable i segur. En funció de la tecnologia de la font, poden tenir diferents noms i funcions. Per a làmpades de descàrrega (fluorescents, HID), l’element principal és el balast (o reactància), que limita el corrent un cop encesa la làmpada; pot ser electromagnètic (amb bobina de ferro) o electrònic (més eficient, lleuger i silenciós). També es necessita un arrencador (en balasts magnètics) per generar el pic de tensió d’encesa, i sovint un condensador per corregir el factor de potència. En les làmpades LED, l’equip auxiliar és el driver LED, que converteix la tensió alterna de xarxa (o contínua) en un corrent constant adequat per als díodes. Els drivers poden ser independents o integrats dins de la lluminària, i sovint incorporen funcionalitats de regulació, proteccions (sobreintensitat, curtcircuit, sobretensió) i opcions de control (0–10 V, DALI, push). Altres components auxiliars habituals són els transformadors (per a làmpades de baixa tensió, com halògenes de 12 V), els condensadors de compensació (per millorar el factor de potència en instal·lacions amb balasts magnètics) i els protectors contra sobretensions (SPD) per a instal·lacions exteriors o sensibles.
+per garantir el seu funcionament correcte, estable i segur. 
+En funció de la tecnologia de la font, poden tenir diferents noms i 
+funcions. 
+
+Per a làmpades de descàrrega (fluorescents, HID), l’element 
+principal és el balast (o reactància), que limita el corrent un cop 
+encesa la làmpada; pot ser electromagnètic (amb bobina de ferro) o 
+electrònic (més eficient, lleuger i silenciós). 
+També es necessita un arrencador (en balasts magnètics) per generar 
+el pic de tensió d’encesa, i sovint un condensador per corregir el 
+factor de potència. 
+
+En les làmpades LED, l’equip auxiliar és el driver LED, que 
+converteix la tensió alterna de xarxa (o contínua) en un corrent 
+constant adequat per als díodes. 
+Els drivers poden ser independents o integrats dins de la 
+lluminària, i sovint incorporen funcionalitats de regulació, 
+proteccions (sobreintensitat, curtcircuit, sobretensió) i opcions de 
+control (0–10 V, DALI, push). 
+
+Altres components auxiliars habituals són els transformadors (per a 
+làmpades de baixa tensió, com halògenes de 12 V), els condensadors 
+de compensació (per millorar el factor de potència en 
+instal·lacions amb balasts magnètics) i els protectors contra 
+sobretensions (SPD) per a instal·lacions exteriors o sensibles.
 
 - **Balast (reactància):** per a fluorescents i HID. 
-Electromagnètic: baix cost, però pèrdues i factor de potència baix 
-(requereix condensador). Electrònic: alt rendiment, sense 
-parpelleig, millor factor de potència, regulable.
-- **Arrencador:** només en fluorescents amb balast magnètic (tipus “starter”).
-- **Condensador:** corregeix el factor de potència en balasts magnètics.
-- **Driver LED:** converteix AC a DC (corrent constant); potència de sortida, eficiència (>85–90%), factor de potència (>0,9); tipus: intern (integrat a la lluminària) o extern (per a lluminàries industrials o projectors); sovint amb dimming incorporat i proteccions.
-- **Transformadors:** per a làmpades de baixa tensió (12 V) – halògenes, alguns LEDs.
-- **Protectors contra sobretensions (SPD):** obligatoris en exteriors i en instal·lacions amb lluminàries LED per evitar danys per descàrregues atmosfèriques o maniobres.
+  Electromagnètic: baix cost, però pèrdues i factor de potència baix 
+  (requereix condensador). Electrònic: alt rendiment, sense 
+  parpelleig, millor factor de potència, regulable.
+- **Arrencador:** només en fluorescents amb balast magnètic (tipus 
+  «_starter_»).
+- **Condensador:** corregeix el factor de potència en balasts 
+  magnètics.
+- **Driver LED:** converteix AC a DC (corrent constant); potència de 
+  sortida, eficiència (>85–90%), factor de potència (>0,9); tipus: 
+  intern (integrat a la lluminària) o extern (per a lluminàries 
+  industrials o projectors); sovint amb dimming incorporat i 
+  proteccions.
+- **Transformadors:** per a làmpades de baixa tensió (12 V) – 
+  halògenes, alguns LEDs.
+- **Protectors contra sobretensions (SPD):** obligatoris en 
+  exteriors i en instal·lacions amb lluminàries LED per evitar danys 
+  per descàrregues atmosfèriques o maniobres.
 
----
 
-## 10. Unitats de regulació i control
+### 2.4. Unitats de regulació i control
 
-Les unitats de regulació i control tenen com a objectiu adequar el nivell d’enllumenat a les necessitats reals, millorant el confort visual i reduint el consum energètic. La forma més senzilla és el dimmer (regulador), que pot actuar per retall de fase (per a làmpades incandescents o halògenes), per 0–10 V o per DALI (per a LEDs i fluorescents amb balast electrònic regulable). Més enllà de la regulació manual, s’incorporen sensors de presència (infrarojos o microones) que activen o atenuen la llum quan es detecta moviment, i fotocèl·lules que regulen o commuten l’enllumenat en funció de la llum natural disponible. En instal·lacions d’enllumenat exterior i en grans edificis terciaris, s’utilitzen rellotges astronòmics que calculen l’hora d’encesa i apagada segons la ubicació geogràfica, evitant ajustos manuals. Els sistemes més avançats integren tots aquests elements en una xarxa de gestió tècnica d’enllumenat (com DALI, KNX, o sistemes de telegestió per ràdio o PLC), que permeten programar horaris, escenes de llum, monitoritzar consums i detectar avaries de manera centralitzada. Aquests sistemes són especialment rellevants per complir amb els requisits d’eficiència energètica (Codi Tècnic de l’Edificació, directives europees) i per a instal·lacions d’enllumenat exterior que busquen reduir la contaminació lumínica i els costos operatius.
+Les unitats de regulació i control tenen com a objectiu adequar el 
+nivell d’enllumenat a les necessitats reals, millorant el confort 
+visual i reduint el consum energètic. 
+La forma més senzilla és el dimmer (regulador), que pot actuar per 
+retall de fase (per a làmpades incandescents o halògenes), per 0–1 V 
+o per DALI (per a LEDs i fluorescents amb balast electrònic 
+regulable).
+ 
+Més enllà de la regulació manual, s’incorporen sensors de presència 
+(infrarojos o microones) que activen o atenuen la llum quan es 
+detecta moviment, i fotocèl·lules que regulen o commuten 
+l’enllumenat en funció de la llum natural disponible. 
 
-- **Reguladors (dimmers):** per a incandescents/halògens: retall de fase (trailing edge / leading edge). Per a LED i fluorescents electrònics: 0–10 V, DALI, PWM (polsos), sistema push (commutació).
-- **Sensors:** presència (PIR o microones): encén o atenuació quan hi ha ocupants; fotocèl·lules (lux): regulen per aportació de llum natural (enllumenat regulable) o commuten l’encesa/apagada.
-- **Rellotges i programadors:** rellotge astronòmic (encès/apagat segons l’ortus i ocàs); temporitzadors (per a funcionament per temps determinat).
-- **Sistemes de gestió centralitzada:** DALI (Digital Addressable Lighting Interface): control digital individual per a lluminàries, permet escenes, adreçament, telemetria. Telegestió: per a enllumenat exterior, control per ràdio, GPRS, PLC (corrents portadores) des d’un centre de control. KNX / altres busos: integració amb sistemes d’automatització d’edificis.
-- **Funcionalitats addicionals:** programació horària, corbes de regulació, mesura de consums, diagnosi d’avaries.
+En instal·lacions d’enllumenat exterior i en grans edificis 
+terciaris, s’utilitzen rellotges astronòmics que calculen l’hora 
+d’encesa i apagada segons la ubicació geogràfica, evitant ajustos 
+manuals. 
+Els sistemes més avançats integren tots aquests elements en una 
+xarxa de gestió tècnica d’enllumenat (com DALI, KNX, o sistemes de 
+telegestió per ràdio o PLC), que permeten programar horaris, escenes 
+de llum, monitoritzar consums i detectar avaries de manera 
+centralitzada. 
 
----
+Aquests sistemes són especialment rellevants per complir amb els 
+requisits d’eficiència energètica (Codi Tècnic de l’Edificació, 
+directives europees) i per a instal·lacions d’enllumenat exterior 
+que busquen reduir la contaminació lumínica i els costos operatius.
 
-## 11. Quadres de comandament i protecció en instal·lacions de luminotècnia. Elements de comandament i protecció. Característiques específiques d’ús
+- **Reguladors (dimmers):** per a incandescents/halògens: retall de 
+  fase (trailing edge / leading edge). Per a LED i fluorescents 
+  electrònics: 0–10 V, DALI, PWM (polsos), sistema push (commutació).
+- **Sensors:** presència (PIR o microones): encén o atenuació quan 
+  hi ha ocupants; fotocèl·lules (lux): regulen per aportació de llum 
+  natural (enllumenat regulable) o commuten l’encesa/apagada.
+- **Rellotges i programadors:** rellotge astronòmic (encès/apagat 
+  segons l’ortus i ocàs); temporitzadors (per a funcionament per 
+  temps determinat).
+- **Sistemes de gestió centralitzada:** DALI (Digital Addressable 
+  Lighting Interface): control digital individual per a lluminàries, 
+  permet escenes, adreçament, telemetria. Telegestió: per a 
+  enllumenat exterior, control per ràdio, GPRS, PLC (corrents 
+  portadores) des d’un centre de control. KNX / altres busos: 
+  integració amb sistemes d’automatització d’edificis.
+- **Funcionalitats addicionals:** programació horària, corbes de 
+  regulació, mesura de consums, diagnosi d’avaries.
 
-Els quadres elèctrics destinats a l’enllumenat concentren els dispositius de protecció, maniobra i control de tots els circuits de llum. Dins d’aquests quadres, els elements de protecció tenen la missió de garantir la seguretat de les persones i dels equips. Els interruptors automàtics magnetotèrmics (PIAs) protegeixen els cables i les lluminàries contra sobrecàrregues i curtcircuits; s’han de seleccionar amb la corba adequada (generalment corba C per a circuits amb equips electrònics, o corba B per a càrregues resistives). Els interruptors diferencials protegeixen contra contactes indirectes (derivacions a terra) i són obligatoris en tots els circuits d’enllumenat segons el REBT; la sensibilitat típica és de 30 mA per a locals d’ús general, i pot ser de 300 mA per a protecció contra incendis en instal·lacions exteriors o industrials. També es poden incorporar fusibles com a protecció addicional en certs equips.
 
-Pel que fa als elements de comandament, permeten operar els circuits de manera manual o automàtica. Els interruptors i polsadors són els elements manuals més bàsics, mentre que els contactors s’utilitzen per governar circuits de potència des de senyals de baixa intensitat (per exemple, des d’un rellotge astronòmic o un sensor). En instal·lacions d’enllumenat exterior, és freqüent l’ús de rellotges programadors o astronòmics que actuen sobre contactors per realitzar l’encesa i apagada centralitzada. També es poden trobar temporitzadors per a funcions de retard, i relés auxiliars per a funcions de lògica.
+### 2.5. Quadres de comandament i protecció en instal·lacions de luminotècnia. Elements de comandament i protecció. Característiques específiques d’ús
 
-Les característiques específiques d’ús dels components en instal·lacions d’enllumenat vénen determinades per la tipologia de la càrrega. Els circuits amb lluminàries LED o amb balasts electrònics generen corrents harmòniques i elevats corrents d’encesa, per la qual cosa els interruptors magnetotèrmics han de seleccionar-se amb una corba adequada (C o fins i tot D en alguns casos) i verificant la seva capacitat de tall. Els diferencials han de ser de tipus A (o F) quan hi ha equips electrònics, per garantir la seva resposta davant corrents continus residuals. En instal·lacions exteriors amb llargues línies de cablejat, cal considerar la protecció contra sobretensions transitòries mitjançant protectors SPD instal·lats al quadre general o en subquadres. A més, els quadres han de complir amb el grau de protecció IP adequat a l’emplaçament (IP30 en interiors, IP65 en exteriors o locals humits) i han de permetre l’etiquetatge i identificació clara dels circuits, tal com exigeix el REBT.
+Els quadres elèctrics destinats a l’enllumenat concentren els 
+dispositius de protecció, maniobra i control de tots els circuits de 
+llum. 
+Dins d’aquests quadres, els elements de protecció tenen la missió de 
+garantir la seguretat de les persones i dels equips. 
+Els interruptors automàtics magnetotèrmics (PIAs) protegeixen els 
+cables i les lluminàries contra sobrecàrregues i curtcircuits; s’han 
+de seleccionar amb la corba adequada (generalment corba C per a 
+circuits amb equips electrònics, o corba B per a càrregues 
+resistives). 
+Els interruptors diferencials protegeixen contra contactes 
+indirectes (derivacions a terra) i són obligatoris en tots els 
+circuits d’enllumenat segons el REBT; la sensibilitat típica és de 
+30 mA per a locals d’ús general, i pot ser de 300 mA per a protecció 
+contra incendis en instal·lacions exteriors o industrials. 
+També es poden incorporar fusibles com a protecció addicional en 
+certs equips.
 
-- **Quadres de comandament i protecció:** armari que allotja proteccions i comandaments dels circuits d’enllumenat. Ubicació: interiors secs (IP30) o locals especials (IP65).
-- **Elements de protecció:** interruptors magnetotèrmics (corba C per a càrregues electròniques, B per a resistives); interruptors diferencials (30 mA per a pública concurrència, 300 mA per a protecció contra incendis; tipus A o F per a circuits amb electrònica); fusibles (protecció complementària); protectors de sobretensions (SPD) obligatoris en exteriors.
-- **Elements de comandament:** interruptors / polsadors (manual); contactors (govern de potència des de senyals de control); rellotges programables / astronòmics (encesa/apagada); temporitzadors (retards); relés auxiliars (funcions auxiliars).
-- **Característiques específiques segons l’ús:** en LED i balasts electrònics: corrents d’encesa elevades, corba C o D; diferencials tipus A. En exteriors: SPD, protecció IP adequada, resistència a la temperatura. Compliment del REBT ITC-BT-17, ITC-BT-24, ITC-BT-09.
+Pel que fa als elements de comandament, permeten operar els circuits 
+de manera manual o automàtica. 
+Els interruptors i polsadors són els elements manuals més bàsics, 
+mentre que els contactors s’utilitzen per governar circuits de 
+potència des de senyals de baixa intensitat (per exemple, des d’un 
+rellotge astronòmic o un sensor). 
+En instal·lacions d’enllumenat exterior, és freqüent l’ús de 
+rellotges programadors o astronòmics que actuen sobre contactors per 
+realitzar l’encesa i apagada centralitzada. 
+També es poden trobar temporitzadors per a funcions de retard, i 
+relés auxiliars per a funcions de lògica.
 
----
+Les característiques específiques d’ús dels components en 
+instal·lacions d’enllumenat vénen determinades per la tipologia de 
+la càrrega. 
+Els circuits amb lluminàries LED o amb balasts electrònics generen 
+corrents harmòniques i elevats corrents d’encesa, per la qual cosa 
+els interruptors magnetotèrmics han de seleccionar-se amb una corba 
+adequada (C o fins i tot D en alguns casos) i verificant la seva 
+capacitat de tall. 
+Els diferencials han de ser de tipus A (o F) quan hi ha equips 
+electrònics, per garantir la seva resposta davant corrents continus 
+residuals. 
+En instal·lacions exteriors amb llargues línies de cablejat, cal 
+considerar la protecció contra sobretensions transitòries mitjançant 
+protectors SPD instal·lats al quadre general o en subquadres. 
+A més, els quadres han de complir amb el grau de protecció IP 
+adequat a l’emplaçament (IP30 en interiors, IP65 en exteriors o 
+locals humits) i han de permetre l’etiquetatge i identificació clara 
+dels circuits, tal com exigeix el REBT.
 
-## 12. Eficiència energètica en les instal·lacions d’enllumenat exterior
+- **Quadres de comandament i protecció:** armari que allotja 
+  proteccions i comandaments dels circuits d’enllumenat. Ubicació: 
+  interiors secs (IP30) o locals especials (IP65).
+- **Elements de protecció:** interruptors magnetotèrmics (corba C 
+  per a càrregues electròniques, B per a resistives); interruptors 
+  diferencials (30 mA per a pública concurrència, 300 mA per a 
+  protecció contra incendis; tipus A o F per a circuits amb 
+  electrònica); fusibles (protecció complementària); protectors de 
+  sobretensions (SPD) obligatoris en exteriors.
+- **Elements de comandament:** interruptors / polsadors (manual); 
+  contactors (govern de potència des de senyals de control); 
+  rellotges programables / astronòmics (encesa/apagada); 
+  temporitzadors (retards); relés auxiliars (funcions auxiliars).
+- **Característiques específiques segons l’ús:** en LED i balasts 
+  electrònics: corrents d’encesa elevades, corba C o D; diferencials 
+  tipus A. 
+  En exteriors: SPD, protecció IP adequada, resistència a la 
+  temperatura. 
+  Compliment del REBT ITC-BT-17, ITC-BT-24, ITC-BT-09.
 
-L’eficiència energètica en l’enllumenat exterior és un objectiu prioritari a causa de la gran potència instal·lada i les llargues hores de funcionament. La primera estratègia és la selecció de fonts lluminoses d’alta eficàcia, on la tecnologia LED ha esdevingut la solució dominant per la seva capacitat de superar els 150 lm/W, superant clarament les antigues làmpades de vapor de sodi o hal·lur metàl·lic. A més, les lluminàries LED permeten un control òptic molt precís, reduint la contaminació lumínica i dirigint la llum només on es necessita.
 
-Un segon pilar és la regulació i gestió intel·ligent. Mitjançant sistemes de telegestió, es pot esmorteir el flux lluminós en franges horàries de baixa concurrència (per exemple, reducció al 50% després de la mitjanit), aconseguint estalvis addicionals del 20–30% sense comprometre la seguretat viària. Aquests sistemes també permeten detectar avaries de forma remota, evitant desplaçaments innecessaris i reduint el temps de resposta.
+### 2.6. Eficiència energètica en les instal·lacions d’enllumenat 
+exterior
 
-També és fonamental l’adequació dels nivells d’il·luminació a l’ús real. Les normatives (com la UNE-EN 13201 per a vies públiques) defineixen classes d’enllumenat en funció de la densitat de trànsit, la complexitat de la via i la presència de zones de risc. Dimensionar correctament la instal·lació (separació entre columnes, alçada, òptica) evita sobredimensionaments que malgasten energia. Finalment, les mesures organitzatives com la reducció d’hores d’encesa (apagat parcial en franges nocturnes de molt baixa circulació) i el manteniment preventiu (neteja de lluminàries, substitució de components degradats) asseguren que l’eficiència teòrica es mantingui al llarg del temps.
+L’eficiència energètica en l’enllumenat exterior és un objectiu 
+prioritari a causa de la gran potència instal·lada i les llargues 
+hores de funcionament. 
+La primera estratègia és la selecció de fonts lluminoses d’alta 
+eficàcia, on la tecnologia LED ha esdevingut la solució dominant per 
+la seva capacitat de superar els 150 lm/W, superant clarament les 
+antigues làmpades de vapor de sodi o hal·lur metàl·lic. 
+A més, les lluminàries LED permeten un control òptic molt precís, 
+reduint la contaminació lumínica i dirigint la llum només on es 
+necessita.
 
-A Catalunya i a la resta de l’Estat, aquestes mesures estan alineades amb les exigències del Codi Tècnic de l’Edificació (CTE) en el seu document bàsic DB-HE (estalvi d’energia) i amb les lleis de protecció del cel nocturn, que limiten el flux hemisfèric superior i la temperatura de color màxima permesa (freqüentment 3000 K en zones E1 i E2). Així, l’eficiència energètica no només redueix la factura elèctrica i les emissions de CO₂, sinó que també millora la qualitat ambiental nocturna.
+Un segon pilar és la regulació i gestió intel·ligent. Mitjançant 
+sistemes de telegestió, es pot esmorteir el flux lluminós en franges 
+horàries de baixa concurrència (per exemple, reducció al 50% després 
+de la mitjanit), aconseguint estalvis addicionals del 20–30% sense 
+comprometre la seguretat viària. 
+Aquests sistemes també permeten detectar avaries de forma remota, 
+evitant desplaçaments innecessaris i reduint el temps de resposta.
 
-- **Selecció de la font:** ús majoritari de LED amb eficàcia > 150 lm/W (versus < 120 lm/W de vapor de sodi); control òptic per evitar flux perdut cap al cel i reduir la contaminació lumínica.
-- **Gestió intel·ligent (telegestió):** regulació per franges horàries (reducció de flux a hores de baixa activitat); monitorització remota de consums i avaries; comandament individualitzat per a cada punt de llum.
-- **Disseny ajustat a necessitats reals:** aplicació de la norma UNE-EN 13201 per definir classe d’enllumenat i nivells adequats; càlcul fotomètric per optimitzar la disposició de columnes, alçada i òptica; evitar sobredimensionament que augmenta la potència instal·lada.
-- **Mesures organitzatives:** reducció d’hores d’encesa en trams nocturns de baixa circulació (apagat parcial o regulació); manteniment preventiu (neteja de lluminàries, substitució de llums abans de finalitzar la vida útil per evitar pèrdues de flux).
-- **Compliment normatiu:** CTE DB-HE (estalvi d’energia): obliga a sistemes de regulació i control en determinats casos; legislació de contaminació lumínica: limitació de temperatura de color (≤ 3000 K en zones protegides), flux hemisfèric superior i enlluernament.
-- **Beneficis:** reducció del consum energètic (fins a un 60–70% respecte tecnologies anteriors), disminució de la factura i de les emissions de CO₂, millora de la qualitat del cel nocturn i reducció del manteniment.
+També és fonamental l’adequació dels nivells d’il·luminació a l’ús 
+real. 
+Les normatives (com la UNE-EN 13201 per a vies públiques) defineixen 
+classes d’enllumenat en funció de la densitat de trànsit, la 
+complexitat de la via i la presència de zones de risc. 
+Dimensionar correctament la instal·lació (separació entre columnes, 
+alçada, òptica) evita sobredimensionaments que malgasten energia. 
+Finalment, les mesures organitzatives com la reducció d’hores 
+d’encesa (apagat parcial en franges nocturnes de molt baixa 
+circulació) i el manteniment preventiu (neteja de lluminàries, 
+substitució de components degradats) asseguren que l’eficiència 
+teòrica es mantingui al llarg del temps.
 
+Aquestes mesures estan alineades amb les exigències del Codi Tècnic 
+de l’Edificació (CTE) en el seu document bàsic DB-HE (estalvi 
+d’energia) i amb les lleis de protecció del cel nocturn, que limiten 
+el flux hemisfèric superior i la temperatura de color màxima permesa 
+(freqüentment 3000 K en zones E1 i E2). 
+Així, l’eficiència energètica no només redueix la factura elèctrica 
+i les emissions de CO₂, sinó que també millora la qualitat ambiental 
+nocturna.
+
+- **Selecció de la font:** ús majoritari de LED amb eficàcia > 150 
+  lm/W (versus < 120 lm/W de vapor de sodi); control òptic per 
+  evitar flux perdut cap al cel i reduir la contaminació lumínica.
+- **Gestió intel·ligent (telegestió):** regulació per franges 
+  horàries (reducció de flux a hores de baixa activitat); 
+  monitorització remota de consums i avaries; comandament 
+  individualitzat per a cada punt de llum.
+- **Disseny ajustat a necessitats reals:** aplicació de la norma UNE-
+  EN 13201 per definir classe d’enllumenat i nivells adequats; 
+  càlcul fotomètric per optimitzar la disposició de columnes, alçada 
+  i òptica; evitar sobredimensionament que augmenta la potència 
+  instal·lada.
+- **Mesures organitzatives:** reducció d’hores d’encesa en trams 
+  nocturns de baixa circulació (apagat parcial o regulació); 
+  manteniment preventiu (neteja de lluminàries, substitució de llums 
+  abans de finalitzar la vida útil per evitar pèrdues de flux).
+- **Compliment normatiu:** CTE DB-HE (estalvi d’energia): obliga a 
+  sistemes de regulació i control en determinats casos; legislació 
+  de contaminació lumínica: limitació de temperatura de color (≤ 
+  3000 K en zones protegides), flux hemisfèric superior i 
+  enlluernament.
+- **Beneficis:** reducció del consum energètic (fins a un 60–70% 
+  respecte tecnologies anteriors), disminució de la factura i de les 
+  emissions de CO₂, millora de la qualitat del cel nocturn i 
+  reducció del manteniment.
+
+
+
+## 3. Pals, bàculs, columnes i altres suports
+
+Els suports per a lluminàries d’enllumenat exterior són elements 
+estructurals que sostenen les lluminàries a l’alçada adequada per 
+garantir la distribució de la llum prevista. 
+
+Els pals són suports verticals generalment de forma troncocònica o 
+cilíndrica, fabricats en acer galvanitzat, alumini, formigó o 
+materials compostos, amb altures que oscil·len entre 4 i 12 metres 
+per a enllumenat viari i urbà. 
+Els bàculs són una variant de pal que incorpora un braç horitzontal 
+o corb a la part superior per situar la lluminària per damunt de la 
+calçada; s’utilitzen habitualment en carreteres i vies de 
+circulació. 
+Les columnes són suports de menor altura (normalment fins a 4 
+metres) destinats a zones de vianants, jardins o places, sovint amb 
+un disseny més estètic.
+ 
+Altres suports inclouen les mensules (fixades a parets o façanes), 
+els suports penjants (per a cables d’acer o cadenes) i els bàculs 
+telescòpics, que permeten abaixar la lluminària per a tasques de 
+manteniment sense necessitat d’elevació mecànica. La selecció del 
+suport depèn de l’aplicació, l’alçada de muntatge necessària, la 
+resistència mecànica (especialment al vent i a les càrregues de 
+gel), la integració urbanística i la facilitat de manteniment.
+
+- **Pals:** suports verticals troncocònics o cilíndrics d’acer, alumini o formigó; altures típiques de 4 a 12 m; utilitzats en vials, places i zones urbanes.
+- **Bàculs:** pals amb braç superior (recte o corb) per situar la lluminària en volada sobre la calçada; comuns en carreteres i enllumenat viari.
+- **Columnes:** suports de poca alçada (fins a 4 m) per a enllumenat de parcs, jardins i zones de vianants; sovint amb disseny ornamental.
+- **Altres suports:** mensules (fixació mural), suports penjants (sobre cable d’acer), bàculs telescòpics (abatibles per a manteniment sense grua), i pals de formigó armat per a grans potències.
+- **Criteris de selecció:** alçada de muntatge, resistència al vent (càlcul segons CTE DB-SE-AE), classe de carrega (enllumenat viari o ornamental), compatibilitat amb la lluminària, tractament anticorrosió (galvanització en calent), possibilitat d’allotjar equips de control i proteccions.
+
+### 3.1. Càlcul de pals i bàculs
+
+El càlcul mecànic de pals i bàculs té per objectiu assegurar que el 
+suport resisteix les sol·licitacions a les quals estarà sotmès 
+durant la seva vida útil, especialment les càrregues del vent, el 
+pes de la lluminària i del braç, i eventualment les càrregues de gel 
+o el propi pes del pal. 
+
+La normativa de referència és el Codi Tècnic de l’Edificació (CTE) 
+en el document DB-SE-AE (accions en l’edificació) i les 
+especificacions tècniques dels fabricants (UNE-EN per a pals 
+d’enllumenat). 
+Es calcula la força del vent mitjançant la pressió dinàmica segons 
+la zona eòlica, l’altura del pal i la superfície d’exposició 
+(incloent la lluminària i el braç). 
+A partir d’aquestes càrregues, es determina el moment flector en la 
+base i es compara amb la capacitat resistent del pal (mòdul 
+resistent). 
+També es verifica la deformació (fletxa) per garantir que no es 
+superin els límits funcionals. 
+
+En el càlcul de la fonamentació (sabata o placa d’ancoratge), es 
+dimensiona el bloc de formigó o la placa per transmetre els esforços 
+al terreny sense superar la pressió admissible. 
+Els fabricants proporcionen taules de càrregues admissibles per a 
+cada tipus de pal en funció de l’altura, el gruix i el tipus d’acer, 
+que simplifiquen el càlcul per als projectes habituals.
+
+- **Normativa:** CTE DB-SE-AE (accions) i UNE-EN (pals d’enllumenat).
+- **Càrregues considerades:** vent (segons zona eòlica, altura, 
+  topografia), pes propi de la lluminària i braç, sobrecàrrega de 
+  gel en zones fredes, eventualment càrrega d’ús (manteniment).
+- **Paràmetres de càlcul:** moment flector en la base, esforç 
+  tallant, fletxa admissible (normalment ≤ 5% de l’altura),
+  resistència de l’acer (límit elàstic), coeficients de seguretat.
+- **Fonamentació:** càlcul de la sabata de formigó (dimensions, 
+  armadura) o de la placa d’ancoratge per a pals prefabricats; 
+  verificació de la pressió sobre el terreny.
+- **Eines:** taules de fabricants, programes de càlcul estructural, 
+  fitxes tècniques de pals i bàculs.
+
+
+### 3.2. Tècniques d’hissat
+
+L’hissat de pals, bàculs i columnes fa referència al conjunt 
+d’operacions mecàniques per elevar i col·locar els suports en la 
+seva posició definitiva, especialment en instal·lacions d’enllumenat 
+exterior on els suports es transporten en posició horitzontal i 
+després s’erigeixen.
+ 
+La tècnica més habitual és l’ús de camions amb grua o aparells de 
+hissat específic per a pals, que subjecten el suport per un punt 
+proper al centre de gravetat i l’eleven gradualment fins a posar-lo 
+vertical, per després introduir-lo en la base d’ancoratge. 
+Per a pals de gran alçada o en espais confinats, es poden utilitzar 
+sistemes de “hissat per la punta”, on la grua sosté l’extrem 
+superior mentre es va elevant. 
+
+Durant l’operació, cal assegurar que el pal no pateixi esforços 
+indeguts que puguin deformar-lo o danyar l’acabat; per això s’usen 
+eslinges amb proteccions i es controla la inclinació. 
+Abans de l’hissat, es verifica que la base de fonamentació estigui 
+endurida, que els cargols de subjecció estiguin correctament 
+col·locats i que el pal disposi de tots els accessoris (per exemple, 
+la porta de registre o el braç). 
+Un cop vertical, s’aplana i es fixa amb femelles i volanderes, es 
+realitza la connexió elèctrica dins de la base, i es tanca la porta 
+de registre. 
+
+En bàculs telescòpics o abatibles, el hissat pot ser manual o 
+mitjançant un sistema hidràulic integrat que permet abaixar i pujar 
+la lluminària sense necessitat de grua, facilitant el manteniment.
+
+- **Objectiu:** elevar i fixar els suports verticals de manera 
+  segura, sense danyar l’estructura ni les instal·lacions.
+- **Mitjans:** camió grua, aparell d’hissat específic, eslinges amb 
+  proteccions, elements de fixació temporals.
+- **Procediment típic:** transport en horitzontal, subjectió al punt 
+  adequat, elevació progressiva, introducció de la base sobre els 
+  cargols d’ancoratge, aplomat, fixació definitiva, connexió 
+  elèctrica.
+- **Precaucions:** evitar cops sobre el pal, verificar la capacitat 
+  de càrrega de la grua, treballar amb personal format, respectar 
+  les zones de seguretat.
+- **Sistemes especials:** bàculs telescòpics o abatibles que 
+  permeten el descens de la lluminària per a manteniment sense grua; 
+  hissat manual per a columnes lleugeres.
+
+### 3.3. Instal·lació de connexió a terra
+
+La connexió a terra en instal·lacions d’enllumenat exterior té una 
+funció essencial de protecció davant contactes indirectes i de 
+derivació de sobretensions. 
+Consisteix a connectar totes les masses metàl·liques (pals, bàculs, 
+armaris, safates, etc.) a una xarxa de terra que garanteixi que, en 
+cas de fallada d’aïllament, el corrent de defecte derivi a terra i 
+provoqui la desconnexió ràpida mitjançant els dispositius de 
+protecció (diferencials). 
+
+Per a enllumenat exterior, la presa de terra es realitza 
+habitualment mitjançant piques de terra clavades al terreny 
+connectades entre si. 
+Cada pal o suport ha de disposar d’una connexió equipotencial, 
+normalment a través del conductor de terra que discorre per 
+l’interior de la canalització o mitjançant una connexió directa a 
+l’anell de terra. 
+
+A més, la continuïtat entre totes les masses ha de ser verificada, i 
+en instal·lacions llargues (com vies públiques) és pràctica comuna 
+disposar d’una xarxa de terra contínua que connecta tots els pals 
+entre si, evitant diferències de potencial perilloses.
+
+- **Objectiu:** protegir les persones contra contactes indirectes, 
+  facilitar la circulació de corrents de defecte i limitar les 
+  sobretensions.
+- **Elements principals:** elèctrodes de terra (piques, anells, 
+  plaques), conductors de terra, borns de connexió a cada pal i 
+  caixes de registre.
+- **Esquemes típics:** anell tancat al llarg de la via, connectant 
+  tots els pals; o línia d’elèctrodes amb piques cada certa 
+  distància.
+- **Exigències normatives (REBT ITC-BT-18):** resistència de terra 
+  suficient per garantir la desconnexió en ≤ 0,4 s (exterior) amb el 
+  diferencial de sensibilitat adequada; continuïtat de totes les 
+  masses; secció mínima del conductor de terra segons la protecció.
+- **Verificació:** mesura de la resistència de terra en la posada en 
+  servei i periòdicament, comprovació de l’equipotencialitat entre 
+  pals.
+
+### 3.4. Tipus de presa de terra
+
+La presa de terra és el conjunt d’elèctrodes enterrats que 
+estableixen la connexió del sistema de terra amb el terreny. 
+En instal·lacions d’enllumenat exterior, els tipus més utilitzats 
+són:
+
+- **Piques verticals:** barres d’acer coure o d’acer recobert de 
+  coure, clavades verticalment al terreny fins a una profunditat 
+  suficient (normalment 2-3 m). Són el sistema més senzill i 
+  s’instal·len a les proximitats dels quadres o de cada pal si la 
+  resistència de terra ho requereix.
+- **Anell tancat:** conductor de coure nu enterrat en una rasa que 
+  envolta la instal·lació o recorre longitudinalment la via, 
+  connectant tots els pals entre si. Proporciona una superfície de 
+  contacte contínua i millora l’equipotencialitat.
+- **Plaques de terra:** elèctrodes de gran superfície enterrades 
+  horitzontalment, utilitzades quan la resistivitat del terreny és 
+  elevada i no es pot assolir la resistència adequada només amb 
+  piques.
+- **Elèctrodes de formigó armat:** aprofitant les sabates dels pals 
+  com a part de la presa de terra, sempre que l’armadura estigui 
+  connectada i el formigó tingui característiques conductors 
+  especials (no és el més habitual en exterior).
+
+La selecció del tipus de presa de terra depèn de la resistivitat 
+del terreny, l’extensió de la instal·lació, els valors de 
+resistència exigits per la protecció diferencial i els requisits de 
+manteniment. 
+Sovint es combinen piques i anell per aconseguir valors baixos de 
+resistència i garantir la seguretat.
+
+- **Piques:** fàcils d’instal·lar, adequades per a terrenys 
+  homogenis; es disposen aïllades o en paral·lel per reduir la 
+  resistència.
+- **Anell tancat:** proporciona una xarxa equipotencial; 
+  imprescindible en instal·lacions llargues per evitar tensions de 
+  pas perilloses.
+- **Plaques:** útils en terrenys rocosos o de resistivitat elevada.
+- **Combinacions:** ús simultani d’anell i piques per millorar la 
+  dissipació i la continuïtat.
+- **Mesura:** la resistència de terra ha de ser mesurada in situ amb 
+  teluròmetre; valors típics: < 10 Ω per a instal·lacions d’exterior 
+  amb diferencial de 300 mA; en sistemes amb diferencial de 30 mA es 
+  pot acceptar fins a 1667 Ω (teòricament), però es busca el valor 
+  més baix possible.
+
+
+### 3.5. Proteccions amb diferencial en instal·lacions d’enllumenat exterior
+
+En les instal·lacions d’enllumenat exterior, els interruptors 
+diferencials són elements de protecció fonamentals per garantir la 
+seguretat de les persones davant contactes indirectes. 
+La seva funció és detectar corrents de defecte a terra i obrir el 
+circuit en un temps molt breu. 
+La selecció de la sensibilitat i el tipus de diferencial ha de tenir 
+en compte les característiques específiques de l’enllumenat 
+exterior: llargues longituds de cablejat, presència d’equips 
+electrònics (drivers LED, balasts electrònics), condicions 
+ambientals adverses i necessitat de mantenir la continuïtat de 
+servei en determinats casos.
+
+La sensibilitat típica per a circuits d’enllumenat exterior que 
+alimenten punts de llum en vies públiques és de **300 mA** per a la 
+protecció contra contactes indirectes, amb l’objectiu de reduir el 
+risc d’incendis i evitar desconnexions intempestives per corrents de 
+fuita naturals. 
+En zones de públic concurrència (places, parades de bus, etc.) o en 
+instal·lacions que alimenten elements accessibles sense vigilància, 
+pot exigir-se una sensibilitat de **30 mA** per a una protecció 
+addicional. Quan hi ha equips electrònics, com ara drivers LED, es possible que el fabricant exigeixi la utilització d'altres tipus de
+diferencials que no siguin els AC.
+
+A més, en instal·lacions d’enllumenat exterior és freqüent disposar 
+de diversos circuits protegits per diferencials independents per 
+limitar l’afectació d’una avaria. 
+També és important que la resistència de terra associada a cada 
+diferencial sigui suficientment baixa per garantir la desconnexió en 
+els temps reglamentaris. 
+La coordinació entre diferencials i magnetotèrmics ha de respectar 
+la selectivitat perquè una falta en un punt no deixi sense servei 
+tota la instal·lació.
+
+- **Funció:** protecció contra contactes indirectes en masses 
+  metàl·liques (pals, armaris, etc.).
+- **Sensibilitat (IΔn):**
+    + **30 mA:** protecció complementària en zones accessibles al 
+      públic o en circuits amb risc de contacte directe.
+    + **300 mA:** protecció contra incendis i contactes indirectes 
+      en instal·lacions de vies públiques (habitual).
+    + **500 mA / 1 A:** només en instal·lacions especials amb 
+      coordinació selectiva.
+- **Tipus de diferencial segons corrent residual:**
+    + **Tipus AC:** només per a càrregues purament resistives o 
+      sense electrònica (obsolet en LED).
+    + **Tipus A:** obligatori en circuits amb equips electrònics 
+      (drivers LED, balasts electrònics) que puguin generar 
+      corrents residuals contínues o ondulades.
+    + **Tipus F / B:** per a aplicacions amb convertidors de 
+      freqüència o càrregues especials.
+- **Condicions d’instal·lació:** la resistència de terra (Rt) ha de 
+  complir Rt ≤ 24 V / IΔn per garantir que en cas de defecte la 
+  tensió de contacte no superi 24 V (exigència REBT).
+- **Selectivitat:** en instal·lacions amb diversos diferencials en 
+  sèrie, cal coordinar els corrents i els temps perquè només salti 
+  el més proper al defecte.
+
+
+### 3.6. Proteccions ambientals (protecció dels pals front a les accions del medi ambient)
+
+Els pals, bàculs i columnes d’enllumenat exterior estan exposats 
+permanentment a agents ambientals que poden degradar el material i 
+comprometre la seva vida útil i seguretat. 
+La protecció contra aquestes accions és essencial per garantir la 
+durabilitat de la instal·lació. 
+En el cas dels suports metàl·lics (principalment acer), el tractament 
+anticorrosió és fonamental. 
+El sistema més estès és la **galvanització en calent**, que 
+consisteix a submergir el pal en un bany de zinc fos, creant una capa 
+adherent que protegeix l’acer per sacrifici galvànic i per barrera. 
+Aquesta protecció és altament resistent a la humitat, la salinitat 
+(ambients costaners) i les variacions tèrmiques. 
+En entorns urbans o amb exigències estètiques, es pot aplicar una 
+**pintura epoxi o poliéster** sobre la capa de zinc, que a més 
+millora la resistència als raigs UV i permet una àmplia gamma de 
+colors.
+
+Per als pals d’alumini, la protecció natural ve donada per la capa 
+d’òxid que es forma espontàniament, però es pot reforçar mitjançant 
+**anodització** (engruiximent controlat de la capa d’òxid) o 
+pintura. 
+Els pals de formigó armat requereixen un recobriment adequat de les 
+armadures per evitar l’oxidació interna, i sovint s’apliquen 
+hidròfugs superficials per reduir l’absorció d’humitat.
+
+A més de la corrosió, cal considerar altres accions ambientals. 
+En zones de gel, es dimensionen els pals per suportar sobrecàrregues 
+de gel i es poden aplicar recobriments antiadherents per facilitar 
+la caiguda del gel. 
+En ambients amb alta radiació solar, s’utilitzen pintures amb 
+resistència als raigs UV per evitar la degradació dels acabats. 
+Per a pals situats en zones amb atmosfera agressiva (indústries 
+químiques, ambients marins), es reforça la protecció amb galvanitzat 
+de major gruix i es poden afegir pintures especials. 
+Finalment, la protecció contra impactes mecànics o vibracions no és 
+estrictament “ambiental”, però sovint es considera en el disseny 
+mitjançant l’elecció de gruixos adequats i la instal·lació de 
+sistemes antixoc en la base.
+
+- **Corrosió metàl·lica:** principal agent de degradació en pals 
+  d’acer. Solucions:
+    + **Galvanització en calent (norma UNE-EN ISO 1461):** capa de 
+      zinc de 70-100 µm, resistent a ambients urbans i industrials. 
+      Es pot reforçar amb doble capa (zinc + pintura) en ambients 
+      molt agressius.
+    + **Pintura epoxi / poliéster:** aplicada sobre metall net o 
+      sobre galvanitzat, proporciona protecció addicional i acabats 
+      estètics. Resistència als UV i a la intempèrie.
+    + **Alumini anoditzat:** capa d’òxid controlada, adequada per a 
+      ambients marins i urbans.
+- **Formigó:** utilitzar formigó de baixa permeabilitat, recobriment 
+  suficient de les armadures i additius hidròfugs per evitar 
+  l’entrada d’humitat i la carbonatació.
+- **Accions climàtiques:** en zones de gel, els pals han de suportar 
+  sobrecàrregues de gel (càlcul estructural) i es poden aplicar 
+  recobriments que redueixin l’adherència. En zones de vent fort, es 
+  verifiquen les unions i l’ancoratge.
+- **Protecció contra els UV:** pintures estabilitzades als UV per 
+  evitar fissures i decoloració, especialment en pals pintats de 
+  colors clars o foscos exposats al sol.
+- **Protecció complementària:** tapes superiors per evitar l’entrada 
+  d’aigua i brutícia a l’interior del pal; tapes de registre amb 
+  juntes d’estanquitat; sistemes de drenatge en la base per evitar 
+  acumulació d’humitat.
+
+
+
+
+
+
+
+## 4. La llum.
+
+### 4.1 Paràmetres físics de la llum.
+
+La llum és una forma d’energia radiant que es comporta com una ona 
+electromagnètica i com una partícula (fotó). 
+Des del punt de vista físic, la llum visible ocupa una petita franja 
+de l’espectre electromagnètic, amb longituds d’ona compreses 
+aproximadament entre 380 nm (violeta) i 780 nm (vermell). 
+La seva naturalesa dual explica fenòmens com la reflexió, refracció, 
+difracció i interferència (ona), així com l’emissió i absorció 
+discreta (fotó). 
+Les característiques fonamentals de la llum com a ona són la 
+longitud d’ona (λ), que determina el color percebut; la freqüència 
+(f), relacionada amb l’energia; i l’amplitud, que es correspon amb 
+la intensitat o brillantor.
+En el camp de la luminotècnia, ens interessa especialment la 
+capacitat de la llum d’estimular l’ull humà i produir sensació 
+visual, la qual cosa es quantifica mitjançant magnituds 
+fotomètriques que tenen en compte la sensibilitat espectral de l’ull 
+(corrent fotòpica per a visió diürna, escotòpica per a visió 
+nocturna). 
+La velocitat de la llum en el buit és constant (299.792 km/s), però 
+en travessar medis materials es redueix, donant lloc a fenòmens de 
+refracció.
+
+- **Naturalesa dual:** ona electromagnètica i partícula (fotó).
+- **Espectre visible:** longituds d’ona de 380 a 780 nm.
+- **Paràmetres ondulatoris:** longitud d’ona (λ) – determina el 
+  color; freqüència (f) – inversament proporcional a λ; amplitud – 
+  relacionada amb la intensitat lluminosa.
+- **Percepció visual:** la sensibilitat de l’ull humà no és  
+  uniforme; màxim en 555 nm (verd-groc) per a visió fotòpica.
+- **Velocitat:** 299.792 km/s en el buit; en altres medis és menor i 
+  depèn de l’índex de refracció.
+
+
+### 4.2. Paràmetres físics del color.
+
+El color no és una propietat intrínseca dels objectes, sinó una 
+sensació produïda per la interacció de la llum amb la matèria i la 
+seva posterior interpretació pel sistema visual humà. 
+Des del punt de vista físic, el color d’una font de llum ve 
+determinat per la seva distribució espectral de potència (SPD), és a 
+dir, la quantitat d’energia emesa a cada longitud d’ona. 
+Els objectes presenten color perquè reflecteixen o transmeten 
+selectivament determinades longituds d’ona mentre absorbeixen la 
+resta.
+
+La classificació del color es pot abordar des de diferents models. 
+El model **RGB** (vermell, verd, blau) és additiu i s’utilitza en 
+pantalles; el model **CMYK** (cian, magenta, groc, negre) és 
+sostractiu i s’empra en impressió. 
+En luminotècnia, el model més rellevant és el **CIE 1931** (espai de 
+color XYZ), que permet representar qualsevol color percebut 
+mitjançant les coordenades cromàtiques (x, y). A partir d’aquest 
+model es defineixen conceptes com la temperatura de color 
+correlacionada (CCT) i l’índex de rendiment de color (CRI). 
+Els colors es classifiquen en cromàtics (amb to, saturació) i 
+acromàtics (blancs, grisos, negres). 
+La saturació indica la puresa del color; un color totalment saturat 
+conté una única longitud d’ona.
+
+- **Naturalesa:** sensació visual produïda per la distribució 
+  espectral de la llum que arriba a l’ull.
+- **Distribució espectral de potència (SPD):** característica 
+  fonamental de qualsevol font de llum.
+- **Models de color:**
+    + **RGB (additiu):** per a llum emesa (pantalles, lluminàries).
+    + **CMYK (sostractiu):** per a pigments i impressió.
+    + **CIE XYZ (1931):** espai de color estàndard basat en la visió 
+      humana; permet quantificar el color mitjançant coordenades 
+      cromàtiques (x, y).
+- **Classificació:** colors cromàtics (to + saturació) i acromàtics 
+  (blancs, grisos, negres). La saturació indica la puresa; un color 
+  100% saturat correspon a una longitud d’ona única.
+
+
+### 4.3. Temperatura de color (Tc)
+
+La temperatura de color (CCT, correlated color temperature) és un 
+paràmetre que descriu l’aparença cromàtica d’una font de llum, 
+comparant el seu color amb el d’un “cos negre” (radiator integral) 
+escalfat a una determinada temperatura en kelvins (K). 
+Quan el cos negre s’escalfa, el seu color canvia del vermell fosc 
+(baixa temperatura) al taronja, groc, blanc, i finalment blau cel 
+(alta temperatura). 
+Així, una làmpada incandescent amb color càlid té una Tc d’uns 
+2700 K; un LED neutre pot tenir 4000 K; i un LED fred pot superar 
+els 6000 K.
+
+La temperatura de color influeix en l’ambient visual i en les 
+funcions biològiques. 
+Els tons càlids (< 3000 K) s’associen a relaxació i calidesa, 
+adequats per a habitatges i restauració. 
+Els tons neutres (3000–4500 K) afavoreixen l’atenció i s’utilitzen 
+en oficines i comerços. 
+Els tons freds (> 4500 K) afavoreixen l’alerta i s’empren en 
+indústries, hospitals i enllumenat exterior de vies ràpides, tot i 
+que la normativa de contaminació lumínica pot limitar la temperatura 
+de color màxima en zones protegides (freqüentment 3000 K o 4000 K). 
+En la fitxa tècnica de les lluminàries, la Tc s’expressa 
+habitualment com un valor nominal (p. ex., 3000 K) i pot anar 
+acompanyada d’una tolerància (macAdam) que indica la consistència 
+cromàtica entre diferents unitats.
+
+- **Definició:** temperatura (en kelvins) a la qual un cos negre 
+  emet un color similar al de la font estudiada.
+- **Classificació habitual:**
+    + **Càlida:** < 3000 K (vermell-taronja a groc). Aplicacions: 
+      llars, hotels, restauració.
+    + **Neutra:** 3000–4500 K (blanc càlid a blanc neutre). 
+      Aplicacions: oficines, comerços, escoles.
+    + **Freda:** > 4500 K (blanc blavós). Aplicacions: indústria, 
+      hospitals, enllumenat viari (amb limitacions).
+- **Influència:** efectes psicològics (confort, atenció) i biològics 
+(ritmes circadians).
+- **Normativa:** la protecció del cel nocturn limita la Tc en 
+enllumenat exterior (≤ 3000 K en zones E1 i E2, ≤ 4000 K en E3).
+- **Consistència:** es mesura amb el pas de MacAdam (3, 5, etc.); 
+com més baix, més uniformitat cromàtica entre lluminàries.
+
+
+## 4.4. Índex de rendiment de color (IRC / CRI)
+
+L’índex de rendiment de color (IRC, o CRI de l’anglès _Color 
+Rendering Index_) és un paràmetre que avalua la capacitat d’una font 
+de llum per reproduir els colors dels objectes en comparació amb una 
+font de referència (normalment llum natural o un cos negre a la 
+mateixa temperatura de color). 
+L’IRC es calcula a partir de la mitjana dels valors de reproducció 
+de vuit colors de prova estàndard (R1 a R8), i s’expressa en una 
+escala de 0 a 100. 
+Un valor de 100 indica una reproducció cromàtica perfecta, 
+equivalent a la llum natural o a una làmpada incandescent.
+
+En funció de l’aplicació, es requereixen diferents nivells d’IRC. 
+Per a interiors generals (habitatges, oficines), es recomana un 
+IRC ≥ 80. 
+Per a tasques que exigeixen alta fidelitat cromàtica, com ara 
+museus, quiròfans o botigues de tèxtils, es demana un IRC ≥ 90. 
+En enllumenat exterior viari, sovint es permeten valors més baixos 
+(≥ 70), tot i que la tendència actual és millorar el CRI per raons 
+de seguretat i confort visual. 
+Les fonts LED poden assolir IRC > 90 sense pèrdua significativa 
+d’eficiència. 
+Cal tenir en compte que l’IRC mitjà no reflecteix possibles 
+deficiències en colors específics (especialment el vermell, R9), per 
+la qual cosa en aplicacions crítiques es valora també l’R9.
+
+- **Definició:** mesura de la fidelitat cromàtica d’una font de llum 
+  respecte a una font de referència. Escala 0–100.
+- **Càlcul:** mitjana dels valors R1–R8 (colors pastel). Valors 
+  complementaris: R9 (vermell saturat), R10–R14.
+- **Recomanacions segons ús (norma UNE-EN 12464):**
+    + IRC ≥ 90: tasques de precisió cromàtica (museus, quiròfans, 
+      tallers de color).
+    + IRC ≥ 80: interiors generals (oficines, escoles, habitatges).
+    + IRC ≥ 70: enllumenat exterior viari, zones industrials menys 
+      crítiques.
+- **Tecnologies:** LED actuals aconsegueixen IRC 80–90+ amb bona 
+  eficiència; fluorescents compactes IRC 80–85; hal·lur metàl·lic 
+  IRC 70–90; vapor de sodi IRC molt baix (≈ 20–40).
+- **Importància:** influeix en la percepció de l’entorn, la 
+  seguretat i el benestar visual.
+
+
+### 4.5. Efectes psíquics dels colors i la seva harmonia
+
+Els colors no només tenen un significat físic, sinó que evoquen 
+respostes psicològiques i emocionals que condicionen l’ambient d’un 
+espai. 
+En luminotècnia, la selecció de la temperatura de color i la 
+qualitat de la reproducció cromàtica afecta directament la percepció 
+de confort, la concentració i fins i tot la salut (cronobiologia). 
+Els colors càlids (vermells, taronges, grocs) s’associen a calidesa, 
+intimitat i relaxació; són adequats per a zones d’estar, restaurants 
+i llars. 
+Els colors freds (blaus, verds) transmeten frescor, serenitat i 
+afavoreixen la concentració, per la qual cosa s’utilitzen en entorns 
+de treball, clíniques i espais on es requereix atenció.
+
+L’harmonia del color fa referència a la combinació equilibrada de 
+tons per crear una sensació agradable i coherent. 
+En projectes d’il·luminació, s’aplica la teoria del color per 
+definir les temperatures de color i les acoloriments de les 
+lluminàries, tenint en compte els colors dels materials, les 
+superfícies i l’activitat que es desenvolupa. 
+També es considera l’efecte de la llum en els ritmes circadians: la 
+llum freda durant el dia estimula l’alerta, mentre que la llum 
+càlida a la nit afavoreix la producció de melatonina i el descans. 
+Aquest concepte es conegut com a il·luminació centrada en l’ésser 
+humà (HCL, _Human Centric Lighting_).
+
+- **Psicologia del color (aplicada a l’enllumenat):**
+    + **Tons càlids (2000–3000 K):** relaxació, confort, acolliment; 
+      adequats per a espais de descans, restauració, habitatges.
+    + **Tons neutres (3000–4500 K):** equilibri, naturalitat; 
+      afavoreixen la concentració; idonis per a oficines, escoles, 
+      comerços.
+    + **Tons freds (> 4500 K):** alerta, dinamisme; poden resultar 
+      estèrils si s’abusa; útils en indústria, hospitals, zones de 
+      treball intens.
+- **Harmonia cromàtica:** combinació de colors de llum amb els 
+  colors de l’entorn (parets, mobiliari) per aconseguir un ambient 
+  coherent. Es poden emprar contrastos o esquemes monocromàtics 
+  segons l’efecte desitjat.
+- **Influència biològica (HCL):** la llum regula el cicle circadià. 
+  Sistemes d’il·luminació dinàmica varien la Tc i la intensitat al 
+  llarg del dia per simular la llum natural.
+- **Aplicacions pràctiques:** en entorns sanitaris es prioritza la 
+  llum neutra amb alt IRC; en espais educatius es combina llum 
+  natural amb il·luminació regulable per adaptar-se a diferents 
+  activitats.
+
+
+### 4.6. Magnituds luminotècniques
+
+Les magnituds luminotècniques són les mesures que permeten 
+quantificar la llum des del punt de vista de la percepció humana, 
+tenint en compte la sensibilitat espectral de l’ull. 
+A diferència de les magnituds radiomètriques (que mesuren energia 
+real), les magnituds fotomètriques ponderen cada longitud d’ona 
+segons la corba de sensibilitat de l’ull humà per a visió diürna 
+(fotòpica) o nocturna (escotòpica). Les principals magnituds són:
+
+- **Flux lluminós (Φ):** quantitat total de llum emesa per una font 
+  en totes les direccions. Unitat: lumen (lm).
+- **Intensitat lluminosa (I):** flux lluminós emès per unitat 
+  d’angle sòlid en una direcció determinada. Unitat: candela (cd). 
+  És la base de les corbes fotomètriques.
+- **Il·luminància (E):** flux lluminós que incideix sobre una 
+  superfície per unitat de superfície. Unitat: lux (lx) = lm/m².
+- **Luminància (L):** intensitat lluminosa emesa o reflectida per 
+  una superfície en una direcció, dividida per l’àrea aparent de la 
+  superfície. Unitat: cd/m². És la magnitud que realment percep 
+  l’ull i està relacionada amb la sensació de claror o enlluernament.
+- **Rendiment lluminós (η):** relació entre el flux lluminós emès i 
+  la potència elèctrica consumida. Unitat: lm/W. Indica l’eficiència 
+  energètica de la font.
+- **Eficàcia de la lluminària:** flux emès per la lluminària 
+  (considerant pèrdues òptiques) dividit per la potència consumida.
+
+Aquestes magnituds són fonamentals per al disseny d’instal·lacions, 
+ja que permeten calcular el nombre de lluminàries necessàries, 
+verificar els nivells d’il·luminació exigits per normativa i avaluar 
+l’eficiència energètica.
+
+
+
+### 4.7. Fonts de llum. Tipus i característiques
+
+Les fonts de llum artificial transformen l’energia elèctrica en 
+radiació visible. Es classifiquen segons el principi físic 
+d’emissió. 
+Les principals tecnologies actuals són:
+
+- **Incandescents i halògenes:** escalfen un filament fins a 
+  l’incandescència. Tenen baix rendiment lluminós (10–20 lm/W), vida 
+  curta (2.000 h) però excel·lent reproducció cromàtica (CRI 100) i 
+  regulació senzilla. Actualment restringides per normatives 
+  d’eficiència.
+- **Fluorescents (lineals i compactes):** descàrrega en vapor de 
+  mercuri que excita una capa de fòsfor. Rendiment mitjà (60–100 lm/
+  W), vida de 8.000–20.000 h, CRI 80–85. Requereixen balast 
+  (electrònic o magnètic). En desús progressiu per presència de 
+  mercuri i competència del LED.
+- **Descàrrega d’alta intensitat (HID):** inclou vapor de sodi (alta 
+  i baixa pressió), hal·lur metàl·lic i vapor de mercuri. Alt flux 
+  en punt únic, adequat per a grans altures i exterior. Rendiment 
+  variable (60–130 lm/W), temps d’encesa lent, CRI baix (vapor de 
+  sodi) a mitjà (hal·lur metàl·lic). Requereixen balasts específics.
+- **LED (díodes emissors de llum):** tecnologia dominant. Funcionen 
+  per electroluminescència en un semiconductor. Alta eficiència 
+  (fins a 200 lm/W), vida llarga (50.000–100.000 h), CRI 80–90+, 
+  temperatures de color variades, regulables, capacitat de control 
+  digital. Els seus avantatges inclouen la direccionalitat, la 
+  robustesa i la reducció de manteniment.
+
+Cada tipus presenta característiques pròpies d’encesa, reencesa, 
+factor de potència, sensibilitat a la temperatura i requisits
+d’equips auxiliars. La selecció depèn de l’aplicació, els 
+requeriments normatius, l’eficiència energètica i la qualitat de 
+llum necessària.
+
+- **Incandescents / halògenes:**
+    + Pros: CRI 100, regulació perfecta, encesa instantània.
+    + Contres: eficiència molt baixa (10–20 lm/W), vida curta.
+    + Aplicació residual: forns, vitrines, efectes específics.
+- **Fluorescents:**
+    + Pros: eficiència mitjana, difusió homogènia, cost inicial baix.
+    + Contres: mercuri, parpelleig en magnètics, vida limitada.
+    + Aplicació: oficines, naus baixes, comerços (en retrocés).
+- **Descàrrega HID:**
+    + Pros: alt flux en punt únic, bona eficiència (hal·lur, sodi 
+      alta pressió).
+    + Contres: temps d’encesa (3–10 min), mala regulació, CRI baix
+      en sodi.
+    + Aplicació: enllumenat viari, grans naus industrials, 
+      projectors.
+- **LED:**
+    + Pros: alta eficiència (> 150 lm/W), vida > 50.000 h, CRI alt, 
+      regulable, control integrat, encesa instantània.
+    + Contres: inversió inicial més elevada (tot i que 
+      amortitzable), sensibilitat a la temperatura i a sobretensions.
+    + Aplicació: pràcticament totes (interior, exterior, industrial, 
+      emergència).
+- **Equips auxiliars associats:** balasts (electromagnètics / 
+electrònics) per a fluorescents i HID; drivers per a LED (corrent 
+constant).
+
+
+
+
+
+A continuació es desenvolupa el punt sol·licitat seguint el mateix format dual: una explicació narrativa en paràgrafs i després una versió sintètica en llistes.
+
+
+
+## 5. Enllumenat públic.
+
+L’enllumenat públic comprèn les instal·lacions d’enllumenat exterior 
+destinades a vies de circulació de vianants i vehicles, espais 
+urbans i zones d’ús públic. 
+La seva finalitat és garantir la seguretat viària, la seguretat 
+ciutadana, el confort visual i la integració ambiental, alhora que 
+s’ajusta als requisits d’eficiència energètica i protecció del cel 
+nocturn.
+
+### 5.1. Tipus d’enllumenat públic.
+Segons la via o l’espai a il·luminar, es distingeixen diverses 
+categories. 
+L’enllumenat viari (carreteres, carrers) es classifica en funció de 
+la jerarquia de la via i el tipus de trànsit. 
+L’enllumenat urbà inclou places, parcs, zones de vianants i carrils 
+bici, on es prioritza la integració arquitectònica i la qualitat 
+ambiental. 
+També hi ha l’enllumenat de túnels, que requereix solucions 
+especials per adaptar-se al canvi de luminància en l’accés, i 
+l’enllumenat d’infraestructures singulars (rotondes, passos 
+inferiors, ponts). 
+A més, cada vegada és més freqüent l’enllumenat cívic o 
+d’accentuació, que posa en valor elements patrimonials o 
+paisatgístics.
+
+### 5.2. Característiques tècniques.
+L’enllumenat públic es caracteritza per l’ús de lluminàries amb alt 
+grau de protecció IP (mínim IP65) i IK (resistència a impactes), 
+suports normalitzats (pals, bàculs, columnes) i sistemes de control 
+centralitzat (telegestió). 
+Les lluminàries incorporen òptiques asimètriques per projectar la 
+llum sobre la calçada amb la distribució adequada i minimitzar 
+l’enlluernament. 
+La tecnologia LED és pràcticament universal per la seva eficiència, 
+durabilitat i capacitat de regulació. 
+Els nivells d’il·luminació s’expressen en termes de luminància 
+mitjana de la calçada (cd/m²) per a vies de vehicles, o 
+d’il·luminància mitjana (lux) per a zones de vianants. 
+La uniformitat (global i longitudinal) i el control de 
+l’enlluernament (TI, _threshold increment_) són paràmetres crítics 
+per a la seguretat viària.
+
+### 5.3. Dimensionament i criteris de disseny.
+El disseny d’una instal·lació d’enllumenat públic es basa en la 
+classificació de la via segons la norma UNE-EN 13201. 
+Per a vies de vehicles, s’estableixen classes ME (M1 a M6) en funció 
+de la velocitat, la densitat de trànsit i la complexitat de la via. 
+Cada classe defineix valors mínims de luminància mitjana, 
+uniformitat global, uniformitat longitudinal i enlluernament. 
+Per a zones de vianants, carrils bici i espais urbans, s’utilitzen 
+classes P (P1 a P6), basades en il·luminància mitjana i uniformitat. 
+Per a zones amb risc de criminalitat o zones especials, hi ha 
+classes de seguretat (A, B, C). 
+El dimensionament geomètric inclou la determinació de l’alçada dels 
+suports, la separació entre ells, la disposició (unilateral, en ziga-
+zaga, oposada, central) i l’angle de la lluminària. 
+El càlcul fotomètric es realitza amb programes especialitzats 
+(Dialux, Relux) que verifiquen el compliment dels paràmetres 
+normatius i optimitzen el consum energètic. 
+També es consideren criteris de manteniment (accessibilitat per a 
+grues, vida útil de components), eficiència energètica (regulació 
+per franges horàries, telegestió) i impacte ambiental (limitació de 
+contaminació lumínica, temperatura de color ≤ 3000 K en zones 
+protegides). 
+Finalment, el projecte ha d’incloure els sistemes de protecció 
+elèctrica (diferencials tipus A, magnetotèrmics corba C, SPD) i la 
+xarxa de terra equipotencial que connecta tots els suports.
+
+- **Tipus d’enllumenat públic:**
+    + **Viari:** carreteres, carrers, avingudes. Classificació per 
+      classes ME (luminància).
+    + **Urbà:** places, parcs, zones de vianants, carrils bici. 
+      Classes P (il·luminància).
+    + **Túnels:** adaptació fotòpica, lluminància d’accés, zona de 
+      transició i interior.
+    + **Infraestructures singulars:** rotondes, ponts, passos 
+      inferiors.
+    + **Enllumenat cívic o d’accentuació:** monuments, elements 
+      patrimonials.
+
+- **Característiques tècniques:**
+    + Lluminàries LED amb òptiques asimètriques, IP ≥ 65, IK ≥ 08.
+    + Suports: pals, bàculs, columnes (acer galvanitzat, alumini, 
+      formigó).
+    + Sistema de control: telegestió (regulació per franges, 
+      monitorització remota).
+    + Paràmetres fotomètrics (UNE-EN 13201): luminància mitjana 
+      (Lm), uniformitat global (U0), uniformitat longitudinal (Ul), 
+      enlluernament (TI), il·luminància mitjana (Em) per a zones de 
+      vianants.
+
+- **Dimensionament i criteris de disseny:**
+    + **Classificació de la via:** assignació de la classe ME (M1 a 
+      M6) segons velocitat, intensitat de trànsit, complexitat. Per 
+      a zones de vianants: classes P (P1 a P6).
+    + **Geometria de la instal·lació:**
+        * Alçada del pal (H): típicament 6–12 m per a vials, 4–6 m 
+          per a zones urbanes.
+        * Separació entre suports (S): relacionada amb H (S ≤ 3–4 H 
+          segons disposició).
+        * Disposició: unilateral, bilateral en ziga-zaga, bilateral 
+          oposada, central (per a vies amples).
+        * Angle de la lluminària i volada del braç.
+    + **Càlcul fotomètric:** mitjançant programari (Dialux, Relux) 
+      que simula la instal·lació i comprova el compliment dels 
+      valors normatius.
+   + **Eficiència energètica:**
+        * Selecció de lluminàries amb alta eficàcia (> 150 lm/W).
+        * Regulació del flux (balast) en franges horàries (ex.: 50% 
+          després de la mitjanit).
+        * Telegestió per a control centralitzat i detecció d’avaries.
+    + **Protecció elèctrica:**
+        * Diferencials tipus A (30 mA o 300 mA segons zona).
+        * Magnetotèrmics corba C.
+        * Protectores de sobretensions (SPD) per a línies llargues.
+        * Xarxa de terra equipotencial (anell continu o piques 
+          connectades).
+    + **Impacte ambiental:**
+        * Limitació de la temperatura de color (≤ 3000 K en zones E1/
+          E2, ≤ 4000 K en E3).
+        * Lluminàries amb tall de flux hemisfèric superior (cut-
+          off / full cut-off).
+        * Integració paisatgística (colors, materials, alçades).
+
+- **Normativa aplicable:**
+    + UNE-EN 13201 (enllumenat viari).
+    + UNE-EN 12464-2 (enllumenat d’exteriors – zones de treball i 
+      públiques).
+    + CTE DB-HE (estalvi d’energia).
+    + Reglament Electrotècnic de Baixa Tensió (REBT) – ITC-BT-09, 
+      BT-28, BT-18.
+    + Lleis autonòmiques de protecció del cel nocturn (contaminació 
+      lumínica).
 
 
 </textarea>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+
+UT10 - Amplificador operacional											
+===============================
+
+1. Caracterísitques
+-------------------
+
+L'amplificador operacional (AO) és un circuit integrat d'elevat guany 
+i alta impedància d'entrada, concebut per processar senyals elèctrics 
+mitjançant una etapa diferencial amb dues entrades (inversora $V^-$ i 
+no inversora $V^+$) i una única sortida ($V_o$). 
+El model ideal d'aquest dispositiu pressuposa un guany en llaç obert 
+infinit, resistència d'entrada infinita, resistència de sortida 
+nul·la 
+i ample de banda il·limitat, condicions que, en llaç tancat, deriven 
+en el principi de curtcircuit virtual ($V^+ = V^-$) sense consum de 
+corrent als terminals d'entrada.
+
+En resum per un AO ideal:
+
+- Guany de tensió en bucle obert: infinita.
+- Resistència d’entrada: infinita.
+- Resistència de sortida: 0.
+- Ample de banda: infinit.
+- Intensitats a les entrades $V^-$ i $V^+$: 0.
+
+
+
+2. Funcionament com a comparador
+--------------------------------
+
+En configuració de llaç obert, l'AO actua com a comparador de tensió: 
+si la tensió a l'entrada no inversora supera la de la inversora, la 
+sortida se satura al valor positiu d'alimentació ($+V_{cc}$); en cas 
+contrari, adopta el valor negatiu ($-V_{cc}$).
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/opamp_comparador.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 1.** Creat a partir de
+> [simulació](https://www.falstad.com/circuit/e-opamp.html).
+> [Paul Falstad] (2024).
+> _Comparador amb op-amp_. 
+> Sota llicència [GNUv2]
+ 
+Per mitigar la sensibilitat al soroll inherent a aquest muntatge, 
+s'empra el comparador amb realimentació positiva o disparador de 
+Schmitt. 
+En aquesta configuració, el senyal d'entrada es connecta a la 
+terminal inversora i es defineixen dos llindars de commutació: la 
+tensió de pic ($V_p$) i la tensió de vall ($V_v$). 
+La sortida commuta a $-V_{cc}$ només quan l'entrada sobrepassa $V_p$, i 
+retorna a $+V_{cc}$ únicament quan l'entrada descendeix per sota de 
+$V_v$, eliminant així els rebots indesitjats.
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/opamp_schmitt_trigger.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 2.** Creat a partir de
+> [simulació](https://www.falstad.com/circuit/e-amp-schmitt.html).
+> [Paul Falstad] (2024).
+> _Disparador de Schmitt_. 
+> Sota llicència [GNUv2]
+
+
+
+3. Configuracions en llaç tancat
+--------------------------------
+
+Mitjançant xarxes de realimentació negativa, l'AO pot realitzar operacions aritmètiques sobre els senyals amb gran precisió:
+
+
+### 3.1. Amplificador inversor
+
+La tensió de sortida és proporcional a l'entrada però amb signe oposat. El guany ve determinat exclusivament per la relació entre les resistències de realimentació ($R_F$) i d'entrada ($R_{in}$), segons l'expressió 
+
+\begin{gather}
+A_V = - \frac{R_F}{R_{in}}.
+\end{gather}
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/opamp_inversor.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 3.** Creat a partir de
+> [simulació](https://www.falstad.com/circuit/e-amp-invert.html).
+> [Paul Falstad] (2024).
+> _Amplificador inversor_. 
+> Sota llicència [GNUv2]
+
+> #### Demostració matemàtica
+> 
+> Si $V^+ = V^-$ i $V^+ = 0$, llavors $V^- = 0$, per tant:
+> $$I_{in} = \frac{V_{in}}{R_{in}}$$
+> $$I_{F} =  \frac{V_{out}}{R_{F}}$$
+>
+> Si $Z \approx \infty$, llavors $I^- \approx 0$, 
+> 
+> D'aquí i aplicant la llei dels nusos es dedueix que:
+> $I_{in} = -I_F$, i per tant:
+> $$\frac{V_{in}}{R_{in}} = - \frac{V_{out}}{R_{F}}$$
+> Aïllant:
+> $$\frac{V_{out}}{V_{in}}= - \frac{R_F}{R_{in}}$$
+
+
+### 3.2. Amplificador no inversor
+
+Manté la fase del senyal d'entrada. El seu guany es defineix 
+com 
+
+\begin{gather}
+A_V = \frac{R_F}{R_{in}} + 1.
+\end{gather}
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/opamp_no_inversor.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 4.** Creat a partir de
+> [simulació](https://www.falstad.com/circuit/e-amp-noninvert.html).
+> [Paul Falstad] (2024).
+> _Amplificador no inversor_. 
+> Sota llicència [GNUv2]
+
+> #### Demostració matemàtica
+> 
+> Si $V^+ = V^-$ i $V^+ = V_{in}$, llavors $V^- = V_{in}$, per 
+tant:
+> $$I_{G} = \frac{V_{in}}{R_{G}}$$
+> $$I_{F} =  \frac{V_{out}-V_{in}}{R_{F}}$$
+>
+> Si $Z \approx \infty$, llavors $I^- \approx 0$, per tant:
+> $I_{G} = I_F$, substituïnt:
+> $$\frac{V_{in}}{R_{G}} = \frac{V_{out}-V_{in}}{R_{F}}$$
+> Aïllant:
+> $$\frac{V_{out}-V_{in}}{V_{in}}= \frac{R_F}{R_{G}}~;~~
+  \frac{V_{out}}{V_{in}}-\frac{V_{in}}{V_{in}} 
+  = \frac{R_F}{R_{G}}$$
+> Simplificant i aïllant de nou:
+> $$\frac{V_{out}}{V_{in}}= \frac{R_F}{R_{in}} + 1$$
+
+
+### 3.3. Seguidor de tensió
+
+També anomenat _buffer_, o _follower_.
+És un cas particular de l'anterior a on $R_G \approx \infty$ i 
+$R_F \approx 0$.
+Per tant, s'obté connectant directament la sortida a l'entrada 
+inversora. Proporciona un guany unitari ($V_o = V_i$) i actua 
+com a adaptador d'impedàncies, preservant la forma d'ona del 
+senyal original però incrementant-ne la capacitat de lliurament 
+de potència.
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/opamp_buffer.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 5.** Creat a partir de
+> [simulació](https://www.falstad.com/circuit/e-amp-follower.html).
+> [Paul Falstad] (2024).
+> _Seguidor de tensió_. 
+> Sota llicència [GNUv2]
+
+
+### 3.4. Amplificador sumador
+
+Basat en l'estructura de l'inversor, permet combinar múltiples 
+senyals d'entrada $(V_{i_1}, V_{i_2}, ~ ... V_{i_n})$ amb una 
+resistència comuna $(R_F)$. La sortida respon a la suma 
+ponderada i invertida dels senyals: 
+
+\begin{gather}
+V_o = - \frac {V_{i_1} \cdot R_1 + V_{i_2} \cdot R_2 + ... + V_{i_n} \cdot R_n}{R_F}
+\end{gather}
+
+Ara bé, si totes les resistències són iguals, llavors:
+
+\begin{gather}
+V_o = - (V_{i_1} + V_{i_2} + ... + V_{i_n})
+\end{gather}
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/opamp_sumador.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 6.** Creat a partir de
+> [simulació](https://www.falstad.com/circuit/e-amp-sum.html).
+> [Paul Falstad] (2024).
+> _Amplificador sumador_. 
+> Sota llicència [GNUv2]
+
+### 3.5. Amplificador diferencial
+
+També anomenat restador.
+Amplifica la diferència entre dos senyals d'entrada. Per garantir un funcionament correcte, les parelles de resistències han de guardar la proporció $R_1 \cdot R_F = R_2 \cdot R_G$. Sota aquesta condició, la tensió de sortida s'expressa com 
+
+\begin{gather}
+V_o = (R_F / R_1) · (V_{i_2} - V_{i_1})
+\end{gather}
+
+Si totes les resistències són iguals, llavors:
+
+\begin{gather}
+V_o = (V_{i_2} - V_{i_1})
+\end{gather}
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/opamp_restador.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 7.** Creat a partir de
+> [simulació](https://www.falstad.com/circuit/e-amp-diff.html).
+> [Paul Falstad] (2024).
+> _Amplificador restador. 
+> Sota llicència [GNUv2]
+
+
+
+
+
+
+
+
+
+
+
+
+[Cerezo _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html "S. Cerezo Salcedo, X. Mesas Laserna, À. L. Miguel Rodríguez, J. M. Pallarés Serres, J. Perona Camacho, R. Rodríguez Coronel"
+[Paul Falstad]: http://www.falstad.com/
+[Carlos Félix Pardo Martín]: https://picuino.github.io/es/contacto.html
+
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+
+[CC4.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement - No comercial - CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+[GNUv2]: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
