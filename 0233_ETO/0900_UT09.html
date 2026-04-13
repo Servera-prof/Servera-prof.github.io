@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+
+UT09 - Electrònica de potència											
+==============================
+
+1. Rectificador Controlat de Silici (SCR)
+-----------------------------------------
+
+L'SCR, també anomenat comunment tiristor (tot i que els tiristors són 
+la familia d'aquests components) és un dispositiu semiconductor de 
+quatre capes (PNPN) amb tres terminals: Ànode (A), Càtode (K) i Porta 
+(G).
+El moment de commutació es pot controlar amb una precisió total 
+mitjançant l’actuació sobre la porta (G). 
+El tiristor és un component unidireccional: funciona com un interruptor 
+i només permet el pas del corrent en un sentit, de l’ànode al càtode. 
+Sempre que el dispositiu estigui polaritzat en sentit directe (tensió 
+positiva a l’ànode i negativa al càtode) i s’apliqui un senyal a la 
+porta (G), el tiristor entrarà en conducció.
+
+> ![c500](img/scr_simbol_capes.png)
+> **Fig. 1.** [Cerezo _et al._] (2024). [IOC].
+> _SCR, simbol i capes_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+### 1.1. Funcionament en potència
+
+- **Enclavament:** Quan està polaritzat en directe ($V_{AK} > 0$), un 
+  pols curt de corrent a la porta ($I_G$) el dispara, passant a l'estat 
+  de conducció (ON).
+- **Retenció:** Una vegada disparat, es manté en ON encara que 
+  desaparegui $I_G$, sempre que el corrent d'ànode superi el **corrent 
+  de manteniment** ($I_H$).
+- **Bloqueig:** Només es bloqueja (OFF) quan el corrent d'ànode baixa 
+  per sota de $I_H$ (normalment al pas per zero en circuits de corrent 
+  altern).
+
+### 1.2. Aplicacions
+
+El tiristor admet les següents utilitats:
+
+- Rectificació: gràcies al seu comportament unidireccional, actua com 
+  un díode.
+- **Interruptor de corrent**: emprat com a interruptor, pot substituir 
+  els contactors mecànics, que presenten molts més problemes.
+- **Regulació**: com que permet ajustar el moment exacte d'entrada en 
+  conducció, pot controlar la potència o el corrent lliurat a la 
+  càrrega.
+- Amplificació: ja que el corrent necessari per al comandament és 
+  molt reduït en comparació
+  
+2. _Gate turn off_ (GTO)
+------------------------
+
+És un component semiconductor de potència que integra les propietats més útils d'un tiristor convencional i les d'un transistor bipolar, amb l'avantatge addicional de poder commutar de l'estat de conducció a l'estat de bloqueig mitjançant l'aplicació d'un pols negatiu a la porta.
+
+La corba característica V-I del GTO és pràcticament idèntica a la d'un tiristor clàssic. Quan el dispositiu està en conducció, la tensió entre ànode i càtode (VAK) és d'uns 3 V aproximadament, i el corrent que el travessa només està limitat per la càrrega externa connectada al circuit.
+
+La característica en inversa del GTO equival a una resistència que no pot bloquejar tensió ni conduir un corrent significatiu. En règim de corrent continu, el dispositiu no ofereix cap inconvenient. Tanmateix, si es vol bloquejar qualsevol tensió inversa, caldrà connectar un díode en sèrie amb el GTO; i si es vol que el corrent hi circuli, s'haurà de connectar un díode en antiparal·lel amb el dispositiu.
+
+> ![c350](img/gto_simbol_configuracio.png)
+> **Fig. 2.** [Cerezo _et al._] (2024). [IOC].
+> _GTO, simbol i configuracions_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+
+2. Fototiristor
+---------------
+
+És un tiristor on el terminal de porta ha estat substituït per una finestra transparent a la càpsula. El feix de llum incident genera parells electró-forat a la unió de porta, actuant com el corrent de disparament $I_G$.
+
+### 2.1. Aplicació en Electrònica de Potència:
+
+S'utilitza en sistemes d'**Alta Tensió en Corrent Continu (HVDC)** per disparar vàlvules de tiristors connectades a potencials de centenars de kilovolts. La llum (normalment làser o LED d'alta potència guiada per fibra òptica) proporciona un **aïllament galvànic** total entre el circuit de control (baixa tensió) i el circuit de potència (alta tensió).
+
+
+
+
+3. Triac (Triode for Alternating Current)
+-----------------------------------------
+
+El triac és un dispositiu semiconductor que disposa de tres borns: dos de principals (E1 i E2, o bé T1 i T2) i un de control anomenat porta (G). Aquest component és capaç de regular el pas del corrent en les dues direccions (és a dir, és bidireccional), cosa que el fa molt adequat per al control del corrent altern.
+
+> ![c250](img/triac_simbol.png)
+> **Fig. 3.** [Cerezo _et al._] (2024). [IOC].
+> _Triac simbol_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+El triac té l'avantatge que pot entrar en estat de conducció tant amb tensions negatives com amb positives. Una manera senzilla d'explicar-ne el funcionament és comparant-lo amb dos tiristors muntats en antiparal·lel.
+
+Controlar un sol triac resulta més senzill que fer-ho amb dos tiristors. No obstant això, quan la potència a regular supera els límits del triac (ja que la capacitat de dissipació d'aquest component és limitada), es pot optar per substituir-lo per dos tiristors connectats en antiparal·lel.
+
+> ![c250](img/tiristors_antiparalel.png)
+> **Fig. 4.** [Cerezo _et al._] (2024). [IOC].
+> _Tiristors en antiparal·lel_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+El triac és vulnerable a variacions sobtades de tensió i de corrent que es produeixin en intervals de temps molt breus. En conseqüència, es considera que aquest dispositiu té una velocitat de commutació baixa (amb una freqüència de treball típica entre 50 i 60 Hz). El límit màxim de freqüència per a aquest tipus de components se situa al voltant dels 400 Hz.
+
+
+
+
+4. Diac (Diode for Alternating Current)
+---------------------------------------
+
+És un dispositiu bidireccional de dues terminals sense porta. No condueix fins que la tensió aplicada supera la **Tensió de Ruptura** ($V_{BO} \approx 30~\text{V}$).
+
+> ![c500](img/diac_simbol_corba.png)
+> **Fig. 5.** [Cerezo _et al._] (2024). [IOC].
+> _Diac. Simbol i corba_. 
+> Sota llicència [CC3.0-by-nc-sa]
+
+### 4.1. Relació amb el Triac
+
+En potència, el Diac **no controla la càrrega directament**, sinó que serveix per **disparar el Triac** de forma simètrica.
+
+### 4.2. Equació del circuit de disparament RC-Diac
+En un regulador de llum clàssic, un condensador $C$ es carrega a través d'un potenciòmetre $R$. Quan la tensió del condensador assoleix $V_{BO}$ (normalment $\approx 30V$):
+
+$$V_C(t) = V_{max} \sin(\omega t) (1 - e^{-t/RC}) = V_{BO}$$
+
+El Diac es dispara, descarregant $C$ bruscament sobre la porta del Triac, generant un pols de corrent agut i precís.
+
+
+
+
+5. Sistemes d'Alimentació Controlats
+------------------------------------
+
+Aquests sistemes es basen en els dispositius anteriors per convertir energia elèctrica de manera eficient.
+
+1.  **Rectificadors Controlats (Convertidors CA/CC):**
+    - Utilitzen **tiristors**.
+    - Aplicacions: Càrrega de bateries industrials, excitació de motors de corrent continu de gran potència.
+
+2.  **Reguladors de Corrent Altern (Convertidors CA/CA):**
+    - Utilitzen **Triacs** o **tiristors en antiparal·lel**.
+    - Aplicacions: Estufes elèctriques industrials, **arrencadors suaus de motors d'inducció**.
+
+
+
+6. Dispositius optoelectrònics per a control i aïllament
+--------------------------------------------------------
+
+En electrònica de potència, aquests components no gestionen la potència principal, sinó que són **crítics per a la seguretat i el control** en la interfície entre el microcontrolador (3,3V/5V) i l'etapa de potència (230V/400V).
+
+1. LED (Light Emitting Diode): és la font de llum en els aïlladors òptics.
+2. Fotodíodes: dispositiu semiconductor de dues terminals que genera un **corrent invers** proporcional a la intensitat de llum incident. Treballen en mode **fotoconductiu** (polaritzats inversament) per obtenir una resposta ràpida.
+3. Fototransistors: és un transistor bipolar (NPN normalment) on la base és accionada per la llum en lloc de per un corrent elèctric. Proporciona **guany** ($h_{FE}$). El mateix flux lluminós que genera $I_{ph}$ en un fotodíode, genera un corrent de col·lector $\beta$ vegades major. Són la part receptora més comuna en els **Optoacobladors estàndard**.
+4. Optoacobladors (Optoacopladors): dispositiu que encapsula un **LED** i un **Fotodetector** (Fototransistor, Fotodíode o Fototriac) en un sol paquet, acoblats per un medi òptic transparent però **elèctricament aïllant**.
+
+
+
+
+
+
+
+
+
+
+
+
+[Cerezo _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html "S. Cerezo Salcedo, X. Mesas Laserna, À. L. Miguel Rodríguez, J. M. Pallarés Serres, J. Perona Camacho, R. Rodríguez Coronel"
+[Paul Falstad]: http://www.falstad.com/
+[Carlos Félix Pardo Martín]: https://picuino.github.io/es/contacto.html
+
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+
+[CC4.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement - No comercial - CompartirIgual"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+[GNUv2]: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
