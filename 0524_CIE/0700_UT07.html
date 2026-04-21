@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+UT06 - Caracterització de les instal·lacions fotovoltàiques
+===========================================================
+
+## 1. Classificació d’instal·lacions solars fotovoltaiques
+
+Les instal·lacions solars fotovoltaiques es poden classificar segons diversos criteris, essent els més habituals:
+
+### 1.1 Segons la connexió a la xarxa
+
+* **Instal·lacions aïllades**: no connectades a la xarxa elèctrica.
+* **Instal·lacions connectades a xarxa**: injecten energia a la xarxa de distribució.
+
+### 1.2 Segons l’ús de l’energia
+
+* Autoconsum amb o sense excedents
+* Electrificació rural
+* Aplicacions industrials
+
+### 1.3 Segons la configuració
+
+* Sistemes fixos
+* Sistemes amb seguiment solar
+* Sistemes híbrids (fotovoltaic + altres fonts)
+
+
+
+## 2. Instal·lacions solars aïllades
+
+Les instal·lacions aïllades són aquelles que no disposen de connexió a la xarxa elèctrica i han de garantir el subministrament energètic de manera autònoma.
+
+### 2.1 Components principals
+
+#### Generador fotovoltaic
+
+El **generador fotovoltaic** és l’element encarregat de transformar l’energia solar en energia elèctrica en forma de corrent continu (CC). Està constituït per un conjunt de **mòduls fotovoltaics** connectats entre si en sèrie i/o en paral·lel per aconseguir els nivells de tensió i corrent desitjats.
+
+Els mòduls estan formats per **cèl·lules fotovoltaiques**, habitualment de silici (monocristal·lí, policristal·lí o amorf), que aprofiten l’efecte fotovoltaic: quan la radiació solar incideix sobre la cèl·lula, es genera una diferència de potencial elèctric.
+
+Aspectes clau:
+
+* **Potència nominal (Wp)**: indica la potència en condicions estàndard (STC).
+* **Orientació i inclinació**: afecten directament la producció energètica.
+* **Connexió elèctrica**: configuració de strings per adaptar-se al sistema.
+* **Pèrdues**: brutícia, temperatura, ombres parcials, etc.
+
+#### Regulador de càrrega
+
+El **regulador de càrrega** és el dispositiu encarregat de gestionar el flux d’energia entre el generador fotovoltaic i les bateries. La seva funció principal és protegir el sistema d’acumulació contra sobrecàrregues i descàrregues profundes.
+
+Funcions principals:
+
+* **Control de càrrega**: limita la tensió i el corrent que arriba a les bateries.
+* **Desconnexió per baixa tensió (LVD)**: evita descàrregues excessives.
+* **Optimització del punt de treball** (en reguladors MPPT): maximitza la potència extreta dels panells.
+
+Tipus de reguladors:
+
+* **PWM (Pulse Width Modulation)**: més senzills i econòmics.
+* **MPPT (Maximum Power Point Tracking)**: més eficients, especialment en condicions variables.
+
+#### Sistema d’acumulació (bateries)
+
+El **sistema d’acumulació** permet emmagatzemar l’energia produïda durant les hores de radiació solar per poder utilitzar-la quan no hi ha producció (nit o dies ennuvolats).
+
+Tipus de bateries:
+
+* **Plom-àcid** (obertes, AGM, gel): tradicionals i més econòmiques.
+* **Ió-liti**: més eficients, major vida útil i profunditat de descàrrega.
+
+Paràmetres importants:
+
+* **Capacitat (Ah o kWh)**: quantitat d’energia emmagatzemada.
+* **Profunditat de descàrrega (DoD)**: percentatge utilitzable de la bateria.
+* **Cicles de vida**: nombre de càrregues/descàrregues abans de degradar-se.
+* **Tensió nominal**: 12V, 24V, 48V, etc.
+
+Una correcta selecció del sistema d’acumulació és clau per garantir l’autonomia i la durabilitat de la instal·lació.
+
+#### Inversor (si hi ha càrregues en AC)
+
+L’**inversor** és el dispositiu que converteix el corrent continu (CC) generat pels panells o emmagatzemat a les bateries en corrent altern (CA), que és el que utilitzen la majoria d’aparells elèctrics.
+
+Funcions:
+
+* Conversió CC → CA (normalment 230V i 50 Hz).
+* Subministrament estable i de qualitat per a les càrregues.
+
+Tipus d’inversors:
+
+* **Ona sinusoidal pura**: recomanats per a equips sensibles.
+* **Ona modificada**: més econòmics però menys compatibles.
+
+Paràmetres clau:
+
+* **Potència nominal i potència de pic**.
+* **Rendiment (%)**.
+* **Proteccions integrades** (sobrecàrrega, curtcircuit, temperatura).
+
+
+
+
+
+
+### 2.2 Grups electrògens de suport
+
+En molts casos, s’incorpora un grup electrògen per garantir el subministrament en situacions de baixa radiació o elevada demanda.
+
+**Funcions:**
+
+* Suport energètic
+* Càrrega de bateries
+* Subministrament en emergències
+
+**Especificacions:**
+
+* Potència adequada a la demanda
+* Compatibilitat amb el sistema
+* Sistema d’arrencada automàtica
+
+
+
+### 2.3 Instal·lacions connectades a xarxa
+
+Aquest tipus d’instal·lacions treballa en paral·lel amb la xarxa elèctrica, injectant energia o consumint-ne segons la demanda.
+
+
+
+## 3. Instal·lacions connectades a xarxa: especificacions
+
+### 3.1 Sol·licitud de punt de connexió
+
+És el procediment administratiu necessari per connectar una instal·lació a la xarxa.
+
+Inclou:
+
+* Estudi de viabilitat
+* Acceptació de condicions tècniques
+* Assignació de capacitat
+
+
+
+### 3.2 Paràmetres de qualitat del subministrament
+
+La instal·lació ha de complir requisits com:
+
+* Tensió dins dels límits establerts
+* Freqüència estable (50 Hz)
+* Baix nivell de distorsió harmònica (THD)
+
+
+
+### 3.3 Sistema de mesura d’energia
+
+Elements:
+
+* Comptadors bidireccionals
+* Sistemes de monitoratge
+
+Permeten:
+
+* Mesurar energia consumida i generada
+* Gestionar excedents
+
+
+
+### 3.4 Aportació energètica
+
+Es calcula en funció de:
+
+\begin{gather} 
+    E = P_{inst} \cdot HSP \cdot \eta
+\end{gather}
+
+- $E$ energia generada en $[\text{Wh}]$
+- $P_{inst}$ potència instal·lada del generador fotovoltaic en $[\text{W}]$
+- $HSP$ hores sol pic en $[\text{h}]$
+- $\eta$ rendiment global del sistema (sense unitats)
+
+
+Aquest valor determina la rendibilitat de la instal·lació.
+
+
+
+## 4. Instal·lacions generadores de baixa tensió
+
+### 4.1 Condicions generals
+
+Aquestes instal·lacions han de complir:
+
+* Seguretat elèctrica
+* Compatibilitat electromagnètica
+* Qualitat del subministrament
+
+
+
+### 4.2 Condicions de connexió
+
+Aquí tens el desenvolupament dels conceptes demanats en el context de sistemes fotovoltaics connectats a xarxa:
+
+#### Sincronització amb la xarxa
+
+La **sincronització amb la xarxa** és el procés pel qual l’inversor adapta la seva sortida de corrent altern perquè coincideixi amb els paràmetres de la xarxa elèctrica.
+
+Aquesta adaptació implica:
+
+- **Tensió**: ha de ser igual (p. ex. 230 V en baixa tensió)
+- **Freqüència**: normalment 50 Hz
+- **Fase**: la forma d’ona ha d’estar alineada amb la de la xarxa
+
+L’inversor utilitza sistemes de control (com PLL, *Phase Locked Loop*) per seguir la xarxa en temps real. Això és imprescindible perquè:
+
+- es pugui injectar energia sense pertorbar la xarxa,
+- es garanteixi la qualitat del subministrament,
+- es compleixi la normativa elèctrica.
+
+#### Protecció anti-illa
+
+La **protecció anti-illa** evita que el sistema fotovoltaic continuï subministrant energia quan la xarxa elèctrica ha caigut.
+
+Situació d’illa:
+
+- Es produeix quan una part de la xarxa queda desconnectada però el generador local (fotovoltaic) segueix alimentant càrregues.
+
+Riscos:
+
+- **Seguretat**: pot posar en perill els tècnics que treballen en la xarxa.
+- **Qualitat elèctrica**: tensió i freqüència fora de control.
+- **Danys als equips**.
+
+Funcionament:
+
+- L’inversor detecta anomalies en tensió i freqüència.
+- Si detecta absència de xarxa, **es desconnecta automàticament** en mil·lisegons.
+
+Tipus de detecció:
+
+- **Passiva**: control de paràmetres (V, f).
+- **Activa**: petites pertorbacions per verificar la presència de xarxa.
+
+#### Control de potència
+
+El **control de potència** regula la quantitat d’energia que el sistema fotovoltaic injecta a la xarxa o subministra a les càrregues.
+
+Funcions principals:
+
+* **Limitació de potència**: per evitar sobrecàrregues o complir restriccions contractuals.
+* **Seguiment del punt de màxima potència (MPPT)**: optimitza la producció dels panells.
+* **Control d’injecció a xarxa**: pot ajustar la potència per evitar excedents (p. ex. autoconsum amb zero injecció).
+* **Gestió de potència reactiva** (en sistemes avançats): ajuda a estabilitzar la xarxa.
+
+Aplicacions:
+
+* Instal·lacions d’autoconsum
+* Sistemes connectats a xarxa amb limitacions legals
+* Integració amb bateries i sistemes híbrids
+
+
+
+
+
+### 4.3 Cables de connexió
+
+Característiques:
+
+* Aïllament adequat
+* Resistència a UV i intempèrie
+* Secció segons intensitat
+
+
+
+### 4.4 Formes d’ona
+
+La forma d’ona ha de ser sinusoidal pura. Els inversors moderns garanteixen:
+
+* Baix contingut harmònic
+* Alta qualitat d’energia
+
+
+
+## 5. Proteccions i posada en servei
+
+### 5.1 Sistemes de protecció
+
+* Contra sobrecàrregues
+* Contra curtcircuits
+* Contra sobretensions
+* Contra contactes directes i indirectes
+
+
+
+### 5.2 Instal·lacions de connexió a terra
+
+Funcions:
+
+* Protecció de persones
+* Evacuació de corrents de defecte
+* Estabilització del sistema
+
+
+
+### 5.3 Posada en marxa
+
+Inclou:
+
+* Verificació de connexions
+* Mesures elèctriques
+* Proves de funcionament
+* Documentació final
+
+
+
+## 6. Equips i components
+
+### 6.1 Panells solars
+
+Característiques:
+
+* Potència nominal
+* Eficiència
+* Tolerància
+
+També existeixen:
+
+* Panells amb reflectors per augmentar la captació
+
+
+
+### 6.2 Placa de característiques
+
+Inclou:
+
+* $P_{max}$
+* $V_{oc}$
+* $I_{sc}$
+* Coeficients de temperatura
+
+
+
+### 6.3 Acumuladors
+
+Aspectes clau:
+
+* Ubicació ventilada
+* Protecció tèrmica
+* Connexió adequada
+
+
+
+### 6.4 Proteccions
+
+Inclouen:
+
+* Fusibles
+* Magnetotèrmics
+* Diferencials
+* Protectors de sobretensions
+
+
+
+### 6.5 Maxímetre
+
+Dispositiu que mesura la potència màxima demandada en un període determinat.
+
+
+
+### 6.6 Reguladors
+
+Funcions:
+
+* Control de càrrega
+* Protecció de bateries
+
+Paràmetres:
+
+* Tensió
+* Corrent
+* Algoritme de càrrega
+
+
+
+### 6.7 Convertidors (inversors)
+
+Transformen:
+
+* Corrente continu (DC) → Corrente altern (AC)
+
+Inclouen:
+
+* Sistemes de control
+* Proteccions internes
+* Funcions de monitoratge
+
+
+
+### 6.8 Manteniment
+
+Tasques:
+
+* Neteja de panells
+* Revisió de connexions
+* Control de rendiment
+
+
+
+## 7. Sistemes de seguiment solar
+
+Permeten augmentar la producció mitjançant el seguiment del sol.
+
+### 7.1 Tipus
+
+* Un eix
+* Dos eixos
+
+
+
+### 7.2 Components
+
+* Sensors solars
+* Controladors
+* Servoaccionaments
+
+
+
+### 7.3 Estructures de suport
+
+Han de garantir:
+
+* Estabilitat
+* Resistència al vent
+* Durabilitat
+
+
+
+## 8. Sistemes de connexió del neutre i masses
+
+### 8.1 Tipus de sistemes
+
+* TT
+* TN
+* IT
+
+
+
+### 8.2 Proteccions del neutre
+
+* Interruptors diferencials
+* Supervisió de fallades
+
+
+
+## 9. Instal·lacions de suport
+
+Inclouen:
+
+* Quadres elèctrics
+* Canalitzacions
+* Sistemes auxiliars
+
+
+
+### 9.1 Esquemes i simbologia
+
+Els esquemes elèctrics permeten:
+
+* Entendre la instal·lació
+* Facilitar el manteniment
+* Detectar avaries
+
+
+
+## 10. Telegestió d’instal·lacions fotovoltaiques
+
+Permet:
+
+* Monitoratge remot
+* Control de producció
+* Detecció d’incidències
+
+Tecnologies:
+
+* IoT
+* Plataformes web
+* Comunicacions GSM/Internet
+
+
+
+## 11. Normativa d’aplicació
+
+### 11.1 Reglamentació principal
+
+* Reglament Electrotècnic de Baixa Tensió (REBT)
+* Normes UNE
+* Normativa d’autoconsum
+
+
+
+### 11.2 Normativa de connexió a xarxa
+
+Inclou:
+
+* Requisits tècnics
+* Procediments administratius
+* Condicions de seguretat
+
+
+
+### 11.3 Altres normatives
+
+* Normes internacionals
+* Reglamentació europea
+* Normativa mediambiental
+
+
+
+
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

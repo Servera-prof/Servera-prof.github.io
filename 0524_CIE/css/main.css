@@ -81,6 +81,11 @@ h1, h2, h3, h4, h5, h6, h7 {
   margin: 1em 0 0.5em 0;
   line-height: 1.2;
 }
+
+h4{
+color: #9e2050
+}
+
 img {
   max-width: 100%;
 }
