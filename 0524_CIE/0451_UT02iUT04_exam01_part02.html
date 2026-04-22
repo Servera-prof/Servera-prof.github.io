@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+Examen UT02 i UT04 (part 02)
+============================
+
+### Recorda capturar la pantalla amb [screencapture](https://screencapture.com)
+
+Puntuació: 40 %
+
+Si es considera que el 2026 el parc automobilístic a Espanya és:
+
+- Turismes de gasolina existents actualment = 50 % del parc
+- Turismes de gasolina posteriors a 1992 = 85 %
+- Turismes de gasolina anteriors a 1992 = 15 %
+- Turismes amb GLP o GN actualment = 0 % del parc.
+
+Es pren un LIE per al vapor de gasolina de 1,6 % en volum (0,061 kg/m³), per al GLP un LIE de 2,1% en volum (0,039 kg/m³) i per al GNC un LIE de 5% en volum (0,033 kg/m³)
+
+Considera circulació d'aire amb dificultats a causa dels obstacles i fuga contínua per a gasolina.
+
+Calcula el cabal de ventilació d'un taller de 5 vehicles, considerant uns 30 m²/vehicle i admetent com a zona perillosa una esfera amb radi màxim de 30 cm.
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

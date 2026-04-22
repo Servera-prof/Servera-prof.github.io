@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=../img/favicon.png>
+    <meta charset="UTF-8">
+    
+    <style>
+
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<textarea id="enunciat">
+~~~
+&nbsp;
+    Permutació: [[p2]]
+&nbsp;
+~~~
+
+Puntuació: 60%
+
+## Normes:
+
+- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
+  Pots utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/)
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Està terminantment prohibit copiar o mirar al company.
+- No es poden fer preguntes. Part de l'avaluació és la comprensió del
+  text. Si hi ha algun error es parlarà una vegada l'examen hagi
+  finalitzat, i en el seu cas s'anul·larà la pregunta.
+- L'examen dura el que indiqui la tasca associada i **es tanca
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
+
+## Com fer aquest examen:
+
+- Agafa paper
+- **Escriu la permutació al paper!!**
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis copia les respostes sense espais i tot seguit, al camp
+  «resposta», si no la saps n. Per exemple: abnaac
+- Omple el teu nom i clica a avaluar.
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
+- Adjunta-la com a tasca.
+- Fotografia el paper utilitzat (la fotografia és per a tu, per a
+  poder revisar l'examen si ho necessitessis).
+- Entrega els papers utilitzats.
+
+## Preguntes
+
+[[p1]]
+
+## Resposta
+
+[[i1]]
+</textarea>
+
+<script>
+
+const titol = "Test UT02 i UT04 - amb suport";
+const puntuacions = ["", 10];
+
+let p01 = "";
+const preguntes = [
+[
+"A un local de bar (pública concurrència) amb pati exterior per als clients es té que hi ha una resistència a terra de 30 Ω i almenys un interruptor diferencial té una sensibilitat de 300 mA. Quina serà la tensió de contacte del local? Supera el límit reglamentari",
+"$U_d=9~\\text{V}$, no se supera el límit",
+"$U_d=10~\\text{V}$, no se supera el límit",
+"$U_d=9000~\\text{V}$, se supera el límit",
+"$U_d=0,1~\\text{V}$, no se supera el límit"
+],
+[
+"Quina és una de les estratègies que utilitzen els diferencials superimmunitzats?",
+"Que el temps màxim de salt a $1\\times I \\Delta_n = 0,3~\\text{s}$, però el mínim no està definit.",
+"Que el temps mínim de salt a $1\\times I \\Delta_n = 0,3~\\text{s}$, però el màxim no està definit.",
+"Que el temps màxim de salt a $5\\times I \\Delta_n = 0,04~\\text{s}, i el mínim na $1\\times I \\Delta_n = 0,3~\\text{s}$.",
+"Que el temps mínim de salt a $5\\times I \\Delta_n = 0,04~\\text{s}, i el màxim na $1\\times I \\Delta_n = 0,3~\\text{s}$."
+],
+[
+"A una instal·lació encastada amb cables unipolars de 400/750 V a una benzinera (local amb risc d'incendi i explosió), de classe I, zona 2 quina secció com a mínim necessitaré en condicions estàndard (40°C, sense agrupar, etc.) per a un receptor trifàsic de 9 kW i cosφ d'1",
+"1,5 mm²",
+"2,5 mm²",
+"4 mm²",
+"6 mm²"
+],
+[
+"És possible tenir un local a una xarxa TT a 230/400 V sense diferencials i sense una instal·lació de classe II",
+"Sí, per exemple amb locals no conductors, si les parets i el terra tenen com a mínim 50 kΩ, i les masses estan a 2 m de distància.",
+"Sí, si hi ha una malla equipotencial i aquesta està aïllada de terra.",
+"Sí, si es disposa d'un transformador d'aïllament.",
+"Hi ha més d'una resposta vàlida."
+],
+[
+"A un pati exterior a la intempèrie puc utilitzar un llum de 230 V amb IP33?",
+"Sí, sempre",
+"No",
+"Si, si és de classe II",
+"No, excepte si és de classe 0"
+],
+
+
+[
+"Al voltant d'una piscina el dissenyador d'exteriors vol instalar unes faroles de plàstic que simulen metall de 230 V a 1,5 m de la vora de la piscina. Es possible? <b>LLEGEIX BÉ TOTES LES RESPOSTES</b>",
+"No, haurien de ser de 12 V en tots els casos",
+"Sí, a partir de 1,25 m és possible en tots els casos.",
+"No, en cap cas, ja que està dins del volum 1",
+"Marca aquesta si no pots marcar cap de les altres."
+],
+[
+"Es pot considerar que un ascensor està connectat a terra, si es connecta a terra a través de l'estructura metàl·lica?",
+"Sí, tot i que han de complir unes prescripcions determinades.",
+"No, mai.",
+"Sí, sempre.",
+"Només si la caiguda de tensió és inferior al 5 % a l'arrencada."
+],
+[
+"S'han de posar llums d'emergència a les fires?",
+"No, tot i que hi ha públic no està regit per la ITC-BT-28, sinó per la ITC-BT-34",
+"Sí, si és una instal·lació temporal interior de més de 100 persones.",
+"Només si és assimilable a un local de pública concurrència",
+"Sí, a les entrades al recinte firal i als punts considerats «d'especial perillositat i risc d'aglomeració»"
+],
+[
+"Quin element del quiròfan ha d'estar alimentat per un transformador d'aïllament i pel subministrament especial complementari (les bateries).",
+"La lluminària de quiròfan",
+"La taula d'operacions",
+"Els rajos X",
+"Totes són correctes"
+],
+[
+"A les tanques pel ramat (<i>ganado</i> en castellà), hi ha d'haver cap advertència?",
+"No, si la tensió de contacte és inferior a 24 V.",
+"Si, cada 2 m.",
+"Si, cada 25 m.",
+"Marca aquesta si no pots marcar cap de les altres."
+],
+
+
+
+[
+"Ens han contractat per una reforma d'un port, la consigna és que ho hem d'actualitzar tot a nou reglament. Haurem de canviar els cables RZ1-K que a vegades estan en contacte amb l'aigua?",
+"Sí, haurien de ser, almenys H07RN8-F.",
+"Només si alimenten a bases de preses de corrent de IPX6.",
+"Només si són línies considerades aèries.",
+"Marca aquesta si no pots marcar cap de les altres."
+],
+[
+"Un forn d'inducció amb $P=11~\\text{kW}$, però amb una arrencada a on la seva $I_arr = 39~\\text{A}$, pot estar protegit per un magnetotèrmic de 40 A i alimentat directament amb un conductor de 16 mm²?",
+"La protecció és suficient, però es requereix algun sistema addicional per disminuir la intensitat d'arrencada.",
+"La protecció és insuficient, però no es requereix sistema addicional per disminuir la intensitat d'arrencada (atès que no és il·luminació, motor o aparell elevador).",
+"Tot és correcte, no cal prendre mesures addicionals.",
+"Marca aquesta si no pots marcar cap de les altres."
+],
+[
+"Un motor gira a 50 Hz (3000 rpm) a una fàbrica amb fluorescents. Quina mesura he de tenir en compte?",
+"La separació de la il·luminació en 3 fases diferents per a evitar l'efecte estroboscòpic per a evitar l'aparença que el motor està aturat quan s'està movent.",
+"La protecció amb diferencials d'alta sensibilitat",
+"La connexió equipotencial entre el motor i les lluminàries",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Si tinc dos motors amb una $Q=5~\\{text{kVA}$ cada un, puc posar una bateria de condensadors de $Q=5~\\{text{kVA}$",
+"Sí, ja que tot i que cos φ < 1, el milloraríem respecte a la situació prèvia.",
+"No, perquè empitjoraríem el fdp respecte a la situació prèvia.",
+"No, puix tindríem potència reactiva capacitiva.",
+"Marca aquesta si no pots marcar cap de les altres."
+],
+[
+"Es poden fer instal·lacions elèctriques d'il·luminació de 230 V a mobles?",
+"Han de ser 12 V.",
+"Han d'estar marcades amb el símbol F",
+"Només si no estan més enfora de 10 m",
+"Marca aquesta si no pots marcar cap de les altres."
+],
+];
+
+
+let permutacio = "";
+const num_preg = preguntes.length;
+const num_resp = preguntes[0].length-1;
+const fact_np = factorial(num_preg);
+const fact_nr = factorial(num_resp);
+/*let ordre_preg = Math.floor(aleat(0, fact_np - 1)/1e16)*/;
+let ordre_preg = aleat(0, fact_np - 1);
+
+console.log(ordre_preg)
+permutacio += ordre_preg + "_";
+//ordre_preg *= 1e16;
+
+const preg_ordenades = obtenirPermutacio(preguntes, ordre_preg);
+
+for (let i = 0; i < num_preg; i++){
+    p01 += '<p><b>' + (i+1) + '.</b> ' + preg_ordenades[i][0] + '</p>';
+    let ordre_resp = aleat (0, fact_nr - 1);
+    permutacio += ordre_resp + ".";
+
+    let resp = obtenirPermutacio(preg_ordenades[i].slice(1), ordre_resp);
+    p01 += '<ol style="list-style-type: none;">'
+    for (let j = 0; j < num_resp; j++){
+        p01 += '<li class="preg"><span><i>' + nombreALletra(j+1) +
+               '</i>) </span><span style="flex: 1;">' +
+               resp[j] + "</span></li>"
+    }
+    p01 += "</ol>"
+}
+
+p02 = permutacio;
+
+
+
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+// !!! CONVERTIR si és necessari les unitats a les unitats que requereix
+// el nostre enunciat.
+
+function estableixParametres(){
+    array = [
+      p01, p02
+    ];
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+}
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS Técnic Superior en sistemes electrotècnics i automatitzats",
+    anys: "2025/2026"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    respostes[0] = document.getElementById("i1").value
+    alumne.nom = document.getElementById("nom").value;
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) serà qualificat manualment.",
+    "",
+    ].join("\n") + "\n";
+    txt += txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    patro = "[[i1]]";
+    canvi = "~~~\n    " + respostes[0] + "\n\n\n~~~";
+
+    txt = txt.replace(patro, canvi);
+
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+</script>
