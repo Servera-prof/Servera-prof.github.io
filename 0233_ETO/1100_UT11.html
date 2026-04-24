@@ -366,6 +366,71 @@ A on:
 - $C$ és el condensador de temporització,
 - El factor 0,693 prové de $\ln(2) \approx 0,693$, relacionat amb els llindars de càrrega i descàrrega a 1/3 i 2/3 de VCC.
 
+
+5. OScil·lador senoidal amb 555
+-------------------------------
+
+En aquest circuit, es mostrarà com es pot construir un generador d'ones sinusoidals mitjançant el circuit integrat 555.
+
+Les ones sinusoidals són molt freqüents. Per exemple a la xarxa la freqüència és de 50 Hz i l'amplitud de 325 V $(\sqrt{2} \cdot 230)$.
+
+Les ones sinusoidals també són presents en els generadors de funcions, els quals solen oferir senyals de sortida en forma sinusoidal, quadrada o triangular. A més, tenen un paper destacat en el camp de l'acústica.
+
+En aquest circuit, s'utilitzarà un temporitzador 555 per generar un senyal sinusoidal aplicable a diverses finalitats.
+
+> <video autoplay loop muted playsinline width="500">
+> <source src="vid/oscilador_senoidal_555.mp4" type="video/mp4">
+> El teu navegador no suporta el vídeo HTML5.</video>
+>
+> **Vid. 6.** Creat a partir de
+> [simulació](https://is.gd/4YNA0l).
+> J. Servera (2026).
+> _Oscil·lador senoidal el xip 555_. 
+> Sota llicència [CC4.0-by-nc-sa]
+
+En aquest circuit, el 555 es configurarà en mode astable. En aquest mode, la sortida commuta alternativament entre nivell alt (HIGH) i nivell baix (LOW) de manera cíclica.
+
+- **Alimentació:** El circuit s'alimenta amb 4,5 V aplicats als terminals 8 (VCC) i 4 (RESET). El terminal 1 (GND) es connecta a massa.
+- **Configuració astable:** En aquest mode, el 555 genera ones quadrades digitals que commuten entre HIGH i LOW.
+- **Xarxa RC:** Està composta per una resistència de 100 kΩ i un condensador de 10 nF. Aplicant la fórmula de la freqüència per a un oscil·lador RC:
+
+$$ f = \frac{1}{2 \pi R C} $$
+
+s'obté una freqüència aproximada de 159 Hz:
+
+$$ f = \frac{1}{2 \pi (100 \cdot 10^3) (10 \cdot 10^{-9})} \approx 
+159 \, \text{Hz} $$
+
+Així doncs, el senyal quadrat generat amb aquests valors té una freqüència d'aproximadament 159 Hz.
+
+#### Conversió a ona sinusoidal
+
+Per transformar aquest senyal quadrat en una ona sinusoidal, s'utilitza un circuit ressonant LC a la sortida del 555. Mitjançant un circuit LC ressonant connectat a la sortida del senyal quadrat, s'aconsegueix convertir-lo en un senyal de forma pràcticament sinusoidal.
+
+Perquè aquesta conversió sigui efectiva, els valors dels components del circuit LC han de ser els adequats; en cas contrari, no es produirà el fenomen de ressonància. Una ona sinusoidal representa, des del punt de vista matemàtic, el model perfecte de la ressonància. Quan s'aconsegueix la ressonància mitjançant un circuit LC, el senyal de sortida esdevé sinusoidal.
+
+#### Càlcul del circuit LC
+
+Atès que la freqüència del senyal quadrat de sortida és aproximadament 7,2 kHz, cal dissenyar una xarxa LC que ressoni a aquesta freqüència per obtenir un senyal sinusoidal. La freqüència de ressonància d'un circuit LC ve donada per:
+
+$$ f = \frac{1}{2 \pi \sqrt{L C}} $$
+
+Amb una bobina de 1 H i un condensador d'1 μF, s'obté:
+
+$$ f = \frac{1}{2 \pi \sqrt{1  \cdot (1 \cdot 10^{-6})}} \approx 159 \, \text{Hz} $$
+
+Aquest valor és molt proper als 7,2 kHz del senyal quadrat, la qual cosa garanteix el funcionament del circuit. Com més properes siguin ambdues freqüències, més perfecta serà l'ona sinusoidal obtinguda.
+
+#### Consideracions de precisió
+
+El circuit requereix l'ús de valors precisos tant per a la xarxa LC com per a la tensió d'alimentació. Amb una alimentació de 4,5 V, el circuit ressona correctament. Desviacions significatives d'aquest valor poden impedir la ressonància. Es recomana mantenir la tensió propera a 4,5 V per a un funcionament òptim.
+
+#### Modificacions possibles
+
+La freqüència del senyal de sortida es pot modificant els valors de la xarxa RC. Incrementar els valors de R o C disminueix la freqüència; reduir-los l'augmenta.
+
+Cal tenir en compte que en modificar la freqüència del senyal quadrat, també s'han d'ajustar els valors de la xarxa LC per mantenir la condició de ressonància a la nova freqüència.
+
 [Cerezo _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m09_/web/fp_iea_m09_htmlindex/index.html "S. Cerezo Salcedo, X. Mesas Laserna, À. L. Miguel Rodríguez, J. M. Pallarés Serres, J. Perona Camacho, R. Rodríguez Coronel"
 [Paul Falstad]: http://www.falstad.com/
 [Carlos Félix Pardo Martín]: https://picuino.github.io/es/contacto.html
