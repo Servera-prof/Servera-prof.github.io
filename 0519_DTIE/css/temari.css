@@ -84,6 +84,7 @@ h3{
     margin-top: 4em;
 }
 h4{
+    margin-top: 2em;
     color: #9e2050
 }
 
@@ -150,6 +151,11 @@ img[alt="fr250"]{
     float: right;
     margin: 0 0 0 0.7em;
 }
+img[alt="fr100"]{
+    width: 100px;
+    float: right;
+    margin: 0 0 0 0.7em;
+}
 img[alt="fr"]{
     float: right;
     margin: 0 0 0 0.7em;
@@ -159,6 +165,8 @@ img[alt="fl250"]{
     float: left;
     margin: 0 .7em 0 0;
 }
+
+
 img[alt="fl"]{
     float: left;
     margin: 0 5px 0 0;
