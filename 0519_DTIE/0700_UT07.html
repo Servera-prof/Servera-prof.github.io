@@ -8,242 +8,499 @@
 
 
 
-UT04 - Organització de la documentació
-======================================
+UT07 - Plans, manuals i estudis
+===============================
 
-1. Documents d'informació gràfica
+Índex
+-----
+
+**Capítol 1: Plans d'Emergència i Prevenció**
+1.1 Pla d'emergència: Tipus i característiques
+1.2 Pla de prevenció: Tipus i característiques
+1.3 Equips de seguretat i protecció
+1.4 Senyalització i alarmes
+
+**Capítol 2: Normativa de Seguretat i Salut**
+2.1 Normativa d'aplicació
+2.2 Estudis bàsics de seguretat i salut
+2.3 Normes d'aplicació
+2.4 Normes internacionals
+
+**Capítol 3: Plans de Qualitat i Manteniment**
+3.1 Pla de qualitat i manteniment
+3.2 Sistemes de gestió de la qualitat aplicats a les instal·lacions elèctriques
+3.3 Normes ISO d'aplicació
+3.4 Qualitat en l'execució d'instal·lacions o sistemes
+3.5 Normativa de Gestió de la Qualitat
+
+**Capítol 4: Gestió Mediambiental**
+4.1 Pla de Gestió Mediambiental
+4.2 Estudis d'impacte ambiental
+4.3 Normativa de gestió mediambiental
+
+**Capítol 5: Documentació Tècnica de Servei**
+5.1 Manual de servei: Elaboració de manuals
+5.2 Manual de servei
+5.3 Manual de mesuraments
+5.4 Especificacions tècniques dels elements de les instal·lacions
+5.5 Condicions de posada en marxa o servei
+
+**Capítol 6: Manteniment i Històrics**
+6.1 Manual de manteniment
+6.2 Històric de manteniment
+6.3 Històric d'avaries
+6.4 Protocols de proves
+6.5 Processos en proves específiques
+
+
+
+
+
+
+1. Plans d'Emergència i Prevenció
 ---------------------------------
 
-Constitueixen el nucli del projecte i defineixen geomètricament la solució adoptada. Es generen amb programari de disseny assistit per ordinador (CAD) i es basen majoritàriament en gràfics vectorials, la qual cosa garanteix la precisió i l'escalabilitat sense pèrdua de qualitat. Els formats clau són:
-- ![fr100](img/ext_dwg.png)**DWG (_DraWinG_):** Format propietari i natiu d'AutoCAD. És l'estàndard de facto en la indústria per a l'intercanvi de plànols en fase de disseny i execució. La seva naturalesa propietària el fa dependent del programari d'Autodesk.
-- **DXF (_Drawing eXchange Format_):** Format obert creat per Autodesk per facilitar la interoperabilitat entre diferents programes de CAD. ![fr100](img/ext_dxf.png) Tot i que pot representar la major part de la informació gràfica d'un DWG, és un format d'intercanvi, no de treball, i pot perdre metadades o funcionalitats avançades.
-- **DGN (_DesiGN_):** Format natiu del programari MicroStation, molt estès en obra civil i cartografia.
-- **Format d'intercanvi BIM (IFC):** Més que un plànol en 2D, és un format obert (ISO 16739) que conté un model 3D del projecte amb tota la seva informació (geometria, materials, fases) per a la col·laboració entre diferents disciplines.
+### 1.1 Pla d'emergència: Tipus i característiques
+Un pla d'emergència és el document que recull el conjunt de mesures destinades a fer front a situacions de risc, minimitzant els danys humans i materials que es puguin produir. La seva implantació és obligatòria en la majoria d'edificis i activitats industrials.
+
+- **Pla d'Autoprotecció (PAU):** Exigit per la normativa d'autoprotecció (Reial Decret 393/2007) per a activitats amb risc elevat (indústries químiques, grans superfícies, espectacles públics). Inclou la identificació de riscos, els mitjans de protecció, l'organigrama d'actuació i els plans d'evacuació.
+- **Mesures d'Emergència:** Per a activitats de baix risc, es poden limitar a un document simplificat amb instruccions clares d'evacuació i primers auxilis, sense requerir l'estructura complexa d'un PAU.
+
+
+#### Característiques que ha de complir un pla d'emergència
+
+- **Escrit i aprovat:** Formalitzat per la direcció de l'empresa o el titular de l'activitat.
+- **Adaptat i actualitzat:** Ha de reflectir la realitat canviant de l'edifici o activitat.
+- **Implantat i conegut:** No serveix de res al calaix; tot el personal l'ha de conèixer i s'han de fer simulacres periòdics.
+- **Coordinar:** Ha d'integrar-se amb els plans d'àmbit superior (municipals, autonòmics).
 
 
 
-### 1.1 Formats de paper normalitzats
+### 1.2 Pla de prevenció: Tipus i característiques
 
-La normalització dels formats de paper es regeix per la norma internacional ISO 216, basada en la sèrie DIN A. La seva característica principal és que cada format s'obté en dividir l'anterior per la meitat pel costat més llarg, mantenint una proporció constant d'1:√2.
-
-El format de referència és el **DIN A0**, amb una superfície exacta d'1 m².
-
-| Format     | Dimensions (mm) |
-| :--------: | :-------------: |
-| **DIN A0** | 841 × 1189      |
-| **DIN A1** | 594 × 841       |
-| **DIN A2** | 420 × 594       |
-| **DIN A3** | 297 × 420       |
-| **DIN A4** | 210 × 297       |
-| **DIN A5** | 148 × 210       |
-
-Per a plànols tècnics, és habitual l'ús de formats allargats per adaptar-se a les necessitats del dibuix sense malbaratar paper. Aquests formats s'obtenen multiplicant el costat curt d'un format base per un factor 2, 3, 4, etc. Per exemple, un A4 allargat (A4 x 3) mesura 210 × 891 mm. La seva nomenclatura és: **Format base x múltiple** (ex: DIN A2 x 4).
+El pla de prevenció de riscos laborals és l'eina a través de la qual s'integra l'activitat preventiva d'una empresa en el seu sistema general de gestió. És l'obligació fonamental de l'empresari segons la Llei 31/1995 de Prevenció de Riscos Laborals (LPRL).
 
 
-
-### 1.2 El doblegat de plànols
-
-Els plànols de gran format (A0, A1, A2) s'han de doblegar per al seu arxiu i manipulació. L'objectiu és reduir-los a la mida d'un DIN A4 (210 × 297 mm) per guardar-los en carpetes, arxivadors o trametre'ls per correu, tot respectant dues regles fonamentals:
-
-1.  **El caixetí de retolació ha de quedar visible a la part davantera,** una vegada doblegat. Això permet identificar el plànol sense obrir-lo.
-2.  **L'última plegada serà una pestanya d'uns 20 mm que quedarà a la part posterior,** servint per a fixar el plànol a l'arxivador sense grapar ni perforar la zona de dibuix.
-
-El procés de doblegat es realitza en dues fases: primer es fan plecs longitudinals en acordió i, posteriorment, es doblega en plecs transversals portant la base del plànol cap al caixetí, formant la pestanya final. Una execució neta i precisa és símptoma de professionalitat.
-
-Es poden consultar les mides normatives a la [UNE102795](docs/norma_une_1027.pdf)
+#### Tipus segons l'organització preventiva
+- **Assumpció pel mateix empresari:** Permès en empreses de fins a 10 treballadors (o 25 si hi ha un únic centre de treball), sempre que l'empresari hi treballi habitualment i tingui la formació requerida.
+- **Servei de Prevenció Propi (SPP):** Un equip intern de l'empresa format per professionals de la prevenció. Obligatori per a grans empreses (més de 500 treballadors) o activitats de risc elevat.
+- **Servei de Prevenció Aliè (SPA):** Una entitat externa especialitzada i acreditada que assumeix les funcions preventives. És la modalitat més comuna per a PIMES.
+- **Servei de Prevenció Mancomunat (SPM):** Compartit per diverses empreses d'un mateix sector i ubicació, com un polígon industrial.
 
 
+#### Característiques del pla de prevenció
+
+Ha d'incloure la política preventiva, l'organigrama de responsabilitats, els procediments de treball i, sobretot, els instruments fonamentals per a la seva execució:
+1.  **Avaluació de riscos:** Identificació i valoració de tots els riscos presents als llocs de treball.
+2.  **Planificació de l'activitat preventiva:** Definició de les accions correctores, terminis, responsables i recursos econòmics per eliminar o reduir els riscos avaluats.
+
+### 1.3 Equips de seguretat i protecció
+La Llei de Prevenció estableix una jerarquia de controls: primer s'ha de combatre el risc en el seu origen (protecció col·lectiva) i, si no és suficient, recórrer a la protecció individual.
 
 
+#### Equips de Protecció Col·lectiva (EPC)
 
-2. Arxius Digitals: Fonaments i Aplicacions
--------------------------------------------
+Protegeixen tots els treballadors exposats a un risc sense que ells hagin de fer cap acció. Són prioritaris. Exemples:
+- Baranes de seguretat en forats i perímetres d'excavacions.
+- Xarxes de seguretat per a treballs en alçada (vertical o horitzontal).
+- Sistemes de ventilació forçada per a espais confinats.
+- Extintors portàtils, boques d'incendi equipades (BIE) i sistemes de ruixadors automàtics (sprinklers) per a la protecció contra incendis.
 
-### 2.1 Concepte d'arxiu: Contingut i estructura
-Un arxiu digital és un conjunt de dades binàries emmagatzemades en un suport informàtic, que es tracta com una unitat lògica. Es distingeix del document físic per la seva immaterialitat i per la separació entre el contingut i el suport.
 
-L'estructura d'un arxiu es compon de dos elements clau:
-- **Contingut (les dades):** La informació útil, que pot ser text, imatge, àudio o una combinació.
-- **Metadades:** Dades que descriuen el contingut, el context i l'estructura de l'arxiu. Inclouen informació com el nom de l'arxiu, l'autor, la data de creació, la mida, el tipus de format, etc. Són fonamentals per a la cerca, identificació i gestió documental.
+#### Equips de Protecció Individual (EPI)
 
-L'**extensió** de l'arxiu (els caràcters després del punt, com `.docx` o `.pdf`) és una metadada crítica que indica al sistema operatiu quin programa ha d'obrir-lo.
+Qualsevol equip destinat a ser portat o subjectat pel treballador per protegir-lo d'un o diversos riscos. Són la darrera barrera de defensa i han de complir la normativa de certificació CE.
+- **Protecció del cap:** Casc de seguretat contra impactes o contactes elèctrics.
+- **Protecció auditiva:** Taps i orelleres per a ambients sorollosos (>85 dB).
+- **Protecció ocular i facial:** Ulleres i pantalles facials per a projeccions de partícules, radiacions o productes químics.
+- **Protecció de les vies respiratòries:** Màscares autofiltrants (contra partícules) i màscares amb cartutxos filtrants (contra gasos).
+- **Protecció de mans i braços:** Guants contra riscos mecànics, tèrmics o químics.
+- **Protecció de peus:** Calçat de seguretat amb puntera i sola antiperforació.
+- **Protecció anticaigudes:** Arnés anticaigudes integral amb un sistema d'ancoratge i un element d'amarrament (corda o cinta amb absorbedor d'energia).
 
 
 
-### 2.2 Tipus de formats i la seva classificació
+### 1.4 Senyalització i alarmes
 
-Un format d'arxiu és un estàndard que defineix com s'emmagatzema i organitza la informació dins d'un arxiu. Es classifiquen segons la naturalesa de la informació i el seu grau d'obertura.
+La senyalització de seguretat i salut és un EPC que té com a objectiu cridar l'atenció ràpidament sobre situacions de risc o donar instruccions sobre les actuacions a seguir. Es regeix pel Reial Decret 485/1997, que estableix un codi de colors i formes:
 
+- **Senyalització de prohibició:** Prohibeix un comportament que pot provocar un perill.
+    - Forma: Rodó. Color de fons: Blanc. Vora i banda transversal: Vermell.
+    - Exemple: "Prohibit fumar", "Prohibit el pas a vianants".
 
-#### Per tipus de contingut:
-- **Textuals:** Contenen caràcters i, en formats enriquits, elements de format i imatges incrustades. Exemples: TXT, DOCX, ODT, PDF.
-- **Numèrics i de càlcul:** Dissenyats per a l'organització tabular de dades i l'execució d'operacions matemàtiques, estadístiques i financeres. Exemples: XLSX, ODS.
-- **Gràfics o d'imatge:** Emmagatzemen mapes de bits (JPEG, PNG, TIFF) o gràfics vectorials (SVG, DWG, DXF).
-- **Bases de dades de pressupostos:** Formats estructurats per a la gestió de costos, amidaments i certificacions d'obra. Exemples: PZH, AQM, BC3.
-- **Multimèdia:** Combinen àudio i/o vídeo en un sol contenidor. Exemples: MP4, AVI, MP3.
+- **Senyalització d'obligació:** Obliga a un comportament determinat, principalment l'ús d'un EPI.
+    - Forma: Rodó. Color de fons: Blau. Símbol: Blanc.
+    - Exemple: "Ús obligatori de casc", "Ús obligatori de guants".
 
+- **Senyalització d'advertència:** Adverteix d'un risc o perill.
+    - Forma: Triangular. Color de fons: Groc. Vora: Negre. Símbol: Negre.
+    - Exemple: "Risc de càrrega suspesa", "Alta tensió", "Risc d'ensopegada".
 
-#### Per grau d'obertura i propietat:
+- **Senyalització de salvament o socors:** Indica la ubicació de materials i equips de primers auxilis o vies d'evacuació.
+    - Forma: Rectangular o quadrada. Color de fons: Verd. Símbol: Blanc.
+    - Exemple: "Sortida d'emergència", "Primers auxilis", "Llitera".
 
-- **Formats oberts:** La seva especificació és pública i no està subjecta a patents. Afavoreixen la interoperabilitat i la preservació digital. Exemples: PDF/A, ODF (Open Document Format), TXT, CSV.
-- **Formats propietaris:** Són creats i controlats per una empresa, i la seva especificació pot ser secreta o canviar sense previ avís. Exemples: DWG (AutoCAD), PSD (Adobe Photoshop), DOC (antic Microsoft Word).
-
-
-
-### 2.3 Processadors de text: Formats Word
-El processador de textos és l'eina ofimàtica per excel·lència per a la creació de documents, els seus formats principals són:
-
-![fr100](img/ext_odt.png)
-
-- **DOC:** Format propietari binari utilitzat fins a la versió 2003. Tot i ser obsolet, encara és llegible per versions modernes.
-- **DOCX:** Format estàndard des de la versió 2007. Es basa en l'estàndard obert Office Open XML. Essencialment, és un arxiu comprimit (ZIP) que conté diversos fitxers XML i recursos multimèdia. Això el fa més robust i menys propens a la corrupció que el seu predecessor.
-- **RTF (_Rich Text Format_):** Format intercanviable entre diferents processadors de text, encara que amb limitacions en elements complexos.
-- **ODT (_Open Document Text_):** L'alternativa oberta per excel·lència, utilitzat per suites com LibreOffice o OpenOffice i àmpliament recomanat per les administracions públiques per la seva neutralitat tecnològica.
-
-> ![c500](img/lo_writer.png)
-> **Fig. 1.** J. Servera (2026).
-> _Exemple del programari Writer de la suite ofimàtica Libre Office_. 
-> Sota llicència [CC4.0-by-nc-sa]
-
-### 2.4 Fulls de càlcul.
-
-Imprescindibles per a la part quantitativa i econòmica del projecte. S'utilitzen per a càlculs estructurals simples, dimensionament d'elements, confecció d'amidaments i elaboració de pressupostos.
-
-![fr100](img/ext_ods.png)
-
-- **XLSX:** Format de Microsoft Excel. La seva potència rau en les eines d'anàlisi de dades i la programació de macros.
-- **ODS (OpenDocument Spreadsheet):** L'alternativa oberta i estàndard, àmpliament utilitzada per a amidaments i pressupostos en entorns que prioritzen la interoperabilitat.
-
-> ![c500](img/lo_calc.png)
-> **Fig. 2.** J. Servera (2026).
-> _Exemple del programari Calc de la suite ofimàtica Libre Office_. 
-> Sota llicència [CC4.0-by-nc-sa]
-
-### 2.5 Documents de text pla.
-
-![fr100](img/ext_txt) Són arxius que contenen exclusivament caràcters de text sense cap mena de format (negretes, cursives, taules o imatges incrustades). La seva senzillesa els fa extremadament robustos i aptes per a la preservació digital i l'intercanvi de dades entre sistemes.
-
-- **TXT:** L'extensió genèrica per a un fitxer de text pla. S'utilitza per a llegeix-me's (`README.txt`), notes de versions i, de vegades, com a format intermedi per a la importació o exportació de dades d'un programa tècnic (per exemple, llistes de punts d'una topografia).
-- **DXF:** El DXF en realitat també es un fitxer de text pla.
-- **Markdown i HTML**: Les extensions .md o .html (com la d'aquesta pàgina també són en text pla (prova de fer `Ctrl + U` mentre llegeixes això).
-
-> ![c500](img/gedit.png)
-> **Fig. 3.** J. Servera (2026).
-> _Exemple del programari gedit per a processar arxius de text pla amb resaltat de sintaxi_. 
-> Sota llicència [CC4.0-by-nc-sa]
-
-### 2.6 Documents de bases de dades de pressupostos.
-
-Són formats específics generats per programari de gestió de costos i pressupostos d'obra, com Arquímedes, Presto o TCQ. Aquests arxius no són simples fulls de càlcul, sinó bases de dades estructurades que vinculen els amidaments amb preus unitaris de bancs de dades oficials o de mercat.
-- ![fr](img/ext_pzh.png)**PZH:** Format propietari del programari Presto. Emmagatzema l'estructura completa del pressupost: capítols, partides, amidaments, preus, certificacions i tota la informació necessària per a la gestió econòmica de l'obra.
-- **BC3 (FIEBDC-3):** Format d'intercanvi estàndard de bases de dades de la construcció. Es tracta d'un fitxer de text pla amb una estructura de registres normalitzada (norma FIEBDC-3/2020) que permet la transferència d'informació entre diferents aplicacions de gestió de pressupostos i amidaments, garantint la interoperabilitat entre plataformes.
-- ![fr100](img/ext_aqm.png)**AQM:** Format propietari del programari Arquímedes, pertanyent a l'ecosistema de CYPE Ingenieros. Aquest fitxer conté tota la informació del pressupost i, de manera nativa, està vinculat al Generador de Preus de CYPE, la qual cosa facilita la confecció i actualització constant dels preus unitaris a partir de bases de dades de referència del sector. El seu equivalent d'intercanvi és també el format BC3, que Arquímedes pot importar i exportar sense problemes.
-
-
-
-### 2.7 El format de document portàtil: PDF
-El PDF (_Portable Document Format_), creat per Adobe Systems, és un estàndard de facto per a la distribució i l'intercanvi de documents que han de mantenir la seva aparença original (disseny, tipografies, gràfics) independentment del programari, maquinari o sistema operatiu on es visualitzin.
-
-La seva potència rau en les seves variants estandarditzades per ISO:
-- **PDF d'arxiu (PDF/A):** Subconjunt del PDF dissenyat per a la preservació digital a llarg termini. Prohibeix elements que poden ser un obstacle per a la reproducció futura, com l'encriptació o el contingut multimèdia referenciat externament. És el format obligatori per a l'arxiu electrònic de documents.
-- **PDF per a intercanvi d'impressió (PDF/X):** Subconjunt dissenyat específicament per a la indústria de les arts gràfiques per assegurar un intercanvi fiable d'arxius per a impressió professional. Assegura que totes les fonts i imatges estan incrustades.
-- **PDF amb formulari:** Permet crear documents amb camps de text, caselles de verificació i botons que l'usuari pot emplenar electrònicament.
+#### Sistemes d'alarma
+Complementen la senyalització i són vitals en emergències. Una alarma és un senyal acústic i/o lluminós que s'activa automàticament o manualment. Les seves característiques són:
+- Ha de ser audible en totes les zones de l'edifici.
+- Ha de ser inequívoca i diferenciar-se d'altres senyals.
+- En llocs amb treballadors amb discapacitat auditiva, el senyal acústic s'ha de complementar amb un de lluminós.
+- Requereix un manteniment periòdic que verifiqui el seu funcionament.
 
 
 
 
 
+2. Normativa de Seguretat i Salut
+---------------------------------
 
-3. Codificació i Gestió Documental
+### 2.1 Normativa d'aplicació
+
+El marc normatiu de la seguretat i salut laboral és jeràrquic i ampli. A Espanya, la pedra angular és la **Llei 31/1995, de 8 de novembre, de Prevenció de Riscos Laborals (LPRL)** , que transponeix la Directiva Marc europea 89/391/CEE. Aquesta llei estableix els drets i obligacions bàsics d'empresaris i treballadors.
+
+Es desenvolupa a través d'un cos normatiu conegut com a **reglaments de desenvolupament**, entre els quals destaquen:
+- **RD 39/1997:** Reglament dels Serveis de Prevenció, que defineix les modalitats organitzatives i les capacitacions professionals.
+- **RD 485/1997:** Disposicions mínimes en matèria de senyalització de seguretat i salut en el treball.
+- **RD 486/1997:** Disposicions mínimes de seguretat i salut als llocs de treball (condicions dels centres de treball).
+- **RD 773/1997:** Disposicions mínimes sobre utilització d'equips de protecció individual (EPI).
+- **RD 1215/1997:** Disposicions mínimes per a la utilització d'equips de treball (màquines i eines).
+- **RD 1627/1997:** Disposicions mínimes de seguretat i salut a les obres de construcció. És la norma clau per al sector de la construcció, ja que estableix les figures del coordinador de seguretat i salut i l'obligatorietat de l'Estudi de Seguretat i Salut i el seu corresponent Pla.
+- **RD 614/2001:** Sobre protecció dels treballadors davant el risc elèctric.
+
+### 2.2 Estudis bàsics de seguretat i salut
+En l'àmbit de les obres de construcció, l'**Estudi de Seguretat i Salut (ESS)** o el seu equivalent simplificat, l'**Estudi Bàsic de Seguretat i Salut (EBSS)** , són documents obligatoris. El promotor ha d'encarregar la seva elaboració i incloure'l en el projecte d'execució de l'obra.
+
+
+#### Estudi Bàsic (EBSS) vs ESS complet
+
+L'EBSS és suficient si l'obra no supera cap d'aquests llindars establerts al RD 1627/1997:
+- Pressupost d'execució per contracta (PEC) superior a 450.759,08 €.
+- Durada estimada de l'obra superior a 30 dies laborables, amb més de 20 treballadors en algun moment.
+- Volum de mà d'obra (suma dels dies de treball del total dels treballadors) superior a 500.
+- Obres de túnels, galeries, conduccions subterrànies i preses.
+
+
+#### Contingut d'un EBSS
+
+Encara que sigui "bàsic", ha d'incloure:
+1.  **Memòria informativa:** Descripció de l'obra, els seus riscos i les mesures preventives.
+2.  **Plec de condicions:** Normes legals i tècniques que ha de complir el Pla de Seguretat i Salut que elaborarà el contractista.
+3.  **Amidaments i pressupost:** Quantificació econòmica de les mesures de protecció col·lectiva, EPIs no reutilitzables i formació en seguretat.
+
+Aquest document és la base perquè cada contractista elabori el seu **Pla de Seguretat i Salut en el Treball (PSS)** , que és el document que adapta l'ESS/EBSS a les seves tècniques i mitjans constructius específics.
+
+
+### 6.3 Normes internacionals
+
+En entorns industrials i projectes multinacionals, és imprescindible conèixer les normes internacionals que poden ser d'aplicació per acord contractual o per protecció dels treballadors desplaçats.
+
+- **ISO 45001:** Són els estàndards internacionals per a sistemes de gestió de la seguretat i salut en el treball. L'ISO 45001:2018 n'és la versió més actual. Permet a les empreses gestionar els riscos de SST i millorar-ne l'exercici de manera proactiva, integrant-se amb les normes ISO 9001 (Qualitat) i ISO 14001 (Medi Ambient).
+- **Directives ATEX (Atmosphères Explosibles):** Directives de la Unió Europea (2014/34/UE per a equips i 1999/92/CE per a la protecció dels treballadors) que regulen la seguretat en atmosferes explosives, com les presents en refineries, sitges de cereal o indústries químiques.
+
+
+
+
+
+3. Plans de Qualitat i Manteniment
 ----------------------------------
 
-### 3.1 Normes de codificació documental
-La codificació és el procés d'assignar un codi únic i estructurat a cada document per identificar-lo, localitzar-lo i gestionar-lo de manera inequívoca. Un bon sistema de codificació ha de ser:
-- **Unívoc:** Un codi, un sol document.
-- **Normalitzat:** Basat en un estàndard conegut per tota l'organització.
-- **Significatiu:** El codi ha d'aportar informació sobre el document (projecte, tipus, revisió).
-- **Escalable:** Ha de permetre el creixement sense esgotar les combinacions.
+### 3.1 Pla de qualitat i manteniment
+El pla de qualitat és el document que estableix les pràctiques, els recursos i la seqüència d'activitats relatives a la qualitat d'un projecte, producte o instal·lació específics. En l'àmbit del manteniment, un **Pla de Manteniment** és el conjunt de tasques preventives i predictives programades per assegurar el correcte funcionament i la perllongació de la vida útil d'una instal·lació.
 
-**Exemple d'estructura de codificació per a un projecte d'enginyeria:**
-`AAA-BBB-CCC-DDD-EEE`
+Un Pla de Manteniment eficaç es dissenya sobre la base de:
+- **Instruccions del fabricant:** Les especificacions tècniques i intervals de revisió recomanats.
+- **La normativa vigent:** Reglaments de seguretat industrial que fixen manteniments obligatoris (per exemple, centres de transformació, instal·lacions de protecció contra incendis, aparells de gas).
+- **L'anàlisi de la criticitat dels equips:** Prioritzant les tasques en aquells equips amb més impacte en la seguretat o la producció.
 
-- `AAA`: Codi de projecte (ex: `P24` per al projecte de l'any 2024).
-- `BBB`: Codi de disciplina (ex: `EST` per a estructures, `INS` per a instal·lacions).
-- `CCC`: Tipus de document (ex: `PLN` per a plànol, `INF` per a informe, `PRE` per a pressupost).
-- `DDD`: Número seqüencial dins del tipus (ex: `001`).
-- `EEE`: Codi de revisió (ex: `RevA`, `Rev00`).
+### 3.2 Sistemes de gestió de la qualitat aplicats a les instal·lacions elèctriques
+Un sistema de gestió de la qualitat (SGQ) aplicat a una empresa instal·ladora elèctrica garanteix l'estandardització dels seus processos i la traçabilitat dels seus treballs. No es limita al producte final (la instal·lació en funcionament), sinó a tot el procés d'execució.
 
-Per tant, un plànol d'estructures número 5 en revisió B d'un projecte pilot es codificaria com: `PIL-EST-PLN-005-RevB`. Aquesta estructura permet fer cerques ràpides filtrant per qualsevol dels blocs.
+**Aplicació pràctica en una instal·lació elèctrica:**
+- **Control de la documentació i els materials:** Verificació que tots els materials (cables, quadres, canalitzacions) compleixen les normes UNE especificades al projecte i porten el marcatge CE, amb els seus certificats de qualitat. Es guarda la referència, el lot i l'albarà d'entrega.
+- **Control del procés d'execució:** Definició i seguiment de Procediments d'Execució (PE) i Instruccions Tècniques (IT). Per exemple, un protocol per al connexionat d'un quadre elèctric, amb un registre de comprovació on es verifica el parell de collament de cada cargol.
+- **Verificació i assaigs:** Realització de proves documentades d'aïllament, continuïtat de terres i dispar d'interruptors diferencials, abans de la posada en tensió.
+- **No conformitats:** Un sistema per registrar, analitzar i resoldre qualsevol desviació (una tara, un defecte d'instal·lació), evitant que torni a ocórrer.
 
+### 3.3 Normes ISO d'aplicació
+La família de normes ISO 9000 és la base dels sistemes de gestió de la qualitat. Les més rellevants per a la gestió de la qualitat en instal·lacions són:
 
+- **ISO 9000:2015 - Fonaments i vocabulari:** Estableix els principis bàsics i el llenguatge comú dels SGQ.
+- **ISO 9001:2015 - Requisits:** És la norma certificable. Estableix els requisits que ha de complir l'empresa per demostrar la seva capacitat per proporcionar productes i serveis que satisfacin els clients i els requisits legals aplicables. Es basa en el cicle PHVA (Planificar-Fer-Verificar-Actuar).
+- **ISO 10005:2018 - Plans de la qualitat:** Directrius per a l'elaboració de plans de qualitat específics per a un contracte o projecte.
+- **ISO 19011:2018 - Auditories:** Guia per a l'auditoria de sistemes de gestió de la qualitat i/o ambiental, un procés clau per verificar l'eficàcia del sistema.
 
-### 3.2 Tècniques de gestió de la documentació
-La gestió documental és el conjunt de tècniques i operacions destinades a controlar de manera eficient la creació, recepció, distribució, arxiu i eliminació dels documents d'una organització.
-
-- **Cicle de vida del document:** Tot document passa per tres fases:
-    1.  **Fase activa:** Documentació d'ús freqüent per a les operacions diàries. L'accés ha de ser ràpid i directe.
-    2.  **Fase semiactiva:** Consulta esporàdica, normalment per motius legals o fiscals. S'emmagatzema en arxius de gestió.
-    3.  **Fase inactiva o històrica:** Documentació que ha de conservar-se de manera permanent pel seu valor legal, històric o cultural, o bé està pendent de la seva destrucció regulada (expurgació).
-
-- **Control de versions i revisions:** És crític treballar sempre amb l'última versió. Un sistema de control ha de garantir:
-    - Una numeració clara (v1, v2... o Rev.A, Rev.B...).
-    - Un registre de canvis que detalli les modificacions introduïdes.
-    - Un sistema d'aprovació que validi la nova versió i en retiri les obsoletes per evitar confusions. Un document obsolet no s'esborra, es marca com a tal i es retira a un arxiu històric.
-
-- **Quadre de classificació:** És una eina jeràrquica i lògica que reflecteix les funcions i activitats de l'organització. Serveix com la "columna vertebral" de l'arxiu. Tots els documents es classifiquen en categories i subcategories, assegurant que la informació s'agrupa de manera coherent i no es perd.
+### 3.4 Qualitat en l'execució d'instal·lacions o sistemes
+La qualitat d'una instal·lació no es comprova al final, sinó que es construeix durant tot el procés d'execució mitjançant el Pla de Control de Qualitat (PCQ). Aquest pla, part del projecte, defineix un programa de punts d'inspecció (PPI) que estableix què, com i cada quan s'ha de verificar.
 
 
+> #### Exemple de Punts d'Inspecció en una instal·lació elèctrica de baixa tensió d'un edifici d'oficines:
+>
+> Prenem com a referència una instal·lació elèctrica tipus per a un edifici d'oficines, amb una potència prevista de 150 kW. L'empresa instal·ladora ha d'executar i documentar el control de qualitat segons els punts d'inspecció definits. Aquests punts es planifiquen en tres fases: recepció, execució i proves finals.
+>
+> ---
+>
+> **Fase 1: Recepció de materials al tall**
+>
+> Abans d'instal·lar res, es verifica que tot el material subministrat és el correcte.
+>
+> **PI-REC-01: Recepció de cablejat**
+> - **Element a controlar:** Cable RZ1-K 0,6/1 kV de 5G16 mm².
+> - **Comprovacions:**
+>   - Identificació de la bobina (fabricant, secció, tipus).
+>   - Verificació del marcatge CE i norma UNE corresponent (UNE-EN 50525).
+>   - Inspecció visual de l'estat de la coberta exterior.
+> - **Criteri d'acceptació:** El cable ha de coincidir amb l'especificat al projecte (secció, nombre de conductors, material d'aïllament). El marcatge ha de ser indeleble i conforme a la norma.
+> - **Document de referència:** Projecte d'execució, full d'especificacions tècniques, albarà de lliurament.
+>
+> **PI-REC-02: Recepció del Quadre General de Comandament i Protecció (QGC)**
+> - **Element a controlar:** Quadre General de Comandament i Protecció.
+> - **Comprovacions:**
+>   - Correspondència del fabricant i model amb el projecte aprovat.
+>   - Verificació de l'esquema unifilar grapat a l'interior del quadre.
+>   - Presència i calibratge de tots els interruptors magnetotèrmics (PIA) i diferencials (ID).
+>   - Verificació del marcatge CE i declaració de conformitat del conjunt.
+> - **Criteri d'acceptació:** El quadre ha de ser exactament el model aprovat. Tots els dispositius de protecció han de tenir el poder de tall i la sensibilitat especificats (ex: PIA de 16 A, corba C; ID de 40 A, 30 mA).
+> - **Document de referència:** Projecte d'execució, esquema unifilar del quadre, certificat del fabricant del quadre.
+>
+> ---
+>
+> **Fase 2: Control del procés d'execució**
+>
+> Es realitzen inspeccions durant el muntatge per detectar desviacions abans que siguin irreversibles (per exemple, abans de tancar una paret o un fals sostre).
+>
+> **PI-EXE-01: Estesa de cables per safata i sota tub**
+> - **Activitat controlada:** Instal·lació de vies de corrent (safates i tubs) i estesa de conductors.
+> - **Comprovacions:**
+>   - Secció i tipus de safata o tub instal·lat.
+>   - Radis de curvatura dels cables en els canvis de direcció.
+>   - Separació entre circuits de diferents tensions o categories d'ús.
+>   - Fixació mecànica i identificació dels cables amb anells marcadors.
+> - **Criteri d'acceptació:**
+>   - Les safates han de ser les especificades.
+>   - Radis de curvatura ≥ 10 vegades el diàmetre exterior del cable per a cable RZ1-K.
+>   - Els cables han d'estar identificats als dos extrems i en cada canvi de direcció.
+>   - Cap circuit de diferent categoria no pot compartir tub, llevat que tots els conductors tinguin l'aïllament corresponent a la tensió més alta present.
+> - **Document de referència:** REBT ITC-BT-20 i ITC-BT-21, fitxa tècnica del fabricant del cable.
+>
+> **PI-EXE-02: Connexionat interior del QGC**
+> - **Activitat controlada:** Filat i connexionat intern del quadre elèctric.
+> - **Comprovacions:**
+>   - Parell de collament dels cargols de borns d'interruptors i embarres.
+>   - Ordre, neteja i curvat del cablejat intern.
+>   - Etiquetatge de tots els circuits des de l'interior amb la referència de l'esquema unifilar.
+> - **Criteri d'acceptació:**
+>   - Tots els cargols han d'estar collats amb el parell especificat pel fabricant (comprovat amb clau dinamomètrica).
+>   - Tots els conductors han d'estar retolats de manera inequívoca.
+> - **Document de referència:** Esquema unifilar del quadre, instruccions del fabricant del quadre.
+>
+> ---
+>
+> **Fase 3: Proves finals i verificacions prèvies a la posada en servei**
+>
+> Són les proves documentades que demostren que la instal·lació és segura i funcional. Són obligatòries abans de la posada en tensió i la signatura del Certificat d'Instal·lació Elèctrica (CIE) per part de l'instal·lador autoritzat. Totes les proves es realitzen segons el REBT ITC-BT-19 i la norma UNE 20460.
+>
+> **PI-PRO-01: Mesura de la resistència d'aïllament**
+> - **Procediment resumit:** Amb la instal·lació desconnectada de la xarxa, s'aplica una tensió de 500 V en corrent continu entre cada conductor actiu (fase i neutre) i terra, i entre conductors actius. Es mesura el valor amb un megòhmetre.
+> - **Criteri d'acceptació:** Resistència d'aïllament **≥ 0,5 MΩ**. Per a una instal·lació nova, valors inferiors a 1 MΩ indiquen un problema (humitat, cable danyat) i requereixen una investigació immediata.
+>
+> **PI-PRO-02: Verificació de la continuïtat del circuit de protecció (presa de terra)**
+> - **Procediment resumit:** Es mesura la resistència entre qualsevol massa metàl·lica (per exemple, la carcassa d'un quadre secundari) i el borne principal de terra de l'edifici.
+> - **Criteri d'acceptació:** La resistència ha de ser molt baixa, idealment **&lt; 1 Ω**, indicant una connexió sòlida, contínua i sense punts de corrosió.
+>
+> **PI-PRO-03: Mesura de la resistència de terra de l'elèctrode**
+> - **Procediment resumit:** Es realitza la mesura mitjançant el mètode de tres puntes (o de caiguda de potencial), col·locant les piquetes auxiliars a les distàncies adequades respecte a l'elèctrode de terra.
+> - **Criteri d'acceptació:** El valor mesurat ha de ser igual o inferior al valor de disseny del projecte (ex: **≤ 80 Ω** per a un edifici d'oficines amb protecció per interruptors diferencials de 300 mA).
+>
+> **PI-PRO-04: Prova de dispar d'interruptors diferencials (ID)**
+> - **Procediment resumit:** Amb un provador de diferencials, s'injecta un corrent de fuga calibrat i es mesura el temps de tall del dispositiu.
+> - **Criteri d'acceptació:** Per a ID de 30 mA (protecció de persones), ha de disparar a una intensitat ≤ 30 mA i en un temps **&lt; 40 ms** amb el corrent de prova nominal.
 
 
-4. Perifèrics de Sortida i Impressió Professional
--------------------------------------------------
-
-### 4.1 Perifèrics de sortida gràfica
-
-Els perifèrics de sortida gràfica són dispositius que permeten obtenir una còpia física i permanent de la informació digital. La seva elecció depèn de factors com la mida del suport, la velocitat, la qualitat i el tipus de tinta o tòner.
-
-- **Impressores:** Dispositius per a formats petits i mitjans, generalment fins a DIN A3.
-    - **Làser:** Utilitzen tòner en pols fixat al paper mitjançant calor (fusor). Ofereixen alta velocitat i una excel·lent qualitat de text.
-    - **Injecció de tinta (Inkjet):** Projecten gotes microscòpiques de tinta líquida. Destaquen per la seva capacitat per a reproduir imatges fotogràfiques amb gran precisió de color sobre paper setinat.
-    - **Tèrmiques:** Utilitzen paper termosensible que s'enfosqueix amb la calor. Molt comunes per a tiquets i etiquetes.
 
 
 
-### 4.2 El traçador (plòter)
+4. Gestió Mediambiental
+-----------------------
 
-Un traçador, o plòter de grans dimensions, és una impressora especialitzada capaç de produir documents d'alta definició en formats de paper molt grans, des d'un A3 fins a un A0 i superiors. S'utilitzen en estudis d'arquitectura, enginyeria i disseny per a imprimir plànols, cartells i maquetes a escala real.
+### 4.1 Pla de Gestió Mediambiental
 
-> ![c500](img/plotter.png)
-> **Fig. 3.** [Lzur], [Wikipedia: Plotter Gerber Infinity], (2006).
-> _Plotter_. 
-> Sota llicència [CC3.0-by-sa]
+Un Pla de Gestió Mediambiental (PGA) és el document que organitza i defineix les responsabilitats, els procediments i els recursos d'una empresa per assolir un comportament respectuós amb el medi ambient. Es tracta d'un conjunt sistemàtic i cíclic de pràctiques, basat en un sistema de gestió com l'ISO 14001.
 
-**Característiques principals:**
-- **Sistema d'alimentació del paper:** Poden ser de **rotlle** (permet imprimir llargàries contínues sense canviar el suport) o de **tall** (treballen amb fulls solts).
-- **Tecnologia d'impressió:** La gran majoria de traçadors moderns són d'injecció de tinta, ja que permeten una excel·lent relació qualitat-preu i poden reproduir línies de gruix extremadament fi, essencials en el dibuix tècnic.
-- **Característiques clau per al dibuix tècnic:** A més de la resolució (ppp), en un traçador és vital la **precisió de línia recta** (que un vector recte es dibuixi com una línia perfecta sense ondulacions) i la **capacitat de gestionar múltiples llenguatges** d'impressió (HP-GL/2, PostScript).
+El PGA d'una empresa o un projecte d'instal·lacions s'estructura entorn de:
+- **Identificació d'aspectes ambientals:** Element de les activitats, productes o serveis que pot interactuar amb el medi ambient (consum d'aigua, generació de residus, emissions atmosfèriques, soroll).
+- **Avaluació d'impactes ambientals:** Determinació de la importància de l'efecte sobre el medi (contaminació del sòl, esgotament de recursos, emissió de gasos d'efecte hivernacle).
+- **Programa de gestió:** Accions planificades per prevenir, reduir o eliminar els impactes, amb objectius mesurables, responsables i terminis.
 
-El capçal d'impressió d'un traçador recorre l'amplada del paper mentre aquest avança, construint la imatge línia per línia sobre l'àrea d'impressió.
+**Exemple d'objectiu i acció en un PGA d'una obra:**
+- **Objectiu:** Reduir en un 80% la quantitat de residus de cable elèctric destinats a abocador.
+- **Acció:** Implantar un sistema de segregació a l'origen amb contenidors específics per a cable (residu valoritzable) i contractar un gestor autoritzat. Es designa un responsable de seguiment i es monitoritza el pes de cada contenidor retirat.
+
+### 4.2 Estudis d'impacte ambiental
+Un Estudi d'Impacte Ambiental (EIA) és un estudi tècnic, objectiu i pluridisciplinari que s'elabora sobre un projecte per a la seva avaluació per part de l'autoritat ambiental competent. És l'instrument clau del procés d'Avaluació d'Impacte Ambiental (AIA), regulat per la Llei 21/2013 d'avaluació ambiental.
+
+L'EIA no és un PGA; l'EIA és previ i avalua la viabilitat ambiental del projecte, mentre que el PGA defineix com es gestionarà ambientalment l'obra o activitat.
+
+#### Contingut bàsic d'un EIA
+1.  **Descripció del projecte i les seves alternatives:** Inclosa una alternativa zero (no execució).
+2.  **Inventari ambiental:** Descripció detallada del medi físic, biòtic i socioeconòmic on s'ubicarà la instal·lació abans de l'actuació.
+3.  **Identificació i valoració d'impactes:** Ús de matrius causa-efecte (com la de Leopold) per qualificar i quantificar els impactes sobre el sòl, l'aigua, l'aire, la flora, la fauna i el paisatge.
+4.  **Mesures preventives, correctores i compensatòries:** Definides per eliminar o minimitzar els impactes negatius.
+5.  **Pla de Vigilància Ambiental (PVA):** Programa de seguiment per comprovar l'eficàcia de les mesures correctores i detectar impactes no previstos durant l'execució. Aquest PVA és el que, a la pràctica, es converteix en l'embrió del PGA de l'obra.
+
+### 4.3 Normativa de gestió mediambiental
+La gestió mediambiental es vertebra a través de dos tipus de normes: las legislatives (d'obligat compliment) i les voluntàries.
+
+**Normativa d'obligat compliment:**
+- **Llei 21/2013, d'Avaluació Ambiental:** Unifica la normativa d'avaluació ambiental de plans, programes i projectes.
+- **Llei 7/2022, de Residus i Sòls Contaminats per a una Economia Circular:** Imposa la jerarquia de residus (prevenció > reutilització > reciclatge > valorització > eliminació) i estableix obligacions molt estrictes per al sector de la construcció, com la separació en origen de fusta, minerals, metalls i vidre.
+- **Llei de Responsabilitat Mediambiental 26/2007:** Basada en el principi de "qui contamina paga", obliga a reparar i prevenir danys ambientals.
+
+**Normativa voluntària (Normes de referència per a sistemes de gestió):**
+- **ISO 14001:2015 - Sistemes de gestió ambiental:** És la norma internacional certificable per excel·lència. Una empresa instal·ladora certificada en ISO 14001 demostra que té un sistema estructurat per gestionar els seus aspectes ambientals, complir la llei i millorar contínuament. És totalment integrable amb ISO 9001 (Qualitat) i ISO 45001 (Seguretat i Salut).
+- **Reglament EMAS (Eco-Management and Audit Scheme):** Un sistema voluntari de la Unió Europea més exigent que l'ISO 14001. Exigeix publicar una declaració ambiental verificada per un verificador acreditat, fent públiques les dades d'acompliment ambiental de l'organització.
+
+
+5. Documentació Tècnica de Servei
+---------------------------------
+
+### 5.1 Elaboració de manuals
+
+L'elaboració de manuals de servei és un procés d'enginyeria documental que converteix la informació tècnica del disseny en instruccions clares i segures per al propietari i l'equip d'operació i manteniment. No es tracta d'un document genèric, sinó que ha d'estar personalitzat per a la instal·lació executada. L'elaboració d'un bon manual segueix uns principis:
+- **Llenguatge clar i inequívoc:** Dirigit a un tècnic competent, evitant tecnicismes innecessaris.
+- **Informació precisa i verificada:** Reflecteix l'estat "as-built" (tal com s'ha construït) de la instal·lació.
+- **Estructura lògica:** Per sistemes i subsistemes, amb índexs clars per trobar ràpidament la informació.
+- **Format durador i accessible:** La seva presentació física (enquadernació de qualitat) i/o digital (PDF/A) ha de garantir-ne la conservació durant tota la vida útil de l'edifici.
 
 
 
-### 4.3 Impressió professional: sistemes i acabats
+### 5.2 Manual de servei
 
-La impressió professional va més enllà d'obtenir una còpia. Es tracta d'un procés industrial que busca la màxima qualitat i durabilitat, sovint en grans tirades.
+El Manual de Servei és el document global que descriu les característiques de la instal·lació i les instruccions per al seu ús i manteniment. El seu contingut mínim, sovint dictat pel CTE i altra normativa sectorial, inclou:
 
-- **Sistemes d'impressió digital professional:**
-    - **Impressió de gran format (LFP):** És la tecnologia dels traçadors portada al nivell més alt, amb tintes resistents a l'aigua i als raigs UV.
-    - **Impressió digital tòner d'alta producció:** Equips làser d'altíssim rendiment, amb capacitats de fins a centenars de pàgines per minut, pensades per a tirades curtes i mitjanes amb dades variables (ex: factures personalitzades).
+- **Plànols "As-Built":** Plànols definitius de la instal·lació tal com s'ha executat, amb les possibles modificacions respecte al projecte original. Són la informació més valuosa per a futures reformes o reparacions.
+- **Diagrames de principi i esquemes elèctrics:** Esquemes unifilars, diagrames de flux de fluids (hidràulics, frigorífics) i esquemes de llaç de control.
+- **Llistat d'equips:** Relació de tots els equips instal·lats (calderes, bombes, quadres, fancoils) amb les seves marques, models, números de sèrie i les seves dades tècniques principals (potència, cabal, tensió, etc.).
+- **Instruccions d'operació i ús:** Com posar en marxa, operar en diferents modes (estiu/hivern, manual/automàtic) i aturar correctament la instal·lació.
+- **Fitxa de manteniment:** Descripció detallada de les operacions de manteniment preventiu, la seva periodicitat, el responsable i els mitjans necessaris.
 
-- **Acabats de postimpressió:**
-    Són els processos que transformen els fulls impresos en un producte final. Inclouen:
-    1.  **Guillotinat:** Tall recte per donar el format definitiu a la pàgina.
-    2.  **Plegat i doblegat:** Realitzat amb màquines plegadores de manera mecànica i precisa, especialment per a fulletons i plànols.
-    3.  **Enquadernació:** Donar forma de llibre o dossier. Les tècniques més habituals són:
-        - **Grapat:** Per a documents de poques pàgines.
-        - **Espiral o canals de plàstic:** Permeten una obertura plana de 360°, ideal per a manuals d'ús.
-        - **Enquadernació tèrmica:** Les pàgines es fixen en un llom mitjançant cola calenta. És l'estàndard dels llibres de butxaca de baix cost.
-    4.  **Plastificat:** Aplicació d'una fina capa de plàstic (brillant o mat) per protegir i donar rigidesa al document, molt comú en portades, carnets i cartells d'exterior.
+
+
+### 5.3 Manual de mesuraments
+
+El manual de mesuraments és un recull exhaustiu de tots els punts de mesura instal·lats en un sistema, juntament amb les instruccions per a la presa, registre i interpretació de les dades. És essencial per a l'optimització energètica i el manteniment predictiu d'instal·lacions.
+
+**A nivell de pressupost d'obra (aclariment conceptual):**
+En la fase de projecte i execució, els "amidaments" es refereixen a la quantificació detallada de totes les unitats d'obra. El document que recull això és el full d'amidaments, i la seva correcta elaboració és responsabilitat del DEO. En el context d'un manual de servei, el manual de mesuraments adquireix un altre significat, centrat en l'explotació.
+
+**Contingut del Manual de Mesuraments com a document d'explotació:**
+1.  **Pla de punts de mesura:** Plànols on s'identifiquen tots els instruments de mesura (termòmetres, manòmetres, comptadors elèctrics i de fluids, cabalímetres) amb un codi únic.
+2.  **Procediment de presa de dades:** Format de les lectures (manuals a una plantilla en paper o tauleta, o automàtiques des d'un SCADA) i la seva periodicitat (horària, diària, setmanal).
+3.  **Interpretació de dades:** Rangs de valors normals per a cada punt. Per exemple, la pressió d'impulsió d'una bomba d'aigua climatitzada ha d'estar entre X i Y bar. Una desviació indica un problema (filtre brut, bomba desgastada).
+4.  **Registre històric:** Definició del format d'arxiu i la periodicitat d'emmagatzematge per a la futura anàlisi de tendències.
+
+### 5.4 Especificacions tècniques dels elements de les instal·lacions
+
+Aquest apartat del manual de servei és un compendi de les fitxes tècniques detallades de cada equip o material significatiu instal·lat. No és suficient amb la fitxa genèrica del fabricant; ha d'estar adaptada a la instal·lació concreta.
+
+La fitxa tècnica de cada element ha d'incloure:
+- **Identificació:** Marca, model, número de sèrie, any de fabricació.
+- **Dades de disseny:** Condicions de treball per a les quals es va seleccionar (potència tèrmica/frigorífica, cabal nominal, pressió de treball, temperatura de treball, nivell de potència sonora).
+- **Dades de rendiment:** Corbes característiques de bombes, rendiment de calderes a càrrega parcial, etc.
+- **Llista de components i recanvis:** Amb els seus codis per a futurs subministraments.
+- **Instruccions específiques de muntatge i desmuntatge:** Si són equips pesats o requereixen una seqüència especial per al seu manteniment.
+
+
+### 5.5 Condicions de posada en marxa o servei
+
+La posada en marxa és el conjunt d'operacions reglades i documentades que es realitzen per verificar que una instal·lació funciona correctament i d'acord amb les especificacions del projecte, abans de ser lliurada al client. Les condicions i el protocol per a aquesta fase s'han de detallar al manual.
+
+Les condicions i fases clau són:
+1.  **Prerequisits:** La instal·lació ha d'estar completament acabada mecànicament, neta i amb totes les connexions realitzades. La companyia subministradora (elèctrica, aigua, gas) ha d'haver connectat els serveis. Ha d'estar vigent la pòlissa d'assegurança.
+2.  **Protocol de verificacions prèvies (comprovacions en fred):** Tests sense càrrega: continuïtat de terres, prova d'aïllament, comprovació de connexions, sentit de gir de motors, etc.
+3.  **Procediment d'arrencada:** Seqüència pas a pas per a la primera posada en tensió o en càrrega. Per exemple, per a una bomba de calor, s'inicia amb la comprovació de la tensió, després la posada en marxa de les bombes del circuit hidràulic per verificar cabals i, finalment, l'encesa del compressor. La càrrega ha de ser gradual.
+4.  **Certificació de la posada en marxa:** Un document signat pel tècnic de l'empresa instal·ladora i visat, si escau, pel representant del fabricant, que formalitza que la posada en marxa s'ha realitzat amb èxit. Aquest document és indispensable per activar la garantia dels equips i donar per conclòs el contracte d'instal·lació.
+
+
+
+6. Manteniment i Històrics
+--------------------------
+
+### 6.1 Manual de manteniment
+
+El manual de manteniment és l'eina central per a la conservació del valor i la funcionalitat d'una instal·lació. Estableix el Pla de Manteniment Preventiu i és la guia d'actuació per al personal tècnic. El seu contingut es materialitza en les Operacions de Manteniment (conjunt d'operacions) i es gestiona amb Programes de Manteniment.
+
+
+> #### Estructura d'una operació en el manual de manteniment
+>
+> - **Codi d'operació:** `MNT-ELE-001`
+> - **Equip:** Quadre General de Comandament i Protecció (QGC).
+> - **Descripció de la tasca:**
+>     - Inspecció visual general de l'estat del quadre (carcassa, tancaments, juntes d'estanquitat).
+>     - Verificació del collament de totes les connexions (borns d'interruptors, embarres, connexions de terra) amb clau dinamomètrica segons especificacions del fabricant.
+>     - Neteja interior del quadre amb aspirador i drap sec; eliminació de pols acumulada sobre els dispositius.
+>     - Comprovació del funcionament mecànic de tots els interruptors magnetotèrmics (PIA) i diferencials (ID) mitjançant accionament manual.
+>     - Prova de dispar d'un 10% dels interruptors diferencials amb el corrent de prova nominal, verificant el temps de tall (&lt; 40 ms per a ID de 30 mA).
+>     - Mesura de la resistència de continuïtat entre la carcassa del quadre i el borne principal de terra de l'edifici.
+>     - Verificació de la llegibilitat de l'etiquetatge de tots els circuits.
+>     - Registre de temperatures ambientals internes amb el quadre en càrrega (amb càmera termogràfica o termòmetre de contacte), cercant punts calents.
+> - **Periodicitat:** Anual.
+> - **Temps estimat:** 3 hores.
+> - **Perfil professional requerit:** Tècnic electricista autoritzat (categoria especialista o instal·lador autoritzat en baixa tensió).
+> - **Recursos materials necessaris:** Clau dinamomètrica amb puntes aïllades, megòhmetre, provador de diferencials, multímetre digital, aspirador industrial, drap net i sec, polvoritzador d'aire comprimit sec.
+> - **Punts crítics de seguretat:**
+>     - **Risc elèctric:** Abans d'obrir el quadre, s'ha de verificar l'absència de tensió amb un detector de tensió sense contacte. Tot i treballar amb el quadre obert, les parts actives en tensió han d'estar protegides amb pantalles aïllants. L'operació de verificació de tensions i temperatures en càrrega s'ha de realitzar amb els EPI adequats (casc amb pantalla facial de protecció contra arc elèctric, guants dielèctrics de classe 0 i roba de treball ignífuga).
+>     - **Bloqueig i etiquetatge:** Durant la neteja i el collament de cargols, s'ha de bloquejar el comandament de l'interruptor general a la posició "obert" i col·locar un senyal de "Treballs en curs, no connectar".
+
+
+### 6.2 Històric de manteniment
+
+L'històric de manteniment és el registre cronològic de totes les intervencions (preventives, correctives o predictives) realitzades sobre un equip o instal·lació. És una font d'informació inavaluable per a l'anàlisi i la presa de decisions.
+
+Per a cada intervenció, s'ha d'enregistrar, com a mínim, al full de treball o al programari de gestió (GMAO):
+- **Data i tècnic responsable.**
+- **Tipus d'intervenció:** Preventiva / Correctiva / Predictiva / Legal (inspecció reglamentària).
+- **Descripció dels treballs realitzats.**
+- **Lectures i mesuraments realitzats:** Pressions, temperatures, tensions, etc.
+- **Peces o materials substituïts:** Amb la referència exacta.
+- **Observacions:** Qualsevol anomalia detectada, perruqueria pendent.
+- **Signatura del tècnic i, si escau, del client.**
+
+L'anàlisi d'aquest històric permet calcular indicadors de gestió com el Temps Mitjà entre Fallades (MTBF) o el Temps Mitjà de Reparació (MTTR), base per a l'optimització del pla de manteniment.
+
+
+
+### 6.3 Històric d'avaries
+Encara que forma part de l'històric general de manteniment, l'històric d'avaries mereix un tractament específic i un registre molt més detallat. La seva funció no és només administrativa, sinó d'enginyeria per trobar la causa arrel de la fallada i evitar-ne la repetició.
+
+**Anàlisi d'una avaria (informe d'avaria):**
+1.  **Descripció de l'avaria:** Què ha fallat? Com s'ha manifestat? Qui ho ha detectat? Data i hora exacta.
+2.  **Diagnòstic de la causa immediata:** Per què ha fallat? (Ex: rodament gripolat per falta de greix, aïllament cremat per sobretensió transitòria).
+3.  **Acció correctiva:** Què s'ha fet per restaurar el servei? (Reparació o substitució de l'element).
+4.  **Anàlisi de la causa arrel (RCA - Root Cause Analysis):** Per què va fallar el sistema de prevenció? (Ex: la manca de greix es va produir perquè l'operació de manteniment preventiu "Lubricació de rodaments" no estava inclosa a la gamma de manteniment de la bomba, o no es va executar per manca de personal).
+5.  **Acció correctora permanent:** Mesura definitiva per evitar la repetició de l'avaria. (Ex: actualitzar la gamma de manteniment per incloure la lubricació trimestral i assignar un responsable de la seva execució).
+
+
+
+### 6.4 Protocols de proves
+Els protocols de proves són documents que estandarditzen l'execució de qualsevol assaig o verificació durant la vida d'una instal·lació, des de la posada en marxa fins al manteniment periòdic. Asseguren que la prova es fa sempre de la mateixa manera, amb els mateixos criteris i es registren els resultats de forma comparable.
+
+Un protocol de prova típic inclou:
+1.  **Objectiu i normativa de referència.**
+2.  **Llista d'equips, instruments i eines de mesura necessaris**, amb el seu número de certificat de calibratge en vigor. Això és crític per a la validesa de la prova.
+3.  **Condicions prèvies de seguretat i operació.**
+4.  **Procediment d'execució pas a pas, amb esquemes o fotografies.**
+5.  **Full de registre normalitzat:** On el tècnic completa els valors obtinguts, els valors d'acceptació (toleràncies) i el resultat final: "CONFORME / NO CONFORME".
+
+
+
+### 6.5 Processos en proves específiques
+Per a finalitzar, es detallen exemples concrets de protocols de proves específiques, imprescindibles en la majoria d'instal·lacions tècniques.
+
+- **Prova d'Estanquitat de Xarxes de Subministrament d'Aigua:**
+    Es realitza abans de tapar les rases i de connectar els aparells sanitaris. Segons el CTE DB HS-4, totes les canonades s'han de sotmetre a una pressió de prova. Per a aigua freda, la pressió de prova serà el doble de la pressió màxima de servei, amb un mínim de 6 bar. La prova es considera satisfactòria si durant 15 minuts la pressió no baixa en més d'1 bar o si, fent servir una bomba manual, no es necessita aportar aigua per mantenir la pressió.
+
+- **Prova de Resistència d'Aïllament d'un Circuit Elèctric:**
+    Establerta al REBT (ITC-BT-19) i la UNE 20460. Abans de la posada en servei, es mesura amb un megòhmetre la resistència entre cada conductor actiu i terra, i entre conductors actius. La tensió d'assaig serà de 500 V per a instal·lacions de 230/400 V. La resistència d'aïllament ha de ser superior a 0,5 MΩ (megaohms). Qualsevol valor inferior a 1 MΩ en una instal·lació nova requereix una investigació immediata (humitat, cable danyat). El registre de la prova ha d'incloure els valors de totes les combinacions de conductors i la tensió d'assaig.
 
 
 
