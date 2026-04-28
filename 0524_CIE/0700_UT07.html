@@ -2,7 +2,7 @@
 <head>
     <link rel="icon" type="image/x-icon" href=img/favicon.png>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/temari.css" />
 </head>
 <textarea id="enunciat">
 
@@ -16,517 +16,537 @@
 
 
 
-UT06 - Caracterització de les instal·lacions fotovoltàiques
-===========================================================
+UT07 - Configuració d'instal·lacions fotovoltàiques
+===================================================
 
-## 1. Classificació d’instal·lacions solars fotovoltaiques
+1. Condicions de Disseny i Catàlegs de Fabricants
+-------------------------------------------------
 
-Les instal·lacions solars fotovoltaiques es poden classificar segons diversos criteris, essent els més habituals:
+### 1.1 Condicions de disseny
 
-### 1.1 Segons la connexió a la xarxa
+El disseny d'una instal·lació solar fotovoltaica parteix d'un conjunt de condicions de contorn que determinen la viabilitat tècnica i econòmica del projecte. Aquestes condicions s'agrupen en tres grans blocs: les relatives a l'emplaçament, les imposades pel client o la normativa, i les derivades de la tecnologia disponible.
 
-- **Instal·lacions aïllades**: no connectades a la xarxa elèctrica.
-- **Instal·lacions connectades a xarxa**: injecten energia a la xarxa de distribució.
 
-### 1.2 Segons l’ús de l’energia
+#### Condicions d'emplaçament:
 
-- Autoconsum amb o sense excedents
-- Electrificació rural
-- Aplicacions industrials
+- **Localització geogràfica:** Latitud, longitud i altitud. La latitud és el factor astronòmic principal que determina l'angle d'incidència de la radiació solar al llarg de l'any.
+- **Climatologia de la zona:** Dades històriques d'irradiància solar (kWh/m²), temperatura ambient mitjana, màxima i mínima, règim de vents i precipitacions. Aquestes dades s'obtenen d'atles de radiació, estacions meteorològiques o bases de dades com PVGIS.
+- **Disponibilitat d'espai:** Superfície útil en coberta o en sòl, amb indicació d'obstacles, ombres pròpies i accés per al manteniment.
+- **Característiques del terreny o coberta:** Tipologia constructiva, capacitat portant, pendent i orientació natural.
 
-### 1.3 Segons la configuració
 
-- Sistemes fixos
-- Sistemes amb seguiment solar
-- Sistemes híbrids (fotovoltaic + altres fonts)
+#### Condicions imposades per la normativa i el client:
 
+- **Potència pic (kWp) o potència nominal (kWn) desitjada:** Potència total del generador fotovoltaic en condicions estàndard de mesura (STC).
+- **Modalitat de connexió:** Instal·lació aïllada de la xarxa (amb bateries) o instal·lació connectada a la xarxa (en autoconsum amb o sense excedents, o venda d'energia).
+- **Requisits urbanístics i administratius:** Ordenances municipals que regulen la integració arquitectònica, distàncies a llindes, alçades màximes, o la normativa sectorial aplicable (REBT, reglament d'autoconsum RD 244/2019).
+- **Pressupost disponible:** Condiciona l'elecció de components i la potència a instal·lar.
 
+#### Condicions tecnològiques:
 
-## 2. Instal·lacions solars aïllades
+- **Tipus de tecnologia fotovoltaica:** Silici monocristal·lí, policristal·lí o capa fina, amb diferents eficiències i comportaments tèrmics.
+- **Tipus d'estructura de suport:** Fixa o amb seguiment solar (a un eix o dos eixos). En cobertes, es distingeix entre estructures coplanars (paral·leles a la coberta) i inclinades.
+- **Equips auxiliars:** Inversors (centrals, en cadena o microinversors), bateries (plom-àcid, AGM, GEL, liti), reguladors de càrrega i sistemes de monitoratge.
 
-Les instal·lacions aïllades són aquelles que no disposen de connexió a la xarxa elèctrica i han de garantir el subministrament energètic de manera autònoma.
+Totes aquestes condicions s'han de documentar en la memòria de disseny del projecte, justificant tècnicament cada elecció. El resultat és una proposta de disseny que maximitza la producció energètica dins de les limitacions existents.
 
-### 2.1 Components principals
 
-#### Generador fotovoltaic
 
-El **generador fotovoltaic** és l’element encarregat de transformar l’energia solar en energia elèctrica en forma de corrent continu (CC). Està constituït per un conjunt de **mòduls fotovoltaics** connectats entre si en sèrie i/o en paral·lel per aconseguir els nivells de tensió i corrent desitjats.
 
-Els mòduls estan formats per **cèl·lules fotovoltaiques**, habitualment de silici (monocristal·lí, policristal·lí o amorf), que aprofiten l’efecte fotovoltaic: quan la radiació solar incideix sobre la cèl·lula, es genera una diferència de potencial elèctric.
+### 1.2 Catàlegs de fabricants
 
-Aspectes clau:
+Els catàlegs de fabricants són la font d'informació tècnica primària per a la selecció, el càlcul i la justificació dels components d'una instal·lació solar. Un bon projectista no es limita a transcriure dades del catàleg, sinó que les interpreta críticament per assegurar la idoneïtat de cada element dins del conjunt del sistema.
 
-* **Potència nominal (Wp)**: indica la potència en condicions estàndard (STC).
-* **Orientació i inclinació**: afecten directament la producció energètica.
-* **Connexió elèctrica**: configuració de strings per adaptar-se al sistema.
-* **Pèrdues**: brutícia, temperatura, ombres parcials, etc.
 
-#### Regulador de càrrega
+#### Informació clau que aporten els catàlegs:
 
-El **regulador de càrrega** és el dispositiu encarregat de gestionar el flux d’energia entre el generador fotovoltaic i les bateries. La seva funció principal és protegir el sistema d’acumulació contra sobrecàrregues i descàrregues profundes.
+- **Per als mòduls fotovoltaics:** Potència pic (Wp), tensió en circuit obert (Voc), corrent de curtcircuit (Isc), tensió i corrent al punt de màxima potència (Vmpp i Impp), coeficients de temperatura (degradació del rendiment amb la calor), dimensions, pes i tipus de connector (MC4, per exemple). La fitxa tècnica ("datasheet") inclou les corbes I-V per a diferents nivells d'irradiància i temperatura.
+- **Per als inversors:** Potència nominal, rang de tensió d'entrada MPPT (Seguidor del Punt de Màxima Potència), tensió màxima d'entrada, corrent màxim, eficiència (corba de rendiment en funció de la càrrega), dimensions, grau de protecció IP i tipus de comunicacions (WiFi, RS485, etc.).
+- **Per a les bateries:** Capacitat nominal (Ah a C10, C20 o C100 segons la norma), tensió nominal (2V, 6V, 12V, 48V per a mòduls de liti), profunditat de descàrrega màxima recomanada (DoD), nombre de cicles de vida en funció de la DoD, rang de temperatures de treball i necessitats de ventilació.
+- **Per a les estructures de suport:** Composició del material (alumini, acer galvanitzat, acer inoxidable), càrregues màximes admisibles (pes dels mòduls, càrrega de vent i neu), sistema de fixació a coberta o a terra, i garantia.
 
-Funcions principals:
 
-* **Control de càrrega**: limita la tensió i el corrent que arriba a les bateries.
-* **Desconnexió per baixa tensió (LVD)**: evita descàrregues excessives.
-* **Optimització del punt de treball** (en reguladors MPPT): maximitza la potència extreta dels panells.
+#### Ús professional dels catàlegs:
 
-Tipus de reguladors:
+Cal verificar sempre que el catàleg consultat és la darrera versió i que el model està en producció. Les dades del catàleg s'han de contrastar amb els certificats de compliment de normes (per exemple, IEC 61215 per a mòduls de silici cristal·lí, IEC 61730 per a seguretat) i, en el cas de sol·licitar subvencions, amb els llistats d'equips homologats per l'organisme convocant.
 
-* **PWM (Pulse Width Modulation)**: més senzills i econòmics.
-* **MPPT (Maximum Power Point Tracking)**: més eficients, especialment en condicions variables.
 
-#### Sistema d’acumulació (bateries)
 
-El **sistema d’acumulació** permet emmagatzemar l’energia produïda durant les hores de radiació solar per poder utilitzar-la quan no hi ha producció (nit o dies ennuvolats).
 
-Tipus de bateries:
 
-* **Plom-àcid** (obertes, AGM, gel): tradicionals i més econòmiques.
-* **Ió-liti**: més eficients, major vida útil i profunditat de descàrrega.
+2. Càlculs de la Instal·lació Solar Fotovoltaica
+------------------------------------------------
 
-Paràmetres importants:
+### 2.1 Nivells de radiació i unitats de mesura
 
-* **Capacitat (Ah o kWh)**: quantitat d’energia emmagatzemada.
-* **Profunditat de descàrrega (DoD)**: percentatge utilitzable de la bateria.
-* **Cicles de vida**: nombre de càrregues/descàrregues abans de degradar-se.
-* **Tensió nominal**: 12V, 24V, 48V, etc.
+La radiació solar és l'energia electromagnètica emesa pel sol, i constitueix la font primària d'una instal·lació fotovoltaica. Conèixer-la i quantificar-la correctament és el primer pas per a un dimensionament precís.
 
-Una correcta selecció del sistema d’acumulació és clau per garantir l’autonomia i la durabilitat de la instal·lació.
 
-#### Inversor (si hi ha càrregues en AC)
+#### Conceptes fonamentals:
 
-L’**inversor** és el dispositiu que converteix el corrent continu (CC) generat pels panells o emmagatzemat a les bateries en corrent altern (CA), que és el que utilitzen la majoria d’aparells elèctrics.
+- **Irradiància (G):** Potència de la radiació solar incident per unitat de superfície. Es mesura en watts per metre quadrat (W/m²). La irradiància en condicions estàndard de mesura (STC) per a mòduls fotovoltaics és de 1000 W/m².
+- **Irradiació o insolació (H):** Quantitat d'energia solar rebuda per unitat de superfície al llarg d'un temps determinat. S'obté integrant la irradiància al llarg del temps. Les unitats pràctiques més habituals són el kWh/m² per dia, mes o any. Per exemple, una irradiació diària de 5 kWh/m² significa que la superfície ha rebut l'equivalent a una potència constant de 1000 W/m² durant 5 hores (les anomenades Hores Solar Pic, HSP).
+- **Hora Solar Pic (HSP):** Unitat clau en el càlcul fotovoltaic. Representa el nombre d'hores diàries amb una irradiància hipotètica constant de 1000 W/m² que equivaldria a la irradiació total del dia. Si una ubicació rep una irradiació diària de 5,2 kWh/m², es diu que té 5,2 HSP. Aquesta simplificació permet calcular la producció multiplicant directament la potència del generador per les HSP.
 
-Funcions:
 
-* Conversió CC → CA (normalment 230V i 50 Hz).
-* Subministrament estable i de qualitat per a les càrregues.
+#### Tipus de radiació:
 
-Tipus d’inversors:
+- **Radiació directa:** Prové directament del disc solar sense ser dispersada per l'atmosfera. És la dominant en dies clars.
+- **Radiació difusa:** Arriba a la superfície després de ser dispersada per núvols, partícules i molècules de l'aire. És la dominant en dies ennuvolats.
+- **Radiació d'albedo o reflectida:** Prové de la reflexió de la radiació en el sòl o superfícies properes.
+- **Radiació global:** La suma de les tres anteriors. És el valor que s'utilitza habitualment en els càlculs sobre superfície inclinada.
 
-* **Ona sinusoidal pura**: recomanats per a equips sensibles.
-* **Ona modificada**: més econòmics però menys compatibles.
 
-Paràmetres clau:
 
-* **Potència nominal i potència de pic**.
-* **Rendiment (%)**.
-* **Proteccions integrades** (sobrecàrrega, curtcircuit, temperatura).
 
+### 2.2 Zones climàtiques i mapa solar
 
+La radiació solar disponible no és uniforme, sinó que varia significativament amb la situació geogràfica i les condicions climàtiques. Per això, s'utilitzen eines com les zones climàtiques i els mapes solars.
 
+#### Zones climàtiques:
 
+El Codi Tècnic de l'Edificació (CTE), en el seu Document Bàsic HE d'Estalvi d'Energia, divideix el territori espanyol en zones climàtiques d'hivern i d'estiu, identificades per una lletra i un número (per exemple, B4, C1, D3). Aquesta zonificació s'utilitza principalment per al compliment de les exigències d'aïllament tèrmic i, en el cas de l'energia solar tèrmica, per determinar la contribució solar mínima. Per a la fotovoltaica, la zonificació és menys granular, però dona una idea de les necessitats energètiques de l'edifici.
 
+#### Mapa solar:
 
-### 2.2 Grups electrògens de suport
+Per al disseny fotovoltaic, l'eina de referència és un mapa de radiació solar. Aquests mapes ofereixen la irradiació solar mitjana diària, mensual i anual sobre superfície horitzontal i inclinada per a qualsevol punt geogràfic.
 
-En molts casos, s’incorpora un grup electrògen per garantir el subministrament en situacions de baixa radiació o elevada demanda.
+La font oficial de referència a Europa és la base de dades **PVGIS (Photovoltaic Geographical Information System)** de la Comissió Europea. PVGIS permet:
+- Obtenir dades de radiació solar per a qualsevol ubicació (introduint coordenades o clicant al mapa).
+- Conèixer la irradiació sobre superfície horitzontal, sobre superfície amb inclinació òptima i sobre una inclinació i orientació definides per l'usuari.
+- Obtenir la variació mensual de la radiació, fonamental per a dimensionar sistemes aïllats amb bateries on el mes pitjor (menys radiació) és el crític.
 
-**Funcions:**
+A Espanya, la irradiació mitjana anual sobre superfície horitzontal varia des d'uns 1200 kWh/m² a la cornisa cantàbrica fins a més de 1700 kWh/m² al sud-est peninsular, Canàries i zones de gran altitud.
 
-* Suport energètic
-* Càrrega de bateries
-* Subministrament en emergències
 
-**Especificacions:**
 
-* Potència adequada a la demanda
-* Compatibilitat amb el sistema
-* Sistema d’arrencada automàtica
 
+### 2.3 Rendiment solar
 
+El rendiment d'una instal·lació fotovoltaica no és simplement l'eficiència dels mòduls. S'ha de parlar del **rendiment global del sistema** o **Performance Ratio (PR)**. Aquest paràmetre mesura la relació entre l'energia elèctrica realment injectada a la xarxa o consumida i l'energia que teòricament podria produir el generador si treballés sempre en condicions STC amb la radiació incident.
 
-### 2.3 Instal·lacions connectades a xarxa
+El PR es calcula com la fracció de l'energia final útil respecte a l'energia nominal disponible, i sol expressar-se en percentatge. Un PR del 80% significa que el 20% de l'energia solar disponible s'ha perdut en el camí.
 
-Aquest tipus d’instal·lacions treballa en paral·lel amb la xarxa elèctrica, injectant energia o consumint-ne segons la demanda.
 
+#### Factors que afecten el rendiment global (PR):
 
+- **Eficiència del mòdul:** Normalment entre el 15% i el 22% per a tecnologies comercials de silici. Depèn de la qualitat de la cèl·lula, la tecnologia i la temperatura de treball. Un mòdul de 20% d'eficiència converteix el 20% de l'energia lumínica incident en elèctrica en condicions STC.
+- **Pèrdues per temperatura:** La potència dels mòduls disminueix en augmentar la temperatura de la cèl·lula (coeficient tèrmic, sovint al voltant de -0,35% a -0,50% per cada °C per sobre dels 25 °C de la cèl·lula). Un mòdul al sol d'estiu pot estar a 60 °C; això ja suposa una pèrdua de potència del voltant del 15%.
+- **Pèrdues per dispersió de paràmetres o "mismatch":** Diferències de fabricació entre mòduls connectats en sèrie fan que la cadena funcioni al nivell del mòdul menys eficient.
+- **Pèrdues en el cablejat de corrent continu i altern.**
+- **Eficiència de l'inversor:** Rendiment del seguidor MPPT (normalment >99%) i eficiència de conversió DC/AC (que pot superar el 96-98% en inversors moderns).
+- **Pèrdues per pols i brutícia sobre els mòduls.**
+- **Pèrdues per ombres (parcials o totals).**
 
-## 3. Instal·lacions connectades a xarxa: especificacions
+Un PR típic per a una instal·lació ben dissenyada i amb bon manteniment se situa entre el 75% i el 85%.
 
-### 3.1 Sol·licitud de punt de connexió
 
-És el procediment administratiu necessari per connectar una instal·lació a la xarxa.
 
-Inclou:
 
-* Estudi de viabilitat
-* Acceptació de condicions tècniques
-* Assignació de capacitat
+### 2.4 Orientació i inclinació
 
+L'orientació i la inclinació dels mòduls fotovoltaics són les dues variables de disseny més determinants per a la captació d'energia solar. Una elecció correcta maximitza la producció anual o, en sistemes aïllats, garanteix la producció en el mes de menor radiació.
 
 
-### 3.2 Paràmetres de qualitat del subministrament
+#### Orientació (Azimut, γ):
 
-La instal·lació ha de complir requisits com:
+És l'angle que forma la projecció horitzontal de la perpendicular al pla dels mòduls amb la direcció sud geogràfic (a l'hemisferi nord). Per conveni, es mesura:
+- **Sud:** 0° (orientació òptima).
+- **Est:** -90°.
+- **Oest:** +90°.
+- **Nord:** ±180° (la pitjor orientació, amb producció molt reduïda a l'hemisferi nord).
 
-* Tensió dins dels límits establerts
-* Freqüència estable (50 Hz)
-* Baix nivell de distorsió harmònica (THD)
 
+#### Inclinació (Tilt, β):
 
+És l'angle que forma el pla dels mòduls amb l'horitzontal. Una aproximació a la inclinació optima és:
 
-### 3.3 Sistema de mesura d’energia
+- **Inclinació òptima anual:** $\beta = \text{Latitud} \times 0{,}9$
+- **Inclinació òptima a l'estiu:** $\beta = \text{Latitud} - 15^\circ$
+- **Inclinació òptima a l'hivern:** $\beta = \text{Latitud} + 15^\circ$
 
-Elements:
 
-* Comptadors bidireccionals
-* Sistemes de monitoratge
+#### Criteris d'optimització:
 
-Permeten:
+- **Màxima producció anual:** La inclinació òptima és aproximadament igual a la latitud del lloc menys 5° o 10° o, de manera simplificada, igual a la latitud. Per a una latitud de 41° (Barcelona, Tarragona), la inclinació òptima anual seria d'uns 35°.
+- **Maximitzar la producció a l'hivern (sistemes aïllats crítics):** Es pot augmentar la inclinació (latitud + 10°) per afavorir la captació en els mesos de sol baix, tot i que la producció anual serà lleugerament inferior. Això redueix la mida de la bateria necessària.
+- **Maximitzar la producció a l'estiu:** Inclinacions menors (latitud - 15°).
+- **Integració arquitectònica en coberta:** Si la coberta ja té una orientació i inclinació, es pot optar per una instal·lació coplanar per raons estètiques i de càrrega de vent, assumint les pèrdues de producció. El CTE HE 5 estableix els límits de pèrdues permeses per orientació i inclinació respecte a l'òptim.
 
-* Mesurar energia consumida i generada
-* Gestionar excedents
 
+#### Programari
 
+El programari PVGIS i altres eines de simulació permeten calcular la producció per a qualsevol combinació d'orientació i inclinació, facilitant l'anàlisi de compromís entre producció i condicionants arquitectònics.
 
-### 3.4 Aportació energètica
+### 2.5 Determinació d'ombres
 
-Es calcula en funció de:
+Les ombres sobre un generador fotovoltaic, fins i tot si són parcials, poden disminuir la producció de manera molt significativa. Un mòdul completament en ombra no només deixa de produir, sinó que, si no es protegeix adequadament (amb díodes de bypass), pot actuar com una càrrega, dissipant calor i fent malbé les cèl·lules (punt calent).
 
-\begin{gather} 
-    E = P_{inst} \cdot HSP \cdot \eta
+
+#### Tipus d'ombres:
+
+- **Ombra pròpia:** La que un element de la instal·lació projecta sobre una altra. Per exemple, una filera de mòduls sobre la filera del darrere en una coberta plana amb estructures inclinades. Es resol amb una distància de separació adequada entre fileres.
+- **Ombra aliena:** La projectada per obstacles de l'entorn: edificis veïns, xemeneies, arbres, turons, etc.
+
+#### Eines de determinació:
+
+- **Diagrama de trajectòries solars:** Gràfic estereogràfic o cilíndric que mostra la posició del sol (elevació i azimut) per a cada hora del dia i cada mes de l'any, per a una latitud donada. Sobre aquest diagrama es dibuixa la silueta de l'horitzó visible i dels obstacles, la qual cosa permet visualitzar les hores d'ombra al llarg de tot l'any.
+- **Mesura in situ amb clinòmetre i brúixola:** Es mesuren els angles d'elevació i azimut dels contorns dels obstacles rellevants i es traslladen manualment al diagrama solar.
+- **Simulació amb programari:** Eines professionals com PVSyst, SketchUp amb plugins solars, o fins i tot PVGIS, permeten modelar els obstacles en 3D i simular les ombres amb precisió horària, obtenint el percentatge de pèrdues per ombreig.
+
+
+#### Càlcul de pèrdues per ombres:
+
+El CTE HE 5 estableix que les pèrdues per ombres sobre el generador, mesurades respecte a la radiació global incident sense ombres, no poden superar el 10% en cap cas (o el 5% si es tracta d'una instal·lació amb integració arquitectònica). El càlcul es pot fer per mètodes analítics o simulats.
+
+L'estratègia per minimitzar l'impacte de les ombres inclou l'ús de díodes de bypass en els mòduls, la reconfiguració de les cadenes de mòduls (strings) perquè les ombres afectin el mínim possible a la tensió de treball, i l'ús d'inversors amb múltiples entrades MPPT o microinversors.
+
+
+
+
+### 2.6 Coeficients de pèrdues
+
+Per al càlcul precís de l'energia produïda per una instal·lació, no n'hi ha prou amb multiplicar potència pic per hores solar pic. Cal descomptar totes les pèrdues del sistema mitjançant una sèrie de coeficients. Aquests coeficients s'agrupen en funció de la seva naturalesa.
+
+
+#### Pèrdues tèrmiques (Ltemp):
+
+La potència del mòdul es dona a 25 °C de temperatura de cèl·lula. A la realitat, la cèl·lula treballa a una temperatura molt més alta. La temperatura de la cèl·lula (Tc) es pot estimar amb la fórmula simplificada:
+
+\begin{gather}
+  Tc = Tamb + dfrac{(NOCT - 20) \cdot G} {800}
 \end{gather}
 
-- $E$ energia generada en $[\text{Wh}]$
-- $P_{inst}$ potència instal·lada del generador fotovoltaic en $[\text{W}]$
-- $HSP$ hores sol pic en $[\text{h}]$
-- $\eta$ rendiment global del sistema (sense unitats)
 
 
-Aquest valor determina la rendibilitat de la instal·lació.
+On NOCT és la temperatura d'operació nominal de la cèl·lula (dada del fabricant, sovint 42-47 °C) i G la irradiància. A partir de Tc, la pèrdua de potència es calcula amb el coeficient tèrmic del mòdul (γ, que sol ser d'uns -0,004 /°C).
 
+\begin{gather}
+  Ltemp (factor) = 1 + γ_Pmax \cdot (Tc - 25)
+\end{gather}
 
 
-## 4. Instal·lacions generadores de baixa tensió
+#### Pèrdues per pols i brutícia (Lbrut)
 
-### 4.1 Condicions generals
+Depenen de la ubicació (zones polsoses, trànsit dens, poca pluja) i del pla dels mòduls (una inclinació >15° afavoreix l'autoneteja amb la pluja). S'estimen entre un 1% i un 5%, llevat d'entorns molt adversos on poden ser superiors si no hi ha un pla de neteja.
 
-Aquestes instal·lacions han de complir:
 
-* Seguretat elèctrica
-* Compatibilitat electromagnètica
-* Qualitat del subministrament
+#### Pèrdues per dispersió de paràmetres o "mismatch" (Lmism)
 
+Fins i tot dins d'un mateix lot, dos mòduls del mateix model mai no són idèntics. A més, poden rebre irradiacions lleugerament diferents. El mòdul menys eficient limita el corrent de tota la cadena sèrie. Es menystenen entre un 1% i un 3%.
 
+#### Pèrdues en el cablejat de CC (LcabCC):
 
-### 4.2 Condicions de connexió
+Degudes a la resistència dels conductors. La normativa limita la caiguda de tensió màxima i, per tant, aquestes pèrdues es mantenen normalment per sota de l'1,5%.
 
-Aquí tens el desenvolupament dels conceptes demanats en el context de sistemes fotovoltaics connectats a xarxa:
+#### Pèrdues per rendiment de l'inversor (Linv)
 
-#### Sincronització amb la xarxa
+Inclou l'eficiència de conversió DC/AC (que depèn de la tensió d'entrada i la càrrega) i l'eficiència del seguidor MPPT. Un bon inversor té unes pèrdues totals del 2% al 5%. El fabricant proporciona la corba d'eficiència.
 
-La **sincronització amb la xarxa** és el procés pel qual l’inversor adapta la seva sortida de corrent altern perquè coincideixi amb els paràmetres de la xarxa elèctrica.
+#### Altres pèrdues
 
-Aquesta adaptació implica:
+Inclouen el consum propi del sistema de control, les pèrdues en el transformador d'aïllament (si n'hi ha), les pèrdues per indisponibilitat (avaries o manteniment) i l'envelliment dels mòduls (degradació anual de la potència). Per a càlculs anuals, es pot agrupar tot en un coeficient de pèrdues secundàries (Laltres) d'un 1% a un 3%.
 
-- **Tensió**: ha de ser igual (p. ex. 230 V en baixa tensió)
-- **Freqüència**: normalment 50 Hz
-- **Fase**: la forma d’ona ha d’estar alineada amb la de la xarxa
+#### Càlcul del factor de pèrdues global:
 
-L’inversor utilitza sistemes de control (com PLL, *Phase Locked Loop*) per seguir la xarxa en temps real. Això és imprescindible perquè:
+\begin{gather}
+  P_{p} (\%) = 100 - [ (1 - L_{temp}) \cdot (1 - L_{brut}) \cdot ... \cdot (1 - L_{altres}) ] * 100
+\end{gather}
 
-- es pugui injectar energia sense pertorbar la xarxa,
-- es garanteixi la qualitat del subministrament,
-- es compleixi la normativa elèctrica.
+Alternativament, es pot agrupar tot en un únic **Performance Ratio (PR)** de disseny, que és el producte de tots els factors. Així, l'energia produïda estimada és:
 
-#### Protecció anti-illa
+\begin{gather}
+   E = Potència_pic * HSP * PR
+\end{gather}
 
-La **protecció anti-illa** evita que el sistema fotovoltaic continuï subministrant energia quan la xarxa elèctrica ha caigut.
 
-Situació d’illa:
 
-- Es produeix quan una part de la xarxa queda desconnectada però el generador local (fotovoltaic) segueix alimentant càrregues.
 
-Riscos:
+### 2.7 Càlcul de bateries i acumuladors
 
-- **Seguretat**: pot posar en perill els tècnics que treballen en la xarxa.
-- **Qualitat elèctrica**: tensió i freqüència fora de control.
-- **Danys als equips**.
+En instal·lacions aïllades de la xarxa, el sistema d'acumulació (bateries) és el component crític que garanteix el subministrament elèctric en absència de sol. El seu dimensionament requereix equilibrar la màxima autonomia desitjada, la profunditat de descàrrega admissible i la vida útil esperada del conjunt.
 
-Funcionament:
 
-- L’inversor detecta anomalies en tensió i freqüència.
-- Si detecta absència de xarxa, **es desconnecta automàticament** en mil·lisegons.
+#### Paràmetres clau de la bateria
 
-Tipus de detecció:
+- **Capacitat nominal (C):** Quantitat de càrrega elèctrica que pot emmagatzemar, mesurada en amperes-hora (Ah) per a un règim de descàrrega especificat (C10, C20, C100). Per exemple, C100 = 500 Ah significa que la bateria pot subministrar 5 A durant 100 hores a una temperatura donada.
+- **Tensió nominal del sistema (Vn):** Normalment 12, 24 o 48 V en sistemes domèstics o petits.
+- **Profunditat de descàrrega màxima (DoDmax):** Percentatge de la capacitat nominal que es pot extreure sense perjudicar greument la vida útil. Per a bateries de plom-àcid estacionàries, la DoD diària recomanada sol ser del 50% (mai >80%). Per a bateries de liti (LiFePO4), pot arribar al 80-90%.
+- **Dies d'autonomia (N):** Nombre de dies consecutius sense sol (o amb molt poca radiació) que la bateria ha de poder alimentar la càrrega sense rebre càrrega del generador.
+- **Capacitat útil (Cu):** `Cu = Consum_diari (Wh) * N / Vn`
 
-- **Passiva**: control de paràmetres (V, f).
-- **Activa**: petites pertorbacions per verificar la presència de xarxa.
 
-#### Control de potència
+#### Càlcul de la capacitat nominal requerida (Cnom)
 
-El **control de potència** regula la quantitat d’energia que el sistema fotovoltaic injecta a la xarxa o subministra a les càrregues.
+\begin{gather}
+    Cnom (Ah) = Cu / DoDmax
+\end{gather}
 
-Funcions principals:
+Per a un consum diari de 2000 Wh, una tensió de 48 V, 3 dies d'autonomia i una DoDmax del 50%:
+- C_u = $(2000~\text{Wh} \cdot 3~ \text{dies}) / 48~ \text{V} = 125~ \text{Ah}
+- C_{nom} = 125 ~\text{Ah} / 0,50 = 250~\text{Ah} (a C100 o C120, segons el règim de descàrrega dels dies d'autonomia).
 
-* **Limitació de potència**: per evitar sobrecàrregues o complir restriccions contractuals.
-* **Seguiment del punt de màxima potència (MPPT)**: optimitza la producció dels panells.
-* **Control d’injecció a xarxa**: pot ajustar la potència per evitar excedents (p. ex. autoconsum amb zero injecció).
-* **Gestió de potència reactiva** (en sistemes avançats): ajuda a estabilitzar la xarxa.
 
-Aplicacions:
+#### Altres consideracions de càlcul
 
-* Instal·lacions d’autoconsum
-* Sistemes connectats a xarxa amb limitacions legals
-* Integració amb bateries i sistemes híbrids
+- **Temperatura:** La capacitat de les bateries disminueix amb el fred. Si el banc de bateries es troba en un lloc no climatitzat, s'ha de sobredimensionar segons les taules del fabricant.
+- **Corrent màxima de càrrega i descàrrega:** La bateria ha de poder absorbir el corrent pic del generador i subministrar el pic de consum sense danys.
+- **Nombre de vasos en sèrie:** Determinat per la tensió del sistema: 6 vasos de 2V per a 12V, 12 per a 24V, 24 per a 48V.
+- **Acoblament en paral·lel:** Limitar-lo al màxim possible per evitar desequilibris. Si es necessita més capacitat, és preferible utilitzar vasos de major capacitat individual que moltes cadenes en paral·lel.
 
 
+### 2.8 Caigudes de tensió i secció de conductors
 
+El conductor elèctric és un element actiu del circuit i introdueix una resistència que causa una caiguda de tensió proporcional al corrent i a la longitud del cable. Limitar aquesta caiguda és essencial per a l'eficiència energètica i el correcte funcionament dels equips.
 
 
-### 4.3 Cables de connexió
+#### Normativa aplicable
 
-Característiques:
+El Reglament Electrotècnic de Baixa Tensió (REBT), a la ITC-BT-40 específica per a instal·lacions generadores de baixa tensió, i el Plec de Condicions Tècniques del IDAE (PCT-C-REV), estableixen les caigudes de tensió màximes permeses:
+- **Tram generador - regulador / inversor (corrent continu):** Màxim **1,5%** de la tensió nominal.
+- **Tram regulador - bateria (corrent continu):** Màxim **1%** de la tensió nominal.
+- **Tram inversor - punt de connexió (corrent altern):** Màxim **1,5%** de la tensió nominal.
+- **Tram entre el generador i el punt de connexió a la xarxa per a instal·lacions sense acumulació:** Màxim **1,5%**.
 
-* Aïllament adequat
-* Resistència a UV i intempèrie
-* Secció segons intensitat
 
+#### Càlcul de la secció per a corrent continu
 
+La secció mínima (S) en mm² es calcula a partir de la fórmula:
+\begin{gather}
+    S = dfrac {2 \cdot L \cdot I} {\gamma \cdot \Delta V}
+\end{gather}
 
-### 4.4 Formes d’ona
+On:
+- **L:** Longitud del cable (en metres). Es multiplica per 2 perquè el corrent recorre el camí d'anada i tornada.
+- **I:** Corrent màxima del circuit (en amperes).
+- **σ:** Conductivitat del conductor. Per al coure a 20 °C, σ = 56 m/(Ω·mm²). Per a temperatures superiors (70 °C, 90 °C), la conductivitat disminueix, i cal aplicar el factor corrector.
+- **ΔV:** Caiguda de tensió màxima absoluta (en volts), calculada com el percentatge permès de la tensió nominal del circuit.
 
-La forma d’ona ha de ser sinusoidal pura. Els inversors moderns garanteixen:
+**Càlcul de la secció per a corrent altern (trifàsic):**
+\begin{gather}
+   S = \dfrac{√3 \cdot L \cdot I \cdot cos φ} {\gamma \cdot ΔV}
+\end{gather}
 
-* Baix contingut harmònic
-* Alta qualitat d’energia
 
+#### Comprovacions addicionals
 
+Un cop calculada la secció per caiguda de tensió, s'ha de verificar que compleix els criteris de:
+- **Corrent màxima admissible:** La secció ha de suportar el corrent sense sobreescalfar-se, segons la ITC-BT-06 i la norma UNE 20460. La secció final és la més gran de les dues (la calculada per caiguda de tensió o la requerida per intensitat màxima).
+- **Corrent de curtcircuit:** El cable ha de suportar, sense deteriorament, el corrent de curtcircuit previst durant el temps de desconnexió de les proteccions.
 
-## 5. Proteccions i posada en servei
+**Recomanació pràctica:** En instal·lacions fotovoltaiques, les llargades de cable solen ser considerables (del generador al quadre de protecció, d'aquest a l'inversor) i la tensió de treball en CC és limitada (fins a 1000 V o 1500 V). Per tant, la caiguda de tensió sol ser el criteri de disseny determinant. Cal utilitzar seccions generoses per minimitzar les pèrdues energètiques, que es capitalitzen al llarg de tota la vida de la instal·lació (més de 25 anys).
 
-### 5.1 Sistemes de protecció
 
-* Contra sobrecàrregues
-* Contra curtcircuits
-* Contra sobretensions
-* Contra contactes directes i indirectes
 
 
 
-### 5.2 Instal·lacions de connexió a terra
+### 2.9 Càlculs del sistema de connexió a terra
 
-Funcions:
+La posada a terra és un sistema de seguretat fonamental que protegeix les persones contra contactes indirectes, permet el pas a terra de les sobreintensitats d'origen atmosfèric (llamps) i limita les sobretensions.
 
-* Protecció de persones
-* Evacuació de corrents de defecte
-* Estabilització del sistema
 
+#### Normativa de referència
 
+- REBT, ITC-BT-18 (Instal·lacions de posada a terra).
+- REBT, ITC-BT-40 (Instal·lacions generadores de BT), que remet a la ITC-BT-18.
+- Guia d'aplicació del REBT del Ministeri i Plec de Condicions Tècniques del IDAE.
 
-### 5.3 Posada en marxa
 
-Inclou:
+#### Configuració de la posada a terra en una instal·lació fotovoltaica
 
-* Verificació de connexions
-* Mesures elèctriques
-* Proves de funcionament
-* Documentació final
+1.  **Elèctrode de terra:** És l'element conductor enterrat en contacte amb el sòl. Pot ser una pica vertical (barra d'acer courejat), un conductor enterrat horitzontalment formant un anell, o una combinació d'ambdós. Els paràmetres de disseny són la seva geometria i la resistivitat del terreny (ρ, en Ω·m), que s'ha de mesurar in situ (o estimar amb taules).
+2.  **Línia d'enllaç amb terra:** Conductor que connecta l'elèctrode amb el punt de connexió a terra de l'edifici o instal·lació. La seva secció mínima ve determinada per la ITC-BT-18 (normalment 35 mm²).
+3.  **Conductors de protecció (CP):** Cables de coure de secció adequada (segons taules de la ITC-BT-19) que connecten les masses de tots els equips (carcasses dels mòduls, estructura de suport, carcasses dels inversors, caixes de protecció, etc.) al punt de connexió a terra.
 
 
+#### Càlcul de la resistència de terra
 
-## 6. Equips i components
+La resistència de terra (Rt) és la resistència entre l'elèctrode i el sòl. El seu valor màxim ve determinat per la sensibilitat de les proteccions diferencials. Si totes les masses estan connectades a un mateix elèctrode i es protegeixen amb diferencials de 300 mA, la resistència de terra ha de ser:
 
-### 6.1 Panells solars
+\begin{gather}
+   Rt \le 24 / 0,3 = 80
+\end{gather}
 
-Característiques:
+Segons REBT, per a instal·lacions amb interruptor diferencial de 300 mA, la tensió de contacte límit és 24 V en llocs humits, 50 V en secs). De fet, aquesta es una resistència a terra cautelosa, ja que en general s'instalaran ID de 30 mA.
 
-* Potència nominal
-* Eficiència
-* Tolerància
+Per a un elèctrode simple de pica vertical, la resistència es pot estimar amb la fórmula aproximada:
+\begin{gather}
+    Rt \approx n_piq\cdot \dfrac{ρ}{L}
+\end{gather}
+On ρ és la resistivitat del terreny (Ω·m) i L la longitud de la pica (m). Si el terreny té una resistivitat de 200 Ω·m, dues piques de 2 metres donen una Rt d'uns 50 Ω, sense comptar alm la part de l'elèctrode constituit per conductor de 35 mm² enterrat que uneix ambues piques, valor suficient per al dispar d'un diferencial de 30 mA.
 
 
+#### Equipotencialitat:
 
+Totes les masses metàl·liques (estructura, carcasses d'inversor, quadres) i elements conductors han d'estar connectades al mateix sistema de terra. Això inclou la interconnexió de l'estructura de suport dels mòduls amb el cable de protecció general.
 
-### 6.2 Placa de característiques
 
-Inclou:
+#### Protecció contra llamps
 
-* $P_{max}$
-* $V_{oc}$
-* $I_{sc}$
-* Coeficients de temperatura
+En instal·lacions grans o en zones d'alta activitat tempestuosa, el sistema de terra s'ha de complementar amb un sistema de protecció contra el llamp (segons CTE DB SU-8), que inclou dispositius de captació (puntes Franklin, cables en malla) i baixants fins a la presa de terra.
 
 
 
-### 6.3 Acumuladors
 
-Aspectes clau:
+### 2.10 Proteccions de la instal·lació
 
-* Ubicació ventilada
-* Protecció tèrmica
-* Connexió adequada
+Una instal·lació fotovoltaica ha d'incorporar un conjunt de proteccions dimensionades per garantir la seguretat de les persones i la integritat dels equips davant qualsevol situació anòmala. Aquestes proteccions s'instal·len en quadres elèctrics de corrent continu i de corrent altern.
 
+#### Proteccions del costat de corrent continu (CC):
+- **Fusibles o interruptors magnetotèrmics de CC:** Protegeixen cada cadena (string) de mòduls contra sobreintensitats (curtcircuits dins de la cadena o corrent inversa d'altres cadenes en paral·lel). Es dimensionen per a una tensió de treball igual o superior a la Voc corregida per temperatura i una intensitat 1,25 vegades la Isc de la cadena.
+- **Interruptor-seccionador de CC:** Permet la desconnexió manual sota càrrega del generador fotovoltaic de la resta de la instal·lació, per a treballs de manteniment o emergència.
+- **Protecció contra sobretensions transitòries (SPD Tipus 1 o Tipus 2):** Descàrregues de sobretensió (varistors) per derivar a terra les sobretensions induïdes per llamps o maniobres a la xarxa. Es col·loquen al quadre de CC, amb una tensió de treball adequada (per exemple, Ucpv > 1,2 * Voc_max del generador).
+- **Vigilància d'aïllament:** Es pot instal·lar un vigilant d'aïllament que detecti la primera fallada d'aïllament d'un conductor actiu a terra i alarma abans que una segona fallada provoqui un curtcircuit franc o abans que una major degradació de l'aïllament faci botar diferencials.
 
 
-### 6.4 Proteccions
+#### Proteccions del costat de corrent altern (CA):
 
-Inclouen:
+- **Interruptor magnetotèrmic de CA:** Protegeix la sortida de l'inversor contra sobrecàrregues i curtcircuits.
+- **Interruptor diferencial de CA:** Protegeix les persones contra contactes indirectes. En instal·lacions d'autoconsum connectades a la xarxa, el REBT exigeix un diferencial de 30 mA per a les línies d'ús domèstic.
+- **Relé de protecció de xarxa i de tensió/freqüència:** Dispositiu que desconnecta la instal·lació de la xarxa elèctrica si els paràmetres de tensió i freqüència surten dels rangs establerts (protecció de separació de xarxa, funció anti-illa). La majoria d'inversors connectats a xarxa porten incorporat aquest relé.
 
-* Fusibles
-* Magnetotèrmics
-* Diferencials
-* Protectors de sobretensions
 
 
 
-### 6.5 Maxímetre
+### 2.11 Proteccions del sistema acumulador
 
-Dispositiu que mesura la potència màxima demandada en un període determinat.
+Les bateries, per la seva naturalesa química i l'elevada energia emmagatzemada, requereixen proteccions específiques, tant per evitar-ne la destrucció com per prevenir riscos elèctrics i químics.
 
 
+#### Proteccions contra sobrecàrregues i curtcircuits
 
-### 6.6 Reguladors
+- **Fusibles de protecció de la línia de bateries:** S'instal·len el més a prop possible del born positiu del banc. Es dimensionen per a la corrent màxima de curtcircuit de la bateria i la seva tensió nominal. Han de ser fusibles de tipus NH o de cartutx d'alt poder de tall, aptes per a corrent continu. La seva corba de fusió ha d'actuar en condicions de curtcircuit franc sense que el cablejat es faci malbé.
 
-Funcions:
 
-* Control de càrrega
-* Protecció de bateries
+#### Protecció contra descàrrega profunda
+- Una descàrrega per sota de la tensió límit de seguretat destrueix permanentment les plaques de la bateria. El **regulador de càrrega** és l'encarregat de desconnectar el consum quan la tensió de la bateria baixa del valor de desconnexió per baixa tensió (LVD - Low Voltage Disconnect). En sistemes amb inversor, l'inversor pot tenir configurat un nivell de tensió d'aturada per la mateixa funció.
 
-Paràmetres:
 
-* Tensió
-* Corrent
-* Algoritme de càrrega
+#### Protecció contra sobrecàrrega
 
+- El **regulador de càrrega** talla o redueix el corrent d'excitació del generador quan la bateria arriba a la tensió de final de càrrega, evitant la sobrecàrrega perllongada que provoca gasificació excessiva, pèrdua d'electròlit i corrosió de les plaques.
 
 
-### 6.7 Convertidors (inversors)
+#### Protecció tèrmica
 
-Transformen:
+- Un sensor de temperatura en contacte amb la bateria permet al regulador compensar les tensions de càrrega i flotació en funció de la temperatura (coeficient de -3 a -5 mV/°C per vas). Aquesta compensació és vital per a la vida de la bateria, especialment en emplaçaments amb grans oscil·lacions tèrmiques.
 
-* Corrente continu (DC) → Corrente altern (AC)
+#### Protecció mecànica i química
+- **Ubicació:** El compartiment o sala de bateries ha d'estar ventilat (per dissipar l'hidrogen generat en bateries de plom-àcid), protegit de temperatures extremes i d'accés restringit. Ha de disposar de senyalització de risc elèctric i d'explosió.
+- **Equips de protecció individual (EPI):** Per al manteniment de bateries obertes: ulleres de seguretat, guants i davantal resistents als àcids.
+- **Dispositiu de desconnexió de seguretat:** Un seccionador manual que permeti aïllar completament la bateria de la resta de la instal·lació, situat a l'exterior del compartiment si és possible.
 
-Inclouen:
 
-* Sistemes de control
-* Proteccions internes
-* Funcions de monitoratge
 
 
 
-### 6.8 Manteniment
 
-Tasques:
+3. Equips, Elements i Regulació
+-------------------------------
 
-* Neteja de panells
-* Revisió de connexions
-* Control de rendiment
+### 3.1 Característiques d'equips i elements
 
+La selecció dels equips i elements d'una instal·lació solar fotovoltaica determina la seva fiabilitat, eficiència i vida útil. A continuació es descriuen les característiques tècniques principals dels grans blocs que componen el sistema.
 
+#### Mòduls fotovoltaics
 
-## 7. Sistemes de seguiment solar
+Són el component bàsic que transforma la radiació solar en electricitat (corrent continu). Les característiques principals a analitzar en la fitxa tècnica són:
+- **Potència pic (Pmax, Wp):** Potència en condicions STC. La tolerància de fabricació sol ser de 0 a +5 W (tolerància positiva).
+- **Tensió en circuit obert (Voc):** Màxima tensió amb el mòdul al sol i sense càrrega. Paràmetre crític per no superar la tensió màxima d'entrada de l'inversor (tenint en compte la correcció per temperatures mínimes).
+- **Corrent de curtcircuit (Isc).**
+- **Tensió i corrent al punt de màxima potència (Vmpp, Impp).**
+- **Coeficient de temperatura de Voc, Isc i Pmax.**
+- **Temperatura d'operació nominal de la cèl·lula (NOCT).**
+- **Tensió màxima del sistema (600 V, 1000 V, 1500 V).**
+- **Tipus de cèl·lules:** Silici monocristal·lí (major eficiència), policristal·lí (compromís cost-eficiència) o capa fina (CdTe, CIGS, etc., menor eficiència però bon comportament en ombra difusa i temperatures altes).
 
-Permeten augmentar la producció mitjançant el seguiment del sol.
 
-### 7.1 Tipus
+#### Inversors
 
-* Un eix
-* Dos eixos
+L'inversor és el cervell del sistema. Converteix la CC en CA i gestiona el punt de treball del generador.
+- **Inversor connectat a xarxa (on-grid):** Treballa sincronitzat amb la xarxa elèctrica.
+    - **Potència nominal (kVA o kW).**
+    - **Nombre de seguidors MPPT:** Un MPPT independent permet optimitzar cadenes de mòduls amb orientacions o ombres diferents.
+    - **Rang de tensió d'entrada MPPT i tensió màxima d'entrada.**
+    - **Eficiència màxima i eficiència europea ponderada.**
+    - **Grau de protecció IP65 o superior** per a instal·lació exterior.
+- **Inversor aïllat (off-grid):** Crea la seva pròpia xarxa de CA i pot gestionar la càrrega de bateries.
+    - **Potència nominal en règim permanent i capacitat de sobrecàrrega** per a pics d'arrencada de motors (bombes, neveres).
+    - **Capacitat d'incorporar o comunicar amb regulador de càrrega.**
+    - **Tensió d'entrada de CC** (12V, 24V, 48V) acord amb la bateria.
 
 
+#### Bateries (acumuladors electroquímics)
 
-### 7.2 Components
+- **Tecnologia:** Plom-àcid (Pb-Àcid) obertes (ventilades), AGM (Absorbent Glass Mat), GEL (electròlit gelificat) o Ió-Liti (LiFePO4, la més habitual en aplicacions estacionàries).
+- **Capacitat nominal (Ah, kWh).**
+- **Profunditat de descàrrega màxima (DoDmax) recomanada per a la vida útil esperada.**
+- **Vida cíclica:** Nombre de cicles de càrrega/descàrrega en funció de la DoD. Una bateria de liti ben dimensionada pot superar els 5000 cicles amb DoD 80%. Una de plom-àcid estacionària, treballant amb DoD 50%, pot oferir 1000-1500 cicles.
+- **Eficiència "coulombimètrica" (Ah) i energètica (Wh):** Les bateries de liti tenen eficiències molt altes (>95%), mentre que les de plom-àcid estan al voltant del 80-85%.
 
-* Sensors solars
-* Controladors
-* Servoaccionaments
 
+#### Estructures de suport
 
+- **Material:** Alumini anoditzat o acer galvanitzat en calent, amb cargoleria d'acer inoxidable.
+- **Capacitat de càrrega:** Ha de suportar el pes dels mòduls, la sobrecàrrega de vent i neu segons la norma CTE DB SE-AE i l'eurocodi corresponent a la ubicació.
+- **Tipus de fixació a coberta:** Amb subjecció a biga, amb llast (sense perforar la impermeabilització, en cobertes planes) o amb ancoratge mecànic a coberta inclinada.
+- **Garantia de durabilitat,** normalment 10-20 anys per a estructures d'alumini.
 
-### 7.3 Estructures de suport
 
-Han de garantir:
+### 3.2 Càlcul de reguladors
 
-* Estabilitat
-* Resistència al vent
-* Durabilitat
+El regulador de càrrega és el dispositiu que gestiona el flux d'energia entre els mòduls, la bateria i el consum en sistemes aïllats. Un càlcul incorrecte pot malmetre la bateria o cremar l'equip.
 
 
+#### Tipus de reguladors
 
-## 8. Sistemes de connexió del neutre i masses
+- **PWM (Modulació per Amplada de Pols):** Connecta directament els mòduls a la bateria quan cal carregar-la, modulant el corrent. Econòmics, però només poden treballar amb mòduls la tensió dels quals és molt propera a la de la bateria (per exemple, mòduls de 36 cèl·lules per a sistemes de 12V). Desaprofiten part de la potència dels mòduls de major tensió.
+- **MPPT (Seguidor del Punt de Màxima Potència):** Converteix la tensió i corrent del generador per extreure'n la màxima potència i adaptar-la a la tensió de la bateria. Permet l'ús de cadenes de mòduls amb tensions molt superiors a la de la bateria, reduint les pèrdues en el cablejat. Són l'estàndard en qualsevol instal·lació professional.
 
-### 8.1 Tipus de sistemes
+#### Càlcul de la intensitat nominal del regulador MPPT
+El regulador es dimensiona per la màxima intensitat que pot entregar a la bateria (Iout) i la màxima tensió i intensitat que pot suportar a l'entrada (provinents del generador).
 
-* TT
-* TN
-* IT
+1. **Intensitat de sortida (costat bateria):**
+    \begin{gather}
+        Iout_nom \ge 1{,}25 \cdot \frac{P_{gen}} {V_{n~bat}}
+    \end{gather}
+On $P_{gen}$ és la potència pic del generador i $V_{n~bat}$ la tensió nominal del sistema de bateries. Un marge de seguretat del 25% és recomanable. Si hi ha la possibilitat d'ampliar el generador en el futur, cal tenir-ho en compte.
 
+2. **Tensió d'entrada màxima del regulador (Vin_max):**
+    Ha de ser superior a la tensió en circuit obert de la cadena de mòduls a la temperatura mínima esperada. La Voc augmenta en baixar la temperatura.
+    \begin{gather}
+        Voc_{corr} = V{oc~STC} \cdot [1 + α * (Tmin - 25)]
+    \end{gather}
+    On α és el coeficient de temperatura de Voc (negatiu, per exemple -0,3%/°C) i Tmin la temperatura mínima històrica de la ubicació. La Vin_max del regulador ha de ser major que aquesta Voc_corr.
 
+3.  **Intensitat de curtcircuit d'entrada màxima (Isc_in):**
+    El regulador ha de suportar la Isc del generador sense danys, normalment amb un marge de l'25% (Isc_in_nom ≥ 1,25 * Isc_gen).
 
-### 8.2 Proteccions del neutre
+**Exemple:** Per a un generador de 3 panells de 400 Wp en sèrie (37 Voc, 13,5 A Isc) i un sistema de bateries a 48 V.
+- Pgen = 1200 Wp. Iout_nom ≥ 1,25 * 1200 / 48 = 31,25 A. Es tria un regulador de 35 o 40 A de sortida.
+- Voc_corr (per a Tmin -5 °C) = 3 * 37 * [1 - 0,003 * (-5 - 25)] = 111 * 1,09 = 121 V. El regulador ha de tenir Vin_max > 121 V (per exemple, 150 V).
+- Isc_in_nom ≥ 1,25 * 13,5 = 16,9 A.
 
-* Interruptors diferencials
-* Supervisió de fallades
 
 
+### 3.3 Protecció de reguladors i bateries
 
-## 9. Instal·lacions de suport
+Regulador i bateria són dos elements interdependents la protecció dels quals s'ha de coordinar. A més de les proteccions ja descrites per a la bateria (2.11), cal assegurar la protecció del mateix regulador i una operació segura del conjunt.
 
-Inclouen:
 
-* Quadres elèctrics
-* Canalitzacions
-* Sistemes auxiliars
+#### Protecció del regulador
 
+- **Fusible a l'entrada del regulador (costat generador):** Protegeix el regulador d'un curtcircuit intern o d'una sobreintensitat provinent dels panells (improbable en una cadena curta, però obligat per normativa en moltes configuracions).
+- **Fusible a la sortida del regulador (costat bateria):** És imprescindible. Protegeix el regulador i el cablejat entre el regulador i la bateria d'un curtcircuit en aquest tram o d'un defecte intern del regulador. Es col·loca el més a prop possible d'un dels borns de connexió del banc de bateries (normalment el positiu). El fusible ha de tenir una tensió nominal adequada per a CC i un poder de tall suficient per a la corrent de curtcircuit de la bateria.
+- **Díode de bloqueig (en sistemes sense regulador MPPT o com a redundància):** Impedeix el pas de corrent invers de la bateria cap als mòduls durant la nit, que descarregaria la bateria.
+- **Protecció contra polaritat inversa:** La majoria de reguladors electrònics porten protecció interna, però un fusible ràpid a la sortida és una salvaguarda addicional.
 
 
-### 9.1 Esquemes i simbologia
+#### Coordinació de proteccions amb la bateria
 
-Els esquemes elèctrics permeten:
-
-* Entendre la instal·lació
-* Facilitar el manteniment
-* Detectar avaries
-
-
-
-## 10. Telegestió d’instal·lacions fotovoltaiques
-
-Permet:
-
-* Monitoratge remot
-* Control de producció
-* Detecció d’incidències
-
-Tecnologies:
-
-* IoT
-* Plataformes web
-* Comunicacions GSM/Internet
-
-
-
-## 11. Normativa d’aplicació
-
-### 11.1 Reglamentació principal
-
-* Reglament Electrotècnic de Baixa Tensió (REBT)
-* Normes UNE
-* Normativa d’autoconsum
-
-
-
-### 11.2 Normativa de connexió a xarxa
-
-Inclou:
-
-* Requisits tècnics
-* Procediments administratius
-* Condicions de seguretat
-
-
-
-### 11.3 Altres normatives
-
-* Normes internacionals
-* Reglamentació europea
-* Normativa mediambiental
-
-
-
+Les tensions de consigna de protecció del regulador i de l'inversor han d'estar coordinades amb la finestra de treball segura de la bateria:
+- **Tensió de desconnexió del consum (LVD del regulador > LVD de l'inversor):** Normalment l'inversor es desconnecta abans per tensió baixa que el regulador, per preservar una mínima energia per al sistema de control.
+- **Tensió de final de càrrega (tensió d'absorció i flotació):** El regulador ha de tenir configurades les tensions recomanades pel fabricant de la bateria per a les fases de bulk, absorció i flotació, amb la compensació per temperatura activada. Una sobrecàrrega perllongada és fatal per a la bateria.
 
 
 

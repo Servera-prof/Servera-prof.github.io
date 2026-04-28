@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+UT06 - Caracterització de les instal·lacions fotovoltàiques
+===========================================================
+
+1. Classificació d'instal·lacions solars fotovoltaiques
+-------------------------------------------------------
+
+La primera decisió de disseny d'un sistema solar fotovoltaic és determinar-ne la tipologia, ja que condiciona tots els càlculs posteriors, els equips a seleccionar i la tramitació administrativa. Les instal·lacions solars fotovoltaiques es classifiquen, fonamentalment, en dos grans grups: les instal·lacions aïllades de la xarxa elèctrica i les instal·lacions connectades a la xarxa. Existeix una tercera tipologia, híbrida, que combina ambdues modalitats. La tria depèn de la disponibilitat o no de xarxa elèctrica al punt de consum, de les necessitats energètiques del consumidor i, cada cop més, de criteris econòmics i d'independència energètica.
+
+
+
+### 1.1. Instal·lació solar aïllada
+
+Una instal·lació solar fotovoltaica aïllada, també anomenada autònoma o off-grid, és aquella que no té cap connexió física amb la xarxa elèctrica de distribució pública. L'energia elèctrica generada pels mòduls fotovoltaics es consumeix directament o s'emmagatzema en bateries per al seu ús posterior, quan no hi ha radiació solar suficient o durant la nit. Aquestes instal·lacions són la solució idònia per electrificar emplaçaments remots on l'extensió de la xarxa elèctrica seria tècnicament inviable o econòmicament desproporcionada.
+
+Els elements constitutius fonamentals d'una instal·lació solar aïllada són:
+- **Generador fotovoltaic:** Conjunt de mòduls solars que transformen la radiació solar en electricitat en corrent continu.
+- **Sistema d'acumulació:** Bateries que emmagatzemen l'energia elèctrica per garantir el subministrament en absència de sol.
+- **Regulador de càrrega:** Dispositiu electrònic que gestiona la càrrega i descàrrega de les bateries, protegint-les contra sobrecàrregues i descàrregues profundes.
+- **Inversor (ondulador):** Converteix la corrent continu emmagatzemada a les bateries en corrent altern per alimentar els consums normalitzats (230 V / 50 Hz).
+- **Proteccions elèctriques i cablejat.**
+
+El disseny d'un sistema aïllat parteix del balanç energètic diari del consum i de la irradiació solar del mes pitjor, ja que la instal·lació ha de garantir el servei fins i tot en les condicions més desfavorables. El sobredimensionament del generador i de la bateria és la clau per assegurar una autonomia suficient i una vida útil perllongada del sistema d'acumulació.
+
+
+
+### 1.2. Grups electrògens. Especificacions
+
+En instal·lacions aïllades, especialment en aquelles amb consums elevats o amb una variabilitat estacional molt marcada, és habitual complementar el sistema fotovoltaic amb un grup electrogen. Aquest equip, accionat per un motor de combustió interna (generalment dièsel o gas), genera energia elèctrica en corrent altern i esdevé una font de reserva o de suport en èpoques de baixa radiació.
+
+Les especificacions tècniques principals que cal considerar en la selecció d'un grup electrogen per a un sistema híbrid fotovoltaic-dièsel són:
+- **Potència nominal (kVA):** Ha de ser suficient per alimentar la càrrega punta prevista i, simultàniament, carregar les bateries si el sistema ho requereix.
+- **Tipus d'arrencada:** Elèctrica, amb possibilitat d'arrencada automàtica comandada per un senyal extern (del regulador o inversor), que l'activa quan la tensió de la bateria baixa d'un llindar preestablert.
+- **Regulació de la tensió i la freqüència:** Ha de ser estable per no danyar els equips electrònics de consum. Es recomanen grups amb regulació electrònica AVR (Automatic Voltage Regulator).
+- **Nivell sonor:** Especialment rellevant en habitatges o zones protegides. Es pot optar per models insonoritzats.
+- **Consum específic de combustible:** Paràmetre clau per calcular els costos d'operació i la logística d'aprovisionament en llocs aïllats.
+- **Capacitat del dipòsit de combustible i autonomia.**
+
+La integració d'un grup electrogen amb el sistema fotovoltaic es realitza a través de l'inversor o del regulador, que ha de disposar d'una entrada auxiliar per al grup i programar-se per gestionar-ne l'arrencada i l'aturada de manera òptima, minimitzant el temps de funcionament del motor tèrmic i maximitzant l'ús de l'energia solar.
+
+### 1.3. Instal·lació solar fotovoltaica connectada a xarxa
+
+Una instal·lació solar fotovoltaica connectada a la xarxa elèctrica, o on-grid, és aquella que està interconnectada amb la xarxa de distribució elèctrica. En aquesta configuració, l'energia generada pels mòduls fotovoltaics s'injecta a la xarxa interior del consumidor i, si hi ha excedent, s'aboca a la xarxa de distribució. Aquesta és la tipologia més estesa en entorns urbans, industrials i rurals amb accés a la xarxa, sota la modalitat d'autoconsum.
+
+A diferència dels sistemes aïllats, en una instal·lació connectada a xarxa no és imprescindible la presència de bateries, tot i que cada vegada és més freqüent incorporar-les per maximitzar l'aprofitament de l'energia generada i reduir la dependència de la xarxa (autoconsum amb emmagatzematge).
+
+L'element central d'aquest tipus d'instal·lació és l'**inversor de connexió a xarxa**. La seva funció principal és convertir la corrent continu generada pels mòduls en corrent altern perfectament sincronitzada amb la de la xarxa elèctrica (230/400 V, 50 Hz). A més, l'inversor incorpora la funció de seguidor del punt de màxima potència (MPPT) per optimitzar la producció del generador i totes les proteccions de separació de xarxa (anti-illa) exigides per la normativa.
+
+La connexió física es realitza a través d'un punt de connexió a la xarxa interior de l'immoble, aigües avall del comptador de la companyia distribuïdora o, en el cas d'instal·lacions de producció per a venda, mitjançant una línia dedicada fins al punt d'interconnexió assignat.
+
+
+
+
+
+
+2. Instal·lació solar fotovoltaica connectada a xarxa
+-----------------------------------------------------
+
+La instal·lació solar fotovoltaica connectada a xarxa, en la seva configuració d'autoconsum, és la modalitat amb major creixement en el sector residencial, comercial i industrial. Permet reduir la factura elèctrica en generar part o la totalitat de l'energia consumida en el mateix punt de subministrament, alhora que contribueix a la descarbonització del sistema elèctric.
+
+
+
+### 2.1. Especificacions
+
+Les especificacions tècniques d'una instal·lació connectada a xarxa es recullen en el projecte o memòria tècnica i han de detallar, com a mínim:
+
+
+- **Potència pic del generador (kWp):** Potència total dels mòduls en condicions STC.
+- **Potència nominal de l'inversor (kWn):** Potència màxima en CA que pot lliurar de manera continuada. La ràtio kWp/kWn se situa habitualment entre 1,1 i 1,3.
+- **Modalitat d'autoconsum:** Sense excedents (amb antiabocament), amb excedents acollits a compensació, o amb excedents no acollits a compensació (venda).
+- **Configuració del generador:** Nombre de mòduls per cadena, cadenes en paral·lel, i orientació i inclinació de cada subcamp.
+- **Esquema unifilar:** Amb totes les proteccions, seccionadors, quadres, punt de connexió i sistema de mesura.
+- **Prestacions energètiques estimades:** Producció anual (kWh/any) calculada amb dades de radiació solar i el Performance Ratio (PR) de disseny.
+
+
+
+### 2.2. Sol·licitud de punt de connexió
+
+Per a qualsevol instal·lació generadora que es connecti a la xarxa de distribució, és un requisit previ i indispensable disposar de l'acceptació del punt de connexió per part de l'empresa distribuïdora elèctrica. Aquest tràmit es regula al Reial Decret 1183/2020 i al RD 244/2019.
+
+El procés és el següent:
+
+1.  **Sol·licitud:** El titular presenta a la distribuïdora les dades de la instal·lació (potència, tecnologia, ubicació i CUPS).
+2.  **Estudi d'accés i connexió:** La distribuïdora analitza la capacitat de la xarxa i, si cal, proposa un punt alternatiu o exigeix reforços a càrrec del sol·licitant.
+3.  **Acceptació:** La distribuïdora emet el document d'acceptació del punt de connexió, imprescindible per a la legalització.
+4.  **Contracte d'accés:** Obligatori només per a instal·lacions amb venda d'energia.
+
+Per a instal·lacions d'autoconsum individual de baixa potència (fins a 15 kW), moltes distribuïdores han simplificat el tràmit a una simple comunicació.
+
+
+### 2.3. Paràmetres de qualitat de subministrament
+
+Per connectar-se a la xarxa, l'inversor ha de sincronitzar la seva sortida amb el senyal de la xarxa elèctrica, igualant en tot moment la tensió, la freqüència i la fase. Un cop sincronitzat, tanca el contactor d'acoblament i comença a injectar corrent. Durant el funcionament, ha de garantir els paràmetres de qualitat següents:
+
+- **Tensió i freqüència:** 230 V ± 10% (monofàsic) / 400 V ± 10% (trifàsic); 50 Hz ± 1 Hz. Fora d'aquests marges, l'inversor s'ha de desconnectar.
+- **Factor de potència:** Regulable entre 0,8 inductiu i 0,8 capacitiu, per contribuir a l'estabilitat de la xarxa.
+- **THDi:** Distorsió harmònica total en corrent inferior al 5%, segons la norma UNE-EN 61000-3-2.
+- **Injecció de component contínua:** Límit màxim del 0,5% del corrent nominal de sortida.
+- **Flicker:** Nivell de fluctuació de tensió (parpelleig) molt baix, per no afectar la il·luminació.
+
+
+
+### 2.4. Sistema de mesura d'energia
+
+El sistema de mesura és un element clau en la gestió administrativa i econòmica d'una instal·lació connectada a xarxa. La normativa d'autoconsum (RD 244/2019) defineix les configuracions de mesura en funció de la modalitat d'autoconsum.
+
+- **Sense excedents:** Comptador de consum existent + dispositiu antiabocament.
+- **Amb excedents acollits a compensació:** Un únic comptador bidireccional al punt frontera.
+- **Amb excedents no acollits a compensació (venda):** Dos comptadors independents (consum i producció).
+
+Tots els comptadors han de complir la reglamentació metrològica vigent i ser instal·lats per l'empresa distribuïdora o per un instal·lador autoritzat, precintats per l'encarregat de la lectura.
+
+
+
+### 2.5. Aportació energètica
+
+L'aportació energètica d'una instal·lació solar fotovoltaica connectada a xarxa és la quantitat d'energia elèctrica que el sistema és capaç de generar al llarg d'un període de temps, normalment expressada en kWh anuals. Aquesta dada és fonamental per calcular l'estalvi econòmic, el retorn de la inversió i el compliment de les exigències dels ajuts o de les ordenances solars.
+
+L'aportació energètica es calcula amb la fórmula:
+
+\begin{gather}
+E_{anual} = P_{pic} \cdot HSP_{anuals} \cdot PR
+\end{gather}
+
+On:
+
+- $E_{anual}$ és l'energia generada anual (kWh/any).
+- $P_{pic}$ és la potència pic del generador (kWp).
+- $HSP_{anuals}$ és la irradiació solar anual sobre el pla dels mòduls, expressada en Hores Solar Pic (kWh/m²/any).
+- $PR$ és el Performance Ratio o rendiment global del sistema (adimensional, típicament entre 0,75 i 0,85).
+
+L'avaluació de l'aportació energètica es realitza amb eines de simulació com PVGIS, PVSyst o similars, que integren dades històriques de radiació i temperatura per a la ubicació concreta, i permeten estimar la producció mensual i anual amb una incertesa reduïda. Aquesta estimació és la base del pla econòmic del projecte.
+
+
+
+
+
+
+3. Instal·lacions generadores de baixa tensió
+---------------------------------------------
+
+Les instal·lacions solars fotovoltaiques connectades a la xarxa de distribució en baixa tensió (BT), és a dir, amb una tensió de servei fins a 1000 V en corrent continu i fins a 400 V entre fases en corrent altern, es regeixen pel Reglament Electrotècnic de Baixa Tensió (REBT) i la seva Instrucció Tècnica Complementària ITC-BT-40, específica per a generadors.
+
+
+
+### 3.1. Condicions generals
+
+La ITC-BT-40 estableix les condicions generals que ha de complir qualsevol instal·lació generadora connectada a una xarxa de distribució pública de baixa tensió. Aquestes condicions es poden resumir en:
+- La instal·lació generadora no ha de pertorbar el funcionament de la xarxa de distribució ni el subministrament a altres usuaris.
+- Ha de disposar de totes les proteccions necessàries per garantir la seguretat de les persones i els béns, tant en el costat de corrent continu com en el de corrent altern.
+- L'aïllament galvànic entre el generador i la xarxa de distribució pot ser proporcionat per l'inversor o, si no, mitjançant un transformador d'aïllament extern.
+- La instal·lació ha de ser realitzada per una empresa instal·ladora autoritzada en baixa tensió, i ha de ser verificada i certificada abans de la seva posada en servei.
+
+
+
+### 3.2. Condicions per a la connexió
+
+Per autoritzar la connexió d'un generador fotovoltaic a la xarxa de distribució de BT, s'han de complir les condicions tècniques següents:
+- **Potència màxima admissible:** La suma de les potències de tots els generadors connectats a un mateix centre de transformació no pot superar el 50% de la potència nominal del transformador.
+- **Tensió:** L'inversor ha de disposar d'un sistema de control de tensió i freqüència que provoqui la desconnexió automàtica si la xarxa surt dels rangs permesos.
+- **Protecció anti-illa:** L'inversor ha de detectar la pèrdua de xarxa (illa no intencionada) i desconnectar-se en un temps inferior a 2 segons, per evitar realimentar la xarxa de distribució i posar en perill les persones que hi treballin.
+- **Aïllament:** La resistència d'aïllament de tota la instal·lació ha de ser superior als valors mínims establerts al REBT.
+
+
+
+
+### 3.3. Cables de connexió
+
+Els cables de connexió entre els diferents elements d'una instal·lació generadora de BT han de complir uns requisits específics per suportar les condicions ambientals i elèctriques adverses pròpies de les instal·lacions fotovoltaiques:
+- **Costat de corrent continu:** El cablejat ha de ser del tipus designat com a "cable solar" o "cable fotovoltaic", amb aïllament de doble capa, resistent a la radiació ultraviolada, a la intempèrie i a temperatures extremes (-40 °C a +120 °C). Generalment s'utilitzen cables del tipus ZZ-F (AS) o similar, amb coberta lliure d'halògens, d'alta flexibilitat i tensió assignada de 1000 V o 1500 V.
+- **Costat de corrent altern:** Cables normalitzats segons el REBT, tipus RZ1-K (AS) o similar, amb tensió assignada de 0,6/1 kV.
+- **Secció dels conductors:** La secció es calcula per complir la caiguda de tensió màxima (1,5% en CC, 1,5% en CA) i la intensitat màxima admissible, segons el criteri de disseny ja exposat a l'apartat 2.8 del llibre de càlcul.
+- **Canalitzacions:** Han de ser independents de les d'altres subministraments i estar protegides contra la radiació solar directa, la pluja i els rosegadors.
+
+
+
+### 3.4. Formes d'ona
+
+La qualitat de la forma d'ona del corrent altern injectat a la xarxa és un paràmetre crític per a la compatibilitat electromagnètica i la qualitat del subministrament. L'inversor fotovoltaic genera una ona de tensió a partir de la commutació electrònica de la contínua, per la qual cosa la seva sortida no és una sinusoide perfecta, sinó que conté harmònics.
+
+La normativa (UNE-EN 61727 i UNE 206007-1) estableix que:
+- La **distorsió harmònica total de corrent (THDi)** ha de ser inferior al 5%.
+- Cadascun dels harmònics individuals té uns límits específics, decreixents a mesura que augmenta l'ordre de l'harmònic (per exemple, harmònic 3 &lt; 2,3 A, harmònic 5 <&lt; 1,14 A, etc., per a una instal·lació tipus).
+- L'inversor no pot injectar **corrent continu** a la xarxa de CA en una proporció superior al 0,5% del corrent nominal.
+
+Per garantir aquests límits, els inversors incorporen filtres electrònics de sortida (filtres LCL) i algoritmes de control avançats que sintetitzen una ona de gran puresa.
+
+
+
+
+
+
+4. Proteccions i posada en marxa
+--------------------------------
+
+La seguretat és el principi rector de qualsevol instal·lació elèctrica. En una instal·lació solar fotovoltaica, les proteccions han de cobrir tant el costat de corrent continu com el de corrent altern, i protegir contra totes les contingències previsibles: sobrecàrregues, curtcircuits, contactes elèctrics, sobretensions i fallades de la xarxa.
+
+
+
+### 4.1. Proteccions
+
+El sistema de proteccions d'una instal·lació fotovoltaica es configura en diversos quadres elèctrics disposats al llarg de la instal·lació.
+
+
+#### Proteccions al quadre de corrent continu
+
+- **Fusibles seccionables:** Un portafusibles per cada polaritat de cada cadena de mòduls (string), dimensionats per a la tensió i el corrent invers màxim. Protegeixen contra curtcircuits dins de la cadena i corrents inverses.
+- **Interruptor-seccionador de tall en càrrega:** Permet la desconnexió manual del generador fotovoltaic de la resta de la instal·lació per a tasques de manteniment o emergència. Ha d'estar dimensionat per a la tensió màxima del generador (Voc corregida per temperatura mínima) i la intensitat màxima.
+- **Protectors contra sobretensions transitòries (SPD Tipus 1+2):** Varistors que deriven a terra les sobretensions induïdes per llamps o per maniobres a la xarxa. Es col·loquen entre els conductors actius i terra.
+- **Vigilant d'aïllament:** En instal·lacions de gran potència o amb requisits elevats de seguretat, controla permanentment la resistència d'aïllament dels conductors de CC respecte a terra.
+
+
+#### Proteccions al quadre de corrent altern
+
+- **Interruptor magnetotèrmic:** Protegeix la línia de sortida de l'inversor contra sobrecàrregues i curtcircuits.
+- **Interruptor diferencial:** Protecció contra contactes indirectes. Ha de ser de tipus A o B, apte per detectar corrents de fuga amb component de contínua.
+- **Relé de protecció de xarxa (anti-illa):** Integrat a l'inversor, vigila permanentment la tensió i la freqüència de la xarxa. Si aquests paràmetres surten dels rangs establerts, ordena la desconnexió immediata del generador.
+
+
+
+### 4.2. Instal·lacions de connexió a terra
+
+La posada a terra unifica el potencial elèctric de totes les masses metàl·liques de la instal·lació amb el terra de referència, garantint la seguretat de les persones i el correcte funcionament de les proteccions.
+
+El sistema de connexió a terra d'una instal·lació fotovoltaica comprèn:
+- **Elèctrode de terra:** Pot ser una pica vertical, un anell horitzontal enterrat, o aprofitar la fonamentació de l'estructura (formigó armat).
+- **Línia d'enllaç amb terra:** Conductor aïllat, de secció mínima 16 mm² de coure, que connecta l'elèctrode amb el born principal de terra de la instal·lació.
+- **Conductors de protecció (CP):** De secció calculada segons la taula 2 de la ITC-BT-19, connecten les carcasses metàl·liques de tots els equips (mòduls, inversors, quadres, estructura suport) al sistema de terra. La interconnexió de tots els marcs dels mòduls i l'estructura és obligatòria.
+
+La resistència de terra ha de ser tal que, en cas de defecte, la tensió de contacte sigui inferior a la tensió límit de seguretat (24 V en locals humits, 50 V en secs). Amb protecció diferencial de 30 mA, n'hi ha prou amb una resistència de terra inferior a 800 Ω, encara que es recomana un valor el més baix possible, idealment inferior a 15-20 Ω.
+
+
+
+### 4.3. Posada en marxa
+
+La posada en marxa és el conjunt de verificacions, proves i configuracions que es realitzen un cop acabada l'execució material de la instal·lació, abans de declarar-la en servei i lliurar-la al titular. Aquest procés és crític i ha de quedar documentat amb un acta de posada en marxa.
+
+Les fases principals de la posada en marxa són:
+1.  **Inspecció visual completa:** Verificar la correcta instal·lació mecànica i elèctrica de tots els components d'acord amb el projecte. Comprovació de l'estat dels mòduls, el collament de tots els cargols, el bon estat dels cablejats i de les connexions, l'etiquetatge dels circuits i la senyalització de seguretat.
+2.  **Verificacions elèctriques en fred (sense tensió):** Mesura de la resistència d'aïllament dels circuits de CC i CA amb un megòhmetre. Mesura de la continuïtat dels conductors de protecció i de la resistència de terra. Verificació de les polaritats als extrems de cada cadena de mòduls.
+3.  **Configuració de l'inversor:** Programar els paràmetres de xarxa (tensió, freqüència, temps de reconnexió) segons la normativa del país i els requisits específics de la distribuïdora local.
+4.  **Primera connexió i proves en càrrega:** Connectar les cadenes de mòduls a l'inversor i posar-lo en marxa. Verificar, amb un analitzador de xarxa, els valors de tensió, corrent, potència, factor de potència i THDi en CA. Comprovar el bon funcionament de totes les comunicacions (monitoratge, WiFi).
+5.  **Prova de desconnexió de xarxa:** Simular una fallada de xarxa i verificar que l'inversor es desconnecta dins dels temps reglamentaris.
+6.  **Documentació:** Complimentar el certificat d'instal·lació (CIE), les actes de les proves realitzades i el manual de l'usuari amb les dades de la instal·lació "as-built".
+
+
+
+
+
+
+5. Panells solars, acumuladors i regulació
+------------------------------------------
+
+### 5.1. Panells solars. Panells amb reflectors
+
+El panell solar fotovoltaic és l'element encarregat de convertir l'energia de la radiació solar directament en electricitat mitjançant l'efecte fotoelèctric. La cèl·lula fotovoltaica individual, de silici, és la unitat bàsica, i es connecten en sèrie i paral·lel dins d'un mòdul per obtenir la tensió i la potència desitjades.
+
+
+
+#### Tipus de panells segons la tecnologia de cèl·lules
+
+- **Silici monocristal·lí:** Fabricats a partir d'un únic cristall de silici. Presenten la major eficiència comercial (18%-22%), color fosc uniforme i un cost més elevat. Són ideals quan es disposa d'espai limitat.
+- **Silici policristal·lí:** Formats per múltiples cristalls de silici. Eficiència lleugerament inferior (16%-19%), color blavós i aspecte de "vidre trencat". Bona relació cost-rendiment.
+- **Capa fina (amorf, CdTe, CIGS):** Semiconductors dipositats en capes primes sobre vidre o suport flexible. Menor eficiència (10%-14%), però bon comportament en condicions de calor elevada, ombra parcial i radiació difusa.
+
+#### Panells amb reflectors
+Són sistemes que utilitzen superfícies reflectores (miralls o làmines d'alumini anoditzat) per concentrar la radiació solar sobre una superfície reduïda de cèl·lules d'alta eficiència. Poden ser de concentració baixa (sense seguiment) o alta (amb seguiment a dos eixos). Permeten reduir la superfície de cèl·lules necessàries, però requereixen sistemes de refrigeració o seguiment solar precís, i no són habituals en instal·lacions de petita o mitjana potència.
+
+
+
+### 5.2. Placa de característiques de panells fotovoltaics
+
+Tot panell fotovoltaic ha de portar una placa de característiques indeleble i ben visible, on constin les especificacions elèctriques i mecàniques principals, d'acord amb la norma UNE-EN 50380. Les dades mínimes que hi han d'aparèixer són:
+
+- Nom del fabricant i identificació del model.
+- **Potència màxima (Pmax):** En watt pic (Wp), amb la tolerància de potència (per exemple, ± 3% o de 0 a +5 W).
+- **Tensió en circuit obert (Voc):** En volts (V).
+- **Corrent de curtcircuit (Isc):** En amperes (A).
+- **Tensió al punt de màxima potència (Vmpp):** En volts (V).
+- **Corrent al punt de màxima potència (Impp):** En amperes (A).
+- Tensió màxima del sistema (1000 V o 1500 V).
+- Coeficients de temperatura (de Voc, Isc i Pmax).
+- Dimensions, pes i tipus de connector.
+- Marcatge CE i certificacions de seguretat.
+
+A la fitxa tècnica (datasheet), a més, es detallen les corbes I-V per a diferents irradiàncies i temperatures, i la temperatura d'operació nominal de la cèl·lula (NOCT).
+
+
+
+### 5.3. Tipus d'acumuladors. Manteniment. Ubicació. Precaucions
+
+L'acumulador electroquímic és el dipòsit d'energia del sistema aïllat. La seva selecció, instal·lació i manteniment són determinants per a la fiabilitat i la vida útil de la instal·lació.
+
+#### Tipus d'acumuladors per a ús fotovoltaic
+- **Plom-àcid (Pb-Àcid):** Tecnologia madura i de cost contingut.
+    - **Obertes o ventilades:** Requereixen manteniment periòdic (reposició d'aigua destil·lada) i un local ventilat per evacuar els gasos de la càrrega. Són les de major vida útil (fins a 15-20 anys en condicions òpcdot).
+    - **AGM (Absorbent Glass Mat):** L'electròlit està absorbit en fibra de vidre. Són hermètiques, sense manteniment, no gasifiquen (o molt poc), i admeten pics de descàrrega elevats. Idònies per a instal·lacions amb poc manteniment.
+    - **GEL:** L'electròlit és un gel. Similar avantatges a les AGM, però més sensibles a la sobrecàrrega. Bona resistència a la descàrrega profunda.
+- **Ió-Liti (LiFePO4 - Fosfat de ferro i liti):** Tecnologia emergent i cada cop més habitual. Major densitat energètica, menor pes i volum, llarga vida cíclica (> 4000 cicles a DoD 80%), alta eficiència de càrrega/descàrrega (>95%) i sense manteniment. El cost inicial és més alt, però el cost total per cicle és inferior.
+
+
+#### Manteniment
+
+- **Plom-àcid obertes:** Comprovació periòdica del nivell d'electròlit i omplert amb aigua destil·lada. Neteja dels borns i terminals per evitar sulfatació. Mesura de la tensió i densitat de l'electròlit de cada vas.
+- **AGM, GEL i Liti:** Lliures de manteniment. Es recomana, simplement, una inspecció visual de l'estat dels borns i la neteja de la pols acumulada.
+
+**Ubicació i precaucions:**
+- La sala o compartiment de bateries ha d'estar **ventilat** (especialment per a bateries de plom-àcid, per evitar acumulació d'hidrogen, gas altament explosiu).
+- La temperatura ha de ser estable i moderada: la ideal és 20-25 °C. El fred redueix la capacitat; la calor perllongada en redueix la vida útil.
+- **Protecció contra contactes directes:** El banc de bateries treballa amb tensions continues perilloses i corrents de curtcircuit enormes. Ha d'estar en un recinte tancat amb clau, senyalitzat amb el risc elèctric i d'explosió, i amb accés restringit a personal autoritzat.
+- **EPIs obligatoris** per manipular bateries obertes: ulleres de seguretat i guants resistents als àcids.
+
+
+
+### 5.4. Connexió i proteccions
+
+La connexió dels vasos d'una bateria es realitza en una combinació sèrie-paral·lel per assolir la tensió nominal del sistema i la capacitat de disseny.
+- **Sèrie:** S'uneix el positiu d'un vas amb el negatiu del següent. La tensió total és la suma de les tensions individuals. La capacitat no varia.
+- **Paral·lel:** S'uneixen tots els positius entre si i tots els negatius entre si. La capacitat total és la suma de les capacitats individuals. La tensió no varia.
+
+
+#### Precaucions en la connexió
+
+- Minimitzar el nombre de cadenes en paral·lel per a un millor equilibri elèctric. Si cal més capacitat, millor vasos més grans que molts de petits en paral·lel.
+- Utilitzar cables de coure flexible de la secció adequada i terminals de connexió nets i ben collats amb el parell recomanat.
+- Emprar protecció als dos pols de la bateria amb fusibles de gran poder de tall (tipus NH), situats tan a prop com sigui possible dels borns.
+
+
+#### Proteccions del sistema acumulador
+
+- **Contra sobrecàrregues:** Regulador de càrrega amb control de tensió d'absorció i limitació de corrent.
+- **Contra descàrrega profunda:** Regulador o inversor amb desconnexió per baixa tensió (LVD).
+- **Contra curtcircuits i contactes indirectes:** Fusibles de bateria i interruptor seccionador manual per aïllament de seguretat.
+- **Contra sobretensions:** Protectors SPD al quadre de CC, a prop de la bateria.
+- **Protecció tèrmica:** Sensor de temperatura per a la compensació de la tensió de càrrega.
+
+
+
+### 5.5. Reguladors. Funció i paràmetres característics. Configuració de paràmetres
+
+El regulador de càrrega és el gestor de l'energia en un sistema aïllat. S'interposa entre el generador fotovoltaic, la bateria i el consum, i garanteix una càrrega correcta de la bateria i la protegeix davant operacions perjudicials.
+
+
+#### Funció del regulador
+
+- **Control de la càrrega de la bateria:** Assegurar les fases de càrrega (bulk, absorció, flotació) i evitar la sobrecàrrega que produeix gasificació excessiva i corrosió.
+- **Control de la descàrrega:** Desconnectar el consum quan la bateria arriba a la tensió límit de descàrrega (LVD), per evitar la pèrdua irreversible de capacitat.
+- **Proteccions elèctriques:** Protecció contra curtcircuits, inversió de polaritat, sobreintensitats i contra sobretemperatura.
+
+
+#### Paràmetres característics d'un regulador
+
+- **Tensió nominal del sistema:** 12V, 24V, 36V o 48V en CC.
+- **Intensitat màxima de càrrega (Iout):** Corrent màxima que pot subministrar a la bateria.
+- **Tensió màxima d'entrada (Vin_max):** Tensió límit que suporta provinent del generador (Voc corregida).
+- **Tipus de regulació:** PWM o MPPT. Els MPPT incorporen un convertidor CC-CC que permet treballar amb tensions de generador molt superiors a la de bateria.
+- **Punts de consigna de tensió** (ajustables):
+    - Tensió de final de càrrega (bulk/absorció).
+    - Tensió de flotació.
+    - Tensió de desconnexió del consum (LVD).
+    - Tensió de reconnexió del consum (LVR).
+
+
+#### Configuració de paràmetres
+
+La programació del regulador s'ha de fer d'acord amb les especificacions del fabricant de la bateria, mai amb valors per defecte. S'han de configurar, com a mínim:
+1.  **Tipus de bateria:** Seleccionar la corba de càrrega predefinida (Pb-Àcid, AGM, GEL, Liti) o introduir manualment els valors d'absorció, flotació i equalització (si escau).
+2.  **Tensió de desconnexió de consum (LVD):** Prou alta per no esgotar la bateria (per exemple, 11,5 V per a un sistema de 12V de plom-àcid; 12,0 V per a un de liti).
+3.  **Compensació per temperatura:** Connectar el sensor de temperatura extern a la bateria i activar la compensació (coeficient típic de -4 mV/°C per vas).
+
+
+
+### 5.6. Convertidors. Programació. Blocs. Manteniment
+
+El convertidor o inversor és l'equip electrònic de potència que converteix la corrent continu en corrent altern. En un sistema fotovoltaic, el convertidor pot ser l'inversor de connexió a xarxa (on-grid) o l'inversor aïllat (off-grid), i sovint incorpora la funció de carregador de bateries a partir d'un grup electrogen o de la mateixa xarxa.
+
+
+#### Programació del convertidor/inversor
+
+Els inversors, especialment els d'ús aïllat i els híbrids, tenen nombrosos paràmetres configurables:
+- **Rangs de tensió i freqüència de sortida.**
+- **Nivells de tensió per a l'arrencada i aturada del grup electrogen** (si s'utilitza com a font auxiliar).
+- **Gestió de les fonts d'energia:** Prioritat solar, pas a grup electrogen, reconnexió a xarxa.
+- **Factor de potència** (en els connectats a xarxa).
+- **Protecció de bateria:** Configuració dels nivells de desconnexió per baixa tensió, alarma prèvia i reconnexió.
+
+#### Blocs constitutius d'un convertidor
+
+- **Entrada de CC:** Filtre d'entrada i proteccions (fusibles, varistors).
+- **Convertidor CC-CC (elevador o reductor):** Adapta la tensió de la bateria o del generador a la tensió del bus de CC intern.
+- **Bus de contínua:** Condensadors d'alta capacitat que estabilitzen la tensió intermèdia.
+- **Pont inversor (DC-AC):** Transistors de potència (IGBT o MOSFET) que, mitjançant commutació PWM, generen l'ona sinusoïdal.
+- **Filtre de sortida:** Filtre LCL que atenua els harmònics abans d'injectar a la xarxa o alimentar la càrrega.
+- **Sistema de control i comunicacions:** Microcontrolador que gestiona els llaços de control i la interfície d'usuari.
+
+
+#### Manteniment del convertidor
+
+- **Neteja periòdica** de les reixes de ventilació i dels dissipadors de calor (cada 6 mesos, o abans en ambients polsosos).
+- **Verificació del bon funcionament dels ventiladors** (en equips amb ventilació forçada).
+- **Comprovació visual** de l'estat dels components interns (sense manipular si no es coneix el risc) i del bon collament de les connexions.
+- **Actualització del firmware** quan el fabricant publiqui millores.
+
+
+
+
+
+
+6. Sistemes de seguiment solar i estructures suport
+---------------------------------------------------
+
+### 6.1. Sistemes de seguiment solar
+
+Un sistema de seguiment solar és un dispositiu mecànic que fa variar la posició dels mòduls fotovoltaics al llarg del dia i de l'any per mantenir-los el més perpendiculars possible als raigs del sol. L'objectiu és maximitzar la captació d'energia solar incident.
+
+Hi ha dues grans famílies de seguidors:
+- **Seguidor a un eix:** Gira els mòduls sobre un eix horitzontal o inclinat, seguint el moviment aparent del sol d'est a oest. La inclinació es manté fixa. Incrementa la producció anual entre un 20% i un 30% respecte a una estructura fixa òptima.
+- **Seguidor a dos eixos:** Gira sobre un eix vertical (azimut) i un d'horitzontal (elevació). Manté el pla dels mòduls perfectament perpendicular al sol en tot moment. L'increment de producció pot arribar al 35%-40%, però a costa d'una major complexitat mecànica i un cost d'inversió i manteniment molt superior.
+
+Els seguidors s'accionen mitjançant **servoaccionaments** que reben senyals d'un sistema de control astronòmic (basat en la data i l'hora) o, més rarament, de sensors de posició solar.
+
+
+
+### 6.2. Estructures suport
+
+L'estructura suport és el conjunt de perfils, cargols i ancoratges que subjecten els mòduls fotovoltaics i, si escau, el sistema de seguiment, a l'emplaçament definitiu. La seva funció és resistir les càrregues mecàniques (pes propi, vent, neu) i garantir la durabilitat de tot el conjunt.
+
+#### Tipus d'estructures segons l'emplaçament
+- **Estructures per a coberta plana:** Sòl ser inclinades, amb perfils metàl·lics ancorats a la coberta o, molt sovint, amb sistema de llast (contrapesos de formigó) per no perforar la impermeabilització. La inclinació és fixa, entre 10° i 35°.
+- **Estructures per a coberta inclinada:** Són coplanars (paral·leles al pla de la coberta) o semi-inclinades. Es fixen directament a les bigues o al material de cobertura mitjançant grapes específiques per a teula, panell sandwich o xapa metàl·lica.
+- **Estructures per a sòl:** Pals clavats al terreny o fonaments de formigó sobre els quals es munten els perfils. Poden ser fixes o mòbils (seguidors). La distància entre fileres de mòduls es calcula per evitar ombres mútues.
+
+
+#### Materials
+
+- **Alumini anoditzat:** Lleuger, resistent a la corrosió, estètic. Molt utilitzat en cobertes.
+- **Acer galvanitzat en calent:** Més econòmic per a grans estructures en sòl, molt resistent.
+- **Acer inoxidable AISI 304 o 316:** Per a cargoleria i elements de fixació en ambients marins o molt corrosius.
+
+
+
+### 6.3. Servoaccionaments
+
+En els sistemes de seguiment solar, el servoaccionament és el conjunt motor-reductor i el sistema de control associat que proporciona el moviment precís i controlat de l'estructura. Les característiques principals d'aquests accionaments són:
+- **Motor:** Generalment de corrent continu amb escombretes o sense (brushless), d'alta eficiència, alimentat per la mateixa instal·lació fotovoltaica.
+- **Reductor:** Mecanisme d'engranatges (vis sens fi, corona, planetari) que multiplica el parell del motor i redueix la velocitat de gir a valors adequats per al seguiment solar (una revolució per dia, aproximadament).
+- **Sistema de control:** Microcontrolador amb rellotge astronòmic que calcula la posició del sol i envia les ordres al motor. Incorpora proteccions contra sobrecàrrega i sensors de final de cursa per evitar danys mecànics en posicions extremes.
+- **Alimentació de seguretat:** En cas d'absència prolongada de sol, el seguidor ha de tenir una petita bateria o supercondensador de reserva per mantenir la memòria i reposicionar-se a l'inici del dia següent.
+
+
+
+
+
+
+7. Connexió del neutre i de les masses
+--------------------------------------
+
+En les xarxes elèctriques de distribució, la connexió del neutre i de les masses es configura segons un esquema de distribució normalitzat (TT, TN, IT). Aquesta elecció determina la manera com es protegeixen les persones contra contactes indirectes i com es gestionen els corrents de defecte.
+
+
+
+### 7.1. Sistemes de connexió del neutre i de les masses en xarxes de distribució d'energia
+
+
+#### Esquema TT
+
+El neutre del transformador de distribució es connecta directament a terra (presa de terra de servei). Les masses de la instal·lació receptora es connecten a una presa de terra independent. És l'esquema obligatori i gairebé universal en les xarxes de distribució públiques de baixa tensió a Espanya (ITC-BT-08). La protecció contra contactes indirectes es basa en l'ús d'interruptors diferencials.
+
+
+#### Esquema TN
+
+El neutre del transformador es connecta a terra. Les masses de la instal·lació es connecten al conductor de protecció (PE), que està unit al neutre en un o diversos punts. Es divideix en TN-C (neutre i protecció units en un sol conductor, PEN), TN-S (neutre i protecció independents) i TN-C-S (mixt). Propi d'instal·lacions industrials amb transformador propi.
+
+
+#### Esquema IT
+
+El neutre del transformador està aïllat de terra o connectat a través d'una impedància molt alta. Les masses es connecten a una presa de terra independent. S'utilitza en entorns on la continuïtat del servei és crítica (quiròfans, indústries de procés continu), ja que un primer defecte d'aïllament no provoca la desconnexió.
+
+
+
+### 7.2. Proteccions de neutre
+
+En el costat de corrent altern d'una instal·lació fotovoltaica connectada a la xarxa, el neutre és un conductor actiu i, com a tal, ha d'estar protegit.
+- **Interruptor magnetotèrmic amb tall omnipolar:** Ha de tallar tots els conductors actius, inclòs el neutre. En cap cas es pot intercalar un fusible o una protecció unipolar en el conductor neutre.
+- **Protecció diferencial:** El diferencial ha de mesurar la suma vectorial dels corrents de totes les fases i el neutre. Qualsevol desequilibri indica una fuga i provoca el dispar.
+- **Connexió del neutre de l'inversor:** En un esquema TT, el neutre de sortida de l'inversor es connecta al neutre de la xarxa. En molts inversors sense transformador d'aïllament, el neutre està referenciat internament a terra a través d'un pont, i cal respectar la configuració de fàbrica per evitar derivacions no desitjades.
+
+
+
+
+
+
+8. Instal·lacions de suport, simbologia i telegestió
+----------------------------------------------------
+
+
+### 8.1. Instal·lacions de suport. Característiques
+
+S'entén per instal·lacions de suport d'un generador fotovoltaic aquells sistemes auxiliars que, sense ser part directa del circuit de producció d'energia, són necessaris per al seu correcte funcionament, seguretat i manteniment. Inclouen:
+- **Il·luminació de seguretat i de servei** del local tècnic on s'allotgen inversors, quadres i bateries.
+- **Sistema de ventilació forçada** per a la sala de bateries (imprescindible en bateries de plom-àcid obertes).
+- **Sistema de monitoratge i comunicacions.**
+- **Tancaments perimetrals i sistemes de seguretat anti-intrusió**, especialment en instal·lacions en sòl.
+- **Sistema de neteja de mòduls** (punt d'aigua, presa de corrent de servei).
+
+Totes aquestes instal·lacions de suport s'alimenten elèctricament del propi sistema fotovoltaic o de la xarxa, i han de ser tingudes en compte en el balanç de consums.
+
+
+### 8.2. Esquemes i simbologia
+
+La documentació gràfica d'una instal·lació solar fotovoltaica es regeix per la simbologia normalitzada de les normes UNE-EN 60617 (símbols gràfics per a esquemes) i normes particulars del IDAE. La correcta interpretació dels esquemes és fonamental per a la instal·lació, el manteniment i la localització d'avaries.
+
+Els esquemes fonamentals que ha d'incloure el projecte o memòria tècnica són:
+- **Esquema unifilar general:** Mostra tota la instal·lació sobre una única línia per circuit actiu, des dels mòduls fins al punt de connexió a xarxa o al quadre general de consums. Inclou tots els equips (mòduls, inversors, quadres, bateries, proteccions) i les seves característiques (seccions, tensions, potències). És el document gràfic més important.
+- **Esquema multifilar de connexionat:** Dibuixa tots els conductors (fases, neutre, protecció) i s'utilitza per detallar el cablejat de quadres i connexions de bateries.
+- **Plànol de situació i emplaçament:** Mostra la ubicació dels mòduls sobre la coberta o la parcel·la, els recorreguts de les safates o tubs, i la posició dels equips interiors.
+
+Símbols normalitzats més habituals:
+- **Mòdul fotovoltaic:** Rectangle amb la polaritat indicada (+, -) i sovint amb una fletxa inclinada.
+- **Cadena de mòduls:** Associació de rectangles en sèrie.
+- **Bateria:** Símbol d'una pila o d'una associació de vasos llargs i curts alternats.
+- **Inversor:** Quadrat amb les lletres "INV" o el símbol d'ona sinusoïdal.
+- **Proteccions:** Fusible (rectangle amb línia), magnetotèrmic (interruptor amb corba), diferencial (interruptor amb bobina de test).
+
+
+### 8.3. Telegestió d'instal·lacions fotovoltaiques
+
+La telegestió és la capacitat de supervisar, controlar i gestionar una instal·lació fotovoltaica des d'una ubicació remota, a través de xarxes de telecomunicacions (Internet, mòbil, radiofreqüència). És ja un estàndard en qualsevol instal·lació professional, des d'un petit autoconsum domèstic fins a un gran parc solar.
+
+**Funcionalitats de la telegestió:**
+- **Monitoratge en temps real:** Visualització dels principals paràmetres elèctrics (potència, tensió, corrent, energia produïda, consums, estat de càrrega de la bateria) a través d'un portal web o aplicació mòbil.
+- **Registre d'històrics:** Emmagatzematge de les dades de producció i consum amb granularitat horària, diària, mensual i anual.
+- **Gestió d'alarmes i notificacions:** Detecció immediata de fallades (inversor fora de servei, avaria d'un string, bateria baixa, intent d'intrusió) i enviament d'alertes per correu electrònic, SMS o notificació push.
+- **Control remot:** Possibilitat de modificar paràmetres de funcionament de l'inversor o del regulador, actualitzar firmware, i fins i tot gestionar la injecció a xarxa en funció dels preus de l'energia.
+- **Informes:** Generació automàtica d'informes de producció, d'eficiència (PR), i d'impacte ambiental (CO2 estalviat).
+
+La connectivitat es realitza mitjançant dataloggers que recullen la informació dels equips (per comunicació RS485, Modbus, o contactes secs) i la transmeten al núvol via WiFi, cable Ethernet o mòdem 4G/5G.
+
+
+
+
+
+
+9. Normativa d'aplicació
+------------------------
+
+El marc normatiu que regula el disseny, l'execució, la legalització i l'explotació d'instal·lacions solars fotovoltaiques a Espanya és ampli i multinivell, i abasta des de la reglamentació de baixa tensió fins a la regulació específica de la producció d'energia elèctrica.
+
+
+
+### 9.1. Reglament Electrotècnic de Baixa Tensió (REBT)
+
+El Reglament Electrotècnic de Baixa Tensió, aprovat pel Reial Decret 842/2002, és la norma fonamental que estableix les condicions tècniques i de seguretat de totes les instal·lacions elèctriques de baixa tensió a Espanya. Per a les instal·lacions solars fotovoltaiques, les Instruccions Tècniques Complementàries (ITC) més rellevants són:
+- **ITC-BT-04:** Documentació i posada en servei de les instal·lacions.
+- **ITC-BT-06 i 07:** Xarxes de distribució aèries i subterrànies.
+- **ITC-BT-08:** Sistemes de connexió del neutre i de les masses.
+- **ITC-BT-18 i 19:** Instal·lacions de posada a terra i conductors de protecció.
+- **ITC-BT-20 i 21:** Instal·lacions interiors i tubs protectors.
+- **ITC-BT-40:** Instal·lacions generadores de baixa tensió. És la instrucció específica per a generadors fotovoltaics connectats a la xarxa de distribució de BT. Defineix les condicions de connexió, les proteccions obligatòries, les condicions de separació galvànica i la documentació tècnica necessària.
+
+
+
+### 9.2. Normes UNE
+
+Les normes UNE (Una Norma Espanyola) adapten a l'àmbit estatal les normes europees i internacionals. El seu compliment és obligat per llei (via REBT) o per requeriments de qualitat dels plecs de condicions i convocatòries d'ajuts. Entre les més rellevants per a instal·lacions fotovoltaiques, destaquen:
+- **UNE-EN 61215 i UNE-EN 61730:** Qualificació i seguretat de mòduls fotovoltaics (marcatge CE).
+- **UNE-EN 61727 / UNE 206007-1:** Requisits per a la connexió d'inversors a la xarxa.
+- **UNE-EN 62446:** Documentació, assajos de posada en marxa i inspecció de sistemes fotovoltaics connectats a xarxa.
+- **UNE-EN 61427:** Acumuladors per a sistemes fotovoltaics aïllats.
+- **Sèrie UNE 20460:** Guia per a la realització i verificació d'instal·lacions elèctriques.
+- **Sèrie UNE 157001:** Criteris per a l'elaboració de projectes tècnics.
+
+
+
+### 9.3. Normativa reguladora de producció d'energia elèctrica mitjançant tecnologia solar fotovoltaica
+
+A més de la normativa tècnica de seguretat (REBT), existeix una regulació específica que ordena l'activitat de producció d'energia elèctrica amb tecnologia solar fotovoltaica. Les disposicions principals són:
+- **Reial Decret 244/2019, de 5 d'abril:** Pel qual es regulen les condicions administratives, tècniques i econòmiques de l'autoconsum d'energia elèctrica. Defineix les modalitats d'autoconsum, el sistema de mesura i compensació d'excedents, i simplifica enormement els tràmits per a l'autoconsum de baixa potència.
+- **Reial Decret 1183/2020, de 29 de desembre:** Regula l'accés i connexió a les xarxes de transport i distribució d'energia elèctrica.
+- **Reial Decret 413/2014 i Reial Decret 900/2015:** Regulen la producció d'energia elèctrica per part d'instal·lacions de generació connectades a la xarxa (aplicable a instal·lacions amb venda d'energia).
+
+
+
+### 9.4. Normativa de connexió a xarxa
+
+La normativa de connexió a xarxa està recollida en els reials decrets esmentats i, a nivell tècnic, en els **Procediments d'Operació (PO)** de Red Eléctrica de España (REE) i en les especificacions particulars de cada companyia distribuïdora. Els punts clau són:
+- **PO 12.1 i PO 12.2:** Requisits de resposta davant buits de tensió i gestió de la potència reactiva, aplicables a grans plantes fotovoltaiques.
+- **Especificacions de la distribuïdora:** Cada distribuïdora publica unes especificacions tècniques particulars on detallen, per al seu àmbit de xarxa, els requisits dels equips de mesura, les condicions de la connexió física i els protocols de comunicació.
+
+
+
+### 9.5. Altres normatives d'aplicació
+
+Finalment, una instal·lació solar fotovoltaica està subjecta a altres normatives complementàries:
+- **Codi Tècnic de l'Edificació (CTE):** Aprovat pel RD 314/2006. És d'aplicació per a instal·lacions sobre edificis. El Document Bàsic HE 5 (Contribució fotovoltaica mínima d'energia elèctrica) estableix una potència fotovoltaica mínima a instal·lar en nous edificis de determinats usos (hipermercats, grans superfícies, naus industrials, etc.) per contribuir a la generació renovable.
+- **Normativa urbanística municipal:** Ordenances locals que regulen la integració arquitectònica dels panells, les alçades màximes, les distàncies a les llindes i, en alguns municipis, estableixen l'obligatorietat de l'autoconsum en noves edificacions.
+- **Normativa de seguretat i salut laboral:** Llei 31/1995 de Prevenció de Riscos Laborals i els seus reglaments, aplicables durant les fases d'execució i manteniment de la instal·lació.
+- **Directives europees i normes ISO/IEC** per a la certificació de components i la gestió de la qualitat.
+
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

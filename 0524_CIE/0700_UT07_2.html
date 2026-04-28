@@ -246,11 +246,14 @@ Inclouen el consum propi del sistema de control, les pèrdues en el transformado
 #### Càlcul del factor de pèrdues global:
 
 \begin{gather}
-  Pèrdues totals (%) = 100 - [ (1 - Ltemp) \cdot (1 - Lbrut) \cdot ... \cdot (1 - Laltres) ] * 100
+  P_{p} (\%) = 100 - [ (1 - L_{temp}) \cdot (1 - L_{brut}) \cdot ... \cdot (1 - L_{altres}) ] * 100
 \end{gather}
 
 Alternativament, es pot agrupar tot en un únic **Performance Ratio (PR)** de disseny, que és el producte de tots els factors. Així, l'energia produïda estimada és:
-`E = Potència_pic * HSP * PR`
+
+\begin{gather}
+   E = Potència_pic * HSP * PR
+\end{gather}
 
 
 
@@ -276,8 +279,8 @@ En instal·lacions aïllades de la xarxa, el sistema d'acumulació (bateries) é
 \end{gather}
 
 Per a un consum diari de 2000 Wh, una tensió de 48 V, 3 dies d'autonomia i una DoDmax del 50%:
-- Cu = (2000 Wh * 3 dies) / 48 V = 125 Ah
-- Cnom = 125 Ah / 0,50 = 250 Ah (a C100 o C120, segons el règim de descàrrega dels dies d'autonomia).
+- C_u = $(2000~\text{Wh} \cdot 3~ \text{dies}) / 48~ \text{V} = 125~ \text{Ah}
+- C_{nom} = 125 ~\text{Ah} / 0,50 = 250~\text{Ah} (a C100 o C120, segons el règim de descàrrega dels dies d'autonomia).
 
 
 #### Altres consideracions de càlcul
@@ -357,7 +360,7 @@ La posada a terra és un sistema de seguretat fonamental que protegeix les perso
 La resistència de terra (Rt) és la resistència entre l'elèctrode i el sòl. El seu valor màxim ve determinat per la sensibilitat de les proteccions diferencials. Si totes les masses estan connectades a un mateix elèctrode i es protegeixen amb diferencials de 300 mA, la resistència de terra ha de ser:
 
 \begin{gather}
-Rt \le 24 / 0,3 = 80
+   Rt \le 24 / 0,3 = 80
 \end{gather}
 
 Segons REBT, per a instal·lacions amb interruptor diferencial de 300 mA, la tensió de contacte límit és 24 V en llocs humits, 50 V en secs). De fet, aquesta es una resistència a terra cautelosa, ja que en general s'instalaran ID de 30 mA.
@@ -495,7 +498,7 @@ El regulador de càrrega és el dispositiu que gestiona el flux d'energia entre 
 - **PWM (Modulació per Amplada de Pols):** Connecta directament els mòduls a la bateria quan cal carregar-la, modulant el corrent. Econòmics, però només poden treballar amb mòduls la tensió dels quals és molt propera a la de la bateria (per exemple, mòduls de 36 cèl·lules per a sistemes de 12V). Desaprofiten part de la potència dels mòduls de major tensió.
 - **MPPT (Seguidor del Punt de Màxima Potència):** Converteix la tensió i corrent del generador per extreure'n la màxima potència i adaptar-la a la tensió de la bateria. Permet l'ús de cadenes de mòduls amb tensions molt superiors a la de la bateria, reduint les pèrdues en el cablejat. Són l'estàndard en qualsevol instal·lació professional.
 
-**Càlcul de la intensitat nominal del regulador MPPT:**
+#### Càlcul de la intensitat nominal del regulador MPPT
 El regulador es dimensiona per la màxima intensitat que pot entregar a la bateria (Iout) i la màxima tensió i intensitat que pot suportar a l'entrada (provinents del generador).
 
 1. **Intensitat de sortida (costat bateria):**
@@ -519,28 +522,38 @@ On $P_{gen}$ és la potència pic del generador i $V_{n~bat}$ la tensió nominal
 - Voc_corr (per a Tmin -5 °C) = 3 * 37 * [1 - 0,003 * (-5 - 25)] = 111 * 1,09 = 121 V. El regulador ha de tenir Vin_max > 121 V (per exemple, 150 V).
 - Isc_in_nom ≥ 1,25 * 13,5 = 16,9 A.
 
-#### 3.3 Protecció de reguladors i bateries
+
+
+### 3.3 Protecció de reguladors i bateries
+
 Regulador i bateria són dos elements interdependents la protecció dels quals s'ha de coordinar. A més de les proteccions ja descrites per a la bateria (2.11), cal assegurar la protecció del mateix regulador i una operació segura del conjunt.
 
-**Protecció del regulador:**
+
+#### Protecció del regulador
+
 - **Fusible a l'entrada del regulador (costat generador):** Protegeix el regulador d'un curtcircuit intern o d'una sobreintensitat provinent dels panells (improbable en una cadena curta, però obligat per normativa en moltes configuracions).
 - **Fusible a la sortida del regulador (costat bateria):** És imprescindible. Protegeix el regulador i el cablejat entre el regulador i la bateria d'un curtcircuit en aquest tram o d'un defecte intern del regulador. Es col·loca el més a prop possible d'un dels borns de connexió del banc de bateries (normalment el positiu). El fusible ha de tenir una tensió nominal adequada per a CC i un poder de tall suficient per a la corrent de curtcircuit de la bateria.
 - **Díode de bloqueig (en sistemes sense regulador MPPT o com a redundància):** Impedeix el pas de corrent invers de la bateria cap als mòduls durant la nit, que descarregaria la bateria.
 - **Protecció contra polaritat inversa:** La majoria de reguladors electrònics porten protecció interna, però un fusible ràpid a la sortida és una salvaguarda addicional.
 
-**Coordinació de proteccions amb la bateria:**
+
+#### Coordinació de proteccions amb la bateria
+
 Les tensions de consigna de protecció del regulador i de l'inversor han d'estar coordinades amb la finestra de treball segura de la bateria:
 - **Tensió de desconnexió del consum (LVD del regulador > LVD de l'inversor):** Normalment l'inversor es desconnecta abans per tensió baixa que el regulador, per preservar una mínima energia per al sistema de control.
 - **Tensió de final de càrrega (tensió d'absorció i flotació):** El regulador ha de tenir configurades les tensions recomanades pel fabricant de la bateria per a les fases de bulk, absorció i flotació, amb la compensació per temperatura activada. Una sobrecàrrega perllongada és fatal per a la bateria.
 
-**Aïllament galvànic (si escau):**
+
+#### Aïllament galvànic (si escau)
+
 Alguns reguladors incorporen aïllament galvànic intern entre el costat de CC del generador i el de la bateria. Si no és el cas, s'ha de tenir en compte la configuració de la presa de terra i la protecció diferencial per evitar bucles de corrent no desitjats.
 
----
 
-### Capítol 4: Tramitació Administrativa d'Instal·lacions Solars Fotovoltaiques
+4. Tramitació Administrativa d'Instal·lacions Solars Fotovoltaiques
+-------------------------------------------------------------------
 
-#### 4.1 Processos administratius en instal·lacions solars fotovoltaiques
+### 4.1 Processos administratius en instal·lacions solars fotovoltaiques
+
 La posada en servei d'una instal·lació solar fotovoltaica requereix completar un conjunt de tràmits administratius davant diferents organismes. Aquests processos varien en funció de la potència de la instal·lació, la modalitat de connexió (aïllada o connectada a la xarxa) i la normativa autonòmica i local. De manera genèrica, les fases són:
 
 1.  **Fase de disseny i autorització prèvia:**
@@ -562,7 +575,7 @@ La posada en servei d'una instal·lació solar fotovoltaica requereix completar 
     - Verificació per part de l'empresa distribuïdora (si escau) que la instal·lació compleix les condicions tècniques de connexió.
     - Possibles inspeccions inicials per part d'un organisme de control autoritzat (OCA), especialment per a instal·lacions de potència elevada.
 
-#### 4.2 Instal·lacions que necessiten projecte
+### 4.2 Instal·lacions que necessiten projecte
 Segons el Reglament Electrotècnic de Baixa Tensió (REBT), la redacció d'un projecte, signat per un tècnic titulat competent i visat pel col·legi professional corresponent, és obligatòria per a les instal·lacions elèctriques de baixa tensió que compleixin algun dels supòsits següents (ITC-BT-04):
 
 - Potència instal·lada superior a 50 kW.
@@ -578,7 +591,7 @@ A més d'aquests criteris generals del REBT, per a **instal·lacions solars foto
 
 El projecte ha d'incloure, com a mínim: memòria descriptiva, càlculs justificatius, plànols, plec de condicions tècniques i pressupost.
 
-#### 4.3 Instal·lacions que necessiten memòria tècnica
+### 4.3 Instal·lacions que necessiten memòria tècnica
 Per a les instal·lacions que no arriben als llindars de potència que obliguen a la redacció d'un projecte, la documentació tècnica requerida és la **Memòria Tècnnica de Disseny (MTD)** . Aquest document simplificat és redactat i signat per l'empresa instal·ladora autoritzada (o tècnic titulat si l'empresa no compta amb un tècnic propi).
 
 Segons la ITC-BT-04 del REBT, la MTD és suficient per a:
@@ -594,11 +607,12 @@ La MTD ha de contenir:
 6.  Càlculs justificatius de seccions, caigudes de tensió i proteccions.
 7.  Certificat d'instal·lació elèctrica (CIE) que emet l'instal·lador un cop acabada l'execució, i que s'adjunta a la MTD per a la seva tramitació.
 
----
 
-### Capítol 5: Marc Normatiu de Subvencions
 
-#### 5.1 Legislació i convocatòries
+5. Marc Normatiu de Subvencions
+-------------------------------
+
+### 5.1 Legislació i convocatòries
 El foment de les energies renovables es vehicula, en gran mesura, a través de programes d'ajuts i subvencions públiques. El marc normatiu d'aquestes subvencions canvia amb cada programa, però s'estructura de manera jeràrquica en tres nivells:
 
 1.  **Normativa europea:** Directrius comunitàries sobre ajudes estatals en matèria de protecció ambiental i energia, i els fons europeus (FEDER, Next Generation EU) amb els seus respectius reglaments.
@@ -612,7 +626,7 @@ La **convocatòria** és el document clau per al projectista. En ella es detalle
 - **Requisits tècnics i administratius:** Per exemple, compliment de la normativa CTE, garantia dels equips, monitoratge de la producció, comptador bidireccional, etc.
 - **Terminis de presentació de sol·licituds i de justificació de la inversió.**
 
-#### 5.2 Tramitació de subvencions
+### 5.2 Tramitació de subvencions
 La tramitació d'una subvenció és un procés administratiu que s'ha de planificar des de la fase de disseny. Un error formal pot suposar la denegació de l'ajut. Les fases genèriques són:
 
 1.  **Sol·licitud:**
@@ -631,35 +645,44 @@ La tramitació d'una subvenció és un procés administratiu que s'ha de planifi
     - En moltes convocatòries, cal que un organisme de control (OCA) verifiqui i certifiqui la instal·lació abans de presentar la justificació.
     - L'administració revisa l'expedient, pot demanar esmenes i, finalment, ordena el pagament.
 
-**Punts crítics a vigilar:**
+
+#### Punts crítics a vigilar
+
 - **No iniciar les obres abans de la resolució de concessió** (llevat que la convocatòria permeti expressament l'inici després de la sol·licitud).
 - **Complir amb el principi de "no causar perjudici significatiu al medi ambient" (DNSH)** exigit per als fons Next Generation, especialment pel que fa als residus i al reciclatge de bateries.
 - **Publicitat:** Fer constar la participació del programa de finançament en tota la documentació i senyalització de l'obra, segons les instruccions de la convocatòria.
 
-#### 5.3 Normes internacionals
+
+### 5.3 Normes internacionals
+
 Les instal·lacions solars fotovoltaiques, per garantir la seva qualitat, seguretat i durabilitat, i per poder accedir a certificacions i ajuts, han de complir amb un conjunt de normes internacionals.
 
-**Normes per a mòduls fotovoltaics:**
+
+#### Normes per a mòduls fotovoltaics
+
 - **IEC 61215:** Norma de referència per a mòduls de silici cristal·lí per a ús terrestre. Qualifica el disseny i l'homologació del tipus, sotmetent el mòdul a assaigs de càrrega mecànica, ciclatge tèrmic, humitat-congelació, etc.
 - **IEC 61730:** Norma de seguretat per a mòduls fotovoltaics (riscos elèctrics, mecànics, foc). És la base per al marcatge CE.
 - **IEC 61646 (substituïda per la IEC 61215 per a capa fina) o IEC 62108:** Per a tecnologies de concentració.
 
-**Normes per a inversors i sistemes:**
+#### Normes per a inversors i sistemes
 - **IEC 62109:** Seguretat dels convertidors de potència utilitzats en sistemes fotovoltaics.
 - **IEC 61727 / IEC 62116:** Requisits per a la interconnexió amb la xarxa elèctrica (qualitat d'ona, factor de potència, protecció anti-illa).
 - **IEC 62446:** Requisits per a la documentació, els assaigs de posada en marxa i la inspecció periòdica de sistemes fotovoltaics connectats a xarxa. Aquesta norma és la guia per a la documentació "as-built" que s'ha de lliurar al client.
 
-**Normes per a bateries:**
+
+#### Normes per a bateries
+
 - **IEC 62619 / IEC 62620:** Requisits de seguretat i d'assajos per a cel·les i bateries d'ió-liti per a ús industrial, incloent-hi les estacionàries.
 - **IEC 61427:** Requisits generals i mètodes d'assaig per a acumuladors en sistemes fotovoltaics aïllats.
 
-**Normes de gestió ambiental i qualitat:**
+
+#### Normes de gestió ambiental i qualitat
+
 - **ISO 14001 i ISO 9001** per a les empreses instal·ladores i fabricants.
 - **ISO 50001:** Sistemes de gestió de l'energia, rellevant per a grans instal·lacions i empreses que fan autoconsum per millorar la seva eficiència energètica.
 
 El compliment d'aquestes normes, demostrat amb certificats de laboratoris acreditats (TÜV, AENOR, Applus, etc.), és requerit per la majoria de convocatòries de subvencions i és un distintiu de qualitat indispensable per a qualsevol projecte professional.
 
----
 
 </textarea>
 
