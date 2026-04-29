@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+Examen UT07 (part 02)
+=====================
+
+### Recorda capturar la pantalla amb [screencapture](https://screencapture.com)
+
+Cada tasca val 1 punt excepte a on s'indiqui. La puntuació
+de l'exercici serà la suma dels punts obtinguts dividit pel total
+de punts multiplicat per deu 
+
+> $$ \dfrac {\sum\limits_{i=1}^n P_i}{\sum\limits_{i=1}^n Z_i} \cdot 10 $$
+> A on:
+> - $ n $ és el total de tasques
+> - $ P_i $ és la puntuació obtinguda a la tasca i-èssima
+> - $ Z_i $ és la puntuació màxima de la tasca i-èssima
+
+**Percentatge 50%**
+
+0. (_0 punts) Obri un google docs o un Libre Office Writer a on aniras contestant aquestes preguntes.
+
+1. (_0,5 punts_) Descarrega't la 
+[fitxa tècnica](docs/Canadian_Solar-Datasheet-HiKu_CS3W-MS_EN.pdf)
+dels mòduls que instal·laràs. Identifica els valors $P_{max}$, $V_{oc}$, $I_{sc}$ del model 450MS.
+
+2. (_0,5 punts_) Situa la localització d'una instal·lació a Buelles (Asturies). Ajuda't de les coordenades que apareixen al camp «cursor» a dalt i a la esquerra de la part de les dades de PVGIS. Busca les coordenades 43,335, -4.533. Posa la potència pic corresponent a 7 mòduls model 450MS (amb tecnologia FV de silici cristalí de 2025).
+- Fes una captura de pantalla d'aquesta configuració
+
+3. (_1 punt_) Atès que és una parcela amb terreny, optimitza la inclinació i azimut. 
+
+- Adjunta una captura de pantalla del resultat
+- Indica l'angle d'inclinació òptim calculat i l'azimut calculat. 
+- Per què creus que no és al sud (0°)?.
+- Quina és la producció anual?
+- Quina és la producció al més mes productiu? i menys productiu?
+
+4. (_1,5 punts_) Compara la instal·lació amb una instal·lació coplanar a la teulada més favorable de l'esglesia de la Immaculada concepció de Cas Concos (coordenades 39.419, 3.137). Per a la orientació de la teulada pots utilitzar 
+[aquest enllaç](https://maps.app.goo.gl/N5cLFkS2x71XbxWbA)
+de google maps, i per a la inclinació pots suposar una inclinació del 25 % i utilitzar la fórmula $\beta = \arctan \left(\dfrac{h}{b}\right)$ (si no ho saps calcular inventa't un valor i la puntuació màxima d'aquest exercici serà 1 punt).
+
+- Adjunta una captura de pantalla del resultat
+- Indica l'angle d'inclinació assignada i l'azimut assignat. 
+- Quina és la producció anual?
+- Quina és la producció al més mes productiu? i menys productiu?
+- Per què creus que la producció anual és més alta
+
+5. (_1,5 punts_) Per respondre aquesta pregunta pots utilitzar els apunts de servera-prof i el reglament. Descarregat la
+[fitxa tècnica](docs/SUN2000-2-6KTL-L1.pdf) de l'inversor.
+Per l'inversor SUN2000-2KTL-L1, tinguent en compte que la potència és tant petita que per $I_max$ qualsevol secció aniria bé. Però, si que s'ha de comprovar per cdt.
+
+- Quina seria per tant la secció per la caiguda de tensió màxima (en AC monofàsica que apareix als apunts), suposant un conductor de 20 m H07V-K, encastat a paret? (_1 punt_)
+- Aquest inversor evita que si no es detecta tensió injecti a xarxa? Com ho saps? (_0,5 punts_)
+
+**Entrega** 
+
+- el document amb les respostes
+- l'screencapture
+   
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
