@@ -369,10 +369,14 @@ function puntua(txt){
 
     let ptsAlumne = ptos, ptsTotal = num_preg;
     let canvi = "", patro = "";
-
-    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+    let ptsAconseguits = xs(ptsAlumne, 2);
+    if (ptsAconseguits < 0.1) ptsAconseguits = 0;
+    let notaFinal = xs(ptsAlumne/ptsTotal*10, 2);
+    if (notaFinal < 0.1) notaFinal = 0; 
+    txt = txt.replace("[[nota]]", 
+        "S'han aconseguit: " + ptsAconseguits +
         " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
-        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+        "**Nota final: " + notaFinal + "**");
 
     /*
     let ptsAlumne = 0, ptsTotal = 0;

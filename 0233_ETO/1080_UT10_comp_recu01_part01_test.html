@@ -46,7 +46,7 @@ Introdueix aquí la teva resposta: <br/>
 
 
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Comprovador de l'examen UT11 - Part 01";
+const titol = "Comprovador de la recuperació UT10 - Part 01";
 const puntuacions = ["",
 ];
 
@@ -61,101 +61,87 @@ let ptos = 0;
 const preguntes = 
 [
 [
-"Quina és la diferència fonamental entre un <b>multivibrador monoestable</b> i un <b>multivibrador astable</b>?",
-"El monoestable genera ones quadrades i l'astable ones sinusoidals",
-"El monoestable té un estat estable i un d'inestable, mentre que l'astable no té cap estat estable",
-"El monoestable no requereix alimentació i l'astable sí",
-"El monoestable utilitza una xarxa LC i l'astable una xarxa RC"
+"En una configuració de llaç tancat amb realimentació negativa, quina diferència de tensió hi ha entre les dues entrades de l'AO ideal?",
+"La tensió d'alimentació $V_{cc}$",
+"La meitat de la tensió de sortida",
+"Zero ($V^+ = V^-$)",
+"La tensió d'entrada dividida pel guany"
 ],
 [
-"En un circuit temporitzador, què s'entén per <b>retard a la connexió</b>?",
-"La càrrega s'activa immediatament i es desactiva després d'un temps",
-"La càrrega s'activa després d'un temps predefinit des del senyal d'entrada",
-"La càrrega s'activa i es desactiva periòdicament",
-"La càrrega es desactiva immediatament en rebre el senyal d'entrada"
+"Quin tipus de realimentació s'utilitza en les configuracions d'amplificador inversor i no inversor?",
+"Realimentació positiva",
+"Sense realimentació (llaç obert)",
+"Realimentació negativa",
+"Realimentació mixta"
 ],
 [
-"En un circuit temporitzador, què s'entén per <b>retard a la desconnexió</b>?",
-"La càrrega roman activada durant un temps predefinit després de desaparèixer el senyal d'entrada",
-"La càrrega s'activa un temps després de rebre el senyal d'entrada",
-"La càrrega no s'activa en cap moment",
-"La càrrega s'activa i es desactiva contínuament sense control"
-],
-
-
-
-
-
-
-
-
-[
-"Quin és el <b>criteri de disseny</b> recomanat per triar els valors de R i C en un temporitzador amb NE555, per evitar errors en el temps calculat?",
-"Utilitzar sempre resistències superiors a 1 MΩ per maximitzar el temps",
-"Triar un condensador de valor moderat i ajustar la resistència, evitant resistències excessivament elevades",
-"Utilitzar sempre el condensador més petit possible per reduir el consum",
-"Connectar diverses resistències en paral·lel per dividir el corrent de fuga"
+"Segons la demostració matemàtica de l'amplificador inversor, quina relació s'obté en aplicar la llei dels nusos i les condicions ideals ($V^-=0$, $I^-=0$)?",
+"$I_{in} = I_F$",
+"$\\frac{V_{in}}{R_{in}} = - \\frac{V_{out}}{R_F}$",
+"$\\frac{V_{in}}{R_{in}} = \\frac{V_{out}}{R_F}$",
+"$V_{in} \\cdot R_F = -V_{out} \\cdot R_{in}$"
 ],
 [
-"Quina de les següents formes d'ona NO és generada típicament per un circuit <b>oscil·lador</b>?",
-"Ona sinusoidal",
-"Ona quadrada",
-"Ona triangular",
-"Ona de corrent continu constant"
+"Quina és l'expressió del guany de tensió ($A_V$) per a un amplificador no inversor?",
+"$A_V = - \\frac{R_F}{R_{in}}$",
+"$A_V = \\frac{R_F}{R_{in}}$",
+"$A_V = \\frac{R_F}{R_{in}} + 1$",
+"$A_V = 1 - \\frac{R_F}{R_{in}}$"
 ],
-
-
-
+[
+"Quin és el principal avantatge d'utilitzar un seguidor de tensió (<i>buffer</i>) fabricat amb un AO?",
+"Invertir el senyal d'entrada per millorar la seva qualitat",
+"Proporcionar un guany de tensió molt elevat",
+"Augmentar la freqüència de tall del senyal processat",
+"Actuar com a adaptador d'impedàncies, incrementant la capacitat de lliurament de potència"
+],
 
 
 
 
 
 [
-"Quina és la condició indispensable perquè un <b>SCR (tiristor)</b> entri en conducció?",
-"Que la tensió ànode-càtode sigui negativa",
-"Que estigui polaritzat en directe ($V_{AK} > 0$) i s'apliqui un pols de corrent a la porta ($I_G$)",
-"Que el corrent d'ànode baixi per sota del corrent de manteniment ($I_H$)",
-"Que la temperatura de la unió superi els 100 °C"
+"En un amplificador sumador inversor, si totes les resistències d'entrada tenen el mateix valor que la de realimentació ($R_1 = R_2 = ... = R_n = R_F$), quina serà la tensió de sortida?",
+"$V_o = V_{i_1} + V_{i_2} + ... + V_{i_n}$",
+"$V_o = - (V_{i_1} + V_{i_2} + ... + V_{i_n})$",
+"$V_o = \\frac{V_{i_1} + V_{i_2} + ... + V_{i_n}}{R_F}$",
+"$V_o = R_F \\cdot (V_{i_1} + V_{i_2} + ... + V_{i_n})$"
 ],
+[
+"Quina condició sobre les resistències és indispensable per al funcionament correcte d'un amplificador diferencial (o restador) amb AO?",
+"Totes les resistències han de ser diferents",
+"Han de guardar la proporció $R_1 \\cdot R_F = R_2 \\cdot R_G$",
+"La resistència de realimentació $R_F$ ha de ser infinita",
+"Les resistències d'entrada $R_1$ i $R_2$ han de ser nul·les"
+],
+[
+"Segons la demostració matemàtica del muntatge no inversor, partint que $V^- = V_{in}$ i que $I_G = I_F$, quina és l'equació inicial d'aquesta igualtat de corrents?",
+"$\\frac{V_{out}}{R_G} = \\frac{V_{in}}{R_F}$",
+"$\\frac{V_{in}}{R_G} = \\frac{V_{out}-V_{in}}{R_F}$",
+"$\\frac{V_{in}}{R_F} = \\frac{V_{out}}{R_G}$",
+"$\\frac{V_{in}-V_{out}}{R_G} = \\frac{V_{out}}{R_F}$"
+],
+[
+"En llaç obert, com actua un amplificador operacional en funció de les seves dues entrades?",
+"Com un amplificador de guany unitari de la diferència de tensió entre les dues entrades",
+"Com un oscil·lador d'ona senoidal controlat per la tensió d'alimentació",
+"Com un comparador de tensió, saturant la sortida a $+V_{cc}$ o $-V_{cc}$",
+"Com un mesclador de senyals proporcional a la suma de les dues entrades"
+],
+[
+"Com s'anomena l'entrada de l'AO marcada amb el signe menys ($-$)?",
+"Entrada directa",
+"Entrada positiva",
+"Entrada inversora",
+"Entrada de referència"
+]
 
-[
-"Quin avantatge fonamental ofereix el <b>fototiristor</b> en aplicacions d'alta tensió (HVDC)?",
-"Una velocitat de commutació superior a la de qualsevol altre semiconductor",
-"La capacitat de conduir corrent en ambdós sentits",
-"L'aïllament galvànic total entre el circuit de control i el de potència",
-"Un cost de fabricació molt inferior al d'un tiristor convencional"
-],
-
-[
-"Quina característica diferencia el <b>Triac</b> del <b>SCR</b>?",
-"El Triac és un dispositiu unidireccional i l'SCR és bidireccional",
-"El Triac és un dispositiu bidireccional i l'SCR és unidireccional",
-"L'SCR pot controlar la potència i el Triac no",
-"El Triac requereix una tensió de ruptura per disparar-se, però l'SCR no"
-],
-
-[
-"Quin és el mètode correcte per bloquejar (passar a OFF) un <b>SCR</b> que es troba en conducció?",
-"Aplicar un pols negatiu de corrent a la porta",
-"Connectar el terminal d'ànode a massa",
-"Fer que el corrent d'ànode baixi per sota del corrent de manteniment ($I_H$)",
-"Incrementar la tensió ànode-càtode per sobre de la tensió de ruptura"
-],
-[
-"Què succeeix amb un <b>SCR</b> un cop ha estat disparat i el corrent d'ànode es manté per sobre del corrent de manteniment ($I_H$), encara que desaparegui el senyal de porta ($I_G$)?",
-"Es bloqueja immediatament, passant a l'estat OFF",
-"Continua en conducció (ON) de manera indefinida",
-"Oscil·la entre l'estat ON i OFF a una freqüència de 50 Hz",
-"Redueix progressivament el corrent fins a extingir-se"
-],
 ];
 
 const solucions_test = [
-  2, 2, 1,
-  2, 4,
-  2, 3, 2, 3, 2
-];
+3, 3, 2, 3, 4, 
+2, 2, 2, 3, 3 ]
+;
 const opcions_test = [1, 2, 3, 4];
 
 let permutacio = "";
