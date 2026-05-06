@@ -67,7 +67,7 @@ Introdueix aquí la teva resposta: <br/>
 
 
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Comprovador de nota de l'examen UT06 - SRGMPE";
+const titol = "Comprovador de nota de la recuperació UT02 - DTIE";
 const puntuacions = ["",
 ];
 
@@ -81,94 +81,44 @@ let pts = 0;
 let ptsTotals = 0;
 
 const preguntes = [
-    [
-"Quin és l’objectiu principal de l’avantprojecte?",
-"Definir el pressupost final de l’obra",
-"Definir les característiques generals de la instal·lació a executar",
-"Autoritzar la construcció de la instal·lació",
-"Certificar la seguretat elèctrica del projecte",
+[
+'Observa la imatge i respon</br><img src="img/recu_UT02_03.png"></br>Què signifiquen els números assenyalats?',
+"Són identificadors de conductors de mateix potencial",
+"Són identificadors únics de conductors",
+"Són l'ordre de connexió dels conductors a l'embornat",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
 
 [
-"Quin dels següents documents forma part de l’avantprojecte?",
-"Pressupost econòmic detallat",
-"Plànols i esquemes unifilars",
-"Plec de condicions",
-"Estat de mesuraments",
+'Observa la imatge i respon</br><img src="img/exam_UT02_02.png"></br>Què signifiquen els números assenyalats?',
+"Que el contacte auxiliar NO 34-33 del KM1 es troba a la pàgina 2 columna 6",
+"Que el contacte auxiliar NO 34-33 està a 2.6 cm a l'esquerra",
+"Que el contacte auxiliar 2.6 està connectat als conductors 34 i 33",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
 
 [
-"La norma UNE 157001 té caràcter…",
-"Obligatori en tots els casos",
-"Orientatiu i no obligatori",
-"Exclusivament tècnic",
-"Administratiu i sancionador",
+'Observa la imatge i respon</br><img src="img/exam_UT02_03.png"></br>Què signifiquen els números assenyalats?',
+"Que la fase W2 connecta als conductors 5, 6, 7, 8, amb conductors de 1r, 2n, 3r, i 4t ordre del motor M2",
+"Que la màniga W2 composta pels conductors 1, 2, 3, i 4 connecten a les bornes 5, 6, 7, 8 del borner X1 respectivament i als bornes U<sub>1</sub>, V<sub>1</sub>, W<sub>1</sub> i PE del motor M2 respectivament.",
+"Que la màniga X1 composta pels conductors 5, 6, 7, i 8 connecten a les bornes 1, 2, 3, 4 del borner W2 respectivament i als bornes U<sub>1</sub>, V<sub>1</sub>, W<sub>1</sub> i PE del motor M2 respectivament.",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
 
 [
-"Quin dels següents documents NO forma part habitual d’un projecte?",
-"Memòria",
-"Annexos",
-"Estudi arqueologic de presservació del patrimoni històric",
-"Pressupost",
+'Observa la imatge i respon</br><img src="img/recu_UT02_01.png"></br>Quina diferència hi ha entre la imatge de l\'esquerra i la de la dreta?',
+"La de l'esquerra és multifilar, la de la dreta és unifilar",
+"Cap, son dues maneres de indicar que el diferencial es tetrapolar",
+"Una és el sistema de 1733, i l'altra de 2007",
+"Marca aquesta si no pots marcar cap de les altres"
 ],
 
 [
-"Els projectes han d’estar estructurats en capítols numerats amb…",
-"Lletres gregues",
-"Xifres aràbigues",
-"Nombres romans",
-"Codis alfanumèrics",
-],
-
-
-
-
-
-
-
-
-
-
-
-[
-"Quina informació ha d’incloure cada plànol?",
-"Número de normativa d'aplicació",
-"Número d’edició i data d’aprovació",
-"Signatura del client",
-"Fotografia de l’emplaçament",
-],
-
-[
-"La memòria descriu…",
-"Els costos econòmics del projecte",
-"El problema a resoldre i la solució adoptada",
-"Els plànols de situació i detall",
-"Els contractes amb proveïdors",
-],
-
-[
-"Quin apartat de la memòria delimita l’àmbit de responsabilitat del projecte?",
-"Objecte",
-"Abast",
-"Antecedents",
-"Planificació",
-],
-
-[
-"L’apartat «Antecedents» de la memòria serveix per…",
-"Descriure l’estat previ i els requisits del client",
-"Fixar els preus de materials",
-"Definir les escales dels plànols",
-"Enumerar la normativa aplicable",
-],
-
-[
-"L’ordre de prioritat dels documents bàsics, si no s’indica el contrari, comença per…",
-"Memòria",
-"Plec de condicions",
-"Plànols",
-"Pressupost",
+'Observa la imatge i respon</br><img src="img/exam_UT02_05.png"></br>Què volen dir aquests símbols?',
+"Llum de sostre, interruptor simple, commutador i creuament de dalt a baix",
+"Aplic de paret, interruptor simple, commutador i creuament de dalt a baix",
+"Doble creauament, commutador, interruptor simple i creuament de dalt a baix",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
 
 
@@ -182,84 +132,49 @@ const preguntes = [
 
 
 [
-"Els annexos serveixen per…",
-"Únicament per a adjuntar els càlculs",
-"Ampliar i justificar apartats concrets de la memòria",
-"Eliminar documents innecessaris",
-"Incloure catàlegs de fabricants utilitzat a l'obra o que serveixen de referència en cas de que el director d'obra els vulgui substituir",
+'Observa la imatge i respon</br><img src="img/recu_UT02_04.png"></br>Quin es l\'ordre de preferència d\'aquests estils de cota?',
+"a, b, c, d",
+"d, c, a, b",
+"c, b, a, d",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
 
 [
-"Els primers plànols d’un projecte fan referència a…",
-"Els detalls constructius",
-"La situació i emplaçament del projecte",
-"Els esquemes elèctrics interns",
-"Els annexos de càlcul",
+"Quina és l'altura mínima del text si tenen majúscules i <b>minúscules</b>?",
+"1 mm",
+"2,5 mm",
+"3,5 mm",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
 
 [
-"L’escala habitual per a plantes d’instal·lacions o edificació és…",
-"1:5000",
-"1:500 o 1:200",
-"1:100 o 1:50",
-"1:10",
+"Quants de punts de dobleg té un DIN A3?",
+"0 (no es doblega)",
+"1",
+"2",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
 
 [
-"El plec de condicions recull…",
-"Les especificacions tècniques, econòmiques i legals",
-"Els esquemes unifilars",
-"Els annexos de càlcul",
-"Els pressupostos detallats",
+"Quina és una escala apropiada per a representar una centralització de comptador? I una habitació",
+"CC → 1:10 o 1:20, Habitació → 1:50",
+"CC → 10:1 o 20:1, Habitació → 50:1",
+"CC → 1:100, Habitació → 1:500",
+"CC → 100:1, Habitació → 500:1",
 ],
 
 [
-"L’estat de mesuraments defineix…",
-"El cost final de l’obra",
-"Les unitats i característiques de cada partida",
-"De quins materials, ma d'obra i maquinaria de la que es composa cada partida",
-"Els criteris legals de seguretat",
-],
-
-
-
-
-
-
-
-
-
-
-
-[
-"En projectes senzills, l’estat de mesuraments i el pressupost…",
-"S’unifiquen en un sol document",
-"Es redacten per separat",
-"S’ometen completament",
-"Es substitueixen pels plànols",
-],
-
-[
-"Quin dels següents estudis pot ser obligatori per imperatiu legal?",
-"Estudi de disseny gràfic",
-"Estudi de seguretat i salut",
-"Estudi de rendibilitat econòmica",
-"Estudi de mercat energètic",
-],
-
-["Quin mòdul estas fent ara mateix?",
- "Documentació de Sistemes i Circuits",
- "Documentació electrotècnica de seguretat",
- "Configuració d'instal·lacions elèctriques",
- "Documentació Tècnica en instal·lacions elèctriques",
+'Observa la imatge i respon</br><img src="img/exam_UT02_07.png"></br>Que representa aquest símbol?',
+"Una bola de drac",
+"Un instrument indicador (subsituint * per V és un voltímetre, per A es un amperímetre, etc.",
+"Un receptor aïllat",
+"Marca aquesta si no pots marcar cap de les altres",
 ]
 ];
 
 const solucions_test = [
- 2, 2, 2, 3, 2,
- 2, 2, 2, 1, 2,
- 2, 2, 3, 1, 2,
- 1, 2, 0
+ 1, 1, 2, 2, 4,
+ 4, 3, 3, 1, 2
 
 ];
 const opcions_test = [1, 2, 3, 4];
