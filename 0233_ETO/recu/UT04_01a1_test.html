@@ -29,19 +29,16 @@ window.texme = {
 &nbsp;
 ~~~
 
-**Puntuació: _2 punts_** (20 %)
+Puntuació: 50 %
 
 ## Normes:
 
-- S'ha de **registrar el que es fa a la pantalla COMPLETA**, pots 
-  utilitzar la web
+- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
+  Pots utilitzar la web
   [Screen Capture](https://www.screencapture.com/es/)
-- No s'ha d'activar micròfon, webcam ni so.
-- No es poden utilitzar apunts. Tret que l'enunciat ho indiqui en alguna 
-  part.
+- No es poden utilitzar apunts.
 - Només es pot tenir una finestra oberta (la del navegador Chrome).
-- Només es pot tenir dues pestanyes obertes (la de l'examen i la de 
-  l'_screen capture_).
+- Només es pot tenir una pestanya oberta (la de l'examen).
 - Està terminantment prohibit copiar o mirar al company.
 - No es poden fer preguntes. Part de l'avaluació és la comprensió del
   text. Si hi ha algun error es parlarà una vegada l'examen hagi
@@ -57,7 +54,7 @@ window.texme = {
 
 - Agafa paper
 - **Escriu la permutació al paper!!**
-- **Escriu les respostes al paper**.
+- Comença a escriure les respostes al paper.
 - Si una resposta es vol deixar en blanc escriu una n.
 - Quan acabis copia les respostes sense espais i tot seguit, al camp
   «resposta», si no la saps n. Per exemple: abnaac
@@ -92,7 +89,7 @@ window.texme = {
 
 
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Examen UT09 - Part 01";
+const titol = "Recuperació UT04";
 const puntuacions = ["", 10];
 
 
@@ -101,78 +98,138 @@ const puntuacions = ["", 10];
 // ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
 
 let p01 = "";
-const preguntes = 
+const preguntes = [
+
 [
-[
-"Quina és la condició indispensable perquè un <b>SCR (tiristor)</b> entri en conducció?",
-"Que la tensió ànode-càtode sigui negativa",
-"Que estigui polaritzat en directe ($V_{AK} > 0$) i s'apliqui un pols de corrent a la porta ($I_G$)",
-"Que el corrent d'ànode baixi per sota del corrent de manteniment ($I_H$)",
-"Que la temperatura de la unió superi els 100 °C"
+'Quins biestables són sincrons?',
+'Tots',
+'Cap',
+'Els <i>flip flops</i>',
+'Els <i>latches</i>',
+'Els que tenen entrada d\'habilitació (EN)',
+'No hi ha prou informació per a respondre aquesta pregunta'
 ],
 [
-"Quin és l'inconvenient principal d'un <b>GTO</b> respecte a un tiristor clàssic?",
-"Que no pot bloquejar tensió inversa ni conduir un corrent significatiu en inversa",
-"Que requereix un pols positiu a la porta per entrar en conducció",
-"Que la tensió ànode-càtode en conducció és molt elevada",
-"Que no es pot utilitzar en corrent continu"
+'A quin biestable correspon la següent corba d\'entrades i sortides? </br><img style="margin-left: 37px; margin-top:20px" src="../img/UT04_exam01_01.png">',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
+],
+['A quin biestable correspon la següent taula de la veritat?' +
+ '<table style="margin-left: 37px"><thead>'+
+    '<tr><td>S</td><td>R</td><td>$Q+$</td></tr>'+
+  '</thead><tbody>'+
+    '<tr><td>0</td><td>0</td><td>$Q$</td></tr>'+
+    '<tr><td>0</td><td>1</td><td>0</td></tr>'+
+    '<tr><td>1</td><td>0</td><td>1</td></tr>'+
+    '<tr><td>1</td><td>1</td><td>?</td></tr>'+
+ '</tbody></table>',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
+],
+
+[
+'Quin biestable és? </br><img style="margin-left: 37px; margin-top:20px" src="../img/UT04_exam01_02.png">',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R flanc ascendent',
+'Flip-flop S-R flanc descendent',
+'Latch S-R amb entrada d\'habilitació invertida',
+'Marca aquesta si no pots marcar cap de les altres',
 ],
 [
-"Quin avantatge fonamental ofereix el <b>fototiristor</b> en aplicacions d'alta tensió (HVDC)?",
-"Una velocitat de commutació superior a la de qualsevol altre semiconductor",
-"La capacitat de conduir corrent en ambdós sentits",
-"L'aïllament galvànic total entre el circuit de control i el de potència",
-"Un cost de fabricació molt inferior al d'un tiristor convencional"
+'A quin biestable correspon la següent corba d\'entrades i sortides? </br><img style="margin-left: 37px; margin-top:20px" src="../img/UT04_exam01_03.png">',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
+],
+
+
+
+
+
+[
+'A quin biestable correspon la següent corba d\'entrades i sortides? </br><img style="margin-left: 37px; margin-top:20px" src="../img/UT04_exam01_04.png">',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
+],
+['A quin biestable correspon la següent taula de la veritat?' +
+ '<table style="margin-left: 37px"><thead>'+
+    '<tr><td>CLK</td><td>ocult</td><td>ocult</td><td>$Q+$</td></tr>'+
+  '</thead><tbody>'+
+    '<tr><td>↑</td><td>0</td><td>0</td><td>$Q$</td></tr>'+
+    '<tr><td>↑</td><td>0</td><td>1</td><td>0</td></tr>'+
+    '<tr><td>↑</td><td>1</td><td>0</td><td>1</td></tr>'+
+    '<tr><td>↑</td><td>1</td><td>1</td><td>$\\overline{Q}$</td></tr>'+
+    '<tr><td>X</td><td>X</td><td>X</td><td>$Q$</td></tr>'+
+ '</tbody></table>',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
+],
+
+
+
+// Flip-flop D
+[
+'Quin biestable és? </br><img style="margin-left: 37px; margin-top:20px" src="../img/UT04_exam01_05.png">',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
 ],
 [
-"Quina característica diferencia el <b>Triac</b> del <b>SCR</b>?",
-"El Triac és un dispositiu unidireccional i l'SCR és bidireccional",
-"El Triac és un dispositiu bidireccional i l'SCR és unidireccional",
-"L'SCR pot controlar la potència i el Triac no",
-"El Triac requereix una tensió de ruptura per disparar-se, però l'SCR no"
+'A quin biestable correspon la següent corba d\'entrades i sortides? </br><img style="margin-left: 37px; margin-top:20px" src="../img/UT04_exam01_06.png">',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
 ],
-[
-"Quin component s'utilitza habitualment per <b>disparar el Triac</b> de forma simètrica en circuits reguladors de CA?",
-"El fototransistor",
-"El díode LED",
-"El Diac",
-"El GTO"
+
+
+
+
+
+['A quin biestable correspon la següent taula de la veritat?' +
+ '<table style="margin-left: 37px"><thead>'+
+    '<tr><td>CLK</td><td>entrada</td><td>$Q+$</td></tr>'+
+  '</thead><tbody>'+
+    '<tr><td>↑</td><td>0</td><td>$Q$</td></tr>'+
+    '<tr><td>↑</td><td>1</td><td>$\\overline{Q}$</td></tr>'+
+    '<tr><td>X</td><td>X</td><td>$Q$</td></tr>'+
+ '</tbody></table>',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
 ],
-[
-"Quin és el mètode correcte per bloquejar (passar a OFF) un <b>SCR</b> que es troba en conducció?",
-"Aplicar un pols negatiu de corrent a la porta",
-"Connectar el terminal d'ànode a massa",
-"Fer que el corrent d'ànode baixi per sota del corrent de manteniment ($I_H$)",
-"Incrementar la tensió ànode-càtode per sobre de la tensió de ruptura"
-],
-[
-"Quin dispositiu optoelectrònic proporciona <i>guany</i> de corrent ($h_{FE}$) en rebre llum, i és la part receptora més comuna en els optoacobladors estàndard?",
-"El fotodíode",
-"El fototransistor",
-"El LED",
-"El Diac"
-],
-[
-"Quina és la funció principal dels <b>optoacobladors</b> en electrònica de potència?",
-"Amplificar el corrent de sortida del microcontrolador",
-"Commutar directament càrregues de potència de fins a 10 A",
-"Proporcionar aïllament elèctric entre la lògica de control i l'etapa de potència",
-"Convertir corrent continu en corrent altern"
-],
-[
-"Què succeeix amb un <b>SCR</b> un cop ha estat disparat i el corrent d'ànode es manté per sobre del corrent de manteniment ($I_H$), encara que desaparegui el senyal de porta ($I_G$)?",
-"Es bloqueja immediatament, passant a l'estat OFF",
-"Continua en conducció (ON) de manera indefinida",
-"Oscil·la entre l'estat ON i OFF a una freqüència de 50 Hz",
-"Redueix progressivament el corrent fins a extingir-se"
-],
-[
-"Per què el <b>Triac</b> es considera un dispositiu de velocitat de commutació baixa?",
-"Perquè la seva freqüència de treball típica és de 50/60 Hz i el límit màxim se situa al voltant dels 400 Hz",
-"Perquè necessita un pols negatiu a la porta per bloquejar-se",
-"Perquè el seu temps de resposta és de mil·lisegons a causa de l'enclavament",
-"Perquè no pot suportar variacions sobtades de temperatura"
-]
+
+
+
+
 
 ];
 
