@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=../img/favicon.png>
+    <meta charset="UTF-8">
+    
+    <style>
+
+    li.preg {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5em;
+        text-align: justify;
+        text-justify: inter-word;
+
+    }
+    p, li{
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    </style>
+</head>
+
+<script>
+window.texme = {
+    renderOnLoad: false,
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+<script src="js/texme/texme.js"></script>
+
+<textarea id="enunciat">
+~~~
+&nbsp;
+    Permutació: [[p2]]
+&nbsp;
+~~~
+
+Puntuació: 50%
+
+## Normes:
+
+- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
+  Pots utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/)
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Està terminantment prohibit copiar o mirar al company.
+- No es poden fer preguntes. Part de l'avaluació és la comprensió del
+  text. Si hi ha algun error es parlarà una vegada l'examen hagi
+  finalitzat, i en el seu cas s'anul·larà la pregunta.
+- L'examen dura el que indiqui la tasca associada i **es tanca
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
+
+## Com fer aquest examen:
+
+- Agafa paper
+- **Escriu la permutació al paper!!**
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis copia les respostes sense espais i tot seguit, al camp
+  «resposta», si no la saps n. Per exemple: abnaac
+- Omple el teu nom i clica a avaluar.
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
+- Adjunta-la com a tasca.
+- Fotografia el paper utilitzat (la fotografia és per a tu, per a
+  poder revisar l'examen si ho necessitessis).
+- Entrega els papers utilitzats.
+
+## Preguntes
+
+[[p1]]
+
+## Resposta
+
+[[i1]]
+</textarea>
+
+<script>
+
+const titol = "Recuperació UT06 i UT07";
+const puntuacions = ["", 10];
+
+let p01 = "";
+const preguntes = 
+[
+[
+"Segons el que s'ha vist al mòdul, quina és la funció principal del regulador de càrrega en una instal·lació solar aïllada?",
+"Convertir el corrent continu de les bateries en corrent altern per als consums.",
+"Gestionar la càrrega i descàrrega de les bateries, protegint-les contra sobrecàrregues i descàrregues profundes.",
+"Transformar la radiació solar en electricitat en corrent continu.",
+"Injectar l'excedent d'energia a la xarxa de distribució elèctrica."
+],
+[
+"Quina és la ràtio habitual entre la potència pic del generador (kWp) i la potència nominal de l'inversor (kWn) en una instal·lació connectada a xarxa?",
+"0,8 - 1,0.",
+"1,5 - 1,8.",
+"2,0 - 2,5.",
+"1,1 - 1,3."
+],
+[
+"Segons la ITC-BT-40, quina és la condició per a la connexió d'un generador fotovoltaic a una xarxa de distribució de baixa tensió respecte a un centre de transformació?",
+"La potència total connectada no pot superar el 75% de la potència nominal del transformador.",
+"La potència total connectada no pot superar el 50% de la potència nominal del transformador.",
+"La potència total connectada no pot superar el 25% de la potència nominal del transformador.",
+"No hi ha cap limitació percentual, només la capacitat tècnica de la línia."
+],
+[
+"Quin tipus de cable és l'específicament recomanat per al costat de corrent continu en una instal·lació fotovoltaica per la seva resistència a la intempèrie i als raigs UV?",
+"Cable tipus RZ1-K.",
+"Cable tipus H07V-K.",
+"Cable <i>solar</i> o fotovoltaic, tipus ZZ-F (AS).",
+"Cable tipus RV-K."
+],
+[
+"Quin límit màxim de distorsió harmònica total de corrent (THDi) estableix la normativa (UNE-EN 61727) per a la injecció d'un inversor a la xarxa?",
+"Inferior al 10%.",
+"Inferior al 8%.",
+"Inferior al 5%.",
+"Inferior al 3%."
+],
+[
+"Quina protecció s'utilitza específicament contra contactes indirectes en el quadre de corrent altern d'una instal·lació fotovoltaica, i de quin tipus ha de ser?",
+"Un interruptor magnetotèrmic de tipus C.",
+"Un interruptor diferencial de tipus A o B.",
+"Uns fusibles seccionables de corrent continu.",
+"Un seccionador de tall en càrrega."
+],
+[
+"En una instal·lació aïllada, quin paràmetre és clau per dimensionar la capacitat nominal d'una bateria de plom-àcid, a banda del consum i els dies d'autonomia?",
+"La tensió màxima del generador (Voc).",
+"La profunditat de descàrrega màxima (DoD<sub>max</sub>) recomanada.",
+"La distorsió harmònica total (THD).",
+"El factor de potència de l'inversor."
+],
+[
+"Quina fórmula s'utilitza per calcular l'energia anual generada per una instal·lació fotovoltaica connectada a xarxa (<i>E<sub>anual</sub></i>)?",
+"<i>E<sub>anual</sub></i> = <i>P<sub>pic</sub></i> · HSP<sub>anuals</sub> · PR.",
+"<i>E<sub>anual</sub></i> = <i>V<sub>oc</sub></i> · <i>I<sub>sc</sub></i> · PR.",
+"<i>E<sub>anual</sub></i> = <i>P<sub>nom</sub></i> · hores de sol · 0,5.",
+"<i>E<sub>anual</sub></i> = (<i>V<sub>mpp</sub></i> · <i>I<sub>mpp</sub></i>) / HSP."
+],
+[
+"Quin material és l'habitual per a les estructures de suport en cobertes planes que no requereix perforar la impermeabilització?",
+"Fonaments de formigó armat.",
+"Perfils d'acer galvanitzat clavats a la biga.",
+"Alumini anoditzat amb sistema de llast (contrapesos).",
+"Fusta tractada amb sistema de subjecció adhesiu."
+],
+[
+"Els inversors connectats a xarxa (<i>on-grid</i>) han d'incorporar una funció de seguretat crítica. Quina és?",
+"Funció de càrrega ràpida de bateries ( <i>boost</i> ).",
+"Funció de seguiment solar a dos eixos.",
+"Protecció anti-illa (detecció de pèrdua de xarxa).",
+"Funció de regulació PWM per a la bateria."
+],
+[
+"Quina és la principal diferència entre un regulador de càrrega PWM i un MPPT?",
+"El PWM pot treballar amb tensions de generador molt superiors a les de la bateria, mentre que l'MPPT no.",
+"L'MPPT converteix la tensió i el corrent per extreure la màxima potència del generador, mentre que el PWM la connecta directament a la bateria.",
+"El PWM és molt més eficient que l'MPPT en condicions de baixa radiació.",
+"L'MPPT només serveix per a sistemes de 12V, mentre que el PWM funciona a qualsevol tensió."
+],
+[
+"En quin esquema de connexió del neutre i les masses, obligatori a Espanya per a xarxes públiques de BT, les masses de la instal·lació es connecten a una presa de terra independent de la del neutre del transformador?",
+"Esquema TN-S.",
+"Esquema TN-C.",
+"Esquema IT.",
+"Esquema TT."
+],
+[
+"Quina eina de simulació es sol utilitzar com a font oficial de referència a Europa per obtenir dades de radiació solar i estimar la producció fotovoltaica?",
+"PVSyst.",
+"SketchUp amb plugins solars.",
+"PVGIS (<i>Photovoltaic Geographical Information System</i>).",
+"AutoCAD Electrical."
+],
+[
+"Per a una instal·lació fotovoltaica aïllada, quina és la <i>precaució</i> fonamental que cal prendre amb les bateries de plom-àcid obertes durant la seva operació?",
+"Mantenir-les sempre en un recinte hermètic per evitar fuites d'àcid.",
+"Carregar-les únicament a temperatures superiors a 30 °C per maximitzar la reacció química.",
+"Disposar d'una ventilació adequada per evitar l'acumulació d'hidrogen, que és explosiu.",
+"Connectar-les sempre directament a la xarxa sense regulador per igualar tensions."
+],
+[
+"Què significa el paràmetre LVD (<i>Low Voltage Disconnect</i>) en la configuració d'un regulador de càrrega o inversor aïllat?",
+"La tensió màxima que pot suportar l'entrada de l'inversor.",
+"La tensió a la qual el regulador desconnecta el consum per evitar una descàrrega profunda de la bateria.",
+"El nivell de tensió de la xarxa que activa la protecció anti-illa.",
+"La caiguda de tensió màxima permesa en els cables de corrent continu."
+],
+[
+"En una instal·lació d'autoconsum connectada a xarxa <b>amb excedents acollits a compensació</b>, quin sistema de mesura és obligatori?",
+"Un únic comptador bidireccional al punt frontera (de la xarxa).",
+"Dos comptadors independents (un de consum i un de producció).",
+"Només el comptador de consum existent amb un dispositiu antiabocament.",
+"Un comptador d'energia reactiva exclusivament."
+],
+[
+"Quina condició han de complir els cables de connexió en el costat de corrent continu d'una instal·lació fotovoltaica de baixa tensió?",
+"Han de ser de secció circular i amb aïllament de politetrafluoroetilè (PTFE).",
+"Han de ser del tipus <i>solar</i>, amb aïllament resistent als raigs UV i a temperatures extremes.",
+"Han de ser de coure estanyat i amb un sol cabdell per evitar pèrdues per efecte pel·lícular.",
+"Han de ser obligatòriament unipolars i amb pantalla electromagnètica."
+],
+[
+"Els sistemes de seguiment solar a dos eixos proporcionen un increment de producció respecte a una estructura fixa òptima d'aproximadament:",
+"Un 10% - 15%.",
+"Un 20% - 30%.",
+"Un 35% - 40%.",
+"Més d'un 50%."
+],
+[
+"Què és el <i>Performance Ratio</i> (PR) en una instal·lació fotovoltaica?",
+"La relació entre la potència nominal de l'inversor i la potència pic del generador.",
+"L'eficiència màxima del mòdul fotovoltaic en condicions STC.",
+"La relació entre l'energia realment injectada o consumida i l'energia teòrica que podria produir el generador.",
+"El coeficient de pèrdues per brutícia dels panells solars."
+],
+[
+"Quina és la tensió límit de seguretat que estableix el REBT per a locals humits, que condiciona la resistència màxima de terra quan es fan servir diferencials de 30 mA?",
+"50 V.",
+"24 V.",
+"12 V.",
+"110 V."
+]
+];
+
+
+let permutacio = "";
+const num_preg = preguntes.length;
+const num_resp = preguntes[0].length-1;
+const fact_np = factorial(num_preg);
+const fact_nr = factorial(num_resp);
+/*let ordre_preg = Math.floor(aleat(0, fact_np - 1)/1e16)*/;
+let ordre_preg = aleat(0, fact_np - 1);
+
+console.log(ordre_preg)
+permutacio += ordre_preg + "_";
+//ordre_preg *= 1e16;
+
+const preg_ordenades = obtenirPermutacio(preguntes, ordre_preg);
+
+for (let i = 0; i < num_preg; i++){
+    p01 += '<p><b>' + (i+1) + '.</b> ' + preg_ordenades[i][0] + '</p>';
+    let ordre_resp = aleat (0, fact_nr - 1);
+    permutacio += ordre_resp + ".";
+
+    let resp = obtenirPermutacio(preg_ordenades[i].slice(1), ordre_resp);
+    p01 += '<ol style="list-style-type: none;">'
+    for (let j = 0; j < num_resp; j++){
+        p01 += '<li class="preg"><span><i>' + nombreALletra(j+1) +
+               '</i>) </span><span style="flex: 1;">' +
+               resp[j] + "</span></li>"
+    }
+    p01 += "</ol>"
+}
+
+p02 = permutacio;
+
+
+
+
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+// !!! CONVERTIR si és necessari les unitats a les unitats que requereix
+// el nostre enunciat.
+
+function estableixParametres(){
+    array = [
+      p01, p02
+    ];
+    parametres = parametres.concat(array);  // no tocar aquesta línia
+}
+
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+}
+
+
+
+
+
+// # D. ENTRENADOR SERVERI ============================================
+
+
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS Técnic Superior en sistemes electrotècnics i automatitzats",
+    anys: "2025/2026"
+}
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+
+
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="text" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 300px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    respostes[0] = document.getElementById("i1").value
+    alumne.nom = document.getElementById("nom").value;
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol +
+           "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) serà qualificat manualment.",
+    "",
+    ].join("\n") + "\n";
+    txt += txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    patro = "[[i1]]";
+    canvi = "~~~\n    " + respostes[0] + "\n\n\n~~~";
+
+    txt = txt.replace(patro, canvi);
+
+    return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function factorial(n) {
+    return n <= 1 ? 1 : n * factorial(n - 1);
+}
+
+// Funció per obtenir la permutació d'un índex específic
+function obtenirPermutacio(array, index) {
+    let permutacio = [];
+    let elements = array.slice(); // Copia de l'array per a evitar
+                                  // modificar l'original
+    let n = elements.length;
+
+    // Calcular la permutació utilitzant factorials
+    for (let i = 0; i < n; i++) {
+        let fact = factorial(n - i - 1);
+        let posicio = Math.floor(index / fact);
+        permutacio.push(elements[posicio]);
+        elements.splice(posicio, 1);
+        index %= fact;
+    }
+
+    return permutacio;
+}
+
+function permutacions(array) {
+
+    let resultat = [];
+
+    // Funció recursiva per a generar les permutacions
+    function generarPermutacions(actual, resta) {
+        if (resta.length === 0) {
+            resultat.push(actual);
+        } else {
+            for (let i = 0; i < resta.length; i++) {
+                let actualNova = actual.concat(resta[i]);
+                let restaNova = resta.slice(0, i).concat(resta.slice(i + 1));
+                generarPermutacions(actualNova, restaNova);
+            }
+        }
+    }
+
+    generarPermutacions([], array);
+    return resultat;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+</script>

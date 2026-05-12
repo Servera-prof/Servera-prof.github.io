@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<textarea id="enunciat">
+
+Recuperació UT06 i UT07 (part 02)
+=================================
+
+### Recorda capturar la pantalla amb [screencapture](https://screencapture.com)
+
+Cada tasca val 1 punt excepte a on s'indiqui. La puntuació
+de l'exercici serà la suma dels punts obtinguts dividit pel total
+de punts multiplicat per deu 
+
+> $$ \dfrac {\sum\limits_{i=1}^n P_i}{\sum\limits_{i=1}^n Z_i} \cdot 10 $$
+> A on:
+> - $ n $ és el total de tasques
+> - $ P_i $ és la puntuació obtinguda a la tasca i-èssima
+> - $ Z_i $ és la puntuació màxima de la tasca i-èssima
+
+**Percentatge 50%**
+
+0. (_0 punts_) Obri un google docs o un Libre Office Writer a on aniras contestant aquestes preguntes.
+
+1. (_0,5 punts_) Descarrega't la 
+[fitxa tècnica](docs/Canadian_Solar-Datasheet-HiKu_CS3W-MS_EN.pdf)
+dels mòduls que instal·laràs. Identifica la potència pic del mòdul de menys potència, el voltatge i la tensió que tindria el mòdul quan s'uneix el pol positiu amb el negatiu en STC.
+
+2. (_0,5 punts_) Situa la localització d'una instal·lació a el Lagar (Asturies). Ajuda't de les coordenades que apareixen al camp «cursor» a dalt i a la esquerra de la part de les dades de PVGIS. Busca les coordenades 43,170, -5,703. Posa la potència pic corresponent a 12 mòduls del model d'abans (amb tecnologia FV de silici cristalí de 2025).
+- Fes una captura de pantalla d'aquesta configuració
+
+3. (_1,5 punt_) Atès que és una parcela amb terreny, optimitza la inclinació i azimut. No obstant, una vegada optimitzada, canvia la inclinació per millorar la producció a l'hivern.
+
+- Adjunta una captura de pantalla dels dos resultats
+- Indica l'angle d'inclinació òptim calculat i l'azimut calculat. 
+- Indica l'angle d'inclinació modificat.
+- Quina és la producció anual abans i després del canvi?
+- Tan abans com després del canvi quina és la producció al mes més productiu? i menys productiu? (indica mes i producció).
+
+4. (_1,5 punts_) Compara la instal·lació amb una instal·lació en configuració delta. Es a dir, la meitat dels panells amb orientació Est i inclinació 15° i l'altra meitat orientació oest i la mateixa inclinació.
+
+- Adjunta una captura de pantalla del resultat (hauras de fer dues simulacións)
+- Quina és la producció anual? (la suma de les dues simulacions)
+- Quina és la producció al més mes productiu? i menys productiu? (indica mes i producció). Pensa que és la suma de les dues produccions.
+- Per què creus que pot tenir interès aquesta configuració?
+
+5. (_1 punts_) Per respondre aquesta pregunta pots utilitzar els apunts de servera-prof i el reglament. Descarregat la
+[fitxa tècnica](docs/SUN2000-2-6KTL-L1.pdf) de l'inversor.
+Per l'inversor SUN2000-2KTL-L1, tinguent en compte que la potència és tant petita que per $I_{max}$ qualsevol secció aniria bé. Però, si que s'ha de comprovar per cdt.
+
+- Quina seria per tant la secció per la caiguda de tensió màxima (en AC monofàsica que apareix als apunts), suposant un conductor de 20 m H07V-K, encastat a paret?
+
+
+**Entrega** 
+
+- el document amb les respostes
+- l'screencapture
+   
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: 'js/marked/marked.min.js',
+    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
