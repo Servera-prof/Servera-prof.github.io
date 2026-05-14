@@ -1,12 +1,10 @@
-
 <!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
 <!DOCTYPE html>
 <head>
     <title id="titol"></title>
-    <link rel="icon" type="image/x-icon" href=../.../img/favicon.png>
+    <link rel="icon" type="image/x-icon" href=../../img/favicon.png>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
 </head>
 
 <script>
@@ -47,7 +45,7 @@ Introdueix aquí la teva resposta: <br/>
 
 
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Comprovador de l'examen UT06, UT07 i UT08 - Part 01";
+const titol = "Comprovador de nota de l'examen UT04 - DTIE";
 const puntuacions = ["",
 ];
 
@@ -60,122 +58,45 @@ let txtav = "";
 let pts = 0;
 let ptsTotals = 0;
 
-const preguntes = 
+const preguntes = [
 [
-[
-"Quina definició encaixa millor amb la de components passius",
-"Són components pels quals passa (passius) corrent, com les resistències.",
-"Són aquells que no interactuen amb el circuit",
-"No existeixen el elements passius, nomes els lineals i els no lineals",
-"Són aquells que realitzen la seva funció per la seva propia naturalesa física"
-],
-[
-'Què té més resistència un element fet d\'alumini curt i estret o un element llarg i ample?',
-"Un element llarg i gruixut",
-"Un element curti i estret",
-"No es pot saber",
-"Marca aquesta si no pots marcar cap de les altres"
-],
-[
-"Quina d'aquestes especificacions tècniques (segons el que hem estudiat a classe) NO donen els fabricants?",
-"Valor nominal",
-"Valor eficaç",
-"Potència nominal",
-"Soroll elèctric"
-],
-[
-"Quins valor de resistència mesuraré entre les bornes d'una resistència variable de 10 kΩ?",
-"Entre 0,7 kΩ (valor llindar) i 9,93 kΩ (degut al propi consum de la resistècia)",
-"Entre 0 Ω i 10 kΩ",
-"A partir de 10 kΩ fins a la tolerància de la resistència",
-"Marca aquesta si no pots contestar qualsevol altra"
-],
-[
-"Dels termistors estudiats, a quins disminueix la resistència quan augmenta la temperatura",
-"Els NTC",
-"Els PTC",
-"Els VDR",
-"Les LDR"
+"Amb quin format es probable que estigui guardat un plànol de planta fet amb autoCAD, un esquema unifilar fet per un programa de càlcul, un plànol de l'Institut geogràfic nacional (IGN)?",
+"DWG, DXF, DGN respectivament.",
+"DXF, DWG, DGN respectivament.",
+"DGN, DXF, DXF respectivament.",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
 
-
-
-
-
 [
-"Quin condensador té més capacitat?",
-"Un amb baixa permitivitat (ε)",
-"Un amb elevada permitivitat (ε)",
-"Un amb plaques llunyanes entre sí",
-"Un amb plaques de petita superfície"
+"Quina superficie té un DIN A2",
+"1 m² aproximadament",
+"0,5 m² aproximadament",
+"0,25 m² aproximadament",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
+
 [
-"Com es comporta una reactància a corrent continu",
-"Com un curtcircuit",
-"Com un circuit obert",
-"Com un filtre",
-"Com un amplificador"
+"Què és l'extensió d'un arxiu?",
+"Els caràcters que van despres del darrer punt del nom de l'arxiu i que indiquen quin tipus d'arxiu és (.pdf o .html, per exemple)",
+"La mida d'un arxiu.",
+"La longitud (una vegada convertit a text de l'arxiu).",
+"Marca aquesta si no pots marcar cap de les altres.",
 ],
+
 [
-"Quina és la freqüencia de resonància de un filtre RLC en paral·lel i un filtre RLC en serie",
-"Respectivament: $f_r=\\dfrac{1}{2\\pi\\sqrt{LC}}$ i $f_r=\\dfrac{\\sqrt{LC}}{2\\pi}$",
-"Respectivament: $f_r=\\dfrac{\\sqrt{LC}}{2\\pi}$ i $f_r=\\dfrac{1}{2\\pi\\sqrt{LC}}$",
-"$f_r=\\dfrac{\\sqrt{LC}}{2\\pi}$ ambdúes.",
-"$V_1 \\cdot V_2 = N_1 + N_2$"
-],
-[
-"A quina par es connécta el càtode d'un díode?",
-"A la regió P",
-"A la regió N",
-"A la unió P-N",
-"Marca aquesta si no pots marcar cap de les altres"
-],
-[
-"Com es diu la tensió mínima per a que el diode comenci a conduir",
-"Tensió llindar",
-"Tensió de ruptura",
-"Tensió d'allau",
+"Un arxiu BD3, és...",
+"... un format de dibuix compatible amb programari vectorial com AutoCAD",
+"... un format d'intercanvi per a bases de dades de pressupostos (com Presto o Arquímedes).",
+"... un arxiu multimedia per a imatges sense pèrdua de qualitat",
 "Marca aquesta si no pots marcar cap de les altres"
 ],
 
-
-
-
-
 [
-"Quants de díodes en necessiten per un rectificador de mitja ona i per un d'ona completa",
-"Respectivament: 1 i 4",
-"Respectivament: 4 i 1",
-"Respectivament: 2 i 5",
-"Respectivament: 5 i 2"
-],
-[
-"Quin díode pot funcionar tant en polarització directa com inversa",
-"El díode BJT",
-"El díode Zenner",
-"El diode d'Schottky",
-"El díode FET"
-],
-[
-"Un BJT amb β de 100, quina corrent circularà pel col·lector si a la base li arriben 11,02 μA i el BJT troba a la zona activa?",
-"1,102 mA",
-"11,02 mA",
-"11020 μA",
-"1102 pA"
-],
-[
-"Quina configuració és millor per a etapes d'entrada",
-"Emisor comú",
-"Colector comú",
-"Basé comú",
-"Alimentació comú"
-],
-[
-"Quines zones de treball utilitzem del transistor per fer portes NAND",
-"Zona Activa i Tall",
-"Zona Tall i Saturació",
-"Zona Saturació i Activa",
-"Marca aquesta si no pots marcar cap de les altres"
+"Quin format utilitzaries si vols crear una plec de condicions editable amb compatibilitat amb element complexos (com nombre de pàgina automàtic o títols) i amb neutralitat tecnològica (de cara a la seva llegibilitat futura sense dependre de llicències de tercers)?",
+"ODT",
+"TXT",
+"DOCX",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
 
 
@@ -183,50 +104,55 @@ const preguntes =
 
 
 
+
+
+
+
+
 [
-'A què correspon aquesta simulació? <br/><img src="../img/UT08_exam01_02.png">',
-"Configuració reductora (<i>Buck</i>).",
-"Configuració elevadora (<i>Boost</i>).",
-"Configuració de pont complet.",
-"Configuració de filtre passiu pur."
+"Anomena dos programes amb els que es poden fer pressuposts separats per preus unitaris, descompost, pressupost i amidaments",
+"Arquímedes i Libre Office Calc",
+"Excel i Presto",
+"Hi ha més de una resposta vàlida",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
+
 [
-'A què correspon aquest esquema? <br/><img src="../img/UT08_exam01_01.png">',
-"Font lineal.",
-"Font commutada.",
-"Pont de Graetz.",
-"Rectificador d'ona completa."
+"La nostra empresa té una responsabilitat civil envers a l'obra que estem executant de 10 anys, quin format de PDF és el més recomanable per a guardar el projecte?",
+"PDF/A",
+"PDF/X",
+"PDF amb formulari",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
+
 [
-"Quin tipus de <b>filtre passiu</b> deixa passar un rang estret de freqüències al voltant de $f_r$ i atenua la resta?",
-"Filtre passa-baixes (<i>low-pass</i>).",
-"Filtre passa-altes (<i>high-pass</i>).",
-"Filtre passa-banda (<i>band-pass</i>) ",
-"Filtre rebutja-banda (<i>notch</i>)."
+"Com es diu la màquina que hi ha a l'aula C009, per imprimir plànols de gran format?",
+"Impresora d'injecció (<i>inkjet</i> en anglès)",
+"Serigrafiadora de paper tèrmic",
+"Traçador (<i>plotter</i> en anglès)",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
+
 [
-"Com s'anomena el fenomen on un díode en <b>polarització inversa</b> pateix un augment brusc de corrent en arribar a una determinada tensió crítica?",
-"Efecte Joule.",
-"Ruptura (<i>breakdown</i>).",
-"Saturació elèctrica.",
-"Barrera de potencial."
+"Què és el guillotinat?",
+"Un tall recte per donar el format definitiu a la pàgina",
+"L'encuadernament d'un document",
+"Hi ha més de una resposta vàlida",
+"Marca aquesta si no pots marcar cap de les altres",
 ],
+
 [
-"Quin dispositiu semiconductor és un component <b>bidireccional</b> que s'utilitza habitualment per al control de potència en corrent altern?",
-"Díode rectificador.",
-"Transistor BJT.",
-"TRIAC.",
-"Díode Zener."
-],
+"Quin tipus d'encuadernació coneixes?",
+"Grapat, espiral i tèrmica",
+"Plastificat i acartonat",
+"Tipus magazine i tipus booklet",
+"Marca aquesta si no pots marcar cap de les altres",
+]
 ];
 
-
 const solucions_test = [
-
-4, 3, 2, 2, 1, 
-2, 1, 0, 2, 1,  
-1, 2, 1, 1, 2,
-2, 2, 3, 2, 3
+ 1, 3, 1, 2, 1,
+ 3, 1, 3, 1, 1
 
 ];
 const opcions_test = [1, 2, 3, 4];
@@ -283,7 +209,7 @@ function calcula(){
             color = "gray";
             txtav += '\n\n<div>\n'+
              '<p><b>' + (i+1) + '.</b> ' + preg + '</p>' +
-             '<img src=".../img/anul·lada.png" alt="segell"/>\n' +
+             '<img src="img/anul·lada.png" alt="segell"/>\n' +
              '<div class="bgtxt">\n'
         }else{
             txtav += "<p><b>" + (i+1) + '.</b> ' + preg + '</p>';
@@ -335,8 +261,8 @@ let solucions = [""];   // els valors que ha donat el programa.
 let respostes = [""];   // els valors que ha donat l'alumne.
 let alumne = {
     nom: "",
-    cicle: "CFGS Técnic Superior en Energies Renovables",
-    anys: "2024/2025"
+    cicle: "CFGS Técnic Superior en sistemes electrotècnics i automatitzats",
+    anys: "2025/2026"
 }
 let tlog = "";          // log que apareix al final de l'avaluació.
 
@@ -480,7 +406,59 @@ function puntua(txt){
         " punts de " + xs(ptsTotals, 2) + " possibles.\n>\n>" +
         "**Nota final: " + xs(ptsAlumne/ptsTotals*10, 2) + "**");
 
+    /*
+    let ptsAlumne = 0, ptsTotal = 0;
+    let canvi = "", patro = "";
+    let a = 0, b = 0;
+    for (let i = 1; i < puntuacions.length; i++){
+        a = respostes[i];
+        b = solucions[i];
+        ptsTotal += puntuacions[i];
+        canvi =
+            '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">'
+            + coma(a) + '</span>';
+        if ((b*0.99) < a && a < (b*1.01)) {
+            ptsAlumne += puntuacions[i];
+            canvi +=
+                ' <span style="color: green">(' +
+                coma(b) +') OK (+' + puntuacions[i] + ')</span>';
+        }else{
+            canvi +=
+                ' <span style="color: red;"> (' +
+                coma(b) +')</span>';
+        }
+        patro = "[[i" + i + "]]";
+
+        txt = txt.replace(patro, canvi);
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    */
     return txt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
 }
 
 function factorial(n) {
@@ -527,18 +505,93 @@ function permutacions(array) {
     return resultat;
 }
 
-function nombreALletra(nombre) {
-    const ascii = 97; // Código ASCII de 'a'
-    if (nombre >= 1 && nombre <= 26) {
-        // Convertir el número en el carácter correspondiente usando el código ASCII
-        return String.fromCharCode(ascii + nombre - 1);
-    } else {
-        return null; // Retornar null si el número está fuera de rango
-    }
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
 }
 
-function lletraANombre(lletra){
-    return lletra.toLowerCase().charCodeAt(0) - 96;
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function ln(a){
+    return Math.log(a);
+}
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar (φ en graus)
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a){  // log abreviat a l totsol
+    if (!a.toPrecision) return a;
+    return coma(xs(a));
+}
+
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
 }
 
 function xs(a, b = 4){
@@ -555,4 +608,25 @@ function coma(a){
 function cl(a){ // coma per a latex
     return coma(a).replaceAll(",", "{,}");
 }
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+
+function nombreALletra(nombre) {
+    const ascii = 97; // Código ASCII de 'a'
+    if (nombre >= 1 && nombre <= 26) {
+        // Convertir el número en el carácter correspondiente usando el código ASCII
+        return String.fromCharCode(ascii + nombre - 1);
+    } else {
+        return null; // Retornar null si el número está fuera de rango
+    }
+}
+
+function lletraANombre(lletra){
+    return lletra.toLowerCase().charCodeAt(0) - 96;
+}
+
 </script>

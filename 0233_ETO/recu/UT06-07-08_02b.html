@@ -8,33 +8,27 @@
 </head>
 <textarea id="enunciat">
 
-**NOTA IMPORTANT:** 
-Si es fa directament el problema 3 s'obtenen tots els punts
-No obstant, l'alumne també pot optar per fer tots els problemes per 
-anar assegurant punts.
+**1. (_0,5 punts_)** Comprova la següent imatge. Quin és el valor nominal del condensador?
 
-**Problema 1.** (_1 punts_)
+> <canvas id="c1" width="100" height="120" style="border:3px solid grey; display:block; margin:auto"></canvas>
 
-Fes un rectificador d'ona completa. La font haurà de tenir:
-- Una amplitud de [[p1]] V
-- Una freqüència de [[p2]] Hz
-- Un desfase de continua (_DC offset_) de 0  
+[[i1]] nF
 
-Col·loca un oscil·loscopi a la càrrega. Assegurat que cada divisió 
-correspon a mig període.
+-----
 
-**Problema 2.** (_1 punt_)
+**2. (_1 punt_)** Comprova la següent imatge:
 
-Fes un divisor de tensió **al mateix TinkerCAD** amb una font de 
-[[p3]] V, que a la sortida doni 5 V.
+> <canvas id="c2" width="450" height="210" style="border:3px solid grey; display:block; margin:auto"></canvas>
 
-**Problema 3** (_1 punt_) Connecta ambdós sistemes. 
-Es a dir, a la sortida del pont de díodes conectar el divisor de tensió.
-A la càrrega del divisor de tensió pots colocar un LED i una resistència
-d'1 kΩ. Si el LED no s'encen no s'obtenen els punts.
+1. (_0,33 punts_) Quin és el valor nominal de la resistència?
 
-_Si és fa el problema 3 sense passar pels dos anteriors també s'obtenen
-els 3 punts._
+[[i2]] Ω
+
+2. (_0,67 punts_) Entre quins valors es trobarà segons la tolerància?
+
+- Mínim [[i3]] Ω
+- Màxim [[i4]] Ω
+
 </textarea>
 <!-- FI ENUNCIAT ================================================== -->
 
@@ -59,39 +53,210 @@ window.texme = {
 
 <script>
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Recuperació UT06, UT07 i UT08 - Part 03";
-const puntuacions = ["",];
+const titol = "Recuperació UT06, UT07 i UT08 - Part 02";
+const puntuacions = ["", 0.5, 0.33334, 0.33333, 0.33333];
 const π = 3.141592654;
 
 
 
 // # 2. PARÀMETRES ====================================================
 
+const tc = aleat (0, 1);            // tipo de codificació
+const pe = ["p", "n", "μ", "m"];    // prefixe d'escala
+const ipe = aleat (0, 3);           // index prefixe escala
+const m10 = aleat (0, 1);           // la mantisa o valor menor que 10 
+const m1 = aleat(0, 9);             // mantissa 1
+const m2 = aleat(0, 9);             // mantissa 2
+const e = aleat (0, 9);             // exponent
 
-const v = aleat (5, 10);
-const f = aleat(50, 100);
-const v1 = aleat(10, 20);
-const v2 = aleat(1, 9);
+const b1 = aleat(0, 9);     // banda 1
+const b2 = aleat(0, 9);     // banda 2 ...
+const b3 = aleat(0, 9);
+const b4 = aleat(0, 1);
+const bcolor = ["black", "brown", "red", "orange", "yellow", "green",
+                "blue", "purple", "grey", "white", "gold", "silver"];
+const bcolor_cat = ["negre", "marró", "vermell", "taronja", "groc", 
+                    "verd", "blau", "lila", "gris", "blanc", "daurat", 
+                    "platejat"];
+
+
+
+// # 3. VARIABLES GLOBALS =============================================
+
+let canvas;
+let ctx;                            // context
+let color;
+let color2;
+let gruix;
+
+
 
 
 
 // ## 2.2 FUNCIO (actualitzar) ----------------------------------------
 function estableixParametres(){
-    p = [v, f, v];
+    p = [];
     parametres = parametres.concat(p);
 }
 
+function dibuixaCanvas(){
+    canvas = document.getElementById("c1");
+    ctx = canvas.getContext("2d");
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "black";
+    color = "brown";
+    color2 = "khaki"
+    tancat = true;
+    omple = true;
+    vores = true;
+    gruix = 1;
+    alt_text = 10;
+    tip_text = "sans";
+    
+
+    circ (30, [50, 50]);
+    gruix = 2;
+    tancat = false;
+    omple = false;
+    pl([20, 100,    20, 80,   29,  71]);
+    pl([71,  71,    80, 80,   80, 100]);
+    
+    let codi = codifica_condensador();
+    ctx.fillStyle = "black";
+    ctx.font = "16px mono";
+    ctx.fillText(codi, 36, 56);
 
 
+// --------
+    
+    canvas = document.getElementById("c2");
+    ctx = canvas.getContext("2d");
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "black";
+    color = "black";
+    color2 = "khaki"
+    tancat = true;
+    omple = true;
+    vores = true;
+    gruix = 1;
+    alt_text = 10;
+    tip_text = "sans";
+    
+    pl([ 50, 100,   100, 100]);
+    pl([ 50, 105,   100, 105]);
+    pl([350, 100,   400, 100]);
+    pl([350, 105,   400, 105]);
+    
+    pl([100,  80,    110,  70,    140,  70,    150,  80,   300,  80,   
+        310,  70,    340,  70,    350,  80,    350, 125,   340, 135,
+        310, 135,    310, 135,    300, 125,    150, 125,   140, 135,
+        110, 135,    100, 125,    100,  80]);
+    
+    color2 = bcolor[b1];
+    rect([120, 71,   130, 134]);
+    text_vert(ctx, bcolor_cat[b1], [120, 65]);
+    color2 = bcolor[b2];
+    rect([150, 81,   160, 124]);
+    text_vert(ctx, bcolor_cat[b2], [150, 75]);
+    color2 = bcolor[b3];
+    rect([180, 81,   190, 124]);
+    text_vert(ctx, bcolor_cat[b3], [180, 75]);
+    color2 = bcolor[b4+10];
+    rect([320, 71,   330, 134]);
+    text_vert(ctx, bcolor_cat[b4+10], [320, 65]);
+    
+    ctx.fillStyle = "black";
+    ctx.font = "10px mono";
+    ctx.fillText("Serbus corporation", 205, 107);
+
+}
+
+function text_vert(ctx, txt, pto){
+    ctx.save();
+    ctx.fillStyle = "black";
+    ctx.font = "10px mono";
+    ctx.translate(pto[0]+7, pto[1]); 
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText(txt, 0, 0);
+    ctx.restore(); // Restaura l'estat original
+}
+
+function pl (vector){
+    a = gruix/2;
+    ctx.beginPath();
+    ctx.moveTo(vector[0]+a, vector[1]+a);
+
+    for (let i = 1; i < (vector.length/2); i++) {
+        const x = vector[i*2]+a;
+        const y = vector[i*2+1]+a;
+        ctx.lineTo(x, y);
+    }
+    if (tancat) ctx.closePath();
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color2;
+    ctx.lineWidth = gruix;
+    if (vores) ctx.stroke();
+    if (omple) ctx.fill();
+}
+
+function rect (vector){
+    a = gruix/2;
+    ctx.beginPath();
+    ctx.rect(vector[0]+a, vector[1]+a, 
+             vector[2]-vector [0], vector[3] - vector[1]);
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color2;
+    ctx.fill();
+}
+
+function circ (r, c){
+
+    ctx.beginPath();
+    
+    ctx.arc(c[0], c[1], r, 0, 2*Math.PI);
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color2;
+    ctx.lineWidth = gruix;
+    if (vores) ctx.stroke();
+    if (omple) ctx.fill();
+    ctx.stroke();
+}
+
+function codifica_condensador(){
+    let t;
+    if (tc == 0 && m10 == 0) t = "" + m1 + pe[ipe] + m2;
+    else if (tc == 0 && m10 == 1) t = "" + m1 + m2 + pe[ipe];
+    else t = "" + m1 + m2 + e;
+    return t;
+        
+}
 
 
 // # 3. CALCULS =======================================================
 
 // ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
 function calcula(){
+    let c;
+    if (tc == 0 && m10 == 0) c = (m1 + m2*0.1) * 10**(ipe*3);
+    else if (tc == 0 && m10 == 1) c = (m1*10 + m2) * 10**(ipe*3);
+    else c = (m1*10 + m2) * 10**e;
+    c = c/1e3;
+    s01 = c;
+    
+    
+    r = (b1*10+b2) * 10**b3;
+    a = (b4+1) * 0.05;
+    rmin = r * (1-a);
+    rmax = r * (1+a); 
+
+    s02 = r;
+    s03 = rmin;
+    s04 = rmax;
 
 solucions = [""].concat([
-    
+    s01, s02, s03, s04
 ]);
 
 
@@ -209,6 +374,7 @@ function avalua(){
 
 function importaRespostes(){
     let r = [""];
+    debugger;
     alumne.nom = document.getElementById("nom").value;
     for (let i = 1; i < puntuacions.length; i++){
         a = document.getElementById("i"+i);

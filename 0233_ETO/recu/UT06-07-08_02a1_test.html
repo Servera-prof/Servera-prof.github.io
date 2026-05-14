@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title id="titol"></title>
-    <link rel="icon" type="image/x-icon" href=../../img/favicon.png>
+    <link rel="icon" type="image/x-icon" href=../.../img/favicon.png>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../css/main.css" />
 </head>
@@ -33,8 +33,15 @@ window.texme = {
 
 ## Normes:
 
+- S'ha de **registrar el que es fa a la pantalla COMPLETA**, pots 
+  utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/)
+- No s'ha d'activar micròfon, webcam ni so.
 - No es poden utilitzar apunts. Tret que l'enunciat ho indiqui en alguna 
   part.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir dues pestanyes obertes (la de l'examen i la de 
+  l'_screen capture_).
 - Està terminantment prohibit copiar.
 - Per assegurar l'anterior punt i altres, les dues mans han d'estar 
   permanentment visibles i no es pot mirar a cap altre lloc que no sia a
@@ -42,8 +49,8 @@ window.texme = {
 - No es poden fer preguntes. Part de l'avaluació és la comprensió del
   text. Si hi ha algun error es parlarà una vegada l'examen hagi
   finalitzat, i en el seu cas s'anul·larà la pregunta.
-- L'examen dura el que indiqui la tasca associada. 
-  ENTREGUEU-HO ABANS o serà un zero.
+- L'examen dura el que indiqui la tasca associada i **es tanca
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
 - Qualsevol incompliment serà sancionat amb un zero. No hi haurà
   advertència previa, es comunicará a l'alumne que hi ha hagut un 
   incompliment normatiu i no se li avaluarà l'examen, inclús si 
@@ -52,10 +59,28 @@ window.texme = {
   1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
   ni resten.
 
+## Com fer aquest examen:
+
+- Agafa paper
+- **Escriu la permutació al paper!!**
+- **Escriu les respostes al paper**.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis copia les respostes sense espais i tot seguit, al camp
+  «resposta», si no la saps n. Per exemple: abnaac
+- Omple el teu nom i clica a avaluar.
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
+- Adjunta-la com a tasca.
+- Fotografia el paper utilitzat (la fotografia és per a tu, per a
+  poder revisar l'examen si ho necessitessis).
+- Entrega els papers utilitzats.
+
 ## Preguntes
 
 [[p1]]
 
+## Resposta
+
+[[i1]]
 
 
 
@@ -73,7 +98,7 @@ window.texme = {
 
 
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Recuperació UT06, UT07 i UT08 - Part 01";
+const titol = "Recuperació de gràcia UT06, UT07 i UT08 - Part 01";
 const puntuacions = ["", 10];
 
 
@@ -367,7 +392,7 @@ function crearInputs(txt){
 }
 
 function crearIdentificacio(txt){
-/*txt += `
+txt += `
 <h2>Identificació de l'alumne</h2>
 
 <form id="avalua" onsubmit="event.preventDefault() & avalua()">
@@ -388,7 +413,7 @@ function crearIdentificacio(txt){
         </button>
     </div>
 </form>
-`;*/ return txt;
+`; return txt;
 }
 
 function avalua(){
