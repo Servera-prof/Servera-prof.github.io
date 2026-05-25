@@ -1,43 +1,20 @@
-<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
 <!DOCTYPE html>
 <head>
     <title id="titol"></title>
-    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="icon" type="image/x-icon" href=../../img/favicon.png>
     <meta charset="UTF-8">
-
-    <style>
-
-    li.preg {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.5em;
-        text-align: justify;
-        text-justify: inter-word;
-
-    }
-    p, li{
-        text-align: justify;
-        text-justify: inter-word;
-    }
-    img[alt="segell"]{
-        position: absolute;
-        z-index: 2;
-    }
-    .bgtxt{
-        position: relative;
-        z-index: 1;
-    }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
 </head>
 
 <script>
 window.texme = {
     renderOnLoad: false,
-    markdownURL: 'js/marked/marked.min.js',
-    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
+    style: 'none',
+    markdownURL: '../../js/marked/marked.min.js',
+    MathJaxURL: '../../js/mathjax/es5/tex-mml-chtml.js'
 }
 </script>
-<script src="js/texme/texme.js"></script>
+<script src="../../js/texme/texme.js"></script>
 
 <!-- FI NO TOCAR ================================================== -->
 
@@ -67,7 +44,7 @@ Introdueix aquí la teva resposta: <br/>
 
 
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Comprovador de nota de la recuperació UT02 - DTIE";
+const titol = "Comprovador de nota de la recuperació UT07 - DTIE";
 const puntuacions = ["",
 ];
 
@@ -82,100 +59,80 @@ let ptsTotals = 0;
 
 const preguntes = [
 [
-'Observa la imatge i respon</br><img src="img/recu_UT02_03.png"></br>Què signifiquen els números assenyalats?',
-"Són identificadors de conductors de mateix potencial",
-"Són identificadors únics de conductors",
-"Són l'ordre de connexió dels conductors a l'embornat",
-"Marca aquesta si no pots marcar cap de les altres",
+"En relació amb la implantació d’un <b>pla d’emergència</b>, quin és el risc principal de no realitzar simulacres periòdics?",
+"La manca de documentació legal",
+"La desactualització dels equips de protecció",
+"La ineficàcia operativa del pla en situacions reals",
+"L’increment dels costos de manteniment"
 ],
-
 [
-'Observa la imatge i respon</br><img src="img/exam_UT02_02.png"></br>Què signifiquen els números assenyalats?',
-"Que el contacte auxiliar NO 34-33 del KM1 es troba a la pàgina 2 columna 6",
-"Que el contacte auxiliar NO 34-33 està a 2.6 cm a l'esquerra",
-"Que el contacte auxiliar 2.6 està connectat als conductors 34 i 33",
-"Marca aquesta si no pots marcar cap de les altres",
+"Quina condició és imprescindible perquè un empresari pugui assumir personalment l’activitat preventiva segons la normativa?",
+"Que l’empresa tingui menys de 50 treballadors",
+"Que disposi d’un servei de prevenció extern contractat",
+"Que treballi habitualment a l’empresa i tingui la formació requerida",
+"Que delegui les funcions en un encarregat"
 ],
-
 [
-'Observa la imatge i respon</br><img src="img/exam_UT02_03.png"></br>Què signifiquen els números assenyalats?',
-"Que la fase W2 connecta als conductors 5, 6, 7, 8, amb conductors de 1r, 2n, 3r, i 4t ordre del motor M2",
-"Que la màniga W2 composta pels conductors 1, 2, 3, i 4 connecten a les bornes 5, 6, 7, 8 del borner X1 respectivament i als bornes U<sub>1</sub>, V<sub>1</sub>, W<sub>1</sub> i PE del motor M2 respectivament.",
-"Que la màniga X1 composta pels conductors 5, 6, 7, i 8 connecten a les bornes 1, 2, 3, 4 del borner W2 respectivament i als bornes U<sub>1</sub>, V<sub>1</sub>, W<sub>1</sub> i PE del motor M2 respectivament.",
-"Marca aquesta si no pots marcar cap de les altres",
+"En un sistema de protecció contra incendis, quin dels següents elements combina detecció i actuació automàtica?",
+"Extintor portàtil",
+"Boca d’incendi equipada (BIE)",
+"Sistema de ruixadors automàtics (<i>sprinklers</i>)",
+"Senyalització de salvament"
 ],
-
 [
-'Observa la imatge i respon</br><img src="img/recu_UT02_01.png"></br>Quina diferència hi ha entre la imatge de l\'esquerra i la de la dreta?',
-"La de l'esquerra és multifilar, la de la dreta és unifilar",
-"Cap, son dues maneres de indicar que el diferencial es tetrapolar",
-"Una és el sistema de 1733, i l'altra de 2007",
-"Marca aquesta si no pots marcar cap de les altres"
+"Quin requisit ha de complir un sistema d’alarma en entorns amb treballadors amb discapacitat auditiva?",
+"Augmentar la intensitat sonora",
+"Eliminar els senyals acústics",
+"Incorporar senyals lluminosos complementaris",
+"Reduir la freqüència d’activació"
 ],
-
 [
-'Observa la imatge i respon</br><img src="img/exam_UT02_05.png"></br>Què volen dir aquests símbols?',
-"Llum de sostre, interruptor simple, commutador i creuament de dalt a baix",
-"Aplic de paret, interruptor simple, commutador i creuament de dalt a baix",
-"Doble creauament, commutador, interruptor simple i creuament de dalt a baix",
-"Marca aquesta si no pots marcar cap de les altres",
+"En el marc del <b>RD 1627/1997</b>, quin és el paper de l’Estudi de Seguretat i Salut respecte al Pla de Seguretat i Salut?",
+"El Pla substitueix completament l’Estudi",
+"L’Estudi és opcional si hi ha Pla",
+"L’Estudi serveix de base perquè el contractista elabori el Pla",
+"Ambdós documents són independents i no relacionats"
 ],
-
-
-
-
-
-
-
-
-
-
-
 [
-'Observa la imatge i respon</br><img src="img/recu_UT02_04.png"></br>Quin es l\'ordre de preferència d\'aquests estils de cota?',
-"a, b, c, d",
-"d, c, a, b",
-"c, b, a, d",
-"Marca aquesta si no pots marcar cap de les altres",
+"Quina és la implicació pràctica d’un valor de resistència d’aïllament inferior a 1 MΩ en una instal·lació nova?",
+"És acceptable si supera 0,1 MΩ",
+"Indica un possible defecte que requereix investigació immediata",
+"No té importància si la instal·lació funciona",
+"Només afecta a circuits trifàsics"
 ],
-
 [
-"Quina és l'altura mínima del text si tenen majúscules i <b>minúscules</b>?",
-"1 mm",
-"2,5 mm",
-"3,5 mm",
-"Marca aquesta si no pots marcar cap de les altres",
+"En el control de qualitat d’execució, què implica un <b>Punt d’Inspecció (PPI)</b>?",
+"Una revisió final única de la instal·lació",
+"Un control opcional segons el tècnic",
+"Una verificació planificada amb criteris definits durant el procés",
+"Un registre econòmic del projecte"
 ],
-
 [
-"Quants de punts de dobleg té un DIN A3?",
-"0 (no es doblega)",
-"1",
-"2",
-"Marca aquesta si no pots marcar cap de les altres",
+"Quin és l’avantatge principal d’integrar sistemes ISO 9001, ISO 14001 i ISO 45001 en una mateixa organització?",
+"Reduir el nombre de treballadors",
+"Eliminar la necessitat d’auditories",
+"Gestionar de forma coordinada qualitat, medi ambient i seguretat",
+"Substituir la legislació nacional"
 ],
-
 [
-"Quina és una escala apropiada per a representar una centralització de comptador? I una habitació",
-"CC → 1:10 o 1:20, Habitació → 1:50",
-"CC → 10:1 o 20:1, Habitació → 50:1",
-"CC → 1:100, Habitació → 1:500",
-"CC → 100:1, Habitació → 500:1",
+"En un <b>manual de servei</b>, per què són crítics els plànols <i>as-built</i>?",
+"Per justificar el pressupost final",
+"Per reflectir exactament la instal·lació executada per a futures intervencions",
+"Per complir requisits estètics",
+"Per substituir els esquemes elèctrics"
 ],
-
 [
-'Observa la imatge i respon</br><img src="img/exam_UT02_07.png"></br>Que representa aquest símbol?',
-"Una bola de drac",
-"Un instrument indicador (subsituint * per V és un voltímetre, per A es un amperímetre, etc.",
-"Un receptor aïllat",
-"Marca aquesta si no pots marcar cap de les altres",
+"En l’anàlisi d’històrics de manteniment, quin indicador permet avaluar la fiabilitat d’un equip?",
+"Cost total acumulat",
+"Temps Mitjà de Reparació (MTTR)",
+"Temps Mitjà entre Fallades (MTBF)",
+"Nombre de tècnics assignats"
 ]
 ];
 
 const solucions_test = [
- 1, 1, 2, 2, 4,
- 4, 3, 3, 1, 2
-
+3, 3, 3, 3, 3, 
+2, 3, 3, 2, 3
 ];
 const opcions_test = [1, 2, 3, 4];
 
