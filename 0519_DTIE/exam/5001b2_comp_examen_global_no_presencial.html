@@ -45,7 +45,7 @@ Introdueix aquí la teva resposta: <br/>
 
 
 // # 1. CONSTANTS (actualitzar) ---------------------------------------
-const titol = "Comprovador de nota de l'examen UT04 - DTIE";
+const titol = "Comprovador de nota de l'examen UT07 - DTIE";
 const puntuacions = ["",
 ];
 
@@ -59,6 +59,89 @@ let pts = 0;
 let ptsTotals = 0;
 
 const preguntes = [
+[
+"Quan s’utilitza l’avantprojecte per a la tramitació administrativa?",
+"Només després de l’execució de l’obra",
+"Quan es vol obtenir autorització prèvia abans del projecte tècnic",
+"Quan el pressupost està aprovat",
+"Quan es disposa del projecte executiu complet",
+],
+
+[
+"Quin d’aquests apartats forma part del contingut mínim d’un <b>projecte</b> segons la normativa vigent?",
+"Memòria, plànols, plec de condicions, estudi de seguretat i salut i pressupost",
+"Memòria, plànols, plec de condicions i pressupost",
+"Memòria, plànols, plec de condicions, estudi de seguretat i salut, estudi d'impacte mediambiental i pressupost",
+"Memòria, plànols i pressupost"
+],
+
+[
+"En quins projectes és <b>obligatori</b> incloure un calendari d’execució?",
+"En tots els projectes privats",
+"En projectes públics que superin els 750.000€",
+"En cap cas, és opcional",
+"Només en projectes públics",
+],
+
+[
+"Per què és important l’apartat <b>«Anàlisi de solucions»</b> dins la memòria?",
+"Perquè permet comparar opcions i justificar la solució escollida",
+"Perquè permet comparar diferents pressuposts",
+"Perquè serveix per registrar l’autorització administrativa, ja que es obligatori en el RITE i en general a totes les normatives tècniques",
+"Perquè estableix els terminis legals",
+],
+[
+"Quin tipus d’informació s’ha d’evitar incloure dins la memòria del projecte?",
+"Fragments sencers de reglaments o textos legals sense adaptar",
+"Definicions tècniques i abreviatures",
+"Referències bibliogràfiques",
+"El programari utilitzat en els càlculs",
+],
+
+
+
+
+
+[
+"Quina escala és més adequada per a un <b>detall constructiu</b> en un projecte elèctric?",
+"1:1000",
+"1:100",
+"1:20",
+"1:2000",
+],
+[
+'Observa la imatge i respon</br><img src="../img/exam_UT02_01.png"></br>Què signifiquen els números assenyalats?',
+"Són identificadors de conductors de mateix potencial",
+"Són identificadors únics de conductors",
+"Són l'ordre de connexió dels conductors a l'embornat",
+"Marca aquesta si no pots marcar cap de les altres",
+],
+[
+'Observa la imatge i respon</br><img src="../img/exam_UT02_02.png"></br>Què signifiquen els números assenyalats?',
+"Que el contacte auxiliar NO 34-33 del KM1 es troba a la pàgina 2 columna 6",
+"Que el contacte auxiliar NO 34-33 està a 2.6 cm a l'esquerra",
+"Que el contacte auxiliar 2.6 està connectat als conductors 34 i 33",
+"Marca aquesta si no pots marcar cap de les altres",
+],
+[
+'Observa la imatge i respon</br><img src="../img/exam_UT02_03.png"></br>Què signifiquen els números assenyalats?',
+"Que la fase W2 connecta als conductors 5, 6, 7, 8, amb conductors de 1r, 2n, 3r, i 4t ordre del motor M2",
+"Que la màniga W2 composta pels conductors 1, 2, 3, i 4 connecten a les bornes 5, 6, 7, 8 del borner X1 respectivament i als bornes U<sub>1</sub>, V<sub>1</sub>, W<sub>1</sub> i PE del motor M2 respectivament.",
+"Que la màniga X1 composta pels conductors 5, 6, 7, i 8 connecten a les bornes 1, 2, 3, 4 del borner W2 respectivament i als bornes U<sub>1</sub>, V<sub>1</sub>, W<sub>1</sub> i PE del motor M2 respectivament.",
+"Marca aquesta si no pots marcar cap de les altres",
+],
+[
+'Observa la imatge i respon</br><img src="../img/exam_UT02_06.png"></br>Quin es l\'ordre de preferència d\'aquests estils de cota?',
+"a, b, c1, c2",
+"c2, c1, a, b",
+"c1, b, a, c2",
+"Marca aquesta si no pots marcar cap de les altres",
+],
+
+
+
+
+
 [
 "Amb quin format es probable que estigui guardat un plànol de planta fet amb autoCAD, un esquema unifilar fet per un programa de càlcul, un plànol de l'Institut geogràfic nacional (IGN)?",
 "DWG, DXF, DGN respectivament.",
@@ -74,15 +157,6 @@ const preguntes = [
 "0,25 m² aproximadament",
 "Marca aquesta si no pots marcar cap de les altres",
 ],
-
-[
-"Què és l'extensió d'un arxiu?",
-"Els caràcters que van despres del darrer punt del nom de l'arxiu i que indiquen quin tipus d'arxiu és (.pdf o .html, per exemple)",
-"La mida d'un arxiu.",
-"La longitud (una vegada convertit a text de l'arxiu).",
-"Marca aquesta si no pots marcar cap de les altres.",
-],
-
 [
 "Un arxiu BD3, és...",
 "... un format de dibuix compatible amb programari vectorial com AutoCAD",
@@ -98,33 +172,6 @@ const preguntes = [
 "DOCX",
 "Marca aquesta si no pots marcar cap de les altres",
 ],
-
-
-
-
-
-
-
-
-
-
-
-[
-"Anomena dos programes amb els que es poden fer pressuposts separats per preus unitaris, descompost, pressupost i amidaments",
-"Arquímedes i Libre Office Calc",
-"Excel i Presto",
-"Hi ha més de una resposta vàlida",
-"Marca aquesta si no pots marcar cap de les altres",
-],
-
-[
-"La nostra empresa té una responsabilitat civil envers a l'obra que estem executant de 10 anys, quin format de PDF és el més recomanable per a guardar el projecte?",
-"PDF/A",
-"PDF/X",
-"PDF amb formulari",
-"Marca aquesta si no pots marcar cap de les altres",
-],
-
 [
 "Com es diu la màquina que hi ha a l'aula C001, per imprimir plànols de gran format?",
 "Impresora d'injecció (<i>inkjet</i> en anglès)",
@@ -133,27 +180,59 @@ const preguntes = [
 "Marca aquesta si no pots marcar cap de les altres",
 ],
 
-[
-"Què és el guillotinat?",
-"Un tall recte per donar el format definitiu a la pàgina",
-"L'encuadernament d'un document",
-"Hi ha més de una resposta vàlida",
-"Marca aquesta si no pots marcar cap de les altres",
-],
+
+
+
 
 [
-"Quin tipus d'encuadernació coneixes?",
-"Grapat, espiral i tèrmica",
-"Plastificat i acartonat",
-"Tipus magazine i tipus booklet",
-"Marca aquesta si no pots marcar cap de les altres",
+"Quina combinació és correcta per a una senyalització d’<b>advertència</b> segons normativa?",
+"Forma rodona, fons blau, símbol blanc",
+"Forma triangular, fons groc, vora negra",
+"Forma quadrada, fons verd, símbol blanc",
+"Forma rectangular, fons vermell, símbol negre"
+],
+[
+"Quina de les següents afirmacions descriu millor la diferència entre un <b>Pla d’Autoprotecció (PAU)</b> i unes mesures d’emergència simplificades?",
+"El PAU només s’aplica en edificis públics i les mesures simplificades en privats",
+"El PAU requereix una estructura organitzativa i anàlisi de riscos detallada, mentre que les mesures simplificades no",
+"Les mesures simplificades inclouen més protocols que el PAU",
+"El PAU no contempla plans d’evacuació"
+],
+[
+"Quin criteri obliga a redactar un <b>Estudi de Seguretat i Salut complet</b> en lloc d’un EBSS?",
+"Qualsevol obra amb més de 10 treballadors",
+"Pressupost inferior a 100.000 €",
+"Superar els 500 dies de treball acumulats",
+"Durada inferior a 15 dies"
+],
+[
+"Quina és la diferència principal entre un <b>Estudi d’Impacte Ambiental (EIA)</b> i un Pla de Gestió Mediambiental (PGA)?",
+"L’EIA només s’aplica a petites instal·lacions",
+"El PGA és previ i l’EIA posterior",
+"L’EIA avalua la viabilitat ambiental i el PGA defineix la gestió durant l’execució",
+"Ambdós tenen exactament la mateixa funció"
+],
+[
+'Observa la imatge i respon</br><img src="../img/exam_UT50_01.png"></br>Què fa aquesta fórmula d\'un full de càlcul?',
+"Calcula la intensitat màxima a partir de la fórmula $I_{max} = \\dfrac {P}{U \\cdot \\cos \\varphi}$",
+"Calcula la caiguda de tensió a partir de la fórmula $e = \\dfrac {I_{max} \\cdot L}{\\gamma \\cdot S \\cdot \\cos \\varphi}$",
+"Compara el valor de la $I_{max}$ si és correcte torna la cel·la R5, si és incorrecte torna el valor 0",
+"Fa una cerca a una taula per trobar el valor de la $I_{max}$"
+],
+[
+'Observa la imatge i respon</br><img src="../img/exam_UT50_02.png"></br>Què fa aquesta fórmula d\'un full de càlcul?',
+"Cap de les altres respostes és certa.",
+"Fa una comparativa entre la columna H i G, des de la fila 106 a 109. Si la diferencia és igual a 1 els suma i si no, no. ",
+"Fa una suma entre els elements de H i G, des de la fila 106 a 109, sempre que el total sigui igual a 1.",
+"Fa una suma de de les cel·les  de G106 a G109 d'aquells valors en els quals a la columna H de la mateixa fila hi ha un 1"
 ]
 ];
 
 const solucions_test = [
- 1, 3, 1, 2, 1,
- 3, 1, 3, 1, 1
-
+ 2, 2, 4, 1, 1,
+ 3, 2, 1, 2, 3,
+ 1, 3, 2, 1, 3,
+ 2, 2, 3, 4, 4
 ];
 const opcions_test = [1, 2, 3, 4];
 
