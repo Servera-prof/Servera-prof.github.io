@@ -154,12 +154,32 @@ Es tenen:
 - 1 local monofàsics
 - 1 servei comuns
 
-Com que és un edifici de 5 plantes, no s'ha de posar més
-de una centralització. Per tant, és necessita un mòdul que tingui
-8 comptadors monofàsics i 3 trifàsics i  a part dos mòduls de 12 i 8
-comptadors monofàsics.
-Per altra banda, com que el nombre de comptadors supera els 16,
+Com que el nombre de comptadors supera els 16,
 no es pot utilitzar armari, i s'ha d'anar a local.
+En un edifici de 5 plantes, no s'ha de posar més d'una centralització.
+Per instal·lacions a local l'NRZ103 exigeix una reserva d'espai del 25%.
+
+Per tant, sense reserva és necessitaria: 
+- 1 modul amb 8 comptadors monofàsics i 3 trifàsics (1x3TE+8ME)
+- i mòduls de 12 i 8 comptadors monofàsics. (1x12ME+8ME)
+
+Això són:
+- 3 trifàsics
+- 28 monofàsics
+
+No queda espai de reserva, si calculem 25 % de
+- 29 monofàsics són 8 extres (37 monofàsics → 40 ME)
+- i de 2 trifàsics és 1 extra. (3 trifàsics → 3 TE)
+
+Per tant, amb reserva és necessitaria: 
+- 1 modul amb 8 comptadors monofàsics i 3 trifàsics (1x3TE+8ME)
+- i dos mòduls de 12 i un de 8 comptadors monofàsics. (2x12ME+8ME)
+
+Resultant:
+- 3TE
+- 8 + 2x12 + 8 = 40ME 
+
+Per tant es pot aprofit 
 
 > **Nota:** Els espais reservats a comptadors trifàsics
 > poden ser utilitzats per monofàsic atès que tenen les dimensions
@@ -167,13 +187,14 @@ no es pot utilitzar armari, i s'ha d'anar a local.
 > el proveïdor i e-distribucion de si hi ha algun impediment que
 > no conegui i valorar la resposta rebuda.
 
-El model PNZ-8ME+3TE amb dos PNZ-12ME compleixen els requeriments. 
+El model PNZ-8ME+3TE amb dos PNZ-12ME i un PNZ8ME compleixen els 
+requeriments. 
 Per altra banda és important recordar que la centralització ha de 
 guardar espai per la unitat funcional de protecció de sobretensions.
 
 Per tant la CC en si té:
 
-- Ample: $315 + 315 + 630 + 630 + 630 = 2520 \text{mm}$ 
+- Ample: $315 + 315 + 630 + 630 + 630 + 630 = 3150 \text{mm}$ 
 - Alt: $\text{MAX}[1485, 1620, 720, 360] = 1620 \text{mm}$
 
 L'NRZ103 demana (per a locals):
@@ -188,14 +209,14 @@ Pel que fa a les mides mínimes el local farà 1500 x 1500 i 2300 d'alt.
 Així, les mides necessàries per a que l'aparellatge càpiga són:
 
 - Alt: $1620+200+250 = 2070 ~\text{mm}$
-- Ample: $2520+200+200 = 2920 ~\text{mm}$ 
+- Ample: $3150+200+200 = 3550 ~\text{mm}$ 
 - Fondària $200 + 1100 = 1300 ~\text{mm}$ mm
 
 Per tant excepte l'ample, la resta és inferior a les mides mínimes.
 Per aquest motiu el local ha de tenir un:
 
 - Alt: 2300 mm
-- Ample: 2920 mm
+- Ample: 3550 mm
 - Fondària: 1500 mm
 
 > **Nota:** Es poden utilitzar altres configuracions, per exemple

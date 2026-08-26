@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+
+
+<textarea id="enunciat">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+</textarea>
+
+
+
+<script>
+const titol = "Test";
+
+
+
+const test_original = [
+// AND
+[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_01.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_02.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = a \\cdot b$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+['A quina porta llògica correspon la funció següent taula de la veritat?' +
+ '<table class="preguntes"><thead>'+
+    '<tr><td>a</td><td>b</td><td>f</td></tr>'+
+  '</thead><tbody>'+
+    '<tr><td>0</td><td>0</td><td>0</td></tr>'+
+    '<tr><td>0</td><td>1</td><td>0</td></tr>'+
+    '<tr><td>1</td><td>0</td><td>0</td></tr>'+
+    '<tr><td>1</td><td>1</td><td>1</td></tr>'+
+ '</tbody></table>',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+
+
+
+
+// OR
+[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_03.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_04.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = a + b$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+['A quina porta llògica correspon la funció següent taula de la veritat?' +
+ '<table class="preguntes"><thead>'+
+    '<tr><td>a</td><td>b</td><td>f</td></tr>'+
+  '</thead><tbody>'+
+    '<tr><td>0</td><td>0</td><td>0</td></tr>'+
+    '<tr><td>0</td><td>1</td><td>1</td></tr>'+
+    '<tr><td>1</td><td>0</td><td>1</td></tr>'+
+    '<tr><td>1</td><td>1</td><td>1</td></tr>'+
+ '</tbody></table>',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+
+
+
+
+// NOT
+[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_05.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_05.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_05.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_05.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_05.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_06.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+
+
+
+
+
+
+// XOR
+[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_07.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_08.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = a \\oplus b$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+['A quina porta llògica correspon la funció següent taula de la veritat?' +
+ '<table class="preguntes"><thead>'+
+    '<tr><td>a</td><td>b</td><td>f</td></tr>'+
+  '</thead><tbody>'+
+    '<tr><td>0</td><td>0</td><td>0</td></tr>'+
+    '<tr><td>0</td><td>1</td><td>1</td></tr>'+
+    '<tr><td>1</td><td>0</td><td>1</td></tr>'+
+    '<tr><td>1</td><td>1</td><td>0</td></tr>'+
+ '</tbody></table>',
+'AND',
+'OR',
+'NOT'
+],
+
+
+// NAND i NOR
+[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_09.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_010.png">',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],[
+'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+[
+'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],[
+'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+['A quina porta llògica correspon la funció següent taula de la veritat?' +
+ '<table class="preguntes"><thead>'+
+    '<tr><td>a</td><td>b</td><td>f</td></tr>'+
+  '</thead><tbody>'+
+    '<tr><td>0</td><td>0</td><td>1</td></tr>'+
+    '<tr><td>0</td><td>1</td><td>0</td></tr>'+
+    '<tr><td>1</td><td>0</td><td>0</td></tr>'+
+    '<tr><td>1</td><td>1</td><td>0</td></tr>'+
+ '</tbody></table>',
+'AND',
+'OR',
+'NOT',
+'XOR',
+'NAND',
+'NOR',
+],
+
+];
+
+</script>
+<script src="config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="test.js"></script>
+

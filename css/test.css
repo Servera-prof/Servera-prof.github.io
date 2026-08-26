@@ -1,16 +1,21 @@
 p, ol, ul, li{
     text-align: justify;
     text-justify: inter-word;
+    font-family:  "Liberation Sans", "Arial", sans-serif;
 }
 
-li.preg {
+ol.test{
+    list-style-type: none;
+}
+
+li.test{
     display: flex;
     align-items: flex-start;
     gap: 0.5em;
     text-align: justify;
     text-justify: inter-word;
-
 }
+
 
 img[alt="segell"]{
     position: absolute;
@@ -20,16 +25,229 @@ img[alt="segell"]{
     position: relative;
     z-index: 1;
 }
+textarea {
+    width: 80ch;
+    height: 48ch;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
 
+    font-family: monospace;
+    font-size: 12px;
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    resize: none;
+    outline: none;
 }
 
-input[type=number] {
-  -moz-appearance: textfield;
+/* ~~~~~ TAULA DE RESPOSTES CIENTÍFICA I COMPACTA (#table_resp) ~~~~~ */
+#table_resp {
+  width: auto; /* Deixa d'ocupar el 100% per defecte, s'ajusta al contingut */
+  min-width: 450px; /* Evita que es comprimeixi massa */
+  margin: 25px auto;
+  border-collapse: collapse; /* Estil científic pur: línies simples col·lapsades */
+  font-family: "Liberation Sans", "Arial", sans-serif;
+  font-size: 0.9rem; /* Text una mica més compacte i acadèmic */
+  color: #1a1a1a;
+  background-color: transparent; /* Eliminem fons de capsa i vores arrodonides modernetes */
+  box-shadow: none; /* Eliminem l'ombra web per passar a format paper/article */
+  
+  /* Línies horitzontals mestres de tancament (Estil Booktabs) */
+  border-top: 2px solid #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+/* Estil de les cel·les (Més compactes) */
+#table_resp td {
+  padding: 5px 12px; /* Reduït a la meitat per fer-la molt més compacta */
+  border-bottom: 1px solid #e2e8f0; /* Línia de separació interna molt subtil */
+  vertical-align: middle;
+}
+
+/* Columna del número de pregunta (Sòbria i integrada) */
+#table_resp td:first-child {
+  width: 40px;
+  text-align: center;
+  font-weight: 600;
+  color: #9e2050; /* El teu color corporatiu manté la identitat formal */
+  background-color: transparent; /* Eliminem el fons gris per fer-ho homogeni */
+  border-right: 1px solid #1a1a1a; /* Única línia vertical per separar el recompte de les dades */
+}
+
+/* Files alternes (Eliminem l'efecte zebra gruixut per a màxima sobrietat) */
+#table_resp tr:nth-child(even) {
+  background-color: #fbfcfd; /* Gairebé imperceptible, només com a guia visual */
+}
+
+/* Efecte hover de la fila (Molt discret per a entorn web) */
+#table_resp tr:hover {
+  background-color: #fdf2f4; /* El matís suau del teu color */
+}
+
+/* Contenidor de les opcions (Més juntes i netes) */
+#table_resp label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 6px; /* Més juntes per estalviar espai horitzontal */
+  cursor: pointer;
+  padding: 2px 6px; /* Reduït per estilitzar la selecció */
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  font-weight: 500;
+  color: #334155;
+}
+
+/* Hover de l'opció / lletra */
+#table_resp label:hover {
+  background-color: #f9e9ef;
+  color: #9e2050;
+}
+
+/* Botons de ràdio integrats i corporis */
+#table_resp input[type="radio"] {
+  margin-right: 4px;
+  cursor: pointer;
+  accent-color: #9e2050; /* El cercle actiu s'omple amb el teu color */
+  transform: scale(1.05); /* Mida estàndard, sense sobredimensionar */
+}
+
+/* Ressaltat especial per a l'opció "no sap / no contesta" */
+#table_resp label:last-child {
+  color: #94a3b8;
+  font-size: 0.85em;
+  font-style: italic; /* Cursiva acadèmica per a l'excepció */
+  border-left: 1px dashed #cbd5e1; /* Separador discret */
+  padding-left: 10px;
+  margin-left: 6px;
+}
+
+#table_resp label:last-child:hover {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+/* Estil de taula de revista científica (Estil Booktabs / APA) */
+table.preguntes {
+  width: auto; /* Les taules científiques solen ocupar només l'espai necessari */
+  min-width: 250px; /* Evita que quedi excessivament comprimida */
+  margin: 30px 37px; /* Centrada i amb espai al voltant */
+  border-collapse: collapse;
+  font-family: "Liberation Sans", "Arial", sans-serif;
+  font-size: 0.95rem;
+  color: #1a1a1a; /* Text fosc per a màxima llegibilitat */
+}
+
+/* Capçalera de la taula */
+table.preguntes thead tr {
+  /* Línia superior de la taula (grossor mitjà) */
+  border-top: 2px solid #1a1a1a; 
+  /* Línia inferior de la capçalera (més fina) */
+  border-bottom: 1px solid #1a1a1a; 
+}
+
+table.preguntes thead td {
+  font-weight: 600;
+  text-transform: italic; /* Sovint les variables (a, b, f) es posen en cursiva */
+  font-style: italic;
+  color: #9e2050; /* Un subtil toc del teu color corporatiu a les variables */
+  padding: 8px 16px;
+  text-align: center; /* Alineació centrada, típica per a dades curtes/números */
+}
+
+/* Cos de la taula (Dades) */
+table.preguntes tbody td {
+  padding: 6px 16px;
+  text-align: center;
+  font-variant-numeric: tabular-nums; /* Força que els números s'alineïn perfectament */
+}
+
+/* Línia de tancament de la taula (A l'última fila del revister) */
+table.preguntes tbody tr:last-child {
+  border-bottom: 2px solid #1a1a1a;
+}
+
+/* OPCIONAL: Un efecte hover extremadament subtil per a entorns web,
+   sense trencar la serietat de l'article */
+table.preguntes tbody tr:hover {
+  background-color: #fcf6f8; /* Un matís gairebé imperceptible del teu color */
+}
+
+/* Estil de figura per a revista científica */
+img.preguntes {
+  display: block;
+  max-width: 100%; /* S'adapta a l'amplada de l'article sense deformar-se */
+  height: auto;
+  margin: 24px 37px; /* Espaiat generós a dalt i a baix, i centrada horitzontalment */
+}
+
+.academic-form {
+  margin: 20px auto;
+}
+
+/* Cada bloc d'etiqueta + input */
+.form-group {
+  display: flex;
+  flex-direction: row; /* L'etiqueta a dalt, l'input a sota */
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.form-group label {
+  width: 180px;        /* Força que totes les etiquetes ocupin exactament el mateix espai */
+  flex-shrink: 0;      /* Evita que el navegador encongeixi el text si falta espai */
+}
+
+.form-actions {
+  text-align: center;
+}
+
+.academic-form button {
+  padding: 5px 20px;
+  font-size: 20px; 
+  color: #AA5050;
+}
+
+
+
+
+
+.fons{
+    display: none;
+}
+
+@media print {
+    button {
+        display: none; /* Amaga tots els botons al PDF */
+    }
+    
+    /* 1. Eliminem els marges per defecte del foli/PDF */
+    @page {
+        margin: 0;
+    }
+
+    /* 2. Com que hem tret els marges del paper, el teu contingut ara tocaria el tall.
+     Li donem un marge al body perquè el text no quedi enganxat a les vores. */
+    body {
+        margin: 5cm 1.5cm 1.5cm 1.5cm; 
+    }
+
+    .fons {
+        display: block;      /* Fem que apareguin */
+        position: fixed;     /* Es posicionen respecte a la pàgina de paper, no del main */
+        z-index: -1;         /* Queden completament darrere del text */
+        pointer-events: none;
+    }
+
+    /* Cantonada superior dreta de la pàgina */
+    .fons.top {
+        top: 0;
+        right: 0;
+    }
+
+    /* Cantonada inferior esquerra de la pàgina */
+    .fons.down {
+        bottom: 0;
+        left: 0;
+    }
 }
 
 /* ~~~~~ IMG ~~~~~ */
@@ -87,7 +305,7 @@ main {
   margin-left: auto;
   margin-right: auto;
 }
-h1, h2, h3, h4, h5, h6, h7 {
+h1, h2, h3, h4, h5, h6 {
   margin: 1em 0 0.5em 0;
   line-height: 1.2;
 }
@@ -118,14 +336,7 @@ blockquote :first-child {
 blockquote :last-child {
   margin-bottom: 0;
 }
-table {
-  border-collapse: collapse;
-}
-th, td {
-  border: thin solid #999;
-  padding: 0.3em 0.4em;
-  text-align: left;
-}
+
 
 @media screen and (min-width: 40em) {
   body {
