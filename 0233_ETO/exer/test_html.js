@@ -191,11 +191,44 @@ function actualitza_nom(){
     document.getElementById("t_fi_span").innerHTML = data_local();
 }
 
-function avalua(){
+/*function avalua(){
     actualitza_nom();
     const dades = importaRespostes();
     resetejar();
     renderAvaluacio(dades);
+}*/
+
+function avalua() {
+    actualitza_nom(); // Assegura capturar les dades actuals
+    const dades = importaRespostes(); // Recull l'objecte amb nom, resp, t_ini, t_fi i perm[cite: 4, 6]
+    
+    // Desactivem el botó per evitar que l'alumne hi torni a clicar mentre s'envia
+    const boto = document.getElementById("boto");
+    if (boto) {
+        boto.disabled = true;
+        boto.innerText = "Enviant dades...";
+    }
+
+    // Enviem de forma asíncrona a Google Sheets
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors", // Recomanat per evitar bloquejos de CORS des de dominis locals amb Apps Script
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dades)
+    })
+    .then(() => {
+        console.log("Dades enviades correctament a Google Sheets.");
+    })
+    .catch(err => {
+        console.error("Error en l'enviament de dades:", err);
+    })
+    .finally(() => {
+        // Un cop fet el fetch (hagi anat bé o malament), fem el canvi de pantalla visual original
+        resetejar(); // Neteja la pantalla[cite: 4, 6]
+        renderAvaluacio(dades); // Mostra el justificant[cite: 4, 6]
+    });
 }
 
 function importaRespostes(){

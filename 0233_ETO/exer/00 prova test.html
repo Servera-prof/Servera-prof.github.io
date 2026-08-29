@@ -31,318 +31,276 @@ const titol = "Test";
 
 
 const test_original = [
-// AND
 [
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_01.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
+"Quina és la diferència fonamental en el principi de regulació entre una font d'alimentació lineal i una de commutada?",
+"La lineal utilitza un transformador més petit, mentre que la commutada en utilitza un de més gran.",
+"La lineal dissipa l'excés de potència en un transistor en zona activa, mentre que la commutada commuta transistors en tall i saturació.",
+"La lineal només pot treballar amb tensions d'entrada continues, mentre que la commutada treballa amb alterna.",
+"La lineal té un rendiment superior al 90%, mentre que la commutada té un rendiment inferior al 50%."
 ],
 [
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_02.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
+"Quin és el rang d'eficiència típic per a una font d'alimentació commutada (SMPS)?",
+"30-60%",
+"50-70%",
+"70-95%",
+"85-99%"
 ],
 [
-'A quina porta llògica correspon la funció $f(a,~b) = a \\cdot b$?',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
+"Quin bloc funcional és característic d'una font commutada i no es troba en una font lineal?",
+"La porta NAND",
+"El rectificador de sortida",
+"El commutador (inversor) que treballa a alta freqüència",
+"El filtre de sortida"
 ],
-['A quina porta llògica correspon la funció següent taula de la veritat?' +
+[
+"Per què les fonts commutades poden ser més petites i lleugeres que les lineals?",
+"Perquè utilitzen condensadors de menor capacitat.",
+"Perquè no necessiten transformador.",
+"Perquè el transformador treballa a alta freqüència i pot ser de ferrita, molt més petit.",
+"Perquè prescindeixen del filtre de sortida."
+],
+[
+"Quina família de circuits integrats és un exemple clàssic de regulador lineal de tres terminals per a tensió positiva?",
+"LM79xx",
+"LM317",
+"LM78xx",
+"UC3842"
+],
+
+
+
+
+
+[
+"En quina aplicació és més adequada l'ús d'una font d'alimentació lineal per sobre d'una de commutada?",
+"En un ordinador personal, per la seva alta eficiència.",
+"En un carregador de telèfon mòbil, per la seva mida reduïda.",
+"En un equip d'àudio d'alta fidelitat, on el soroll elèctric (EMI) és crític.",
+"En un inversor solar, per la seva capacitat de gestionar grans potències."
+],
+[
+"Quin instrument és el més adequat per visualitzar la forma d'ona del rissat (ripple) a la sortida d'una font commutada?",
+"Un multímetre en mode de tensió contínua.",
+"Una pinça amperimètrica.",
+"Un oscil·loscopi.",
+"Un analitzador d'espectre."
+],
+[
+"Quina és la característica principal d'un convertidor commutat en configuració reductora (buck)?",
+"La tensió de sortida (Vout) és superior a la tensió d'entrada (Vin).",
+"La tensió de sortida (Vout) és inferior a la tensió d'entrada (Vin).",
+"La tensió de sortida (Vout) pot ser superior o inferior a Vin.",
+"La tensió de sortida (Vout) és igual a la tensió d'entrada (Vin) però amb canvi de polaritat."
+],
+[
+"En un convertidor elevador (boost), com s'aconsegueix que la tensió de sortida sigui superior a la d'entrada?",
+"Mitjançant un transformador amb més espires al secundari.",
+"Emmagatzemant energia en una bobina i alliberant-la en sèrie amb la tensió d'entrada.",
+"Utilitzant un díode Zener per augmentar la tensió.",
+"Connectant diverses etapes de rectificació en cascada."
+],
+[
+"Quina topologia de font commutada és capaç de regular la tensió de sortida tant si és inferior com superior a la tensió d'entrada?",
+"Convertidor buck (reductor).",
+"Convertidor boost (elevador).",
+"Convertidor buck-boost (flyback).",
+"Convertidor amb pont de díodes."
+],
+
+
+
+
+[
+"Quina és la funció principal d'una resistència en un circuit electrònic?",
+"Emmagatzemar energia en forma de camp magnètic.",
+"Oposar-se al pas del corrent i adaptar nivells de tensió i corrent.",
+"Generar un camp elèctric per emmagatzemar càrrega.",
+"Amplificar el senyal d'entrada.",
+],
+[
+"Quina és la fórmula correcta per calcular la resistència d'un conductor en funció de la resistivitat (ρ), la longitud (L) i la secció (S)?",
+"R = ρ · S / L",
+"R = L / (ρ · S)",
+"R = ρ · L / S",
+"R = S / (ρ · L)",
+"R = ρ · L / S"
+],
+[
+"En una resistència de 4 bandes de colors, si les tres primeres són groc, violeta, taronja, quina és la seva resistència nominal segons la taula de codi de colors proporcionada?",
+"47 Ω",
+"470 Ω",
+"4,7 kΩ",
+"47 kΩ",
+],
+[
+"Quina diferència fonamental estableix el document entre un potenciòmetre i un trimmer?",
+"El potenciòmetre és per a corrents molt elevats (kA) exclusivament, mentre que el trimmer és per a baixa potència.",
+"El potenciòmetre s'ajusta des de l'exterior per l'usuari, mentre que el trimmer és per a ajustos interns de calibració.",
+"El potenciòmetre té un valor lineal, mentre que el trimmer és no lineal.",
+"El potenciòmetre només té dos terminals, mentre que el trimmer en té tres.",
+],
+[
+"Quin dels següents components és un exemple de resistència no lineal que varia amb la temperatura?",
+"LDR",
+"Varistor (VDR)",
+"NTC",
+"Reòstat",
+],
+
+
+
+
+
+[
+"Quina és la propietat fonamental d'un condensador en un circuit elèctric?",
+"Oposar-se als canvis bruscos de corrent.",
+"Emmagatzemar energia en forma de camp magnètic.",
+"Oposar-se als canvis bruscos de tensió.",
+"Dissipar energia en forma de calor.",
+],
+[
+"Com varia la reactància capacitiva (X<sub>C</sub>) d'un condensador en augmentar la freqüència del senyal de corrent altern?",
+"Augmenta linealment.",
+"Disminueix.",
+"Es manté constant.",
+"Primer augmenta i després disminueix.",
+],
+[
+"Com es comporta una bobina (inductor) ideal a una freqüència de 0 Hz (corrent continu)?",
+"Com un circuit obert.",
+"Com una reactància molt elevada.",
+"Pràcticament com un curtcircuit.",
+"Com una resistència de valor alt.",
+],
+[
+"Quina és la fórmula de la freqüència de ressonància (fr) en un circuit RLC?",
+"<br/>$f_r=2 \\pi\\sqrt{LC}$",
+"<br/>$f_r=\\dfrac{1}{2 \\pi\\sqrt{LC}}$",
+"<br/>$f_r=\\dfrac{1}{2 \\pi LC}$",
+"<br/>$f_r=\\dfrac{2 \\pi}{\\sqrt{LC}}$",
+],
+[
+"En un filtre RLC passa-banda, quina és la característica principal del seu comportament a la freqüència de ressonància (fr)?",
+"Atenua completament el senyal.",
+"Permet el pas d'un rang estret de freqüències al voltant de fr.",
+"Deixa passar totes les freqüències per sota de fr.",
+"Deixa passar totes les freqüències per sobre de fr.",
+],
+
+
+
+
+
+[
+'Quins biestables són síncrons?',
+'Tots',
+'Cap',
+'Els <i>flip flops</i>',
+'Els <i>latches</i>',
+'Els que tenen entrada d\'habilitació (EN)',
+'No hi ha prou informació per a respondre a aquesta pregunta'
+],
+[
+'Quins biestables se solen utilitzar per a fer comptadors i registres?',
+'Els flip-flop T i D respectivament',
+'Els flip-flop J-K i S-R respectivament',
+'Els latches S-R i S-R amb EN respectivament',
+'Els flip-flop D i T respectivament',
+'Els flip-flop S-R i J-K respectivament',
+'No hi ha prou informació per a respondre a aquesta pregunta'
+],
+[
+'Quin biestable és? </br><img style="margin-left: 37px; margin-top:20px" src="../img/latch_SR.png">',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
+],
+[
+'A quin biestable correspon la següent corba d\'entrades i sortides? </br><img style="margin-left: 37px; margin-top:20px; width: 500px" src="../img/ona_io_latch_SR.png">',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
+],
+['A quin biestable correspon la següent taula de la veritat?' +
  '<table class="preguntes"><thead>'+
-    '<tr><td>a</td><td>b</td><td>f</td></tr>'+
+    '<tr><td>S</td><td>R</td><td>$Q+$</td></tr>'+
   '</thead><tbody>'+
-    '<tr><td>0</td><td>0</td><td>0</td></tr>'+
+    '<tr><td>0</td><td>0</td><td>$Q$</td></tr>'+
     '<tr><td>0</td><td>1</td><td>0</td></tr>'+
-    '<tr><td>1</td><td>0</td><td>0</td></tr>'+
-    '<tr><td>1</td><td>1</td><td>1</td></tr>'+
- '</tbody></table>',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-
-
-
-
-// OR
-[
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_03.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-[
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_04.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-[
-'A quina porta llògica correspon la funció $f(a,~b) = a + b$?',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-['A quina porta llògica correspon la funció següent taula de la veritat?' +
- '<table class="preguntes"><thead>'+
-    '<tr><td>a</td><td>b</td><td>f</td></tr>'+
-  '</thead><tbody>'+
-    '<tr><td>0</td><td>0</td><td>0</td></tr>'+
-    '<tr><td>0</td><td>1</td><td>1</td></tr>'+
     '<tr><td>1</td><td>0</td><td>1</td></tr>'+
-    '<tr><td>1</td><td>1</td><td>1</td></tr>'+
+    '<tr><td>1</td><td>1</td><td>?</td></tr>'+
  '</tbody></table>',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
 ],
 
 
 
 
-// NOT
+
 [
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_05.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-[
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_05.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
+'Quin biestable és? </br><img style="margin-left: 37px; margin-top:20px" src="../img/latch_SR-EN.png">',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
 ],
 [
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_05.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],[
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_05.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],[
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_05.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
+'A quin biestable correspon la següent corba d\'entrades i sortides? </br><img style="margin-left: 37px; margin-top:20px; width: 500px" src="../img/ona_io_latch_SR-EN.png">',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
 ],
-[
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_06.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-
-
-
-
-
-
-// XOR
-[
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_07.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-[
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_08.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-[
-'A quina porta llògica correspon la funció $f(a,~b) = a \\oplus b$?',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-['A quina porta llògica correspon la funció següent taula de la veritat?' +
+['A quin biestable correspon la següent taula de la veritat?' +
  '<table class="preguntes"><thead>'+
-    '<tr><td>a</td><td>b</td><td>f</td></tr>'+
+    '<tr><td>EN</td><td>S</td><td>R</td><td>$Q+$</td></tr>'+
   '</thead><tbody>'+
-    '<tr><td>0</td><td>0</td><td>0</td></tr>'+
-    '<tr><td>0</td><td>1</td><td>1</td></tr>'+
-    '<tr><td>1</td><td>0</td><td>1</td></tr>'+
-    '<tr><td>1</td><td>1</td><td>0</td></tr>'+
+    '<tr><td>1</td><td>0</td><td>0</td><td>$Q$</td></tr>'+
+    '<tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>'+
+    '<tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>'+
+    '<tr><td>1</td><td>1</td><td>1</td><td>?</td></tr>'+
+    '<tr><td>0</td><td>X</td><td>X</td><td>$Q$</td></tr>'+
  '</tbody></table>',
-'AND',
-'OR',
-'NOT'
-],
-
-
-// NAND i NOR
-[
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_09.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
 ],
 [
-'Quina porta llògica és? </br><img class="preguntes" src="../img/UT02_exer_test_010.png">',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
+'Quin biestable és? </br><img style="margin-left: 37px; margin-top:20px; width: 500px" src="../img/flipflop_SR.png">',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
 ],
 [
-'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-[
-'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],[
-'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-[
-'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-[
-'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-[
-'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-[
-'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-[
-'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],[
-'A quina porta llògica correspon la funció $f(a,~b) = \\overline{a \\cdot b}$?',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
-['A quina porta llògica correspon la funció següent taula de la veritat?' +
- '<table class="preguntes"><thead>'+
-    '<tr><td>a</td><td>b</td><td>f</td></tr>'+
-  '</thead><tbody>'+
-    '<tr><td>0</td><td>0</td><td>1</td></tr>'+
-    '<tr><td>0</td><td>1</td><td>0</td></tr>'+
-    '<tr><td>1</td><td>0</td><td>0</td></tr>'+
-    '<tr><td>1</td><td>1</td><td>0</td></tr>'+
- '</tbody></table>',
-'AND',
-'OR',
-'NOT',
-'XOR',
-'NAND',
-'NOR',
-],
+'A quin biestable correspon la següent corba d\'entrades i sortides? </br><img style="margin-left: 37px; margin-top:20px; width: 500px" src="../img/ona_io_flipflop_SR.png">',
+'Latch S-R',
+'Latch S-R amb entrada d\'habilitació',
+'Flip-flop S-R',
+'Flip-flop J-K',
+'Flip-flop T',
+'Flip-flop D',
+]
 
 ];
 

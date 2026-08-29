@@ -279,8 +279,8 @@ function corregir_test(tr, sr, resp, pts){
             c.pts_obt += pts_pr[i];
         }else{
             c.ok[i] = false;
-            c.pts[i] = -pts_pr[i]/tr.n_opc[i];
-            c.pts_obt -= pts_pr[i]/tr.n_opc[i];
+            c.pts[i] = -pts_pr[i]/(tr.n_opc[i] - 1);
+            c.pts_obt -= pts_pr[i]/(tr.n_opc[i] - 1);
         }
         c.pts_str[i] = c.pts[i].toLocaleString('ca-ES', { 
             minimumFractionDigits: 2, 
@@ -300,7 +300,8 @@ function resposta_numerada(resp){
     const l = resp.replaceAll(' ', '').split(""); 
     for(let i = 0; i < l.length; i++){
         const lletra = l[i];
-        rn.push(nombre(lletra));
+        if (lletra == 'n') rn.push(0);
+        else rn.push(nombre(lletra));
     }
     return rn;
 }

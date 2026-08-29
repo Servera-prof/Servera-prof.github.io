@@ -116,22 +116,22 @@ function render_avaluacio(nom, tr, c){
     html += html_preguntes_corregides(tr, c);
     
     document.getElementById("avaluacio").innerHTML = html;
-    console.log(html);
     texme.renderPage();
 }
 
 function html_puntuacio(nom, tr, c){
     const html = ['',
       '<pre>',
-        "L'alumne <b>" + nom + '</b>' + " ha aconseguit " + c.pts_obt + 
-        " punts de " + c.pts_tot + " punts possibles." + 
+        "L'alumne <b>" + nom + '</b>' + " ha aconseguit " + 
+        trunca(c.pts_obt) + " punts de " + 
+        c.pts_tot + " punts possibles." + 
         " Per tant obté una qualificació de <b>" +  
-        (c.pts_obt/c.pts_tot*10) + "</b> sobre 10.",
-        '',
-        "DADES APORTADES",
-        "- <b>Nom:</b> " + nom,
-        "- <b>Resposta:</b> " + c.r,
-        "- <b>Permutació:</b> " + tr.str_perm,
+        trunca(c.pts_obt/c.pts_tot*10) + "</b> sobre 10.",
+        "<br/>",
+        "<b>DADES APORTADES</b>",
+        "  <b> - Nom:</b> " + nom,
+        "  <b> - Resposta:</b> " + c.r,
+        "  <b> - Permutació:</b> " + tr.str_perm,
       '</pre>'
     ].join("\n");
     return html;
@@ -155,6 +155,7 @@ function html_preguntes_corregides(tr, c){
         else if (c.ok[i]) html += preg_correcta(p, i, c);
         else if (!c.ok[i]) html += preg_incorrecta(p, i, c);
     }
+    console.log(html);
     return html;
 }
 
@@ -168,10 +169,10 @@ function html_preguntes_corregides(tr, c){
  */
 function preg_anulada(p, i){
     let html = html_preg(p, i, 'nula', 'nula', '');
-    html += '\n\n<table>';
+    html += '\n\n<table class ="opc">';
     const opc = p[i].slice(1);
     for (let j = 0; j < opc.length; j++){
-        html += html_opc(opc[j], j, 'nula', 'nula', '');
+        html += html_opc(opc, j, 'nula', 'nula', '');
     }
     html += '</table>';
     return html;
@@ -188,13 +189,13 @@ function preg_anulada(p, i){
  *   d'aquella pregunta sense penalitzar.
  */
 function preg_sense_resp(p, i, c){
-    let html = html_preg(p, i, '', '', '(+0 punts)');
+    let html = html_preg(p, i, '', 'neutre', '(+0 punts)');
     
-    html += '\n\n<table>';
+    html += '\n\n<table class ="opc">';
     const opc = p[i].slice(1);
     for (let j = 0; j < opc.length; j++){
         if ((j+1) == c.sr[i]){
-            html += html_opc(opc, j, '', '', '✅');
+            html += html_opc(opc, j, '', '', ' ✅');
         }else{
             html += html_opc(opc, j, '', '', '');
         }
@@ -217,17 +218,17 @@ function preg_correcta(p, i, c){
     let html = "";
     let pts = c.pts_plus[i];
     if (Number(pts) == 1){ 
-        pts = '(+' + pts + 'punt)';
+        pts = '(+1 punt)';
     }else{ 
-        pts = '(+' + pts + 'punts)';
+        pts = '(+' + trunca(pts) + ' punts)';
     }
     html = html_preg(p, i, '', 'plus', pts);
     
-    html += '\n\n<table>';
+    html += '\n\n<table class ="opc">';
     const opc = p[i].slice(1);
     for (let j = 0; j < opc.length; j++){
         if ((j+1) == c.sr[i]){
-            html += html_opc(opc, j, 'marcada', 'ok', '✅');
+            html += html_opc(opc, j, 'marcada', 'ok', ' ✅');
         }else{
             html += html_opc(opc, j, '', '', '');
         }
@@ -252,14 +253,14 @@ function preg_incorrecta(p, i, c){
     if (Number(pts) == -1){ 
         pts = '(-1 punt)';
     }else{ 
-        pts = '(-' + pts + 'punts)';
+        pts = '(' + trunca(pts) + ' punts)';
     }
     html = html_preg(p, i, '', 'minus', pts);
-    html += '\n\n<table>';
+    html += '\n\n<table class ="opc">';
     const opc = p[i].slice(1);
     for (let j = 0; j < opc.length; j++){
         if ((j+1) == c.sr[i]){
-            html += html_opc(opc, j, '', '', '✅');
+            html += html_opc(opc, j, '', '', ' ✅');
         }else if ((j+1) == c.rn[i]){
             html += html_opc(opc, j, 'marcada', 'no_ok', '');
         }else{
@@ -277,9 +278,9 @@ function preg_incorrecta(p, i, c){
  * @param {number} i - El número o índex de la pregunta (per mostrar 
  *   per exemple: "1. Enunciat").
  * @param {string} sc1 - Estil CSS que s'aplica al text de la pregunta 
- *   sencer (per exemple, 'nula').
- * @param {string} sc2 - Estil CSS aplicat a la part dels punts (per 
- *   exemple, 'plus' o 'minus').
+ *   sencer ('nula' o 'aval').
+ * @param {string} sc2 - Estil CSS aplicat a la part dels punts 
+ *   ('plus', 'zero' o 'minus').
  * @param {string} pts - Cadena de text amb els punts obtinguts/restats 
  *  (ex: "(+1 punt)").
  * @returns {string} Codi HTML corresponent a l'enunciat de la pregunta.
@@ -288,8 +289,9 @@ function html_preg(p, i, sc1, sc2, pts){
     const html = [ '',
       '<p>',
       '  <span class="' + sc1 + '">',
-      '    <b>' + (i+1) + '.</b> ' + p[i][0] + ' ' + 
-      '    <span class="' + sc2 + '">' + pts + '<span>',
+      '    <b>' + (i+1) + '. ' + 
+          '<span class="' + sc2 + '"> ' + pts + '</span></b> ',
+           p[i][0] + ' ',
       '  </span>',
       '</p>',
     ].join("\n");
@@ -318,7 +320,7 @@ function html_opc(opc, j, sc1, sc2, simb){
              '<i>' + lletra(j+1) + '</i>)' + 
       '    </span></td>',
       '    <td>' + 
-              '<span class="' + sc2 + '"> + opc[j] + '</span>' +
+              '<span class="' + sc2 + '">' + opc[j] + '</span>' +
               simb + 
       '    </td>',
       '  </tr>'

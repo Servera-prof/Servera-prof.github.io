@@ -302,3 +302,20 @@ function aleat(min, max){
         }
     }
 }
+
+
+/**
+ * Trunca un nombre o text numèric al nombre de decimals indicat sense arrodonir.
+ * Si el valor és un nombre sencer o no és vàlid, el retorna sense modificar.
+ * 
+ * @param {number|string} v - El valor numèric o la cadena que es vol truncar.
+ * @param {number} [d=2] - El nombre de decimals desitjat (per defecte 2).
+ * @returns {number|string} El nombre truncat o el valor original si no es pot processar.
+ */
+function trunca(v, d = 2) {
+    const n = Number(v);
+    if (isNaN(n)) return v;
+    if (Number.isInteger(n)) return n;
+    const factor = Math.pow(10, d);
+    return Math.trunc(n * factor) / factor;
+}

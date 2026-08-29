@@ -16,7 +16,7 @@ li.test{
     text-justify: inter-word;
 }
 
-
+/* ANULADES */
 img[alt="segell"]{
     position: absolute;
     z-index: 2;
@@ -25,6 +25,8 @@ img[alt="segell"]{
     position: relative;
     z-index: 1;
 }
+
+/* Markdown ambans de texme */
 textarea {
     width: 80ch;
     height: 48ch;
@@ -39,97 +41,16 @@ textarea {
     outline: none;
 }
 
-/* ~~~~~ TAULA DE RESPOSTES CIENTÍFICA I COMPACTA (#table_resp) ~~~~~ */
-#table_resp {
-  width: auto; /* Deixa d'ocupar el 100% per defecte, s'ajusta al contingut */
-  min-width: 450px; /* Evita que es comprimeixi massa */
-  margin: 25px auto;
-  border-collapse: collapse; /* Estil científic pur: línies simples col·lapsades */
-  font-family: "Liberation Sans", "Arial", sans-serif;
-  font-size: 0.9rem; /* Text una mica més compacte i acadèmic */
-  color: #1a1a1a;
-  background-color: transparent; /* Eliminem fons de capsa i vores arrodonides modernetes */
-  box-shadow: none; /* Eliminem l'ombra web per passar a format paper/article */
-  
-  /* Línies horitzontals mestres de tancament (Estil Booktabs) */
-  border-top: 2px solid #1a1a1a;
-  border-bottom: 2px solid #1a1a1a;
-}
 
-/* Estil de les cel·les (Més compactes) */
-#table_resp td {
-  padding: 5px 12px; /* Reduït a la meitat per fer-la molt més compacta */
-  border-bottom: 1px solid #e2e8f0; /* Línia de separació interna molt subtil */
-  vertical-align: middle;
-}
 
-/* Columna del número de pregunta (Sòbria i integrada) */
-#table_resp td:first-child {
-  width: 40px;
-  text-align: center;
-  font-weight: 600;
-  color: #9e2050; /* El teu color corporatiu manté la identitat formal */
-  background-color: transparent; /* Eliminem el fons gris per fer-ho homogeni */
-  border-right: 1px solid #1a1a1a; /* Única línia vertical per separar el recompte de les dades */
-}
 
-/* Files alternes (Eliminem l'efecte zebra gruixut per a màxima sobrietat) */
-#table_resp tr:nth-child(even) {
-  background-color: #fbfcfd; /* Gairebé imperceptible, només com a guia visual */
-}
-
-/* Efecte hover de la fila (Molt discret per a entorn web) */
-#table_resp tr:hover {
-  background-color: #fdf2f4; /* El matís suau del teu color */
-}
-
-/* Contenidor de les opcions (Més juntes i netes) */
-#table_resp label {
-  display: inline-flex;
-  align-items: center;
-  margin-right: 6px; /* Més juntes per estalviar espai horitzontal */
-  cursor: pointer;
-  padding: 2px 6px; /* Reduït per estilitzar la selecció */
-  border-radius: 3px;
-  transition: all 0.15s ease;
-  font-weight: 500;
-  color: #334155;
-}
-
-/* Hover de l'opció / lletra */
-#table_resp label:hover {
-  background-color: #f9e9ef;
-  color: #9e2050;
-}
-
-/* Botons de ràdio integrats i corporis */
-#table_resp input[type="radio"] {
-  margin-right: 4px;
-  cursor: pointer;
-  accent-color: #9e2050; /* El cercle actiu s'omple amb el teu color */
-  transform: scale(1.05); /* Mida estàndard, sense sobredimensionar */
-}
-
-/* Ressaltat especial per a l'opció "no sap / no contesta" */
-#table_resp label:last-child {
-  color: #94a3b8;
-  font-size: 0.85em;
-  font-style: italic; /* Cursiva acadèmica per a l'excepció */
-  border-left: 1px dashed #cbd5e1; /* Separador discret */
-  padding-left: 10px;
-  margin-left: 6px;
-}
-
-#table_resp label:last-child:hover {
-  background-color: #f1f5f9;
-  color: #475569;
-}
+/* ~~~~~ Taula a l'array de preguntes ~~~~~ */
 
 /* Estil de taula de revista científica (Estil Booktabs / APA) */
 table.preguntes {
-  width: auto; /* Les taules científiques solen ocupar només l'espai necessari */
+  width: auto; /* Ocupar només l'espai necessari */
   min-width: 250px; /* Evita que quedi excessivament comprimida */
-  margin: 30px 37px; /* Centrada i amb espai al voltant */
+  margin: 30px 37px;
   border-collapse: collapse;
   font-family: "Liberation Sans", "Arial", sans-serif;
   font-size: 0.95rem;
@@ -179,6 +100,142 @@ img.preguntes {
   margin: 24px 37px; /* Espaiat generós a dalt i a baix, i centrada horitzontalment */
 }
 
+
+
+/* ~~~~~ Taula d'opcions de resposta ~~~~~ */
+
+table.opc {
+    width: 90%;
+    min-width: 450px;
+    margin: 1em 2em;
+    border-collapse: collapse;
+    font-family: "Liberation Sans", "Arial", sans-serif;
+    /* border: 1px solid #333; */
+}
+
+table.opc td{
+    /* border: 1px solid #333;*/
+}
+
+table.opc tr td:first-child{
+    width: 20px;
+    vertical-align: top;
+}
+
+
+
+span.plus{
+    color: #17a720;
+}
+
+span.minus{
+    color: red;
+}
+
+span.neutre{
+    color: darkgrey;
+}
+
+.marcada {
+  position: relative;
+  display: inline-block; /* Manté el text al seu lloc natural */
+}
+
+.marcada::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-55%, -45%); /* Centra el cercle sobre la lletra */
+  width: 20px;                       /* Ajusta la mida del cercle */
+  height: 20px;
+  border: 2px solid #0033aa;         /* Gruix i color de la línia */
+  border-radius: 50%;
+  pointer-events: none;              /* Evita que el cercle de sobre molesti al seleccionar text */
+}
+
+
+/* ~~~~~ Taula de respostes (radiobouttons) ~~~~~ */
+
+#table_resp {
+  width: auto; /* No ocupa el 100% per defecte, s'ajusta al contingut */
+  min-width: 450px; /* Evita que es comprimeixi massa */
+  margin: 25px auto;
+  border-collapse: collapse; /* No línies dobles */
+  font-family: "Liberation Sans", "Arial", sans-serif;
+  font-size: 0.9rem;
+  
+  border-top: 2px solid #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+#table_resp td {
+  padding: 5px 12px; 
+  border-bottom: 1px solid #e2e8f0; 
+  vertical-align: middle;
+}
+
+#table_resp td:first-child {
+  width: 40px;
+  text-align: center;
+  font-weight: 600;
+  color: #9e2050; /* Color corporatiu  */
+  border-right: 1px solid #1a1a1a;
+}
+
+/* sutil (gairebé imperceptible) efecte zebra */
+#table_resp tr:nth-child(even) { 
+  background-color: #fbfcfd;
+}
+
+#table_resp tr:hover {
+  background-color: #fdf2f4;
+}
+
+#table_resp label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 6px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  color: #334155;
+}
+
+#table_resp label:hover {
+  background-color: #f7e4eb;
+  color: #9e2050;
+}
+
+/* Botons de ràdio integrats i corporis */
+#table_resp input[type="radio"] {
+  margin-right: 4px;
+  cursor: pointer;
+  accent-color: #9e2050; /* El cercle actiu amb color corporatiu */
+  transform: scale(1.05); /* Mida estàndard, sense sobredimensionar */
+}
+
+
+#table_resp label:last-child {
+  color: #94a3b8;
+  font-size: 0.85em;
+  font-style: italic;
+  border-left: 1px dashed #cbd5e1; /* Separador discret */
+  margin-left: 6px;
+  padding: 2px 6px;
+}
+
+#table_resp label:last-child:hover {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+
+
+
+
+/* ~~~~~ Formulari de respostes ~~~~~ */
 .academic-form {
   margin: 20px auto;
 }
@@ -206,6 +263,12 @@ img.preguntes {
   color: #AA5050;
 }
 
+
+/*span.nula {
+    text-align: justify;
+    text-justify: inter-word;
+    font-family:  "Liberation Sans", "Arial", sans-serif;
+}*/
 
 
 
