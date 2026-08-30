@@ -26,7 +26,7 @@ img[alt="segell"]{
     z-index: 1;
 }
 
-/* Markdown ambans de texme */
+/* Markdown abans de texme */
 textarea {
     width: 80ch;
     height: 48ch;
@@ -364,9 +364,10 @@ body {
   line-height: 1.5;
 }
 main {
-  max-width: 40em;
-  margin-left: auto;
-  margin-right: auto;
+    background: #fff;
+    max-width: 40em;
+    margin-left: auto;
+    margin-right: auto;
 }
 h1, h2, h3, h4, h5, h6 {
   margin: 1em 0 0.5em 0;
@@ -407,9 +408,9 @@ blockquote :last-child {
   }
   main {
     background: #fff;
-    background-image: url(../img/top.svg), url(../img/down.svg);
-    background-position: right top, left bottom;
-    background-repeat: no-repeat, no-repeat;
+    background-image: url(../img/top.svg), url(../img/down.svg), var(--katakana-bg, none);
+    background-position: right top, left bottom, right 25px top 180px;
+    background-repeat: no-repeat, no-repeat, repeat-y;
     padding: 10em 6em;
     margin: 1em auto;
     box-shadow: 0.4em 0.4em 0.4em #222;

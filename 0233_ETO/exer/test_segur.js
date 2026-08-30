@@ -10,6 +10,19 @@
 // VARIABLES GLOBALS DE CONTROL DE COMPORTAMENT
 // =================================================================
 
+const KATAKANA_TABLE = [
+    "ア", "イ", "ウ", "エ", "オ",
+    "カ", "キ", "ク", "ケ", "コ",
+    "サ", "シ", "ス", "セ", "ソ",
+    "タ", "チ", "ツ", "テ", "ト",
+    "ナ", "ニ", "ヌ", "ネ", "ノ",
+    "ハ", "ヒ", "フ", "ヘ", "ホ",
+    "マ", "ミ", "ム", "メ", "モ",
+    "ヤ", "ユ", "ヨ",
+    "ラ", "リ", "ル", "レ", "ロ",
+    "ワ", "ヲ", "ン"
+];
+
 let desplaçamentsRatoli = 0;
 let tempsCursorImmobil = 0;
 let sortidesPestanya = 0;
@@ -71,6 +84,21 @@ function hashCadena(str) {
         hash |= 0;
     }
     return Math.abs(hash).toString(36);
+}
+
+
+/**
+ * Codifica una cadena de text alfanumèrica en una seqüència de caràcters Katakana.
+ * @param {string} str - Cadena d'entrada (ex: idSessio o canvasHash).
+ * @returns {string} Cadena equivalent en Katakana.
+ */
+function textAKatakana(str) {
+    let res = "";
+    for (let i = 0; i < str.length; i++) {
+        const idx = str.charCodeAt(i) % KATAKANA_TABLE.length;
+        res += KATAKANA_TABLE[idx];
+    }
+    return res;
 }
 
 
@@ -194,4 +222,29 @@ function calculaCopia() {
       ")";
       
     return str;
+}
+
+
+
+/**
+ * Genera i mostra el membrete vertical en Katakana al marge dret de la pàgina
+ * combinant l'ID de sessió i l'empremta digital de Canvas.
+ */
+function creaMembreteKatakana() {
+    const mainElem = document.getElementsByTagName("main")[0];
+    if (!mainElem || mainElem.dataset.katakanaAdded === "true") return;
+
+    const id = generaIDSessio();
+    const hash = generaCanvasHash();
+    const textFinal = `${textAKatakana(id)}・${textAKatakana(hash)}`;
+
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="850">
+        <text x="15" y="20" font-size="12" font-family="monospace" fill="rgba(0, 0, 0, 0.2)" writing-mode="tb" letter-spacing="3">${textFinal}</text>
+    </svg>`;
+
+    const svgUrl = `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+
+    // Assignem la imatge a la variable CSS personalitzada
+    mainElem.style.setProperty('--katakana-bg', svgUrl);
+    mainElem.dataset.katakanaAdded = "true";
 }

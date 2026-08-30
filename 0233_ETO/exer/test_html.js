@@ -7,8 +7,13 @@ function renderitza(){
     document.getElementById("titol").innerText = titol; 
     document.getElementById("md").innerHTML = html;
     
-    texme.setOption('onRenderPage', iniciaRastreigComportament);
+    texme.setOption('onRenderPage', post_renderitzat_test);
     texme.renderPage();
+}
+
+function post_renderitzat_test(){
+    iniciaRastreigComportament();
+    creaMembreteKatakana();
 }
 
 
@@ -246,8 +251,8 @@ function importaRespostes(){
         t_fi:  document.getElementById("t_fi_span").innerHTML,
         perm: document.getElementById("perm_span").innerHTML,
     };
-    dades.empremta = generaEmpremta();
-    dades.seguretat = calculaCopia();
+    dades.hh = generaCanvasHash();
+    dades.ids = generaIDSessio();
     return dades;
 }
 
@@ -288,8 +293,8 @@ function renderAvaluacio(d){
       '<b>- <i>Timestamp</i> inici test: </b>' + d.t_ini,
       '<b>- <i>Timestamp</i> final test: </b>' + d.t_fi,
       '<b>- Ratio d\'anomalia: </b>' + d.seguretat,
-      '<b>- Hadware Hash: </b>' + d.empremta.split("_")[0],
-      '<b>- Sessió ID: </b>' + d.empremta.split("_")[1],
+      '<b>- Hadware Hash: </b>' + d.hh,
+      '<b>- Sessió ID: </b>' + d.ids,
       '</pre>',
       '',
       '<div style="text-align: center;">',
@@ -303,7 +308,11 @@ function renderAvaluacio(d){
 
     document.getElementById("avaluacio").innerHTML = txt;
     
-    texme.setOption('onRenderPage', undefined);
+    texme.setOption('onRenderPage', post_renderitzat_aval);
     texme.renderPage();
+}
+
+function post_renderitzat_aval(){
+    creaMembreteKatakana();
 }
 
