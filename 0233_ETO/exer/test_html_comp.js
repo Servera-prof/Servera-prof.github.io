@@ -155,7 +155,6 @@ function html_preguntes_corregides(tr, c){
         else if (c.ok[i]) html += preg_correcta(p, i, c);
         else if (!c.ok[i]) html += preg_incorrecta(p, i, c);
     }
-    console.log(html);
     return html;
 }
 
