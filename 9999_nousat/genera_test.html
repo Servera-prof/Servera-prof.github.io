@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador i Editor de Tests</title>
+    <style>
+        :root {
+            --bg-color: #fcfcfc;
+            --card-bg: #ffffff;
+            --border-color: #cccccc;
+            --text-color: #222222;
+            --accent-color: #333333;
+            --danger-color: #a00000;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            background: #f0f0f0;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        button, .btn-label {
+            background: var(--card-bg);
+            border: 1px solid #777;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--text-color);
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        button:hover, .btn-label:hover {
+            background: #e8e8e8;
+        }
+
+        .btn-danger {
+            border-color: var(--danger-color);
+            color: var(--danger-color);
+        }
+
+        .btn-danger:hover {
+            background: #fbeae2;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            color: #555;
+        }
+
+        input[type="text"], input[type="number"], textarea, select {
+            width: 100%;
+            padding: 6px;
+            box-sizing: border-box;
+            border: 1px solid var(--border-color);
+            font-family: inherit;
+            font-size: 0.9rem;
+            background: #fff;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 50px;
+        }
+
+        .question-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .option-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .option-row span {
+            font-size: 0.8rem;
+            width: 60px;
+            color: #666;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .footer-controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Editor de Tests Acadèmics</h1>
+    </header>
+
+    <div class="action-bar">
+        <button onclick="downloadTXT()">💾 Guardar esborrany (.txt)</button>
+        <label class="btn-label">
+            📂 Carregar esborrany (.txt)
+            <input type="file" id="fileInput" accept=".txt" onchange="loadTXT(event)">
+        </label>
+        <button onclick="generateHTML('00')">📄 Generar 00_test.html</button>
+        <button onclick="generateHTML('01')">📄 Generar 01_comp.html</button>
+    </div>
+
+    <div class="form-group">
+        <label for="titolInput">Títol del Test</label>
+        <input type="text" id="titolInput" value="Test d'Electrònica">
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <div class="footer-controls">
+        <button onclick="addQuestion()" style="width: 100%; padding: 10px;">+ Afegir Pregunta</button>
+    </div>
+</div>
+
+<script>
+let questionsData = [];
+
+function init() {
+    if (questionsData.length === 0) {
+        addQuestion();
+    } else {
+        renderQuestions();
+    }
+}
+
+function addQuestion(data = null) {
+    const defaultQ = {
+        enunciat: "",
+        opcions: ["", "", "", ""],
+        solucio: 1, // 1-indexed
+        punts: 1
+    };
+    questionsData.push(data || defaultQ);
+    renderQuestions();
+}
+
+function removeQuestion(index) {
+    if (confirm("Segur que vols eliminar aquesta pregunta?")) {
+        questionsData.splice(index, 1);
+        renderQuestions();
+    }
+}
+
+function addOption(qIndex) {
+    questionsData[qIndex].opcions.push("");
+    renderQuestions();
+}
+
+function removeOption(qIndex, oIndex) {
+    if (questionsData[qIndex].opcions.length <= 2) {
+        alert("Una pregunta ha de tenir com a mínim dues opcions.");
+        return;
+    }
+    questionsData[qIndex].opcions.splice(oIndex, 1);
+    if (questionsData[qIndex].solucio > questionsData[qIndex].opcions.length) {
+        questionsData[qIndex].solucio = questionsData[qIndex].opcions.length;
+    }
+    renderQuestions();
+}
+
+function saveInputsToData() {
+    questionsData.forEach((q, qIndex) => {
+        const qCard = document.querySelectorAll('.question-card')[qIndex];
+        if (!qCard) return;
+
+        q.enunciat = qCard.querySelector('.input-enunciat').value;
+        q.punts = parseFloat(qCard.querySelector('.input-punts').value) || 1;
+        q.solucio = parseInt(qCard.querySelector('.select-solucio').value) || 1;
+
+        const optInputs = qCard.querySelectorAll('.input-opcio');
+        q.opcions = Array.from(optInputs).map(input => input.value);
+    });
+}
+
+function renderQuestions() {
+    const container = document.getElementById('questionsContainer');
+    container.innerHTML = '';
+
+    questionsData.forEach((q, qIndex) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+
+        let optionsHTML = q.opcions.map((opt, oIndex) => `
+            <div class="option-row">
+                <span>Opció ${oIndex + 1}:</span>
+                <input type="text" class="input-opcio" value="${escapeHTML(opt)}" onchange="saveInputsToData()">
+                <button type="button" class="btn-danger" onclick="saveInputsToData(); removeOption(${qIndex}, ${oIndex})">✕</button>
+            </div>
+        `).join('');
+
+        let solutionSelectOptions = q.opcions.map((_, oIndex) => `
+            <option value="${oIndex + 1}" ${q.solucio === (oIndex + 1) ? 'selected' : ''}>
+                Opció ${oIndex + 1}
+            </option>
+        `).join('');
+
+        card.innerHTML = `
+            <div class="question-header">
+                <span>Pregunta ${qIndex + 1}</span>
+                <button class="btn-danger" onclick="saveInputsToData(); removeQuestion(${qIndex})">Eliminar Pregunta</button>
+            </div>
+            <div class="form-group">
+                <label>Enunciat de la pregunta</label>
+                <textarea class="input-enunciat" onchange="saveInputsToData()">${escapeHTML(q.enunciat)}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Opcions de resposta</label>
+                ${optionsHTML}
+                <button type="button" onclick="saveInputsToData(); addOption(${qIndex})" style="margin-top: 5px;">+ Afegir Opció</button>
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>Opció Correcta</label>
+                    <select class="select-solucio" onchange="saveInputsToData()">
+                        ${solutionSelectOptions}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Puntuació</label>
+                    <input type="number" class="input-punts" step="0.25" value="${q.punts}" onchange="saveInputsToData()">
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+function escapeHTML(str) {
+    return (str || '').replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+function downloadFile(filename, content, type = 'text/plain') {
+    const blob = new Blob([content], { type: type });
+    const link = document.createElement('a');
+    link.href = URL.revokeObjectURL(blob);
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+
+function downloadTXT() {
+    saveInputsToData();
+    const payload = {
+        titol: document.getElementById('titolInput').value,
+        preguntes: questionsData
+    };
+    const content = JSON.stringify(payload, null, 2);
+    downloadFile('test_esborrany.txt', content, 'text/plain');
+}
+
+function loadTXT(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const parsed = JSON.parse(e.target.result);
+            if (parsed.titol !== undefined && Array.isArray(parsed.preguntes)) {
+                document.getElementById('titolInput').value = parsed.titol;
+                questionsData = parsed.preguntes;
+                renderQuestions();
+                alert('Esborrany carregat correctament.');
+            } else {
+                alert('El format del fitxer no és vàlid.');
+            }
+        } catch (err) {
+            alert('Error en llegir el fitxer JSON/TXT.');
+        }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+}
+
+function generateHTML(type) {
+    saveInputsToData();
+    const titol = document.getElementById('titolInput').value;
+
+    const testOriginalArray = questionsData.map(q => [q.enunciat, ...q.opcions]);
+    const solucionsOriginalsArray = questionsData.map(q => q.solucio);
+    const puntsPreguntesArray = questionsData.map(q => q.punts);
+
+    let fileContent = '';
+
+    if (type === '00') {
+        fileContent = `<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+<textarea id="md">
+</textarea>
+
+<script>
+const titol = ${JSON.stringify(titol)};
+
+const test_original = ${JSON.stringify(testOriginalArray, null, 2)};
+<\/script>
+<script src="../../js/config.js"><\/script>
+<script src="../../js/texme/texme.js"><\/script>
+<script src="../../js/test_segur.js"><\/script>
+<script src="../../js/test_html.js"><\/script>
+<script src="../../js/test_dades.js"><\/script>
+<script src="../../js/test_mates.js"><\/script>
+<script>window.onload = renderitza;<\/script>`;
+        downloadFile('00_prova_test.html', fileContent, 'text/html');
+    } else {
+        fileContent = `<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+<textarea id="md">
+</textarea>
+
+<script>
+const titol = ${JSON.stringify(titol)};
+
+const test_original = ${JSON.stringify(testOriginalArray, null, 2)};
+
+const solucions_originals = ${JSON.stringify(solucionsOriginalsArray, null, 2)};
+
+const punts_preguntes = ${JSON.stringify(puntsPreguntesArray, null, 2)};
+<\/script>
+
+<script src="../../js/config.js"><\/script>
+<script src="../../js/texme/texme.js"><\/script>
+<script src="../../js/test_html_comp.js"><\/script>
+<script src="../../js/test_dades.js"><\/script>
+<script src="../../js/test_mates.js"><\/script>
+<script>window.onload = renderitza;<\/script>`;
+        downloadFile('01_prova_comp.html', fileContent, 'text/html');
+    }
+}
+
+window.onload = init;
+</script>
+</body>
+</html>

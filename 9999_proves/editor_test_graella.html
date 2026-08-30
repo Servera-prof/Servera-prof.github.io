@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editor de Tests</title>
+<style>
+    body {
+        margin: 10px;
+        font-family: sans-serif;
+    }
+
+    header,
+    .toolbar,
+    .cell-toolbar {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+    }
+
+    header,
+    .cell-toolbar {
+        justify-content: space-between;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .grid-container {
+        overflow: auto;
+        max-height: 80vh;
+        border: 1px solid #ccc;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid #ccc;
+        padding: 4px;
+        vertical-align: top;
+    }
+
+    th {
+        background: #eee;
+        position: sticky;
+        top: 0;
+    }
+
+    textarea,
+    input[type="text"],
+    input[type="number"],
+    select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    textarea {
+        height: 50px;
+        resize: vertical;
+    }
+
+    .cell-disabled {
+        background: #eee;
+    }
+
+    .btn-danger {
+        color: red;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Editor de Tests</h1>
+    <div>
+        <label for="titolInput"><b>Títol:</b></label>
+        <input type="text" id="titolInput" value="Test" style="width: 250px;">
+    </div>
+</header>
+
+<div class="toolbar" style="margin: 10px 0;">
+    <button onclick="addQuestion()">➕ Afegir Pregunta</button>
+    <span>|</span>
+    <button onclick="downloadTXT()">💾 Guardar esborrany (.txt)</button>
+    <button onclick="document.getElementById('fileInput').click()">📂 Carregar esborrany (.txt)</button>
+    <input type="file" id="fileInput" accept=".txt" onchange="loadTXT(event)">
+    <span>|</span>
+    <button onclick="generateHTML('00')">📄 Generar 00_test.html</button>
+    <button onclick="generateHTML('01')">📄 Generar 01_comp.html</button>
+</div>
+
+<input type="file" id="imageUploader" accept="image/*" onchange="handleImageUpload(event)">
+
+<div class="grid-container">
+    <table>
+        <thead>
+            <tr id="tableHeader"></tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>
+
+<script>
+let questionsData = [];
+let imagesMap = {}; // Mapa per emmagatzemar els marcadors i el seu Base64 real
+let currentImageTarget = null;
+
+function init() {
+    if (questionsData.length === 0) {
+        addQuestion();
+    } else {
+        renderGrid();
+    }
+}
+
+function getMaxOptions() {
+    if (questionsData.length === 0) return 2;
+    const max = Math.max(...questionsData.map(q => q.opcions.length));
+    return Math.max(max, 2);
+}
+
+function addQuestion() {
+    saveCurrentInputs();
+    
+    const numOptions = questionsData.length > 0 
+        ? questionsData[questionsData.length - 1].opcions.length 
+        : 4;
+
+    questionsData.push({
+        enunciat: "",
+        opcions: Array(numOptions).fill(""),
+        solucio: 1,
+        punts: 1
+    });
+    renderGrid();
+}
+
+function removeQuestion(index) {
+    saveCurrentInputs();
+    if (questionsData.length <= 1) {
+        alert("Hi ha de haver com a mínim una pregunta.");
+        return;
+    }
+    questionsData.splice(index, 1);
+    renderGrid();
+}
+
+function addOptionToQuestion(qIndex) {
+    saveCurrentInputs();
+    questionsData[qIndex].opcions.push("");
+    renderGrid();
+}
+
+function removeOptionFromQuestion(qIndex, optIndex) {
+    saveCurrentInputs();
+    if (questionsData[qIndex].opcions.length <= 2) {
+        alert("Una pregunta ha de tenir com a mínim 2 opcions.");
+        return;
+    }
+    questionsData[qIndex].opcions.splice(optIndex, 1);
+    if (questionsData[qIndex].solucio > questionsData[qIndex].opcions.length) {
+        questionsData[qIndex].solucio = questionsData[qIndex].opcions.length;
+    }
+    renderGrid();
+}
+
+function saveCurrentInputs() {
+    const rows = document.querySelectorAll('#tableBody tr');
+    rows.forEach((row, qIndex) => {
+        if (!questionsData[qIndex]) return;
+        
+        const enunciatArea = row.querySelector('.input-enunciat');
+        if (enunciatArea) questionsData[qIndex].enunciat = enunciatArea.value;
+
+        const optionAreas = row.querySelectorAll('.input-opcio');
+        optionAreas.forEach((optArea, optIdx) => {
+            if (optIdx < questionsData[qIndex].opcions.length) {
+                questionsData[qIndex].opcions[optIdx] = optArea.value;
+            }
+        });
+
+        const solSelect = row.querySelector('.select-solucio');
+        if (solSelect) questionsData[qIndex].solucio = parseInt(solSelect.value) || 1;
+
+        const puntsInput = row.querySelector('.input-punts');
+        if (puntsInput) questionsData[qIndex].punts = parseFloat(puntsInput.value) || 1;
+    });
+}
+
+function renderGrid() {
+    const maxOptions = getMaxOptions();
+
+    const headerTr = document.getElementById('tableHeader');
+    let headerHTML = `
+        <th style="width: 30px; text-align: center;">#</th>
+        <th style="width: 25%;">Enunciat / Pregunta</th>
+    `;
+    for (let i = 1; i <= maxOptions; i++) {
+        headerHTML += `<th>Opció ${i}</th>`;
+    }
+    headerHTML += `
+        <th style="width: 70px;">Solució</th>
+        <th style="width: 60px;">Punts</th>
+        <th style="width: 40px;"></th>
+    `;
+    headerTr.innerHTML = headerHTML;
+
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
+
+    questionsData.forEach((q, qIndex) => {
+        const tr = document.createElement('tr');
+
+        let rowHTML = `<td style="font-weight: bold; text-align: center;">${qIndex + 1}</td>`;
+
+        rowHTML += `
+            <td>
+                <div>
+                    <textarea class="input-enunciat" onchange="saveCurrentInputs()">${escapeHTML(q.enunciat)}</textarea>
+                    <div class="cell-toolbar">
+                        <span></span>
+                        <button type="button" onclick="triggerImagePicker(${qIndex}, 'enunciat')">📷 Imatge</button>
+                    </div>
+                </div>
+            </td>
+        `;
+
+        for (let i = 0; i < maxOptions; i++) {
+            const hasOption = i < q.opcions.length;
+            const isLastOption = i === q.opcions.length - 1;
+
+            if (hasOption) {
+                const optVal = q.opcions[i];
+                rowHTML += `
+                    <td>
+                        <div>
+                            <textarea class="input-opcio" onchange="saveCurrentInputs()">${escapeHTML(optVal)}</textarea>
+                            <div class="cell-toolbar">
+                                <div>
+                                    <button type="button" class="btn-danger" title="Eliminar opció" onclick="removeOptionFromQuestion(${qIndex}, ${i})">✕</button>
+                                    ${isLastOption ? `<button type="button" title="Afegir opció" onclick="addOptionToQuestion(${qIndex})">➕</button>` : ''}
+                                </div>
+                                <button type="button" onclick="triggerImagePicker(${qIndex}, 'opcio', ${i})">📷 Imatge</button>
+                            </div>
+                        </div>
+                    </td>
+                `;
+            } else {
+                rowHTML += `<td class="cell-disabled"></td>`;
+            }
+        }
+
+        let selectOptions = '';
+        for (let i = 1; i <= q.opcions.length; i++) {
+            selectOptions += `<option value="${i}" ${q.solucio === i ? 'selected' : ''}>${i}</option>`;
+        }
+        rowHTML += `
+            <td>
+                <select class="select-solucio" onchange="saveCurrentInputs()">
+                    ${selectOptions}
+                </select>
+            </td>
+        `;
+
+        rowHTML += `
+            <td>
+                <input type="number" class="input-punts" step="0.25" value="${q.punts}" onchange="saveCurrentInputs()">
+            </td>
+        `;
+
+        rowHTML += `
+            <td style="text-align: center;">
+                <button type="button" class="btn-danger" onclick="removeQuestion(${qIndex})">✕</button>
+            </td>
+        `;
+
+        tr.innerHTML = rowHTML;
+        tbody.appendChild(tr);
+    });
+}
+
+function triggerImagePicker(qIndex, type, optIndex = null) {
+    currentImageTarget = { qIndex, type, optIndex };
+    document.getElementById('imageUploader').click();
+}
+
+function generatePlaceholder(filename) {
+    const parts = (filename || 'imatge.png').split('.');
+    const ext = parts.length > 1 ? parts.pop() : 'png';
+    const baseName = parts.join('.');
+    
+    // Agafem els primers 10 caràcters i netegem caràcters especials
+    let clean10 = baseName.substring(0, 10).replace(/[^a-zA-Z0-9_-]/g, '_');
+    if (!clean10) clean10 = 'imatge';
+
+    let placeholder = `[${clean10}.${ext}]`;
+    let counter = 1;
+
+    // Evitem duplicats de marcadors idèntics
+    while (imagesMap[placeholder]) {
+        placeholder = `[${clean10}_${counter}.${ext}]`;
+        counter++;
+    }
+
+    return placeholder;
+}
+
+function handleImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file || !currentImageTarget) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const base64Data = e.target.result;
+        const imgTag = `</br><img style="max-width: 100%; margin-top: 10px;" src="${base64Data}">`;
+        
+        const placeholder = generatePlaceholder(file.name);
+        imagesMap[placeholder] = imgTag;
+
+        saveCurrentInputs();
+        const { qIndex, type, optIndex } = currentImageTarget;
+
+        if (type === 'enunciat') {
+            questionsData[qIndex].enunciat += (questionsData[qIndex].enunciat ? ' ' : '') + placeholder;
+        } else if (type === 'opcio') {
+            questionsData[qIndex].opcions[optIndex] += (questionsData[qIndex].opcions[optIndex] ? ' ' : '') + placeholder;
+        }
+
+        renderGrid();
+        currentImageTarget = null;
+        event.target.value = '';
+    };
+    reader.readAsDataURL(file);
+}
+
+function resolvePlaceholders(text) {
+    if (!text) return '';
+    let result = text;
+    for (const [placeholder, imgTag] of Object.entries(imagesMap)) {
+        if (result.includes(placeholder)) {
+            result = result.split(placeholder).join(imgTag);
+        }
+    }
+    return result;
+}
+
+function escapeHTML(str) {
+    return (str || '').replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+function downloadFile(filename, content, type = 'text/plain') {
+    const blob = new Blob([content], { type: type });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+    URL.revokeObjectURL(link.href);
+}
+
+function downloadTXT() {
+    saveCurrentInputs();
+    const payload = {
+        titol: document.getElementById('titolInput').value,
+        preguntes: questionsData,
+        imagesMap: imagesMap
+    };
+    const content = JSON.stringify(payload, null, 2);
+    downloadFile('test_esborrany.txt', content, 'text/plain');
+}
+
+function loadTXT(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const parsed = JSON.parse(e.target.result);
+            if (parsed.titol !== undefined && Array.isArray(parsed.preguntes)) {
+                document.getElementById('titolInput').value = parsed.titol;
+                questionsData = parsed.preguntes;
+                imagesMap = parsed.imagesMap || {};
+                renderGrid();
+                alert('Esborrany carregat correctament.');
+            } else {
+                alert('El format del fitxer no és vàlid.');
+            }
+        } catch (err) {
+            alert('Error en llegir el fitxer.');
+        }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+}
+
+function generateHTML(type) {
+    saveCurrentInputs();
+    const titol = document.getElementById('titolInput').value;
+
+    // Substituïm els marcadors per les imatges reals en el moment de generar l'HTML
+    const processedQuestions = questionsData.map(q => ({
+        ...q,
+        enunciat: resolvePlaceholders(q.enunciat),
+        opcions: q.opcions.map(opt => resolvePlaceholders(opt))
+    }));
+
+    const testOriginalArray = processedQuestions.map(q => [q.enunciat, ...q.opcions]);
+    const solucionsOriginalsArray = processedQuestions.map(q => q.solucio);
+    const puntsPreguntesArray = processedQuestions.map(q => q.punts);
+
+    const safeJSON = (data) => JSON.stringify(data, null, 2).replace(/<\/script>/g, '<\\/script>');
+
+    let fileContent = '';
+
+    if (type === '00') {
+        fileContent = `<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io
+-->
+</textarea>
+
+<script>
+const titol = ${JSON.stringify(titol)};
+
+const test_original = ${safeJSON(testOriginalArray)};
+<\/script>
+
+<script src="../../js/config.js"><\/script>
+<script src="../../js/texme/texme.js"><\/script>
+<script src="../../js/test_segur.js"><\/script>
+<script src="../../js/test_html.js"><\/script>
+<script src="../../js/test_dades.js"><\/script>
+<script src="../../js/test_mates.js"><\/script>
+<script>window.onload = renderitza;<\/script>`;
+        downloadFile('00_prova_test.html', fileContent, 'text/html');
+    } else {
+        fileContent = `<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io
+-->
+</textarea>
+
+<script>
+const titol = ${JSON.stringify(titol)};
+
+const test_original = ${safeJSON(testOriginalArray)};
+
+const solucions_originals = ${safeJSON(solucionsOriginalsArray)};
+
+const punts_preguntes = ${safeJSON(puntsPreguntesArray)};
+<\/script>
+
+<script src="../../js/config.js"><\/script>
+<script src="../../js/texme/texme.js"><\/script>
+<script src="../../js/test_html_comp.js"><\/script>
+<script src="../../js/test_dades.js"><\/script>
+<script src="../../js/test_mates.js"><\/script>
+<script>window.onload = renderitza;<\/script>`;
+        downloadFile('01_prova_comp.html', fileContent, 'text/html');
+    }
+}
+
+window.onload = init;
+</script>
+</body>
+</html>

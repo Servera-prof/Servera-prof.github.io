@@ -6,6 +6,8 @@
     <link rel="stylesheet" type="text/css" href="../../css/test.css" />
 </head>
 
+
+
 <textarea id="md">
 <!-- 
 Desenvolupat a Mallorca amb ❤ per servera-prof.
@@ -226,7 +228,7 @@ const test_original = [
 'Flip-flop D',
 ],
 ['A quin biestable correspon la següent taula de la veritat?' +
- '<table style="margin-left: 37px"><thead>'+
+ '<table class="preguntes"><thead>'+
     '<tr><td>S</td><td>R</td><td>$Q+$</td></tr>'+
   '</thead><tbody>'+
     '<tr><td>0</td><td>0</td><td>$Q$</td></tr>'+
@@ -265,7 +267,7 @@ const test_original = [
 'Flip-flop D',
 ],
 ['A quin biestable correspon la següent taula de la veritat?' +
- '<table style="margin-left: 37px"><thead>'+
+ '<table class="preguntes"><thead>'+
     '<tr><td>EN</td><td>S</td><td>R</td><td>$Q+$</td></tr>'+
   '</thead><tbody>'+
     '<tr><td>1</td><td>0</td><td>0</td><td>$Q$</td></tr>'+
@@ -299,36 +301,15 @@ const test_original = [
 'Flip-flop T',
 'Flip-flop D',
 ]
-];
-
-
-const solucions_originals = [
-
-2, 3, 3, 3, 3,
-3, 3, 2, 2, 3,
-2, 3, 1, 2, 3,
-3, 2, 3, 2, 2,
-3, 1, 1, 1, 1,
-2, 2, 2, 3, 3,
 
 ];
 
-
-const punts_preguntes = [
-
-1, 1, 1, 1, 1,
-1, 1, 1, 1, 1,
-1, 1, 1, 1, 1,
-1, 4, 1, 1, 1,
-1, 1, 1, 1, 1,
-1, 1, 1, 1, 1,
-
-];
 </script>
-
-<script src="config.js"></script>
+<script src="../../js/config.js"></script>
 <script src="../../js/texme/texme.js"></script>
-<script src="test_html_comp.js"></script>
-<script src="test_dades.js"></script>
-<script src="test_mates.js"></script>
+<script src="../../js/test_segur.js"></script>
+<script src="../../js/test_html.js"></script>
+<script src="../../js/test_dades.js"></script>
+<script src="../../js/test_mates.js"></script>
 <script>window.onload = renderitza;</script>
+
