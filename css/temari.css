@@ -166,3 +166,11 @@ img[alt="fl"]{
 }
 
 
+.bibliografia p {
+  padding-left: 2.5em;   /* Desplaça tot el text cap a la dreta */
+  text-indent: -2.5em;  /* Estira la primera línia [X] cap a l'esquerra */
+  margin-bottom: 0.8em; /* Distància entre referències */
+  line-height: 1.4;     /* Interlineat de lectura */
+  text-align: left;  /* Justificació del text */
+}
+

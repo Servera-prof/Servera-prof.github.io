@@ -74,6 +74,12 @@ th, td {
   suffix: ") ";
 }
 
+@counter-style majusc-parentesis {
+  system: alphabetic;
+  symbols: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z;
+  suffix: ") ";
+}
+
 p, ol, ul, li{
     text-align: justify;
     text-justify: inter-word;
@@ -84,6 +90,14 @@ ol {
 }
 ol ol {
   list-style-type: lletres-parentesis;
+}
+
+ol.lletres{
+    list-style-type: lletres-parentesis;
+}
+
+ol.majusc{
+    list-style-type: majusc-parentesis;
 }
 
 h3{

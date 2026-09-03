@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+CONFIGURACIÓ DELS CENTRES DE TRANSFORMACIÓ (CT)
+===============================================
+
+
+
+
+
+
+
+
+
+
+
+
+1. Definició i marc normatiu
+----------------------------
+
+Un centre de transformació és una instal·lació dotada d'un o més
+**transformadors reductors, amb l'aparellatge i l'obra** complementària
+necessaris. Se situa entre la subestació elèctrica i l'abonat, i té com
+a funció reduir els nivells de tensió de mitja a baixa tensió. El Reial
+decret 1955/2000 estableix **l'obligatorietat de reservar un local en
+edificis amb potència superior a 100 kW**, considerant les dimensions
+adequades per a l'equip i el tipus de xarxa (aèria o subterrània).
+
+
+
+
+2. Estructura del sistema elèctric
+----------------------------------
+
+El sistema de subministrament elèctric comprèn el conjunt de mitjans per
+a la **generació, el transport i la distribució** d'energia, dotat de
+mecanismes de control, seguretat i protecció. Està regulat per un
+sistema centralitzat que garanteix l'explotació racional dels recursos i
+la qualitat del servei, compensant incidències. La xarxa de transport i
+les subestacions poden ser propietat d'entitats independents de les
+companyies generadores i distribuïdores. El sistema requereix una
+organització econòmica centralitzada per planificar la producció i
+remunerar els agents del mercat. La freqüència nominal obligatòria és de
+**50 Hz**.
+
+> ![c500](../img/diag_sist_elec.png)
+> **Fig. 2.** [Martin _et al._] (2026). [IOC]. 
+> _Diagrama del sistema elèctric (producció, transport i distribució)_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+### 2.1. Classificació de les línies elèctriques segons el Reglament de línies d'alta tensió
+
+| Categoria | Tensió nominal | 
+|-----------|----------------| 
+| Especial  | ≥ 220 kV, o les que formin part de la xarxa de transport (article 5 del RD 1955/2000) | 
+| Primera   | < 220 kV i > 66 kV | 
+| Segona    | ≤ 66 kV i > 30 kV | 
+| Tercera   | ≤ 30 kV i > 1 kV |
+
+Quan una línia tingui diferents tensions, es classifica segons el valor
+més gran. Per a tensions superiors a 400 kV, l'Administració competent
+estableix la tensió autoritzada.
+
+
+
+
+### 2.2. Situació i funció dels CT en el sistema elèctric
+
+Les tensions de generació (6-18 kV) no són suficients per al transport a
+grans distàncies. Per això s'eleven a 132 kV, 220 kV o 380 kV per
+minimitzar les pèrdues per efecte Joule mitjaçant transformadors 
+elevadors, abans de passar a la xarxa de transport.
+Una vegada l'energia es troba a prop del punt de consum es passa a la
+xarxa de distribució que tornen a baixar la tensió fins 20 o 66 kV).
+Finalment, les tensions de distribució (20 kV, 66 kV) es redueixen a 
+400/230 V als CT mitjançant transformadors de distribució.
+
+
+
+
+
+3. Classificació dels CT
+------------------------
+
+Els CT es classifiquen segons diversos criteris:
+
+- **Ubicació**: interiors (dins d'un edifici) o exteriors (fora de
+   l'edifici). Els exteriors poden ser de superfície (caseta dedicada),
+   subterranis (excavats sota vial) o semisoterranis.
+- **Connexió de servei**: alimentats per línia aèria o per cable
+   subterrani.
+- **Emplaçament**: interiors (aparells en recinte tancat) o intempèrie
+   (aparells exposats, sobre pals o en envolupants prefabricades).
+- **Alimentació**: de punta (al final d'un ramal) o de pas (en un punt
+   intermedi del ramal).
+- **Propietat**: d'empresa (propietat de la distribuïdora, alimenta
+   diversos abonats en BT) o d'abonat (propietat del client, que
+   contracta en MT per obtenir un preu més favorable i independència).
+   Els CT d'abonat presenten avantatges com l'elecció del règim de
+   neutre i la previsió d'ampliacions.
+
+
+
+
+
+4. Esquemes d'alimentació en xarxes de MT
+-----------------------------------------
+
+Existeixen tres configuracions principals:
+
+- **Esquema radial o en antena**: estructura arborescent amb una única
+   via d'alimentació. És econòmic i adequat per a zones de baixa
+   densitat de càrrega (≤ 10 kVA) i àmplia dispersió geogràfica (≥ 100
+   km²), propi de medi rural.
+
+> ![c500](../img/esq_radi.png)
+> **Fig. 3.** [Martin _et al._] (2026). [IOC]. 
+> _Esquema radial o en antena_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+- **Esquema en anell o de bucle obert**: la línia forma un anell que
+   recorre els CT. Un interruptor manté el bucle obert en un punt. En
+   cas d'avaria en un tram, s'obren els interruptors als extrems
+   afectats i es tanca l'interruptor d'obertura, permetent que tots els
+   CT continuïn alimentats. Proporciona major continuïtat de servei, a
+   costa d'un cost d'instal·lació més elevat. S'utilitza en zones
+   urbanes, polígons industrials i sectors de serveis, sovint amb cable
+   subterrani.
+
+> ![c500](../img/esq_anell.png)
+> **Fig. 4.** [Martin _et al._] (2026). [IOC]. 
+> _Esquema en anell o bucle obert_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+- **Esquema amb doble procedència**: dues línies d'alimentació
+   procedents de subestacions diferents. En cas de fallada d'una línia,
+   es detecta l'absència de tensió i es commuta automàticament a
+   l'altra. S'utilitza quan la continuïtat de servei és crítica.
+
+> ![c500](../img/esq_doble_proc.png)
+> **Fig. 5.** [Martin _et al._] (2026). [IOC]. 
+> _Esquema de distribució amb doble procedència_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+
+
+
+
+
+5. Parts fonamentals d'un CT
+----------------------------
+
+Independentment del tipus, els components bàsics són:
+
+- **Equip de MT**: inclou seccionadors, seccionadors de posada a terra
+   (SPT), interruptors automàtics, interruptors-seccionadors i
+   interruptors-seccionadors amb fusibles.
+- **Transformador o transformadors MT/BT**.
+- **Equip de BT**: varia segons la propietat del CT.
+
+
+
+### 5.1. Equips de BT
+
+En els CT d'empresa, l'equip de BT és senzill: un quadre amb terminals
+per a les tres fases i el neutre, sortides protegides amb fusibles
+seccionadors, amperímetre (sovint maxímetre) i sortides per a serveis
+auxiliars (protecció tèrmica, enllumenat, presa de corrent).
+
+En els CT d'abonat, l'equip de BT és més complex: inclou interruptors
+automàtics a la sortida de cada transformador, barres generals o
+separades, sortides amb elements de maniobra i protecció (interruptors
+automàtics, magnetotèrmics, diferencials), elements de mesura
+(voltímetres, amperímetres amb TI) i comptadors. El quadre general de BT
+se situa habitualment a l'exterior del recinte del CT.
+
+
+
+### 5.2. Transformador de distribució
+
+El transformador és una màquina estàtica d'inducció electromagnètica que
+converteix valors de tensió i intensitat en un sistema de corrent altern
+en uns altres, amb la mateixa freqüència. Està format per un nucli
+ferromagnètic, un bobinatge primari i un o més bobinatges secundaris.
+
+Els que transformen MT a BT als CT, s'anomenen transformadors de
+distribució.
+
+Els tipus constructius actuals són: transformadors de bany d'oli
+mineral, transformadors secs d'aïllament sòlid amb resines, i
+transformadors de bany de silicona líquida (menys freqüents).
+
+> ![c500](../img/traf_oli_sec.png)
+> **Fig. 5.** [Martin _et al._] (2026). [IOC]. 
+> _Transformador d'oli (esquerra) i transformador sec (dreta)_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+Les potències unitàries normalitzades són: 25, 50, 100, 160, 250, 400,
+630, 800, 1.000, 1.250, 1.600, 2.000 i 2.500 kVA. Les més utilitzades
+són 250, 400 i 630 kVA. Els grups de connexions més habituals són Yzn 11
+(per a potències de 25 a 100 kVA) i Dyn 11 (per a 160 a 2.500 kVA). La
+lletra n indica neutre accessible.
+
+> ![c500](../img/index_horari.png)
+> **Fig. 6.** [Martin _et al._] (2026). [IOC]. 
+> _Índex horari_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+Per al funcionament en paral·lel de dos transformadors trifàsics es
+requereix: mateixa relació de transformació, mateixa tensió de
+curtcircuit, mateix índex horari i mateixa potència.
+
+
+> ![c500](../img/esq_Dy11.png)
+> **Fig. 8.** [Martin _et al._] (2026). [IOC]. 
+> _Connexió Dy11_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+
+### 5.3. Transformadors de mesura i protecció
+
+Quan els valors de corrent o tensió són elevats, es necessiten
+transformadors de mesura (tensió o intensitat) per alimentar aparells de
+mesura, comptatge i protecció. Són de tipus electromagnètic, amb un
+nucli magnètic, bobinat primari connectat a la línia i secundari
+connectat als aparells.
+
+Els models actuals per a interior són d'aïllament sòlid de resina epoxi.
+Per a intempèrie poden ser d'oli i porcellana, o de resina amb
+envolupant metàl·lica.
+
+> ![c250](../img/traf_corr.png)
+> **Fig. 9.** [Martin _et al._] (2026). [IOC]. 
+> _Transformador de corrent_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+> ![c500](../img/traf_tens.png)
+> **Fig. 10.** [Martin _et al._] (2026). [IOC]. 
+> _Transformador de tensió (dues connexions diferents)_.
+> Imatge sota llicència [CC3.0-by-nc-sa] 
+
+Els transformadors de tensió (TT) es connecten en derivació. Tenen borns
+primaris (P1, P2) i secundaris (S1, S2). En els TT per a connexió
+fase-terra, un born primari es connecta a terra. Els esquemes possibles
+inclouen: transformador amb borns primaris totalment aïllats, amb un
+born de baix aïllament, amb un extrem connectat a massa, amb dos
+bobinats secundaris, o amb múltiples preses.
+
+Els transformadors d'intensitat (TI) es connecten en sèrie amb la línia.
+Les marques de borns (P1, P2; S1, S2) indiquen polaritat i seccions. Es
+connecta a terra un born de cada secundari.
+
+### 5.4 Aparellatge: característiques i funció
+
+L'aparellatge comprèn els elements de maniobra, seguretat i protecció
+del transformador:
+
+- **Aïllants**: de resina epoxi, suporten grans esforços mecànics.
+- **Conductors**: aïllament segons la tensió de la xarxa.
+- **Seccionador**: obre i tanca circuit en absència de tensió.
+- **Seccionador de posada a terra (SPT)**: posa a terra part del
+  circuit, suporta corrents de curtcircuit; enclavat mecànicament.
+- **Interruptor**: pot obrir i tancar circuits, però no interrompre
+  corrents de curtcircuit. 
+- **Interruptor-seccionador**: en posició oberta, garanteix el mateix 
+  aïllament que un seccionador.
+- **Interruptor automàtic (disjuntor)**: pot interrompre corrents de
+  curtcircuit i restablir automàticament.
+- **Autovàlvules (parallamps)**: deriven a terra les sobretensions.
+- **Fusibles limitadors d'alt poder de ruptura (APR)**: protecció contra
+  curtcircuits.
+- **Termòmetres**: controlen la temperatura de l'oli; disparen alarma o
+  desconnexió.
+- **Relés de protecció directa**: disparen l'interruptor associat si la
+  intensitat supera el llindar.
+- **Relés de protecció indirecta**: de tipus electrònic, excitats per
+   TI.
+
+En els CT d'empresa, la protecció contra sobrecàrregues es fa per
+sobretemperatura del transformador, i contra curtcircuits mitjançant
+fusibles MT. En els CT d'abonat, la protecció tèrmica es fa amb
+termòmetres (oli) o sondes Pt100 (secs). Els transformadors d'oli
+inclouen detector de gasos (Buchholz). Cada interruptor automàtic
+disposa d'un relé de sobreintensitat (temps invers), curtcircuit i
+defecte a terra, connectat a tres TI.
+
+
+
+
+
+
+
+
+
+6. Esquemes unifilars de CT
+---------------------------
+
+- **Centres de distribució**: disposen de cel·la de línia per a cada
+   entrada/sortida (amb seccionador de posada a terra enclavat) i cel·la
+   de protecció per transformador (amb ruptofusible i bobina de tret
+   associada al termòmetre). Les sortides BT es fan per quadres
+   normalitzats.
+
+> ![c500](../img/esq_unif_CT.png)
+> **Fig. 11.** [Martin _et al._] (2026). [IOC]. 
+> _Esquema unifilar de CT de distribució amb un transformador 
+> (esquerra) i dos transformadors (dreta)_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+- **Centres d'abonat**: a més de transformar i distribuir, han de
+   mesurar l'energia consumida. Disposen de cel·la de línia per cada
+   connexió, cel·la de seccionament, cel·la de protecció (ruptofusible
+   fins a 1.000 kVA, disjuntor per a superiors) i cel·la de mesura (amb
+   TT i TI). Si la mesura es fa en BT, la cel·la de mesura no és
+   necessària.
+
+> ![c250](../img/esq_CT_abon_punta.png)
+> **Fig. 12.** [Martin _et al._] (2026). [IOC]. 
+> _Esquema unifilar de CT d’abonat en punta_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+> ![c500](../img/esq_CT_abon_bucle.png)
+> **Fig. 13.** [Martin _et al._] (2026). [IOC]. 
+> _Esquema unifilar de CT d’abonat en bucle amb mesura en MT_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+Per a instal·lacions amb dos o més transformadors, l'esquema elèctric
+s'estructura de la següent manera:
+
+1. **Cel·la de protecció general**: situada a l'entrada del CT,
+  dimensionada per a la potència total de la instal·lació. 
+2. **Cel·la de mesura**: allotja els transformadors de tensió (TT) i 
+  d'intensitat (TI); els seus secundaris alimenten l'equip de comptatge. 
+3. **Cel·les de protecció individuals**: una per a cada transformador, 
+  que garanteixen la protecció específica de cada unitat.
+
+> ![c500](../img/esq_2CT_abon_bucle.png)
+> **Fig. 14.** [Martin _et al._] (2026). [IOC]. 
+> _Esquema unifilar de CT d’abonat amb dos transformadors_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+> ![c500](../img/esq_2CT_abon_bucle.png)
+> **Fig. 15.** [Martin _et al._] (2026). [IOC]. 
+> _Esquema unifilar de CT d’abonat amb tres transformadors_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+
+
+
+
+
+
+
+
+7. Cel·les: tipus, senyalització i connexions
+---------------------------------------------
+
+Les cel·les o cabines prefabricades són conjunts d'aparellatge MT
+muntats en recintes metàl·lics. Es construeixen modularment, amb unitats
+individuals acoblades mecànica i elèctricament. Hi ha cel·les per a
+entrada d'alimentació, sortida, acoblament de barres, comptatge, etc., i
+segons el tipus d'aparell (interruptor automàtic,
+interruptor-seccionador, interruptor-seccionador amb fusibles).
+Existeixen també conjunts amb envolupant única que agrupen diverses
+funcions estandarditzades, molt utilitzats en CT d'empresa.
+
+> ![c500](../img/esq_2CT_abon_bucle.png)
+> **Fig. 16.** [Martin _et al._] (2026). [IOC]. 
+> _Símbols per a esquemes, segons norma EN-61 082_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+> ![c500](../img/celes_magatz.jpg)
+> **Fig. 17.** J. Servera (2026).
+> _Conjunt estàndard de funcions individuals amb envolupant única en 
+> atmosfera de SF<sub>6</sub>_.
+> Imatge sota llicència Sota llicència [CC4.0-by-nc-sa]
+
+
+**Característiques nominals de les cel·les**: tensió assignada, nivell
+d'aïllament, freqüència, intensitat en servei continu, intensitat de
+curta durada admissible, valor de cresta, durada de curtcircuit, i
+valors nominals dels aparells interns. La connexió entre cel·les es fa
+mitjançant adaptadors laterals.
+
+
+
+
+
+
+
+
+
+
+8. Quadre de distribució de baixa tensió
+----------------------------------------
+
+El quadre modular de BT rep el circuit principal del transformador i el
+distribueix en circuits individuals. Està format per:
+
+> ![c500](../img/estruc_quad_BT.png)
+> **Fig. 18.** [Martin _et al._] (2026). [IOC]. 
+> _Estructura del quadre de distribució de BT_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+- Unitat d'escomesa i distribució: sistema d'embarrats que distribueix
+   l'alimentació en múltiples sortides.
+- Unitat funcional de circuits auxiliars: allotja elements de mesura i
+- Unitat funcional de protecció: bases tripolars verticals amb fusibles
+   segons UNE-EN 60947.
+
+> ![c500](../img/esq_quad_BT.png)
+> **Fig. 19.** [Martin _et al._] (2026). [IOC]. 
+> _Esquema del quadre de distribució de BT_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+
+
+
+
+
+
+9. Instal·lació de posada a terra
+---------------------------------
+
+Segons les instruccions MIE-RAT 13, la posada a terra en instal·lacions
+d'AT (inclosos CT) consta de línies de terra i elèctrodes. Les línies de
+terra, de recorregut el més curt possible, utilitzen conductors de coure
+amb secció mínima 25 mm² i densitat de corrent màxima 160 A/mm² o acer 
+(secció mínima 60 mm², densitat 60 A/mm²). S'instal·len preferentment 
+nus i visibles.
+
+> ![c500](../img/inst_PT_CT.png)
+> **Fig. 20.** [Martin _et al._] (2026). [IOC]. 
+> _Instal·lació de posada a terra_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+La configuració d'elèctrode habitual és l'anell rectangular a la rasa
+perimetral de cimentació. Si és insuficient, s'afegeixen piques als
+vèrtexs o punts intermedis. En cas de subsòl ocupat, s'utilitza un
+elèctrode longitudinal exterior. La posada a terra del neutre del
+transformador es fa amb piques o filera de piques, separada de la de les
+masses per evitar la transferència de potencials. La línia d'enllaç
+entre el neutre i els elèctrodes ha de ser cable aïllat 0,6/1 kV,
+protegit amb tub de PVC de grau IP7. Quan la tensió màxima de defecte a
+terra en les masses és inferior a 1.000 V, es poden unificar els
+sistemes de posada a terra del neutre i de les masses de MT.
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Martin _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m0236_/web/fp_iea_m0236_htmlindex/index.html "J. Martín Lledó, C. Sabaté Arrese, A. Sànchez Díaz, E. Sorribes Colell, E. Requena Amadas, A. Jurado Poza"
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+[CC4.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement - No comercial - CompartirIgual"
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: '../../js/marked/marked.min.js',
+    MathJaxURL: '../../js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="../../js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
