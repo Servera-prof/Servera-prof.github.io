@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+</textarea>
+
+
+
+<script>
+const titol = "Test inicial UT01";
+
+
+/* Ortografía revisada (7 preguntes) a 06/09/2026) */
+
+const test_original = [
+[
+"A quina tensió de sortida treballa un transformador B1?",
+"127/220",
+"230/400",
+"220",
+"400",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"A quina tensió de sortida treballa un transformador B2?",
+"127/220",
+"230/400",
+"220",
+"400",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+
+[
+"A partir de quin nivell de potència és obligatori (segons el REBT) que un edifici reservi un local per a instal·lar-hi un centre de transformació?",
+"10 kW",
+"50 kW",
+"78,5 kW",
+"100 kW",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+
+[
+"Determina la connexió en alta, en baixa, la $r_t$ i el desfasament en graus de la BT respecte a la AT i si té neutre o no en un trafo Dyn11",
+"AT: Estrella; BT: Triangle; sense neutre i desfasament de -30°, relació de transformació $r_t=\\dfrac{2}{\\sqrt 3}\\dfrac{n_1}{n_2}$",
+"AT: Estrella; BT: Triangle; amb neutre i desfasament de 30°, relació de transformació $r_t=\\dfrac{1}{\\sqrt 3}\\dfrac{n_1}{n_2}$",
+"AT: Triangle; BT: Zig-zag; amb neutre i desfasament de 30°, relació de transformació $r_t=\\dfrac{2}{3}\\dfrac{n_1}{n_2}$",
+"AT: Triangle; BT: Estrella; amb neutre i desfasament de 270°, relació de transformació $r_t=\\dfrac{2}{3}\\dfrac{n_1}{n_2}$",
+"AT: Triangle; BT: Estrella; sense neutre i desfasament de -270°, relació de transformació $r_t=\\sqrt 3\\dfrac{n_1}{n_2}$",
+"AT: Triangle; BT: Estrella; amb neutre i desfasament de 270°, relació de transformació $r_t=\\dfrac{1}{\\sqrt 3}\\dfrac{n_1}{n_2}$",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+
+[
+"Determina la connexió en alta, en baixa, la r<sub>t</sub> i el desfasament en graus de la BT respecte a la AT i si té neutre o no, en un trafo Dz0",
+"AT: Estrella; BT: Triangle; sense neutre i desfasament de 0°, relació de transformació $r_t=\\dfrac{2}{\\sqrt 3}\\dfrac{n_1}{n_2}$",
+"AT: Estrella; BT: Triangle; amb neutre i desfasament de 0°, relació de transformació $r_t=\\dfrac{1}{\\sqrt 3}\\dfrac{n_1}{n_2}$",
+"AT: Triangle; BT: Zig-zag; sense neutre i desfasament de 0°, relació de transformació $r_t=\\dfrac{2}{3}\\dfrac{n_1}{n_2}$",
+"AT: Triangle; BT: Estrella; amb neutre i desfasament de 0°, relació de transformació $r_t=\\dfrac{2}{3}\\dfrac{n_1}{n_2}$",
+"AT: Triangle; BT: Estrella; sense neutre i desfasament de -360°, relació de transformació $r_t=\\sqrt 3\\dfrac{n_1}{n_2}$",
+"AT: Triangle; BT: Zig-zag; amb neutre i desfasament de 360°, relació de transformació $r_t=\\dfrac{1}{\\sqrt 3}\\dfrac{n_1}{n_2}$",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+
+
+
+
+
+
+[
+"Quantes cel·les de mesura té normalment un trafo de la companyia subministradora",
+"0, ja que no és un trafo d'abonat",
+"1 a on es troben els transformadors d'intensitat i tensió",
+"2, una pel transformador d'intensitat i una altra pel transformador de tensió",
+"2, una pel costat d'alta i una altra pel costat de baixa",
+"en un transformador en punta 1, en un transformador de pas 2 (o més)",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+
+[
+"Quines condicions s’han de complir per poder acoblar dos transformadors en paral·lel?",
+"Mateix nombre d'espires, mateixa tensió de sortida, mateix rendiment",
+"Mateixa potència, mateixa tensió de curtcircuit, mateix índex horari",
+"Mateixa potència, mateixa tensió de curtcircuit, mateixa relació de transformació",
+"Marca aquesta si no pots marcar cap de les altres"
+]
+
+];
+
+</script>
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/test_segur.js"></script>
+<script src="../../js/test_html.js"></script>
+<script src="../../js/test_dades.js"></script>
+<script src="../../js/test_mates.js"></script>
+<script>window.onload = renderitza;</script>
+
