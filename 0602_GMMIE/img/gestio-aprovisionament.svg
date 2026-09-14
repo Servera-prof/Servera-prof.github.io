@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="105mm"
+   height="74mm"
+   viewBox="0 0 105 74"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (0f2f062aeb, 2022-09-21, custom)"
+   sodipodi:docname="gestio-aprovisionament"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.1993833"
+     inkscape:cx="135.06942"
+     inkscape:cy="126.31492"
+     inkscape:window-width="1312"
+     inkscape:window-height="704"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#0d9688;fill-opacity:1;stroke:#163e4b;stroke-width:0.262479;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect234"
+       width="24.587141"
+       height="11.269308"
+       x="2.8291283"
+       y="1.8364292"
+       ry="2.6547315" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.214;stroke-opacity:1;paint-order:markers fill stroke"
+       x="15.614917"
+       y="6.6703572"
+       id="text3704"><tspan
+         sodipodi:role="line"
+         id="tspan3702"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.214;stroke-opacity:1"
+         x="15.614917"
+         y="6.6703572">Analisi de les </tspan><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.214;stroke-opacity:1"
+         x="15.614917"
+         y="10.639108"
+         id="tspan3706">necessitats</tspan></text>
+    <g
+       id="g5405"
+       transform="translate(-8.3970511,-8.1130633)">
+      <rect
+         style="fill:#0d9688;fill-opacity:1;stroke:#163e4b;stroke-width:0.262479;stroke-opacity:1;paint-order:markers fill stroke"
+         id="rect234-3"
+         width="24.587141"
+         height="11.269308"
+         x="53.483147"
+         y="9.9817162"
+         ry="2.6547315" />
+      <text
+         xml:space="preserve"
+         style="font-size:3.175px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.214;stroke-opacity:1;paint-order:markers fill stroke"
+         x="65.756561"
+         y="14.571473"
+         id="text3704-6"><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.214;stroke-opacity:1"
+           x="65.756561"
+           y="14.571473"
+           id="tspan3706-5">Selecció  de</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.214;stroke-opacity:1"
+           x="65.756561"
+           y="18.540222"
+           id="tspan5343">proveïdors</tspan></text>
+    </g>
+    <rect
+       style="fill:#163e4b;fill-opacity:1;stroke:none;stroke-width:0.177476;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect5088"
+       width="14.653392"
+       height="0.51323169"
+       x="27.439241"
+       y="7.2144675"
+       ry="0" />
+    <path
+       sodipodi:type="star"
+       style="fill:#163e4b;fill-opacity:1;stroke:none;stroke-width:0.214;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path5399"
+       inkscape:flatsided="false"
+       sodipodi:sides="3"
+       sodipodi:cx="46.136745"
+       sodipodi:cy="12.499417"
+       sodipodi:r1="2.2328787"
+       sodipodi:r2="1.1164393"
+       sodipodi:arg1="2.0943951"
+       sodipodi:arg2="3.1415927"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 45.020306,14.433147 0,-1.93373 0,-1.933729 1.674659,0.966864 1.674659,0.966865 -1.674659,0.966865 z"
+       inkscape:transform-center-x="-0.55821906"
+       transform="translate(-3.4147681,-5.0283339)" />
+  </g>
+</svg>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href=../../img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+UT04 - Planificació del Muntatge
+================================
+
+- 4.1 El projecte elèctric
+- 4.2 La memòria tècnica de Disseny
+- 4.3 Planificació de  projectes
+- 4.4 Processos de muntatge en instal·lacions elèctriques
+- 4.5 El pla de muntatge
+- 4.6 Eines informàtiques per a la planificació de projectes
+
+4.1 El projecte elèctric
+------------------------
+
+- És un tipus concret de projecte
+- Redactat i signat per tècnic competent. No cal visat (RD1000/2010)
+- Serà controlat per direcció facultativa
+- També aporta informació per a la planificació del muntatge 
+- PPT: Com s'executen les instal·lacions, les UO ens donaran una idea de com es divideixen les instal·lacions
+- ESS: EPIs, mesures preventives, prot colectives
+- Replantejos d'obra + experiència empresa → pla de muntatge
+
+### Instal·lacions que requereixen projecte
+
+Veure [grups de tramitació del caib](https://www.caib.es/seucaib/ca/tramites/tramite/8518)
+
+### Parts de la memòria de càlculs d'un projecte elèctric
+
+- Potencia total de l'edifici o instal·lació (ITC-BT-10)
+- Criteris de càlcul
+	+ Intensitat
+	+ cdt
+	+ cdt en condicions adverses
+	+ cc
+	+ condicions econòmiques
+- Canalitzacions (UNE-20450, ITC-BT21)
+	+ Influencies externes
+	+ Canalitzacions
+- CGP o CPM
+- LGA
+- Ubicació comptadors
+- DI
+- Circuits interiors
+- Subministres complementaris
+- Característiques dels materials en frot del foc
+- PT (ITC-BT-18, ITC-BT-26)
+- Càlculs lumínics
+- Enllumenat (normal i d'emergència)
+- Criteris d'eficiència i estalvi
+- Verificacions i certificacions
+
+### Plànols
+
+- Emplaçament
+- Esquema elèctric general.
+- Plànol de plantes
+- Canalitzacions verticals
+- Distribució elèctrica en plantes
+- Detalls de posada a terra
+- Esquemes unifilars
+- Traçats
+- Xarxa d'equipotencialitat
+- Zonificació dels locals amb risc d'incendi i explosió
+
+### Altres
+
+- PPT
+- Amidaments i pressupost
+- Cronograma
+- ESS
+- EIMA
+
+
+4.2 La memòria tècnica de Disseny
+---------------------------------
+
+Contindrà:
+
+- Dades del propietari
+- Dades de l'insta·ladorç
+- Emplaçament
+- Ús
+- Receptors
+- Croquis
+- Esquema unifilar
+- Càlculs
+- Breu memòria descriptiva
+
+
+4.3 Planificació de  projectes
+------------------------------
+
+- A mesura que creix la mida de la instal·lació a executar creix la complexitat, la probabilitat de col·lisió amb altres empreses, i els imprevistos.
+- Diagrama PERT
+	+ Només existeix un node
+	+ Només es pot numerar un node quan tots els seus antecedents estan numerats, ja que ha de ser consecutiva
+	+ Només una fletxa amb un mateix origen i destí
+	+ La duració de les tasques es calcula com:
+	
+<blockquote><img src="https://latex.codecogs.com/svg.latex?t_e=\frac{t_a+4\cdot{t_m}+t_b}{6}"></blockquote>
+
+A on:
+
+- t<sub>e</sub> és el temps esperat
+- t<sub>a</sub> és el temps optimista
+- t<sub>m</sub> és el temps probable segons la nostra experiencia
+- t<sub>b</sub> és el temps pessimista.
+
+### Mètode del Camí Crític (CPM)
+
+- Cada node té dos inicis (el més proper i el més llunyà)
+- També dos finals, el més proper i el més llunya.
+- La diferencia entre els dos temps d'inici o final és la folgança (holgura)
+- Les que no tenen holgura són el camí crític
+
+### Diagrama de Gantt
+
+- Cada tasca es representa amb una barra la llargària de la qual representa la duració.
+- Les tasques predecessores i successores es relacionen amb fletxes.
+- Quan les tasques són múltiples costa seguir, ja que l'eix vertical creix excessivament.
+
+4.4 Processos de muntatge en instal·lacions elèctriques
+-------------------------------------------
+
+### 4.4.1 Cimentació
+
+- Moviment de terres: ull amb la petició de plànols de serveis, i amb la detecció d'elements enterrats (arqueològic, contaminant)
+- Muntatge del suport
+- Cimentació (ull amb el temsps d'enduriment)
+
+### 4.4.2 Canalitzacions
+
+- Permisos d'encreuament, d'obra, sol·licitut de planols d'instal·lacions, serveis afectats.
+- Moviment de terres
+- Suports (de canalitzacions)
+- Muntatge de canalitzacions
+- Arquetes i registres
+- Cobriment de la canalització
+
+### 4.4.3 Cablejat
+
+- Pas de cablejat, amb guía o tubs ja encordats.
+- Identificació de les línies
+
+### 4.4.4 Instal·lació de mecanismes
+
+- No col·locarem els embellidors gairebé fins al final del projecte.
+
+### 4.4.5 Instal·lació de proteccions
+
+- Pot ser simultània a la col·locació de mecanismes.
+- Inclou el muntatge del quadre
+
+### 4.4.6 Verificació i proves
+
+- Resistència d'aïllament
+- Resistència de terra
+- Equipotencialitat
+- funcionament dels mecanismes
+- Identificació correcta
+
+4.5 El pla de muntatge
+----------------------
+
+- Dades de la instal·lació.
+- Necessitats: de materials, eines, RRHH, etc.
+- Calendari de comandes
+- Calendari de recepcions
+- Gantt d'actuació
+- Indicadors de control
+- Pla de contingències (redistribució de recursos, canvis d'ordre d'execució)
+
+4.6 Eines informàtiques per a la planificació de projectes
+------------------------------------------------
+
+
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: '../../js/marked/marked.min.js',
+    MathJaxURL: '../../js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="../../js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
