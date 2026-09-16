@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+Operacions de muntatge i manteniment de XSBT
+============================================
+
+Aquesta unitat descriu la documentació, eines, equips de
+protecció (EPI) i instrumentació necessaris per al muntatge i
+manteniment de xarxes subterrànies de baixa tensió (BT). Així mateix,
+s'aborden els procediments d'excavació, entubat, estesa de cables,
+connexió, posada a terra, manteniment i resolució d'avaries.
+
+
+
+
+
+1. Documentació administrativa associada
+----------------------------------------
+
+Tot projecte d'instal·lació ha d'incloure la documentació mínima
+següent:
+
+- Memòria: justifica la finalitat i necessitat de la instal·lació.
+  Descriu el traçat (preferentment en domini públic), la longitud i
+  les dades elèctriques fonamentals:
+    + Potència a transportar ($P$), caiguda de tensió ($\Delta V$) i
+      intensitat de curtcircuit ($I_{cc}$).
+    + Encreuaments i paral·lelismes, identificant els propietaris
+      o organismes afectats.
+    + Declaració de conformitat amb el projecte tipus (no cal
+      detallar càlculs ni elements constructius).
+- Plànols:
+    + Plànol de situació a escala suficient.
+    + Plànol de planta (escala mínima 1:2000) amb detall de
+      seccions, nombre de conductors, circuits, parcel·les o
+      habitatges i punts de mínima tensió.
+    + Plànols d'enllaç amb línia aèria de BT si escau.
+- Pressupost:
+    + Estat de mesuraments de les unitats constructives (UC).
+    + Preus unitaris de la mà d'obra vigents.
+    + Pressupost general (incloent-hi despeses generals i benefici
+      industrial) i pressupostos individuals per a organismes
+      afectats.
+
+
+2. Eines, equips de protecció i instrumentació
+----------------------------------------------
+
+### 2.1. Equips de Protecció Individual (EPI)
+Segons el RD 773/1997, un EPI protegeix el treballador dels riscos
+derivats de la feina. Inclou:
+
+- Protectors del cap: cascs de seguretat.
+  > ![c](../img/XSBT_casc.png)
+  > **Fig. 1.** [Martin _et al._] (2026). [IOC].
+  > _Casc de seguretat_.
+  > Imatge sota llicència [CC3.0-by-nc-sa]
+  
+- Protectors facials i oculars: pantalles facials.
+  > ![c](../img/XSBT_pantalla_facial.png)
+  > **Fig. 2.** [Martin _et al._] (2026). [IOC].
+  > _Pantalla facial_.
+  > Imatge sota llicència [CC3.0-by-nc-sa]
+  
+- Protectors de mans i braços: guants tèrmics, elèctrics,
+  mecànics i maneguets.
+  > ![c](../img/XSBT_guants_termics.png)
+  > **Fig. 3.** [Martin _et al._] (2026). [IOC].
+  > _Guants tèrmics_.
+  > Imatge sota llicència [CC3.0-by-nc-sa]
+  
+  > ![c](../img/XSBT_guants_aillants.png)
+  > **Fig. 4.** [Martin _et al._] (2026). [IOC].
+  > _Guants aïllants_.
+  > Imatge sota llicència [CC3.0-by-nc-sa]
+  
+- Protectors de peus i cames: calçat de seguretat i aïllant.
+- Protecció integral i anticaigudes: arnesos, dispositius
+  lliscants, absorbidors d'energia i roba d'alta visibilitat.
+
+Consideracions clau:
+- Elements com banquetes o eines aïllants no són EPIs.
+- Els complements indispensables per a l'eficàcia de l'EPI (com
+  l'amarratge de l'arnès) tenen consideració d'EPI.
+- Tot EPI ha de disposar del marcatge CE i la seva categoria
+  corresponent.
+
+### 2.2. Eines de mà i accessoris
+- Punxons: d'acer dur (angle de 60° per al de centrar) per evitar el
+  balanceig del trepant.
+- Tornavisos: amb mànec estriat, fil d'acer i boca temperada.
+    + D'estrella: menor lliscament i millor distribució de pressió.
+    + Descentrat: per a espais reduïts.
+- Alicates:
+    + De puntes (rodones, planes o corbades).
+    + De tall (frontal, inclinat o lateral).
+    + Universals (subjectar, doblegar, tallar).
+- Tenalles de tall: aplicació de força perpendicular amb lubricació
+  freqüent.
+- Claus de torsió:
+    + De casquet, tub i cub: abracen la femella evitant obertures.
+    + Allen: per a cargols embotits.
+    + De boca: inclinades a 15° o 22,5° per treballar en espais
+      reduïts. Es recomana estirar en lloc d'empènyer.
+- Ganivets: fulla d'acer acerat amb tall únic.
+- Equips especials:
+    + Bossa portaeines de lona reforçada.
+    + Maneta aïllant per a fusibles de BT (protecció contra arc
+      elèctric).
+      > ![c](../img/XSBT_maneta_portafusibles.png)
+      > **Fig. 5.** [Martin _et al._] (2026). [IOC].
+      > _Maneta portafusibles_.
+      > Imatge sota llicència [CC3.0-by-nc-sa]
+    + Discriminador bipolar de tensió i detector de seqüència de
+      fases: verifica presència de tensió, identifica fase/neutre i
+      comprova la rotació.
+
+
+
+
+
+
+3. Procediments d'excavació i canalització
+------------------------------------------
+
+### 3.1. Preparació i obertura de rases
+- Realització de cates de reconeixement (cada 6-8 m) per verificar
+  serveis existents.
+- Senyalització viària, passos per a vianants i instal·lació de
+  xapes de protecció.
+- Demolició de paviments ajustada al projecte; ús de compressors
+  insonoritzats i tall amb disc en asfalt o formigó.
+- Execució de l'excavació (manual, mecànica o mixta):
+    + Manteniment de ponts de terra cada 10 m com a apuntalament.
+    + Les condicions d'instal·lació, profunditats i distàncies
+      s'han d'ajustar a la reglamentació oficial vigent (REBT
+      ITC-BT-07).
+    + En calçada, les rases discorren paral·leles a 60 cm de la
+      vorera. Si la profunditat és inferior a 90 cm, cal protecció
+      mecànica extra.
+
+### 3.2. Tipus de canalitzacions
+- Directament soterrades o entubades en sec: tubs de polietilè
+  (diàmetre mínim segons projecte, habitualment PN 160 mm) amb cates
+  de registre cada 40-50 m i arquetes en canvis de direcció.
+  > ![c500](../img/XSBT_2TH.png)
+  > e-distribución (2020)
+  > _Detall rasa 2 tubs formigonats segons NRZ002_.
+  > Imatge amb copyright<sup>©</sup> utilitzada en aplicació de l'article
+  > 32 de la [LPI] ([veure pdf original][NRZ002])
+- Tubulars formigonades: per a encreuaments de calçades o accessos de
+  vehicles pesants, utilitzant formigó H-100 o dosificació de 200
+  kg/m³. Inclouen tubs de reserva segellats.
+- Canalitzacions mixtes (MT/BT) i de serveis auxiliars (tubs de PE de
+  63 mm a 60 cm de profunditat).
+
+### 3.3. Fases de muntatge
+- Obertura de rasa i col·locació d'un llit de sorra net.
+- Muntatge de tubs i addició d'una capa superior de sorra de 10 cm.
+- Col·locació de la cinta de senyalització groga-ataronjada o placa
+  de PVC (a 25 cm de la superfície i 25 cm sobre la canalització).
+- Farciment, piconat i reposició del paviment.
+
+
+
+
+
+4. Estesa de cables i tècniques de connexió
+-------------------------------------------
+
+### 4.1. Procediment d'estesa
+- Manipulació de bobines mitjançant eix central, elevades sobre gats
+  i evitant l'emmagatzematge en terrenys tous.
+- L'estesa no s'ha de realitzar a temperatures ambients inferiors a
+  0 °C.
+- El radi de curvatura del cable ($R$) respecte al seu diàmetre
+  exterior ($D$) ha de complir:
+  > \begin{gather}
+    R_{\text{estesa}} \ge 20 \cdot D
+    \end{gather}
+  > A on:
+  > - $R_{\text{estesa}}$ és el radi de curvatura durant l'estesa en
+  >   $\text{mm}$
+  > - $D$ és el diàmetre exterior del cable en $\text{mm}$
+  I posteriorment a la instal·lació:
+  > \begin{gather}
+    R_{\text{instal·lat}} \ge 10 \cdot D
+    \end{gather}
+  > A on:
+  > - $R_{\text{instal·lat}}$ és el radi de curvatura en posició
+  >   definitiva en $\text{mm}$
+  > - $D$ és el diàmetre exterior del cable en $\text{mm}$
+- Ús de corrons, cabrestants amb dinamòmetre i solapament mínim de
+  0,50 m en empalmaments.
+- En cables unipolars, cal col·locar brides d'agrupament de les tres
+  fases i el neutre cada 1,5 m.
+- Profunditat mínima de soterrament habitual: 0,6 m.
+
+### 4.2. Connexió i empalmament
+- Execució segons instruccions del fabricant amb eines homologades.
+  AQUI_VA_IMATGE_17
+  AQUI_VA_IMATGE_18
+- Escalonament dels empalmaments unipolars (desfasats 50 mm).
+- Identificació obligatòria de conductors per codi de colors:
+    + L1: Verd
+    + L2: Groc
+    + L3: Marró
+    + Neutre: Gris
+
+### 4.3. Posada a terra i continuïtat del neutre
+- Posada a terra del conductor neutre almenys una vegada cada 500 m
+  (esquemes TT i TN) segons les especificacions de la normativa de
+  baixa tensió (REBT ITC-BT-06).
+- Prohibició d'interrompre el neutre excepte mitjançant tall
+  omnipolar simultani o seccionament amovible senyalitzat.
+
+
+
+
+
+5. Manteniment i localització d'avaries
+-----------------------------------------
+
+### 5.1. Plans de manteniment
+- Verificacions reglamentàries: inspeccions periòdiques per
+  Organismes de Control Autoritzats (OCA) cada 3 anys o segons
+  normativa autonòmica.
+- Manteniment preventiu/predictiu: actuacions programades i assajos
+  per anticipar fallades.
+- Manteniment correctiu i conservació d'infraestructures.
+- El pla ha d'incloure: instal·lacions afectades, tipus d'actuació,
+  dates i històric d'incidències.
+  AQUI_VA_IMATGE_19
+
+### 5.2. Avaries i mètodes de localització
+- Causes internes (arcs, curtcircuits) o externes (cops, humitat,
+  corrosió, envelliment).
+- Tipus de pertorbacions: conductor tallat, contacte entre conductors
+  o contacte a terra.
+- Localització en dues fases:
+    + Prelocalització.
+    + Localització exacta mitjançant:
+        * Generador de tensions de xoc (desàrrega d'energia i
+          detecció acústica/magnètica).
+        * Reflector d'impulsos (ecometria):
+          > \begin{gather}
+           d = \frac{v \cdot t}{2}
+           \end{gather}
+          > A on:
+          > - $d$ és la distància fins a l'avaria en $\text{m}$
+          > - $v$ és la velocitat de propagació de l'impuls en $\text{m/s}$
+          > - $t$ és el temps de retard de l'eco en $\text{s}$
+
+
+[Martin _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m0236_/web/fp_iea_m0236_htmlindex/index.html "J. Martín Lledó, C. Sabaté Arrese, A. Sànchez Díaz, E. Sorribes Colell, E. Requena Amadas, A. Jurado Poza"
+[J. Servera _et al._]: https://servera-prof-github.io/about.html "J. Servera, _et al._"
+
+[NRZ002]: https://www.edistribucion.com/content/dam/edistribucion/general/descargables/materiales/Guia-NRZ002-4.1.pdf
+
+[CIFP Usurbil LHII]: https://www.lhusurbil.eus/web/default.aspx?lng=es "Usurbilgo Lanbide Eskola"
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+[CC4.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement - No comercial - CompartirIgual"
+[LPI]: https://www.boe.es/eli/es/rdlg/1996/04/12/1/con
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: '../../js/marked/marked.min.js',
+    MathJaxURL: '../../js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="../../js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

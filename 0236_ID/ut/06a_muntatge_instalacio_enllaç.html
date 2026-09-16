@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+Fases de muntatge d'una instal·lació elèctrica d'enllaç
+======================================================
+Aquest apartat tracta l'informe tècnic d'instal·lació d'enllaç (ITIE)
+de les companyies subministradores, els sistemes de muntatge,
+operacions de manteniment i diagnòstic d'avaries.
+
+
+
+
+
+1. Documentació administrativa
+-------------------------------
+Segons l'Art. 14 del REBT (RD 842/2002), les empreses subministradores
+estableixen especificacions particulars sobre la construcció i
+muntatge de les instal·lacions d'enllaç per unir la xarxa de
+distribució en baixa tensió (BT) amb les instal·lacions interiors.
+
+L'ITIE dona les instruccions tècniques necessàries a l'instal·lador
+autoritzat. Tipus de subministraments:
+- Individuals fins a 15 kW.
+- Individuals superiors a 15 kW.
+- Centralització de comptadors en edificis.
+- Subministraments temporals.
+
+
+
+### 1.1. Instruccions per a l'instal·lador
+Les instal·lacions d'enllaç uneixen la caixa general de protecció
+(CGP) amb la instal·lació interior.
+- Comencen al final de l'embrancament i acaben als dispositius generals
+  de comandament i protecció (DGCP).
+- Transcorren per zones d'ús comú i són propietat de l'usuari.
+- Tensions nominals: 230 V (monofàsic) i 400/230 V (trifàsic).
+- Factor de potència: 1 (a efectes de càlcul).
+- Corrent de curtcircuit màxim previst: 10 kA.
+
+
+
+### 1.2. Components principals
+Embrancament: uneix la xarxa de distribució amb la CGP segons el REBT i
+la norma tècnica particular (ex. NTP-IEBT de Fecsa-Endesa).
+
+| Tipus       | Sistemes d'instal·lació                  |
+| ----------- | ---------------------------------------- |
+| Aeris       | Posada sobre façana<br>Tensat sobre pals |
+| Subterranis | Amb entrada i sortida<br>En derivació    |
+| Mixtos      | Aeriosubterranis                         |
+
+Caixa General de Protecció (CGP): S'instal·la al límit de la
+propietat, en façana o tanca, en llocs d'accés lliure i permanent.
+> ![c](../img/CGP.png)
+> **Fig. 1.** [Martin _et al._] (2026). [IOC].
+> _Caixa general de protecció_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+Conjunt de Protecció i Mesura (CPM): Ubica la protecció i la mesura a
+l'exterior de l'edifici:
+- **CM**: Conjunt de mesura (sense CGP).
+- **CPM**: Conjunt de protecció i mesura (inclou CGP).
+- Alçada d'instal·lació: 0,5 m des del terra en tanques i 1,5 m en
+  edificis. Lectura a $\le 1,80 \text{ m}$.
+
+Línia General d'Alimentació (LGA): Enllaça la CGP amb la
+centralització de comptadors. Caiguda de tensió màxima ($\Delta U$):
+- Subministrament únic usuari: $\le 1\%$ (entre CGP i CM).
+- Comptadors totalment centralitzats: $\le 0,5\%$.
+- Centralitzacions parcials: $\le 1\%$.
+
+Centralització de Comptadors (CC): Conjunt de mòduls o plafons en un
+local o armari exclusiu.
+- Edificis de fins a 12 plantes: Ubicació a planta baixa, entresòl o
+  1r soterrani.
+- Edificis de més de 12 plantes: Es pot concentrar per plantes (mínim 6
+  plantes per concentració).
+
+Derivació Individual (DI): Enllaça la centralització de comptadors amb
+el quadre de l'usuari. Discorren per canals o tubs en zones comunes (ull
+de l'escala). Inclou fase(s), neutre, protecció i fil de comandament.
+
+Quadre General de Comandament i Protecció (QGCP): Allotja l'IGA,
+diferencial, proteccions de circuits i contra sobretensions.
+> ![c500](../img/CGMP.png)
+> **Fig. 2.** [Martin _et al._] (2026). [IOC].
+> _Quadre general de comandament i protecció_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+- Alçada: 1,4 a 2 m (habitatges); mínim 1 m (locals comercials).
+- Inclou o té adossat el mòdul precintable per a l'ICP.
+
+
+
+### 1.3. Validesa de l'ITIE
+L'ITIE queda sense efecte per canvis al REBT o un cop transcorreguts 3
+mesos des de la seva emissió.
+
+
+
+
+
+
+2. Caixes Generals de Protecció (ITC-BT-13)
+--------------------------------------------
+Cal una CGP per cada LGA i per cada 160 kW de demanda.
+AQUI_VA_IMATGE_03
+
+
+
+### 2.1. Requisits tècnics
+- Material aïllant: Classe tèrmica A (UNE 21305).
+- Protecció: IP43 / IK08. Classe II (doble aïllament).
+- Bases portafusibles BUC (unipolars tancades). Neutre seccionable.
+- Tapa amb cargol triangular d'11 mm precintable.
+- Tensions nominals: 400 V (160, 250, 400 i 630 A).
+- Dimensions màximes: $700 \times 600 \times 250 \text{ mm}$ (alçada x
+  amplada x profunditat).
+
+
+
+### 2.2. Tipus de muntatge
+- Embrancament aeri sobre façana:
+    + Muntatge superficial (alçada entre 3 i 4 m) o en posella
+      (nínxol).
+    + Tram $\le 2,5 \text{ m}$ del terra: Protegit amb tub M40 IK08.
+    + Esquema CGP-7 BUC (entrada/sortida inferior). AQUI_VA_IMATGE_05
+- Embrancament subterrani:
+    + Instal·lació en posella ($600 \times 300 \times 1500 \text{
+      mm}$) amb 2 tubs de PE $\varnothing 160 \text{ mm}$.
+    + Alçada mínima inferior CGP: 0,90 m sobre el terreny.
+    + Esquema CGP-9 BUC (entrada inferior, sortida superior).
+
+
+
+### 2.3. Designació i selecció de CGP
+Designació: CGP-(Esquema)-(Intensitat) BUC
+
+| Designació    | Bases | Mida | $I_{N-max}$ ($\text{A}$) | Connexió   |
+| ------------- | ----- | ---- | ----------------------- | ---------- |
+| CGP-7-160 BUC | 3     | 00   | 160                     | Cargol M10 |
+| CGP-7-250 BUC | 3     | 1    | 250                     | Cargol M10 |
+| CGP-7-400 BUC | 3     | 2    | 400                     | Cargol M10 |
+| CGP-9-160 BUC | 3     | 00   | 160                     | Cargol M10 |
+| CGP-9-250 BUC | 3     | 1    | 250                     | Cargol M10 |
+| CGP-9-400 BUC | 3     | 2    | 400                     | Cargol M10 |
+| CGP-9-630     | 3     | 3    | 630                     | 2x M10     |
+
+> ![c250](../img/enll_connexio_CGP.png)
+> **Fig. 3.** [Martin _et al._] (2026). [IOC].
+> _Quadre general de comandament i protecció_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+
+
+
+3. Caixes i Conjunts de Protecció i Mesura (CPM)
+------------------------------------------------
+
+Les CPM s'utilitzen en subministraments d'1 o 2 usuaris des de la
+mateixa xarxa de BT.
+
+> ![c500](../img/enll_CPM.png)
+> **Fig. 4.** [Martin _et al._] (2026). [IOC].
+> _Quadre general de comandament i protecció_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+### 3.1. CPM per a potències &gt; 15 kW
+Agrupen fusibles generals, comptador electrònic i connexions segons
+norma GE NNL013. 
+
+- **CPM-MF 2**: 1 comptador monofàsic electrònic + BUC 00 + neutre.
+- **CPM-MF 4**: 1 comptador mono/trifàsic electrònic + 3 BUC 00 +
+  neutre.
+- Tensió assignada: 500 V; $I_n = 63 \text{ A}$; Protecció IP43.
+- Cablatge intern de potència: Coure $16 \text{ mm}^2$ (450/750 V).
+- Cablatge de comandament: Coure vermell $1,5 \text{ mm}^2$.
+
+
+
+### 3.2. Instal·lació de la CPM
+
+- Ubicació exterior, encastada en façana/tanca o nínxol ($550 \times
+  500 \times 200 \text{ mm}$). No s'admet muntatge superficial pur.
+- Alçada: 0,5 m (tanques) o 1,5 m (edificis). Lectura entre 0,70 i 1,80
+  m.
+- Suport metàl·lic per escomesa aèria: Tub d'acer $\varnothing 101,6
+  \text{ mm}$ ($4''$).
+- Alçada útil $\ge 4,1 \text{ m}$ (sense encreuament de vial) o $\ge
+  6,1 \text{ m}$ (amb encreuament). AQUI_VA_IMATGE_09 AQUI_VA_IMATGE_10
+  AQUI_VA_IMATGE_11
+
+| Instal·lació | $P_{max}$ (\$text{kW}) | Conductors Al (RZ 0,6/1kV) |
+| ------------ | ---------------------- | -------------------------- |
+| Monofàsica   | $P \le 14,49$          | $2 \times 16 \text{ mm}^2$ |
+| Trifàsica    | $P \gt 15$             | $4 \times 25 \text{ mm}^2$ |
+
+
+
+### 3.3. CPM en armari (TMF)
+
+Per a mesura directa o indirecta (Norma FDNNL002).
+- Mòduls prefabricats de doble aïllament.
+- **TMF1**: Mesura directa fins a 630 A. AQUI_VA_IMATGE_12
+- **TMF10**: Mesura indirecta amb transformadors de corrent i regleta
+  de verificació. 
+
+
+
+### 3.4. Subministraments > 15 kW
+
+Es separen les unitats funcionals (CGP i CM). AQUI_VA_IMATGE_15
+- **CM-T2**: Comptador trifàsic d'activa, reactiva i rellotge.
+- **CM-TMF1**: Comptador multifunció directe.
+- **CM-TMF10**: Comptador multifunció indirecte + 3 TC + regleta.
+- Instal·lació en armari/recinte dedicat amb porta IK10.
+
+
+
+### 3.5. Subministraments temporals (CPMST)
+
+Per a obres o provisionalitats ($\gt 1$ any) segons UNE-EN 60439-4.
+
+
+
+
+
+
+
+4. Línia General d'Alimentació (ITC-BT-14)
+-------------------------------------------
+
+Enllaça la CGP amb l'IGM de la centralització de comptadors.
+
+
+
+### 4.1. Característiques i càlcul
+- Una LGA per CGP (màxim 160 kW).
+- Derivacions permeses fins a un total de 250 A amb caixes precintables.
+- Conductors: Coure unipolar $0,6/1 \text{ kV}$, aïllament XLPE/EPR
+  (3F+1N), lliure d'halògens. Secció mínima $\ge 16 \text{ mm}^2$.
+
+| $S_F$ ($\text{mm}^2$) | $S_N$ ($\text{mm}^2$) | $P_{màx}$ ($\text{kW}$) | $\varnothing T_{ext}$ ($\text{mm}$) |
+| --- | --- | --- | --- |
+| 16  | 16  | 25  | 75  |
+| 25  | 25  | 33  | 110 |
+| 50  | 25  | 50  | 125 |
+| 95  | 50  | 76  | 140 |
+| 150 | 95  | 102 | 160 |
+| 240 | 150 | 182 | 200 |
+
+
+
+### 4.2. Muntatge de canalitzacions
+- Tubs protectors (EN 50086) o canals (UNE-EN 50085-1). Reserva del 100%
+  d'espai.
+- Traçat per zones comunes. Columna muntant en conducte d'obra de
+  fàbrica (RF 120, dimensions $30 \times 30 \text{ cm}$). Placa
+  tallafocs cada 3 plantes.
+
+
+
+
+
+
+5. Centralització de Comptadors (ITC-BT-16)
+---------------------------------------------
+Agrupa els equips de mesura per a subministraments de fins a 63 A per
+fase (màxim 150 kW total).
+
+
+
+### 5.1. Unitats funcionals
+- Interruptor general de maniobra (IGM).
+- Embarrat general i fusibles de seguretat.
+- Unitat de mesura.
+- Embarrat de protecció i borns de sortida.
+- Telecomunicacions / Comandament (opcionals).
+
+
+#### Muntatge en mòduls aïllants 
+
+> ![c250](../img/CC_moduls.png)
+> **Fig. 5.** [Martin _et al._] (2026). [IOC].
+> _Centralització de comptadors a mòduls aïllants_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+#### Muntatge a plafons
+
+> ![c250](../img/CC_plafons.png)
+> **Fig. 6.** [Martin _et al._] (2026). [IOC].
+> _Centralització de comptadors a plafons_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+
+### 5.2. Ubicació interior
+
+- Armari (fins a 16 comptadors):
+    + Planta baixa / zones comunes. Passadís lliure $\ge 1,5 \text{
+      m}$.
+    + Resistència al foc PF30, enllumenat, presa de terra 16 A i
+      extintor pròxim.
+- Local exclusiu (> 16 comptadors):
+    + Porta cap a l'exterior ($0,70 \times 2 \text{ m}$) amb pany CFE
+      (JIS).
+    + Alçada lectura comptadors entre 0,50 m i 1,80 m.
+
+
+| Comptadors mono | Amplada lliure | Altura mín. | Prof. mín. |
+| --------------- | -------------- | ----------- | ---------- |
+| 17 a 24         | 1,75 m         | 2,30 m      | 1,50 m     |
+| 25 a 35         | 2,75 m         | 2,30 m      | 1,50 m     |
+| 36 a 48         | 3,50 m         | 2,30 m      | 1,50 m     |
+
+
+
+
+
+
+6. Equips de Mesura i Connexió
+-------------------------------
+
+### 6.1. Principis de mesura
+
+La potència activa en corrent altern ve donada per l'equació:
+
+> \begin{gather}
+  P = U \cdot I \cdot \cos\varphi
+  \end{gather}
+> A on:
+> - $P$ és la potència activa en $\text{W}$
+> - $U$ és la tensió en $\text{V}$
+> - $I$ és la intensitat del corrent en $\text{A}$
+> - $\cos\varphi$ és el factor de potència
+
+
+
+
+
+### 6.2. Transformadors d'intensitat (TC)
+
+S'utilitzen a partir de 63 A per fase. Redueixen el corrent del primari
+a un valor de secundari de 5 A (ex. 150/5 A). 
+
+
+
+
+
+
+7. Derivacions Individuals (ITC-BT-15)
+--------------------------------------
+
+Línia que uneix la centralització de comptadors amb el QGCP de
+l'usuari.
+
+
+
+### 7.1. Característiques dels conductors
+
+- Unipolars de coure, aïllament termostable (450/750 V o 0,6/1 kV).
+- Secció mínima: $10 \text{ mm}^2$ (fases, neutre i PE); $1,5 \text{
+  mm}^2$ vermell (fil de comandament).
+- Caiguda de tensió màxima ($\Delta U$):
+    + Comptadors concentrats en un punt: $\le 1\%$.
+    + Comptadors concentrats en més d'un punt: $\le 0,5\%$.
+    + Subministrament únic usuari (sense LGA): $\le 1,5\%$.
+
+
+
+### 7.2. Tubs i canals
+
+- Tubs protectors aïllants (UNE-EN 50086) o canals (UNE-EN 50085-1).
+- Ampliació mínima d'espai reservat: 100%
+
+> ![c250](../img/DI_canals.png)
+> **Fig. 7.** [Martin _et al._] (2026). [IOC].
+> _Centralització de comptadors a plafons_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+
+
+
+[Martin _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m0236_/web/fp_iea_m0236_htmlindex/index.html "J. Martín Lledó, C. Sabaté Arrese, A. Sànchez Díaz, E. Sorribes Colell, E. Requena Amadas, A. Jurado Poza"
+[J. Servera _et al._]: https://servera-prof-github.io/about.html "J. Servera, _et al._"
+
+[NRZ002]: https://www.edistribucion.com/content/dam/edistribucion/general/descargables/materiales/Guia-NRZ002-4.1.pdf
+
+[CIFP Usurbil LHII]: https://www.lhusurbil.eus/web/default.aspx?lng=es "Usurbilgo Lanbide Eskola"
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+[CC4.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement - No comercial - CompartirIgual"
+[LPI]: https://www.boe.es/eli/es/rdlg/1996/04/12/1/con
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: '../../js/marked/marked.min.js',
+    MathJaxURL: '../../js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="../../js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>

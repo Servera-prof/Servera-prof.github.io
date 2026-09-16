@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+Instal·lacions elèctriques d'enllaç i previsió de càrregues
+===========================================================
+
+La instal·lació d'enllaç uneix les caixes generals de protecció (CGP)
+amb les instal·lacions interiors de l'usuari. S'inicia al final de la
+línia d'escomesa i acaba als dispositius de comandament i protecció,
+discorrent sempre per espais d'ús comú.
+
+
+
+
+
+1. Previsió de càrregues en baixa tensió (BT)
+---------------------------------------------
+
+La ITC-BT-10 fixa les condicions de previsió de càrrega mínima per
+garantir un ús segur i preveure futurs augments de potència. Si es
+coneix una demanda real superior als mínims teòrics, s'ha d'utilitzar
+el valor real.
+
+
+
+### 1.1. Edificis destinats principalment a habitatges
+
+El grau d'electrificació determina la potència màxima per habitatge:
+
+- Elevat: si la superfície útil és superior a 160 m², si inclou
+  aire condicionat, calefacció elèctrica, automatització o
+  assecadora, o si supera els punts d'utilització de la ITC-BT-25
+  (>30 punts d'enllumenat, >20 preses generals, >6 preses de bany i
+  cuina). Potència mínima: 9.200 W.
+- Bàsic: permet l'ús d'aparells elèctrics habituals. Potència mínima:
+  5.750 W a 230 V (rang pràctic de 5.750 W a 9.199 W segons el calibre
+  de l'IGA: 25 A o 32 A).
+
+La càrrega total ($P_T$) d'un edifici d'habitatges s'obté mitjançant
+la fórmula:
+
+> \begin{gather}
+  P_T = P_H + P_{SG} + P_{LC} + P_G
+  \end{gather}
+> A on:
+> - $P_H$ és la potència corresponent al conjunt d'habitatges.
+> - $P_{SG}$ és la potència corresponent als serveis generals.
+> - $P_{LC}$ és la potència corresponent als locals comercials i 
+    oficines.
+> - $P_G$ és la potència corresponent als garatges.
+
+Càlcul de les components de la càrrega:
+
+- Conjunt d'habitatges ($P_H$):
+  > \begin{gather}
+    P_H = P_m \cdot C_s
+    \end{gather}
+  > A on:
+  > - $P_m$ és la mitjana aritmètica de les potències màximes previstes.
+  > - $C_s$ és el coeficient de simultaneïtat (ITC-BT-10).
+- Serveis generals ($P_{SG}$): suma de les potències d'ascensors,
+  equips de climatització, grups de pressió i enllumenat comú (factor
+  de simultaneïtat 1).
+- Locals comercials i oficines ($P_{LC}$): mínim de 100 W/m² i
+  planta, amb un mínim de 3.450 W per local (230 V, factor 1).
+- Garatges ($P_G$): mínim de 10 W/m² (ventilació natural) o 20 W/m²
+  (ventilació forçada) per planta, amb un mínim de 3.450 W a 230 V i
+  factor 1.
+
+
+#### Estimació de potència dels ascensors
+
+| Tipus | Càrrega (kg) | n. pers | v (m/s) | P (kW) |
+| ----- | ------------ | ------- | ------- | ------ |
+| ITA-1 | 400          | 5       | 0,63    | 4,5    |
+| ITA-2 | 400          | 5       | 1,00    | 7,5    |
+| ITA-3 | 630          | 8       | 1,00    | 11,5   |
+| ITA-4 | 630          | 8       | 1,60    | 18,5   |
+| ITA-5 | 1.000        | 13      | 1,60    | 29,5   |
+| ITA-6 | 1.000        | 13      | 2,50    | 46,0   |
+
+
+#### Estimació de potència dels grups de pressió
+
+| NPA   | 1-4 P | 5-10 P | 11-15 P | 16-20 P|
+| ----- | ----- | ------ | ------- | ------ |
+| 150   | 1 kW  | 1 kW   | 1 kW    | 1 kW   |
+| 300   | 1 kW  | 1 kW   | 2 kW    | 2 kW   |
+| 450   | 1 kW  | 2 kW   | 4 kW    | 6 kW   |
+| 900   | 2 kW  | 4 kW   | 6 kW    | 6 kW   |
+| 1.800 | 2 kW  | 4 kW   | 6 kW    | 8 kW   |
+| 3.500 | 4 kW  | 6 kW   | 9 kW    | 11 kW  |
+
+A on:
+- NPA és el número de preses d'aigua
+- 1-4 P vol dir 1 a 4 plantes, etc.
+
+
+#### Estimació de potència de l'enllumenat de zones comuns
+
+| Espai           | Incandescència | Fluorescència |
+| --------------- | -------------- | ------------- |
+| Portal i comuns | 15 W/m²        | 8 W/m²        |
+| Escala          | 7 W/m²         | 4 W/m²        |
+
+
+
+### 1.2. Edificis comercials, d'oficines o industrials
+
+- Edificis comercials o d'oficines: mínim de 100 W/m² i planta
+  (mínim de 3.450 W per local, 230 V, factor 1).
+- Edificis industrials: mínim de 125 W/m² i planta (mínim de
+  10.350 W per local, 230 V, factor 1).
+
+
+
+### 1.3. Subministraments monofàsics
+
+Permeten connectar receptors monofàsics $\le 5.750\text{ W}$ a 230 V
+fins a un límit màxim de 14.490 W.
+
+| GE     | PMA (W) | IGA (A) |
+| ------ | ------- | ------- |
+| Bàsic  | 5.750   | 25      |
+| Bàsic  | 7.360   | 32      |
+| Elevat | 9.200   | 40      |
+| Elevat | 11.500  | 50      |
+| Elevat | 14.490  | 63      |
+
+
+
+
+
+
+2. Components i esquemes de les instal·lacions d'enllaç
+--------------------------------------------------------
+
+Les instal·lacions d'enllaç (ITC-BT-12) discorren per espais d'ús
+comú i són de propietat privada. L'escomesa (ITC-BT-11) és a càrrec
+de l'empresa distribuïdora.
+
+Components principals:
+- Caixa general de protecció (CGP)
+- Línia general d'alimentació (LGA)
+- Elements de centralització de comptadors (CC)
+- Derivació individual (DI)
+- Caixa per a l'interruptor de control de potència (ICP) **ja en desús**
+- Dispositius generals de comandament i protecció (DGCP)
+
+Esquemes d'instal·lació:
+
+- Un sol usuari: es simplifica unificant la CGP i el comptador en la
+  caixa de protecció i mesura (CPM), sense LGA.
+  > ![c250](../img/enll_esq_CPM.png)
+  > **Fig. 1.** [Martin _et al._] (2026). [IOC].
+  > _Instal·lació d’enllaç per a un sol usuari_.
+  > Imatge sota llicència [CC3.0-by-nc-sa]
+- Més d'un usuari:
+    + Dos usuaris des del mateix lloc: utilitzen CPM.
+    + Centralització única: ús general en edificis verticals o
+      horitzontals.
+      > ![c250](../img/enll_esq_1_centr.png)
+      > **Fig. 2.** [Martin _et al._] (2026). [IOC].
+      > _Instal·lació d’enllaç per a més de dos usuaris_.
+      > Imatge sota llicència [CC3.0-by-nc-sa]
+    + Centralització en més d'un lloc: utilitzat quan la distribucions
+      de càrregues recomana diversificar els punts de mesura.
+      > ![c250](../img/enll_esq_varies_centr.png)
+      > **Fig. 3.** [Martin _et al._] (2026). [IOC].
+      > _Instal·lació d’enllaç per a més de dos usuaris en varies 
+      > centralitzacions_.
+      > Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+
+### 2.1. Caixa general de protecció (CGP)
+
+Allotja els fusibles de protecció de la LGA. Són de polièster
+reforçat amb fibra de vidre (gris), per a 400 V i calibres de 40 A a
+400 A.
+
+AQUI_VA_IMATGE_04
+
+Designació:
+`CGP + esquema + calibre bases portafusibles`
+
+Per exemple: `CGP-7-250A`
+
+Conté fusibles a les fases i una connexió amovible per al neutre a
+l'esquerra. S'instal·len en façanes exteriors, nínxols o límits de
+propietat, allunyades d'altres subministraments.
+
+Per al càlcul del nombre de CGP:
+
+> \begin{gather}
+  N_{CGP} = \frac{P_e}{P_{CGP}}
+  \end{gather}
+> A on:
+> - $P_e$ és la potència prevista a l'edifici en $\text{kVA}$ 
+> - $P_{CGP}$ és la potència admissible del tipus de CGP $\text{kVA}$.
+
+#### Intensitats CGP
+
+| $I_{CGP-9}$ (en $A$) | $I_{CGP-7}$ (en $A$) |
+| -------------------- | -------------------- |
+| 160, 250, 400, 630   | 100, 160, 250, 400   |
+
+
+
+### 2.2. Caixes de protecció i mesura (CPM)
+
+S'utilitzen per a un o dos usuaris alimentats des del mateix punt.
+Compleixen la UNE-EN 60.439-1, amb IP43, IK09, classe II i alçada de
+lectura entre 0,7 m i 1,8 m.
+
+
+
+### 2.3. Línia general d'alimentació (LGA)
+
+Enllaça la CGP amb la centralització de comptadors. Es composa de
+conductors unipolars de coure o alumini (0,6/1 kV), no propagadors de
+l'incendi i de baixa emissió de fums.
+
+Secció i caiguda de tensió:
+- Secció mínima: $10\text{ mm}^2$ (Cu) o $16\text{ mm}^2$ (Al).
+- Caiguda de tensió màxima: 0,5% (comptadors centralitzats) o 1%
+  (centralitzacions parcials).
+
+Càlcul de la caiguda de tensió unitària ($e_u$):
+
+> \begin{gather}
+ e_u = \frac{e}{L \cdot I}
+ \end{gather}
+> A on:
+> - $e_u$ és la caiguda de tensió unitària ($\text{V}/(ext{A}\cdot \text{km})$).
+> - $e$ és la caiguda de tensió en volts ($\text{V}$).
+> - $L$ és la longitud en quilòmetres ($\text{km}$).
+> - $I$ és la intensitat de servei ($\text{A}$).
+
+Càlcul de la temperatura real del conductor ($T$):
+
+> \begin{gather}
+  T = T_0 + (T_{\text{max}} - T_0) \cdot
+  \left(\frac{I}{I_{\text{max}}}\right)^2
+  \end{gather}
+> A on:
+> - $T$ és la temperatura real estimada ($  ext{°C}$).
+> - $T_{\text{max}}$ és la temperatura màxima admissible de l'aïllament ($
+>   ext{°C}$).
+> - $T_0$ és la temperatura ambient ($      ext{°C}$).
+> - $I$ és la intensitat prevista ($        ext{A}$).
+> - $I_{\text{max}}$ és la intensitat màxima admissible ($  ext{A}$).
+
+
+#### Conductivitats del materials
+
+| Material     | 20°C | 70°C | 90°C |
+| ------------ | ---- | ---- | ---- |
+| Coure (Cu)   | 56   | 48   | 44   |
+| Alumini (Al) | 35   | 30   | 28   |
+
+
+#### Fórmules per al càlcul d'intensitats i seccions
+
+<table>
+  <thead>
+    <tr>
+      <th>Subministrament</th>
+      <th>Intensitat (A)</th>
+      <th>Secció ($e$ en V)</th>
+      <th>Secció ($e$ en %)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Monofàsic</td>
+      <td>$I = \frac{P}{U \cdot \cos\varphi}$</td>
+      <td>$S = \frac{2 \cdot L \cdot P}{\gamma \cdot e \cdot U}$</td>
+      <td>$S = \frac{200 \cdot L \cdot P}{\gamma \cdot e \cdot U^2}$</td>
+    </tr>
+    <tr>
+      <td>Trifàsic</td>
+      <td>$I = \frac{P}{\sqrt{3} \cdot U \cdot \cos\varphi}$</td>
+      <td>$S = \frac{L \cdot P}{\gamma \cdot e \cdot U}$</td>
+      <td>$S = \frac{100 \cdot L \cdot P}{\gamma \cdot e \cdot U^2}$</td>
+    </tr>
+  </tbody>
+</table>
+
+FALTA IMATGE INTENSITATS
+
+El conductor neutre tindrà una secció mínima del 50% de la fase. Només
+quan es puguin descartar harmònics.
+
+
+
+### 2.4. Interruptor general de maniobra (IGM)
+
+Obligatori en centralitzacions de més de 2 usuaris. Permet aïllar la
+concentració de comptadors.
+
+Característiques:
+- Tall omnipolar en càrrega (el neutre no es talla abans que les
+  fases).
+- Calibre mínim: 160 A per a $\le 90\text{ kW}$ i 250 A per a
+  $\le 150\text{ kW}$.
+
+
+
+### 2.5. Derivacions individuals (DI)
+
+Conecten la centralització de comptadors amb el quadre d'usuari.
+Cables unipolars de 450/750 V.
+
+Caiguda de tensió màxima:
+- 0,5% en comptadors centralitzats en més d'un lloc.
+- 1,0% en comptadors totalment centralitzats.
+- 1,5% en subministraments d'únic usuari (sense LGA).
+
+Característiques dels conductors:
+- Inclou fase, neutre, protecció i fil de comandament vermell
+  ($1,5\text{ mm}^2$).
+- Secció mínima per a polars i protecció: $6\text{ mm}^2$.
+- Identificació per colors segons la ITC-BT-19:
+  + Neutre: blau clar
+  + Protecció: verd-groc
+  + Fases: marró, negre o gris
+
+| Conductor | Color               |
+| --------- | ------------------- |
+| Neutre    | Blau clar           |
+| Protecció | Verd-groc           |
+| Fases     | Marró, negre o gris |
+
+Canalitzacions:
+- Diàmetre exterior mínim dels tubs: 32 mm.
+- Tub de reserva: 1 per cada 10 derivacions o fracció.
+
+
+
+
+
+4. Comptadors i centralitzacions
+--------------------------------
+
+Els comptadors (electromecànics o electrònics multifunció) mesuren la
+potència i energia consumides.
+
+> ![c500](../img/CC_armari.png)
+> **Fig. 4.** [Martin _et al._] (2026). [IOC].
+> _Instal·lació d’enllaç per a més de dos usuaris en varies 
+> centralitzacions_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+Unitats funcionals de la centralització:
+- Interruptor general de maniobra (IGM)
+- Unitat de mesura (comptadors i rellotges)
+- Embarrat general i fusibles de seguretat
+- Embarrat de protecció i borns de sortida
+- Unitats opcionals de comandament i telecomunicacions
+
+Requisits d'ubicació:
+- Armari ($\le 16$ comptadors): resistència PF30, pas lliure de
+  1,5 m.
+- Local exclusiu ($> 16$ comptadors):
+    + Materials M0/M1, alçada mínima 2,3 m, amplada lliure 1,5 m.
+    + Distància frontal mínima a obstacles: 1,1 m.
+    + Il·luminació d'emergència (5 lux, 1h) i extintor 21B exterior.
+
+
+
+
+
+5. Marc tarifari i facturació
+-----------------------------
+
+El mercat elèctric està liberalitzat. Les tarifes regulades van ser
+substituïdes pel mercat lliure o la Tarifa d'Últim Recurs (TUR),
+gestionada per les comercialitzadores.
+
+Estructura de la factura:
+- Terme de potència (€/kW i mes).
+- Terme d'energia (€/kWh).
+- Recàrrecs per energia reactiva o excés de potència.
+- Impostos (Impost Elèctric i IVA).
+
+| Tarifa TUR | Terme de potència (€/kW·mes) | Terme d'energia (€/kWh) |
+| ---------- | ---------------------------- | ----------------------- |
+| Sense hora | 1,719427                     | 0,140069                |
+| Amb hora   | 1,719427                     | P: 0,168743 V: 0,060896 |
+
+AQUI_VA_IMATGE_06
+
+Bonificacions i factor de potència:
+- Bo social: aplicable a habitatges habituals amb potència $\lt 3\text{
+  kW}$,
+  pensionistes mínims, famílies nombroses o llars amb tots els
+  membres en atur.
+- Energia reactiva: es penalitza quan el factor de potència
+  ($\cos\varphi$) és inferior a 0,8:
+> \begin{gather}
+  \text{FP} = \cos\varphi = \frac{P}{S}
+  \end{gather}
+> A on:
+> - $P$ és la potència activa ($\text{W}$).
+> - $S$ és la potència aparent ($\text{VA}$).
+
+
+
+
+
+6. Instal·lacions de posada a terra
+------------------------------------
+
+Limiten la tensió respecte a terra de les masses metàl·liques i
+garanteixen el funcionament de les proteccions.
+
+> ![c500](../img/esq_inst_terra.png)
+> **Fig. 4.** [Martin _et al._] (2026). [IOC].
+> _Esquema segons REBT de la instal·lacio de terra i de protecció_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+Components principals:
+- Elèctrodes: plaques, piques o conductors enterrats.
+- Born principal de terra: punt d'unió dels conductors de terra,
+  protecció i equipotencialitat.
+
+> ![c500](../img/seccionador_terra.png)
+> **Fig. 5.** [Martin _et al._] (2026). [IOC].
+> _Unió del born principal a un conductor de terra per un seccionador_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+
+#### Secció conductor de protecció
+
+| $S_F$ (mm²)       | $S_p$ (mm²)   |
+| ----------------- | ------------- |
+| $S \le 16$        | $S_p = S$     |
+| $16 \lt S \le 35$ | $S_p = 16$    |
+| $S \gt 35$        | $S_p = S / 2$ |
+
+Si el conductor de protecció no va integrat a la canalització
+d'alimentació, la secció mínima és de $2,5\text{ mm}^2$ (amb protecció
+mecànica) o $4\text{ mm}^2$ (sense protecció).
+
+Resistència de les preses de terra:
+Ha de limitar la tensió de contacte a màxim 24 V en locals
+conductors o 50 V en la resta.
+
+
+
+#### Resistivitat dels terrenys
+
+| Naturalesa del terreny           | Resistivitat mitjana (Ω·m) |
+| -------------------------------- | -------------------------- |
+| Cultivables i fèrtils, humits    | 50                         |
+| Poco fèrtils i altres terraplens | 500                        |
+| Pedregosos nus, sorres seques    | 3.000                      |
+
+#### Fórmules segons l’elèctrode utilitzat
+
+<table>
+  <thead>
+    <tr>
+      <th>Tipus d'elèctrode</th>
+      <th>Fórmules de resistència de pas ($R$)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Placa enterrada</td>
+      <td>Vertical: $R = \dfrac{0,8 \cdot \rho_a}{P}$ <br> 
+          Horitzontal: $R = \dfrac{\rho_a}{P}$</td>
+    </tr>
+    <tr>
+      <td>Pica vertical</td>
+      <td>Individual: $R = \dfrac{\rho_a}{L}$ <br> 
+          Paral·lel ($n$ piques): $R = \dfrac{R_1}{n}$</td>
+    </tr>
+    <tr>
+      <td>Conductor enterrat</td>
+      <td>Horitzontal: $R = \dfrac{2 \cdot \rho_a}{L}$</td>
+    </tr>
+  </tbody>
+</table>
+
+A on:
+- $\rho_a$ és la resistivitat aparent del terreny
+  ($\Omega\cdot\text{m}$).
+- $P$ és el perímetre de la placa ($      ext{m}$).
+- $L$ és la longitud de la pica o conductor ($    ext{m}$).
+
+
+
+
+
+7. Control de la potència contractada
+-------------------------------------
+
+L'interruptor de control de potència (ICP-M) limita la demanda a la
+potència contractada fins a 63 A.
+
+> ![c500](../img/situacio_CGMP.png)
+> **Fig. 6.** [Martin _et al._] (2026). [IOC].
+> _Situació del quadre general de comandament i protecció_.
+> Imatge sota llicència [CC3.0-by-nc-sa]
+
+| Calibres normalitzats ICP-M (A)                             |
+| ----------------------------------------------------------- |
+| 1.5, 3, 3.5, 5, 7.5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 63 |
+
+Per a potències superiors a 63 A, el control es realitza mitjançant
+maxímetres o interruptors regulables. L'ICP-M ha d'anar en un
+quadre precintable i independent, situat al costat de l'entrada.
+
+
+
+
+
+[Martin _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m0236_/web/fp_iea_m0236_htmlindex/index.html "J. Martín Lledó, C. Sabaté Arrese, A. Sànchez Díaz, E. Sorribes Colell, E. Requena Amadas, A. Jurado Poza"
+[J. Servera _et al._]: https://servera-prof-github.io/about.html "J. Servera, _et al._"
+
+[NRZ002]: https://www.edistribucion.com/content/dam/edistribucion/general/descargables/materiales/Guia-NRZ002-4.1.pdf
+
+[CIFP Usurbil LHII]: https://www.lhusurbil.eus/web/default.aspx?lng=es "Usurbilgo Lanbide Eskola"
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+[CC4.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ca "Llicencia Cretive Commons 4.0 Internacional - Reconeixement - No comercial - CompartirIgual"
+[LPI]: https://www.boe.es/eli/es/rdlg/1996/04/12/1/con
+
+</textarea>
+
+
+<!-- C. SCRIPT ==================================================== -->
+<script>
+window.texme = {
+    renderOnLoad: false,
+    style: 'none',
+    markdownURL: '../../js/marked/marked.min.js',
+    MathJaxURL: '../../js/mathjax/es5/tex-mml-chtml.js'
+}
+</script>
+
+<script src="../../js/texme/texme.js"></script>
+<script>
+
+
+
+window.onload = function (){
+    texme.renderPage();
+}
+
+</script>
