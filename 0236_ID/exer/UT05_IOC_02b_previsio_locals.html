@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+</head>
+<textarea id="enunciat">
+
+Previsió de càrregues locals
+============================
+
+Enunciat
+--------
+
+L’objectiu d’aquesta activitat és que us familiaritzeu amb els càlculs 
+necessaris per fer una previsió de càrrega per a un edifici d’habitatges 
+que tingui locals comercials o d’oficines i serveis generals.
+
+Suposem que a l’edifici de l’activitat anterior, en què la previsió 
+d’habitatges era de 80,64 kW, hi ha 3 locals a la planta baixa de 20, 
+40 i 65 m2 respectivament, i que l’edifici disposa, al soterrani, d’un 
+garatge de 300 m2 amb ventilació forçada. A més, l’edifici té un 
+ascensor de 400 kg de càrrega, una piscina de 120 m3, i una superfície 
+d’àrees comunes, l’entrada de 60 m2 i l’escala de 170 m2. Cal tenir en 
+compte també el grup de pressió per a l’elevació de l’aigua. Quina és 
+la previsió de càrrega total?
+
+
+
+
+
+Solució
+-------
+
+### Habitatges
+
+$$P_H = 80{,}64 \text{ kW}$$
+
+Recordeu que l’edifici té 3 plantes i l’àtic, que sumen un total de 4 
+plantes i 17 habitatges.
+
+
+
+### Locals comercials
+
+$$P_{L1} = S_{L1} \cdot PS_{L1} = 20 \cdot 100 = 2000 \text{ W}$$
+
+Com que és inferior a 3.450 W, se li assigna la potència mínima per 
+local, que és de 3.450 W.
+
+$$P_{L2} = S_{L2} \cdot PS_{L2} = 40 \cdot 100 = 4000 \text{ W}$$
+$$P_{L3} = S_{L3} \cdot PS_{L3} = 65 \cdot 100 = 6500 \text{ W}$$
+
+La potència total dels locals serà, doncs, la següent:
+
+$$ P_LC = P_{L1} + P_{L2} + P_{L3} = 3450 + 4000 + 6500 
+   = 13{,}95 \text{ kW}$$
+
+
+
+### Garatge
+
+$$ P_G = S_G \cdot PS_G = 300 \cdot 20 = 6 \text{ kW}$$
+
+
+
+### Ascensor
+
+Atesa l’absència de dades, seleccionareu un ITA-1, al qual li correspon 
+una potència de 4,5 kW.
+
+
+
+### Enllumenat de l’entrada i l’escala
+
+$$P_{esc} = (60 + 170) \cdot 8 = 1{,}84 \text{ kW}$$
+
+
+
+### Piscina
+
+$$P_{pisc} = S_{pisc} \cdot PS_{pisc} = 0{,}96 \text{ kW}$$
+
+Aquesta és la potència de la depuradora.
+
+
+
+### Grup de pressió d’aigua
+
+Tenint en compte que són 17 habitatges i 4 plantes, i considerant un 
+nombre de preses d’aigua de 17 per habitatge, això ens dóna 289 preses 
+i una pressió mínima de 21. Així doncs, si consulteu les taules 
+referents a aquest apartat, teniu un grup de pressió d’una potència 
+d’1 kW.
+
+
+
+
+### Potència serveis generals
+
+$$P_{SG} = P_{asc} + P_{esc} + P_{pisc} + P_{GP}$$
+
+$$P_{SG} = 4{,}5 + 1{,}84 + 0{,}96 + 1 = 8{,}3 \text { kW}$$
+
+
+
+### Potència total de l’edifici
+
+$$P_T = P_H + P_{SG} + P_{LC} + P_G$$
+
+$$P_T = 80{,}64 + 8{,}3 + 13{,}95 + 6 = 108{,}44 \text{ kW}$$
+
+
+
+
+> Aquest text va ser originalment publicat per [Martin _et al._] (2026).
+> professors de l'[IOC]. Sota llicència [CC3.0-by-nc-sa]
+
+
+
+[Martin _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m0236_/web/fp_iea_m0236_htmlindex/index.html "J. Martín Lledó, C. Sabaté Arrese, A. Sànchez Díaz, E. Sorribes Colell, E. Requena Amadas, A. Jurado Poza"
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+
+
+
+
+
+
+</textarea>
+
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+</head>
+<textarea id="enunciat">
+
+Càlcul DI
+=========
+
+Enunciat
+--------
+
+L’objectiu d’aquesta activitat és que us familiaritzeu amb els càlculs 
+necessaris per determinar la secció de la derivació individual (DI), 
+segons els paràmetres de caiguda de tensió, corrent màxim admissible 
+d’acord amb les condicions d’instal·lació i la temperatura màxima de 
+servei.
+
+Heu de calcular la secció d’una derivació individual (DI) que alimenta 
+un habitatge amb nivell d’electrificació bàsic (5.750 W) a 230 V, la 
+longitud de la qual des de l’embarrat de la sala de comptadors fins al 
+quadre privat de dispositius generals de comandament i protecció és de 
+10 m (situat a la segona planta). El sistema d’instal·lació és el de 
+conductors aïllats a l’interior de conductes tancats d’obra de fàbrica.
+
+
+
+
+
+Solució
+-------
+
+### Elecció del tipus de conductors
+
+Segons la ITC-BT-15, els cables que cal utilitzar han de ser unipolars 
+o multiconductors (els unipolars, de tensió assignada mínima 450/750 V; 
+els multiconductors, de 0,6/1 kV). Els cables han de ser no propagadors 
+de l’incendi i amb emissió de fums i opacitat reduïda.
+
+S’escullen conductors unipolars de coure amb aïllament de compost 
+termoplàstic, la temperatura màxima admissible (Tmàx) del qual, en 
+servei continu, és de 70°C (tipus ES07Z1-K), segons característiques 
+especificades a la ITC-BT-15.
+
+
+
+### Càlcul de la secció pel mètode simplificat
+
+Un cop determinada la intensitat del circuit, utilitzarem les fórmules 
+per trobar la secció, però considerant el cas més desfavorable, en el 
+qual el cable es trobi a la temperatura màxima admissible en servei 
+permanent.
+
+
+
+### Càlcul de la intensitat
+
+La intensitat està limitada per l’ICP-M, que com a màxim serà de 25 A, 
+ja que es tracta d’un grau d’electrificació bàsic de 5.750 W.
+
+
+
+### Càlcul de la secció
+
+Com que els comptadors són centralitzats, la caiguda de tensió màxima 
+és de l’1%, que sobre 230 V, suposa 2,3 V. Atès que es tracta d’un 
+subministrament monofàsic tindrem el següent:
+
+$$ S = \dfrac{2 \cdot P \cdot L}{\gamma \cdot e \cdot U} $$ <br/>
+
+$$ S = \dfrac{2 \cdot 5750 \cdot 10}{48 \cdot 2{,}3 \cdot 230} 
+     = 4{,}52 \text{ mm}^2$$ <br/>
+
+Per tant, la secció normalitzada superior és de 6 mm2.
+
+Cal comprovar, finalment, en servei permanent i segons les condicions 
+d’instal·lació, que els cables, la secció dels quals s’ha calculat per 
+caiguda de tensió, són capaços de suportar la intensitat de servei 
+prevista. Per a això utilitzem la taula 1 de la ITC-BT-19 per al mode 
+d’instal·lació B. Segons aquesta taula, la intensitat màxima admissible 
+és de 36 A, més de la prevista de 25 A.
+
+![](../img/GT_REBT_ITC19_taulaA.png)
+
+### Càlcul de la secció mitjançant les taules de caiguda de tensió unitària
+
+
+
+Per a cables de 450/750 V, la taula de caiguda de tensió unitària ens 
+dóna el resultat de 6,383 V/A·km per a 4 mm². Com que la reglamentària 
+és superior, haureu d’adoptar la secció de 6 mm² tal com havíeu decidit 
+per al mètode simplificat.
+
+![](../img/GT_REBT_cdt_taula4.png)
+
+
+
+> Aquest text va ser originalment publicat per [Martin _et al._] (2026).
+> Professors de l'[IOC]. Sota llicència [CC3.0-by-nc-sa]
+
+
+
+[Martin _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m0236_/web/fp_iea_m0236_htmlindex/index.html "J. Martín Lledó, C. Sabaté Arrese, A. Sànchez Díaz, E. Sorribes Colell, E. Requena Amadas, A. Jurado Poza"
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+
+</textarea>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>

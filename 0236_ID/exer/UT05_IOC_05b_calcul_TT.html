@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+</head>
+<textarea id="enunciat">
+
+Càlcul DI
+=========
+
+Enunciat
+--------
+
+L’objectiu d’aquesta activitat és que us familiaritzeu amb els càlculs 
+necessaris per determinar la resistència de pas d’un circuit de presa a 
+terra amb la utilització de diferents tipus d’elèctrodes.
+
+1. **Càlcul de la resistència de pas amb piques:** en un terreny de 
+   resistivitat aparent de 60 Ω·m, s’instal·len tres piques de 2 m de 
+   longitud cadascuna, connectades en paral·lel, amb la finalitat 
+   d’aconseguir una resistència determinada. Quin és el valor d’aquesta 
+   resistència?
+2. **Càlcul de la resistència de pas amb plaques:** s’ha de connectar a 
+   terra un fanal sobre terreny de resistivitat aparent de 90 Ω·m. S’ha 
+   optat per una placa massissa de coure de 0,5 per 1 m. Quina és la 
+   resistència de pas a terra que tindrà la placa un cop instal·lada?
+3. **Càlcul de la resistència de pas amb conductors enterrats:** en un 
+   edifici en construcció de 40 m de perímetre s’ha instal·lat com a 
+   elèctrode un conductor nu que forma un anell sota els fonaments. La 
+   resistivitat aparent del terreny és de 200 Ω·m. Quina és la 
+   resistència de pas a terra que aporta aquest conductor?
+
+
+
+
+
+Solució
+-------
+
+1. En primer lloc hem de calcular la resistència de pas a terra d’una 
+   de les piques, i després la de les tres un cop soldades i unides:
+
+$$ R_1 = \dfrac{\rho_a}{L} = \dfrac {60}{2} = 30 ~ \Omega $$
+$$ R_T = \dfrac{R_1}{n} = \dfrac{30}{3} = 10 ~ \Omega $$
+
+
+
+2. Utilitzant la fórmula de la resistència d’una placa i sabent que el 
+   perímetre d’una placa suma 3 m:
+   
+$$ R = 0{,}8 \cdot \dfrac{\rho_a}{P} = 0{,}8 \cdot \dfrac{90}{3} 
+     = 24 ~ \Omega $$
+
+
+
+3. Si apliqueu la fórmula de la resistència de pas a terra que ofereix 
+   un conductor enterrat, tot sabent que el conductor anirà enterrat a 
+   80 cm amb una tolerància del 10% segons indiquen les NTE (normes 
+   tècniques d’edificació):
+
+$$ R = \dfrac {2 \cdot \rho_a}{L} = \dfrac {2 \cdot 200}{40} 
+     = 10 ~ \Omega $$
+
+
+
+> Aquest text va ser originalment publicat per [Martin _et al._] (2026).
+> Professors de l'[IOC]. Sota llicència [CC3.0-by-nc-sa]
+
+
+
+[Martin _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m0236_/web/fp_iea_m0236_htmlindex/index.html "J. Martín Lledó, C. Sabaté Arrese, A. Sànchez Díaz, E. Sorribes Colell, E. Requena Amadas, A. Jurado Poza"
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+
+</textarea>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>

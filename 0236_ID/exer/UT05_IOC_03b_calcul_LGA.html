@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+</head>
+<textarea id="enunciat">
+
+Càlcul LGA
+==========
+
+Enunciat
+--------
+
+L’objectiu d’aquesta activitat és que us familiaritzeu amb els càlculs 
+necessaris per determinar la secció de la línia general d’alimentació 
+(LGA), segons els paràmetres de caiguda de tensió, corrent màxim 
+admissible segons les condicions d’instal·lació i la temperatura màxima 
+de servei.
+
+En un edifici dedicat a habitatges i locals comercials, s’estableix una 
+previsió de càrrega de 145 kW, amb una centralització de comptadors a 
+la planta baixa de l’edifici.
+
+Tenint present que la longitud de la LGA és de 40 m, que està 
+instal·lada sota tub encastat, i que la tensió d’alimentació és de 
+400 V i, el cos f, de 0,9, trobeu quina és la secció de la LGA que 
+compleix els requisits anteriorment especificats.
+
+Per a la caiguda de tensió fes-ho utilitzant els dos sistemes que
+coneixes: la fórmula simplificada, i les taules de valors unitaris.
+Si t'atreveixes ho pots intentar mitjançant el càlcul vectorial.
+
+
+
+
+
+
+
+Solució
+-------
+
+### Elecció del conductor
+
+Els cables que es faran servir han de ser unipolars de tensió assignada 
+0,6/1 kV, no propagadors de la flama i amb emissió de fums i opacitat 
+reduïda. Han de ser de coure del tipus RZ1-K o DZ1-K, i com que són 
+cables amb aïllament termostable, la temperatura màxima del conductor 
+és de 90°C.
+
+
+
+### Càlcul de la intensitat
+
+Trobeu el valor de la intensitat de corrent aplicant aquesta expressió 
+matemàtica:
+
+$$I = \dfrac{P}{\sqrt{3} \cdot U \cdot \cos \varphi}$$
+$$I = \dfrac {145.000}{\sqrt{3} \cdot 400 \cdot 0{,}9} 
+    = 232{,}54 \text{ A}$$
+
+
+
+### Càlcul de la caiguda de tensió unitària reglamentària
+
+La caiguda de tensió màxima de la LGA amb centralització de comptadors 
+és de 0,5%, que respecte als 400 V de tensió de servei són 2 V de 
+caiguda màxima.
+
+$$e=400 \cdot \dfrac {0{,}5} {100} = 2 \text{ V}$$
+
+Per aquesta caiguda de tensió la secció calculada és:
+
+$$S = \dfrac {P \cdot L}{\gamma \cdot e \cdot U}$$
+$$S = \dfrac {145.000 \cdot 40}{45{,}49 \cdot 2 \cdot 400}
+    = 159{,}37 \text{ mm}^2$$
+
+Una secció normalitzada de 185 mm² seria suficient per aquesta caiguda 
+de tensió.
+
+
+
+### Càlcul per caiguda de tensió unitaria
+
+$$e_u = \dfrac{e}{I \cdot L}$$
+$$e_u = \dfrac{2}{232{,}54 \cdot 0{,}040} = 
+        0{,}215 \text{ V}/(\text{A} \cdot \text{km})$$
+Segons la taula de caigudes de tensió unitàries reglamentàries per a 
+cables de 0,6/1 kV, la caiguda de tensió per al factor de potència de 
+0,9 i per a la temperatura màxima admissible del conductor de 90°C, 
+inferior al valor de 0,215, correspon al valor de 0,211, que s’obté per 
+a la secció de 240 mm2. 
+
+> ![](../img/GT_REBT_cdt_taula5.png)
+
+Per tant, la secció normalitzada és S = 240 mm2. Ens quedarem amb
+aquesta al ser un mètode més exacte.
+
+
+
+### Segona iteració
+
+Heu de comprovar que la secció inferior, la de 185 mm2 és capaç de 
+suportar la intensitat prevista. Segons la taula A de la ITC-BT-14 és 
+així, perquè suporta 384 A.
+
+![](../img/GT_REBT_ITC14_taulaA.png)
+
+Aleshores calculem la temperatura real del conductor:
+
+$$ T = T_0 + (T_{max} - T_0) \cdot 
+     {\left ( \dfrac {I}{I_{max}} \right )}^2 $$
+
+&nbsp;
+     
+$$ T= 25 + (90 - 25) \cdot 
+     {\left ( \dfrac {232{,}54}{384} \right )}^2 
+     =48{,}83 ~ ^\circ \text{C} $$
+
+La temperatura real del conductor a la intensitat prevista en servei 
+permanent serà de 49°C. Segons la taula de caigudes de tensió unitàries 
+per a cables de 0,6/1 kV, no trobem cap valor de 49°C, però tot i 
+considerar el de 40°C (recordem que com menys temperatura, menys 
+resistència), aquest és de 0,229, que ja és superior i, per tant, la 
+secció de 185 mm2 no compleix el criteri de caiguda de tensió 
+reglamentària.
+
+La secció vàlida serà la de 240 mm2.
+
+
+
+### Conclusió
+
+La secció vàlida serà la de 240 mm².
+
+
+
+
+
+Bonus track: Càlcul exacte segons diagrama vectorial
+----------------------------------------------------
+
+![](../img/GT_REBT_cdt_diagrama_vectorial.png)
+
+Aquest diagrama vectorial correspon a la tensió que cau al cable,
+considerant aquest com una càrrega en serie amb la càrrega principal,
+i aquesta connectada al neutre (si no haurien d'apareixer les altres
+dues fases per tancar el circuit, també es pot fer prò complica
+innecessariament els càlculs per al mateix resultat).
+Per tant, es tracta de una tensió de fase. Per aquest motiu necessitem
+coneixer la tensió de fase inicial.
+
+Si la tensió de línia a l'inici és: $U_1 = 400 \text{ V}$, llavors:
+
+$$V_1 = 400 / \sqrt{3} = 230{,}94 \text{ V}$$
+
+A més si $\cos \varphi = 0{,}9$, llavors:
+
+$$\sin \varphi = \sqrt{1-0{,}9^2} = 0{,}4359$$
+
+Finalment:
+
+- $R = \dfrac{\rho \cdot L}{S} 
+     = \dfrac{0{,}023 \cdot 40}{240}
+     = 0{,}003833 ~ \Omega$
+     
+- $X = 0{,}1 \cdot L = 0{,}1 \cdot 0{,}040 = 0{,}0040 ~ \Omega$ 
+
+Ara tenim que:
+
+- $RI$ és paral·lel a $I$
+- $XI$ és perpendicular a $I$
+
+Anem a projectar $RI$ i $XI$ a l'eix que conté $V_2$, i a la seva
+perpendicular, així tenim que:
+
+- $a = R \cdot I \cdot \cos \varphi + X \cdot I \cdot \sin \varphi$
+- $b = R \cdot I \cdot \sin \varphi + X \cdot I \cdot \cos \varphi$
+
+Substituint:
+
+- $a = 0{,}003833 \cdot 232{,}54 \cdot 0{,}9 
+     + 0{,}0040 \cdot 232{,}54 \cdot 0{,}4359
+     = 1{,}2076$
+- $b =  0{,}003833 \cdot 232{,}54 \cdot 0{,}4359 
+     + 0{,}0040 \cdot 232{,}54 \cdot 0{,}9
+     = 1{,}2255$
+
+Aplicant el teorema de pitàgores tenim que:
+
+$$(V_2+a)^2 + b^2 = V_1^2$$
+
+Aïllant:
+
+$$V_2 = \sqrt {V_1^2-b^2} - a 
+      = \sqrt{{230{,}94}^2 - {1{,}2255}^2} - 1{,}2076
+      = 229{,}72 \text{ V}$$
+      
+Tornant a tensió de línia:
+
+$$U_2 = \sqrt{3} 229,72 = 397{,}9$$
+
+La caiguda de tensió per a una línia de 240 mm², és:
+
+$$\Delta U = U_1 - U_2 = 400 - 397,9 = 2,1 \text{ V}$$
+
+I per tant, no compliríem. Ara bé el valor 
+$X = 0{,}1 \Omega /\text{ km}$ es excessivament caute. De fet, si es
+calculen diferents valors per a diferents disposicions i tipus de
+conductors, com es pot comprovar a la 
+[web](https://www.prysmianclub.es/como-se-obtienen-los-valores-de-reactancia-de-los-cables-ejemplos-de-calculo)
+, en general es troben per sota de $X = 0{,}08 \Omega /\text{ km}$
+
+A més, el catàleg del fabricant, dona caigudes de tensió per amper 
+i quilòmetre de valors iguals als de la taula 5 de la Guía Tècnica
+
+![](../img/FT_prysmian_RZ1-K.png)
+### Verificació del corrent màxim admissible
+
+Heu de comprovar la intensitat admissible en servei permanent i, segons 
+les condicions d’instal·lació, heu de comprovar que els cables, la 
+secció dels quals s’ha calculat per caiguda de tensió, són capaços de 
+suportar la intensitat de servei prevista.
+
+Per a això heu d’utilitzar els valors de la taula A de la ITC-BT-14 
+sobre línies generals d’alimentació. Segons aquesta taula, la intensitat 
+màxima admissible per a instal·lació en tub soterrat és de 385 A, i 
+aquest valor és superior al valor de la intensitat prevista (232,54 A).
+
+
+
+
+
+
+> Aquest text va ser originalment publicat per [Martin _et al._] (2026).
+> professors de l'[IOC]. Sota llicència [CC3.0-by-nc-sa]
+
+
+
+
+[Martin _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m0236_/web/fp_iea_m0236_htmlindex/index.html "J. Martín Lledó, C. Sabaté Arrese, A. Sànchez Díaz, E. Sorribes Colell, E. Requena Amadas, A. Jurado Poza"
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+
+
+</textarea>
+
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>

@@ -1,0 +1,617 @@
+<!-- A. CAPÇALERA I INITS (NO TOCAR) ============================== -->
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href=../../img/favicon.png>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+</head>
+<textarea id="enunciat">
+
+Enunciat
+--------
+
+Tenim un edifici dedicat principalment a habitatges, calcula segons
+ITC-BT-10 la potència prevista per una instal·lació amb:
+
+**Habitatges**
+
+- [[p1]] habitatges [[p2]], [[p3]] m², [[p4]] bases de corrent d'ús 
+  general i [[p5]] punts de llum.
+- [[p6]] habitatges [[p7]], [[p8]] m², [[p9]] bases de corrent d'ús
+  general i [[p10]] punts de llum.
+- [[p11]] habitatges [[p12]], [[p13]] m², [[p14]] bases de corrent d'ús
+  general i [[p15]] punts de llum.
+
+**Locals**
+
+| Local   |  n      | $P_{dem}$ | $S$     |
+| :-----: | :-----: | :-------: | :-----: |
+| [[p16]] | [[p17]] |  [[p18]]  | [[p19]] |
+| [[p20]] | [[p21]] |  [[p22]]  | [[p23]] |
+| [[p24]] | [[p25]] |  [[p26]]  | [[p27]] |
+
+A on:
+- n és el nombre de locals idèntics
+- $P_{dem}$ és la potència demandada pel local en $\text{kW}$
+- $S$ és la superfície en $\text{m}^2$
+
+**Garatge**
+
+El garatge té [[p28]] plantes amb una superfície de [[p29]] cada una
+i ventilació [[p30]], i una superfície de [[p31]] m² per vehícle i
+[[p32]] prevista la instalació de PLC.
+
+**Serveis comuns**
+
+- La superfície de zones comuns a il·luminar és de [[p33]] amb LED
+  (assimilable a fluorescent).
+- Es necessita un ascensor tipus [[p34]]
+- A l'edifici a més es necessita un grup de pressió de [[p35]] preses
+  d'aigua i té [[p36]] plantes.
+ 
+Resposta
+--------
+
+- Coeficient de simultaneitat habitatges: [[i1]]
+- Potència habitatges: [[i2]]
+- Potència locals: [[i3]]
+- Potència garatge: [[i4]]
+- Potència zones comunes: [[i5]]
+- Potència vehícle elèctric: [[i6]]
+- Potència total prevista per l'edifici [[i7]]
+
+</textarea>
+<!-- FI ENUNCIAT ================================================== -->
+
+
+
+
+
+
+
+<!-- C. SCRIPT TEXME================================================ -->
+<script src="../../js/texme/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+
+
+<script>
+// # 1. CONSTANTS (actualitzar) ---------------------------------------
+const titol = "Càlcul de previsió de potències";
+const puntuacions = ["",
+    1, 1, 1, 1, 1,
+    1, 1
+];
+const π = 3.141592654;
+
+// # 2. PARÀMETRES ====================================================
+
+// ## 2.1. DECLARACIÓ (actualitzar) -----------------------------------
+
+
+const nh1 = aleat(2, 5);            // Nombre d'habitatges 01
+const nh2 = aleat(2, 5);            // Nombre d'habitatges 02
+const nh3 = aleat(2, 5);            // Nombre d'habitatges 03
+
+const arr_rh = [                    // Requeriments d'habitatge
+[
+    "amb secadora", 
+    "amb aire acondicionat", 
+    "amb calefacció elèctrica",
+    "amb circuits domòtics"
+],
+[
+    "amb termo elèctric", 
+    "amb grup de pressió pròpi", 
+    "amb ascensor privat",
+    "amb piscina"
+]
+];
+
+const i_rh1 = aleat(0, 1);
+const j_rh1 = aleat(0, 4);
+const i_rh2 = aleat(0, 1);
+const j_rh2 = aleat(0, 4);
+const i_rh3 = aleat(0, 1);
+const j_rh3 = aleat(0, 4);
+
+const rh1 = arr_rh[i_rh1][j_rh1];
+const rh2 = arr_rh[i_rh2][j_rh2];
+const rh3 = arr_rh[i_rh3][j_rh3];
+
+const mq1 = aleat(50, 200);         // metres quatrats
+const mq2 = aleat(50, 200);
+const mq3 = aleat(50, 200);
+
+const nt1 = aleat(9, 25);           // número de tomes de corrent
+const nt2 = aleat(9, 25); 
+const nt3 = aleat(9, 25);  
+
+const pl1 = aleat(10, 35);          // número de punts de llum
+const pl2 = aleat(10, 35);
+const pl3 = aleat(10, 35);
+
+const arr_tl = [                    // Tipus de local
+    "pizzeria",
+    "oficina de advocat",
+    "gestoria",
+    "concesionari",
+    "gimnàs"
+];
+
+const i_tl1 = aleat(0, 4);
+const i_tl2 = aleat(0, 4);
+const i_tl3 = aleat(0, 4);
+
+const tl1 = arr_tl[i_tl1];
+const tl2 = arr_tl[i_tl2];
+const tl3 = arr_tl[i_tl3];
+
+const nl1 = aleat(1, 3);            // Nombre de locals
+const nl2 = aleat(1, 3);
+const nl3 = aleat(1, 3);
+
+const pl1 = xs(aleat(2000, 10000)/1000); // Potència locals
+const pl2 = xs(aleat(2000, 10000)/1000);
+const pl3 = xs(aleat(2000, 10000)/1000);
+
+const sl1 = aleat(50, 150);         // Superficie locals
+const sl2 = aleat(50, 150);
+const sl3 = aleat(50, 150);
+
+const pg = aleat(1, 3);             // plantes garatge
+
+const arr_vent = [
+    "ventilació natural",
+    "ventilació forçada"
+]
+const i_vent = aleat(0, 1);
+const vent = arr_v[i_v];
+
+const spv = aleat(25, 35);          // superficie per plaça de vehicle
+const sg = aleat(2, 10) * spv;      // superficie garatge
+
+
+
+const arr_plc = [
+    "està prevista la instal·lació de PLC",
+    "**no** està prevista la instal·lació de PLC"
+]
+const i_plc = aleat(0, 1);
+const plc = arr_plc[i_plc];
+
+const szc = aleat(50, 100);
+
+const arr_ae = [
+    "ITA-1",
+    "ITA-2",
+    "ITA-3",
+    "ITA-4",
+    "ITA-5",
+    "ITA-6"
+];
+const i_ae = aleat(0, 5);
+const ae = arr_ae[i_ae];
+
+cons nh_tot = nh1 + nh2 + nh3;
+const npa = aleat(7, 12) * nh_tot;  // numero preses aigua
+const np =  Math.floor(nh_tot / aleat(1, 3);
+
+// ## 2.2 FUNCIO (actualitzar) ----------------------------------------
+function estableixParametres(){
+    p = [
+        nh1, rh1, mq1, nt1,  pl1,
+        nh2, rh2, mq2, nt2,  pl2,
+        nh3, rh3, mq3, nt3,  pl3,
+        tl1, nl1, pl1, sl1,  tl2,
+        nl2, pl2, sl2, tl3,  nl3,
+        pl3, sl3,  pg,  sg, vent, 
+    ];
+    parametres = parametres.concat(p);
+}
+
+
+
+// # 3. CALCULS =======================================================
+
+// ## 3.1 CALCUL VALORS (ACTUALITZAR) ---------------------------------
+function calcula(){
+
+s01 = binari(nd1);
+
+
+solucions = [""].concat([
+    s01
+]);
+
+
+// ## 3.2 LOG ---------------------------------------------------------
+
+}
+
+
+
+
+
+
+
+/* *********************************************************************
+ *                                                                     *
+ *                    ~~~~ ENTRENADOR SERVERI ~~~~                     *
+ *                                                                     *
+ ******************************************************************** */
+// # 1. VARIABLES GLOBALS =============================================
+
+let txtEnunciat = "";   // l'enunciat de l'apartat B.
+let parametres = [""];  // els paràmetres del punt 3.1.
+let solucions = [""];   // els valors que ha donat el programa.
+let respostes = [""];   // els valors que ha donat l'alumne.
+let alumne = {
+    nom: "",
+    cicle: "CFGS tècnic superior en sistemes electrotècnics y automatizats",
+    anys: "2026/2027"
+}
+let ptsTotal = 0;
+let ptsAlumne = 0;
+let tlog = "";          // log que apareix al final de l'avaluació.
+
+
+
+// # 2. FUNCIONS ======================================================
+
+window.onload = function (){
+    // txtEnunciat és una variable global
+    txtEnunciat = document.getElementById("enunciat").value;
+    renderEnunciat(txtEnunciat);
+}
+
+function renderEnunciat(){
+    let txt = "";
+    estableixParametres(); // Va al punt 3.2. de l'apartat C. (script)
+    txt = '<h1 align ="center">' + titol + "</h1>\n&nbsp;\n\n" +
+          txtEnunciat;
+    txt = exportarParametres(txt);
+    txt = crearInputs(txt);
+    txt = crearIdentificacio(txt);
+    document.getElementById("enunciat").innerHTML = txt;
+    document.getElementById("titol").innerText = titol;
+    texme.renderPage();
+}
+
+function exportarParametres(txt){
+    let patro = "", canvi = "";
+    const fi = parametres.length;
+    for (let i = 1; i < parametres.length; i++) {
+        patro = "[[p" + i +"]]";
+        canvi = parametres[i];
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearInputs(txt){
+    let patro = "", canvi = "";
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[i" + i +"]]";
+        canvi = '<input type="number" onwheel="return false;" ';
+        canvi += 'id="i'+ i +'" style="width: 80px">';
+        txt = txt.replace(patro, canvi);
+    }
+    for (let i = 1; i < puntuacions.length; i++) {
+        patro = "[[itxt" + i +"]]";
+        canvi = '<input type="text" ';
+        canvi += 'id="itxt'+ i +'" style="width: 200px">';
+        txt = txt.replace(patro, canvi);
+    }
+    return txt;
+}
+
+function crearIdentificacio(txt){
+txt += `
+<h2>Identificació de l'alumne</h2>
+
+<form id="avalua" onsubmit="event.preventDefault() & avalua()">
+    <label>Nom de l'alumne: </label>
+    <input id="nom" style="width: 400px"/>
+    <div>
+        <input type="checkbox" id="informat" required/>
+        <label>
+            Entenc que al premer el botó avaluar no es pot tornar
+            enrera.
+        </label>
+    </div>
+    <br/>
+    <div style="text-align: center;">
+        <button type="submit" id="boto"
+            style="font-size: 20px; color: #AA5050;">
+            Avaluar
+        </button>
+    </div>
+</form>
+`; return txt;
+}
+
+function avalua(){
+    importaRespostes();
+    resetejar();
+    renderAvaluacio();
+}
+
+function importaRespostes(){
+    let r = [""];
+    alumne.nom = document.getElementById("nom").value;
+    for (let i = 1; i < puntuacions.length; i++){
+        a = document.getElementById("i"+i);
+        b = document.getElementById("itxt"+i);
+        if (a != null){
+          r[i] = xs(a.value);
+        } else{
+          r[i] = b.value;
+        }
+    }
+    respostes = r.slice(); 
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol + "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+    "",
+    "> [[nota]]"
+    ].join("\n") + "\n";
+    txt += "## Enunciat\n\n" + txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+function identificarAlumne(txt){
+    txt = txt.replace("[[nom]]", alumne.nom);
+    txt = txt.replace("[[cicle]]", alumne.cicle);
+    txt = txt.replace("[[any]]", alumne.anys);
+    return txt;
+}
+
+function puntua(txt){
+    calcula();
+
+    txt = exportarParametres(txt);
+
+    let pts = 0;
+    let canvi = "", patro = "", resp = "", solu = "";
+    let acceptada = false;
+    for (let i = 1; i < puntuacions.length; i++){
+        pts = puntuacions [i];
+        resp = respostes[i];
+        solu = solucions[i];
+        ptsTotal += puntuacions[i];
+        
+        patro = "[[i" + i + "]]";
+        if (txt.includes(patro)){
+            canvi = fnum (resp, solu, pts);
+            txt = txt.replace(patro, canvi);
+        }
+        
+        patro = "[[itxt" + i + "]]";
+        if (txt.includes(patro)){
+            console.log(solu);
+            canvi = ftxt (resp, solu, pts);
+            txt = txt.replace(patro, canvi);
+        }
+        
+    }
+    txt = txt.replace("[[nota]]", "S'han aconseguit: "+ xs(ptsAlumne, 2) +
+        " punts de " + xs(ptsTotal, 2) + " possibles.\n>\n>" +
+        "**Nota final: " + xs(ptsAlumne/ptsTotal*10, 2) + "**");
+    return txt;
+}
+
+function fnum (resp, solu, pts){     // formata una resposta i solució numèrica
+    if (!isNaN(solu)){
+        acceptada = (solu*0.99) <= resp && resp <= (solu*1.01);
+    } else{
+        return "ERROR";
+    }
+    
+    canvi =
+    '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">' +
+        coma(resp) + '</span>';
+    if (acceptada) {
+        ptsAlumne += pts;
+        canvi +=
+            ' <span style="color: green">(' + coma(solu) + ') OK (+' + pts + 
+            ')</span>';
+    }else{
+        canvi +=
+            ' <span style="color: red;"> (' + coma(solu) + ')</span>';
+    }
+    return canvi;
+}
+
+function ftxt (resp, solu, pts){          // formata una resposta i solució de texte
+    acceptada = (resp == solu);
+    
+    canvi =
+    '<span style="border-bottom: 1px solid silver; padding: 0.2em 1em 0;">' +
+        "" + resp + '</span>';
+    if (acceptada) {
+        ptsAlumne += pts;
+        canvi +=
+            ' <span style="color: green">(' + "" + solu + ') OK (+' + 
+            pts + ')</span>';
+    }else{
+        canvi +=
+            ' <span style="color: red;"> (' + "" + solu + ')</span>';
+    }
+    return canvi;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function aleat(min, max) { // enter aleat entre min i max (inclosos)
+    const a = Math.ceil(min);
+    const b = Math.floor(max);
+    const c = Math.floor(Math.random() * (b - a + 1) + a);
+    return c;
+}
+
+function triaElementMatriu (matriu){
+    const aleat = Math.floor(Math.random() * (matriu.length));
+    return matriu[aleat.toFixed(0)];
+}
+
+function tan(a){
+    return Math.tan(a*2*π/360);
+}
+
+function atan(a){
+    return Math.atan(a)*360/2/π;
+}
+
+function sin(a){
+    return Math.sin(a*2*π/360);
+}
+
+function asin(a){
+    return Math.asin(a)*360/2/π;
+}
+
+function cos(a){
+    return Math.cos(a*2*π/360);
+}
+
+function acos(a){
+    return Math.acos(a)*360/2/π;
+}
+
+
+function cbi(x, y){ //complexe input en binomial
+    const c = {};
+    c.r = (x**2 + y**2)**0.5;
+    c.φ = Math.atan2(y, x)*360/2/π;
+    c.x = x;
+    c.y = y;
+    return c;
+}
+
+function cpol(r, φ){ //complexe input en polar
+    const c = {};
+    c.r = r;
+    c.φ = φ;
+    c.x = r * cos(φ);
+    c.y = r * sin(φ);
+    return c;
+}
+
+function sumc(a, b){
+    return cbi(a.x + b.x, a.y + b.y)
+}
+
+function restc(a, b){
+    return cbi(a.x - b.x, a.y - b.y)
+}
+
+function multc(a, b){
+    return cpol(a.r*b.r, a.φ+b.φ);
+}
+
+function multc_esc(λ, a){
+    return cpol(λ*a.r, a.φ);
+}
+
+function divc(a, b){
+    return cpol(a.r/b.r, a.φ-b.φ);
+}
+
+function invc(a){ // inversa d'un complexe
+    return cpol(1/a.r, -a.φ);
+}
+
+function logc (nom, v){ // log de un numero complexe
+    let log = "";
+    log += nom + ": ";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log += "; ";
+    log += xs(v.r) + "∠" + xs(v.φ) + "°\n";
+    log = coma(log);
+    return log;
+}
+
+function logcbi (v){ // log de un numero complexe només en binomial
+    let log = "";
+    log += xs(v.x);
+    if (v.y > 0) log += " + j" + xs(v.y);
+    else if (v.y < 0) log += "-j" + xs(-v.y);
+    log = coma(log);
+    return log;
+}
+
+function l(a, b = 4){  // log abreviat a l totsol
+    return coma(xs(a, b));
+}
+
+function ll(a, b = 4){ // log Latex
+    return cl(xs(a, b));
+}
+
+function xs(a, b = 4){
+    a = Number(a);
+    if (a.toPrecision) a = a.toPrecision(b);
+    return a;
+}
+
+function coma(a){
+    a = a + "";
+    return a.replaceAll(".", ",");
+}
+
+function cl(a){ // coma per a latex
+    return coma(a).replaceAll(",", "{,}");
+}
+
+function xsMap(a){
+    a = xs(a);
+    return a;
+}
+
+function binari(n) {
+    a = n;
+    return a.toString(2).toString();
+}
+
+function hexadecimal(n) {
+    a = n;
+    return a.toString(16).toUpperCase();
+}
+
+
+</script>

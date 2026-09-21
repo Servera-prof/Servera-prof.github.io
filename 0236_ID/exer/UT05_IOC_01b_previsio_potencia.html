@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+</head>
+<textarea id="enunciat">
+
+Previsió de càrregues habitatges
+================================
+
+Enunciat
+--------
+
+L’objectiu d’aquesta activitat és que us familiaritzeu amb els càlculs 
+necessaris per fer una previsió de càrrega per a un edifici 
+d’habitatges.
+
+Volem determinar la potència dels diferents habitatges d’un edifici de 
+3 plantes, amb 5 habitatges per planta de 100 m2 cada un, i un àtic amb 
+2 habitatges de 160 m2 cada un.
+
+
+
+
+
+Solució
+-------
+
+Com que no s’indica cap característica que ens pugui fer pensar que els 
+habitatges són de grau d’electrificació elevat, considerareu que els 15 
+habitatges de 100 m2 tenen un grau d’electrificació bàsic, és a dir,
+5.750 W cada un.
+
+I, els dos àtics de 160 m2 cada un, els haureu de considerar de grau 
+d’electrificació elevat, ja que són just al límit de la superfície amb 
+la qual s’han d’incloure en aquest grau d’electrificació, és a dir, de 
+9.200 W cada un.
+
+Si teniu en compte que el coeficient de simultaneïtat per als 17 
+habitatges serà de 13,1, la previsió de càrrega dels 17 habitatges serà 
+la següent:
+
+$$P_h = C_S \cdot \dfrac {N_b \cdot P_b + N_e \cdot P_e}{N_h} = $$
+
+$$ = 13{,}1 \dfrac {15 \cdot 5750 + 2 \cdot 9200}{17} = 80{,}64 
+   \text{ kW}$$
+
+
+
+> Aquest text va ser originalment publicat per [Martin _et al._] (2026).
+> professors de l'[IOC]. Sota llicència [CC3.0-by-nc-sa]
+
+
+
+[Martin _et al._]: https://ioc.xtec.cat/materials/FP/Recursos/fp_iea_m0236_/web/fp_iea_m0236_htmlindex/index.html "J. Martín Lledó, C. Sabaté Arrese, A. Sànchez Díaz, E. Sorribes Colell, E. Requena Amadas, A. Jurado Poza"
+[IOC]: https://ioc.xtec.cat/ "Web de l'Institut Obert de Catalunya"
+[CC3.0-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/3.0/es/deed.ca "Llicencia Cretive Commons 3.0 Espanya - Reconeixement - No comercial - CompartirIgual"
+
+
+
+
+
+</textarea>
+
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>
