@@ -21,10 +21,10 @@ discorrent sempre per espais d'ús comú.
 1. Previsió de càrregues en baixa tensió (BT)
 ---------------------------------------------
 
-La ITC-BT-10 fixa les condicions de previsió de càrrega mínima per
+La ITC-BT-10 fixa les condicions de **previsió de càrrega mínima** per
 garantir un ús segur i preveure futurs augments de potència. Si es
-coneix una demanda real superior als mínims teòrics, s'ha d'utilitzar
-el valor real.
+coneix una **demanda real superior** als mínims teòrics, s'ha 
+d'utilitzar sel valor real.
 
 
 
@@ -35,10 +35,10 @@ El grau d'electrificació determina la potència màxima per habitatge:
 - Elevat: si la superfície útil és superior a 160 m², si inclou
   aire condicionat, calefacció elèctrica, automatització o
   assecadora, o si supera els punts d'utilització de la ITC-BT-25
-  (>30 punts d'enllumenat, >20 preses generals, >6 preses de bany i
+  (>30 punts d'enllumenat, >20 preses generals, **>6 preses de bany** i
   cuina). Potència mínima: 9.200 W.
 - Bàsic: permet l'ús d'aparells elèctrics habituals. Potència mínima:
-  5.750 W a 230 V (rang pràctic de 5.750 W a 9.199 W segons el calibre
+  5.750 W a 230 V (rang pràctic de 5.750 W a 7.360 W segons el calibre
   de l'IGA: 25 A o 32 A).
 
 La càrrega total ($P_T$) d'un edifici d'habitatges s'obté mitjançant
@@ -193,7 +193,8 @@ Per exemple: `CGP-7-250A`
 
 Conté fusibles a les fases i una connexió amovible per al neutre a
 l'esquerra. S'instal·len en façanes exteriors, nínxols o límits de
-propietat, allunyades d'altres subministraments.
+propietat, allunyades d'altres subministraments. A Balears els únics
+esquemes utilitzats són el 7 i el 9.
 
 Per al càlcul del nombre de CGP:
 
@@ -210,7 +211,8 @@ Per al càlcul del nombre de CGP:
 | -------------------- | -------------------- |
 | 160, 250, 400, 630   | 100, 160, 250, 400   |
 
-
+A Balears per a fusibles de 400 A o més s'ha d'acordar amb l'empresa
+distribuïdora.
 
 ### 2.2. Caixes de protecció i mesura (CPM)
 
@@ -223,8 +225,9 @@ lectura entre 0,7 m i 1,8 m.
 ### 2.3. Línia general d'alimentació (LGA)
 
 Enllaça la CGP amb la centralització de comptadors. Es composa de
-conductors unipolars de coure o alumini (0,6/1 kV), no propagadors de
-l'incendi i de baixa emissió de fums.
+conductors **unipolars** de coure o alumini (0,6/1 kV), no propagadors 
+de l'incendi i de **baixa emissió de fums** (Afumex o similars 
+compleixen aquestes condicions).
 
 Secció i caiguda de tensió:
 - Secció mínima: $10\text{ mm}^2$ (Cu) o $16\text{ mm}^2$ (Al).
@@ -292,10 +295,8 @@ Càlcul de la temperatura real del conductor ($T$):
   </tbody>
 </table>
 
-FALTA IMATGE INTENSITATS
-
 El conductor neutre tindrà una secció mínima del 50% de la fase. Només
-quan es puguin descartar harmònics.
+quan es puguin **descartar harmònics**.
 
 
 
@@ -315,7 +316,8 @@ Característiques:
 ### 2.5. Derivacions individuals (DI)
 
 Conecten la centralització de comptadors amb el quadre d'usuari.
-Cables unipolars de 450/750 V.
+Cables unipolars o multipolars, de 450/750 V o 0,6/1 kV, no propagadors 
+de l'incendi i de **baixa emissió de fums**.
 
 Caiguda de tensió màxima:
 - 0,5% en comptadors centralitzats en més d'un lloc.
@@ -381,7 +383,8 @@ Requisits d'ubicació:
 
 El mercat elèctric està liberalitzat. Les tarifes regulades van ser
 substituïdes pel mercat lliure o la Tarifa d'Últim Recurs (TUR),
-gestionada per les comercialitzadores.
+gestionada per les comercialitzadores. Ara (2026) la TUR ha passat a 
+PVPC (Preu Voluntari del Petit Consumidor).
 
 Estructura de la factura:
 - Terme de potència (€/kW i mes).
@@ -394,12 +397,9 @@ Estructura de la factura:
 | Sense hora | 1,719427                     | 0,140069                |
 | Amb hora   | 1,719427                     | P: 0,168743 V: 0,060896 |
 
-AQUI_VA_IMATGE_06
-
 Bonificacions i factor de potència:
 - Bo social: aplicable a habitatges habituals amb potència $\lt 3\text{
-  kW}$,
-  pensionistes mínims, famílies nombroses o llars amb tots els
+  kW}$, pensionistes mínims, famílies nombroses o llars amb tots els
   membres en atur.
 - Energia reactiva: es penalitza quan el factor de potència
   ($\cos\varphi$) és inferior a 0,8:
@@ -502,7 +502,7 @@ A on:
 7. Control de la potència contractada
 -------------------------------------
 
-L'interruptor de control de potència (ICP-M) limita la demanda a la
+L'interruptor de control de potència (ICP-M) limitava la demanda a la
 potència contractada fins a 63 A.
 
 > ![c500](../img/situacio_CGMP.png)
@@ -514,8 +514,8 @@ potència contractada fins a 63 A.
 | ----------------------------------------------------------- |
 | 1.5, 3, 3.5, 5, 7.5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 63 |
 
-Per a potències superiors a 63 A, el control es realitza mitjançant
-maxímetres o interruptors regulables. L'ICP-M ha d'anar en un
+Per a potències superiors a 63 A, el control es realitzava mitjançant
+maxímetres o interruptors regulables. L'ICP-M havia d'anar en un
 quadre precintable i independent, situat al costat de l'entrada.
 
 
@@ -536,23 +536,8 @@ quadre precintable i independent, situat al costat de l'entrada.
 </textarea>
 
 
-<!-- C. SCRIPT ==================================================== -->
-<script>
-window.texme = {
-    renderOnLoad: false,
-    style: 'none',
-    markdownURL: '../../js/marked/marked.min.js',
-    MathJaxURL: '../../js/mathjax/es5/tex-mml-chtml.js'
-}
-</script>
 
+
+<script src="../../js/config.js"></script>
 <script src="../../js/texme/texme.js"></script>
-<script>
-
-
-
-window.onload = function (){
-    texme.renderPage();
-}
-
-</script>
+<script>window.onload = texme.renderPage;</script>

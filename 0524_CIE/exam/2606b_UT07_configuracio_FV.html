@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+
+## Normes:
+
+- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
+  Pots utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/)
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Està terminantment prohibit copiar o mirar al company.
+- No es poden fer preguntes. Part de l'avaluació és la comprensió del
+  text. Si hi ha algun error es parlarà una vegada l'examen hagi
+  finalitzat, i en el seu cas s'anul·larà la pregunta.
+- L'examen dura el que indiqui la tasca associada i **es tanca
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
+
+## Com fer aquest examen:
+
+- Agafa paper
+- **Escriu la permutació al paper!!**
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis copia les respostes sense espais i tot seguit, al camp
+  «resposta», si no la saps n. Per exemple: abnaac
+- Omple el teu nom i clica a avaluar.
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
+- Adjunta-la com a tasca.
+- Fotografia el paper utilitzat (la fotografia és per a tu, per a
+  poder revisar l'examen si ho necessitessis).
+- Entrega els papers utilitzats.
+</textarea>
+
+
+
+<script>
+const titol = "Test UT07";
+
+
+
+const test_original = [
+[
+"Quina unitat s'utilitza habitualment per mesurar la <b>irradiància</b> solar incident sobre una superfície?",
+"kWh/m²",
+"W/m²",
+"Hores Solar Pic (HSP)",
+"Lúmens"
+],
+[
+"En el context d'una instal·lació fotovoltaica, què representa el concepte d'<b>Hora Solar Pic (HSP)</b>?",
+"L'hora del dia en què la radiació solar és màxima",
+"El nombre d'hores diàries amb una irradiància constant de 1000 W/m² equivalents a la irradiació total del dia",
+"La quantitat total d'energia en kWh que produeix un panell en un dia",
+"El temps que tarda un mòdul a arribar a la seva potència pic un dia assolellat"
+],
+[
+"Quina és l'orientació òptima (azimut) per a un generador fotovoltaic situat a l'hemisferi nord?",
+"Nord (0°)",
+"Sud (0°)",
+"Est (90°)",
+"Oest (-90°)"
+],
+[
+"Per calcular l'energia produïda estimada per una instal·lació, es multiplica la potència pic per les HSP i per un coeficient global de rendiment. Com s'anomena aquest coeficient?",
+"Factor de potència (FP)",
+"Rendiment del mòdul (η<sub>mod</sub>)",
+"<i>Performance Ratio</i> (PR)",
+"Profunditat de descàrrega (DoD)"
+],
+[
+"Quina de les següents <b>NO</b> és una funció principal d'un <b>regulador de càrrega</b> en un sistema aïllat?",
+"Evitar la sobrecàrrega de la bateria",
+"Protegir la bateria contra la descàrrega profunda",
+"Convertir el corrent continu de les bateries en corrent altern per al consum",
+"Compensar les tensions de càrrega en funció de la temperatura"
+],
+[
+"Segons la normativa aplicable, quina és la <b>caiguda de tensió màxima</b> permesa en el tram de corrent continu entre el generador i el regulador o inversor?",
+"1,0%",
+"1,5%",
+"3,0%",
+"5,0%"
+],
+[
+"Quin paràmetre d'una bateria expressa el percentatge de la seva capacitat nominal que es pot extreure sense perjudicar greument la seva vida útil?",
+"Vida cíclica",
+"Capacitat nominal (C)",
+"Tensió de flotació",
+"Profunditat de descàrrega màxima (DoD<sub>max</sub>)"
+],
+[
+"Les pèrdues per <b>dispersió de paràmetres</b> o <i>mismatch</i> en una cadena de mòduls fotovoltaics es deuen principalment a:", "Diferències en la càrrega de vent entre els mòduls", 
+"Diferències de fabricació entre mòduls connectats en sèrie", 
+"La pols acumulada a la superfície dels mòduls",
+"L'envelliment prematur del cablejat"
+],
+[
+"Quina eina professional es considera la font de referència a Europa per obtenir dades de radiació solar per al disseny d'instal·lacions?",
+"Google Maps",
+"<i>Photovoltaic Geographical Information System</i> (<b>PVGIS</b>)",
+"L'Atles de Radiació Solar de l'AEMET",
+"El programa de simulació AutoCAD"
+],
+[
+"En el dimensionament d'un <b>regulador MPPT</b>, per què és crític calcular la tensió en circuit obert corregida (<i>V<sub>oc_corr</sub></i>) per a la temperatura mínima històrica?",
+"Perquè la intensitat del generador augmenta amb el fred",
+"Perquè la tensió del generador disminueix dràsticament amb el fred",
+"Perquè la tensió del generador augmenta en baixar la temperatura i pot superar la tensió màxima d'entrada",
+"Perquè l'eficiència del regulador MPPT es redueix amb temperatures baixes"
+]
+
+];
+
+</script>
+<script src="../../js/config_test.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/test_segur.js"></script>
+<script src="../../js/test_html.js"></script>
+<script src="../../js/test_dades.js"></script>
+<script src="../../js/test_mates.js"></script>
+<script>window.onload = renderitza;</script>
+

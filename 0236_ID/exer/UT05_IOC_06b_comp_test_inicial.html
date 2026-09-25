@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+</textarea>
+
+
+
+<script>
+const titol = "Test IOC UT05";
+
+
+
+const test_original = [
+/*1 a 5*/
+[
+"Vertader o fals: Un habitatge amb grau d’electrificació bàsic preveu la cobertura de les possibles necessitats d’utilització primàries sense necessitat d’obres d’adequació posteriors.",
+"Vertader",
+"Fals"
+],
+[
+"Vertader o fals: Un habitatge amb grau d’electrificació bàsic preveu la instal·lació d’aire condicionat.",
+"Vertader",
+"Fals"
+],
+[
+"Vertader o fals: Un habitatge amb grau d’electrificació elevat ho és únicament si la superfície és igual o superior a 160 m2.",
+"Vertader",
+"Fals"
+],
+[
+"Vertader o fals: Un habitatge té el grau d’electrificació elevat si preveu la instal·lació de sistemes d’automatització.",
+"Vertader",
+"Fals"
+],
+[
+"Tenint en compte el que heu vist sobre la previsió de càrregues d’un habitatge, marqueu quines d’aquestes opcions són correctes:" + 
+"<ol><li>El promotor, propietari o usuari de l’edifici ha de fixar d’acord amb l’empresa subministradora la potència prevista, la qual, per a construccions noves, no ha de ser inferior a 5.750 W a 230 V, en cada habitatge, independentment de la potència que contracti cada usuari, que depèn de l’ús que faci de la instal·lació elèctrica.</li>" + 
+"<li>Tot i que es conegui la previsió de càrrega real, aquesta s’ha de limitar als valors mínims de grau d’electrificació bàsic (5.750 W) o elevat (9.200 W).</li>" +
+"<li>Als habitatges amb grau d’electrificació elevat, la potència prevista no ha de ser inferior a 9.200 W.</li>" + 
+"<li>Quan en un mateix edifici hi ha habitatges amb tipus o graus d’electrificació diferent, per calcular-ne la previsió de potència no s’ha d’aplicar cap coeficient de simultaneïtat.</li>" +
+"<li>En conseqüència, teòricament la previsió de càrrega en un grau d’electrificació bàsic comprèn el rang de 5.750 W a 9.199 W, encara que a la pràctica, com que aquesta previsió està condicionada pel calibre de l’interruptor general automàtic (IGA), els dos valors possibles són 5.750 W (per a un calibre de 25 A) i 7.360 W (per a un calibre de 32 A).</li><ol>",
+"1 i 2",
+"3 i 4",
+"2, 4 i 5",
+"1, 3 i 5",
+"2, 3 i 5",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+
+
+
+
+
+/*6 a 10 */
+[
+"L’electricitat ha deixat de ser subministrada per les empreses distribuïdores i és subministrada, exclusivament, per les empreses comercialitzadores.",
+"Vertader",
+"Fals"
+],
+[
+"Les instal·lacions d’enllaç comencen al final de la connexió de servei o embrancament i acaben als dispositius de comandament i protecció.",
+"Vertader",
+"Fals"
+],
+[
+"Les instal·lacions d’enllaç inclouen la connexió de servei o embrancament i acaben als dispositius de comandament i protecció.",
+"Vertader",
+"Fals"
+],
+[
+"Les instal·lacions d’enllaç poden passar per llocs d’ús comú o privat indiferentment.",
+"Vertader",
+"Fals"
+],
+[
+"Les caixes de protecció i mesura s’han d’utilitzar per a un, dos o tres usuaris.",
+"Vertader",
+"Fals"
+],
+
+
+
+
+
+/* 11 a 15 */
+[
+"La centralització de comptadors en més d’un lloc només s’ha d’utilitzar en conjunts d’habitatges en distribució horitzontal dins d’un recinte privat.",
+"Vertader",
+"Fals"
+],
+[
+"És la caixa o caixes que allotgen els elements de protecció de les línies generals d’alimentació…",
+"CGP",
+"CPM",
+"LGA",
+"DI"
+],
+[
+"La CGP protegeix la…",
+"CGP",
+"CPM",
+"LGA",
+"DI"
+],
+[
+"Les CGP s’han d’instal·lar preferentment sobre les façanes exteriors dels edificis, en llocs d’accés lliure i permanent.",
+"Vertader",
+"Fals"
+],
+[
+"La situació de les CGP l’han de fixar de comú acord la propietat i l’empresa subministradora.",
+"Vertader",
+"Fals"
+],
+
+
+
+
+/* 16 a 20 */
+[
+"Quan la façana no afronti amb la via pública, la CGP s’ha de situar en el límit de les propietats públiques i les privades.",
+"Vertader",
+"Fals"
+],
+[	
+"Es poden allotjar dues CGP en el mateix nínxol.",
+"Vertader",
+"Fals"
+],
+[	
+"S’ha de disposar d’una protecció per a totes les LGA.",
+"Vertader",
+"Fals"
+],
+[	
+"Els usuaris o l’instal·lador electricista autoritzat només tenen accés i poden actuar sobre les connexions amb la LGA, amb la comunicació prèvia a l’empresa subministradora.",
+"Vertader",
+"Fals"
+],
+[
+"El codi IP es designa amb un nombre graduat de 0 a 10 i indica el pes i altura de caiguda de la peça que colpeja l’embolcall.",
+"Vertader",
+"Fals"
+],
+
+
+
+
+
+/* 21 a 25 */
+[
+"Per al cas dels subministraments per a un únic usuari o dos usuaris alimentats des del mateix lloc, tal com defineix la ITC-BT-12, com que no hi ha LGA, es pot simplificar la instal·lació col·locant en un únic element la CGP i l’equip de mesura; l’esmentat element és denomina caixa de protecció i mesura (CPM).",
+"Vertader",
+"Fals"
+],
+[	
+"La funció de la CPM és protegir de sobrecàrregues i curtcircuits la LGA de l’abonat o abonats i fer la mesura d’energia elèctrica.
+"Vertader",
+"Fals"
+],
+[
+"Respecte a l’interruptor general de maniobra (IGM), digueu quines d’aquestes afirmacions són correctes:" +
+"<ol><li>L’interruptor general de maniobra va sempre associat a les centralitzacions de comptadors de més de dos usuaris.</li>" +
+"<li>No és necessari que l’IGM sigui d’obertura en càrrega i que garanteixi que el neutre no sigui tallat abans que els altres pols.</li>" +
+"<li>Quan hi hagi més d’una línia general d’alimentació s’ha de col·locar un IGM per a cadascuna.</li></ol>",
+"1 i 2",
+"2 i 3",
+"1 i 3"
+],
+[
+"La LGA és la que enllaça la CGP amb la…",
+"CC",
+"CGP",
+"CPM",
+"DGCP",
+"DI",
+"ITC-BT-14"
+"LGA"
+],
+[
+"Tot el que fa referència a la normativa del REBT respecte a la LGA ho podem trobar a la…",
+"CC",
+"CGP",
+"CPM",
+"DGCP",
+"DI",
+"ITC-BT-14"
+"LGA"
+],
+
+
+
+
+/* 26 a 30 */
+[
+"Generalment amb l’esquema per a un usuari o dos s’emplaça una CPM i per tant desapareix la…",
+"CC",
+"CGP",
+"CPM",
+"DGCP",
+"DI",
+"ITC-BT-14"
+"LGA"
+],
+[
+"La funció de la CPM és fer la mesura d’energia elèctrica i protegir la…",
+"CC",
+"CGP",
+"CPM",
+"DGCP",
+"DI",
+"ITC-BT-14"
+"LGA"
+],
+[
+"La DI s’inicia a l’embarrat general i comprèn els fusibles de seguretat, el conjunt de mesura i els…",
+"CC",
+"CGP",
+"CPM",
+"DGCP",
+"DI",
+"ITC-BT-14"
+"LGA"
+],
+[
+"Els consumidors amb dret a acollir-se a les TUR són únicament els consumidors d’energia elèctrica connectats en baixa tensió i amb una potència contractada superior a 10 KW.",
+"Vertader",
+"Fals"
+],
+[
+"Les tarifes actualment es componen dels termes següents: tarifes d’accés o peatges, import de l’energia subministrada o consumida, complements o recàrrecs per energia reactiva i excessos de potència i impostos.",
+"Vertader",
+"Fals"
+],
+];
+
+
+
+const solucions_originals = [
+
+1, 2, 2, 1, 6
+
+];
+
+
+const punts_preguntes = [
+
+1, 1, 1, 1, 1,
+1, 1, 1, 1, 1,
+1, 1, 1, 1, 1,
+1, 1, 1, 1, 1,
+1, 1, 1, 1, 1,
+1, 1, 1, 1, 1,
+
+];
+</script>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/test_html_comp.js"></script>
+<script src="../../js/test_dades.js"></script>
+<script src="../../js/test_mates.js"></script>
+<script>window.onload = renderitza;</script>
