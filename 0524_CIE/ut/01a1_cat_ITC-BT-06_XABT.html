@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+ITC-BT-06
+=========
+
+
+
+1. Materials
+------------
+
+### 1.1. Conductors
+
+Els conductors utilitzats en les línies aèries han de ser bàsicament de **coure** o d'**alumini** (o dels seus respectius aliatges). A més, han de posseir unes **característiques elèctriques i mecàniques adequades** per suportar tant el corrent de càrrega previst com els esforços mecànics provocats pel vent, el pes propi i l'acció de la intempèrie.
+
+#### 1.1.1. Conductors aïllats
+- **Nivell d'aïllament:** Els conductors aïllats han de tenir una tensió assignada de $0{,}6/1\text{ kV}$.
+- **Seccions mínimes permeses:**
+  * En conductors de **coure**: la secció mínima és de **$10\text{ mm}^2$**.
+  * En conductors d'**alumini**: la secció mínima és de **$16\text{ mm}^2$**.
+
+#### 1.1.2. Conductors nus
+> ⚠️ **Nota normativa important:** L'ús de conductors nus en noves instal·lacions aèries de baixa tensió **està destinat a desaparèixer**, prioritzant-se l'ús de sistemes amb conductors aïllats trenats per motius de seguretat i reducció de l'impacte ambiental.
+
+
+
+### 1.2. Aïlladors
+> ⚠️ **Nota normativa important:** Aquesta accessoris de conducció aèria **desapareixerà de la normativa actual**, quedant restringida o en desús en favor dels sistemes de cables aïllats moderns.
+
+
+
+
+### 1.3. Accessoris de fixació i connexió
+Tots els accessoris utilitzats per a la subjecció, suspensió i empalmament dels conductors (tals com **pinces de retenció, ganxos, tensors, brides i connectors**) han de ser d'un material resistent a la corrosió o comptar amb un tractament de protecció adequat. 
+
+
+
+
+### 1.4. Suports
+Els suports (postes) utilitzats en les línies aèries poden ser de diversos materials en funció de les necessitats mecàniques, entorn i característiques de la línia:
+- **Metàl·lics** (d'acer galvanitzat o perfils laminats).
+- **De formigó** (armat o pretensat).
+- **De fusta** (tractada contra la humitat i xilòfags).
+- **De materials plàstics** or compostos (com la fibra de vidre reforçada amb polièster).
+
+
+
+### 1.5. Tirants i tornapuntes
+- **Definició:**
+    + **Tirants:** Són cables o barres que treballen a tracció per compensar els esforços desequilibrats als suports de fi de línia, angle o ancoratge.
+    + **Tornapuntes:** Són elements rígids que treballen a compressió per estabilitzar el suport.
+- **Criteri d'ús:** **S'ha d'evitar el seu ús sempre que sigui possible**, dissenyant la línia i seleccionant els suports adequats (de major resistència mecànica) per tal de no dependre d'aquests elements addicionals de reforç.
+
+
+
+
+
+
+2. Càlcul Mecànic
+-----------------
+
+### 2.1. Accions a considerar en el càlcul
+
+#### 2.1.1. Càrregues permanents
+En el càlcul mecànic es consideraran com a càrregues permanents totes les forces verticals produïdes pel pes propi dels conductors, cables de suport, aïlladors i resta d'accessoris d'instal·lació.
+
+#### 2.1.2. Forces degudes al vent
+Es considerarà l'acció d'un vent de **$120\text{ km/h}$** actuant horitzontalment. Les sobrecàrregues de vent aplicables sobre les superfícies exposades es resumeixen en la següent taula:
+
+| Element o Superfície | Sobrecàrrega per Vent |
+| :--- | :--- |
+| **Superfícies mecàniques planes** | $100\text{ daN/m}^2$ |
+| **Superfícies cilíndriques de suports** | $70\text{ daN/m}^2$ |
+| **Conductors i feixos de conductors** | $50\text{ daN/m}^2$ |
+
+
+> ℹ️ **Excepció:** No cal considerar la força del vent quan aquest només pugui actuar en direcció longitudinal a la línia (per exemple, en carrers estrets o entre edificis alts).
+
+#### 2.1.3. Sobrecàrregues per gel
+Segons la zona geogràfica d'altitud de la instal·lació, les sobrecàrregues per gel sobre els conductors es determinen de la manera següent:
+
+* **Zona A** ($\lt 500 \text{ m}$ d'altitud): No cal considerar sobrecàrrega per gel.
+* **Zona B** ($500 \text{ m}$ a $1000 \text{ m}$ d'altitud): Sobrecàrrega de **$0{,}06 \sqrt{d}\text{ daN/m}$**.
+* **Zona C** ($\gt 1000 \text{ m}$ d'altitud): Sobrecàrrega de **$0{,}12 \sqrt{d}\text{ daN/m}$**.
+
+*On $d$ representa el diàmetre del cercle circumscrit al feix de conductors (en $\text{mm}$).*
+
+
+
+### 2.2. Conductors
+
+#### 2.2.1. Tensió màxima admissible
+La tensió màxima de treball del conductor ($T_{\text{màx}}$) en la hipòtesi més desfavorable no ha de superar el seu límit elàstic dividit per un coeficient de seguretat, complint la condició:
+$$T_{\text{màx}} \le \frac{T_{\text{trencatge}}}{2{,}5}$$
+
+#### 2.2.2. Comprovació dels fenòmens vibratoris
+En general, en les línies aèries de baixa tensió **no cal realitzar un estudi específic dels fenòmens vibratoris**, ja que les característiques mecàniques dels cables aïllats trenats i la geometria de les línies en redueixen dràsticament l'impacte.
+
+#### 2.2.3. Sagnat i fletxa màxima
+La fletxa màxima s'ha de calcular considerant la hipòtesi de temperatura màxima prevista per als conductors ($50^\circ\text{C}$ o la derivada de la intensitat de curtcircuit) o la hipòtesi de sobrecàrrega per gel sense vent.
+
+
+
+### 2.3. Suports
+
+Els suports es dimensionaran per suportar les combinacions d'esforços mecànics verticals, transversals i longitudinals segons el tipus de funció que realitzen a la línia.
+
+#### 2.3.1. Càlcul d'un suport en alineació
+Un suport en alineació ha de suportar les forces transversals del vent sobre els conductors i el propi suport, així com les càrregues verticals.
+
+- **Exemple numèric:** 
+  Un suport rep una força de vent horitzontal sobre el feix de conductors $F_{\text{vent, cond}} = 80\text{ daN}$ aplicada a una alçada $h = 9\text{ m}$, i el vent sobre el suport genera $F_{\text{vent, sup}} = 30\text{ daN}$ aplicat a un punt mig $h_{\text{mig}} = 4{,}5\text{ m}$.
+  
+  El moment de bolcament total serà:
+  $$M = (F_{\text{vent, cond}} \cdot h) + (F_{\text{vent, sup}} \cdot h_{\text{mig}})$$
+  $$M = (80\text{ daN} \cdot 9\text{ m}) + (30\text{ daN} \cdot 4{,}5\text{ m}) = 720 + 135 = 855\text{ daN}\cdot\text{m}$$
+  
+  Aplicant un coeficient de seguretat de $c = 1{,}5$, el suport ha de resistir un moment d'almenys:
+  $$M_{\text{disseny}} = 855 \cdot 1{,}5 = 1282{,}5\text{ daN}\cdot\text{m}$$
+
+#### 2.3.2. Càlcul d'un suport en angle
+Quan la línia canvia de direcció un angle $\alpha$, apareix una força resultant a la bisectriu deguda a la tensió dels conductors ($T$).
+
+- **Exemple numèric:**
+  Un feix té una tensió $T = 400\text{ daN}$ per costat i un angle de desviació de la línia de $\alpha = 30^\circ$.
+  
+  La força resultant transversal per la tensió dels conductors és:
+  $$F_R = 2 \cdot T \cdot \sin\left(\frac{\alpha}{2}\right) = 2 \cdot 400 \cdot \sin(15^\circ) = 800 \cdot 0{,}2588 = 207{,}04\text{ daN}$$
+  A aquesta força cal sumar-hi l'efecte del vent sobre els conductors en la direcció de la bisectriu.
+
+
+
+#### 2.3.3. Càlcul d'un suport en estrellament (derivació)
+En un suport on convergeixen diferents línies (derivació o estrellament), la força horitzontal resultant és la suma vectorial de les tensions de totes les línies que hi concorren ($T_1, T_2, T_3, \dots$) més les accions del vent corresponents.
+
+
+
+#### 2.3.4. Càlcul d'un suport de final de línia (ancoratge)
+Un suport de final de línia ha de suportar la totalitat de la tensió unipolar de la línia en sentit longitudinal.
+
+- **Exemple numèric:**
+  Una línia finalitza en un suport amb un feix de conductors que exerceix una tensió total $T = 600\text{ daN}$ a una alçada $h = 8\text{ m}$.
+  
+  El moment de tracció en la base és:
+  $$M = T \cdot h = 600\text{ daN} \cdot 8\text{ m} = 4800\text{ daN}\cdot\text{m}$$
+  
+  Amb un coeficient de seguretat de $c = 2$, cal triar un suport capaç de suportar en el seu cim una força útil de:
+  $$F_{\text{útil}} = T \cdot c = 600 \cdot 2 = 1200\text{ daN}$$
+  
+  
+  
+  
+
+
+
+3. Execució de les Instal·lacions
+---------------------------------
+
+### 3.1. Instal·lació de conductors aïllats
+Els conductors aïllats utilitzats en xarxes aèries han de tenir una tensió assignada no inferior a **0,6/1 kV**. Aquestes instal·lacions es poden realitzar de dues formes principals: **posats** o **tensats**.
+
+
+#### 3.1.1. Posats (directament sobre façana o parament)
+- **Distància mínima:** Han d'estar instal·lats a una alçada mínima de **2,5 m** respecte al sòl.
+- **Protecció:** Si s'ubiquen a una alçada inferior als 2,5 m, han de disposar de protecció mecànica addicional contra impactes.
+- **Pas per obertures:** Queda prohibit passar conductors posats per davant d'oberts (finestres, balcons, portes, etc.).
+- **Espais buits:** En cas d'haver de travessar espais buits entre paraments o edificacions, la instal·lació passa a considerar-se i executar-se com a **tensada**.
+
+**Taula de distàncies mínimes a elements de la façana i estructures metàl·liques:**
+
+| Element de la façana / Estructura | Distància mínima de separació |
+| :-------------------------------- | :---------------------------: |
+| Finestres (obertures generals)    | 30 cm des del marc superior <br/> 50 cm des del lateral o inferior |
+| Balcons i terrasses               | 30 cm des de la part superior <br/>100 cm des dels laterals  |
+| Elements metàl·lics               | $0,05\text{ m}$ |
+
+
+#### 3.1.2. Tensats
+- **Neutre fiador:** La xarxa es recolza normalment en un conductor que actua com a sustentador mecànic i elèctric (neutre fiador).
+- **Alçada mínima al sòl:** La distància mínima dels conductors al sòl en la posició més desfavorable ha de ser de **4 m**.
+- **Absència de neutre fiador:** Si el feix de conductors no disposa de neutre fiador integrat, és obligatori instal·lar un **fiador d'acer galvanitzat** independent per suportar els esforços mecànics.
+
+
+### 3.2. Conductors nus
+> **Nota:** La utilització de conductor nus en xarxes aèries de baixa tensió ha quedat en desús i **no s'utilitza** en les noves instal·lacions.
+
+
+### 3.3. Empalmes i derivacions
+- **Mètodes d'empalme:** S'han d'utilitzar exclusivament **maniguets de compressió adequats**. Queda totalment prohibida la realització d'empalmes per torsió directament entre conductors o mitjançant soldadura.
+- **Resistència mecànica:** Els empalmes han de suportar com a mínim el **90% de la càrrega de trencament** del conductor.
+- **Estanquitat:** Han de ser completament impermeables i no permetre la penetració d'aigua o humitat a l'interior de l'aïllament.
+- **Derivacions:** Totes les derivacions de la línia s'han de realitzar sempre en punts propers als suports mecànics.
+
+
+### 3.4. Secció mínima del conductor neutre
+La secció del conductor neutre s'ha de seleccionar en funció de la secció dels conductors de fase i del material emprat, d'acord amb la següent taula (esborrany de modificació del Real Decret / ITC-BT-07):
+
+| $S_F$ | $S_{N(Al)}$ | $S_{N(Alm)}$ |
+| :---: | :---------: | :----------: | 
+| 25    | 25 Al       | $29,5$ Alm   |
+| 50    | 50 Al       | $54,6$ Alm   |
+| 95    | 50 Al       | $54,6$ Alm   |
+| 150   | 95 Al       | $80$ Alm     |
+
+
+### 3.5. Identificació del conductor neutre
+El conductor neutre ha d'estar clarament **identificat diferenciadament** al llarg de tota la instal·lació (mitjançant codificació de colors normalitzada o marques contínues en l'aïllament).
+
+
+### 3.6. Continuïtat del conductor neutre
+- **Prohibició d'interrupció:** Mai es pot interrompre el conductor neutre de forma independent.
+- **Excepcions permeses:**
+  1. Mitjançant **tall omnipolar** (interruptors que tallen totes les fases i el neutre simultàniament).
+  2. Mitjançant **unions amovibles** (seccionadors o ponts de prova), sempre que es desconnectin **prèviament les fases** abans de desconnectar el neutre, i en la reconexió es connecti el neutre en primer lloc.
+
+
+### 3.7. Posada a terra
+- **Centre de Transformació (CT):** El conductor neutre es connecta directament a terra en el centre de transformació d'origen.
+- **Xarxa TT:** Com que la xarxa és de tipus TT, el conductor neutre s'ha de tornar a connectar a terra com a mínim **cada 500 metres** al llarg del recorregut de la línia.
+- **Ubicació preferent:** Aquestes posades a terra addicionals s'han de realitzar aprofitant preferentment les derivacions i les Caixes Generals de Protecció (**CGP**).
+
+
+### 3.8. Instal·lació de suports
+- **Suports de formigó:** Es fixen mitjançant cimentacions monolítiques directament executades en el terreny.
+- **Suports metàl·lics:** S'ancoren al massís de formigó sota terra mitjançant **perns d'ancoratge**.
+- **Suports de fusta:** Es va directament a terra (enterrats directament sense massís de formigó). En el cas que es vulguin ancorar a un massís de formigó, s'han de separar un mínim de **15 cm** de la base de formigó mitjançant perns o ferratges per evitar el deteriorament per humitat.
+
+
+### 3.9. Creuaments i paral·lelismes
+
+A continuació es detallen les distàncies mínimes de seguretat en creuaments i paral·lelismes de xarxes aèries de baixa tensió:
+
+<table>
+  <thead>
+    <tr>
+      <th>Tipus</th>
+      <th>Distància Mínima en Creuament</th>
+      <th>Distància Mínima en Paral·lelisme</th>
+      <th>Observacions Addicionals</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Línies(AT)</strong></td>
+      <td>veure [1]</td>
+      <td>Evitar, pero d ≥ 1,5 m, a prop de CT d ≥ 2 m</td>
+      <td>Consultar REBT sempre. El creuament es farà per sota de la línia d'AT.</td>
+    </tr>
+    <tr>
+      <td><strong>Telecos</strong></td>
+      <td>0,1 m</td>
+      <td>0,1 m</td>
+      <td> Si hi ha linies nues mirar REBT </td>
+    </tr>
+    <tr>
+      <td><strong>Altres línies BT</strong></td>
+      <td>0 m</td>
+      <td>0,10 m</td>
+      <td>Si alguna de les linies es nua mirar REBT</td>
+    </tr>
+    <tr>
+      <td><strong>Carreteres</strong></td>
+      <td>6,00 m</td>
+      <td>6,00 m</td>
+      <td>Alçada mesurada en la condició de màxima fletxa del cable.</td>
+    </tr>
+    <tr>
+      <td><strong>Gas i aigua</strong></td>
+      <td>0,2 m</td>
+      <td>0,2 m (baixes presions) <br/> 0,4 m (altes presions)</td>
+      <td>Evitar la instal·lació en la vertical directa de canalitzacions de gas. Evitar creuar per les juntes, distància a les juntes de 1 m.</td>
+    </tr>
+  </tbody>
+</table>
+
+<sup>[1]</sup> $d \ge 1{,}5 + \frac{U + L_1 + L_2}{100}$
+</textarea>
+
+
+
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>

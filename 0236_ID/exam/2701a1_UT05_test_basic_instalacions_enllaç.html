@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+
+## Normes:
+
+- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
+  Pots utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/)
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Està terminantment prohibit copiar o mirar al company.
+- No es poden fer preguntes. Part de l'avaluació és la comprensió del
+  text. Si hi ha algun error es parlarà una vegada l'examen hagi
+  finalitzat, i en el seu cas s'anul·larà la pregunta.
+- L'examen dura el que indiqui la tasca associada i **es tanca
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
+
+## Com fer aquest examen:
+
+- Agafa paper
+- **Escriu la permutació al paper!!**
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis copia les respostes sense espais i tot seguit, al camp
+  «resposta», si no la saps n. Per exemple: abnaac
+- Omple el teu nom i clica a avaluar.
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
+- Adjunta-la com a tasca.
+- Fotografia el paper utilitzat (la fotografia és per a tu, per a
+  poder revisar l'examen si ho necessitessis).
+- Entrega els papers utilitzats.
+
+## Ponderació i nota mínima
+
+- Aquest test pondera un 5 % de la nota d'exàmens de la UT01. Tret
+  error tipogràfic o que el professor indiqui una altra cosa el mateix
+  dia de l'examen.
+  
+</textarea>
+
+
+
+<script>
+const titol = "Test Bàsic UT01a";
+
+
+
+const test_original = [
+[
+"A on s'inicia la instal·lació d'enllaç i a on acaba",
+"Comença a la CGP i acaba als DGMP",
+"S'inicia al final de l'escomesa i acaba a on acaba a l'IGA",
+"S'inicia als fusibles de la CC i acaba a la DI",
+"Hi ha 2 altres respostes correctes",
+"Hi ha 3 altres respostes correctes",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quins dos graus d'electrificació tenen els locals comercials",
+"Elevat i  bàsic",
+"Elevat 14.450 W (IGA 63), elevat 9.200 W (IGA 40), basic 7360 (IGA 32), basic 5750 (IGA 25)",
+"Oficines, locals comercials i indústries",
+"Els locals no tenen graus d'electrificació",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Que passa si un subministrament necessita 30 kW",
+"Que ha de ser alimentat en trifàsic",
+"Que haurà d'instal·lar un comptador de lectura semiindirecta",
+"Que la seva factura passarà al règim especial de grans consumidors",
+"Que necessita un fusibles de 150 A ja que <br/>$I = \\dfrac{P}{V} = \\dfrac{30000}{230} = 130 \\text{ A}$"
+],
+[
+"Quants esquemes (ITC-BT-12) s'utilitzen a la pràctica per a les instal·lacions d'enllaç?",
+"2: CPM i CS + CGP",
+"4: un sol usuari, dos usuaris des d'un mateix lloc, centralització única i varies centralitzacions",
+"3: CPM, centralització, i CDU",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quins esquemes de CGP utilitza edistribucion, i quines característiques tenen?",
+"CGP-7 (entrada i sortida per abaix) i CGP-9 (entrada per abaix i sortida per dalt)",
+"CGP-9 (entrada i sortida per abaix) i CGP-7 (entrada per abaix i sortida per dalt)",
+"CGP-1 (monofàsic), CGP-9 (entrada i sortida per abaix) i CGP-7 (entrada per abaix i sortida per dalt)",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+
+
+
+
+
+[
+"Quin nivell d'aïllament mínim ha de tenir una LGA?",
+"450/750 V",
+"0,6/1 kV",
+"230/400 V",
+"127/220 V"
+],
+[
+"Com han de ser els cables de la LGA",
+"Multipolars i amb baixa emissivitat de fums (a vegades anomenats <i>Afumex</i>)",
+"Unipolars i amb baixa emissivitat de fums (a vegades anomenats <i>Afumex</i>)",
+"Unipolars de PVC",
+"Multipolars de PVC",
+"Enterrats XLPE"
+],
+[
+"Quin nivell d'aïllament mínim ha de tenir una DI?",
+"450/750 V",
+"0,6/1 kV",
+"230/400 V",
+"127/220 V"
+],
+[
+"Com han de ser els cables de la DI",
+"Multipolars i amb baixa emissivitat de fums (a vegades anomenats <i>Afumex</i>)",
+"Unipolars i amb baixa emissivitat de fums (a vegades anomenats <i>Afumex</i>)",
+"Unipolars de PVC",
+"Multipolars de PVC",
+"Enterrats XLPE"
+],
+[
+"Quina no es una part de les unitats funcionals dels comptadors",
+"IGM",
+"UF de mesura (comptadors i rellotges)",
+"Embarrat general i fusibles de seguretat",
+"Embarrat de protecció i borns de sortida",
+"UF (opcionals) de comandament i telecomunicacions",
+"UF (ocional) d'extinció d'incendis i anti intrusió"
+]
+
+];
+
+</script>
+<script src="../../js/config_test.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/test_segur.js"></script>
+<script src="../../js/test_html.js"></script>
+<script src="../../js/test_dades.js"></script>
+<script src="../../js/test_mates.js"></script>
+<script>window.onload = renderitza;</script>
+
