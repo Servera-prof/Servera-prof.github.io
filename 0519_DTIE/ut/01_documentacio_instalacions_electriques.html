@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="icon" type="image/x-icon" href="../..img/favicon.png">
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/temari.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/temari.css" />
 </head>
 <textarea id="enunciat">
 
@@ -300,23 +300,6 @@ l’autor, la data i, si escau, el número de visat.
 </textarea>
 
 
-<!-- C. SCRIPT ==================================================== -->
-<script>
-window.texme = {
-    renderOnLoad: false,
-    style: 'none',
-    markdownURL: 'js/marked/marked.min.js',
-    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
-}
-</script>
-
-<script src="js/texme/texme.js"></script>
-<script>
-
-
-
-window.onload = function (){
-    texme.renderPage();
-}
-
-</script>
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>
