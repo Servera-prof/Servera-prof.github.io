@@ -199,12 +199,12 @@ Insulated conductors used in overhead networks must have a rated voltage of not 
 ### 3.4. Minimum Section of the Neutral Conductor
 The cross-section of the neutral conductor must be selected based on the phase conductors' cross-section and the material used, according to the following table (draft amendment of Royal Decree / ITC-BT-07):
 
-| S_F   | S_N(Al) | S_N(Alm) |
-| :---: | :-----: | :------: | 
-| 25    | 25 Al   | 29.5 Alm |
-| 50    | 50 Al   | 54.6 Alm |
-| 95    | 50 Al   | 54.6 Alm |
-| 150   | 95 Al   | 80 Alm   |
+| $S_F$ | $S_{N(Al)}$ | $S_{N(Alm)}$ |
+| :---: | :---------: | :----------: | 
+| 25    | 25 Al       | $29,5$ Alm   |
+| 50    | 50 Al       | $54,6$ Alm   |
+| 95    | 50 Al       | $54,6$ Alm   |
+| 150   | 95 Al       | $80$ Alm     |
 
 
 
@@ -279,7 +279,119 @@ Below are the minimum safety clearance distances for crossings and parallelisms 
   </tbody>
 </table>
 
-<sup>[1]</sup> d ≥ 1.5 + (U + L1 + L2) / 100
+<sup>[1]</sup> $d \ge 1{,}5 + \frac{U + L_1 + L_2}{100}$
+
+
+
+
+
+
+4. Maximum Admissible Currents for Conductors
+----------------------------------------------
+
+To ensure safety and prevent overheating of insulated conductors in low-voltage overhead lines, the maximum admissible current must be determined based on insulation type, bundle arrangement, and environmental conditions.
+
+
+
+### 4.1. General Principles
+Conductors used in low-voltage overhead networks must have a rated voltage of **0.6/1 kV** and **cross-linked polyethylene (XLPE) insulation**. The maximum admissible continuous operating temperature for this type of insulation is **90 °C**.
+
+
+
+### 4.2. Bundled Cabling in Visible Helix
+Current-carrying capacity is determined by conductor type, nominal cross-section, ventilation conditions, and environmental exposure.
+
+
+#### 4.2.1. Maximum Current
+Maximum admissible currents are defined for **standard installation conditions** set out in reference standard **UNE 211435**. These conditions assume an ambient temperature of **40 °C** and moderate exposure to solar radiation.
+
+
+##### Conductor bundles with messenger neutral
+For twisted bundle conductors in visible helix comprising aluminum phase conductors and an aluminum alloy (Almelec) messenger neutral, maximum admissible continuous operating currents are:
+
+
+
+##### Conductor bundles without messenger neutral (self-supporting)
+For conductor bundles without a messenger neutral (all conductors in the bundle share the same mechanical and electrical cross-section), maximum continuous currents are:
+
+
+| **Construction**   | **Protected from the sun** | **Exposed to the sun** |
+| :----------------: | :------------------------: | :--------------------: |
+| 1 x 25 Al/54,6 Alm | 105                        | 95                     |
+| 1 x 50 Al/54,6 Alm | 160                        | 145                    |
+| 3 x 25 Al/29,5 Alm | 90                         | 76                     |
+| 3 x 25 Al/54,6 Alm | 90                         | 76                     |
+| 3 x 50 Al/29,5 Alm | 135                        | 115                    |
+| 3 x 50 Al/54,6 Alm | 135                        | 115                    |
+| 3 x 95 Al/54,6 Alm | 215                        | 185                    |
+| 3 x 150 Al/80 Alm  | 300                        | 250                    |
+
+
+
+#### 4.2.2. Correction Factors
+When actual installation conditions differ from reference conditions, correction factors from standard **UNE 211435-11** must be applied.
+
+
+##### Direct solar exposure factor
+If cables are directly exposed to intense solar radiation without shielding or shade, a correction factor of **0.90** must be applied to the admissible current.
+
+
+##### Cable grouping
+When multiple conductor bundles are installed in parallel on the same support or wall surface, the grouping correction factor applies:
+
+| Number of bundles | Correction factor ($F_a$) |
+| :---------------: | :-----------------------: |
+| 1                 | 1,00                      |
+| 2                 | 0,89                      |
+| 3                 | 0,80                      |
+| 4 o més           | 0,75                      |
+
+> **Practical note:** In low-voltage overhead networks, grouping factors are **rarely applied**, as each support typically carries only a single main distribution bundle.
+
+
+##### Ambient temperature other than 40 °C
+For ambient temperatures differing from the reference temperature (40 °C), the following correction coefficients must be applied to the maximum admissible current:
+
+| Ambient temperature (°C) | Correction factor ($F_t$) |
+| :----------------------: | :-----------------------: |
+| 20                       | 1,18                      |
+| 25                       | 1,14                      |
+| 30                       | 1,10                      |
+| 35                       | 1,05                      |
+| **40**                   | **1,00**                  |
+| 45                       | 0,95                      |
+| 50                       | 0,89                      |
+
+
+
+#### 4.2.3. Maximum Short-Circuit Currents
+The maximum admissible short-circuit current ($I_{cc}$) is the short-circuit current value that a conductor can withstand for a given duration $t$ (normally $1\text{ s}$) without exceeding the short-circuit temperature limit (**250 °C** for XLPE insulation).
+
+Calculated using the formula:
+$$I_{cc} = \frac{K \cdot S}{\sqrt{t}}$$
+
+Where $K = 143\text{ A}\cdot\text{s}^{1/2}/\text{mm}^2$ for aluminum conductors and $K = 226\text{ A}\cdot\text{s}^{1/2}/\text{mm}^2$ for copper conductors.
+
+##### Table of maximum short-circuit currents for different durations
+
+| S [mm²] | 0,1 s | 0,2 s | 0,3 s | 0,5 s | 1,0 s | 1,5 s | 2,0 s | 2,5 s | 3,0 s |
+| :-----: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **16**  | 4,7   | 3,2   | 2,7   | 2,1   | 1,4   | 1,2   | 1,0   | 0,9   | 0,8   |
+| **25**  | 7,3   | 5,0   | 4,2   | 3,3   | 2,3   | 1,9   | 1,0   | 1,4   | 1,3   |
+| **50**  | 14,7  | 10,1  | 8,5   | 6,6   | 4,6   | 3,8   | 3,3   | 2,9   | 2,7   |
+| **95**  | 27,9  | 19,2  | 16,1  | 12,5  | 8,8   | 7,2   | 6,2   | 5,6   | 5,1   |
+| **150** | 44,1  | 30,4  | 25,5  | 19,8  | 13,9  | 11,4  | 9,9   | 8,8   | 8,1   |
+
+
+
+
+### 4.3. Bare Conductors
+> **Note:** Specifications and current tables for bare conductors **are no longer necessary**, as their use is prohibited and completely obsolete in new low-voltage overhead installations.
+
+
+
+### 4.4. Other Installation Types
+> **Note:** Other installation methods are **rarely used** in overhead LV network practice; if required, consult REBT.
 </textarea>
 
 

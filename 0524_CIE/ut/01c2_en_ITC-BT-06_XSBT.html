@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/temari.css" />
+</head>
+<textarea id="enunciat">
+
+ITC-BT-06
+=========
+
+
+1. Materials
+------------
+
+### 1.1. Conductors
+
+Conductors used in overhead lines must primarily be made of **copper** or **aluminium** (or their respective alloys). Furthermore, they must possess **adequate electrical and mechanical characteristics** to withstand both the anticipated load current and the mechanical stresses caused by wind, self-weight, and weathering action.
+
+#### 1.1.1. Insulated conductors
+
+- **Insulation level:** Insulated conductors must have a rated voltage of **$0.6/1\text{ kV}$**.
+- **Minimum permitted cross-sections:**
+    + For **copper** conductors: the minimum cross-section is **$10\text{ mm}^2$**.
+    + For **aluminium** conductors: the minimum cross-section is **$16\text{ mm}^2$**.
+
+#### 1.1.2. Bare conductors
+> ⚠️ **Important regulatory note:** The use of bare conductors in new low-voltage overhead installations **is set to disappear**, prioritizing the use of bundled insulated conductor systems for safety reasons and to reduce environmental impact.
+
+
+
+### 1.2. Insulators
+> ⚠️ **Important regulatory note:** This type of overhead routing **will disappear from current regulations**, remaining restricted or disused in favor of modern insulated cable systems.
+
+
+
+### 1.3. Fastening and connection accessories
+All accessories used for securing, suspending, and splicing conductors (such as **strain clamps, hooks, turnbuckles, ties, and connectors**) must be made of corrosion-resistant material or have suitable protective treatment.
+
+
+
+### 1.4. Supports (Poles)
+Supports (poles) used in overhead lines can be made of various materials depending on mechanical requirements, the environment, and line characteristics:
+* **Metallic** (galvanized steel or rolled sections).
+* **Concrete** (reinforced or prestressed).
+* **Wooden** (treated against moisture and wood-boring pests).
+* **Plastic or composite materials** (such as glass-fiber reinforced polyester).
+
+
+
+### 1.5. Stay wires and struts
+- **Definition:**
+    + **Stay wires:** These are cables or rods working in tension to offset unbalanced stresses at dead-end, angle, or anchorage poles.
+    + **Struts:** These are rigid structural elements working in compression to stabilize the support.
+- **Usage criteria:** **Their use should be avoided whenever possible**, designing the line and selecting appropriate supports (with higher mechanical strength) so as not to depend on these additional reinforcing elements.
+
+
+
+
+
+
+2. Mechanical Calculation
+-------------------------
+
+### 2.1. Actions to consider in calculations
+
+#### 2.1.1. Permanent loads
+Vertical forces caused by the self-weight of conductors, support cables, insulators, and other installation accessories shall be considered as permanent loads in mechanical calculations.
+
+#### 2.1.2. Wind forces
+A wind speed of **$120\text{ km/h}$** acting horizontally shall be considered. The wind overloads applicable to exposed surfaces are summarized in the following table:
+
+| Element or Surface | Wind Overload |
+| :--- | :--- |
+| **Flat mechanical surfaces** | $100\text{ daN/m}^2$ |
+| **Cylindrical surfaces of supports** | $70\text{ daN/m}^2$ |
+| **Conductors and conductor bundles** | $50\text{ daN/m}^2$ |
+
+> ℹ️ **Exception:** Wind forces need not be considered when the wind can only act longitudinally along the line (e.g., in narrow streets or between tall buildings).
+
+#### 2.1.3. Ice overloads
+Depending on the geographical altitude zone of the installation, ice overloads on conductors are determined as follows:
+
+- **Zone A** ($\lt 500\text{ m}$ altitude): No ice overload needs to be considered.
+- **Zone B** ($500\text{ m}$ to $1000\text{ m}$ altitude): Overload of **$0.06 \sqrt{d}\text{ daN/m}$**.
+- **Zone C** ($\gt 1000\text{ m}$ altitude): Overload of **$0.12 \sqrt{d}\text{ daN/m}$**.
+
+_Where $d$ represents the diameter of the circle circumscribing the conductor bundle (in $\text{mm}$)._
+
+
+
+
+### 2.2. Conductors
+
+#### 2.2.1. Maximum allowable tension
+The maximum working tension of the conductor ($T_{\text{max}}$) under the most unfavorable hypothesis shall not exceed its breaking load divided by a safety factor, satisfying the condition:
+$$T_{\text{max}} \le \frac{T_{\text{breaking}}}{2.5}$$
+
+#### 2.2.2. Checking for vibrational phenomena
+In general, for low-voltage overhead lines, **a specific study of vibrational phenomena is not required**, as the mechanical characteristics of bundled insulated cables and line geometry drastically reduce their impact.
+
+#### 2.2.3. Maximum sag
+Maximum sag shall be calculated considering the hypothesis of maximum expected conductor temperature ($50^\circ\text{C}$ or that derived from short-circuit current) or the hypothesis of ice overload without wind.
+
+
+
+### 2.3. Supports
+
+Supports shall be sized to withstand combinations of vertical, transverse, and longitudinal mechanical stresses according to their function in the line.
+
+
+#### 2.3.1. Calculation of an alignment support
+An alignment support must withstand the transverse wind forces acting on conductors and the support itself, as well as vertical loads.
+
+- **Numerical example:**
+  A support receives a horizontal wind force on the conductor bundle $F_{\text{wind, cond}} = 80\text{ daN}$ applied at height $h = 9\text{ m}$, and wind on the support generates $F_{\text{wind, sup}} = 30\text{ daN}$ applied at midpoint $h_{\text{mid}} = 4.5\text{ m}$.
+  
+  The total overturning moment is:
+  $$M = (F_{\text{wind, cond}} \cdot h) + (F_{\text{wind, sup}} \cdot h_{\text{mid}})$$
+  $$M = (80\text{ daN} \cdot 9\text{ m}) + (30\text{ daN} \cdot 4.5\text{ m}) = 720 + 135 = 855\text{ daN}\cdot\text{m}$$
+  
+  Applying a safety factor of $c = 1.5$, the support must withstand a moment of at least:
+  $$M_{\text{design}} = 855 \cdot 1.5 = 1282.5\text{ daN}\cdot\text{m}$$
+
+
+#### 2.3.2. Calculation of an angle support
+When a line changes direction by an angle $\alpha$, a resultant force appears along the bisector due to conductor tension ($T$).
+
+- **Numerical example:**
+  A bundle has a tension $T = 400\text{ daN}$ per side and a line deviation angle of $\alpha = 30^\circ$.
+  
+  The resultant transverse force due to conductor tension is:
+  $$F_R = 2 \cdot T \cdot \sin\left(\frac{\alpha}{2}\right) = 2 \cdot 400 \cdot \sin(15^\circ) = 800 \cdot 0.2588 = 207.04\text{ daN}$$
+  The wind effect on conductors along the bisector direction must be added to this force.
+
+
+#### 2.3.3. Calculation of a junction/branch support
+At a support where different lines converge (branch or junction), the resultant horizontal force is the vector sum of the tensions of all converging lines ($T_1, T_2, T_3, \dots$) plus the corresponding wind actions.
+
+
+#### 2.3.4. Calculation of a dead-end support (anchorage)
+A dead-end support must withstand the full unipolar line tension in the longitudinal direction.
+
+- **Numerical example:**
+  A line terminates at a support with a conductor bundle exerting a total tension $T = 600\text{ daN}$ at height $h = 8\text{ m}$.
+  
+  The bending moment at the base is:
+  $$M = T \cdot h = 600\text{ daN} \cdot 8\text{ m} = 4800\text{ daN}\cdot\text{m}$$
+  
+  With a safety factor of $c = 2$, a support must be selected that can withstand a working force at its top of:
+  $$F_{\text{working}} = T \cdot c = 600 \cdot 2 = 1200\text{ daN}$$
+  
+
+
+
+
+
+3. Installation Execution (ITC-BT-06)
+-------------------------------------
+
+### 3.1. Installation of Insulated Conductors
+Insulated conductors used in overhead networks must have a rated voltage of not less than **0.6/1 kV**. These installations can be carried out in two main forms: **surface-mounted** (attached to walls) or **stretched** (overhead span).
+
+
+#### 3.1.1. Surface-Mounted (Directly on Facade or Structure)
+- **Minimum height:** Must be installed at a minimum height of **2.5 m** above the ground.
+- **Protection:** If located at a height below 2.5 m, they must have additional mechanical protection against impacts.
+- **Passing through openings:** Passing surface-mounted conductors in front of openings (windows, balconies, doors, etc.) is prohibited.
+- **Empty spaces:** In case of crossing empty spaces between structures or buildings, the installation is considered and executed as **stretched**.
+
+**Table of minimum clearance distances to facade elements and metallic structures:**
+
+| Facade Element / Structure | Minimum Separation Distance |
+| :------------------------- | :-------------------------: |
+| Windows (general openings) | 30 cm from upper frame <br/> 50 cm from side or bottom |
+| Balconies and terraces | 30 cm from top <br/> 100 cm from sides |
+| Metallic elements | 0.05 m |
+
+#### 3.1.2. Stretched (Overhead Spans)
+- **Messenger neutral:** The network is normally supported by a conductor acting as a mechanical and electrical carrier (messenger neutral).
+- **Minimum ground clearance:** The minimum distance of conductors to the ground in the most unfavorable position must be **4 m**.
+- **Absence of messenger neutral:** If the conductor bundle does not have an integrated messenger neutral, installing an independent **galvanized steel messenger wire** to support mechanical stress is mandatory.
+
+
+
+### 3.2. Bare Conductors
+> **Note:** The use of bare conductors in low-voltage overhead networks has fallen into disuse and **is not used** in new installations.
+
+
+
+### 3.3. Joints and Branch Connections
+- **Jointing methods:** Exclusively **suitable compression sleeves** must be used. Making joints by direct twisting between conductors or by soldering is strictly prohibited.
+- **Mechanical strength:** Joints must withstand at least **90% of the breaking load** of the conductor.
+- **Watertightness:** Must be completely waterproof and not allow water or moisture penetration into the insulation.
+- **Branch connections:** All line branches must always be made at points close to mechanical supports.
+
+
+
+### 3.4. Minimum Section of the Neutral Conductor
+The cross-section of the neutral conductor must be selected based on the phase conductors' cross-section and the material used, according to the following table (draft amendment of Royal Decree / ITC-BT-07):
+
+| $S_F$ | $S_{N(Al)}$ | $S_{N(Alm)}$ |
+| :---: | :---------: | :----------: | 
+| 25    | 25 Al       | $29,5$ Alm   |
+| 50    | 50 Al       | $54,6$ Alm   |
+| 95    | 50 Al       | $54,6$ Alm   |
+| 150   | 95 Al       | $80$ Alm     |
+
+
+
+### 3.5. Identification of the Neutral Conductor
+The neutral conductor must be clearly **differentiably identified** throughout the entire installation (by standardized color coding or continuous markings on the insulation).
+
+
+
+### 3.6. Continuity of the Neutral Conductor
+- **Interruption prohibition:** The neutral conductor must never be interrupted independently.
+- **Permitted exceptions:**
+  1. By means of **all-pole switching** (switches that disconnect all phases and the neutral simultaneously).
+  2. By means of **removable links** (disconnectors or test links), provided that **phases are disconnected first** before disconnecting the neutral, and upon reconnection, the neutral is connected first.
+
+
+### 3.7. Earthing (Grounding)
+- **Transformer Substation (TS):** The neutral conductor connects directly to ground at the source transformer substation.
+- **TT System:** Since the network is TT type, the neutral conductor must be grounded again at least **every 500 meters** along the line route.
+- **Preferred location:** These additional earthing connections should preferably be made utilizing branch connections and Main Protection Boxes (**CGP**).
+
+
+### 3.8. Installation of Supports
+- **Concrete supports:** Fixed using monolithic foundations executed directly in the ground.
+- **Metallic supports:** Anchored to underground concrete blocks using **anchor bolts**.
+- **Wooden supports:** Placed directly into the ground (buried directly without concrete blocks). If anchored to a concrete block, they must be separated at least **15 cm** from the concrete base using bolts or fittings to prevent damage from moisture.
+
+
+### 3.9. Crossings and Parallelisms
+
+Below are the minimum safety clearance distances for crossings and parallelisms of low-voltage overhead networks:
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Minimum Distance at Crossing</th>
+      <th>Minimum Distance at Parallelism</th>
+      <th>Additional Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>High Voltage Lines (HV)</strong></td>
+      <td>see [1]</td>
+      <td>Avoid, but d ≥ 1.5 m; near TS d ≥ 2 m</td>
+      <td>Always consult REBT. Crossing must be made below the HV line.</td>
+    </tr>
+    <tr>
+      <td><strong>Telecommunications</strong></td>
+      <td>0.1 m</td>
+      <td>0.1 m</td>
+      <td>If bare lines exist, consult REBT.</td>
+    </tr>
+    <tr>
+      <td><strong>Other LV lines</strong></td>
+      <td>0 m</td>
+      <td>0.10 m</td>
+      <td>If any line is bare, consult REBT.</td>
+    </tr>
+    <tr>
+      <td><strong>Roads</strong></td>
+      <td>6.00 m</td>
+      <td>6.00 m</td>
+      <td>Height measured under maximum sag condition.</td>
+    </tr>
+    <tr>
+      <td><strong>Gas and Water</strong></td>
+      <td>0.2 m</td>
+      <td>0.2 m (low pressure) <br/> 0.4 m (high pressure)</td>
+      <td>Avoid installation directly above gas pipes. Avoid crossing over joints; distance to joints ≥ 1 m.</td>
+    </tr>
+  </tbody>
+</table>
+
+<sup>[1]</sup> $d \ge 1{,}5 + \frac{U + L_1 + L_2}{100}$
+
+
+
+
+
+
+4. Maximum Admissible Currents for Conductors
+----------------------------------------------
+
+To ensure safety and prevent overheating of insulated conductors in low-voltage overhead lines, the maximum admissible current must be determined based on insulation type, bundle arrangement, and environmental conditions.
+
+
+
+### 4.1. General Principles
+Conductors used in low-voltage overhead networks must have a rated voltage of **0.6/1 kV** and **cross-linked polyethylene (XLPE) insulation**. The maximum admissible continuous operating temperature for this type of insulation is **90 °C**.
+
+
+
+### 4.2. Bundled Cabling in Visible Helix
+Current-carrying capacity is determined by conductor type, nominal cross-section, ventilation conditions, and environmental exposure.
+
+
+#### 4.2.1. Maximum Current
+Maximum admissible currents are defined for **standard installation conditions** set out in reference standard **UNE 211435**. These conditions assume an ambient temperature of **40 °C** and moderate exposure to solar radiation.
+
+
+##### Conductor bundles with messenger neutral
+For twisted bundle conductors in visible helix comprising aluminum phase conductors and an aluminum alloy (Almelec) messenger neutral, maximum admissible continuous operating currents are:
+
+
+
+##### Conductor bundles without messenger neutral (self-supporting)
+For conductor bundles without a messenger neutral (all conductors in the bundle share the same mechanical and electrical cross-section), maximum continuous currents are:
+
+
+| **Construction**   | **Protected from the sun** | **Exposed to the sun** |
+| :----------------: | :------------------------: | :--------------------: |
+| 1 x 25 Al/54,6 Alm | 105                        | 95                     |
+| 1 x 50 Al/54,6 Alm | 160                        | 145                    |
+| 3 x 25 Al/29,5 Alm | 90                         | 76                     |
+| 3 x 25 Al/54,6 Alm | 90                         | 76                     |
+| 3 x 50 Al/29,5 Alm | 135                        | 115                    |
+| 3 x 50 Al/54,6 Alm | 135                        | 115                    |
+| 3 x 95 Al/54,6 Alm | 215                        | 185                    |
+| 3 x 150 Al/80 Alm  | 300                        | 250                    |
+
+
+
+#### 4.2.2. Correction Factors
+When actual installation conditions differ from reference conditions, correction factors from standard **UNE 211435-11** must be applied.
+
+
+##### Direct solar exposure factor
+If cables are directly exposed to intense solar radiation without shielding or shade, a correction factor of **0.90** must be applied to the admissible current.
+
+
+##### Cable grouping
+When multiple conductor bundles are installed in parallel on the same support or wall surface, the grouping correction factor applies:
+
+| Number of bundles | Correction factor ($F_a$) |
+| :---------------: | :-----------------------: |
+| 1                 | 1,00                      |
+| 2                 | 0,89                      |
+| 3                 | 0,80                      |
+| 4 o més           | 0,75                      |
+
+> **Practical note:** In low-voltage overhead networks, grouping factors are **rarely applied**, as each support typically carries only a single main distribution bundle.
+
+
+##### Ambient temperature other than 40 °C
+For ambient temperatures differing from the reference temperature (40 °C), the following correction coefficients must be applied to the maximum admissible current:
+
+| Ambient temperature (°C) | Correction factor ($F_t$) |
+| :----------------------: | :-----------------------: |
+| 20                       | 1,18                      |
+| 25                       | 1,14                      |
+| 30                       | 1,10                      |
+| 35                       | 1,05                      |
+| **40**                   | **1,00**                  |
+| 45                       | 0,95                      |
+| 50                       | 0,89                      |
+
+
+
+#### 4.2.3. Maximum Short-Circuit Currents
+The maximum admissible short-circuit current ($I_{cc}$) is the short-circuit current value that a conductor can withstand for a given duration $t$ (normally $1\text{ s}$) without exceeding the short-circuit temperature limit (**250 °C** for XLPE insulation).
+
+Calculated using the formula:
+$$I_{cc} = \frac{K \cdot S}{\sqrt{t}}$$
+
+Where $K = 143\text{ A}\cdot\text{s}^{1/2}/\text{mm}^2$ for aluminum conductors and $K = 226\text{ A}\cdot\text{s}^{1/2}/\text{mm}^2$ for copper conductors.
+
+##### Table of maximum short-circuit currents for different durations
+
+| S [mm²] | 0,1 s | 0,2 s | 0,3 s | 0,5 s | 1,0 s | 1,5 s | 2,0 s | 2,5 s | 3,0 s |
+| :-----: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **16**  | 4,7   | 3,2   | 2,7   | 2,1   | 1,4   | 1,2   | 1,0   | 0,9   | 0,8   |
+| **25**  | 7,3   | 5,0   | 4,2   | 3,3   | 2,3   | 1,9   | 1,0   | 1,4   | 1,3   |
+| **50**  | 14,7  | 10,1  | 8,5   | 6,6   | 4,6   | 3,8   | 3,3   | 2,9   | 2,7   |
+| **95**  | 27,9  | 19,2  | 16,1  | 12,5  | 8,8   | 7,2   | 6,2   | 5,6   | 5,1   |
+| **150** | 44,1  | 30,4  | 25,5  | 19,8  | 13,9  | 11,4  | 9,9   | 8,8   | 8,1   |
+
+
+
+
+### 4.3. Bare Conductors
+> **Note:** Specifications and current tables for bare conductors **are no longer necessary**, as their use is prohibited and completely obsolete in new low-voltage overhead installations.
+
+
+
+### 4.4. Other Installation Types
+> **Note:** Other installation methods are **rarely used** in overhead LV network practice; if required, consult REBT.
+</textarea>
+
+
+
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>
