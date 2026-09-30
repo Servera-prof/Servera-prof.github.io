@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+
+## Normes:
+
+- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
+  Pots utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/)
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Està terminantment prohibit copiar o mirar al company.
+- No es poden fer preguntes. Part de l'avaluació és la comprensió del
+  text. Si hi ha algun error es parlarà una vegada l'examen hagi
+  finalitzat, i en el seu cas s'anul·larà la pregunta.
+- L'examen dura el que indiqui la tasca associada i **es tanca
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
+
+## Com fer aquest examen:
+
+- Agafa paper
+- **Escriu la permutació al paper!!**
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis copia les respostes sense espais i tot seguit, al camp
+  «resposta», si no la saps n. Per exemple: abnaac
+- Omple el teu nom i clica a avaluar.
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
+- Adjunta-la com a tasca.
+- Fotografia el paper utilitzat (la fotografia és per a tu, per a
+  poder revisar l'examen si ho necessitessis).
+- Entrega els papers utilitzats.
+
+## Ponderació i nota mínima
+
+- Aquest test pondera un 10 % de la nota d'exàmens de la UT01. Tret
+  error tipogràfic o que el professor indiqui una altra cosa el mateix
+  dia de l'examen.
+  
+</textarea>
+
+
+
+<script>
+const titol = "Test Bàsic 01";
+
+
+
+const test_original = [
+[
+"El Reglament d'Alta Tensió (RAT) especifica que l'avantprojecte ha de tenir als plànols un esquema unifilar simplificat. Ara bé, és obligatori pe a un projecte d'alta tensió?",
+"Sí, ja que el RAT és d'obligat compliment",
+"No, reb el mateix tractament que una norma UNE, són recomanacions, però si no s'arriba als seus estàndars no passa res.",
+"S'ha de seguir com a norma general, però s'admeten altres execucions que atorguin el mateix nivell de seguretat",
+],
+[
+"Què és més gruixut un projecte o un avantporjecte (del mateix estudi d'enginyeria per a la mateixa instalació)",
+"Probablement el projecte, ja que detalla com s'ha de'executar l'obra",
+"Probablement l'avantprojecte ja que té tots els plànols per poder obtenir l'autorització administrativa.",
+"Tenen el mateix gruix (aproximadament), que que inclouen els mateixos document, tot i que el projecte és un poc més detallat.",
+"La pregunta no té sentit, si s'ha de presentar un avantprojecte, mai es presentarà un projecte i viceversa"
+],
+[
+"A projectes de poca envergadura, l'estat de mesuraments i el pressupost ...",
+"... no és redacten, simplement s'adjunta el total.",
+"... van separats",
+"... s'unifiquen",
+"... es substitueixen per un compromis signat de que es farà tan barat com sia possible"
+],
+[
+"Completa el buid:<br/> ____________ d'aquest projecte comença en la CGP i acaba en el final dels circuits interiors. No inclou, per tant, la connexió de servei, els aparells receptors, com forn, A/A, etc, ni le lluminaries que es connectaran al punts de llum. TAmpoc contempla la instal·lació de comptadors dels diferents subministraments que podran ser comprats i mantinguts pels propietaris o llogats a la companyia distribuidora",
+"L'objecte",
+"L'abast",
+"L'antecedent",
+"Marca aquesta resposta si no pots marcar cap de les altres"
+],
+[
+"Els projectes han d'incloure un anàlisi de les diferents instal·lacions.",
+"No, tret que la normativa obligui, com és el cas del RITE. Per als altres projectes, tot i ser opcional és molt recomanable.",
+"No, mai.",
+"Sí, sempre",
+"Normalment s'omet, però és obligatori en la gran majoria de casos."
+],
+
+
+
+
+
+[
+"A on posaré les 53 pàgines de càlculs justificatius?",
+"A la memòria",
+"A l'annex de càlculs",
+],
+[
+"Quin és el primer plànol de tots?",
+"El de situació i emplaçament.",
+"L'esquema unifilar (o multifilar).",
+"El plànol de planta.",
+"Marca aquesta si no pots marcar cap de les altres."
+],
+[
+"A on trobaré com es mesura el que ja he instal·lat i com se'm paga?", 
+"A l'estat de mesuraments", 
+"Al plec de condicions",
+"Al pressupost",
+"Marca aquesta si no pots marcar cap de les altres."
+],
+[
+"L'estudi d'impacte ambiental i l'estudi de seguretat i salut són...",
+"... documents legislatius general amb recomanaciós del ministeri de medi ambient i del ministeri de feina",
+"... estudis especifics que per imperatiu legal han de formar part del projecte, si el projecte es de certa envergadura o pot afectar al medi ambient",
+"... uns estudis fets a la dècada dels 60 quan no es tenia clara la importancia de la prevenció a la feina o la cura del medi. Actualment s'han substituit per la directiva EURONATUR++ i WORKINGPLACES2000",
+"Marca aquesta si no pots marcar cap de les altres."
+],
+[
+"Els projectes de Baixa Tensió han d'anar firmats per...",
+"El batle si són obres municipals (no surten d'un sol municipi).",
+"El rei (a l'igual que els decrets), però és una signatura honorifica, al costat ha de firmar el promotor.",
+"L'instal·lador electricista que estigui de torn al col·legi oficial d'electricistes de Balears o en cas de que ho refusi, l'electricista amb major facturació anual del municipi.",
+"Marca aquesta si no pots marcar cap de les altres."
+]
+
+];
+
+</script>
+<script src="../../js/config_test.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/test_segur.js"></script>
+<script src="../../js/test_html.js"></script>
+<script src="../../js/test_dades.js"></script>
+<script src="../../js/test_mates.js"></script>
+<script>window.onload = renderitza;</script>
+
