@@ -270,7 +270,11 @@ function corregir_test(tr, sr, resp, pts){
         c.pts_plus[i] = pts_pr[i];
         c.pts_minus[i] = pts_pr[i]/tr.n_opc[i];
         c.pts_tot += pts_pr[i];
-        if (c.rn[i] === 0){
+        if (c.sr[i] === 0){
+            c.ok[i] = null;
+            c.pts[i] = 0;
+            c.pts_tot -= pts_pr[i];
+        }else if (c.rn[i] === 0){
             c.ok[i] = null;
             c.pts[i] = 0;
         }else if (c.sr[i] === c.rn[i]){

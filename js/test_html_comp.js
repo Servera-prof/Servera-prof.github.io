@@ -109,12 +109,30 @@ function resetejar(){
  */
 function render_avaluacio(nom, tr, c){
     let html = ['',
+      '<img src="../../img/top.svg" class="fons top">',
+      '<img src="../../img/down.svg" class="fons down">',
+      '',
+      '<table class="taula-impressio">',
+      '<thead><tr><td>',
+      '  <div class="espai-capcalera"></div>',
+      '</td></tr></thead>',
+      '<tbody><tr><td>',
+      '  <div class="contingut-text">',
+      '',
       '<h1 align="center"> Correcció </h1>',
       '<h2 align="center" style="color: #888">' + titol + '</h2>',
     ].join("\n");
     html += html_puntuacio(nom, tr, c);
     html += html_preguntes_corregides(tr, c);
-    
+    html +=['',
+      '  </div>',
+      '</td></tr></tbody>',
+      '',
+      '<tfoot><tr><td>',
+      '  <div class="espai-peu"></div>',
+      '</td></tr></tfoot>',
+      '</table>'
+    ].join("\n");
     document.getElementById("avaluacio").innerHTML = html;
     texme.renderPage();
 }
@@ -167,13 +185,17 @@ function html_preguntes_corregides(tr, c){
  * @returns {string} Codi HTML amb els estils de pregunta nul·la.
  */
 function preg_anulada(p, i){
-    let html = html_preg(p, i, 'nula', 'nula', '');
+    let html = ['','',
+        '<div class="bgtxt">',
+        '<img src="../img/anul·lada.png" alt="segell">',
+        ''].join("\n");
+    html += html_preg(p, i, 'nula', 'nula', '');
     html += '\n\n<table class ="opc">';
     const opc = p[i].slice(1);
     for (let j = 0; j < opc.length; j++){
         html += html_opc(opc, j, 'nula', 'nula', '');
     }
-    html += '</table>';
+    html += '</table></div>';
     return html;
 }
 

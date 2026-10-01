@@ -278,38 +278,51 @@ span.neutre{
 }
 
 @media print {
-    button {
-        display: none; /* Amaga tots els botons al PDF */
-    }
-    
-    /* 1. Eliminem els marges per defecte del foli/PDF */
-    @page {
-        margin: 0;
+    /* 1. Forcem fons transparent a TOTS els elements del document */
+    html, body, table, thead, tbody, tfoot, tr, td, th, div, main, p, h1, h2, h3 {
+        background: transparent !important;
+        background-color: transparent !important;
     }
 
-    /* 2. Com que hem tret els marges del paper, el teu contingut ara tocaria el tall.
-     Li donem un marge al body perquè el text no quedi enganxat a les vores. */
-    body {
-        margin: 5cm 1.5cm 1.5cm 1.5cm; 
-    }
-
+    /* 2. Assegurem que les imatges de fons estiguin visibles */
     .fons {
-        display: block;      /* Fem que apareguin */
-        position: fixed;     /* Es posicionen respecte a la pàgina de paper, no del main */
-        z-index: -1;         /* Queden completament darrere del text */
+        display: block !important;
+        position: fixed;
+        z-index: -1; /* Canviem de -10 a -1 per evitar quedar per sota del canvas de la pàgina */
         pointer-events: none;
     }
 
-    /* Cantonada superior dreta de la pàgina */
     .fons.top {
         top: 0;
         right: 0;
     }
 
-    /* Cantonada inferior esquerra de la pàgina */
     .fons.down {
         bottom: 0;
         left: 0;
+    }
+
+    /* 3. Estructura de la taula transparent */
+    table.taula-impressio {
+        width: 100%;
+        border-collapse: collapse;
+        border: none;
+        background: transparent !important;
+    }
+
+    .espai-capcalera {
+        height: 4.5cm;
+        background: transparent !important;
+    }
+
+    .espai-peu {
+        height: 3.5cm;
+        background: transparent !important;
+    }
+
+    .contingut-text {
+        box-sizing: border-box;
+        background: transparent !important;
     }
 }
 

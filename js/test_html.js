@@ -268,8 +268,16 @@ function renderAvaluacio(d){
     finalitzaRastreigComportament();
     
     const txt = [
-      '<img src="../img/top.svg" class="fons top">',
-      '<img src="../img/down.svg" class="fons down">',
+      '<img src="../../img/top.svg" class="fons top">',
+      '<img src="../../img/down.svg" class="fons down">',
+      '',
+      '<table class="taula-impressio">',
+      '<thead><tr><td>',
+      '  <div class="espai-capcalera"></div>',
+      '</td></tr></thead>',
+      '<tbody><tr><td>',
+      '  <div class="contingut-text">',
+      '',
       '<h1 align="center">Avaluació</h1>',
       '<h2 align="center" style="color: #888">' + titol + '</h2>',
       '',
@@ -303,7 +311,15 @@ function renderAvaluacio(d){
         ' style="font-size: 20px; color: #AA5050;">',
         ' 💾 Justificant ',
       '</button>',
-      '</div>'
+      '</div>',
+      '',
+      '  </div>',
+      '</td></tr></tbody>',
+      '',
+      '<tfoot><tr><td>',
+      '  <div class="espai-peu"></div>',
+      '</td></tr></tfoot>',
+      '</table>'
     ].join("\n");
 
     document.getElementById("avaluacio").innerHTML = txt;
