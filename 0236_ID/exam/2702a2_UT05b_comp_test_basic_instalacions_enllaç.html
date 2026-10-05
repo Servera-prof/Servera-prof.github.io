@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+</textarea>
+
+
+
+<script>
+const titol = "Test UT05b";
+
+
+
+const test_original = [
+[
+"Quin coeficient de simultaneitat té un edifici amb 10 habitatges que només són d'electrificació elevada?",
+"10",
+"92.000",
+"8,3",
+"76.360",
+"$15{,}3 + (n-21) \\cdot 0{,}5 = 15{,}3-5{,}5 = 9{,}8$",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Si tinc un local que necessita un forn de pizzes de 15 kW, necessita per funcionar normalment 17 kW i té una superficie de 31 m², quina potència he de preveure?",
+"15 kW",
+"17 kW",
+"3,1 kW",
+"3,45 kW",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Tinc un edifici destinat exclusivament a industries, té 5 plantes de 100 m² per planta. A cada planta hi ha 2 locals (de 50 m²). Quina potència he de preveure?",
+"50.000 W",
+"10.000 W",
+"62.500 W",
+"12.500 W",
+"103.500 W",
+"20.700 W"
+],
+[
+"Quina secció necessito per una LGA per la qual ha de circular una intensitat de 103,21 A per fals sostre, dins tub o canal, suposant que no fa falta aplicar factors de correcció.",
+"6 mm²",
+"25 mm²",
+"35 mm²",
+"50 mm²",
+"70 mm²",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Per una LGA amb comptadors totalment concentrats a 50 m de distància, i 20 A, quina secció es necessita per complir amb la cdt reglamentaria segons el mètode de les taules de valors unitaris? Pots suposar cos φ de 0,8 i temperatura la màxima que aguanti l'aïllament.",
+"6 mm²",
+"25 mm²",
+"35 mm²",
+"50 mm²",
+"70 mm²",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+
+
+
+
+
+[
+"Quina és la cdt (en %) màxima d'una LGA per a un únic usuari (el típic chalet) de 14.490 W?",
+"0,5 %",
+"1 %",
+"1,5 %",
+"No té sentit la pregunta no hi ha LGA."
+],
+[
+"Quina secció ha de tenir una DI d'1 m, H07Z1-K, fdp 1, per un local de 20 m²?",
+"1,5 mm²",
+"4 mm²",
+"6 mm²",
+"10 mm²",
+"7,3 mm²",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quina distància hi ha entre una CS i una CGP-9-250A?",
+"50 mm segons NRZ103, però la guía recomana 200 mm com a mínim",
+"100 mm per a complir am la ITC-BT-13",
+"300 mm",
+"2070 mm"
+],
+[
+"Quina amplada i altura té una CS de pinazo per a Balears tipo ampla?",
+"530 x 530 mm",
+"598 x 318 mm",
+"400 x 400 mm",
+"400 x 318 mm",
+"598 x 400 mm"
+],
+[
+"Quina referència té una CGP-7-160A per a Balears?",
+"601123",
+"6705808",
+"6705807",
+"6705809",
+"Marca aquesta si no pots marcar cap de les altres."
+]
+];
+
+
+const solucions_originals = [
+
+6, 2, 5, 3, 2,
+4, 3, 1, 1, 3
+
+];
+
+
+const punts_preguntes = [
+
+1, 1, 1, 1, 1,
+1, 1, 1, 1, 1,
+
+];
+</script>
+
+<script src="../../js/config_test.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/test_html_comp.js"></script>
+<script src="../../js/test_dades.js"></script>
+<script src="../../js/test_mates.js"></script>
+<script>window.onload = renderitza;</script>
