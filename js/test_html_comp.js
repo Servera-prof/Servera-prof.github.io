@@ -83,6 +83,7 @@ function avalua(){
     
     const tr = test_reordenat(to, perm);
     const sr = solucions_reordenades(so, tr);
+    const pts_r = punts_reordenats(pts, tr);
     const c = corregir_test(tr, sr, resp, pts);
     resetejar();  // està a test_html.js
     render_avaluacio(nom, tr, c);
@@ -168,7 +169,7 @@ function html_preguntes_corregides(tr, c){
     let html = "";
     const p = tr.arr_preg;
     for (let i = 0; i < tr.np; i++){
-        if (c.sr[i] == 0) html += preg_anulada(p, i);
+        if (c.s[i] == 0) html += preg_anulada(p, i);
         else if (c.rn[i] == 0) html += preg_sense_resp(p, i, c);
         else if (c.ok[i]) html += preg_correcta(p, i, c);
         else if (!c.ok[i]) html += preg_incorrecta(p, i, c);
@@ -215,7 +216,7 @@ function preg_sense_resp(p, i, c){
     html += '\n\n<table class ="opc">';
     const opc = p[i].slice(1);
     for (let j = 0; j < opc.length; j++){
-        if ((j+1) == c.sr[i]){
+        if ((j+1) == c.s[i]){
             html += html_opc(opc, j, '', '', ' ✅');
         }else{
             html += html_opc(opc, j, '', '', '');
@@ -248,7 +249,7 @@ function preg_correcta(p, i, c){
     html += '\n\n<table class ="opc">';
     const opc = p[i].slice(1);
     for (let j = 0; j < opc.length; j++){
-        if ((j+1) == c.sr[i]){
+        if ((j+1) == c.s[i]){
             html += html_opc(opc, j, 'marcada', 'ok', ' ✅');
         }else{
             html += html_opc(opc, j, '', '', '');
@@ -280,7 +281,7 @@ function preg_incorrecta(p, i, c){
     html += '\n\n<table class ="opc">';
     const opc = p[i].slice(1);
     for (let j = 0; j < opc.length; j++){
-        if ((j+1) == c.sr[i]){
+        if ((j+1) == c.s[i]){
             html += html_opc(opc, j, '', '', ' ✅');
         }else if ((j+1) == c.rn[i]){
             html += html_opc(opc, j, 'marcada', 'no_ok', '');

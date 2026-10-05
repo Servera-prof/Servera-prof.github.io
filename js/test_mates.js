@@ -184,22 +184,21 @@ function baseabig(s) {
 
 /**
  * Desordena un array en base a un nombre de permutació.
- * Suposems que n = 5, així doncs per i = 0 → f = 4! = 4*3*2*1 = 24
- * i = 1, f = 3! = 6;  i = 2 → f = 2; i = 3 → f = 1; i = 4 → f = 0! = 1.
  * 
- * «perm» pot valer qualsevol valor entre 0 i 119 (= 5! - 1), suposarem 
- * 100, en aquest cas quan i = 0 (100/24) = 4 (ja que 100 i 4 estan 
- * definits com bigint), si ens fixem si «perm» val entre 0 i 23 «pos» 
- * sera 0, entre 24 i 47, 1, etc. Les posibilitats de que valgi 0, 1, 2, 
- * 3, o 4 són iguals. 
+ * Suposems e = ["a", "b", "c", "d", "e"],  n = 5 i «perm» 101, 
+ * Si apliquem array_pos (101, 5) obtenim apos = [4, 0, 2, 1, 0] 
+ * (veure exemple més abaix).
  * 
- * Com que pos ha resultat 0 posa el darrer element a la posició 0 del 
- * nou  array «ap» i treu l'element 4 de l'array «e». Si abans era 
- * ["a", "b", "c", "d", "e"], ara és ["a", "b", "c", "d"].
+ * Com que el primer és 4 (epos[0] = 4), posa el darrer element e[4] a 
+ * la posició 0 del nou  array «ap» i treu l'element 4 de l'array «e». 
+ * Ara e = ["a", "b", "c", "d"], ap = ["e"].
  * 
- * despres fa que «perm» valgui 100 % 24 = 4, les posibilitats de que 
- * «perm» valgui 0, 1, 2, ... 24 són iguals, ja que el valor anterior 
- * de «perm» podia ser 96, 97, 98, 99, 100, ... 119
+ * Despres apos[1] = 0, per tant treu "a" i la fica a ap:
+ * e = ["b", "c", "d"], ap = ["e", "a"]
+ * 
+ * apos[2] = 2 → e = ["b", "c"], ap = ["e", "a", "d"]
+ * apos[3] = 1 → e = ["b"],      ap = ["e", "a", "d", "c"]
+ * apos[4] = 0 → e = [],         ap = ["e", "a", "d", "c", "b"]
  * 
  * @param {string[]} array - array a desordenar
  * @perm {bigint} perm - número de permutació (un nombre aleatori
@@ -210,15 +209,63 @@ function permuta (array, perm){
     const ap = []; // array permutat
     const e = array.slice();  // copia de l'arr original.
     const n = e.length;
-
+    const apos = array_pos(perm, n); // array de posicions
+    
     for (let i = 0; i < n; i++) {
-        const f = factorial(n - i - 1);
-        let pos = Number(perm / f);
-        ap.push(e[pos]);
+        const pos = apos[i];
+        const item = e[pos];
+        ap.push(item);
         e.splice(pos, 1);
-        perm %= f;
     }
     return ap;
+}
+
+
+/** A partir d'un big int que representa la permutació de preguntes
+ * troba els n nombres aleatoris de la posició de cada pregunta. Es a
+ * dir anem a suposar que hi ha 5 preguntes la pregunta 0, la 1, la 2,
+ * la 3 i la 4. Trec una bola a l'atzar, surt 4, així que trec la 
+ * pregunta 4. Ara queden 4 preguntes, la 0, la 1 ... 3. Trec una bola
+ * i surt la 0. Ara queden [0, 1, 2], trec la 2, ara queden [0, 1], 
+ * trec la 1, ara queda la 0, i trec la 0. Hauria tret [4, 0, 2, 1, 0].
+ * 
+ * Suposems que n = 5, així doncs per i = 0 → f = 4! = 4*3*2*1 = 24
+ * i = 1, f = 3! = 6;  i = 2 → f = 2; i = 3 → f = 1; i = 4 → f = 0! = 1.
+ * 
+ * «perm» pot valer qualsevol valor entre 0 i 119 (= 5! - 1). 
+ * Suposarem 101, en aquest cas quan i = 0 → perm/f= 101/24 = 4, 
+ * ja que 100 i 4 estan definits com bigint.
+ * Si ens fixem si «perm» val entre 0 i 23 «pos» sera 0, entre 
+ * 24 i 47, 1, etc. Les posibilitats de que valgi 0, 1, 2, 3, o 4 són 
+ * iguals. 
+ * Per tant en aquest moment a = [4];
+ * 
+ * despres fa que «perm» valgui 101 % 24 = 5, les posibilitats de que 
+ * «perm» valgui 0, 1, 2, ... 24 són iguals, ja que el valor anterior 
+ * de «perm» podia ser 96, 97, 98, 99, 100, ... 119
+ *
+ * Ara i = 1, f = 6, perm = 5, per tant:
+ * - pos = perm / f = 5 / 6 = 0
+ * - perm = perm % f = 5 % 6 = 5
+ * - a = [4, 0]
+ * 
+ * i=2, f=2, perm = 5 → pos= 5/2 = 2, perm= 5%2 = 1, a = [4, 0, 2]
+ * i=3, f=1, perm = 1 → pos= 1/1 = 1, perm= 1%1 = 0, a = [4, 0, 2, 1]
+ * i=4, f=1, perm = 1 → pos= 0/1 = 0, perm= 0%1 = 0, a = [4, 0, 2, 1, 0]
+ * 
+ * @param {string[]} perm - número de permutació (un nombre aleatori
+ *   entre 0 i n!
+ * @perm {bigint} n - longitud de l'array d'aleatoris
+ * @returns {int[]} a - array de nombres aleatoris
+ */
+function array_pos (perm, n){
+    const a = new Array(n);   // array que contindrà els numeros aleatoris
+    for (let i = 0; i < n; i++) {
+        const f = factorial(n - i - 1);
+        a[i] = Number(perm / f);
+        perm %= f;
+    }
+    return a
 }
 
 

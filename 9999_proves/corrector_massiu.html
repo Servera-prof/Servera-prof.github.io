@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Correctir massiu</title>
+  <link rel="stylesheet" type="text/css" href="../css/main.css" />
+</head>
+<body><main>
+  <h3>Introdueix les dades:</h3>
+  <p>Full de càlcul dades</p>
+  <textarea id="dades_ods" placeholder="Enganxa aquí el rang del full de càlcul"></textarea>
+  <p>Test original</p>
+  <textarea id="test_original" placeholder='[["P1", "a)", "b)", ...], ["P2", ...]]'></textarea>
+  <p>Respostes test</p>
+  <textarea id="solucions" placeholder="[2, 4, 3, ...]"></textarea>
+  <p>Puntuacions test</p>
+  <textarea id="puntuacions" placeholder="[1, 1, 1, ...]"></textarea>
+  <br>
+  <button onclick="executar()">Executar</button>
+
+  <h3>Array de Arrays JavaScript generat:</h3>
+  <pre id="sortida">Pendent d'executar script</pre>
+  
+<script src="../js/test_dades.js"></script>
+<script src="../js/test_mates.js"></script>
+
+<script>
+function executar() {
+    let txt = "";    
+    
+    /*
+    txt += JSON.stringify(d, null, 2);
+    txt += JSON.stringify(to, null, 2);
+    txt += JSON.stringify(r, null, 2);
+    txt += JSON.stringify(pts, null, 2);
+    */
+    const o1 = llegir_textareas();
+    o1.t = test_reordenat(o1.to, "0 :: 0");
+    console.log(o1);
+    const na = o1.d.length  // Nombre d'alumnes
+
+    
+    for (let i = 0; i < na; i++){
+        const r = o1.d[i][1];   // resposta alumne i
+        const p = o1.d[i][4];   // permutació alumne i
+        const ar = resp_perm_orig(r, o1.t, p); // arr resp com si 0::0
+        const o3 = corregir_test(o1.t, o1.s, ar, o1.pts);
+        console.log(ar);
+        console.log(o3);
+        
+        
+        txt += [
+            o1.d[i][0] + "; " + trunca(o3.pts_obt) + "/" + o3.pts_tot + 
+            " → " + o3.qualif,
+            ''
+        ].join("\n");
+        document.getElementById('sortida').textContent = txt;
+    }
+    
+}
+
+    
+
+function llegir_textareas(){
+    let o = {};
+    const d_raw = document.getElementById('dades_ods').value;
+    const to_raw = document.getElementById('test_original').value;
+    const s_raw = document.getElementById('solucions').value;
+    const pts_raw = document.getElementById('puntuacions').value;
+    
+    
+    o.d = d_raw.trim()
+        .split(/\r?\n/)                              // Separa per files (salts de línia)
+        .filter(linia => linia.trim() !== '')        // Ignora línies buides
+        .map(linia => linia.split('\t').map(c => c.trim())); // Separa cada fila per tabuladors
+    
+    o.to = JSON.parse(to_raw);
+    o.s = JSON.parse(s_raw);
+    o.pts = JSON.parse(pts_raw);
+    
+    return o;
+}
+
+
+</script>
+
+</main></body>
+</html>
