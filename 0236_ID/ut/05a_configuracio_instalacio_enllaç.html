@@ -240,7 +240,7 @@ Càlcul de la caiguda de tensió unitària ($e_u$):
  e_u = \frac{e}{L \cdot I}
  \end{gather}
 > A on:
-> - $e_u$ és la caiguda de tensió unitària ($\text{V}/(ext{A}\cdot \text{km})$).
+> - $e_u$ és la caiguda de tensió unitària ($\text{V}/(\text{A}\cdot \text{km})$).
 > - $e$ és la caiguda de tensió en volts ($\text{V}$).
 > - $L$ és la longitud en quilòmetres ($\text{km}$).
 > - $I$ és la intensitat de servei ($\text{A}$).
@@ -252,12 +252,12 @@ Càlcul de la temperatura real del conductor ($T$):
   \left(\frac{I}{I_{\text{max}}}\right)^2
   \end{gather}
 > A on:
-> - $T$ és la temperatura real estimada ($  ext{°C}$).
+> - $T$ és la temperatura real estimada ($\text{°C}$).
 > - $T_{\text{max}}$ és la temperatura màxima admissible de l'aïllament ($
->   ext{°C}$).
-> - $T_0$ és la temperatura ambient ($      ext{°C}$).
-> - $I$ és la intensitat prevista ($        ext{A}$).
-> - $I_{\text{max}}$ és la intensitat màxima admissible ($  ext{A}$).
+>   \text{°C}$).
+> - $T_0$ és la temperatura ambient ($\text{°C}$).
+> - $I$ és la intensitat prevista ($\text{A}$).
+> - $I_{\text{max}}$ és la intensitat màxima admissible ($\text{A}$).
 
 
 #### Conductivitats del materials
@@ -268,7 +268,7 @@ Càlcul de la temperatura real del conductor ($T$):
 | Alumini (Al) | 35   | 30   | 28   |
 
 
-#### Fórmules per al càlcul d'intensitats i seccions
+#### Fórmules per al càlcul d'intensitats i seccions (només per seccions petites)
 
 <table>
   <thead>
@@ -276,7 +276,6 @@ Càlcul de la temperatura real del conductor ($T$):
       <th>Subministrament</th>
       <th>Intensitat (A)</th>
       <th>Secció ($e$ en V)</th>
-      <th>Secció ($e$ en %)</th>
     </tr>
   </thead>
   <tbody>
@@ -284,13 +283,11 @@ Càlcul de la temperatura real del conductor ($T$):
       <td>Monofàsic</td>
       <td>$I = \frac{P}{U \cdot \cos\varphi}$</td>
       <td>$S = \frac{2 \cdot L \cdot P}{\gamma \cdot e \cdot U}$</td>
-      <td>$S = \frac{200 \cdot L \cdot P}{\gamma \cdot e \cdot U^2}$</td>
     </tr>
     <tr>
       <td>Trifàsic</td>
       <td>$I = \frac{P}{\sqrt{3} \cdot U \cdot \cos\varphi}$</td>
       <td>$S = \frac{L \cdot P}{\gamma \cdot e \cdot U}$</td>
-      <td>$S = \frac{100 \cdot L \cdot P}{\gamma \cdot e \cdot U^2}$</td>
     </tr>
   </tbody>
 </table>
@@ -325,8 +322,7 @@ Caiguda de tensió màxima:
 - 1,5% en subministraments d'únic usuari (sense LGA).
 
 Característiques dels conductors:
-- Inclou fase, neutre, protecció i fil de comandament vermell
-  ($1,5\text{ mm}^2$).
+- Inclou fase, neutrei  protecció.
 - Secció mínima per a polars i protecció: $6\text{ mm}^2$.
 - Identificació per colors segons la ITC-BT-19:
   + Neutre: blau clar
