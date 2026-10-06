@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+</textarea>
+
+
+
+<script>
+const titol = "Test UT01b";
+
+
+
+const test_original = [
+[
+"Una piscina, amb una depuradora de 9,5 kW una il·luminació de 0,6 kW i un sistema automàtic de neteja de fons per aigua a pressió d'1 kW necessita passar inspecció periòdica?",
+"Sí, sempre. Cada cinc anys",
+"No, mai",
+"Només inspeccions inicials",
+"Només si pertany a un local de pública concurrència, com un poliesportiu, per habitatges no és necessari.",
+"Només si la piscina va ser executada o va ser ampliada o té modificacions d'importància després de l'entrada en vigor del REBT"
+],
+[
+"De quina secció com a mínim ha de ser el neutre d'una XABT <b>tensada</b> amb fase de 95 mm²",
+"50 mm²",
+"54,6 mm²",
+"95 mm²",
+"150 mm²",
+"80 mm²"
+],
+[
+"Quina distància entre la XABT i la XAMT (15 kV a Balears) hi ha d'haver si els suports de BT estan separats 10 m i l'encreuament es produeix a la meitat i els de MT estan separats 30 m i l'encreuament es produeix a 20 m del suport?",
+"1,8 m",
+"1,9",
+"21,7",
+"21,6",
+"0,315",
+"0,415",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Segons la taula 4 del REBT del punt 4.2.1.2 «Cables sin neutro fiador» d'Alumini, els conductors aguanten menys si estan a façana. Per què creus que passa això?",
+"Perquè com que les façanes estan aferrades als habitatges hi ha un marge de seguretat perquè no es cremin, ja que les conseqüències serien catastròfiques.",
+"Perquè a l'estar aferrats a una superfície, no dissipen tan bé la calor.",
+"És un error, ja que les tensades com que estan més exposades al sol el valor de la taula hauria de ser menor",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quina secció ha de tenir un conductor de coure d'una XSBT que ha d'alimentar a un aparell de 230 W (1 A)?",
+"1,5 mm²",
+"2,5 mm²",
+"4 mm²",
+"6 mm²",
+"10 mm²"
+],
+
+
+
+
+
+[
+"Un en creuament entre una artèria principal d'aigua i una XSBT ha de tenir una distància de separació de ",
+"20 cm",
+"40 cm",
+"1 m",
+"No es poden creuar, però si es creuen han de tenir desguàs (<i>desagüe</i> en castellà).",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quina intensitat pot aguantar una XSBT, entubada, d'alumini de 150 mm², amb un terreny a 25 °C, amb una temperatura de l'aire ambient de 30 °C, una resistivitat tèrmica del terreny d'1,5 K·m/W, i una profunditat de soterrament de 0,7 m?",
+"230 A",
+"260 A",
+"300 A",
+"340 A",
+"211,27 A",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quants de conductors puc passar pel mateix tub d'una XSBT soterrada", 
+"1", 
+"3 si pertanyen al mateix circuit",
+"4 si pertanyen al mateix circuit",
+"Els que facin falta sempre que pertanyin al mateix circuit"
+],
+[
+"Un conductor d'una XSBT soterrat sense entubar a una profunditat d'1 m se li ha d'aplicar un coeficient de seguretat de",
+"0,7",
+"0,97",
+"0,95",
+"0,96",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Si el conductor neutre del transformador està posat a terra, i les masses metàl·liques dels equips de les instal·lacions receptores no estan connectades directament a terra, sino que estan connectades al mateix conductor que al qual es connecten els neutres de la instal·lació receptora, tenim un esquema...",
+"TT",
+"TN-S",
+"TN-C",
+"IT",
+"Marca aquesta si no pots marcar cap de les altres"
+]
+];
+
+
+const solucions_originals = [
+
+1, 2, 1, 2, 4,
+1, 1, 4, 2, 3
+
+];
+
+
+const punts_preguntes = [
+
+1, 1, 1, 1, 1,
+1, 1, 1, 1, 1
+
+];
+</script>
+
+<script src="../../js/config_test.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/test_html_comp.js"></script>
+<script src="../../js/test_dades.js"></script>
+<script src="../../js/test_mates.js"></script>
+<script>window.onload = renderitza;</script>
