@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../css/main.css" />
+</head>
+<textarea id="enunciat">
+    
+Examen de càlcul de previsió de potències
+=========================================
+
+Enunciat
+--------
+
+Tenim un edifici dedicat principalment a habitatges, calcula segons
+ITC-BT-10 la potència prevista per una instal·lació amb:
+
+**Habitatges**
+
+- [[nh1]] habitatges [[rh1]], [[mq1]] m², [[nt1]] bases de corrent d'ús 
+  general i [[pl1]] punts de llum.
+- [[nh2]] habitatges [[rh2]], [[mq2]] m², [[nt2]] bases de corrent d'ús
+  general i [[pl2]] punts de llum.
+- [[nh3]] habitatges [[rh3]], [[mq3]] m², [[nt4]] bases de corrent d'ús
+  general i [[pl3]] punts de llum.
+
+**Locals**
+
+| Local   |  n      | $P_{dem}$ | $S$     |
+| :-----: | :-----: | :-------: | :-----: |
+| [[tl1]] | [[nl1]] |  [[pl1]]  | [[sl1]] |
+| [[tl2]] | [[nl2]] |  [[pl2]]  | [[sl2]] |
+| [[tl3]] | [[nl3]] |  [[pl3]]  | [[sl3]] |
+
+A on:
+- n és el nombre de locals idèntics
+- $P_{dem}$ és la potència demandada pel local en $\text{kW}$
+- $S$ és la superfície en $\text{m}^2$
+
+**Garatge**
+
+El garatge té [[pg]] plantes amb una superfície de [[sg]] cada una
+i ventilació [[vent]], i una superfície de [[spv]] m² per vehícle i
+[[spl]] prevista la instalació de SPL.
+
+**Serveis comuns**
+
+- La superfície de l'escala a il·luminar és de [[sesc]], i la dels
+  passadissos [[spas]]. La il·luminació està prevista amb LEDs
+  (assimilable a fluorescent).
+- Es necessita un ascensor tipus [[ae]]
+- A l'edifici a més es necessita un grup de pressió de [[npa]] preses
+  d'aigua i té [[np]] plantes.
+ 
+Resposta
+--------
+
+- Coeficient de simultaneitat habitatges: [[cs]]
+- Potència habitatges: [[ph]]
+- Potència locals: [[plc]]
+- Potència garatge: [[pg]]
+- Potència zones comunes: [[pzc]]
+- Potència vehícle elèctric: [[pve]]
+- Potència total prevista per l'edifici [[pt]]
+  
+</textarea>
+
+
+<!--
+<p>Tenim un edifici dedicat principalment a habitatges, calcula segons ITC-BT-10 la potència prevista per una instal·lació amb: <b>
+     <span id="p01">blabla</span>
+  </p>
+  
+  <input type="number" id="i01" style="width: 80px;">
+  <br>
+  <button onclick="executar()">Executar</button>
+
+  <h3>Raw output:</h3>
+  <pre id="sortida">Pendent d'executar script</pre>
+-->
+
+<script src="../js/texme/config.js"></script>
+<script src="../js/texme/texme.js"></script>
+<script src="../js/probs/mates.js"></script>
+
+<script>
+    
+    
+const o = {};
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const parts = text.split("Resposta");
+    let enunciat = parts[0];
+    let resposta = parts[1] || "";
+    
+    o.p = genera_param();
+});
+
+function genera_param(){
+    const o = {};
+    o.nh1 = aleat(0, 50);
+    document.getElementById('p01').innerText = o.p01;
+    return o;
+}
+
+function executar() {
+    let txt = "";    
+
+    o.i = llegir_textareas();
+    console.log(o);
+    txt += ['Hola tu',
+    ''
+    ].join("\n");
+    document.getElementById('sortida').textContent = txt;
+    
+}
+
+    
+
+function llegir_textareas(){
+    let o = {};
+    o.i01 = document.getElementById('i01').value.trim();
+    return o;
+}
+
+
+</script>
+
+</main></body>
+</html>
