@@ -5,6 +5,10 @@ function aleat(min, max) { // enter aleat entre min i max (inclosos)
     return c;
 }
 
+function max(...valors) {
+    return Math.max(...valors);
+}
+
 function triaElementMatriu (matriu){
     const aleat = Math.floor(Math.random() * (matriu.length));
     return matriu[aleat.toFixed(0)];

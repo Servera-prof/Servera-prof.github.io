@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+</head>
+<textarea id="enunciat">
+    
+Examen de càlcul de previsió de potències
+=========================================
+
+Enunciat
+--------
+
+Tenim un edifici dedicat principalment a habitatges, calcula segons
+ITC-BT-10 la potència prevista per una instal·lació amb:
+
+**Habitatges**
+
+- [[nh1]] habitatges [[rh1]], [[mq1]] m², [[nt1]] bases de corrent d'ús 
+  general i [[pll1]] punts de llum.
+- [[nh2]] habitatges [[rh2]], [[mq2]] m², [[nt2]] bases de corrent d'ús
+  general i [[pll2]] punts de llum.
+- [[nh3]] habitatges [[rh3]], [[mq3]] m², [[nt3]] bases de corrent d'ús
+  general i [[pll3]] punts de llum.
+
+**Locals**
+
+| Local   | $P_{dem}$ | $S$     |
+| :-----: | :-------: | :-----: |
+| [[tl1]] |  [[pdl1]] | [[sl1]] |
+| [[tl2]] |  [[pdl2]] | [[sl2]] |
+| [[tl3]] |  [[pdl3]] | [[sl3]] |
+
+A on:
+- $P_{dem}$ és la potència demandada pel local en $\text{kW}$
+- $S$ és la superfície en $\text{m}^2$
+
+**Garatge**
+
+El garatge té [[plg]] plantes amb una superfície de [[sg]] cada una
+i ventilació [[vg]], i una superfície de [[spv]] m² per vehícle i
+[[spl]] prevista la instalació de SPL.
+
+**Serveis comuns**
+
+- La superfície de l'escala a il·luminar és de [[sesc]], i la dels
+  passadissos [[spas]]. La il·luminació està prevista amb LEDs
+  (assimilable a fluorescent).
+- Es necessita un ascensor per [[ae]]
+- A l'edifici a més es necessita un grup de pressió de [[npa]] preses
+  d'aigua i té [[npl]] plantes.
+ 
+Respostes
+----------
+
+- Coeficient de simultaneitat habitatges: [[%cs]]
+- Potència habitatges: [[%ph]]
+- Potència locals: [[%pl]]
+- Potència garatge: [[%pg]]
+- Potència zones comunes: [[%pzc]]
+- Potència vehícle elèctric: [[%pve]]
+- Potència total prevista per l'edifici [[%pt]]
+
+[[form]]
+</textarea>
+
+
+<script src="../../js/probs/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/probs/mates.js"></script>
+
+
+<script>
+    
+document.addEventListener("DOMContentLoaded", init);
+
+let params = {};
+let solucions = {};
+
+function genera_params() {
+    const nh1 = aleat(2, 5);            // Nombre d'habitatges 01
+    const nh2 = aleat(2, 10);            // Nombre d'habitatges 02
+    const nh3 = aleat(2, 10);            // Nombre d'habitatges 03
+    
+    const arr_rh = [                    // Requeriments d'habitatge
+    [
+        "amb secadora", 
+        "amb aire acondicionat", 
+        "amb calefacció elèctrica",
+        "amb circuits domòtics"
+    ],
+    [
+        "amb termo elèctric", 
+        "amb grup de pressió pròpi", 
+        "amb ascensor privat",
+        "amb piscina"
+    ]
+    ];
+
+    const i_rh1 = aleat(0, 1);
+    const j_rh1 = aleat(0, 3);
+    const i_rh2 = aleat(0, 1);
+    const j_rh2 = aleat(0, 3);
+    const i_rh3 = aleat(0, 1);
+    const j_rh3 = aleat(0, 3);
+
+    const rh1 = arr_rh[i_rh1][j_rh1];
+    const rh2 = arr_rh[i_rh2][j_rh2];
+    const rh3 = arr_rh[i_rh3][j_rh3];
+
+    const mq1 = aleat(50, 200);         // metres quatrats
+    const mq2 = aleat(50, 200);
+    const mq3 = aleat(50, 200);
+
+    const nt1 = aleat(9, 25);           // número de tomes de corrent
+    const nt2 = aleat(9, 25); 
+    const nt3 = aleat(9, 25);  
+
+    const pll1 = aleat(10, 35);          // número de punts de llum
+    const pll2 = aleat(10, 35);
+    const pll3 = aleat(10, 35);
+
+    const arr_tl = [                    // Tipus de local
+        "pizzeria",
+        "oficina de advocat",
+        "gestoria",
+        "concesionari",
+        "gimnàs"
+    ];
+
+    const i_tl1 = aleat(0, 4);
+    const i_tl2 = aleat(0, 4);
+    const i_tl3 = aleat(0, 4);
+
+    const tl1 = arr_tl[i_tl1];
+    const tl2 = arr_tl[i_tl2];
+    const tl3 = arr_tl[i_tl3];
+
+    const nl1 = aleat(1, 3);            // Nombre de locals
+    const nl2 = aleat(1, 3);
+    const nl3 = aleat(1, 3);
+
+    const pdl1 = aleat(200, 1000)/100; // Pot. demandada locals
+    const pdl2 = aleat(200, 1000)/100;
+    const pdl3 = aleat(200, 1000)/100;
+
+    const sl1 = aleat(50, 150);         // Superficie locals
+    const sl2 = aleat(50, 150);
+    const sl3 = aleat(50, 150);
+
+    const plg = aleat(1, 3);            // plantes garatge
+
+    const arr_vg = [                    // ventilació garatge
+        "natural",
+        "forçada"
+    ]
+    const i_vg = aleat(0, 1);
+    const vg = arr_vg[i_vg];
+
+    const spv = aleat(25, 35);          // superficie per plaça de vehicle
+    const sg = aleat(2, 10) * spv;      // superficie garatge
+
+    const arr_spl = [
+        "està",
+        "**no** està"
+    ]
+    const i_spl = aleat(0, 1);
+    const spl = arr_spl[i_spl];
+
+    const sesc = aleat(50, 100);
+    const spas = aleat(50, 100);
+
+    const arr_ae = [
+        "fins a 5 persones i 0,63 m/s de velocitat",
+        "fins a 5 persones i 1,00 m/s de velocitat",
+        "fins a 8 persones i 1,00 m/s de velocitat"
+    ];
+    const i_ae = aleat(0, 2);
+    const ae = arr_ae[i_ae];
+
+    const nh_tot = nh1 + nh2 + nh3;
+    const npa = aleat(10, 15) * nh_tot;  // numero preses aigua
+    const npl =  Math.floor(nh_tot / aleat(3, 5));  // nombre plantes
+    
+    return {
+        nh1,  i_rh1, rh1,  mq1, nt1, pll1,
+        nh2,  i_rh2, rh2,  mq2, nt2, pll2,
+        nh3,  i_rh3, rh3,  mq3, nt3, pll3,
+        tl1,  pdl1,  sl1,  
+        tl2,  pdl2,  sl2,  
+        tl3,  pdl3,  sl3,  
+        plg,  sg,    i_vg, vg,  spv, i_spl, spl,
+        sesc, spas,  i_ae, ae,   npa, npl
+    }
+}
+
+
+
+function calcular_solucions() {
+    const {
+        nh1,  i_rh1, rh1,  mq1, nt1, pll1,
+        nh2,  i_rh2, rh2,  mq2, nt2, pll2,
+        nh3,  i_rh3, rh3,  mq3, nt3, pll3,
+        tl1,  pdl1,  sl1,  
+        tl2,  pdl2,  sl2,  
+        tl3,  pdl3,  sl3,  
+        plg,  sg,    i_vg, vg,  spv, i_spl, spl,
+        sesc, spas,  i_ae, ae,   npa, npl
+    } = params;
+    
+    const ee1 = i_rh1 === 0 || mq1 > 160 || nt1 > 20 || pll1 > 30;
+    const ee2 = i_rh2 === 0 || mq2 > 160 || nt2 > 20 || pll2 > 30;
+    const ee3 = i_rh3 === 0 || mq3 > 160 || nt3 > 20 || pll3 > 30;
+    
+    const ph1 = ee1 ? 9200: 5750;
+    const ph2 = ee2 ? 9200: 5750;
+    const ph3 = ee3 ? 9200: 5750;
+    
+    const nh = nh1 + nh2 + nh3;                     // num habit
+    const arr_cs = [
+        1,    2,    3,    3.8,  4.6,
+        5.4,  6.2,  7,    7.8,  8.5,
+        9.2,  9.9,  10.6, 11.3, 11.9,
+        12.5, 13.1, 13.7, 14.3, 14.8,
+        15.3
+    ];
+    const cs = nh > 21 ? 15.3+(nh-21)*0.5 : arr_cs[nh];  // coef simult
+    const ph = cs*(nh1*ph1 + nh2*ph2 + nh3*ph3)/nh;
+    
+    const pl1 = max(sl1*100, pdl1*1000, 3450);
+    const pl2 = max(sl2*100, pdl2*1000, 3450);
+    const pl3 = max(sl3*100, pdl3*1000, 3450);
+
+    const pl = pl1 + pl2 + pl3;                     // pot locals
+    
+    const pmqg = i_vg === 0 ? 10 : 20;              // pot per m² garat
+    const pg = plg * sg * pmqg;
+    
+    const cspl = i_spl === 0 ? 0.3 : 1;             // coeficient SPL
+    const nve = sg / spv
+    const pve =  cspl * nve * 3680                  // pot vehicle elec
+    
+    const pesc = sesc * 4;
+    const ppas = spas * 8;
+    const arr_pae = [
+        4500,
+        7500,
+        11500
+    ];
+    const pae = arr_pae[i_ae];
+    
+    const arr_pgp = [
+        [1, 1, 1, 1],
+        [1, 1, 2, 2],
+        [1, 2, 4, 6],
+        [2, 4, 6, 6],
+        [2, 4, 6, 8],
+        [4, 6, 9, 11]
+    ];
+    const i_pgp = [150, 300, 450, 900, 1800, 3500].findIndex(e => e >= npa);
+    const j_pgp = [1, 5, 11, 16].findIndex(e => e >= npl);
+    const pgp = arr_pgp[i_pgp][j_pgp];
+    const pzc = pesc + ppas + pae + pgp;
+    const pt = ph + pl + pg + pve + pzc;
+    
+    return {
+        cs, ph, pl, pg, pve, pzc, pt
+    };
+}
+
+function init() {
+    params = genera_params();
+    let md = document.getElementById('enunciat');
+    md.value = md.value.replace(/\[\[(.*?)\]\]/g, processar_plantilla);
+}
+
+function avaluar(){
+    solucions = calcular_solucions();
+    respostes = ['cs', 'ph', 'pl', 'pg', 'pve', 'pzc'];
+    
+    respostes.forEach(corregir);
+}
+
+function corregir(resp){
+    const e = document.getElementById(clau);
+    if (e) {
+        const valUsuari = parseFloat(e.value);
+        const valEsperat = solucions[clau];
+        
+        if (!isNaN(valUsuari) && Math.abs(valUsuari - valEsperat) <= Math.abs(valEsperat * 0.01)) {
+            el.className = "input-resposta correcte";
+        } else {
+            el.className = "input-resposta incorrecte";
+            el.title = `Valor esperat: ${valEsperat}`;
+        }
+    }
+}
+
+
+function processar_plantilla(match, rawId) {
+    if (rawId === 'form') {
+        return crear_form();
+    }
+    if (rawId.startsWith('%')) {
+        return crear_input(rawId);
+    }
+    return crear_param(rawId, match);
+}
+
+function crear_form() {
+    let html = '';
+
+    html += '<form onsubmit="event.preventDefault(); avalua();">';
+    html += '  <label>Nom: <input id="nom" required style="width: 250px;"></label><br>';
+    html += '  <label><input type="checkbox" id="informat" required> Entenc que no es pot tornar enrere.</label>';
+    html += '  <div style="text-align: center; margin-top: 10px;">';
+    html += '    <button type="submit" style="font-size: 20px; color: #AA5050;">Avaluar</button>';
+    html += '  </div>';
+    html += '</form>';
+
+    return html;
+}
+
+function crear_input(rawId) {
+    const id = rawId.substring(1);
+    return '<input type="number" id="' + id + '" style="width: 80px;">';
+}
+
+function crear_param(rawId, match) {
+    return params[rawId] !== undefined ? coma(params[rawId]) : match;
+}
+
+
+
+function renderitza(){
+    texme.setOption('onRenderPage', post_renderitzat_exer);
+    texme.renderPage();
+}
+
+function post_renderitzat_exer(){
+    /*creaMembreteKatakana();*/
+}
+
+function resetejar(){
+    const ppal = document.getElementsByTagName("main")[0];
+    const body = ppal.parentNode;
+    const textArea = body.appendChild(document.createElement("textarea"));
+    body.removeChild(ppal);
+    textArea.setAttribute("id", "avaluacio");
+}
+
+function renderAvaluacio(){
+    let txt = "";
+    txt += '<h1 align="center"> Avaluació</h1>\n' +
+           '<h2 align="center" style="color: #888">' + titol + "</h2>\n&nbsp;\n\n"
+    txt += [
+    "## Presentació de resultats",
+    "",
+    "L'alumne **[[nom]]**, del [[cicle]] (any [[any]]) ha obtingut una",
+    "qualificació de:",
+    "",
+    "> [[nota]]"
+    ].join("\n") + "\n";
+    txt += "## Enunciat\n\n" + txtEnunciat;
+
+    txt = identificarAlumne(txt);
+    txt = puntua(txt);
+    txt = txt.replace("## Identificació de l'alumne:\n\n"+
+        "[[identificacio]]", "");
+    txt +=  "\n" + tlog + "\n";
+    document.getElementById("avaluacio").innerHTML = txt;
+    texme.renderPage();
+}
+
+</script>
+
+<script>window.onload = renderitza;</script>
+
+</main></body>
+</html>
