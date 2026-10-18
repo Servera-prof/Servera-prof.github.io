@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", init);
 
 let params = {};
 let solucions = {};
+let respostes = {};
 
 function genera_params() {
     const nh1 = aleat(2, 5);            // Nombre d'habitatges 01
@@ -276,29 +277,6 @@ function init() {
     md.value = md.value.replace(/\[\[(.*?)\]\]/g, processar_plantilla);
 }
 
-function avaluar(){
-    solucions = calcular_solucions();
-    respostes = ['cs', 'ph', 'pl', 'pg', 'pve', 'pzc'];
-    
-    respostes.forEach(corregir);
-}
-
-function corregir(resp){
-    const e = document.getElementById(clau);
-    if (e) {
-        const valUsuari = parseFloat(e.value);
-        const valEsperat = solucions[clau];
-        
-        if (!isNaN(valUsuari) && Math.abs(valUsuari - valEsperat) <= Math.abs(valEsperat * 0.01)) {
-            el.className = "input-resposta correcte";
-        } else {
-            el.className = "input-resposta incorrecte";
-            el.title = `Valor esperat: ${valEsperat}`;
-        }
-    }
-}
-
-
 function processar_plantilla(match, rawId) {
     if (rawId === 'form') {
         return crear_form();
@@ -312,7 +290,7 @@ function processar_plantilla(match, rawId) {
 function crear_form() {
     let html = '';
 
-    html += '<form onsubmit="event.preventDefault(); avalua();">';
+    html += '<form onsubmit="event.preventDefault(); avaluar();">';
     html += '  <label>Nom: <input id="nom" required style="width: 250px;"></label><br>';
     html += '  <label><input type="checkbox" id="informat" required> Entenc que no es pot tornar enrere.</label>';
     html += '  <div style="text-align: center; margin-top: 10px;">';
@@ -332,8 +310,6 @@ function crear_param(rawId, match) {
     return params[rawId] !== undefined ? coma(params[rawId]) : match;
 }
 
-
-
 function renderitza(){
     texme.setOption('onRenderPage', post_renderitzat_exer);
     texme.renderPage();
@@ -342,6 +318,43 @@ function renderitza(){
 function post_renderitzat_exer(){
     /*creaMembreteKatakana();*/
 }
+
+
+
+
+
+function avaluar(){
+    solucions = calcular_solucions();
+    respostes = ['cs', 'ph', 'pl', 'pg', 'pve', 'pzc'];
+    
+    respostes.forEach(corregir);
+}
+
+function corregir(clau){
+    const e = document.getElementById(clau);
+    if (e) {
+        const valUsuari = parseFloat(e.value);
+        const valEsperat = solucions[clau];
+        
+        if (!isNaN(valUsuari) && Math.abs(valUsuari - valEsperat) <= Math.abs(valEsperat * 0.01)) {
+            e.className = "input-resposta correcte";
+        } else {
+            e.className = "input-resposta incorrecte";
+            e.title = `Valor esperat: ${valEsperat}`;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 function resetejar(){
     const ppal = document.getElementsByTagName("main")[0];
