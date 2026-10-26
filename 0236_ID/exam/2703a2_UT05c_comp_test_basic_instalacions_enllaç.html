@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+</textarea>
+
+
+
+<script>
+const titol = "Test UT05c";
+
+
+
+const test_original = [
+[
+"Quina distància ha de tenir d'ample com a mínim un local de comptadors que estan col·locats a una sola paret, segons la guia de la NRZ103. Es demana el valor més caute, és a dir el més gran.",
+"1,9 x 1,9 (0,4 + 1,1 + 0,4)",
+"1,5 x 1,5",
+"1,10 x 1,10",
+"1,10 x 1,5",
+"1,9 x 1,5",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quan ocupa una CC modular de Pinazo per a les Balears, constituida per un IGM, un bloc de ST amb el seu embarrat propi, i un bloc 3TE + 8ME?",
+"945 x 1350 x 200",
+"945 x 1620 x 200",
+"1260 x 1350 x 200",
+"1260 x 1620 x 200",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"A un edifici amb 35 comptadors, 15 plantes puc posar centralització tota a la planta baixa",
+"Sí, però haurà d'anar a local",
+"Sí, però haurà d'anar a armari",
+"No, perquè són més de  12 plantes i s'ha de dividir amb almenys una centralització per cada 6 plantes",
+"No, perquè tot i tenir més de 12 plantes, no es superen el 16 comptadors per planta, per tant, es obligatori posar-ho a un semisoterrani",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"A l'edifici que estas reformant hi ha: <ul><li>3 habitatges d'electrificació elevada</li><li>5 de bàsica</li><li>un comptador de zones comuns</li><li>una petita pastisseria propietat d'un dels veïns</li></ul>. Quin espai a cada banda (marge) ha de tenir l'armari o local com a mínim",
+"Ha de ser un local i l'espai ha de ser: <ul><li>a l'esquerra 20 cm</li><li>a la dreta el 25 % dels moduls ja instalats + 20 cm</li></ul>",
+"Ha de ser un local i l'espai ha de ser: <ul><li>a l'esquerra el 25 % dels moduls ja instalats + 20 cm</li><li>a la dreta 20 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 100 cm</li><li>a la dreta 20 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 60 cm</li><li>a la dreta 20 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 80 cm</li><li>a la dreta 20 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 40 cm</li><li>a la dreta 20 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 20 cm</li><li>a la dreta 100 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 20 cm</li><li>a la dreta 60 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 20 cm</li><li>a la dreta 80 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 20 cm</li><li>a la dreta 40 cm</li></ul>",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quina és la secció necessaria per una DI monofàsica H07Z1-K encastada a paret no aïllant de 14.490 W. La longitud és suficientment curta per a que el criteri de la cdt sia irrellevant.",
+"1,5 mm²",
+"2,5 mm²",
+"4 mm²",
+"6 mm²",
+"10 mm²",
+"16 mm²",
+"25 mm²",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+
+
+
+
+
+[
+"Quina és la secció necessaria per una DI trifàsica sense LGA, H07Z1-K encastada a paret no aïllant de 17.320 W. La longitud és de 75 m, suficientment llarga i la potència suficientment baixa, perquè el criteri de la $I_max$ sia irrellevant",
+"1,5 mm²",
+"2,5 mm²",
+"4 mm²",
+"6 mm²",
+"10 mm²",
+"16 mm²",
+"25 mm²",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quants de tubs han de sortir d'una CC que té 8 comptadors per habitatges, 1 de serveis comuns i 2 locals ",
+"2",
+"11",
+"12",
+"13",
+"14",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"De quin diàmetre ha de ser el tub d'una DI trifàsica amb cable unipolar RZ1-K empotrat de 25 mm²",
+"ø32",
+"ø40",
+"ø50",
+"ø63",
+"ø70",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quin cable <b>NO</b> puc instal·lar a una DI",
+"H07Z1-K",
+"RZ1-K",
+"DZ1-K",
+"H07RN-K",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quins són les seccions mínimes del REBT i de la NRZ103 per coure?",
+"mínim exigit REBT: 4 mm², minim recomanat EDE: 6 mm²",
+"mínim exigit REBT: 6 mm², minim recomanat EDE: 10 mm²",
+"mínim exigit REBT: 10 mm², minim recomanat EDE: 6 mm²",
+"mínim exigit REBT: 6 mm², minim recomanat EDE: 4 mm²",
+"Marca aquesta si no pots marcar cap de les altres."
+]
+];
+
+
+const solucions_originals = [
+
+2, 4, 1, 7, 6,
+6, 4, 4, 4, 2
+
+];
+
+
+const punts_preguntes = [
+
+1, 1, 1, 1, 1,
+1, 1, 1, 1, 1,
+
+];
+</script>
+
+<script src="../../js/config_test.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/test_html_comp.js"></script>
+<script src="../../js/test_dades.js"></script>
+<script src="../../js/test_mates.js"></script>
+<script>window.onload = renderitza;</script>
