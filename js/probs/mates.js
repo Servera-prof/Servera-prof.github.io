@@ -106,14 +106,20 @@ function l(a, b = 4){  // log abreviat a l totsol
     return coma(xs(a, b));
 }
 
+function la(a, b = 2){ // log arrodonit a 2 decimals per defecte
+    return coma(ar(a, b));
+}
+
 function ll(a, b = 4){ // log Latex
     return cl(xs(a, b));
 }
 
 function xs(a, b = 4){
-    a = Number(a);
-    if (a.toPrecision) a = a.toPrecision(b);
-    return a;
+    return Number(a).toPrecision(b);
+}
+
+function ar(a, b = 2){
+     Number(a).toFixed(b)
 }
 
 function coma(a){
@@ -125,17 +131,10 @@ function cl(a){ // coma per a latex
     return coma(a).replaceAll(",", "{,}");
 }
 
-function xsMap(a){
-    a = xs(a);
-    return a;
-}
-
 function binari(n) {
-    a = n;
-    return a.toString(2).toString();
+    return n.toString(2).toString();
 }
 
 function hexadecimal(n) {
-    a = n;
-    return a.toString(16).toUpperCase();
+    return n.toString(16).toUpperCase();
 }
