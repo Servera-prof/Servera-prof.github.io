@@ -46,7 +46,10 @@ la important seccio de la LGA, s'utilitza el mètode de la caiguda de
 tensió unitària.
 
 **Nota important:** Per unificar criteris aplica la taula de la
-UNE 20460-5-523:2004 disponible a la GT ITC-BT-10. 
+UNE 20460-5-523:2004 disponible a la 
+<a href="https://industria.gob.es/Calidad-Industrial/seguridadindustrial/instalacionesindustriales/baja-tension/Documents/bt/guia_bt_19_feb09R2.pdf" target="_blank" rel="noopener noreferrer">
+  Guia Tècnica de la ITC-BT-19
+</a> 
  
  
  
@@ -68,6 +71,7 @@ Respostes
 - Caiguda de tensió a la temperatura real d'operacio: [[%cdt_op]] V
 - Caiguda de tensió màxima admisible: [[%cdt_max]]
 - Secció triada: [[%s_lga]] mm²
+- Diàmetre del tub: [[%diam_t]]
 
 
 Puntuacions
@@ -331,10 +335,19 @@ function calcular_solucions() {
         cdt_op = cdtu * l_lga/1e3 * i_b;
     }
     const s_lga = arr_sec[j_sec];
+    
+    const arr_dt = [ // Array de diàmetres de tubs
+        0,       0,       0,       0,       75,
+        75,      110,     110,     125,     140,
+        140,     160,     160,     180,     200
+    ];
+    
+    const diam_t = arr_dt[j_sec];
+    
     return {
         i_b,      i_buc,     i_n,    i_max,    i_z,
         cdt_90,   s_lga90,   t_op,   cdt_op,   cdt_max, 
-        s_lga
+        s_lga, diam_t
     };
 }
 
@@ -648,10 +661,18 @@ function generar_explicacio(){
         ].join("\n");
     }
     const s_lga = arr_sec[j_sec];
+    const arr_dt = [ // Array de diàmetres de tubs
+        0,       0,       0,       0,       75,
+        75,      110,     110,     125,     140,
+        140,     160,     160,     180,     200
+    ];
+    
+    const diam_t = arr_dt[j_sec];
     
     md += ['',
       "Si!"                                                            ,
-      "- s_lga = " +s_lga+ " mm²"                                      ,
+      " - s_lga = " +s_lga+ " mm²"                                     ,
+      " - diam_t = " +diam_t+ " mm"                                    ,
     ].join("\n");
     
     md += "\n~~~";
