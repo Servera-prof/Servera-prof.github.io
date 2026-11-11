@@ -2,36 +2,12 @@
 <head>
     <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/temari.css" />
 </head>
 <textarea id="enunciat">
 
-
-
-
-
-
-
-
-
-
-
-UT03 - Dimensionament d'instal·lacions en locals
-================================================
-
-
-
-
-
-
-
-
-
-
-1. Instal·lacions d'enllaç
---------------------------
-
-### 1.1. Previsió de potències
+UT03 - Previsió de potències
+============================
 
 Per a dimensionar instal·lacions d'enllaç el primer pas serà determinar
 la potència prevista. Per a fer-ho s'haurà d'aplicar la ITC-BT 10.
@@ -59,7 +35,10 @@ A on:
 > **Nota:** Aquestes potències (122,55, 2,61, etc. ) s'obtenen en
 > els següents punts.
 
-#### Potència habitatges
+
+
+Potència habitatges
+-------------------
 
 La potència corresponent al conjunt d'habitatges és calcula com:
 
@@ -102,7 +81,8 @@ Previsió de potència d'un edifici amb **25** habitatges, **18** amb electrific
 
 
 
-#### Serveis generals
+Serveis generals
+----------------
 
 Per als serveis generals s'han de sumar totes les potències previstes
 dels diferents equips a instal·lar: ascensors, grups de pressió,
@@ -120,10 +100,38 @@ Pel que fa a la iluminació d'espais comuns es raonable calcular:
 > la potència a preveure és:
 > $$ P_{SG} = 40 \cdot 8 + 20 \cdot 4 + 3 \cdot 736 
   = 2608~\text{W} $$
+  
+### Estimació de potència dels ascensors
+
+| Tipus | Càrrega (kg) | n. pers | v (m/s) | P (kW) |
+| ----- | ------------ | ------- | ------- | ------ |
+| ITA-1 | 400          | 5       | 0,63    | 4,5    |
+| ITA-2 | 400          | 5       | 1,00    | 7,5    |
+| ITA-3 | 630          | 8       | 1,00    | 11,5   |
+| ITA-4 | 630          | 8       | 1,60    | 18,5   |
+| ITA-5 | 1.000        | 13      | 1,60    | 29,5   |
+| ITA-6 | 1.000        | 13      | 2,50    | 46,0   |
+
+
+### Estimació de potència dels grups de pressió
+
+| NPA   | 1-4 P | 5-10 P | 11-15 P | 16-20 P|
+| ----- | ----- | ------ | ------- | ------ |
+| 150   | 1 kW  | 1 kW   | 1 kW    | 1 kW   |
+| 300   | 1 kW  | 1 kW   | 2 kW    | 2 kW   |
+| 450   | 1 kW  | 2 kW   | 4 kW    | 6 kW   |
+| 900   | 2 kW  | 4 kW   | 6 kW    | 6 kW   |
+| 1.800 | 2 kW  | 4 kW   | 6 kW    | 8 kW   |
+| 3.500 | 4 kW  | 6 kW   | 9 kW    | 11 kW  |
+
+A on:
+- NPA és el número de preses d'aigua
+- 1-4 P vol dir 1 a 4 plantes, etc.
 
 
 
-#### Locals oficines
+Locals i oficines
+----------------
 
 Es calcularan 100 W per metre quadrat i planta amb un mínim de 
 3.450 W.
@@ -148,7 +156,8 @@ Es calcularan 100 W per metre quadrat i planta amb un mínim de
 
 
 
-#### Garatges
+Garatges
+--------
 
 És calcularà com:
 - 10 W/m² per a garatges amb ventilació natural
@@ -160,7 +169,10 @@ Es calcularan 100 W per metre quadrat i planta amb un mínim de
 > forçada és de:
 > $$ P_G = 200 \cdot 20 = 4.000~\text{W} $$
 
-#### Vehicle elèctric
+
+
+Vehicle elèctric
+----------------
 
 S'hauran de preveure 3,680 W el 10% de places d'aparcament 
 construïdes. Aquesta previsió és multiplicarà per 0,3 si és

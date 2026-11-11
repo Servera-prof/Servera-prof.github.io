@@ -119,7 +119,7 @@ function xs(a, b = 4){
 }
 
 function ar(a, b = 2){
-     Number(a).toFixed(b)
+    return Number(a).toFixed(b)
 }
 
 function coma(a){

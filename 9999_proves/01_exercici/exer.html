@@ -7,14 +7,22 @@
 </head>
 <textarea id="enunciat">
     
-Examen de càlcul de previsió de potències
-=========================================
+Càlcul de previsió de potències
+===============================
 
 Enunciat
 --------
 
-Tenim un edifici dedicat principalment a habitatges, calcula segons
-ITC-BT-10 la potència prevista per una instal·lació amb:
+Tenim un edifici dedicat principalment a habitatges. Tenint en compte
+que:
+- assumirem que l'habitatge és d'electrificació bàsica tret que sigui
+  reglamentariament exigible elevada 
+- que les potències de cada habitatge seran les mínimes reglamentàries
+- no hi pot haver places mitges de VE, i que la opció més cauta és 
+  arrodonir a l'enter superior (p.e. si el nombre de vehícles elèctrics 
+  és d'1,4 s'arrodonirà a 2) 
+  
+Calcula segons ITC-BT-10 la potència prevista per una instal·lació amb:
 
 **Habitatges**
 
@@ -58,12 +66,12 @@ Respostes
 ----------
 
 - Coeficient de simultaneitat habitatges: [[%cs]]
-- Potència habitatges: [[%ph]] kW
-- Potència locals: [[%pl]] kW
-- Potència garatge: [[%pg]] kW
-- Potència zones comunes: [[%pzc]] kW
-- Potència vehícle elèctric: [[%pve]] kW
-- Potència total prevista per l'edifici [[%pt]] kW
+- Potència habitatges: [[%ph_kw]] kW
+- Potència locals: [[%pl_kw]] kW
+- Potència garatge: [[%pg_kw]] kW
+- Potència zones comunes: [[%pzc_kw]] kW
+- Potència vehícle elèctric: [[%pve_kw]] kW
+- **(_4 punts_) Potència total prevista per l'edifici** [[%pt_kw]] kW
 
 
 
@@ -73,142 +81,27 @@ Puntuacions
 Tret que s'indiqui el contrari totes les preguntes valen 1 punt.
 
 [[form]]
-</textarea>
+
+</textarea></main></body>
+
 
 
 <script src="../../js/probs/config.js"></script>
 <script src="../../js/texme/texme.js"></script>
 <script src="../../js/probs/mates.js"></script>
-
+<script src="../../js/probs/ppal.js"></script>
 
 <script>
 
-document.addEventListener("DOMContentLoaded", init);
 /**
- * Array o objecte opcional que defineix el pes de puntuació per a cada 
- * pregunta.
+ * Array o obj opcional amb el pes de puntuació per a cada regunta.
  * Si és `null`, totes les preguntes valen 1 punt.
  * @type {Array<number>|Object<string, number>|null}
  */
-let puntuacio = null;
-
-/**
- * Objecte que emmagatzema tots els paràmetres aleatoris de l'exercici 
- * (habitatges, locals, garatge, serveis comuns).
- * @type {Object<string, any>}
- */
-let params = {};
-
-/**
- * Text Markdown original extret del textarea de l'enunciat.
- * @type {string}
- */
-let md = '';
-
-/**
- * Inicialitza l'exercici generant els paràmetres aleatoris i 
- * substituint les etiquetes de plantilla `[[...]]` del textarea pels 
- * valors o elements d'entrada.
- * 
- * @returns {void}
- */
-function init() {
-    params = genera_params();
-    let ta = document.getElementById('enunciat');            // textarea
-    md = ta.value;
-    ta.value = md.replace(/\[\[(.*?)\]\]/g, processar_plantilla);
-}
-
-
-/**
- * Processa una coincidència d'etiqueta de plantilla i retorna el 
- * contingut HTML o text pertinent.
- * 
- * @param {string} match - La coincidència completa trobada per 
- *   l'expressió regular (ex: `"[[nh1]]"`).
- * @param {string} rawId - L'identificador intern sense els claudàtors 
- *   (ex: `"form"`, `"%ph"`, `"nh1"`).
- * @returns {string} El codi HTML del formulari/input o el valor 
- *   formatat del paràmetre.
- */
-function processar_plantilla(match, rawId) {
-    if (rawId === 'form') return crear_form();
-    else if (rawId.startsWith('%')) return crear_input(rawId);
-    else return crear_param(rawId, match);
-}
-
-/**
- * Genera el formulari HTML per al nom de l'alumne, la confirmació i el 
- * botó d'avaluació.
- * 
- * @returns {string} Codi HTML del formulari `<form>`.
- */
-function crear_form() {
-    const html = ['',
-        '<form onsubmit="event.preventDefault(); avaluar();">',
-        '  <label>Nom: ',
-        '    <input id="nom" required style="width: 250px;">',
-        '  </label><br>',
-        '  <label>',
-        '    <input type="checkbox" id="informat" required>',
-        '    Entenc que no es pot tornar enrere.',
-        '  </label>',
-        '  <div style="text-align: center; margin-top: 10px;">',
-        '    <button type="submit" style="font-size: 20px; color: #AA5050;">',
-        '      Avaluar',
-        '    </button>',
-        '  </div>',
-        '</form>'
-    ].join("\n");
-
-    return html;
-}
-
-/**
- * Crea un element d'entrada numèric `<input>` a partir d'un 
- * identificador.
- * 
- * @param {string} rawId - Identificador que comença per `%` 
- *   (ex: `"%ph"`).
- * @returns {string} Codi HTML de l'element `<input>`.
- */
-function crear_input(rawId) {
-    const id = rawId.substring(1);
-    return '<input type="number" id="i_' + id + '" style="width: 80px;">';
-}
-
-/**
- * Retorna el valor d'un paràmetre emmagatzemat a `params` formatat, o 
- * el text original de coincidència si el paràmetre no existeix.
- * 
- * @param {string} rawId - Nom de la clau del paràmetre (ex: `"nh1"`).
- * @param {string} match - Text original de reserva en cas que no es 
- *   trobi la clau (ex: `"[[nh1"]]").
- * @returns {string|number} Valor del paràmetre o text de reserva.
- */
-function crear_param(rawId, match) {
-    return params[rawId] !== undefined ? coma(params[rawId]) : match;
-}
-
-/**
- * Configura el motor TexMe i inicia la renderització de la pàgina.
- * 
- * @returns {void}
- */
-function renderitza(){
-    texme.setOption('onRenderPage', post_renderitzat_exer);
-    texme.renderPage();
-}
-
-/**
- * Callback executat immediatament després que TexMe hagi acabat de 
- * renderitzar la pàgina.
- * 
- * @returns {void}
- */
-function post_renderitzat_exer(){
-    /*creaMembreteKatakana();*/
-}
+let puntuacio = [
+1, 1, 1, 1, 1,
+1, 4
+];
 
 
 /**
@@ -239,9 +132,9 @@ function genera_params() {
     ]
     ];
 
-    const i_rh1 = aleat(0, 1);
+    const i_rh1 = 1;
     const j_rh1 = aleat(0, 3);
-    const i_rh2 = aleat(0, 1);
+    const i_rh2 = 0;
     const j_rh2 = aleat(0, 3);
     const i_rh3 = aleat(0, 1);
     const j_rh3 = aleat(0, 3);
@@ -250,15 +143,15 @@ function genera_params() {
     const rh2 = arr_rh[i_rh2][j_rh2];
     const rh3 = arr_rh[i_rh3][j_rh3];
 
-    const mq1 = aleat(50, 200);                       // metres quatrats
+    const mq1 = aleat(50, 159);                       // metres quatrats
     const mq2 = aleat(50, 200);
     const mq3 = aleat(50, 200);
 
-    const nt1 = aleat(9, 25);              // número de tomes de corrent
+    const nt1 = aleat(9, 20);              // número de tomes de corrent
     const nt2 = aleat(9, 25); 
     const nt3 = aleat(9, 25);  
 
-    const pll1 = aleat(10, 35);               // número de punts de llum
+    const pll1 = aleat(10, 30);               // número de punts de llum
     const pll2 = aleat(10, 35);
     const pll3 = aleat(10, 35);
 
@@ -336,32 +229,6 @@ function genera_params() {
     };
 }
 
-
-
-
-
-
-
-
-/**
- * Controladora del procés d'avaluació:
- * 1. Calcula les solucions teòriques.
- * 2. Obté les respostes introduïdes per l'alumne.
- * 3. Avalua i puntua les respostes.
- * 4. Neteja el DOM i renderitza la vista d'avaluació final.
- * 
- * @returns {void}
- */
-function avaluar(){
-    solucions = calcular_solucions();
-    respostes = obtenir_respostes();
-    correccio = corregir_test(solucions, respostes, puntuacio);
-    resetejar();
-    renderitzar_avaluacio(solucions, respostes, correccio);    
-}
-
-
-
 /**
  * Calcula les solucions teòriques de potència segons la normativa 
  * ITC-BT-10.
@@ -389,7 +256,90 @@ function calcular_solucions() {
         plg,  sg,    i_vg, vg,  spv, i_spl, spl,
         sesc, spas,  i_ae, ae,   npa, npl
     } = params;
-    const calculs = {};
+    
+    const ee1 = i_rh1 === 0 || mq1 > 160 || nt1 > 20 || pll1 > 30;
+    const ee2 = i_rh2 === 0 || mq2 > 160 || nt2 > 20 || pll2 > 30;
+    const ee3 = i_rh3 === 0 || mq3 > 160 || nt3 > 20 || pll3 > 30;
+    
+    const ph1 = ee1 ? 9200: 5750;
+    const ph2 = ee2 ? 9200: 5750;
+    const ph3 = ee3 ? 9200: 5750;
+    
+    const nh = nh1 + nh2 + nh3;                             // num habit
+    const arr_cs = [
+        1,    2,    3,    3.8,  4.6,
+        5.4,  6.2,  7,    7.8,  8.5,
+        9.2,  9.9,  10.6, 11.3, 11.9,
+        12.5, 13.1, 13.7, 14.3, 14.8,
+        15.3
+    ];
+    const cs = nh > 21 ? 15.3+(nh-21)*0.5 : arr_cs[nh-1]; // coef simult
+    const ph = cs*(nh1*ph1 + nh2*ph2 + nh3*ph3)/nh;
+    
+    const pl1 = max(sl1*100, pdl1*1000, 3450);
+    const pl2 = max(sl2*100, pdl2*1000, 3450);
+    const pl3 = max(sl3*100, pdl3*1000, 3450);
+
+    const pl = pl1 + pl2 + pl3;                            // pot locals
+    
+    const pmqg = i_vg === 0 ? 10 : 20;               // pot per m² garat
+    const pg = plg * sg * pmqg;
+    
+    const cspl = i_spl === 0 ? 0.3 : 1;                // coeficient SPL
+    const nve = Math.ceil(0.1 * plg * sg / spv);
+    const pve =  cspl * nve * 3680;                  // pot vehicle elec
+    
+    const pesc = sesc * 4;
+    const ppas = spas * 8;
+    const arr_pae = [
+        4500,
+        7500,
+        11500
+    ];
+    const pae = arr_pae[i_ae];
+    
+    const arr_pgp = [
+        [1, 1, 1, 1],
+        [1, 1, 2, 2],
+        [1, 2, 4, 6],
+        [2, 4, 6, 6],
+        [2, 4, 6, 8],
+        [4, 6, 9, 11]
+    ];
+    const i_pgp = [150, 300, 450, 900, 1800, 3500].findIndex(e => e >= npa);
+    const j_pgp = [1, 5, 11, 16].findIndex(e => e >= npl);
+    const pgp = arr_pgp[i_pgp][j_pgp]*1e3;
+    const pzc = pesc + ppas + pae + pgp;
+    const pt = ph + pl + pg + pve + pzc;
+    
+    const ph_kw = ph/1e3; 
+    const pl_kw = pl/1e3;
+    const pg_kw = pg/1e3; 
+    const pzc_kw = pzc/1e3;
+    const pve_kw = pve/1e3;
+    const pt_kw = pt/1e3;
+    return {
+        cs, ph_kw, pl_kw, pg_kw, pve_kw, pzc_kw, pt_kw
+    };
+}
+
+function generar_explicacio(){
+    let md = ['',
+    'Explicació',
+    '==========',
+    ''
+    ].join("\n");
+    
+    const {
+        nh1,  i_rh1, rh1,  mq1, nt1, pll1,
+        nh2,  i_rh2, rh2,  mq2, nt2, pll2,
+        nh3,  i_rh3, rh3,  mq3, nt3, pll3,
+        tl1,  pdl1,  sl1,  
+        tl2,  pdl2,  sl2,  
+        tl3,  pdl3,  sl3,  
+        plg,  sg,    i_vg, vg,  spv, i_spl, spl,
+        sesc, spas,  i_ae, ae,   npa, npl
+    } = params;
     
     const ee1 = i_rh1 === 0 || mq1 > 160 || nt1 > 20 || pll1 > 30;
     const ee2 = i_rh2 === 0 || mq2 > 160 || nt2 > 20 || pll2 > 30;
@@ -420,7 +370,7 @@ function calcular_solucions() {
     const pg = plg * sg * pmqg;
     
     const cspl = i_spl === 0 ? 0.3 : 1;                // coeficient SPL
-    const nve = sg / spv
+    const nve = Math.ceil(0.1 * plg * sg / spv);
     const pve =  cspl * nve * 3680                   // pot vehicle elec
     
     const pesc = sesc * 4;
@@ -442,7 +392,7 @@ function calcular_solucions() {
     ];
     const i_pgp = [150, 300, 450, 900, 1800, 3500].findIndex(e => e >= npa);
     const j_pgp = [1, 5, 11, 16].findIndex(e => e >= npl);
-    const pgp = arr_pgp[i_pgp][j_pgp];
+    const pgp = arr_pgp[i_pgp][j_pgp]*1e3;
     const pzc = pesc + ppas + pae + pgp;
     const pt = ph + pl + pg + pve + pzc;
     
@@ -452,271 +402,93 @@ function calcular_solucions() {
     const pzc_kw = pzc/1e3;
     const pve_kw = pve/1e3;
     const pt_kw = pt/1e3;
-    return {
-        cs, ph_kw, pl_kw, pg_kw, pve_kw, pzc_kw, pt_kw
-    };
-}
-
-/**
- * Llegeix els valors introduïts per l'usuari des dels camps del 
- * formulari (`input`).
- * 
- * @returns {Object<string, number|string|null>} Objecte amb la clau 
- *   `nom` (nom de l'alumne) i les respostes numèriques introduïdes per 
- *   a cada pregunta.
- */
-function obtenir_respostes(){
-
-    const respostes = {};
-    const nomElem = document.getElementById('nom');
-    respostes.nom = nomElem ? nomElem.value.trim() : '';
-
-    const inputs = document.querySelectorAll('input[id^="i_"]');
-    inputs.forEach(input => {
-        const key = input.id.replace('i_', '');
-        const val = input.value.trim();
-        if (val === '') {
-            respostes[key] = null;
-        } else {
-            respostes[key] = parseFloat(val.replace(',', '.'));
-        }
-    });
-
-    return respostes;
-}
-
-/**
- * Compara les respostes de l'alumne amb les solucions correctes i 
- * assigna les puntuacions.
- * S'admet una tolerància d'error de l'1%.
- * 
- * @param {SolucionsEdifici} solu - Objecte amb les solucions 
- *   calculades.
- * @param {RespostesUsuari} resp - Objecte amb les respostes 
- *   proporcionades.
- * @param {Array<number>|Object<string, number>|null} [pts] - Pesos de 
- *   puntuació de les preguntes.
- * @returns {Object<string, number>} Objecte amb la puntuació obtinguda 
- *   a cada pregunta.
- */
-function corregir_test(solu, resp, pts){
-    const correccio = {};
-    const keys = Object.keys(solu);
-
-    keys.forEach((key, index) => {
-        let puntMax = null;
-        const pts_es_array = (
-            Array.isArray(pts) && 
-            pts[index] !== undefined
-        );
-        const pts_es_obj = (
-            typeof pts === 'object' && 
-            pts !== null && 
-            pts[key] !== undefined
-        );
-
-        if (pts_es_array) puntMax = pts[index];
-        else if (pts_es_obj) puntMax = pts[key];
-        else puntMax = 1;
-        
-        const r = resp[key];
-        const s = solu[key];
-        
-        const sha_respost = r !== null && r !== undefined && !isNaN(r);
-
-        if (sha_respost) {
-            const t = Math.abs(s) * 0.01;          // tolerància de l'1%
-            const m = t === 0 ? 1e-4 : t;                       // marge
-            const dins_marge = Math.abs(r - s) <= m;
-            
-            if (dins_marge) correccio[key] = puntMax;
-            else correccio[key] = 0;
-        } else {
-            correccio[key] = 0;
-        }
-    });
-
-    return correccio;
-}
-
-
-/**
- * Prepara el DOM per a la fase d'avaluació: elimina l'element `<main>` 
- * actual i afegeix un nou element `<textarea id="avaluacio">`.
- * 
- * @returns {void}
- */
-function resetejar(){
-    const ppal = document.getElementsByTagName("main")[0];
-    const body = ppal.parentNode;
-    const textArea = body.appendChild(document.createElement("textarea"));
-    body.removeChild(ppal);
-    textArea.setAttribute("id", "avaluacio");
-}
-
-/**
- * Genera el codi Markdown d'avaluació amb la nota final i l'estat 
- * detallat de cada resposta i ho passa al motor de renderització TexMe.
- * 
- * @param {soluEdifici} solu - Objecte amb les solucions teòriques.
- * @param {respUsuari} resp - Objecte amb les respostes aportades per 
- *   l'alumne.
- * @param {Object<string, number>} corr - Puntuació aconseguida en 
- *   cada camp.
- * @param {string} [explicacio] - Text d'explicació o aclariment 
- *   addicional per annexar al final.
- * @returns {void}
- */
-function renderitzar_avaluacio(solu, resp, corr, explicacio){
-    let md2 = md;
-
-    md2 = afegir_prefix_titol(md2);
-    md2 = inserir_resum_avaluacio(md2, corr, solu, resp, puntuacio);
-    md2 = reemplacar_etiquetes_plantilla(md2, solu, resp, corr);
-
-    if (explicacio && typeof explicacio === 'string') {
-        md2 += "\n\n" + explicacio;
-    }
     
-    document.getElementById("avaluacio").value = md2;
-    texme.renderPage();
-}
+    /*calculs = {ee1, ee2, ee3, ph1, ph2, ph3, nh, arr_cs, cs, ph,
+               pl1, pl2, pl3, pl, pmqg, pg, cspl, nve, pve, pesc, ppas,
+               arr_pae, pae, arr_pgp, i_pgp, j_pgp, pgp, pzc, pt,
+               ph_kw, pl_kw, pg_kw, pzc_kw, pve_kw, pt_kw}*/
 
-/**
- * Modifica el títol principal d'un text en Markdown (formatat amb 
- * subratllat de signes `=`), afegint-hi un prefix i ajustant la 
- * longitud de la línia de subratllat.
- * 
- * @param {string} md - Text Markdown que conté el títol principal.
- * @param {string} [prefix="Avaluació - "] - Prefix que s'afegirà abans 
- *   del títol.
- * @returns {string} El text Markdown amb el títol modificat i 
- *   reajustat.
- */
-function afegir_prefix_titol(md, prefix = "Avaluació - ") {
-    return md.replace(/^([^\n]+)\n(=+)/m, (match, title) => {
-        const nou_titol = prefix + title;
-        return nou_titol + "\n" + "=".repeat(nou_titol.length);
-    });
-}
+    md += "\n~~~\n";
 
-
-/**
- * Genera el blockquote amb el resum de la qualificació de l'alumne 
- * (punts obtinguts, punts totals i nota sobre 10) i l'insereix en el 
- * text Markdown immediatament després de la línia de subratllat del 
- * títol principal (`=`).
- * 
- * @param {string} textMd - Text Markdown on s'inserirà el resum.
- * @param {Object<string, number>} c - Puntuació aconseguida en cada 
- * pregunta.
- * @param {Object<string, any>} s - Objecte amb les solucions teòriques.
- * @param {Object<string, any>} r - Objecte amb les respostes de 
- *   l'alumne (inclou la clau `nom`).
- * @param {Array<number>|Object<string, number>|null} [pts] - Pesos 
-     opcionals de puntuació.
- * @returns {string} El text Markdown amb el blockquote del resum 
- *   inserit.
- */
-function inserir_resum_avaluacio(textMd, c, s, r, pts) {
-    let pts_obt = 0;
-    let pts_tot = 0;
+    md += ['','',
+      'rh1: ' +rh1+ '; mq1: ' +mq1+ '; nt1: ' +nt1+ '; pll1: ' +pll1   ,
+      'rh2: ' +rh2+ '; mq2: ' +mq2+ '; nt2: ' +nt2+ '; pll2: ' +pll2   ,
+      'rh3: ' +rh3+ '; mq3: ' +mq3+ '; nt3: ' +nt3+ '; pll3: ' +pll3   ,
+      '                                                               ',
+      'ee1 = i_rh1 === 0 || mq1 > 160 || nt1 > 20 || pll1 > 30 = ' +ee1,
+      'ee2 = i_rh2 === 0 || mq2 > 160 || nt2 > 20 || pll2 > 30 = ' +ee2,
+      'ee3 = i_rh3 === 0 || mq3 > 160 || nt3 > 20 || pll3 > 30 = ' +ee3,
+      '                                                               ',
+      '                                                               ',
+      'ph1 = ee1 ? 9200: 5750 = ' +ph1                                 ,
+      'ph2 = ee2 ? 9200: 5750 = ' +ph2                                 ,
+      'ph3 = ee3 ? 9200: 5750 = ' +ph3                                 ,
+      '                                                               ',
+      'nh = nh1 + nh2 + nh3 = ' +nh                                    ,
+      'const arr_cs = [                                               ',
+      '    1,    2,    3,    3.8,  4.6,                               ',
+      '    5.4,  6.2,  7,    7.8,  8.5,                               ',
+      '    9.2,  9.9,  10.6, 11.3, 11.9,                              ',
+      '    12.5, 13.1, 13.7, 14.3, 14.8,                              ',
+      '    15.3                                                       ',
+      '];                                                             ',
+      'cs = nh > 21 ? 15.3+(nh-21)*0.5 : arr_cs[nh] = ' +cs            ,
+      'ph = cs*(nh1*ph1 + nh2*ph2 + nh3*ph3)/nh = ' +ph                ,
+      '                                                               ',
+      '                                                               ',
+      'tl1: ' +tl1+ '; pdl1: ' +pdl1+ '; sl1: ' +sl1                   ,
+      'tl2: ' +tl2+ '; pdl2: ' +pdl2+ '; sl2: ' +sl2                   ,
+      'tl3: ' +tl3+ '; pdl3: ' +pdl3+ '; sl3: ' +sl3                   ,
+      '                                                               ',
+      'pl1 = max(sl1*100, pdl1*1000, 3450) = ' +pl1                    ,
+      'pl2 = max(sl2*100, pdl2*1000, 3450) = ' +pl2                    ,
+      'pl3 = max(sl3*100, pdl3*1000, 3450) = ' +pl3                    ,
+      '                                                               ',
+      'pl = pl1 + pl2 + pl3 = ' +pl                                    ,
+      '                                                               ',
+      'pmqg = i_vg === 0 ? 10 : 20 = ' +pmqg+ ' (pot per m² garat)    ',
+      'pg = plg * sg * pmqg = ' +pg                                    ,
+      '                                                               ',
+      'cspl = i_spl === 0 ? 0.3 : 1 = ' +cspl+ ' (coeficient SPL)     ',
+      'nve = Math.ceil(0.1 * plg * sg / spv) =                        ',
+      '    = Math.ceil(0.1 * ' +plg+ '*' +sg+ ' / ' +spv+ ') = ' +nve  ,
+      'pve =  cspl * nve * 3680 = ' +pve                               ,
+      '                                                               ',
+      'pesc = sesc * 4 = ' +sesc+ ' * 4 = ' +pesc                      ,
+      'ppas = spas * 8 = ' +spas+ ' * 8 = ' +ppas                      ,
+      'arr_pae = [                                                    ',
+      '    4500,                                                      ',
+      '    7500,                                                      ',
+      '    11500                                                      ',
+      '];                                                             ',
+      'pae = arr_pae[i_ae] = ' +pae                                    ,
+      '                                                               ',
+      'arr_pgp = [                                                    ',
+      '    [1, 1, 1, 1],                                              ',
+      '    [1, 1, 2, 2],                                              ',
+      '    [1, 2, 4, 6],                                              ',
+      '    [2, 4, 6, 6],                                              ',
+      '    [2, 4, 6, 8],                                              ',
+      '    [4, 6, 9, 11]                                              ',
+      '];                                                             ',
+      'i_pgp = [150, 300, 450, 900, 1800, 3500]                       ',
+      '       .findIndex(e => e >= npa) = ' +i_pgp                     ,
+      'j_pgp = [1, 5, 11, 16].findIndex(e => e >= npl) = ' +j_pgp      ,
+      'pgp = arr_pgp[i_pgp][j_pgp]*1e3 = ' +pgp                        ,
+      'pzc = pesc + ppas + pae + pgp = ' +pzc                          ,
+      'pt = ph + pl + pg + pve + pzc = ' +pt                           ,
+      '                                                               ',
+      'ph_kw = ph/1e3 = ' +ph_kw                                       ,
+      'pl_kw = pl/1e3 = ' +pl_kw                                       ,
+      'pg_kw = pg/1e3 = ' +pg_kw                                       ,
+      'pzc_kw = pzc/1e3 = ' +pzc_kw                                    ,
+      'pve_kw = pve/1e3 = ' +pve_kw                                    ,
+      'pt_kw = pt/1e3 = ' +pt_kw                                       
+    ].join("\n");
     
-    Object.values(c).forEach(p => pts_obt += p);
-    
-    if (Array.isArray(pts)) pts_tot = pts.reduce((a, b) => a + b, 0);
-    else pts_tot = Object.keys(s).length;
-
-    let nota = pts_tot > 0 ? la(pts_obt / pts_tot) * 10 : 0;
-
-    pts_obt = la(pts_obt);
-    pts_tot = la(pts_tot);
-
-    const resumBlockquote = ['',
-        "> L'alumne " +r.nom+ " ha obtingut " +pts_obt+ " punts de ",
-        "> " +pts_tot+ " punts possibles. La seva qualificació és per ",
-        "> tant de **" +nota+ " punts**.",
-        ''
-    ]. join("\n");
-    return textMd.replace(/^(=+\n)/m, "$1\n" + resumBlockquote);
-}
-
-
-/**
- * Reemplaça les etiquetes de plantilla ([[form]], [[%id]] i [[param]]) 
- * en un text Markdown pels valors corresponents avaluats, solucions o 
- * puntuacions.
- * 
- * @param {string} md - Text md amb les etiquetes de plantilla.
- * @param {Object<string, any>} solu - Obj, amb les solucions teòriques.
- * @param {Object<string, any>} resp - Obj. de respostes de l'alumne.
- * @param {Object<string, number>} corr - Pts aconseguidts en cada camp.
- * @returns {string} El text md amb les etiquetes reemplaçades.
- */
-function reemplacar_etiquetes_plantilla(md, solu, resp, corr) {
-
-    return md.replace(/\[\[(.*?)\]\]/g, (match, rawId) => {
-        if (rawId === 'form') {
-            return eliminar_formulari();
-        } else if (rawId.startsWith('%')) {
-            return explicar_correccio(rawId, solu, resp, corr);
-        } else {
-            return crear_param(rawId, params, match);
-        }
-    });
-}
-
-
-/**
- * Elimina el formulari del renderitzat d'avaluació.
- * @returns {string} Cadena buida.
- */
-function eliminar_formulari() {
-    return '';
-}
-
-
-/**
- * Genera l'HTML amb l'estat de la resposta i la puntuació/solució d'un 
- * camp concret.
- * 
- * @param {string} rawId - Id. de la pregunta (amb el prefix '%').
- * @param {Object<string, any>} solu - Obj amb les solucions teòriques.
- * @param {Object<string, any>} resp - Obj de respostes de l'alumne.
- * @param {Object<string, number>} corr - Pts aconseguits en cada camp.
- * @returns {string} Codi HTML amb el format d'avaluació.
- */
-function explicar_correccio(rawId, solu, resp, corr) {
-    const id = rawId.substring(1);
-    const r = resp[id];
-    const s = solu[id];
-    const pts = corr[id] || 0;
-
-    if (r === null || r === undefined || isNaN(r)) {
-        return ['',
-          '<span style="text-decoration: underline;">',
-          '  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
-          '</span> <span style="color: red;">(' +la(s)+ ')</span>'
-        ].join("\n");
-    }else if (pts > 0) {
-        return ['',
-          '<span style="color: green; text-decoration: underline;">',
-          '  ' +l(r)+ '</span>',
-          '<span style="color: green;">✅ (+' +la(pts)+ ' ' +
-          '' + (pts === 1 ? "punt" : "punts") + ')</span>'
-        ].join("\n");
-    }else{
-        return ['',
-          '<span style="color: red; text-decoration: line-through; ' +
-          'color: red;">' +l(r)+ '</span>',
-          '<span style="color: red;">(' +l(s)+ ')</span>'
-        ].join("\n");
-    }
+    md += "\n~~~";
+    return md;
 }
 
 </script>
-
-<script>window.onload = renderitza;</script>
-
-</main></body>
 </html>
