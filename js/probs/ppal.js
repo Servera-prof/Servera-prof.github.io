@@ -25,7 +25,9 @@ function init() {
     params = genera_params();
     let ta = document.getElementById('enunciat');            // textarea
     md = ta.value;
-    ta.value = md.replace(/\[\[(.*?)\]\]/g, processar_plantilla);
+    let md2 = md.replace(/\[\[(.*?)\]\]/g, processar_plantilla)
+    ta.value = md2;
+    console.log(md2);
 }
 
 
@@ -275,7 +277,7 @@ function renderitzar_avaluacio(solu, resp, corr, explicacio){
     if (explicacio && typeof explicacio === 'string') {
         md2 += "\n\n" + explicacio;
     }
-    
+    console.log(md2);
     document.getElementById("avaluacio").value = md2;
     texme.renderPage();
 }

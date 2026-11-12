@@ -443,7 +443,7 @@ function generar_explicacio(){
       " - γ_1 = " +γ_1+ " m/(Ω·mm²) ← u_cable = 0,6/1 kV",
       " - s_1 = " +s_1+ " mm²",
       "",
-      "cdt_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_tmax1)+ " V ≤ " +ar(cdt_max1)+ " V?",
+      "cdt1_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_tmax1)+ " V > " +ar(cdt_max1)+ " V?",
       " - cdt_max1 = 1.5/100 * 400 = " +ar(cdt_max1)+ " V",
     ].join("\n");
     
@@ -528,7 +528,7 @@ function generar_explicacio(){
       " - ρ_1 = 0.0172 * (1 + 0.00393 * (t_op1 - 20)) = " +ar(ρ_1)+ " Ω·mm²/m",
       " - s_1 = " +s_1+ " mm²",
       "",
-      "cdt_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_op1)+ " V ≤ " +ar(cdt_max1)+ " V?",
+      "cdt1_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_op1)+ " V > " +ar(cdt_max1)+ " V?",
       " - cdt_max1 = 1.5/100 * 400 = " +ar(cdt_max1)+ " V",
     ].join("\n");
     while (cdt_op1 > cdt_max1){
@@ -547,7 +547,7 @@ function generar_explicacio(){
           " - ρ_1 = " +ar(ρ_1)+ " Ω·mm²/m",
           " - cdt1_" +ar(t_op1)+ " = " +ar(cdt_op1)+ " V",
           "",
-          "cdt_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_op1)+ " V > " +ar(cdt_max1)+ " V?",
+          "cdt1_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_op1)+ " V > " +ar(cdt_max1)+ " V?",
         ].join("\n");
     }
     const s_di1 = s_1;
@@ -579,7 +579,7 @@ function generar_explicacio(){
       " - ρ_2 = 0.0172 * (1 + 0.00393 * (t_op2 - 20)) = " +ar(ρ_2)+ " Ω·mm²/m",
       " - s_2 = " +s_2+ " mm²",
       "",
-      "cdt_" +ar(t_op2)+ " > cdt_max2?: " +ar(cdt_op2)+ " V > " +ar(cdt_max2)+ " V?",
+      "cdt2_" +ar(t_op2)+ " > cdt_max2?: " +ar(cdt_op2)+ " V > " +ar(cdt_max2)+ " V?",
       " - e_pc = j_cc === cc unica ? 1 : 0.5 = " +e_pc+ " %",
       " - cdt_max2 = e_pc / 100 * 230 = " +ar(cdt_max2)+ " V",
     ].join("\n");
@@ -599,7 +599,7 @@ function generar_explicacio(){
           " - ρ_2 = " +ar(ρ_2)+ " Ω·mm²/m",
           " - cdt2_" +ar(t_op2)+ " = " +ar(cdt_op2)+ " V",
           "",
-          "cdt_" +ar(t_op2)+ " > cdt_max1?: " +ar(cdt_op2)+ " V > " +ar(cdt_max1)+ " V?",
+          "cdt2_" +ar(t_op2)+ " > cdt_max2?: " +ar(cdt_op2)+ " V > " +ar(cdt_max2)+ " V?",
         ].join("\n");
     }
     const s_di2 = s_2;
