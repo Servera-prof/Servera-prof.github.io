@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+Dimensionament dues DI
+======================
+
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+REVISIÓ ORTOGRÀFICA DEL 12-11-2026
+-->
+
+Enunciat
+--------
+
+Es necessiten calcular dues DI: 
+- La primera pertany a un habitatge unifamiliar tipus xalet i discorre 
+  enterrada [[l_di1]] m, és trifàsica, utilitza conductors de coure i el 
+  seu IGA és de 4 x [[i_iga1]] A, corba C. La profunditat de soterrament
+  és de 0,7 m, la temperatura del terreny 25°C, i la resistivitat
+  1,5 K·m/W. No hi ha agrupament de circuits.
+- La segona forma part d'un bloc d'edificis, amb [[pos_cc]], i es troba
+  a [[l_di2]] m, és monofàsica, utilitza conductors de coure de tensió
+  [[u_cable]] [[uni_o_multi]], i el seu IGA es de 2 x [[i_iga2]] A, 
+  corba C. La DI discorre [[si]], pots suposar que la temperatura 
+  ambient no supera mai els 40 °C i que no hi ha agrupament de circuits.
+
+Es demana dimensionar la instal·lació en conformitat amb l'REBT, així 
+com especificar el material utilitzat.
+
+**Nota important:**
+- La PMA s'assoleix amb la màxima intensitat que permet l'IGA i el fdp 
+  que la maximitzi.
+- Donada la poca secció de la DI, i el valor reduit (o zero) dels angles
+  φ i θ, a més de per a unificar criteris, s'utilitzarà la fórmula 
+  aproximada de l'Annexe II de la Guia Tècnica d'aplicació de l'REBT per
+  a la caiguda de tensió
+- Novament, per unificar criteris aplica la taula de la
+UNE 20460-5-523:2004 disponible a la 
+<a href="https://industria.gob.es/Calidad-Industrial/seguridadindustrial/instalacionesindustriales/baja-tension/Documents/bt/guia_bt_19_feb09R2.pdf" target="_blank" rel="noopener noreferrer">
+  Guia Tècnica de la ITC-BT-19</a>.
+ 
+ 
+ 
+Respostes
+----------
+
+### DI 1
+- PMA: [[%pma1]] W
+- Tipus de cable utilitzat: [[%t_cable1]]
+    + 0 → H07V-K
+    + 1 → H07Z1-K
+    + 2 → RV-K
+    + 3 → RZ1-K
+    + 4 → H05R-F
+- Intensitat màxima admissible en les condicions reals d'aquesta 
+  secció: [[%i_z1]] A
+- Caiguda de tensió a la temperatura màxima suportada pel 
+  conductor: [[%cdt_tmax1]] V
+- Secció triada suposant que el cable treballa a la màxima 
+  temperatura: [[%s_tmax1]] mm²
+- Temperatura real d'operació: [[%t_op1]] °C
+- Caiguda de tensió a la temperatura real d'operacio: [[%cdt_op1]] V
+- Caiguda de tensió màxima admisible: [[%cdt_max1]] V
+- Secció triada: [[%s_di1]] mm²
+
+
+### DI 2
+- PMA: [[%pma2]] W
+- Tipus de cable utilitzat: [[%t_cable2]]
+    + 0 → H07V-K
+    + 1 → H07Z1-K
+    + 2 → RV-K
+    + 3 → RZ1-K
+    + 4 → H05R-F
+- Intensitat màxima admissible en les condicions reals d'aquesta 
+  secció: [[%i_z2]] A
+- Caiguda de tensió a la temperatura màxima suportada pel 
+  conductor: [[%cdt_tmax2]] V
+- Secció triada suposant que el cable treballa a la màxima 
+  temperatura: [[%s_tmax2]] mm²
+- Temperatura real d'operació: [[%t_op2]] °C
+- Caiguda de tensió a la temperatura real d'operacio: [[%cdt_op2]] V
+- Caiguda de tensió màxima admisible: [[%cdt_max2]] V
+- Secció triada: [[%s_di2]] mm²
+
+
+Puntuacions
+-----------
+
+Tret que s'indiqui el contrari totes les preguntes valen 1 punt.
+
+[[form]]
+
+</textarea></main></body>
+
+
+
+<script src="../../js/probs/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/probs/mates.js"></script>
+<script src="../../js/probs/ppal.js"></script>
+
+<script>
+
+/**
+ * Array o obj opcional amb el pes de puntuació per a cada regunta.
+ * Si és `null`, totes les preguntes valen 1 punt.
+ * @type {Array<number>|Object<string, number>|null}
+ */
+let puntuacio = null;
+
+
+/**
+ * Genera de forma aleatòria tots els paràmetres de l'exercici o examen:
+ * habitatges, locals comercials, garatge, serveis comuns, ascensor i 
+ * grup de pressió.
+ * 
+ * @returns {Object<string, any>} Objecte amb les propietats dels 
+ *    diferents elements de l'edifici.
+ */
+function genera_params() {
+    
+    const l_di1 = aleat(50, 70);
+    const l_di2 = aleat(10, 30);
+    const arr_iga = [25, 32, 40];
+    const i_iga1 = arr_iga[aleat(0, 2)];
+    const i_iga2 = arr_iga[aleat(0, 2)];
+    const arr_cc = [
+        "centralització única", 
+        "centralització a vàries plantes"
+    ];
+    const j_cc = aleat (0, 1);
+    const pos_cc = arr_cc[j_cc];
+    const arr_ucable = [
+        "450/750 V",
+        "0,6/1 kV"
+    ];
+    const j_ucable = aleat(0, 1);
+    const u_cable = arr_ucable[j_ucable];
+    const arr_si = [
+        "encastada a paret no aillant",
+        "en muntatge superficial"
+    ];
+    const j_si = aleat(0,1);
+    const si = arr_si[j_si];
+    const arr_um = [
+        "unipolars",
+        "multipolars"
+    ];
+    const j_um = j_ucable === 0 ? 0 : aleat (0, 1);
+    const uni_o_multi = arr_um[j_um];
+    
+    return {
+        l_di1,  l_di2,       i_iga1,  i_iga2, j_cc, 
+        pos_cc, j_ucable,    u_cable, j_si,   si,
+        j_um,   uni_o_multi
+    };
+}
+
+/**
+ * Calcula les solucions teòriques de potència segons la normativa 
+ * ITC-BT-10.
+ * 
+ * @returns {Object<number, any>} Objecte amb els resultats numèrics 
+ *   calculats.
+ */
+function calcular_solucions() {
+    const {
+        l_di1,  l_di2,       i_iga1,  i_iga2, j_cc, 
+        pos_cc, j_ucable,    u_cable, j_si,   si,
+        j_um,   uni_o_multi
+    } = params;
+    const pma1 = 3**0.5 * 400 * i_iga1;
+    const pma2 = 230 * i_iga2;
+    const t_cable1 = 3;
+    const t_cable2 = j_ucable === 0 ? 1 : 3;
+    
+    const arr_sec = [ // array de seccions normalitzades
+      /*1.5,     2.5,     4.0,*/   6.0,     10.0, 
+        16.0,    25.0,    35.0,    50.0,    70.0, 
+        95.0,    120.0,   150.0,   185.0,   240.0
+    ];
+    
+    const arr_itc19 = [ // array intensitats màximes
+        [ // B1 2x PVC (col 6)
+          /*15.0,    21.0,    27.0,*/  36.0,    50.0,
+            66.0,    84.0,    104.0,   125.0,   160.0, 
+            194.0,   225.0,   260.0,   297.0,   350.0
+        ],
+        [ // B1 2x XLPE (col 10)
+          /*20.0,    26.5,    36.0,*/  46.0,    65.0, 
+            87.0,    110.0,   137.0,   167.0,   214.0, 
+            259.0,   301.0,   343.0,   391.0,   468.0
+        ],
+        [  // B2 2x XLPE (col 8)
+          /*16.5,    23.0,    31.0,*/  40.0,    54.0, 
+            73.0,    95.0,    119.0,   145.0,   185.0, 
+            224.0,   260.0,   299.0,   341.0,   401.0
+        ]
+    ];
+    
+    const arr_itc07 = [ // Array intensitats màximes cable enterrat
+      /*0,       0,       0,*/     0,       64,
+        82,      105,     105,     155,     155,
+        225,     225,     300,     300,     400 
+    ];
+    
+    let s_1 = 0;
+    let s_2 = 0;
+    
+    let j_sec1 = arr_itc07.findIndex(i=> i >= i_iga1);
+    let i_max1 = arr_itc07[j_sec1];
+    let i_z1 = i_max1;
+    s_1 = arr_sec[j_sec1];
+    
+    const arr_col = ["6", "10", "8"];
+    const i_col = j_ucable + j_um;
+    const columna = arr_col[i_col];
+    let j_sec2 = arr_itc19[i_col].findIndex(i => i >= i_iga2);
+    let i_max2 = arr_itc19[i_col][j_sec2];
+    let i_z2 = i_max2;
+    s_2 = arr_sec[j_sec2];
+    
+    let t_op1 = 90;
+    let t_op2 = j_ucable === 0 ? 70 : 90;
+    let γ_1 = 45.49;
+    let γ_2 = j_ucable === 0 ? 48.47 : 45.49;
+    
+    let cdt_tmax1 = pma1*l_di1/γ_1/s_1/400;
+    let cdt_tmax2 = 2*pma2*l_di2/γ_2/s_2/230;
+    
+    const cdt_max1 = 1.5/100 * 400;
+    let j_sec1_vell = j_sec1;
+    while (cdt_tmax1 > cdt_max1){
+        j_sec1++;
+        s_1 = arr_sec[j_sec1];
+        cdt_tmax1 = pma1*l_di1/γ_1/s_1/400;
+    }
+    const s_tmax1 = s_1;
+    
+    const e_pc = j_cc === 0 ? 1 : 0.5;
+    const cdt_max2 = e_pc / 100 * 230;
+    let j_sec2_vell = j_sec2;
+    while (cdt_tmax2 > cdt_max2){
+        j_sec2++;
+        s_2 = arr_sec[j_sec2];
+        cdt_tmax2 = 2*pma2*l_di2/γ_2/s_2/230;
+    }
+    const s_tmax2 = s_2;
+    
+    
+    j_sec1 = j_sec1_vell;
+    s_1 = arr_sec[j_sec1];
+    const t_01 = 25;
+    const t_max1 = 90;
+    
+    t_op1 = t_01 + (t_max1 - t_01) * (i_iga1 / i_z1)**2;
+    ρ_1 = 0.0172 * (1 + 0.00393 * (t_op1 - 20));
+    let cdt_op1 = pma1*l_di1*ρ_1/s_1/400;
+    while (cdt_op1 > cdt_max1){
+        j_sec1++;
+        s_1 = arr_sec[j_sec1];
+        i_max1 = arr_itc07[j_sec1];
+        i_z1 = i_max1;
+        t_op1 = t_01 + (t_max1 - t_01) * (i_iga1 / i_z1)**2;
+        ρ_1 = 0.0172 * (1 + 0.00393 * (t_op1 - 20));
+        cdt_op1 = pma1*l_di1*ρ_1/s_1/400;
+    }
+    const s_di1 = s_1;
+    
+    
+    j_sec2 = j_sec1_vell;
+    s_2 = arr_sec[j_sec2];
+    const t_02 = 40;
+    const t_max2 = j_ucable === 0 ? 70 : 90;
+    
+    t_op2 = t_02 + (t_max2 - t_02) * (i_iga2 / i_z2)**2;
+    ρ_2 = 0.0172 * (1 + 0.00393 * (t_op2 - 20));
+    let cdt_op2 = 2*pma2*l_di2*ρ_2/s_2/230;
+    while (cdt_op2 > cdt_max2){
+        j_sec2++;
+        s_2 = arr_sec[j_sec2];
+        i_max2 = arr_itc19[i_col][j_sec2];
+        i_z2 = i_max2;
+        t_op2 = t_02 + (t_max2 - t_02) * (i_iga2 / i_z2)**2;
+        ρ_2 = 0.0172 * (1 + 0.00393 * (t_op2 - 20));
+        cdt_op2 = 2*pma2*l_di2*ρ_2/s_2/230;
+    }
+    const s_di2 = s_2;
+    
+    return {
+        pma1,      t_cable1,   i_z1,      cdt_tmax1,   s_tmax1, 
+        s_tmax1,   t_op1,      cdt_op1,   cdt_max1,    s_di1,
+        pma2,      t_cable2,   i_z2,      cdt_tmax2,   s_tmax2, 
+        s_tmax2,   t_op2,      cdt_op2,   cdt_max2,    s_di2
+    };
+}
+
+function generar_explicacio(){
+    let md = ['',
+      "Explicació"                                                     ,
+      "=========="                                                     ,
+      ""                                                               ,
+      "\n~~~\n"                                                        ,
+    ].join("\n");
+    
+    const {
+        l_di1,  l_di2,       i_iga1,  i_iga2, j_cc, 
+        pos_cc, j_ucable,    u_cable, j_si,   si,
+        j_um,   uni_o_multi
+    } = params;
+    
+    const pma1 = 3**0.5 * 400 * i_iga1;
+    const pma2 = 230 * i_iga2;
+    
+    md +=['',
+      "Comprovació intensitats",
+      "-----------------------",
+      "",
+      "pma1 = 3**0.5 * 400 * i_iga1 = " +ar(pma1)+ " W",
+      " - i_iga1 = " +i_iga1+ " A",
+      "",
+      "pma2 = 230 * i_iga2; = " +ar(pma2)+ " W",
+      " - i_iga2 = " +i_iga2+ " A",
+      "",
+    ].join("\n");
+    const t_cable1 = 3;
+    const t_cable2 = j_ucable === 0 ? 1 : 3;
+    
+    md +=['',
+      "const t_cable1 = 3",
+      "",
+      "t_cable2 = u_cable === 450/750 ? 1 : 3 = " +t_cable2,
+      " - j_ucable: " +j_ucable+ " (" +u_cable+ ")",
+      "",
+    ].join("\n");
+    
+    
+    const arr_sec = [ // array de seccions normalitzades
+      /*1.5,     2.5,     4.0,*/   6.0,     10.0, 
+        16.0,    25.0,    35.0,    50.0,    70.0, 
+        95.0,    120.0,   150.0,   185.0,   240.0
+    ];
+    
+    const arr_itc19 = [ // array intensitats màximes
+        [ // B1 2x PVC (col 6)
+          /*15.0,    21.0,    27.0,*/  36.0,    50.0,
+            66.0,    84.0,    104.0,   125.0,   160.0, 
+            194.0,   225.0,   260.0,   297.0,   350.0
+        ],
+        [ // B1 2x XLPE (col 10)
+          /*20.0,    26.5,    36.0,*/  46.0,    65.0, 
+            87.0,    110.0,   137.0,   167.0,   214.0, 
+            259.0,   301.0,   343.0,   391.0,   468.0
+        ],
+        [  // B2 2x XLPE (col 8)
+          /*16.5,    23.0,    31.0,*/  40.0,    54.0, 
+            73.0,    95.0,    119.0,   145.0,   185.0, 
+            224.0,   260.0,   299.0,   341.0,   401.0
+        ]
+    ];
+    
+    const arr_itc07 = [ // Array intensitats màximes cable enterrat
+      /*0,       0,       0,*/     0,       64,
+        82,      105,     105,     155,     155,
+        225,     225,     300,     300,     400 
+    ];
+    
+    let s_1 = 0;
+    let s_2 = 0;
+    
+    let j_sec1 = arr_itc07.findIndex(i=> i >= i_iga1);
+    let i_max1 = arr_itc07[j_sec1];
+    let i_z1 = i_max1;
+    s_1 = arr_sec[j_sec1];
+    
+    const arr_col = ["6", "10", "8"];
+    const i_col = j_ucable + j_um;
+    const columna = arr_col[i_col];
+    let j_sec2 = arr_itc19[i_col].findIndex(i => i >= i_iga2);
+    let i_max2 = arr_itc19[i_col][j_sec2];
+    let i_z2 = i_max2;
+    s_2 = arr_sec[j_sec2];
+    
+    md +=['',
+      "ITC BT-07:",
+      " - Coure, entubat",
+      "     → s_1 = " +s_1+ " mm²",
+      "     → i_max1 = " +i_max1+ " A",
+      " - prof = 0.7 m",
+      " - tt = 25 °C",
+      " - rt = 1.5 K·m/W",
+      "     → i_z1 = i_max1 = " +i_z1+ " A (no fc)",
+      "",
+      "ITC BT-19",
+      " - " +uni_o_multi+ ", " +u_cable,
+      "     → columna: " +columna,
+      "     → s_2 = " +s_2+ " mm²",
+      "     → i_max2 = " +i_max2+ " A",
+      " - ta = 40 °C",
+      " - no agrupament",
+      "     → i_z2 = i_max2 = " +i_z2+ " A (no fc)",
+      "",
+    ].join("\n");
+    
+    
+    let t_op1 = 90;
+    let t_op2 = j_ucable === 0 ? 70 : 90;
+    let γ_1 = 45.49;
+    let γ_2 = j_ucable === 0 ? 48.47 : 45.49;
+    
+    let cdt_tmax1 = pma1*l_di1/γ_1/s_1/400;
+    let cdt_tmax2 = 2*pma2*l_di2/γ_2/s_2/230;
+    
+    const cdt_max1 = 1.5/100 * 400;
+    let j_sec1_vell = j_sec1;
+    
+    md +=['',
+      "",
+      "",
+      "Comprovació cdt",
+      "---------------",
+      "",
+      "cdt1_" +ar(t_op1)+ " = pma1*l_di1/γ_1/s_1/400 = " +ar(cdt_tmax1)+ " V",
+      " - pma1 = " +ar(pma1)+ " W",
+      " - l_di1 = " +l_di1+ " m",
+      " - γ_1 = " +γ_1+ " m/(Ω·mm²) ← u_cable = 0,6/1 kV",
+      " - s_1 = " +s_1+ " mm²",
+      "",
+      "cdt_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_tmax1)+ " V ≤ " +ar(cdt_max1)+ " V?",
+      " - cdt_max1 = 1.5/100 * 400 = " +ar(cdt_max1)+ " V",
+    ].join("\n");
+    
+    while (cdt_tmax1 > cdt_max1){
+        j_sec1++;
+        s_1 = arr_sec[j_sec1];
+        cdt_tmax1 = pma1*l_di1/γ_1/s_1/400;
+        md +=['',
+          "Si! → augmentar secció",
+          " - s_1 = " +s_1+ " mm²",
+          " - cdt1_" +ar(t_op1)+ " = " +ar(cdt_tmax1)+ " V",
+          "",
+          "cdt_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_tmax1)+ " V > " +ar(cdt_max1)+ " V?",
+        ].join("\n");
+    }
+    const s_tmax1 = s_1;
+    
+    md +=['',
+      "No!",
+      "s_1 = " +s_1+ " mm²",
+      "",
+    ].join("\n");
+    
+    const e_pc = j_cc === 0 ? 1 : 0.5;
+    const cdt_max2 = e_pc / 100 * 230;
+    let j_sec2_vell = j_sec2;
+    md +=['',
+      "cdt2_" +ar(t_op2)+ " = pma2*l_di2/γ_2/s_2/400 = " +ar(cdt_tmax1)+ " V",
+      " - pma2 = " +ar(pma2)+ " W",
+      " - l_di2 = " +l_di2+ " m",
+      " - γ_2 = " +γ_2+ " m/(Ω·mm²) ← u_cable = " +u_cable,
+      " - s_2 = " +s_2+ " mm²",
+      "",
+      "cdt_" +ar(t_op2)+ " > cdt_max2?: " +ar(cdt_tmax2)+ " V > " +ar(cdt_max2)+ " V?",
+      " - e_pc = j_cc === cc unica ? 1 : 0.5 = " +e_pc+ " %",
+      " - cdt_max2 = e_pc / 100 * 230 = " +ar(cdt_max2)+ " V",
+    ].join("\n");
+    while (cdt_tmax2 > cdt_max2){
+        j_sec2++;
+        s_2 = arr_sec[j_sec2];
+        cdt_tmax2 = 2*pma2*l_di2/γ_2/s_2/230;
+        md +=['',
+          "Si! → Augmentar secció",
+          " - s_2 = " +s_1+ " mm²",
+          " - cdt1_" +ar(t_op1)+ " = " +ar(cdt_tmax1)+ " V",
+          "",
+          "cdt_" +ar(t_op2)+ " > cdt_max2?: " +ar(cdt_tmax2)+ " V > " +ar(cdt_max2)+ " V?",
+        ].join("\n");
+    }
+    const s_tmax2 = s_2;
+    
+    md +=['',
+      "No!",
+      "s_2 = " +s_2+ " mm²",
+      "",
+    ].join("\n");
+    
+    j_sec1 = j_sec1_vell;
+    s_1 = arr_sec[j_sec1];
+    const t_01 = 25;
+    const t_max1 = 90;
+    
+    t_op1 = t_01 + (t_max1 - t_01) * (i_iga1 / i_z1)**2;
+    ρ_1 = 0.0172 * (1 + 0.00393 * (t_op1 - 20));
+    let cdt_op1 = pma1*l_di1*ρ_1/s_1/400;
+    
+    md +=['',
+      "",
+      "",
+      "Comprovació cdt amb temperatura d'operació real",
+      "-----------------------------------------------",
+      "",
+      "t_op1 = t_01 + (t_max1 - t_01) * (i_iga1 / i_z1)**2 = " +ar(t_op1)+ " °C",
+      " - t_01 = 25 °C ← enterrada",
+      " - t_max1 = 90 °C ← 0,6/ 1kV",
+      " - i_iga1 = " +i_iga1+ " A",
+      " - i_z1 = " +i_z1+ " A",
+      "",
+      "cdt1_" +ar(t_op1)+ " = pma1*l_di1*ρ_1/s_1/400 = " +ar(cdt_op1)+ " V",
+      " - pma1 = " +ar(pma1)+ " W",
+      " - l_di1 = " +l_di1+ " m",
+      " - ρ_1 = 0.0172 * (1 + 0.00393 * (t_op1 - 20)) = " +ar(ρ_1)+ " Ω·mm²/m",
+      " - s_1 = " +s_1+ " mm²",
+      "",
+      "cdt_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_op1)+ " V ≤ " +ar(cdt_max1)+ " V?",
+      " - cdt_max1 = 1.5/100 * 400 = " +ar(cdt_max1)+ " V",
+    ].join("\n");
+    while (cdt_op1 > cdt_max1){
+        j_sec1++;
+        s_1 = arr_sec[j_sec1];
+        i_max1 = arr_itc07[j_sec1];
+        i_z1 = i_max1;
+        t_op1 = t_01 + (t_max1 - t_01) * (i_iga1 / i_z1)**2;
+        ρ_1 = 0.0172 * (1 + 0.00393 * (t_op1 - 20));
+        cdt_op1 = pma1*l_di1*ρ_1/s_1/400;
+        md +=['',
+          "Si! → augmentar secció",
+          " - s_1 = " +s_1+ " mm²",
+          " - i_z1 = " +i_z1+ " A",
+          " - t_op1 = " +ar(t_op1)+ " °C",
+          " - ρ_1 = " +ar(ρ_1)+ " Ω·mm²/m",
+          " - cdt1_" +ar(t_op1)+ " = " +ar(cdt_op1)+ " V",
+          "",
+          "cdt_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_op1)+ " V > " +ar(cdt_max1)+ " V?",
+        ].join("\n");
+    }
+    const s_di1 = s_1;
+    
+    md +=['',
+      "No!",
+      "s_1 = " +s_1+ " mm²",
+      "",
+    ].join("\n");
+    
+    j_sec2 = j_sec1_vell;
+    s_2 = arr_sec[j_sec2];
+    const t_02 = 40;
+    const t_max2 = j_ucable === 0 ? 70 : 90;
+    
+    t_op2 = t_02 + (t_max2 - t_02) * (i_iga2 / i_z2)**2;
+    ρ_2 = 0.0172 * (1 + 0.00393 * (t_op2 - 20));
+    let cdt_op2 = 2*pma2*l_di2*ρ_2/s_2/230;
+    md += ['',
+      "t_op2 = t_02 + (t_max2 - t_02) * (i_iga2 / i_z2)**2 = " +ar(t_op2)+ " °C",
+      " - t_02 = 40 °C ← enterrada",
+      " - t_max2 = j_ucable === 0 ? 70 : 90 = " +t_max2+ " °C ← " +u_cable,
+      " - i_iga1 = " +i_iga1+ " A",
+      " - i_z1 = " +i_z1+ " A",
+      "",
+      "cdt2_" +ar(t_op2)+ " = 2*pma2*l_di2*ρ_2/s_2/230 = " +ar(cdt_op2)+ " V",
+      " - pma2 = " +ar(pma2)+ " W",
+      " - l_di2 = " +l_di2+ " m",
+      " - ρ_2 = 0.0172 * (1 + 0.00393 * (t_op2 - 20)) = " +ar(ρ_2)+ " Ω·mm²/m",
+      " - s_2 = " +s_2+ " mm²",
+      "",
+      "cdt_" +ar(t_op2)+ " > cdt_max2?: " +ar(cdt_op2)+ " V > " +ar(cdt_max2)+ " V?",
+      " - e_pc = j_cc === cc unica ? 1 : 0.5 = " +e_pc+ " %",
+      " - cdt_max2 = e_pc / 100 * 230 = " +ar(cdt_max2)+ " V",
+    ].join("\n");
+    while (cdt_op2 > cdt_max2){
+        j_sec2++;
+        s_2 = arr_sec[j_sec2];
+        i_max2 = arr_itc19[i_col][j_sec2];
+        i_z2 = i_max2;
+        t_op2 = t_02 + (t_max2 - t_02) * (i_iga2 / i_z2)**2;
+        ρ_2 = 0.0172 * (1 + 0.00393 * (t_op2 - 20));
+        cdt_op2 = 2*pma2*l_di2*ρ_2/s_2/230;
+        md +=['',
+          "Si! → augmentar secció",
+          " - s_2 = " +s_2+ " mm²",
+          " - i_z2 = " +i_z2+ " A",
+          " - t_op2 = " +ar(t_op2)+ " °C",
+          " - ρ_2 = " +ar(ρ_2)+ " Ω·mm²/m",
+          " - cdt2_" +ar(t_op2)+ " = " +ar(cdt_op2)+ " V",
+          "",
+          "cdt_" +ar(t_op2)+ " > cdt_max1?: " +ar(cdt_op2)+ " V > " +ar(cdt_max1)+ " V?",
+        ].join("\n");
+    }
+    const s_di2 = s_2;
+    
+    md += "\n~~~";
+    return md;
+}
+
+</script>
+</html>

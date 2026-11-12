@@ -41,15 +41,15 @@ l'obra, etc. s'han de tenir en compte les següents variables:
 
 Es necessita dimensionar les primeres parts de la instal·lació d'enllaç,
 es a dir, la CGP, els fusibles i l'LGA. S'ha de tenir en compte que en
-aquest cas la centralització de comptadors és [[pos_cc]] i que donada
-la important seccio de la LGA, s'utilitza el mètode de la caiguda de
-tensió unitària.
+aquest cas la centralització de comptadors és **[[pos_cc]]** i que 
+donada la important seccio de la LGA, s'utilitza el mètode de la 
+**caiguda de tensió unitària**.
 
 **Nota important:** Per unificar criteris aplica la taula de la
 UNE 20460-5-523:2004 disponible a la 
 <a href="https://industria.gob.es/Calidad-Industrial/seguridadindustrial/instalacionesindustriales/baja-tension/Documents/bt/guia_bt_19_feb09R2.pdf" target="_blank" rel="noopener noreferrer">
-  Guia Tècnica de la ITC-BT-19
-</a> 
+  Guia Tècnica de la ITC-BT-19</a>. Per garantir la idoneitat de la
+
  
  
  
@@ -111,9 +111,10 @@ let puntuacio = null;
 function genera_params() {
     
     const pt_kw = aleat (50, 140);
-    const fdp = (aleat(80, 99)/100).toFixed(2);
+    const arr_fdp = [0.8, 0.9, 1];
+    const fdp = arr_fdp[aleat(0, 2)];
     const np = aleat(8, 15);                              // num plantes
-    const arr_sl = ["enterrada", "per fals sostre"];
+    const arr_sl = ["enterrada", "per fals sostre amb V > 5De"];
     const i_sl = aleat(0, arr_sl.length - 1);
     const si_lga = arr_sl[i_sl];                      // sist. inst. LGA
     const arr_pl = [0.6, 0.7, 0.8, 1, 1.25];
@@ -296,7 +297,7 @@ function calcular_solucions() {
     const arr_fdp = [ // Array de factors de potència
         0.8, 0.9, 1
     ];
-    let b1 = arr_fdp.findIndex(a => a <= fdp);
+    let b1 = arr_fdp.findIndex(a => a === fdp);
     let b2 = arr_tc.findIndex(a => a >= t_op);
     let j_fdpit = b1 * 4 + b2;            // index del fdp i temperatura
     let cdtu = arr_cdtu[j_sec][j_fdpit];
@@ -317,7 +318,7 @@ function calcular_solucions() {
     j_sec = j_sec_vell;
     const t_0 = temp_fs;
     const t_max = 90;
-    t_op = t_0 + (t_max - t_0) * (i_b / i_z);
+    t_op = t_0 + (t_max - t_0) * (i_b / i_z)**2;
     b1 = arr_fdp.findIndex(a => a <= fdp);
     b2 = arr_tc.findIndex(a => a >= t_op);
     j_fdpit = b1 * 4 + b2;                // index del fdp i temperatura
@@ -327,7 +328,7 @@ function calcular_solucions() {
         j_sec++;
         i_max = arr_imfs[j_sec];
         i_z = i_max * fc_temp;
-        t_op = t_0 + (t_max - t_0) * (i_b / i_z);
+        t_op = t_0 + (t_max - t_0) * (i_b / i_z)**2;
         b1 = arr_fdp.findIndex(a => a <= fdp);
         b2 = arr_tc.findIndex(a => a >= t_op);
         j_fdpit = b1 * 4 + b2;
@@ -393,8 +394,8 @@ function generar_explicacio(){
     ];
     
     const arr_fctfs = [ // array de f. corr per temp fs (25 a 50 °C)
-        1.22, 1.15, 1.08, 1,  0.91, 
-        0.82
+        1.14, 1.10, 1.05, 1,  0.96, 
+        0.90
     ];
     const fc_temp = arr_fctfs[i_tfs];
     
@@ -558,7 +559,7 @@ function generar_explicacio(){
     const arr_fdp = [ // Array de factors de potència
         0.8, 0.9, 1
     ];
-    let b1 = arr_fdp.findIndex(a => a <= fdp);
+    let b1 = arr_fdp.findIndex(a => a === fdp);
     let b2 = arr_tc.findIndex(a => a >= t_op);
     let j_fdpit = b1 * 4 + b2;            // index del fdp i temperatura
     let cdtu = arr_cdtu[j_sec][j_fdpit];
@@ -612,7 +613,7 @@ function generar_explicacio(){
     s = arr_sec[j_sec];
     const t_0 = temp_fs;
     const t_max = 90;
-    t_op = t_0 + (t_max - t_0) * (i_b / i_z);
+    t_op = t_0 + (t_max - t_0) * (i_b / i_z)**2;
     b1 = arr_fdp.findIndex(a => a <= fdp);
     b2 = arr_tc.findIndex(a => a >= t_op);
     j_fdpit = b1 * 4 + b2;                // index del fdp i temperatura
@@ -625,7 +626,8 @@ function generar_explicacio(){
       "compte que la temperatura del conductor no arribarà als 90 °C"  ,
       " - t_0 = temp_fs = " +t_0+ " °C"                                ,
       " - t_max = 90 °C"                                               ,
-      " - t_op = t_0 + (t_max - t_0) * (i_b / i_z) = " +xs(t_op)+ " °C",
+      " - t_op = t_0 + (t_max - t_0) * (i_b / i_z)**2 = "              ,
+      "        = " +xs(t_op)+ " °C"                                    ,
       ""                                                               ,
       " - cos φ = " +fdp                                               ,
       " - s = " +s+ " mm²"                                             ,
@@ -642,7 +644,7 @@ function generar_explicacio(){
         s = arr_sec[j_sec];
         i_max = arr_imfs[j_sec];
         i_z = i_max * fc_temp;
-        t_op = t_0 + (t_max - t_0) * (i_b / i_z);
+        t_op = t_0 + (t_max - t_0) * (i_b / i_z)**2;
         b1 = arr_fdp.findIndex(a => a <= fdp);
         b2 = arr_tc.findIndex(a => a >= t_op);
         j_fdpit = b1 * 4 + b2;

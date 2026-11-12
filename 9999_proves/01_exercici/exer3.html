@@ -7,35 +7,78 @@
 </head>
 <textarea id="enunciat">
     
-Dimensionament CGP, fusible i LGA
-=================================
+Dimensionament dues DI
+======================
 
 Enunciat
 --------
 
-Es 
+Es necessiten calcular dues DI: 
+- La primera pertany a un habitatge unifamiliar tipus xalet i discorre 
+  enterrada [[l_di1]] m, és trifàsica, utilitza conductors de coure i el 
+  seu IGA és de 4 x [[i_iga1]] A, corba C. La profunditat de soterrament
+  és de 0,7 m, la temperatura del terreny 25°C, i la resistivitat
+  1,5 K·m/W. No hi ha agrupament de circuits.
+- La segona forma part d'un bloc d'edificis, amb [[pos_cc]], i es troba
+  a [[l_di2]] m, és monofàsica, utilitza conductors de coure de tensió
+  [[u_cable]] [[uni_o_multi]], i el seu IGA es de 2 x [[i_iga2]] A, 
+  corba C. La DI discorre [[si]], pots suposar que la temperatura 
+  ambient no supera mai els 40 °C i que no hi ha agrupament de circuits.
+
+Es demana dimensionar la instal·lació en conformitat amb l'REBT, així 
+com especificar el material utilitzat.
+
+**Nota important:**
+- La PMA s'assoleix amb la màxima intensitat que permet l'IGA i el fdp 
+  que la maximitzi.
+- Donada la poca secció de la DI, i el valor reduit (o zero) dels angles
+  φ i θ, a més de per a unificar criteris, s'utilitzarà la fórmula 
+  aproximada de l'Annexe II de la Guia Tècnica d'aplicació de l'REBT per
+  a la caiguda de tensió
  
  
  
 Respostes
 ----------
 
-- Intensitat demandada per l'isntal·lació: [[%i_b]]
-- Intensitat de la BUC del la CGP: [[%i_buc]] A
-- Intensitat nominal del fusible: [[%i_n]] A
-- Intensitat màxima admisible d'aquesta secció, a les condicions dels
-  assajos de la UNE de referència: [[%i_max]] A
+### DI 1
+- PMA: [[%pma1]] W
+- Tipus de cable utilitzat: [[%t_cable1]]
+    + 0 → H07V-K
+    + 1 → H07Z1-K
+    + 2 → RV-K
+    + 3 → RZ1-K
+    + 4 → H05R-F
 - Intensitat màxima admissible en les condicions reals d'aquesta 
-  secció: [[%i_z]] A
+  secció: [[%i_z1]] A
 - Caiguda de tensió a la temperatura màxima suportada pel 
-  conductor: [[%cdt_90]] V
+  conductor: [[%cdt_tmax1]] V
 - Secció triada suposant que el cable treballa a la màxima 
-  temperatura: [[%s_lga90]] mm²
-- Temperatura real d'operació: [[%t_op]] °C
-- Caiguda de tensió a la temperatura real d'operacio: [[%cdt_op]] V
-- Caiguda de tensió màxima admisible: [[%cdt_max]]
-- Secció triada: [[%s_lga]] mm²
-- Diàmetre del tub: [[%diam_t]]
+  temperatura: [[%s_tmax1]] mm²
+- Temperatura real d'operació: [[%t_op1]] °C
+- Caiguda de tensió a la temperatura real d'operacio: [[%cdt_op1]] V
+- Caiguda de tensió màxima admisible: [[%cdt_max1]] V
+- Secció triada: [[%s_di1]] mm²
+
+
+### DI 2
+- PMA: [[%pma2]] W
+- Tipus de cable utilitzat: [[%t_cable2]]
+    + 0 → H07V-K
+    + 1 → H07Z1-K
+    + 2 → RV-K
+    + 3 → RZ1-K
+    + 4 → H05R-F
+- Intensitat màxima admissible en les condicions reals d'aquesta 
+  secció: [[%i_z2]] A
+- Caiguda de tensió a la temperatura màxima suportada pel 
+  conductor: [[%cdt_tmax2]] V
+- Secció triada suposant que el cable treballa a la màxima 
+  temperatura: [[%s_tmax2]] mm²
+- Temperatura real d'operació: [[%t_op2]] °C
+- Caiguda de tensió a la temperatura real d'operacio: [[%cdt_op2]] V
+- Caiguda de tensió màxima admisible: [[%cdt_max2]] V
+- Secció triada: [[%s_di2]] mm²
 
 
 Puntuacions
@@ -74,37 +117,40 @@ let puntuacio = null;
  */
 function genera_params() {
     
-    const pt_kw = aleat (50, 140);
-    const fdp = (aleat(80, 99)/100).toFixed(2);
-    const np = aleat(8, 15);                              // num plantes
-    const arr_sl = ["enterrada", "per fals sostre"];
-    const i_sl = aleat(0, arr_sl.length - 1);
-    const si_lga = arr_sl[i_sl];                      // sist. inst. LGA
-    const arr_pl = [0.6, 0.7, 0.8, 1, 1.25];
-    const i_pl = aleat(0, arr_pl.length - 1);
-    const prof_lga = arr_pl[i_pl]                         // profunditat
-    const arr_tt = [10, 15, 20, 25, 30, 35, 40];
-    const i_tt = aleat(0, arr_tt.length - 1);
-    const temp_t = arr_tt[i_tt];                         // temp terreny
-    const arr_rt = [0.9, 1, 1.5, 2, 2.5];
-    const i_rt = aleat(0, arr_rt.length-1);
-    const res_t = arr_rt[i_rt];                    // resistivit termica
-    const arr_tfs = [25, 30, 35, 40, 45, 50];
-    const i_tfs = aleat(0, arr_tfs.length-1);
-    const temp_fs = arr_tfs[i_tfs];                  // temp fals sostre
-    const arr_pcc = [
+    const l_di1 = aleat(50, 70);
+    const l_di2 = aleat(10, 30);
+    const arr_iga = [25, 32, 40];
+    const i_iga1 = arr_iga[aleat(0, 2)];
+    const i_iga2 = arr_iga[aleat(0, 2)];
+    const arr_cc = [
         "centralització única", 
         "centralització a vàries plantes"
     ];
-    const i_pcc = np > 12 ? 1 : 0;
-    const l_lga = aleat(5, 18) * (i_pcc + 1);
-    const pos_cc = arr_pcc[i_pcc]                          // posicio CC
+    const j_cc = aleat (0, 1);
+    const pos_cc = arr_cc[j_cc];
+    const arr_ucable = [
+        "450/750 V",
+        "0,6/1 kV"
+    ];
+    const j_ucable = aleat(0, 1);
+    const u_cable = arr_ucable[j_ucable];
+    const arr_si = [
+        "encastada a paret no aillant",
+        "en muntatge superficial"
+    ];
+    const j_si = aleat(0,1);
+    const si = arr_si[j_si];
+    const arr_um = [
+        "unipolars",
+        "multipolars"
+    ];
+    const j_um = j_ucable === 0 ? 0 : aleat (0, 1);
+    const uni_o_multi = arr_um[j_um];
     
     return {
-        pt_kw,   fdp,        np,        i_sl,     si_lga,   
-        i_pl,    prof_lga,   i_tt,      temp_t,   i_rt,     
-        res_t,   i_tfs,      temp_fs,   i_pcc,    l_lga,
-        pos_cc
+        l_di1,  l_di2,       i_iga1,  i_iga2, j_cc, 
+        pos_cc, j_ucable,    u_cable, j_si,   si,
+        j_um,   uni_o_multi
     };
 }
 
@@ -117,201 +163,133 @@ function genera_params() {
  */
 function calcular_solucions() {
     const {
-        pt_kw,   fdp,        np,        i_sl,     si_lga,   
-        i_pl,    prof_lga,   i_tt,      temp_t,   i_rt,     
-        res_t,   i_tfs,      temp_fs,   i_pcc,    l_lga,
-        pos_cc
+        l_di1,  l_di2,       i_iga1,  i_iga2, j_cc, 
+        pos_cc, j_ucable,    u_cable, j_si,   si,
+        j_um,   uni_o_multi
     } = params;
-    
-    const i_b = pt_kw*1e3/3**0.5/400/fdp;
-    
-    const arr_imfs = [ // array intensitats màximes per fals sostre (B1)
-        16.5,    23.0,    31.0,    40.0,    54.0, 
-        73.0,    95.0,    119.0,   145.0,   185.0, 
-        224.0,   260.0,   299.0,   341.0,   401.0
-    ];
+    const pma1 = 3**0.5 * 400 * i_iga1;
+    const pma2 = 230 * i_iga2;
+    const t_cable1 = 3;
+    const t_cable2 = j_ucable === 0 ? 1 : 3;
     
     const arr_sec = [ // array de seccions normalitzades
-        1.5,     2.5,     4.0,     6.0,     10.0, 
+      /*1.5,     2.5,     4.0,*/   6.0,     10.0, 
         16.0,    25.0,    35.0,    50.0,    70.0, 
         95.0,    120.0,   150.0,   185.0,   240.0
     ];
     
-    const arr_ime = [ // Array intensitats màximes cable enterrat
-        0,       0,       0,       0,       64,
+    const arr_itc19 = [ // array intensitats màximes
+        [ // B1 2x PVC (col 6)
+          /*15.0,    21.0,    27.0,*/  36.0,    50.0,
+            66.0,    84.0,    104.0,   125.0,   160.0, 
+            194.0,   225.0,   260.0,   297.0,   350.0
+        ],
+        [ // B1 2x XLPE (col 10)
+          /*20.0,    26.5,    36.0,*/  46.0,    65.0, 
+            87.0,    110.0,   137.0,   167.0,   214.0, 
+            259.0,   301.0,   343.0,   391.0,   468.0
+        ],
+        [  // B2 2x XLPE (col 8)
+          /*16.5,    23.0,    31.0,*/  40.0,    54.0, 
+            73.0,    95.0,    119.0,   145.0,   185.0, 
+            224.0,   260.0,   299.0,   341.0,   401.0
+        ]
+    ];
+    
+    const arr_itc07 = [ // Array intensitats màximes cable enterrat
+      /*0,       0,       0,*/     0,       64,
         82,      105,     105,     155,     155,
         225,     225,     300,     300,     400 
     ];
     
-    const arr_fctfs = [ // array de f. corr per temp fs (25 a 50 °C)
-        1.22, 1.15, 1.08, 1,  0.91, 
-        0.82
-    ];
-    const fc_temp = arr_fctfs[i_tfs];
+    let s_1 = 0;
+    let s_2 = 0;
     
-    const arr_fctt = [ // array f. corr temp del terreny (10 a 40 °C)
-        1.11, 1.07, 1.04, 1, 0.96, 0.92, 0.88
-    ];
-    const fc_tempt = arr_fctt[i_tt];
+    let j_sec1 = arr_itc07.findIndex(i=> i >= i_iga1);
+    let i_max1 = arr_itc07[j_sec1];
+    let i_z1 = i_max1;
+    s_1 = arr_sec[j_sec1];
     
-    const arr_fcpl = [ // array f. corr per prof de LGA (0.6 a 1.25 m)
-        1.01, 1, 0.99, 0.97, 0.96
-    ];
-    const fc_prof = arr_fcpl[i_pl];
+    const arr_col = ["6", "10", "8"];
+    const i_col = j_ucable + j_um;
+    const columna = arr_col[i_col];
+    let j_sec2 = arr_itc19[i_col].findIndex(i => i >= i_iga2);
+    let i_max2 = arr_itc19[i_col][j_sec2];
+    let i_z2 = i_max2;
+    s_2 = arr_sec[j_sec2];
     
-    const arr_fcrt = [ // fc resistivitat termica terreny (0.9 2.5)
-        [ // 0.9
-            1,       1,       1,       1,       1.08,
-            1.08,    1.08,    1.09,    1.09,    1.09,
-            1.09,    1.10,    1.10,    1.10,    1.10
-        ],
-        [ //1
-            1,       1,       1,       1,,       1.10,
-            1.10,    1.11,    1.11,    1.11,    1.11,
-            1.12,    1.12,    1.12,    1.12,    1.12
-        ],
-        [ // 1.5
-            1,       1,       1,       1,       1,
-            1,       1,       1,       1,       1,
-            1,       1,       1,       1,       1
-        ],
-        [ // 2
-            1,       1,       1,       1,       0.93,
-            0.93,    0.93,    0.93,    0.93,    0.93,
-            0.93,    0.93,    0.93,    0.93,    0.92
-        ],
-        [ // 2.5
-            1,       1,       1,       1,       0.88,
-            0.88,    0.88,    0.88,    0.87,    0.87,
-            0.87,    0.87,    0.87,    0.87,    0.86
-        ],
-    ];
-    const arr_fcrt2 = arr_fcrt[i_rt];
+    let t_op1 = 90;
+    let t_op2 = j_ucable === 0 ? 70 : 90;
+    let γ_1 = 45.49;
+    let γ_2 = j_ucable === 0 ? 48.47 : 45.49;
     
-    let j_sec = 0;
-    let i_max = 0;
-    let i_z = 0;
+    let cdt_tmax1 = pma1*l_di1/γ_1/s_1/400;
+    let cdt_tmax2 = 2*pma2*l_di2/γ_2/s_2/230;
     
-    if (i_sl === 0){ // enterrada
-        j_sec = arr_ime.findIndex(i_fs => i_fs >= i_b);
-        i_max = arr_ime[j_sec];
-        const fc_rt = arr_fcrt2[j_sec];
-        i_z = i_max * fc_tempt * fc_prof * fc_rt;
-    }else { // fals sostre
-        j_sec = arr_imfs.findIndex(i_fs => i_fs >= i_b);
-        i_max = arr_imfs[j_sec];
-        i_z = i_max * fc_temp;
+    const cdt_max1 = 1.5/100 * 400;
+    let j_sec1_vell = j_sec1;
+    while (cdt_tmax1 > cdt_max1){
+        j_sec1++;
+        s_1 = arr_sec[j_sec1];
+        cdt_tmax1 = pma1*l_di1/γ_1/s_1/400;
     }
+    const s_tmax1 = s_1;
     
-
-
-    const arr_inf = [ // array de I_n dels fusibles
-        63,  80, 100, 125, 160,
-        200, 250, 315
-    ];
-    
-    let j_inf = arr_inf.findIndex(a => a >= i_z * 0.91) - 1;
-    let i_n = arr_inf[j_inf];
-    while (i_n < i_b) {
-        j_sec++;
-        if (i_sl === 0){ // enterrada
-            i_max = arr_ime[j_sec];
-            const fc_rt = arr_fcrt2[j_sec];
-            i_z = i_max * fc_tempt * fc_prof * fc_rt;
-        }else { // fals sostre
-            i_max = arr_imfs[j_sec];
-            i_z = i_max * fc_temp;
-        }
-        j_inf = arr_inf.findIndex(a => a >= i_z * 0.91) - 1;
-        i_n = arr_inf[j_inf];
-    };
-    
-    
-    
-    const arr_icgp = [ // array de les intensitats de les CGPs
-        100, 160, 250
-    ];
-    const j_icgp = arr_icgp.findIndex(a => a >= i_n);
-    const i_buc = arr_icgp[j_icgp];
-    
-    const arr_cdtu = [ // Array de cdt unitaries
-        [18.255, 19.573, 20.891, 21.550, 20.469, 21.951, 23.434, 24.175, 22.604, 24.252, 25.899, 26.723],
-        [11.216, 12.023, 12.830, 13.234, 12.562, 13.469, 14.377, 14.831, 13.843, 14.852, 15.860, 16.365],
-        [7.024,   7.526,  8.028,  8.279,  7.848,  8.413,  8.978,  9.261,  8.612,  9.240,  9.867, 10.181],
-        [4.732,   5.068,  5.403,  5.571,  5.272,  5.650,  6.027,  6.216,  5.754,  6.173,  6.592,  6.802],
-        [2.846,   3.045,  3.244,  3.344,  3.157,  3.382,  3.606,  3.718,  3.419,  3.668,  3.917,  4.042],
-        [1.820,   1.945,  2.070,  2.133,  2.007,  2.148,  2.289,  2.359,  2.148,  2.305,  2.461,  2.540],
-        [1.184,   1.263,  1.342,  1.382,  1.293,  1.382,  1.471,  1.516,  1.358,  1.457,  1.556,  1.606],
-        [0.878,   0.935,  0.992,  1.020,  0.950,  1.014,  1.078,  1.110,  0.979,  1.050,  1.122,  1.157],
-        [0.672,   0.714,  0.757,  0.778,  0.719,  0.766,  0.814,  0.837,  0.723,  0.776,  0.828,  0.855],
-        [0.491,   0.520,  0.549,  0.564,  0.516,  0.549,  0.582,  0.598,  0.501,  0.537,  0.574,  0.592],
-        [0.378,   0.399,  0.420,  0.431,  0.390,  0.413,  0.437,  0.449,  0.361,  0.387,  0.413,  0.426],
-        [0.315,   0.332,  0.349,  0.357,  0.320,  0.339,  0.358,  0.367,  0.286,  0.307,  0.327,  0.338],
-        [0.271,   0.284,  0.298,  0.304,  0.271,  0.286,  0.301,  0.309,  0.232,  0.249,  0.265,  0.274],
-        [0.234,   0.244,  0.255,  0.261,  0.229,  0.241,  0.253,  0.259,  0.185,  0.199,  0.212,  0.219],
-        [0.197,   0.205,  0.213,  0.217,  0.188,  0.197,  0.206,  0.211,  0.141,  0.151,  0.161,  0.167]
-    ];
-    
-    let t_op = 90;
-    
-    const arr_tc = [ // Array de temperatures de cable
-        40, 60, 80, 90
-    ];
-    const arr_fdp = [ // Array de factors de potència
-        0.8, 0.9, 1
-    ];
-    let b1 = arr_fdp.findIndex(a => a <= fdp);
-    let b2 = arr_tc.findIndex(a => a >= t_op);
-    let j_fdpit = b1 * 4 + b2;            // index del fdp i temperatura
-    let cdtu = arr_cdtu[j_sec][j_fdpit];
-    let cdt_90 = cdtu * l_lga/1e3 * i_b;
-    const arr_cdtmax = [ // array de les cdt màximes admisibles en %
-        0.5, 1
-    ];
-    const cdt_max = arr_cdtmax[i_pcc]/100 * 400;
-    let j_sec_vell = j_sec;
-    while (cdt_90 > cdt_max){
-        j_sec++;
-        cdtu = arr_cdtu[j_sec][j_fdpit];
-        cdt_90 = cdtu * l_lga/1e3 * i_b;
+    const e_pc = j_cc === 0 ? 1 : 0.5;
+    const cdt_max2 = e_pc / 100 * 230;
+    let j_sec2_vell = j_sec2;
+    while (cdt_tmax2 > cdt_max2){
+        j_sec2++;
+        s_2 = arr_sec[j_sec2];
+        cdt_tmax2 = 2*pma2*l_di2/γ_2/s_2/230;
     }
-    const s_lga90 = arr_sec[j_sec];
+    const s_tmax2 = s_2;
     
     
-    j_sec = j_sec_vell;
-    const t_0 = temp_fs;
-    const t_max = 90;
-    t_op = t_0 + (t_max - t_0) * (i_b / i_z);
-    b1 = arr_fdp.findIndex(a => a <= fdp);
-    b2 = arr_tc.findIndex(a => a >= t_op);
-    j_fdpit = b1 * 4 + b2;                // index del fdp i temperatura
-    cdtu = arr_cdtu[j_sec][j_fdpit];
-    let cdt_op = cdtu * l_lga/1e3 * i_b;
-    while (cdt_op > cdt_max){
-        j_sec++;
-        i_max = arr_imfs[j_sec];
-        i_z = i_max * fc_temp;
-        t_op = t_0 + (t_max - t_0) * (i_b / i_z);
-        b1 = arr_fdp.findIndex(a => a <= fdp);
-        b2 = arr_tc.findIndex(a => a >= t_op);
-        j_fdpit = b1 * 4 + b2;
-        cdtu = arr_cdtu[j_sec][j_fdpit];
-        cdt_op = cdtu * l_lga/1e3 * i_b;
+    j_sec1 = j_sec1_vell;
+    s_1 = arr_sec[j_sec1];
+    const t_01 = 25;
+    const t_max1 = 90;
+    
+    t_op1 = t_01 + (t_max1 - t_01) * (i_iga1 / i_z1)**2;
+    ρ_1 = 0.0172 * (1 + 0.00393 * (t_op1 - 20));
+    let cdt_op1 = pma1*l_di1*ρ_1/s_1/400;
+    while (cdt_op1 > cdt_max1){
+        j_sec1++;
+        s_1 = arr_sec[j_sec1];
+        i_max1 = arr_itc07[j_sec1];
+        i_z1 = i_max1;
+        t_op1 = t_01 + (t_max1 - t_01) * (i_iga1 / i_z1)**2;
+        ρ_1 = 0.0172 * (1 + 0.00393 * (t_op1 - 20));
+        cdt_op1 = pma1*l_di1*ρ_1/s_1/400;
     }
-    const s_lga = arr_sec[j_sec];
+    const s_di1 = s_1;
     
-    const arr_dt = [ // Array de diàmetres de tubs
-        0,       0,       0,       0,       75,
-        75,      110,     110,     125,     140,
-        140,     160,     160,     180,     200
-    ];
     
-    const diam_t = arr_dt[j_sec];
+    j_sec2 = j_sec1_vell;
+    s_2 = arr_sec[j_sec2];
+    const t_02 = 40;
+    const t_max2 = j_ucable === 0 ? 70 : 90;
+    
+    t_op2 = t_02 + (t_max2 - t_02) * (i_iga2 / i_z2)**2;
+    ρ_2 = 0.0172 * (1 + 0.00393 * (t_op2 - 20));
+    let cdt_op2 = 2*pma2*l_di2*ρ_2/s_2/230;
+    while (cdt_op2 > cdt_max2){
+        j_sec2++;
+        s_2 = arr_sec[j_sec2];
+        i_max2 = arr_itc19[i_col][j_sec2];
+        i_z2 = i_max2;
+        t_op2 = t_02 + (t_max2 - t_02) * (i_iga2 / i_z2)**2;
+        ρ_2 = 0.0172 * (1 + 0.00393 * (t_op2 - 20));
+        cdt_op2 = 2*pma2*l_di2*ρ_2/s_2/230;
+    }
+    const s_di2 = s_2;
     
     return {
-        i_b,      i_buc,     i_n,    i_max,    i_z,
-        cdt_90,   s_lga90,   t_op,   cdt_op,   cdt_max, 
-        s_lga, diam_t
+        pma1,      t_cable1,   i_z1,      cdt_tmax1,   s_tmax1, 
+        s_tmax1,   t_op1,      cdt_op1,   cdt_max1,    s_di1,
+        pma2,      t_cable2,   i_z2,      cdt_tmax2,   s_tmax2, 
+        s_tmax2,   t_op2,      cdt_op2,   cdt_max2,    s_di2
     };
 }
 
@@ -324,320 +302,288 @@ function generar_explicacio(){
     ].join("\n");
     
     const {
-        pt_kw,   fdp,        np,        i_sl,     si_lga,   
-        i_pl,    prof_lga,   i_tt,      temp_t,   i_rt,     
-        res_t,   i_tfs,      temp_fs,   i_pcc,    l_lga,
-        pos_cc
+        l_di1,  l_di2,       i_iga1,  i_iga2, j_cc, 
+        pos_cc, j_ucable,    u_cable, j_si,   si,
+        j_um,   uni_o_multi
     } = params;
     
-    const i_b = pt_kw*1e3/3**0.5/400/fdp;
+    const pma1 = 3**0.5 * 400 * i_iga1;
+    const pma2 = 230 * i_iga2;
     
-    md += ['',
-      "pt_kw = " +pt_kw+ " kW;   fdp = " +fdp                          , 
-      "i_b = pt_kw*1e3/3**0.5/400/fdp = " +xs(i_b)+ " A"               ,
-      ""                                                               ,
+    md +=['',
+      "Comprovació intensitats",
+      "-----------------------",
+      "",
+      "pma1 = 3**0.5 * 400 * i_iga1 = " +ar(pma1)+ " W",
+      " - i_iga1 = " +i_iga1+ " A",
+      "",
+      "pma2 = 230 * i_iga2; = " +ar(pma2)+ " W",
+      " - i_iga2 = " +i_iga2+ " A",
+      "",
+    ].join("\n");
+    const t_cable1 = 3;
+    const t_cable2 = j_ucable === 0 ? 1 : 3;
+    
+    md +=['',
+      "const t_cable1 = 3",
+      "",
+      "t_cable2 = u_cable === 450/750 ? 1 : 3 = " +t_cable2,
+      " - j_ucable: " +j_ucable+ " (" +u_cable+ ")",
+      "",
     ].join("\n");
     
-    const arr_imfs = [ // array intensitats màximes per fals sostre (B1)
-        16.5,    23.0,    31.0,    40.0,    54.0, 
-        73.0,    95.0,    119.0,   145.0,   185.0, 
-        224.0,   260.0,   299.0,   341.0,   401.0
-    ];
     
     const arr_sec = [ // array de seccions normalitzades
-        1.5,     2.5,     4.0,     6.0,     10.0, 
+      /*1.5,     2.5,     4.0,*/   6.0,     10.0, 
         16.0,    25.0,    35.0,    50.0,    70.0, 
         95.0,    120.0,   150.0,   185.0,   240.0
     ];
     
-    const arr_ime = [ // Array intensitats màximes cable enterrat
-        0,       0,       0,       0,       64,
+    const arr_itc19 = [ // array intensitats màximes
+        [ // B1 2x PVC (col 6)
+          /*15.0,    21.0,    27.0,*/  36.0,    50.0,
+            66.0,    84.0,    104.0,   125.0,   160.0, 
+            194.0,   225.0,   260.0,   297.0,   350.0
+        ],
+        [ // B1 2x XLPE (col 10)
+          /*20.0,    26.5,    36.0,*/  46.0,    65.0, 
+            87.0,    110.0,   137.0,   167.0,   214.0, 
+            259.0,   301.0,   343.0,   391.0,   468.0
+        ],
+        [  // B2 2x XLPE (col 8)
+          /*16.5,    23.0,    31.0,*/  40.0,    54.0, 
+            73.0,    95.0,    119.0,   145.0,   185.0, 
+            224.0,   260.0,   299.0,   341.0,   401.0
+        ]
+    ];
+    
+    const arr_itc07 = [ // Array intensitats màximes cable enterrat
+      /*0,       0,       0,*/     0,       64,
         82,      105,     105,     155,     155,
         225,     225,     300,     300,     400 
     ];
     
-    const arr_fctfs = [ // array de f. corr per temp fs (25 a 50 °C)
-        1.22, 1.15, 1.08, 1,  0.91, 
-        0.82
-    ];
-    const fc_temp = arr_fctfs[i_tfs];
+    let s_1 = 0;
+    let s_2 = 0;
     
-    const arr_fctt = [ // array f. corr temp del terreny (10 a 40 °C)
-        1.11, 1.07, 1.04, 1, 0.96, 0.92, 0.88
-    ];
-    const fc_tempt = arr_fctt[i_tt];
+    let j_sec1 = arr_itc07.findIndex(i=> i >= i_iga1);
+    let i_max1 = arr_itc07[j_sec1];
+    let i_z1 = i_max1;
+    s_1 = arr_sec[j_sec1];
     
-    const arr_fcpl = [ // array f. corr per prof de LGA (0.6 a 1.25 m)
-        1.01, 1, 0.99, 0.97, 0.96
-    ];
-    const fc_prof = arr_fcpl[i_pl];
+    const arr_col = ["6", "10", "8"];
+    const i_col = j_ucable + j_um;
+    const columna = arr_col[i_col];
+    let j_sec2 = arr_itc19[i_col].findIndex(i => i >= i_iga2);
+    let i_max2 = arr_itc19[i_col][j_sec2];
+    let i_z2 = i_max2;
+    s_2 = arr_sec[j_sec2];
     
-    const arr_fcrt = [ // fc resistivitat termica terreny (0.9 2.5)
-        [ // 0.9
-            1,       1,       1,       1,       1.08,
-            1.08,    1.08,    1.09,    1.09,    1.09,
-            1.09,    1.10,    1.10,    1.10,    1.10
-        ],
-        [ //1
-            1,       1,       1,       1,,       1.10,
-            1.10,    1.11,    1.11,    1.11,    1.11,
-            1.12,    1.12,    1.12,    1.12,    1.12
-        ],
-        [ // 1.5
-            1,       1,       1,       1,       1,
-            1,       1,       1,       1,       1,
-            1,       1,       1,       1,       1
-        ],
-        [ // 2
-            1,       1,       1,       1,       0.93,
-            0.93,    0.93,    0.93,    0.93,    0.93,
-            0.93,    0.93,    0.93,    0.93,    0.92
-        ],
-        [ // 2.5
-            1,       1,       1,       1,       0.88,
-            0.88,    0.88,    0.88,    0.87,    0.87,
-            0.87,    0.87,    0.87,    0.87,    0.86
-        ],
-    ];
-    const arr_fcrt2 = arr_fcrt[i_rt];
-    
-    let j_sec = 0;
-    let i_max = 0;
-    let i_z = 0;
-    let s = 0
-            
-    md += ['',
-        "si_lga = \"" +si_lga+ "\""                                    ,
-    ].join("\n");
-    if (i_sl === 0){ // enterrada
-        j_sec = arr_ime.findIndex(i_fs => i_fs >= i_b);
-        i_max = arr_ime[j_sec];
-        const fc_rt = arr_fcrt2[j_sec];
-        i_z = i_max * fc_tempt * fc_prof * fc_rt;
-        
-        s = arr_sec[j_sec];
-        md += ['',
-          " - s = " +s+ " mm²"                                         ,
-          " - i_max = " +i_max+ " A "                                  ,
-          ""                                                           , 
-          " - fc_tempt = " +fc_tempt+ " (" +temp_t+ " °C)"             ,
-          " - fc_prof = " +fc_prof+ " (" +prof_lga+ " m)"              ,
-          " - fc_rt = " +fc_rt+ " (" +res_t+ " K·m/W)"                 ,
-          " - i_z = i_max * fc_tempt * fc_prof * fc_rt = "             ,
-          "       = " +xs(i_z)+ " A"                                   ,
-          ""                                                           ,
-        ].join("\n");
-    }else { // fals sostre
-        j_sec = arr_imfs.findIndex(i_fs => i_fs >= i_b);
-        i_max = arr_imfs[j_sec];
-        i_z = i_max * fc_temp;
-        
-        s = arr_sec[j_sec];
-        md += ['',
-          " - s = " +s+ " mm²"                                         ,
-          " - i_max = " +i_max+ " A "                                  ,
-          ""                                                           , 
-          "fc_temp = " +fc_temp+ " (" +temp_fs+ " °C)"                 , 
-          "i_z = i_max * fc_temp = " +xs(i_z)+ " A"                    ,
-          ""                                                           ,
-        ].join("\n");
-    }
-    
-    const arr_inf = [ // array de I_n dels fusibles
-        63,  80, 100, 125, 160,
-        200, 250, 315
-    ];
-    
-    let j_inf = arr_inf.findIndex(a => a >= i_z * 0.91) - 1;
-    let i_n = arr_inf[j_inf];
-    
-    md += ['',
-      "i_n ≤ i_z * 0.91 = " +xs(i_z * 0.91)+ " A"                      ,
-      "i_n = " +i_n+ " A"                                              ,
-      ""                                                               ,
-      "i_b ≤ i_n? → " +xs(i_b)+ " ≤ " +i_n+ "?"                        ,
-    ].join("\n");
-    
-    
-    while (i_n < i_b) {
-        j_sec++;
-        s = arr_sec[j_sec];
-        if (i_sl === 0){ // enterrada
-            i_max = arr_ime[j_sec];
-            const fc_rt = arr_fcrt2[j_sec];
-            i_z = i_max * fc_tempt * fc_prof * fc_rt;
-        }else { // fals sostre
-            i_max = arr_imfs[j_sec];
-            i_z = i_max * fc_temp;
-        }
-        j_inf = arr_inf.findIndex(a => a >= i_z * 0.91) - 1;
-        i_n = arr_inf[j_inf];
-        md += ['',
-          "No!, s'augmenta la secció, ara:"              ,
-          " - s = " +s+ " mm²"                                         ,
-          " - i_max = " +i_max+ " A"                                   ,
-          " - i_z = i_max * fc_tem = " +xs(i_z)+ " A"                  ,
-          " - i_n ≤ i_z * 0.91 = " +xs(i_z * 0.91)+ " A"               ,
-          " - i_n = " +i_n+ " A"                                       ,
-          ""                                                           ,
-          "i_b ≤ i_n? → " +xs(i_b)+ " ≤ " +i_n+ "?"                    ,
-        ].join("\n");
-    };
-    
-    const arr_icgp = [ // array de les intensitats de les CGPs
-        100, 160, 250
-    ];
-    const j_icgp = arr_icgp.findIndex(a => a >= i_n);
-    const i_buc = arr_icgp[j_icgp];
-    
-    md += ['',
-      "Sí!"                                                            ,
-      " - i_buc = " +i_buc+ " A"                                       ,
-      ""                                                               ,
-    ].join("\n");
-    
-    const arr_cdtu = [ // Array de cdt unitaries
-        [18.255, 19.573, 20.891, 21.550, 20.469, 21.951, 23.434, 24.175, 22.604, 24.252, 25.899, 26.723],
-        [11.216, 12.023, 12.830, 13.234, 12.562, 13.469, 14.377, 14.831, 13.843, 14.852, 15.860, 16.365],
-        [7.024,   7.526,  8.028,  8.279,  7.848,  8.413,  8.978,  9.261,  8.612,  9.240,  9.867, 10.181],
-        [4.732,   5.068,  5.403,  5.571,  5.272,  5.650,  6.027,  6.216,  5.754,  6.173,  6.592,  6.802],
-        [2.846,   3.045,  3.244,  3.344,  3.157,  3.382,  3.606,  3.718,  3.419,  3.668,  3.917,  4.042],
-        [1.820,   1.945,  2.070,  2.133,  2.007,  2.148,  2.289,  2.359,  2.148,  2.305,  2.461,  2.540],
-        [1.184,   1.263,  1.342,  1.382,  1.293,  1.382,  1.471,  1.516,  1.358,  1.457,  1.556,  1.606],
-        [0.878,   0.935,  0.992,  1.020,  0.950,  1.014,  1.078,  1.110,  0.979,  1.050,  1.122,  1.157],
-        [0.672,   0.714,  0.757,  0.778,  0.719,  0.766,  0.814,  0.837,  0.723,  0.776,  0.828,  0.855],
-        [0.491,   0.520,  0.549,  0.564,  0.516,  0.549,  0.582,  0.598,  0.501,  0.537,  0.574,  0.592],
-        [0.378,   0.399,  0.420,  0.431,  0.390,  0.413,  0.437,  0.449,  0.361,  0.387,  0.413,  0.426],
-        [0.315,   0.332,  0.349,  0.357,  0.320,  0.339,  0.358,  0.367,  0.286,  0.307,  0.327,  0.338],
-        [0.271,   0.284,  0.298,  0.304,  0.271,  0.286,  0.301,  0.309,  0.232,  0.249,  0.265,  0.274],
-        [0.234,   0.244,  0.255,  0.261,  0.229,  0.241,  0.253,  0.259,  0.185,  0.199,  0.212,  0.219],
-        [0.197,   0.205,  0.213,  0.217,  0.188,  0.197,  0.206,  0.211,  0.141,  0.151,  0.161,  0.167]
-    ];
-    
-    let t_op = 90;
-    
-    const arr_tc = [ // Array de temperatures de cable
-        40, 60, 80, 90
-    ];
-    const arr_fdp = [ // Array de factors de potència
-        0.8, 0.9, 1
-    ];
-    let b1 = arr_fdp.findIndex(a => a <= fdp);
-    let b2 = arr_tc.findIndex(a => a >= t_op);
-    let j_fdpit = b1 * 4 + b2;            // index del fdp i temperatura
-    let cdtu = arr_cdtu[j_sec][j_fdpit];
-    let cdt_90 = cdtu * l_lga/1e3 * i_b;
-    const arr_cdtmax = [ // array de les cdt màximes admisibles en %
-        0.5, 1
-    ];
-    const cdt_pc = arr_cdtmax[i_pcc]
-    const cdt_max = cdt_pc/100 * 400;
-    
-    md += ['',
-      "t_op = 90 °C"                                                   ,
-      "cos φ = " +fdp                                                  ,
-      "s = " +s+ " mm²"                                                ,
-      "cdtu = " +cdtu+ " V/(A·km)"                                     ,  
-      "l_lga = " +l_lga+ " m"                                          ,
-      "i_b = " +xs(i_b)+ " A"                                          ,
-      "cdt_90 = cdtu * l_lga/1e3 * i_b = " +xs(cdt_90)+ " V"           ,
-      "pos_cc = \"" +pos_cc+ "\""                                      ,
-      "cdt_pc = " +cdt_pc+ " %"                                        ,
-      "cdt_max = " +cdt_max+ " V"                                      ,
-      ""                                                               ,
-      "cdt_90 ≤ cdt_max? → " +xs(cdt_90)+ " ≤ " +cdt_max+ "?"          ,
+    md +=['',
+      "ITC BT-07:",
+      " - Coure, entubat",
+      "     → s_1 = " +s_1+ " mm²",
+      "     → i_max1 = " +i_max1+ " A",
+      " - prof = 0.7 m",
+      " - tt = 25 °C",
+      " - rt = 1.5 K·m/W",
+      "     → i_z1 = i_max1 = " +i_z1+ " A (no fc)",
+      "",
+      "ITC BT-19",
+      " - " +uni_o_multi+ ", " +u_cable,
+      "     → columna: " +columna,
+      "     → s_2 = " +s_2+ " mm²",
+      "     → i_max2 = " +i_max2+ " A",
+      " - ta = 40 °C",
+      " - no agrupament",
+      "     → i_z2 = i_max2 = " +i_z2+ " A (no fc)",
       "",
     ].join("\n");
     
-    let j_sec_vell = j_sec;
-    while (cdt_90 > cdt_max){
-        j_sec++;
-        s = arr_sec[j_sec];
-        cdtu = arr_cdtu[j_sec][j_fdpit];
-        cdt_90 = cdtu * l_lga/1e3 * i_b;
-        md += ['',
-          "No!, s'augmenta la secció, ara:"       ,
-          " - s = " +s+ " mm²"                                         ,
-          " - cdtu = " +cdtu+ " V/(A·km)"                              ,
-          " - cdt_90 = cdtu * l_lga/1e3 * i_b = " +xs(cdt_90)+ " V"    ,
-          "cdt_90 ≤ cdt_max? → " +xs(cdt_90)+ " ≤ " +cdt_max+ "?"      ,
+    
+    let t_op1 = 90;
+    let t_op2 = j_ucable === 0 ? 70 : 90;
+    let γ_1 = 45.49;
+    let γ_2 = j_ucable === 0 ? 48.47 : 45.49;
+    
+    let cdt_tmax1 = pma1*l_di1/γ_1/s_1/400;
+    let cdt_tmax2 = 2*pma2*l_di2/γ_2/s_2/230;
+    
+    const cdt_max1 = 1.5/100 * 400;
+    let j_sec1_vell = j_sec1;
+    
+    md +=['',
+      "",
+      "",
+      "Comprovació cdt",
+      "---------------",
+      "",
+      "cdt1_" +ar(t_op1)+ " = pma1*l_di1/γ_1/s_1/400 = " +ar(cdt_tmax1)+ " V",
+      " - pma1 = " +ar(pma1)+ " W",
+      " - l_di1 = " +l_di1+ " m",
+      " - γ_1 = " +γ_1+ " m/(Ω·mm²) ← u_cable = 0,6/1 kV",
+      " - s_1 = " +s_1+ " mm²",
+      "",
+      "cdt_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_tmax1)+ " V ≤ " +ar(cdt_max1)+ " V?",
+      " - cdt_max1 = 1.5/100 * 400 = " +ar(cdt_max1)+ " V",
+    ].join("\n");
+    
+    while (cdt_tmax1 > cdt_max1){
+        j_sec1++;
+        s_1 = arr_sec[j_sec1];
+        cdt_tmax1 = pma1*l_di1/γ_1/s_1/400;
+        md +=['',
+          "Si! → augmentar secció",
+          " - s_1 = " +s_1+ " mm²",
+          " - cdt1_" +ar(t_op1)+ " = " +ar(cdt_tmax1)+ " V",
+          "",
+          "cdt_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_tmax1)+ " V > " +ar(cdt_max1)+ " V?",
         ].join("\n");
     }
+    const s_tmax1 = s_1;
     
-    const s_lga90 = arr_sec[j_sec];
-    
-    md += ['',
-      "Sí!"                                                            ,
-      " - s_lga90 = " +s_lga90+ " mm²"                                 ,
-      ""
+    md +=['',
+      "No!",
+      "s_1 = " +s_1+ " mm²",
+      "",
     ].join("\n");
-
-    j_sec = j_sec_vell;
-    s = arr_sec[j_sec];
-    const t_0 = temp_fs;
-    const t_max = 90;
-    t_op = t_0 + (t_max - t_0) * (i_b / i_z);
-    b1 = arr_fdp.findIndex(a => a <= fdp);
-    b2 = arr_tc.findIndex(a => a >= t_op);
-    j_fdpit = b1 * 4 + b2;                // index del fdp i temperatura
-    cdtu = arr_cdtu[j_sec][j_fdpit];
-    let cdt_op = cdtu * l_lga/1e3 * i_b;
     
-    md += ['',
-      ""                                                               ,
-      "Ara se'ns demana intentar optimitzar la secció tinguent en"     ,
-      "compte que la temperatura del conductor no arribarà als 90 °C"  ,
-      " - t_0 = temp_fs = " +t_0+ " °C"                                ,
-      " - t_max = 90 °C"                                               ,
-      " - t_op = t_0 + (t_max - t_0) * (i_b / i_z) = " +xs(t_op)+ " °C",
-      ""                                                               ,
-      " - cos φ = " +fdp                                               ,
-      " - s = " +s+ " mm²"                                             ,
-      " - cdt_u = " +cdtu+ " V/(A·km)"                                 ,
-      ""                                                               ,
-      " - l_lga = " +l_lga+ " m"                                       ,
-      " - i_b = " +xs(i_b)+ " A"                                       ,
-      " - cdt_op = cdtu * l_lga/1e3 * i_b = " +xs(cdt_op)+ " V"        ,
-      ""                                                               ,
-      "cdt_op ≤ cdt_max? → " +xs(cdt_op)+ " ≤ " +cdt_max+ "?"          ,
+    const e_pc = j_cc === 0 ? 1 : 0.5;
+    const cdt_max2 = e_pc / 100 * 230;
+    let j_sec2_vell = j_sec2;
+    md +=['',
+      "cdt2_" +ar(t_op2)+ " = pma2*l_di2/γ_2/s_2/400 = " +ar(cdt_tmax1)+ " V",
+      " - pma2 = " +ar(pma2)+ " W",
+      " - l_di2 = " +l_di2+ " m",
+      " - γ_2 = " +γ_2+ " m/(Ω·mm²) ← u_cable = " +u_cable,
+      " - s_2 = " +s_2+ " mm²",
+      "",
+      "cdt_" +ar(t_op2)+ " > cdt_max2?: " +ar(cdt_tmax2)+ " V > " +ar(cdt_max2)+ " V?",
+      " - e_pc = j_cc === cc unica ? 1 : 0.5 = " +e_pc+ " %",
+      " - cdt_max2 = e_pc / 100 * 230 = " +ar(cdt_max2)+ " V",
     ].join("\n");
-    while (cdt_op > cdt_max){
-        j_sec++;
-        s = arr_sec[j_sec];
-        i_max = arr_imfs[j_sec];
-        i_z = i_max * fc_temp;
-        t_op = t_0 + (t_max - t_0) * (i_b / i_z);
-        b1 = arr_fdp.findIndex(a => a <= fdp);
-        b2 = arr_tc.findIndex(a => a >= t_op);
-        j_fdpit = b1 * 4 + b2;
-        cdtu = arr_cdtu[j_sec][j_fdpit];
-        cdt_op = cdtu * l_lga/1e3 * i_b;
-        md += ['',
-          "No!, s'augmenta la secció, ara:"                            ,
-          " - s = " +s+ " mm²"                                         ,
-          " - i_max = arr_imfs[j_sec] = " +i_max+ " A"                 ,
-          " - i_z = i_max * fc_temp = " +i_z+ " A"                     ,
-          " - t_op = " +xs(t_op)+ " °C"                                ,
-          " - cdtu = " +cdtu+ " V/(A·km)"                              ,
-          " - cdt_op = cdtu * l_lga/1e3 * i_b = " +xs(cdt_op)+ " V"    ,
-          ""                                                           ,
-          "cdt_op ≤ cdt_max? → " +xs(cdt_op)+ " ≤ " +cdt_max+ "?"      ,
+    while (cdt_tmax2 > cdt_max2){
+        j_sec2++;
+        s_2 = arr_sec[j_sec2];
+        cdt_tmax2 = 2*pma2*l_di2/γ_2/s_2/230;
+        md +=['',
+          "Si! → Augmentar secció",
+          " - s_2 = " +s_1+ " mm²",
+          " - cdt1_" +ar(t_op1)+ " = " +ar(cdt_tmax1)+ " V",
+          "",
+          "cdt_" +ar(t_op2)+ " > cdt_max2?: " +ar(cdt_tmax2)+ " V > " +ar(cdt_max2)+ " V?",
         ].join("\n");
     }
-    const s_lga = arr_sec[j_sec];
-    const arr_dt = [ // Array de diàmetres de tubs
-        0,       0,       0,       0,       75,
-        75,      110,     110,     125,     140,
-        140,     160,     160,     180,     200
-    ];
+    const s_tmax2 = s_2;
     
-    const diam_t = arr_dt[j_sec];
-    
-    md += ['',
-      "Si!"                                                            ,
-      " - s_lga = " +s_lga+ " mm²"                                     ,
-      " - diam_t = " +diam_t+ " mm"                                    ,
+    md +=['',
+      "No!",
+      "s_2 = " +s_2+ " mm²",
+      "",
     ].join("\n");
+    
+    j_sec1 = j_sec1_vell;
+    s_1 = arr_sec[j_sec1];
+    const t_01 = 25;
+    const t_max1 = 90;
+    
+    t_op1 = t_01 + (t_max1 - t_01) * (i_iga1 / i_z1)**2;
+    ρ_1 = 0.0172 * (1 + 0.00393 * (t_op1 - 20));
+    let cdt_op1 = pma1*l_di1*ρ_1/s_1/400;
+    
+    md +=['',
+      "",
+      "",
+      "Comprovació cdt amb temperatura d'operació real",
+      "-----------------------------------------------",
+      "",
+      "t_op1 = t_01 + (t_max1 - t_01) * (i_iga1 / i_z1)**2 = " +ar(t_op1)+ " °C",
+      " - t_01 = 25 °C ← enterrada",
+      " - t_max1 = 90 °C ← 0,6/ 1kV",
+      " - i_iga1 = " +i_iga1+ " A",
+      " - i_z1 = " +i_z1+ " A",
+      "",
+      "cdt1_" +ar(t_op1)+ " = pma1*l_di1*ρ_1/s_1/400 = " +ar(cdt_op1)+ " V",
+      " - pma1 = " +ar(pma1)+ " W",
+      " - l_di1 = " +l_di1+ " m",
+      " - ρ_1 = 0.0172 * (1 + 0.00393 * (t_op1 - 20)) = " +ar(ρ_1)+ " Ω·mm²/m",
+      " - s_1 = " +s_1+ " mm²",
+      "",
+      "cdt_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_op1)+ " V ≤ " +ar(cdt_max1)+ " V?",
+      " - cdt_max1 = 1.5/100 * 400 = " +ar(cdt_max1)+ " V",
+    ].join("\n");
+    while (cdt_op1 > cdt_max1){
+        j_sec1++;
+        s_1 = arr_sec[j_sec1];
+        i_max1 = arr_itc07[j_sec1];
+        i_z1 = i_max1;
+        t_op1 = t_01 + (t_max1 - t_01) * (i_iga1 / i_z1)**2;
+        ρ_1 = 0.0172 * (1 + 0.00393 * (t_op1 - 20));
+        cdt_op1 = pma1*l_di1*ρ_1/s_1/400;
+        md +=['',
+          "Si! → augmentar secció",
+          " - s_1 = " +s_1+ " mm²",
+          " - i_z1 = " +i_z1+ " A",
+          " - t_op1 = " +ar(t_op1)+ " °C",
+          " - ρ_1 = " +ar(ρ_1)+ " Ω·mm²/m",
+          " - cdt1_" +ar(t_op1)+ " = " +ar(cdt_op1)+ " V",
+          "",
+          "cdt_" +ar(t_op1)+ " > cdt_max1?: " +ar(cdt_op1)+ " V > " +ar(cdt_max1)+ " V?",
+        ].join("\n");
+    }
+    const s_di1 = s_1;
+    
+    md +=['',
+      "No!",
+      "s_1 = " +s_1+ " mm²",
+      "",
+    ].join("\n");
+    
+    j_sec2 = j_sec1_vell;
+    s_2 = arr_sec[j_sec2];
+    const t_02 = 40;
+    const t_max2 = j_ucable === 0 ? 70 : 90;
+    
+    t_op2 = t_02 + (t_max2 - t_02) * (i_iga2 / i_z2)**2;
+    ρ_2 = 0.0172 * (1 + 0.00393 * (t_op2 - 20));
+    let cdt_op2 = 2*pma2*l_di2*ρ_2/s_2/230;
+    md += ['',
+      "t_op2 = t_02 + (t_max2 - t_02) * (i_iga2 / i_z2)**2 = " +ar(t_op2)+ " °C",
+      " - t_02 = 40 °C ← enterrada",
+      " - t_max2 = j_ucable === 0 ? 70 : 90 = " +t_max2+ " °C ← " +u_cable,
+      " - i_iga1 = " +i_iga1+ " A",
+      " - i_z1 = " +i_z1+ " A",
+      "",
+      "cdt2_" +ar(t_op2)+ " = 2*pma2*l_di2*ρ_2/s_2/230 = " +ar(cdt_op2)+ " V",
+      " - pma2 = " +ar(pma2)+ " W",
+      " - l_di2 = " +l_di2+ " m",
+      " - ρ_2 = 0.0172 * (1 + 0.00393 * (t_op2 - 20)) = " +ar(ρ_2)+ " Ω·mm²/m",
+      " - s_2 = " +s_2+ " mm²",
+      "",
+      "cdt_" +ar(t_op2)+ " > cdt_max2?: " +ar(cdt_op2)+ " V > " +ar(cdt_max2)+ " V?",
+      " - e_pc = j_cc === cc unica ? 1 : 0.5 = " +e_pc+ " %",
+      " - cdt_max2 = e_pc / 100 * 230 = " +ar(cdt_max2)+ " V",
+    ].join("\n");
+    while (cdt_op2 > cdt_max2){
+        j_sec2++;
+        s_2 = arr_sec[j_sec2];
+        i_max2 = arr_itc19[i_col][j_sec2];
+        i_z2 = i_max2;
+        t_op2 = t_02 + (t_max2 - t_02) * (i_iga2 / i_z2)**2;
+        ρ_2 = 0.0172 * (1 + 0.00393 * (t_op2 - 20));
+        cdt_op2 = 2*pma2*l_di2*ρ_2/s_2/230;
+        md +=['',
+          "Si! → augmentar secció",
+          " - s_2 = " +s_2+ " mm²",
+          " - i_z2 = " +i_z2+ " A",
+          " - t_op2 = " +ar(t_op2)+ " °C",
+          " - ρ_2 = " +ar(ρ_2)+ " Ω·mm²/m",
+          " - cdt2_" +ar(t_op2)+ " = " +ar(cdt_op2)+ " V",
+          "",
+          "cdt_" +ar(t_op2)+ " > cdt_max1?: " +ar(cdt_op2)+ " V > " +ar(cdt_max1)+ " V?",
+        ].join("\n");
+    }
+    const s_di2 = s_2;
     
     md += "\n~~~";
     return md;
