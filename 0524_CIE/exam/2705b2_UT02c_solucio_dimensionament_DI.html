@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+<textarea id="enunciat">
+
+
+
+
+
+
+
+
+
+
+
+Solució UT02a - Dimensionament DI
+=================================
+
+Enunciat
+--------
+
+**1.** Dimensiona la següent DI, per a un habitatge amb:
+- un IGA de 32 A
+- pots suposar cosφ = 1
+- entre la CC i l'IGA hi ha 18 m
+- el sistema d'instal·lació és: tubs en superfície.
+- vols utilitzar conductor de 450/750 V, si és possible, només en
+  cas contrari utilitzaràs conductor de 0,6/1 kV
+- la temperatura ambient màxima prevista és de 40 °C i no hi ha
+  agrupació de conductors
+- l'habitatge no té LGA
+
+
+Resposta
+--------
+
+### 1. Potència de l'habitatge:
+
+- $P = U \cdot I \cdot \cos \varphi = 230 \cdot 32 \cdot 1 = 7,36 \text{ kW}$
+
+**Resposta: 7,36 kW**
+
+
+
+### 2. Intensitat màxima qua admet el conductor en les condicions REALS
+
+Tenim que:
+- 450/750 V → H07Z1-K → Assimila a PVC
+- Monofàsic
+
+Per tant és 2x PVC, com que a més és B1 es mira a la columna 6a:
+- 6 mm² → 34 A (36 A, ed. 9 REBT)
+- $I_z = I_{max} \cdot fc = 34 \cdot 1 = 34 \text{ A}$
+
+Com que la intensitat que admet el cable és major que la del IGA,
+comprovem la secció per cdt:
+- Sabem que $e = \dfrac{1{,}5}{100} \cdot 230 = 3{,}45 \text{ V}$
+
+- $S = \dfrac{2 \cdot P \cdot L}{\gamma \cdot e \cdot U}$
+   $ =  \dfrac{2 \cdot 7360 \cdot 18}{48{,}47 \cdot 3,45 \cdot 230}
+     = 6{,}88 \text{ mm}^2 \rightarrow 10 \text{ mm}^2$
+
+Ens quedem amb el màxim:
+**Resposta: 10 mm²**
+
+
+
+### 3. Caiguda de tensió màxima admesa per aquesta instal·lacio:
+
+Ja s'ha calculat e a l'apartat anterior.
+
+**Resposta: 3,45 V** 
+
+
+
+### 4. Caiguda de tensió que tindrà la instal·lació
+
+De la fórmula anterior, aïllant la e
+
+- $S = \dfrac{2 \cdot P \cdot L}{\gamma \cdot S \cdot U}$
+   $ =  \dfrac{2 \cdot 7360 \cdot 18}{48{,}47 \cdot 10 \cdot 230}
+     = 2{,}78 \text{ V}$
+
+**Resposta: 2,78V**
+
+
+
+### 5. Secció escollida:
+
+Ja trobada, als apartats anteriors.
+
+**Resposta: 10 mm²**
+
+
+
+### 6. Diàmetre nominal exterior del tub
+
+Per tubs en superfície es consulta la taula F de la GT de l'REBT
+ITC BT-15, Per H07Z1-K, 3U, superficial, 10mm² necessitem un tub ø32,
+la NRZ recomana ø40, però no exigeix.
+
+**Resposta: ø32** (s'admet ø40 si està ben raonat.
+
+### 7. Diàmetre del conductor si el fabricant és Prysmian:
+
+**Resposta 6,1 mm²**
+
+### 8. Referència del fabricant (Tupersa) del tub:
+
+**Resposta: 065200032** (Si es va admetre ø40 65200040.
+
+
+
+</textarea>
+
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>
