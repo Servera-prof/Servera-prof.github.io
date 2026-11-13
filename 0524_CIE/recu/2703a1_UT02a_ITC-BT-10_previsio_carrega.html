@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+UT02a - Previsió de potències
+===========================
+
+Enunciat
+--------
+
+Tenim un edifici dedicat principalment a habitatges. Tenint en compte
+que:
+- assumirem que l'habitatge és d'electrificació bàsica tret que sigui
+  reglamentariament exigible elevada 
+- que les potències de cada habitatge seran les mínimes reglamentàries
+- **no hi pot haver mitges places** de VE, i que la opció més cauta és 
+  arrodonir a l'enter superior (p.e. si el nombre de vehícles elèctrics 
+  és d'1,4 s'arrodonirà a 2) 
+  
+Calcula segons ITC-BT-10 la potència prevista per una instal·lació amb:
+
+**Habitatges**
+
+- 4 habitatges amb termo elèctric, 147 m², 15 bases de corrent d'ús 
+  general i 29 punts de llum.
+- 3 habitatges amb secadora, 179 m², 21 bases de corrent d'ús
+  general i 21 punts de llum.
+- 8 habitatges amb ascensor privat, 163 m², 15 bases de corrent d'ús
+  general i 16 punts de llum.
+
+**Locals**
+
+| Local        | $P_{dem}$ | $S$     |
+| :----------: | :-------: | :-----: |
+| Consultoria  |  5,31     | 72      |
+| Tenda vinils |  2,26     | 52      |
+| Banc         |  4,54     | 101     |
+
+A on:
+- $P_{dem}$ és la potència demandada pel local en $\text{kW}$
+- $S$ és la superfície en $\text{m}^2$
+
+**Garatge**
+
+El garatge té 1 plantes amb una superfície de 93 cada una
+i ventilació forçada, i una superfície de 31 m² per vehícle i
+està prevista la instalació de SPL.
+
+**Serveis comuns**
+
+- La superfície de l'escala a il·luminar és de 92, i la dels
+  passadissos 90. La il·luminació està prevista amb LEDs
+  (assimilable a fluorescent).
+- Es necessita un ascensor per fins a 8 persones i 1,00 m/s de velocitat
+- A l'edifici a més es necessita un grup de pressió de 195 preses
+  d'aigua i té 3 plantes.
+  
+**Nota:** Es pot consultar la imatge de sota per la potència de 
+l'ascensor i grup de pressió. Si el número de preses d'aigua no 
+coincideix, s'haurà d'agafar el que és immediatament superior.
+
+![c](../img/2026_UT02_recu.png)
+ 
+ 
+ 
+Respostes
+----------
+
+- Coeficient de simultaneitat habitatges: __________
+- Potència habitatges: __________ kW
+- Potència locals: __________ kW
+- Potència garatge: __________ kW
+- Potència zones comunes: __________ kW
+- Potència vehícle elèctric: __________ kW
+- Potència total prevista per l'edifici __________ kW
+
+
+
+Puntuacions
+-----------
+
+Tret que s'indiqui el contrari totes les preguntes valen 1 punt.
+
+</textarea>
+
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>
