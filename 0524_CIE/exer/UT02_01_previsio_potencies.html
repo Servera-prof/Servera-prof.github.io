@@ -372,7 +372,7 @@ function generar_explicacio(){
         12.5, 13.1, 13.7, 14.3, 14.8,
         15.3
     ];
-    const cs = nh > 21 ? 15.3+(nh-21)*0.5 : arr_cs[nh];   // coef simult
+    const cs = nh > 21 ? 15.3+(nh-21)*0.5 : arr_cs[nh-1];   // coef simult
     const ph = cs*(nh1*ph1 + nh2*ph2 + nh3*ph3)/nh;
     
     const pl1 = max(sl1*100, pdl1*1000, 3450);
@@ -382,7 +382,7 @@ function generar_explicacio(){
     const pl = pl1 + pl2 + pl3;                            // pot locals
     
     const pmqg = i_vg === 0 ? 10 : 20;               // pot per m² garat
-    const pg = plg * sg * pmqg;
+    const pg = max(plg * sg * pmqg, 3450);
     
     const cspl = i_spl === 0 ? 0.3 : 1;                // coeficient SPL
     const nve = Math.ceil(0.1 * plg * sg / spv);
@@ -447,7 +447,7 @@ function generar_explicacio(){
       '    12.5, 13.1, 13.7, 14.3, 14.8,                              ',
       '    15.3                                                       ',
       '];                                                             ',
-      'cs = nh > 21 ? 15.3+(nh-21)*0.5 : arr_cs[nh] = ' +cs            ,
+      'cs = nh > 21 ? 15.3+(nh-21)*0.5 : arr_cs[nh-1] = ' +cs            ,
       'ph = cs*(nh1*ph1 + nh2*ph2 + nh3*ph3)/nh = ' +ph                ,
       '                                                               ',
       '                                                               ',
@@ -462,7 +462,7 @@ function generar_explicacio(){
       'pl = pl1 + pl2 + pl3 = ' +pl                                    ,
       '                                                               ',
       'pmqg = i_vg === 0 ? 10 : 20 = ' +pmqg+ ' (pot per m² garat)    ',
-      'pg = plg * sg * pmqg = ' +pg                                    ,
+      'pg = max(plg * sg * pmqg, 3450) = ' +pg                                    ,
       '                                                               ',
       'cspl = i_spl === 0 ? 0.3 : 1 = ' +cspl+ ' (coeficient SPL)     ',
       'nve = Math.ceil(0.1 * plg * sg / spv) =                        ',

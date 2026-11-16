@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+</head>
+<textarea id="enunciat">
+
+
+UT02a - Previsió de potències
+===========================
+
+Enunciat
+--------
+
+Tenim un edifici dedicat principalment a habitatges. Tenint en compte
+que:
+- assumirem que l'habitatge és d'electrificació bàsica tret que sigui
+  reglamentariament exigible elevada 
+- que les potències de cada habitatge seran les mínimes reglamentàries
+- **no hi pot haver mitges places** de VE, i que la opció més cauta és 
+  arrodonir a l'enter superior (p.e. si el nombre de vehícles elèctrics 
+  és d'1,4 s'arrodonirà a 2) 
+  
+Calcula segons ITC-BT-10 la potència prevista per una instal·lació amb:
+
+**Habitatges**
+
+- 4 habitatges amb termo elèctric, 147 m², 15 bases de corrent d'ús 
+  general i 29 punts de llum.
+- 3 habitatges amb secadora, 179 m², 21 bases de corrent d'ús
+  general i 21 punts de llum.
+- 8 habitatges amb ascensor privat, 163 m², 15 bases de corrent d'ús
+  general i 16 punts de llum.
+
+
+**Locals**
+
+| Local        | $P_{dem}$ | $S$     |
+| :----------: | :-------: | :-----: |
+| Consultoria  |  5,31     | 72      |
+| Tenda vinils |  2,26     | 52      |
+| Banc         |  4,54     | 101     |
+
+A on:
+- $P_{dem}$ és la potència demandada pel local en $\text{kW}$
+- $S$ és la superfície en $\text{m}^2$
+
+**Garatge**
+
+El garatge té 1 plantes amb una superfície de 93 cada una
+i ventilació forçada, i una superfície de 31 m² per vehícle i
+està prevista la instalació de SPL.
+
+**Serveis comuns**
+
+- La superfície de l'escala a il·luminar és de 92, i la dels
+  passadissos 90. La il·luminació està prevista amb LEDs
+  (assimilable a fluorescent).
+- Es necessita un ascensor per fins a 8 persones i 1,00 m/s de velocitat
+- A l'edifici a més es necessita un grup de pressió de 195 preses
+  d'aigua i té 3 plantes.
+
+  
+**Nota:** Es pot consultar la imatge de sota per la potència de 
+l'ascensor i grup de pressió. Si el número de preses d'aigua no 
+coincideix, s'haurà d'agafar el que és immediatament superior.
+
+![c](../img/2026_UT02_recu.png)
+ 
+ 
+Respostes
+----------
+
+- Coeficient de simultaneitat habitatges: **11,90**
+- Potència habitatges: **98,53 kW**
+- Potència locals: **22,50 kW**
+- Potència garatge: **3,45 kW**
+- Potència zones comunes: **13,59 kW**
+- Potència vehícle elèctric: **1,10 kW**
+- Potència total prevista per l'edifici: **139,17 kW**
+
+
+
+Puntuacions
+-----------
+
+Tret que s'indiqui el contrari totes les preguntes valen 1 punt.
+
+
+
+
+Explicació
+==========
+
+~~~
+
+
+rh1: amb termo elèctric; mq1: 147; nt1: 15; pll1: 29
+rh2: amb secadora; mq2: 179; nt2: 21; pll2: 21
+rh3: amb ascensor privat; mq3: 163; nt3: 15; pll3: 16
+                                                               
+ee1 = i_rh1 === 0 || mq1 > 160 || nt1 > 20 || pll1 > 30 = false
+ee2 = i_rh2 === 0 || mq2 > 160 || nt2 > 20 || pll2 > 30 = true
+ee3 = i_rh3 === 0 || mq3 > 160 || nt3 > 20 || pll3 > 30 = true
+                                                               
+                                                               
+ph1 = ee1 ? 9200: 5750 = 5750
+ph2 = ee2 ? 9200: 5750 = 9200
+ph3 = ee3 ? 9200: 5750 = 9200
+                                                               
+nh = nh1 + nh2 + nh3 = 15
+const arr_cs = [                                               
+    1,    2,    3,    3.8,  4.6,                               
+    5.4,  6.2,  7,    7.8,  8.5,                               
+    9.2,  9.9,  10.6, 11.3, 11.9,                              
+    12.5, 13.1, 13.7, 14.3, 14.8,                              
+    15.3                                                       
+];                                                             
+cs = nh > 21 ? 15.3+(nh-21)*0.5 : arr_cs[nh-1] = 11.9
+ph = cs*(nh1*ph1 + nh2*ph2 + nh3*ph3)/nh = 98532
+                                                               
+                                                               
+tl1: Consultoria; pdl1: 5.31; sl1: 72
+tl2: Tenda de vinils; pdl2: 2.26; sl2: 52
+tl3: Banc; pdl3: 4.54; sl3: 101
+                                                               
+pl1 = max(sl1*100, pdl1*1000, 3450) = 7200
+pl2 = max(sl2*100, pdl2*1000, 3450) = 5200
+pl3 = max(sl3*100, pdl3*1000, 3450) = 10100
+                                                               
+pl = pl1 + pl2 + pl3 = 22500
+                                                               
+pmqg = i_vg === 0 ? 10 : 20 = 20 (pot per m² garat)    
+pg = max(plg * sg * pmqg, 3450);3450
+                                                               
+cspl = i_spl === 0 ? 0.3 : 1 = 0.3 (coeficient SPL)     
+nve = Math.ceil(0.1 * plg * sg / spv) =                        
+    = Math.ceil(0.1 * 1*93 / 31) = 1
+pve =  cspl * nve * 3680 = 1104
+                                                               
+pesc = sesc * 4 = 92 * 4 = 368
+ppas = spas * 8 = 90 * 8 = 720
+arr_pae = [                                                    
+    4500,                                                      
+    7500,                                                      
+    11500                                                      
+];                                                             
+pae = arr_pae[i_ae] = 11500
+                                                               
+arr_pgp = [                                                    
+    [1, 1, 1, 1],                                              
+    [1, 1, 2, 2],                                              
+    [1, 2, 4, 6],                                              
+    [2, 4, 6, 6],                                              
+    [2, 4, 6, 8],                                              
+    [4, 6, 9, 11]                                              
+];                                                             
+i_pgp = [150, 300, 450, 900, 1800, 3500]                       
+       .findIndex(e => e >= npa) = 1
+j_pgp = [1, 5, 11, 16].findIndex(e => e >= npl) = 1
+pgp = arr_pgp[i_pgp][j_pgp]*1e3 = 1000
+pzc = pesc + ppas + pae + pgp = 13588
+pt = ph + pl + pg + pve + pzc = 139174
+                                                               
+ph_kw = ph/1e3 = 98.532
+pl_kw = pl/1e3 = 22.5
+pg_kw = pg/1e3 = 3.45
+pzc_kw = pzc/1e3 = 13.588
+pve_kw = pve/1e3 = 1.104
+pt_kw = pt/1e3 = 139.174
+~~~
+
+</textarea>
+
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>

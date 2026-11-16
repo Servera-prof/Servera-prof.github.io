@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+<textarea id="enunciat">
+
+
+UT02b - Dimensionament LGA i GCP
+================================
+
+
+Dimensiona la CGP, el fusible i la LGA per a una instal·lació amb les 
+següents caracterísitiques:
+
+- Tipus de connexió de servei: subterrànea (Alerta!! és la connexió de 
+  servei que és subterrània, la LGA anirà per on digui el punt «tipus 
+  d'instal·lació»)
+- Potència demandada segons ITC-BT-10 120 kW
+- Factor de potència 0,8
+- Tipus d'instal·lació: Cables sense tub a fals sostre de 37 cm 
+  d'altura. Si no saps a quin tipus d'iinstal·lació correspon tria un 
+  aleatoriament entre B1 i B2, es descontarà 0,5 punts del total.
+- Temperatura ambient 30°C
+- Longitud LGA: 15 m.
+- Material: Coure
+- Tipus de centralització: Centralització única (totalment centralitzat 
+  a la Planta Baixa)
+- La resta de dades s'han de poder deduir de les prescripcions 
+  reglamentaries de les ITCs corresponents o de la NRZ103
+
+**Nota:** Per unificar criteris, si necessites consultar la taula 
+d'intensitats de la ITC-BT-19 utilitza la taula de la imatge, en cas 
+contrari simplement ignora-la:
+
+![](../img/2026_UT02_recu02.png)
+
+
+Determina:
+----------
+
+### 1. Intensitat demandada
+
+- $I_b = \dfrac{P}{\sqrt{3} \cdot U \cdot \cos \varphi}
+       = \dfrac{120 \cdot 10^3}{\sqrt{3} \cdot 400 \cdot 0{,}8}
+       = 216{,}51 \text{ A}$
+
+**Resposta:** $I_b = 216{,}51 \text{ A}$
+
+
+### 2. Secció de la LGA  (1 punt)
+- Instal·lació fals sostre → ITC-BT-19
+- La línia ha de ser trifàsica de RZ1-K unipolar per normativa → 3x XLPE
+
+Com que el fals sostre medeix 37 cm el sistema d'instal·lació és B1.
+Atès que el diàmetre del cable hauria de ser superior a: 
+$D_e \ge \dfrac{37}{5} = 7,4 \text { cm} = 74 \text{ mm}$
+(el triple que un cable de 240 mm²).
+- Es consulta per tant la taula adjunta a l'examen. Per a B1, 3x XLPE →
+  columna 8.
+- La primera secció que supera $I_b = 216{,}51 \text{ A}$ és 
+  $S = 95 \text{ mm}^2$ amb $I_{max} = 224\text{ A}$
+
+- $T_{amb} \ne 40 ~ ^\circ \text {C}$ → s'apliquen factors de correcció
+- Per una temperatura de 30 °C i XLPE el factor és 1,1
+- $I_z = I_{max} \cdot fc = 224 \cdot 1{,}1 = 246{,}4 \text{ A}$
+
+Comprovem el calibre del fusible:
+- $I_n \le I_z \cdot 0{,}91 = 246{,}46 \cdot 0{,}91 = 224 \text { A}$
+
+El primer fusible disponible que compleix $I_n = 224 \text { A}$ és el
+de 200 A. Ara bé:
+
+- $I_n \lt I_b$
+- S'ha d'augmentar secció, amb 
+$S = 120 \text{ mm}^2$ $\rightarrow I_{max} = 272 \text{ A}$ 
+$\rightarrow I_z = 272 \cdot 1{,}1 = 286 \text{ A}$
+- $I_n \le I_z \cdot 0{,}91 = 286 \cdot 0{,}91 = 260{,}26 \text { A}$
+
+Ara si, amb un fusible de 250 A es compleix que $I_n \lt I_b$. Cal 
+comprovar que la cdt es troba dins dels límits. 
+- Sabem que:
+$e_{max} = \dfrac {0{,}5}{100} \cdot 400 = 2 \text { V}$, per tant:
+
+- $e_u$ del cable no ha de superar: 
+$e_{u-max} = \dfrac {e_{max}}{L_{km} \cdot I_b}$ 
+$= \dfrac {2}{0{,}015 \cdot  216{,}51} = 0{,}6158$.
+
+Efectivament, per a un conductor de 120 mm² i cos φ = 0,8 →
+$e_u = 0{,367} \text{ V}/\text{A} \cdot \text{km}$
+
+**Resposta:** $S = 120 \text{ mm}^2$
+
+### 3. Intensitat màxima admisible per l'LGA a les condicions ambientals reals
+
+**Resposta: 286 A**
+
+### 4. Calibre fusibles 
+
+**Resposta:** $I_n = 250 \text{ A}$
+
+### 5. Intensitat de la CGP aprovada a la NRZ103
+
+De les diferents intensitats de les BUC 100, 160, 250 admeses per la
+NRZ103 l'única que pot albergar fusibles de 250 A és la de 250 A.
+
+**Resposta:** $I_{CGP} = 250 \text{ A}$
+
+### Ninxol i esquema de CGP
+
+Tria un esquema de la CGP aprovat per NRZ103 apte per a 
+muntatge verticali dimensiona el ninxol quedante sempre amb les mides 
+més grosses dels planols de la NRZ103. 
+Pots consultar Industrias Pinazo per les dimensions de les CGP i CS 
+(CS preferentment amples).
+- Referència de la CGP **06705804** (0,5 punts)
+- Referencia de la CS **335302** (0,5 punts)
+- Ample del ninxol 100 + 530 + 100 = **730 mm** (0,5 punts)
+- Alt del ninxol 150 + 598 + 200 + 530 + 300 = **1778 mm** (0,5 punts)
+- Tria el cable del catàleg de prysmian i dona la pàgina i el diàmetre
+  del cable → RZ1-K 1x120 → **19,2 mm (pag 25)** (1 punt)
+
+
+      
+
+</textarea>
+
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>

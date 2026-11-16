@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+<textarea id="enunciat">
+
+
+UT02c - Dimensionament DI
+=========================
+
+**1.** Dimensiona la següent DI, per a un habitatge amb:
+
+- un IGA de 40 A **trifàsic**
+- pots suposar cosφ = 1
+- entre la CC i l'IGA hi ha 64 m
+- el sistema d'instal·lació és: **unipolars en tubs enterrats**.
+- Tenint en compte que discorre enterrada vols utilitzar conductor de 
+  450/750 V, si és possible, només en cas contrari utilitzaràs conductor 
+  de 0,6/1 kV. 
+- no cal aplicar factors de correcció.
+- l'habitatge no té LGA
+
+
+> 1. Potència de l'habitatge: **27,71 kW**
+> 2. Intensitat màxima qua admet el conductor en les condicions 
+>    REALS: **105,00 A**
+> 3. Caiguda de tensió màxima admesa per aquesta instal·lacio: **6,00 V**
+> 4. Caiguda de tensió que tindrà la instal·lació: **3,90 V**
+> 5. Secció escollida: **25 mm²**
+> 6. Diàmetre nominal exterior del tub: **75 mm**
+
+> Cada resposta correcta val 1 punt, excepte la 5 i la 6 que en valen 2.
+> Només s'admeten respostes en les que el resultat i el procediment 
+> siguin correctes.
+      
+Explicació
+----------
+
+### 1. Potència de l'habitatge:
+
+- $P = \sqrt 3 \cdot U \cdot I \cdot \cos \varphi $
+  $= \sqrt 3 \cdot 400 \cdot 40 \cdot 1 = 27,71 \text{ kW}$
+
+**Resposta: 27,71 kW**
+
+
+
+### 2. Intensitat màxima qua admet el conductor en les condicions REALS
+
+Tenim que:
+- Enterrada → RZ1-K → Asimila a XLPE
+- Trifàsic
+
+Apliquem ITC-BT-07:
+- 10 mm² → $I_{max} 64 \text{ A}$
+- No factors correcció → $I_z = I_{max}$
+
+Com que la intensitat que admet el cable és major que la del IGA,
+comprovem la secció per cdt:
+- Sabem que $e = \dfrac{1{,}5}{100} \cdot 400 = 6 \text{ V}$
+
+- $S = \dfrac{P \cdot L}{\gamma \cdot e \cdot U}$
+   $ =  \dfrac{27713 \cdot 64}{45{,}49 \cdot 6 \cdot 400}
+     = 16{,}24 \text{ mm}^2 \rightarrow 25 \text{ mm}^2$
+
+Ens quedem amb el màxim: 25 mm². Per tant
+**Resposta: 105 A**
+
+
+
+### 3. Caiguda de tensió màxima admesa per aquesta instal·lacio:
+
+Ja s'ha calculat e a l'apartat anterior.
+
+**Resposta: 6 V** 
+
+
+
+### 4. Caiguda de tensió que tindrà la instal·lació
+
+De la fórmula anterior, aïllant la e
+
+- $S = \dfrac{P \cdot L}{\gamma \cdot S \cdot U}$
+   $ =  \dfrac{27713 \cdot 64}{45{,}44 \cdot 25 \cdot 400}
+     = 3{,}903 \text{ V}$
+
+**Resposta: 3,903**
+
+
+
+### 5. Secció escollida:
+
+Ja trobada, als apartats anteriors.
+
+**Resposta: 25 mm²**
+
+
+
+### 6. Diàmetre nominal exterior del tub
+
+Per tubs en superfície es consulta la taula F de la GT de l'REBT
+ITC BT-15, Per RZ1-K, 5U, enterrat, 16mm² necessitem un tub ø75,
+
+
+**Resposta: ø75**
+
+</textarea>
+
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>
