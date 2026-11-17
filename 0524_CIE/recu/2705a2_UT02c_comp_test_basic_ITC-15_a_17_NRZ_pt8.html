@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+</textarea>
+
+
+
+<script>
+const titol = "Test UT05c";
+
+
+
+const test_original = [
+[
+"Quina distància ha de tenir d'ample com a mínim un local de comptadors que estan col·locats a una sola paret, segons la guia de la NRZ103. Es demana el valor més prudent, és a dir el més gran.",
+"1,9 x 1,9 (0,4 + 1,1 + 0,4)",
+"1,5 x 1,5",
+"1,10 x 1,10",
+"1,10 x 1,5",
+"1,9 x 1,5",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quan ocupa una CC modular de Pinazo per a les Balears, constituïda per un IGM, un bloc de ST amb el seu embarrat propi, i un bloc 3TE + 8ME?",
+"945 x 1350 x 200",
+"945 x 1620 x 200",
+"1260 x 1350 x 200",
+"1260 x 1620 x 200",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"A un edifici amb 35 comptadors, 15 plantes puc posar centralització tota a la planta baixa",
+"Sí, però haurà d'anar a local",
+"Sí, però haurà d'anar a armari",
+"No, perquè són més de  12 plantes i s'ha de dividir amb almenys una centralització per cada 6 plantes",
+"No, perquè tot i tenir més de 12 plantes, no es superen el 16 comptadors per planta, per tant, es obligatori posar-ho a un semisoterrani",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"A l'edifici que estàs reformant hi ha: <ul><li>3 habitatges d'electrificació elevada</li><li>5 de bàsica</li><li>un comptador de zones comuns</li><li>una petita pastisseria propietat d'un dels veïns</li></ul>. Quin espai a cada banda (marge) ha de tenir l'armari o local com a mínim",
+"Ha de ser un local i l'espai ha de ser: <ul><li>a l'esquerra 20 cm</li><li>a la dreta el 25 % dels mòduls ja instal·lats + 20 cm</li></ul>",
+"Ha de ser un local i l'espai ha de ser: <ul><li>a l'esquerra el 25 % dels mòduls ja instal·lats + 20 cm</li><li>a la dreta 20 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 100 cm</li><li>a la dreta 20 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 60 cm</li><li>a la dreta 20 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 80 cm</li><li>a la dreta 20 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 40 cm</li><li>a la dreta 20 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 20 cm</li><li>a la dreta 100 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 20 cm</li><li>a la dreta 60 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 20 cm</li><li>a la dreta 80 cm</li></ul>",
+"Ha de ser un armari i l'espai ha de ser: <ul><li>a l'esquerra 20 cm</li><li>a la dreta 40 cm</li></ul>",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quants de tubs han de sortir d'una CC que té 8 comptadors per habitatges, 1 de serveis comuns i 2 locals ",
+"2",
+"11",
+"12",
+"13",
+"14",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+
+
+
+
+[
+"Quin cable <b>NO</b> puc instal·lar a una DI",
+"H07Z1-K",
+"RZ1-K",
+"DZ1-K",
+"H07RN-K",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quins són les seccions mínimes del REBT i de la NRZ103 per coure?",
+"mínim exigit REBT: 4 mm², mínim recomanat EDE: 6 mm²",
+"mínim exigit REBT: 6 mm², mínim recomanat EDE: 10 mm²",
+"mínim exigit REBT: 10 mm², mínim recomanat EDE: 6 mm²",
+"mínim exigit REBT: 6 mm², mínim recomanat EDE: 4 mm²",
+"Marca aquesta si no pots marcar cap de les altres."
+],
+[
+"Us acaba de telefonar en Paco Tugores, el germà d'en Manolo Tugores amb qui vares treballar a la promoció d'habitatges unifamiliars «Sol i arena» del Grup Gelabert-Bassa, quan estaves a l'empresa Electrofast. En Walter Mendoza, un client d'aquella promoció ha fet una petita reforma del seu habitatge i l'electricista que li ha mandat l'empresa de reformes li diu que ha de canviar l'IGA, ja que el REBT diu que ha de tenir un poder de tall de 4500 A, i resulta que el que té instal·lat un de 6 kA. La parella d'en Walter, na Dana Stoikovich, que coneix en Paco, sap que el seu germà va ser l'electricista encarregat de fer aquella promoció, i li demana consell. Però clar, en Paco és fuster, i en Manolo, que ja gaudeix d'una merescuda jubilació no se'n recorda exactament del que deia el reglament. Així i tot, sempre xerrava de tu com una persona que sabia el que es feia, i per això et telefona. Cal apuntar, també que el calibre del IGA és de 40 A (electrificació elevada), i que hi ha tres diferencials al quadre de baixa tensió. Què s'ha de fer en aquest cas?",
+"Demanar-li a la IA que processi aquesta pregunta, perquè és massa llarga, i a causa de l'ús intensiu de TikTok, resulta difícil seguir un text tan llarg. De fet, aquesta opció també t'està essent massa llarga, i fa estona que l'has deixat de llegir.",
+"Dir-li: «Tranquil, està tot bé. No fa falta canviar l'IGA»",
+"Decideixes anar a veure en Walter i na Dana, i canviar l'IGA. L'electricista té raó, i assumeixes el cost de la reparació",
+"Decideixes anar a veure a la parella propietària del pis, fas una mesura de la intensitat màxima de curtcircuit que es pot produir i et dona 4782,54 A. Per tant, no es pot determinar si s'ha de canviar o no",
+],
+[
+"Marca la resposta FALSA",
+"L'altura dels quadres als locals comercials ha d'estar entre 1,4 i 2 m com a màxim",
+"L'IGA ha de ser omnipolar",
+"El diferencial protegeix contra contactes indirectes",
+"Curtcircuit i sobrecàrrega NO són el mateix"
+],
+[
+"A un habitatge s'ha instal·lat un quadre amb IP 41, si un nin intenta ficar una agulla de cosir, podria fer-ho?, si per sobre a vegades cau una gota de condensació (a causa d'un fancoil) ho resistiria? Compleix REBT?",
+"Les respostes a les tres preguntes són: No; No; No",  
+"Les respostes a les tres preguntes són: No; No; Sí",  
+"Les respostes a les tres preguntes són: No; Sí; No",  
+"Les respostes a les tres preguntes són: No; Sí; Sí",  
+"Les respostes a les tres preguntes són: Sí; No; No",  
+"Les respostes a les tres preguntes són: Sí; No; Sí",  
+"Les respostes a les tres preguntes són: Sí; Sí; No",  
+"Les respostes a les tres preguntes són: Sí; Si; Sí" 
+]
+];
+
+
+const solucions_originals = [
+
+2, 4, 1, 7, 4, 
+4, 2, 2, 1, 8
+
+];
+
+
+const punts_preguntes = [
+
+1, 1, 1, 1, 1,
+1, 1, 1, 1, 1
+
+];
+</script>
+
+<script src="../../js/config_test.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/test_html_comp.js"></script>
+<script src="../../js/test_dades.js"></script>
+<script src="../../js/test_mates.js"></script>
+<script>window.onload = renderitza;</script>
