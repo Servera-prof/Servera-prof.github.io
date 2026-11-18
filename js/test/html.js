@@ -245,6 +245,7 @@ function avalua() {
 
 function importaRespostes(){
     const dades = {
+        titol: titol,
         nom: document.getElementById("nom_span").innerHTML,
         resp: document.getElementById("resp_span").innerHTML,
         t_ini:  document.getElementById("t_ini_span").innerHTML,
