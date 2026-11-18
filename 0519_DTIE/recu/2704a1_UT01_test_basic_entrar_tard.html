@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+
+## Normes:
+
+- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
+  Pots utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/)
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Està terminantment prohibit copiar o mirar al company.
+- No es poden fer preguntes. Part de l'avaluació és la comprensió del
+  text. Si hi ha algun error es parlarà una vegada l'examen hagi
+  finalitzat, i en el seu cas s'anul·larà la pregunta.
+- L'examen dura el que indiqui la tasca associada i **es tanca
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
+
+## Com fer aquest examen:
+
+- Agafa paper
+- **Escriu la permutació al paper!!**
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis copia les respostes sense espais i tot seguit, al camp
+  «resposta», si no la saps n. Per exemple: abnaac
+- Omple el teu nom i clica a avaluar.
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
+- Adjunta-la com a tasca.
+- Fotografia el paper utilitzat (la fotografia és per a tu, per a
+  poder revisar l'examen si ho necessitessis).
+- Entrega els papers utilitzats.
+
+## Ponderació i nota mínima
+
+- Aquest test pondera un 10 % de la nota d'exàmens de la UT01. Tret
+  error tipogràfic o que el professor indiqui una altra cosa el mateix
+  dia de l'examen.
+  
+</textarea>
+
+
+
+<script>
+const titol = "Test Bàsic 01";
+
+
+
+const test_original = [
+[
+"Troba el document que hi ha a un projecte d'alta tensió però no a un avantprojecte",
+"Plànol de situació",
+"Plànol de planta",
+"Memòria",
+"Plec de condicions"
+],
+[
+"Segons el vist a classe o al document. És millor que l'apartat de normes i referències tingui una llista llarga de normatives o ser concís i precís.",
+"Millor una llista llarga",
+"Millor ser concís i precís"
+],
+[
+"A on trobaré, en general, el mètode de càlcul utilitzat aixi com els resultats numèrics",
+"A la memòria",
+"A l'annex de càlculs",
+"Al plec de condicions",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"On trobaré la definició i cost d'una unitat d'obra composta per diversos materials i ma d'obra, com pot ser el metre lineal de «rasa en vorera amb dos tubs secs»",
+"Al quadre de preus d'unitats d'obra, també anomenat quadre de descompostos",
+"Als preus unitaris",
+"Als amidaments",
+"Al pressupost"
+],
+[
+"Quan és millor redactar la memòria",
+"Al final de la redacció del projecte, tot i que és el primer document en apareixer",
+"A mesura que es redacta el projecte",
+"Abans de redactar qualsevol altre document del projecte."
+],
+
+
+
+
+
+[
+"Quina d'aquestes coses no ha d'incloure la memòria d'un projecte",
+"Objecte",
+"Abast",
+"Antecedents",
+"Normes i referències",
+"Definicions i abreviatures",
+"Requisits de disseny",
+"Anàlisi de solucions",
+"Catàlegs i manuals"
+],
+[
+"Quin factor d'escala es sol utilitzar per detalls d'obra com per exemple el biuló (_pestillo_ en castellà) d'una porta",
+"1:2.",
+"1:50.",
+"1:1000.",
+"Marca aquesta si no pots marcar cap de les altres."
+],
+[
+"A on trobaré com es mesura el que ja he instal·lat i com se'm paga?", 
+"A l'estat de mesuraments", 
+"Al plec de condicions",
+"Al pressupost",
+"Marca aquesta si no pots marcar cap de les altres."
+],
+[
+"Per una mateixa obra, quin pressupost té probabilitats de ser més elevat i per què",
+"A l'obra pública, perquè es vol evitar licitacions o concursos deserts o en els que només es presenti una contracta.",
+"A l'obra privada, perquè es vol evitar licitacions o concursos deserts o en els que només es presenti una contracta.",
+"A l'obra púbica, per a reduir les taxes associades als drets de visat o taxes",
+"A l'obra privada, ja que és menys rellevant i per a reduir les taxes associades als drets de visat o taxes",
+],
+[
+"A on puc ficar un reportatge fotogràfic de l'estat del terreny abans de l'inici de l'obra?",
+"Als annexes.",
+"A la memòria",
+"Al plec"
+]
+];
+
+</script>
+<script src="../../js/config_test.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/test_segur.js"></script>
+<script src="../../js/test_html.js"></script>
+<script src="../../js/test_dades.js"></script>
+<script src="../../js/test_mates.js"></script>
+<script>window.onload = renderitza;</script>
+

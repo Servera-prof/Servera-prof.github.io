@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <link rel="icon" type="image/x-icon" href=img/favicon.png>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/temari.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/temari.css" />
 </head>
 <textarea id="enunciat">
 
@@ -92,23 +92,6 @@ $$ C_P = (4,6 \cdot 30,672 + 4,6 \cdot 1,428) \cdot \frac{30}{365} = 12,25\ € 
 </textarea>
 
 
-<!-- C. SCRIPT ==================================================== -->
-<script>
-window.texme = {
-    renderOnLoad: false,
-    style: 'none',
-    markdownURL: 'js/marked/marked.min.js',
-    MathJaxURL: 'js/mathjax/es5/tex-mml-chtml.js'
-}
-</script>
-
-<script src="js/texme/texme.js"></script>
-<script>
-
-
-
-window.onload = function (){
-    texme.renderPage();
-}
-
-</script>
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>
