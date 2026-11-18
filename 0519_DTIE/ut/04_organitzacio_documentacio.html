@@ -15,8 +15,8 @@ UT04 - Organització de la documentació
 ---------------------------------
 
 Constitueixen el nucli del projecte i defineixen geomètricament la solució adoptada. Es generen amb programari de disseny assistit per ordinador (CAD) i es basen majoritàriament en gràfics vectorials, la qual cosa garanteix la precisió i l'escalabilitat sense pèrdua de qualitat. Els formats clau són:
-- ![fr100](img/ext_dwg.png)**DWG (_DraWinG_):** Format propietari i natiu d'AutoCAD. És l'estàndard de facto en la indústria per a l'intercanvi de plànols en fase de disseny i execució. La seva naturalesa propietària el fa dependent del programari d'Autodesk.
-- **DXF (_Drawing eXchange Format_):** Format obert creat per Autodesk per facilitar la interoperabilitat entre diferents programes de CAD. ![fr100](img/ext_dxf.png) Tot i que pot representar la major part de la informació gràfica d'un DWG, és un format d'intercanvi, no de treball, i pot perdre metadades o funcionalitats avançades.
+- ![fr100](../img/ext_dwg.png)**DWG (_DraWinG_):** Format propietari i natiu d'AutoCAD. És l'estàndard de facto en la indústria per a l'intercanvi de plànols en fase de disseny i execució. La seva naturalesa propietària el fa dependent del programari d'Autodesk.
+- **DXF (_Drawing eXchange Format_):** Format obert creat per Autodesk per facilitar la interoperabilitat entre diferents programes de CAD. ![fr100](../img/ext_dxf.png) Tot i que pot representar la major part de la informació gràfica d'un DWG, és un format d'intercanvi, no de treball, i pot perdre metadades o funcionalitats avançades.
 - **DGN (_DesiGN_):** Format natiu del programari MicroStation, molt estès en obra civil i cartografia.
 - **Format d'intercanvi BIM (IFC):** Més que un plànol en 2D, és un format obert (ISO 16739) que conté un model 3D del projecte amb tota la seva informació (geometria, materials, fases) per a la col·laboració entre diferents disciplines.
 
@@ -93,14 +93,14 @@ Un format d'arxiu és un estàndard que defineix com s'emmagatzema i organitza l
 ### 2.3 Processadors de text: Formats Word
 El processador de textos és l'eina ofimàtica per excel·lència per a la creació de documents, els seus formats principals són:
 
-![fr100](img/ext_odt.png)
+![fr100](../img/ext_odt.png)
 
 - **DOC:** Format propietari binari utilitzat fins a la versió 2003. Tot i ser obsolet, encara és llegible per versions modernes.
 - **DOCX:** Format estàndard des de la versió 2007. Es basa en l'estàndard obert Office Open XML. Essencialment, és un arxiu comprimit (ZIP) que conté diversos fitxers XML i recursos multimèdia. Això el fa més robust i menys propens a la corrupció que el seu predecessor.
 - **RTF (_Rich Text Format_):** Format intercanviable entre diferents processadors de text, encara que amb limitacions en elements complexos.
 - **ODT (_Open Document Text_):** L'alternativa oberta per excel·lència, utilitzat per suites com LibreOffice o OpenOffice i àmpliament recomanat per les administracions públiques per la seva neutralitat tecnològica.
 
-> ![c500](img/lo_writer.png)
+> ![c500](../img/lo_writer.png)
 > **Fig. 1.** J. Servera (2026).
 > _Exemple del programari Writer de la suite ofimàtica Libre Office_. 
 > Sota llicència [CC4.0-by-nc-sa]
@@ -109,25 +109,25 @@ El processador de textos és l'eina ofimàtica per excel·lència per a la creac
 
 Imprescindibles per a la part quantitativa i econòmica del projecte. S'utilitzen per a càlculs estructurals simples, dimensionament d'elements, confecció d'amidaments i elaboració de pressupostos.
 
-![fr100](img/ext_ods.png)
+![fr100](../img/ext_ods.png)
 
 - **XLSX:** Format de Microsoft Excel. La seva potència rau en les eines d'anàlisi de dades i la programació de macros.
 - **ODS (OpenDocument Spreadsheet):** L'alternativa oberta i estàndard, àmpliament utilitzada per a amidaments i pressupostos en entorns que prioritzen la interoperabilitat.
 
-> ![c500](img/lo_calc.png)
+> ![c500](../img/lo_calc.png)
 > **Fig. 2.** J. Servera (2026).
 > _Exemple del programari Calc de la suite ofimàtica Libre Office_. 
 > Sota llicència [CC4.0-by-nc-sa]
 
 ### 2.5 Documents de text pla.
 
-![fr100](img/ext_txt) Són arxius que contenen exclusivament caràcters de text sense cap mena de format (negretes, cursives, taules o imatges incrustades). La seva senzillesa els fa extremadament robustos i aptes per a la preservació digital i l'intercanvi de dades entre sistemes.
+![fr100](../img/ext_txt) Són arxius que contenen exclusivament caràcters de text sense cap mena de format (negretes, cursives, taules o imatges incrustades). La seva senzillesa els fa extremadament robustos i aptes per a la preservació digital i l'intercanvi de dades entre sistemes.
 
 - **TXT:** L'extensió genèrica per a un fitxer de text pla. S'utilitza per a llegeix-me's (`README.txt`), notes de versions i, de vegades, com a format intermedi per a la importació o exportació de dades d'un programa tècnic (per exemple, llistes de punts d'una topografia).
 - **DXF:** El DXF en realitat també es un fitxer de text pla.
 - **Markdown i HTML**: Les extensions .md o .html (com la d'aquesta pàgina també són en text pla (prova de fer `Ctrl + U` mentre llegeixes això).
 
-> ![c500](img/gedit.png)
+> ![c500](../img/gedit.png)
 > **Fig. 3.** J. Servera (2026).
 > _Exemple del programari gedit per a processar arxius de text pla amb resaltat de sintaxi_. 
 > Sota llicència [CC4.0-by-nc-sa]
@@ -135,9 +135,9 @@ Imprescindibles per a la part quantitativa i econòmica del projecte. S'utilitze
 ### 2.6 Documents de bases de dades de pressupostos.
 
 Són formats específics generats per programari de gestió de costos i pressupostos d'obra, com Arquímedes, Presto o TCQ. Aquests arxius no són simples fulls de càlcul, sinó bases de dades estructurades que vinculen els amidaments amb preus unitaris de bancs de dades oficials o de mercat.
-- ![fr](img/ext_pzh.png)**PZH:** Format propietari del programari Presto. Emmagatzema l'estructura completa del pressupost: capítols, partides, amidaments, preus, certificacions i tota la informació necessària per a la gestió econòmica de l'obra.
+- ![fr](../img/ext_pzh.png)**PZH:** Format propietari del programari Presto. Emmagatzema l'estructura completa del pressupost: capítols, partides, amidaments, preus, certificacions i tota la informació necessària per a la gestió econòmica de l'obra.
 - **BC3 (FIEBDC-3):** Format d'intercanvi estàndard de bases de dades de la construcció. Es tracta d'un fitxer de text pla amb una estructura de registres normalitzada (norma FIEBDC-3/2020) que permet la transferència d'informació entre diferents aplicacions de gestió de pressupostos i amidaments, garantint la interoperabilitat entre plataformes.
-- ![fr100](img/ext_aqm.png)**AQM:** Format propietari del programari Arquímedes, pertanyent a l'ecosistema de CYPE Ingenieros. Aquest fitxer conté tota la informació del pressupost i, de manera nativa, està vinculat al Generador de Preus de CYPE, la qual cosa facilita la confecció i actualització constant dels preus unitaris a partir de bases de dades de referència del sector. El seu equivalent d'intercanvi és també el format BC3, que Arquímedes pot importar i exportar sense problemes.
+- ![fr100](../img/ext_aqm.png)**AQM:** Format propietari del programari Arquímedes, pertanyent a l'ecosistema de CYPE Ingenieros. Aquest fitxer conté tota la informació del pressupost i, de manera nativa, està vinculat al Generador de Preus de CYPE, la qual cosa facilita la confecció i actualització constant dels preus unitaris a partir de bases de dades de referència del sector. El seu equivalent d'intercanvi és també el format BC3, que Arquímedes pot importar i exportar sense problemes.
 
 
 
@@ -213,7 +213,7 @@ Els perifèrics de sortida gràfica són dispositius que permeten obtenir una c�
 
 Un traçador, o plòter de grans dimensions, és una impressora especialitzada capaç de produir documents d'alta definició en formats de paper molt grans, des d'un A3 fins a un A0 i superiors. S'utilitzen en estudis d'arquitectura, enginyeria i disseny per a imprimir plànols, cartells i maquetes a escala real.
 
-> ![c500](img/plotter.png)
+> ![c500](../img/plotter.png)
 > **Fig. 3.** [Lzur], [Wikipedia: Plotter Gerber Infinity], (2006).
 > _Plotter_. 
 > Sota llicència [CC3.0-by-sa]
