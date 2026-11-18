@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+
+## Normes:
+
+- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
+  Pots utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/)
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Està terminantment prohibit copiar o mirar al company.
+- No es poden fer preguntes. Part de l'avaluació és la comprensió del
+  text. Si hi ha algun error es parlarà una vegada l'examen hagi
+  finalitzat, i en el seu cas s'anul·larà la pregunta.
+- L'examen dura el que indiqui la tasca associada i **es tanca
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
+
+## Com fer aquest examen:
+
+- Agafa paper
+- **Escriu la permutació al paper!!**
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis ves passant les opcions de resposta del formulari
+  web.
+- Omple el teu nom i clica a avaluar.
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
+- Adjunta-la com a tasca.
+- Entrega els papers utilitzats.
+
+## Ponderació i nota mínima
+
+- Aquest test pondera un 5 % de la nota d'exàmens de la UT corresponent.
+  Tret error tipogràfic o que el professor indiqui una altra cosa.
+  
+</textarea>
+
+
+
+<script>
+const titol = "Test UT02c";
+
+
+
+const test_original = [
+[
+"Tinc dues dues CC a un mateix local. Una està entrant a la paret del fons i l'altre a la paret de la dreta. Si ens fixem amb la centralització de la paret del fons, quin marge hi ha a costat i costat, sense tenir en compte el percentatge d'espai de reserva.",
+"20 a la esquerra i 20 a la dreta",
+"40 a la esquerra i 40 a la dreta",
+"40 a la esquerra i 20 a la dreta",
+"20 a la esquerra i 40 a la dreta",
+"20 a la esquerra i 80 a la dreta",
+"20 a la esquerra i 100 a la dreta",
+],
+[
+"Un company està fent el projecte de de CIE, i a aquestes alçades encara no ha acabat la part de la instal·lació d'enllaç, ha dissenyat un local de comptadors i et demana que el revisis. Comproves que els equips seleccionats son addients i a més que les distàncies a les parets i entre ambdues centralitzacions son correctes, el local fa 1,75 x 5,8 m i ha practicat una abertura per la colocació d'una porta amb abertura cap a l'interior del 0,8 x 2,10 metres. Hi ha cap error més?",
+"Les mides del local, tot i respectar els marges no arriben a les mides mínimes.",
+"La mida de la porta és insuficient.",
+"La direcció en la que s'obri la porta és incorrecta.",
+"Hi ha 2 altres respostes correctes (a part d'aquesta).",
+"Hi ha 3 altres respostes correctes (a part d'aquesta i la que diu 2 respostes correctes).",
+"Marca aquesta si cap de les altres respostes és correcta".
+],
+[
+"Els locals de comptadors han de tenir un desguas (<i>desagüe</i> en castellà) de ... ",
+"No cal desguas, només si hi ha tuberies d'aigua",
+"No cal desgüas en cap cas, ja que la instal·lació de tuberies disn del local està prohibit.",
+"No s'especifica la mida del desgüas.",
+"Les mides han de ser de 30x30 cm en zones de pluviositat I, i de 20 x 20 en zones de pluviositat II. Les zones de pluviositat III (a les quals no cal desgüas) ja no estan reconegudes, i el reglament les cita només de cara a manteniments d'instal·lacions existents.",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Quin d'aquests objectes no trobaré a dins d'un local de comptadors",
+"Un llum d'emergència",
+"Un llum «normal»",
+"Un endoll «normal»",
+"Un extintor",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"S'ha incendiat part d'un armari de comptadors, l'incendi ja està extingit, i la majoria de veïns tenen subministrament. No obstant l'exitosa extinció, la instal·lació ha quedat afectada i s'han de fer algunes reparacions. Un operari al teu càrrec et demana si ha de canviar la posició de l'IGM per reparar l'embarrat.",
+"No creus que faci falta, ja que si l'acciones deixaràs sense corrent a tots els veinats, creant una important incomoditat i una font de possibles demandes.",
+"No cal, atès que tanmateix l'incendi ha deixat fora de servei alguns usuaris, per tant l'embarrat ja no té tensió.",
+"Sí, es tallarà primer el neutre per evitar derivacions a terra (el neutre està connectat a terra en els esquemes TT)",
+"Sí, es tallarà primer les fases i després el neutre o tall omnipolar. Una de ses dues toca anar bé.",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+
+
+
+
+[
+"Quin cable <b>NO</b> puc instal·lar a una DI",
+"H07Z1-K",
+"RZ1-K multipolar",
+"RZ1-K unipolar",
+"DZ1-K",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"A una instal·lació existent, es necessita ampliar el nombre de comptadors, però ja s'ha esgotat tot l'espai de reserva. El president et planteja que tanmateix el seu fill que viu a l'habitatge d'enfront i que pràcticament es com si fos un únic habitatge així que podires unificar els dos suministraments des d'un mateix comptador i treure dues DI de les bornes de sortida d'aquest unic comptador. Així es generaria un buid que pot aprofitar el nou sol·licitant. És una sol·lució vàlida?",
+"Sí.",
+"No."
+],
+[
+"Un company ha ficat un diferencial general i després ha ficat diferencial cada 4 circuits, tu ets el responsable de la quadrilla, que has de fer?",
+"Què he de fer? Donar-li barco he de fer.",
+"Simplement llevant el diferencial general ja complesc normativa, és l'unica manera però és bo de fer",
+"Puc llevar el diferencial general o assegurar-me que te la selectivitat adequada",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Marca la resposta FALSA",
+"L'altura dels quadres als locals comercials ha d'estar entre 1,4 i 2 m com a màxim",
+"L'IGA ha de ser omnipolar",
+"El diferencial protegeix contra contactes indirectes",
+"Curtcircuit i sobrecàrrega NO són el mateix"
+],
+[
+"A un habitatge s'ha instal·lat un quadre amb IP 41, si un nin intenta ficar una agulla de cosir, podria fer-ho?, si per sobre a vegades cau una gota de condensació (a causa d'un fancoil) ho resistiria? Compleix REBT?",
+"Les respostes a les tres preguntes són: No; No; No",  
+"Les respostes a les tres preguntes són: No; No; Sí",  
+"Les respostes a les tres preguntes són: No; Sí; No",  
+"Les respostes a les tres preguntes són: No; Sí; Sí",  
+"Les respostes a les tres preguntes són: Sí; No; No",  
+"Les respostes a les tres preguntes són: Sí; No; Sí",  
+"Les respostes a les tres preguntes són: Sí; Sí; No",  
+"Les respostes a les tres preguntes són: Sí; Si; Sí" 
+]
+];
+
+</script>
+<script src="../../js/test/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/test/segur.js"></script>
+<script src="../../js/test/html.js"></script>
+<script src="../../js/test/dades.js"></script>
+<script src="../../js/test/mates.js"></script>
+<script>window.onload = renderitza;</script>
+

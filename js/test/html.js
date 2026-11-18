@@ -154,7 +154,7 @@ function formulari_respostes(t){
           '<span id="perm_span">' + t.str_perm + '</span>',
         '  <b>- Hardware Hash:</b> ' + 
           '<span id="perm_span">' + generaCanvasHash() + '</span>',
-        '  <b>- Permutació:</b> ' + 
+        '  <b>- ID sessió:</b> ' + 
           '<span id="perm_span">' + generaIDSessio() + '</span>',
         '</pre>',
     ].join("\n");
@@ -254,6 +254,7 @@ function importaRespostes(){
     };
     dades.hh = generaCanvasHash();
     dades.ids = generaIDSessio();
+    dades.seguretat = calculaCopia();
     return dades;
 }
 

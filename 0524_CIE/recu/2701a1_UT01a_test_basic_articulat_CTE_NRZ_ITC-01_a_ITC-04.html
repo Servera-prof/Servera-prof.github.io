@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+
+## Normes:
+
+- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
+  Pots utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/)
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Està terminantment prohibit copiar o mirar al company.
+- No es poden fer preguntes. Part de l'avaluació és la comprensió del
+  text. Si hi ha algun error es parlarà una vegada l'examen hagi
+  finalitzat, i en el seu cas s'anul·larà la pregunta.
+- L'examen dura el que indiqui la tasca associada i **es tanca
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
+
+## Com fer aquest examen:
+
+- Agafa paper
+- **Escriu la permutació al paper!!**
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Omple el teu nom i clica a avaluar.
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
+- Adjunta-la com a tasca.
+- Fotografia el paper utilitzat (la fotografia és per a tu, per a
+  poder revisar l'examen si ho necessitessis).
+- Entrega els papers utilitzats.
+
+## Ponderació i nota mínima
+
+- Aquest test pondera un 5 % de la nota d'exàmens de la UT corresponent. 
+  Tret error tipogràfic o que el professor indiqui una altra ponderació 
+  el mateix dia de l'examen.
+  
+</textarea>
+
+
+
+<script>
+const titol = "Test UT01a";
+
+
+
+const test_original = [
+[
+"Tinc unes plaques solars Hiku 455MS de Canadian solar amb V<sub>OC</sub> de 48,9 V. En tinc connectades 30 en serie (es comporten com 30 fonts de tensió continua en serie), els conductors en CC fins a l'inversor els hi és d'aplicació l'REBT",
+"No, ja que és CC i l'REBT només aplica a CA",
+"No, ja que es CC superior a 1.000 V",
+"Si, ja que cada placa són 48 V de no res.",
+"Sí, ja que el voltatge que suporten els conductors no supera el limit establer per l'REBT al seu camp d'aplicació."
+],
+[
+"Es poden utilitzar freqüencies a les xarxes de 60 Hz",
+"Sí, sempre",
+"No, mai",
+"En alguns casos, prèvia autoritació d'industria i complint una sèrie de condicions.",
+"En alguns casos, amb la signatura de l'enginyer que redacta el projecte, batle del poble a on s'apliqui, i el consentiment de al menys dos habitants (en cas de que no es presentin voluntaris, serà l'habitant major d'edat més vell i més jove)."
+],
+[
+"Segons l'article 7. Una instal·lació 127/220 V i una instal·lació 230/400 executades després de 2003. A quin reglament s'han de sotmetre?",
+"Cadasquna al seu, l'antic reglament (el de 1973) la primera, al nou (el de 2003) la segona",
+"Ambdues a l'antic (1973)",
+"Ambdúes al nou",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Què entenem per instal·lació interior?",
+"La que està a l'interior dels edificis",
+"Totes les instal·lacions receptores es consideren instal·lacions interiors, inclús aquelles que estan a l'intempèrie.",
+"Les que es troben a dins d'un aparell elèctric",
+"Aquelles que tot i estar a l'exterior serveixen per transportar l'energia elèctrica a llocs distants, com per exemple les xarxes d'alta tensió, sempre que es trobin a l'interior de l'estat (no siguin linies d'exportació)."
+],
+[
+"Una connexió de servei (<i>acometida</i> en castellà) sempre acaba en una CGP?",
+"Sí, sempre. Segons l'article 15.1",
+"No, mai. Segons l'article 15.1",
+"Sí, tot i que també pot acabar a una CPM, que és una unitat funcional equivalent.",
+"Sí, tot i que pot acabar a una CDU, que és una unitat funcional equivalent."
+],
+
+
+
+
+
+[
+"Segons la ITC-BT-01 com anomenariem la carcassa metàl·lica d'una torre de PC",
+"Material de classe III",
+"Massa.",
+"Aparamenta.",
+"Part activa"
+],
+[
+"Tria l'afirmació FALSA",
+"Un instal·lador i una empresa instal·ladora no són el mateix, però poden ser la mateixa persona.",
+"Tota persona persona instal·ladora és també empresa instal·ladora.",
+"Pot ser persona instaladora aquella amb la qualificació reconeguda com a tal en altres estats membres de la UE",
+"Les empreses instal·ladores hauran de presentar sempre una declaració responsable previa a l'inici de les activitats. Fins i tot aquelles d'altres estats de la Unió Europea, quan comencin la seva activitat a territori espanyol."
+],
+[
+"Quin requeriment no exigeix l'REBT per a donar-se d'alta com empresa especialista a quirófans", 
+"Elèctrodes per a mesurar el nivell d'aïllament.", 
+"Tel·luròmetre",
+"Assegurança mínima de 900.000 € (actualitzada a l'import de 2026)",
+"Local de 250 m² com a mínim"
+],
+[
+"Un local del pública concurrència precisa projecte?, i en cas afirmatiu, qui l'emet i signa?",
+"Sí en necessita, l'emet l'instal·lador",
+"No en necessita.",
+"Sí en necessita, l'emet un enginyer",
+"Sí en necessit, l'emet l'inspector de l'OCA"
+],
+[
+"Què podria trobar a les normes NRZ002 i el CTE?",
+"La profunditat d'una rasa («zanja» en castellà), i la ocupació de diferents estancies per a l'evacuació d'incendis respectivament, entre altres moltes coses.",
+"Recomanacions de conductors i tubs respectivament.",
+"A la NRZ (Norma Reconocida de Zonas) com zonificar un local i al CTE (Código Temporal de la Electricidad) les antigues normes d'electricitat",
+"Cap de les altres respostes es certa"
+]
+];
+
+</script>
+<script src="../../js/test/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/test/segur.js"></script>
+<script src="../../js/test/html.js"></script>
+<script src="../../js/test/dades.js"></script>
+<script src="../../js/test/mates.js"></script>
+<script>window.onload = renderitza;</script>
+
