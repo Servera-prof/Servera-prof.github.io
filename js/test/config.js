@@ -4,4 +4,4 @@ window.texme = {
     markdownURL: '../../js/marked/marked.min.js',
     MathJaxURL: '../../js/mathjax/es5/tex-mml-chtml.js',
 };
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbziVnIbRLlMNcUjrelcAoektVAnduIpYrL73duOVy-qHRCP7xUa9N58QIAbGoiR0vy5Ww/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw4f3DPS2DbnCPmRgOmbE8LEz101fRueQzVrGh7pb45LM9kCji1_JvSaqn8Gwjh_zSJ0A/exec";
