@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<head>
+    <title id="titol"></title>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/test.css" />
+</head>
+
+
+
+<textarea id="md">
+<!-- 
+Desenvolupat a Mallorca amb ❤ per servera-prof.
+Contingut sota llicència CC 4.0, excepte a on s'indiqui.
+Pots anar a la pàgina del projecte a https://servera-prof.github.io         セ
+                                                                            ル
+Si pots veure aquest text durant més de 2 segons és probable que hi         ベ
+hagi un error de programació.                                               ラ
+                                                                            ・
+                                                                            プ
+                                                                            ロ
+                                                                            フ
+-->
+
+## Normes:
+
+- S'ha de **gravar la pantalla COMPLETA**, sense micròfon, webcam ni so.
+  Pots utilitzar la web
+  [Screen Capture](https://www.screencapture.com/es/)
+- No es poden utilitzar apunts.
+- Només es pot tenir una finestra oberta (la del navegador Chrome).
+- Només es pot tenir una pestanya oberta (la de l'examen).
+- Està terminantment prohibit copiar o mirar al company.
+- No es poden fer preguntes. Part de l'avaluació és la comprensió del
+  text. Si hi ha algun error es parlarà una vegada l'examen hagi
+  finalitzat, i en el seu cas s'anul·larà la pregunta.
+- L'examen dura el que indiqui la tasca associada i **es tanca
+  automàticament**. ENTREGUEU-HO ABANS o serà un zero.
+- Qualsevol incompliment serà sancionat amb un zero.
+- Les preguntes correctes sumen 1 punt, les incorrectes resten
+  1/(numrespostes - 1) punts, les que es deixen en blanc, ni sumen
+  ni resten.
+
+## Com fer aquest examen:
+
+- Agafa paper
+- **Escriu la permutació al paper!!**
+- Comença a escriure les respostes al paper.
+- Si una resposta es vol deixar en blanc escriu una n.
+- Quan acabis ves passant les opcions de resposta del formulari
+  web.
+- Omple el teu nom i clica a avaluar.
+- **Imprimeix la pàgina com a pdf fent «Ctrl + P»**
+- Adjunta-la com a tasca.
+- Entrega els papers utilitzats.
+
+## Ponderació i nota mínima
+
+- Aquest test pondera un 5 % de la nota d'exàmens de la UT corresponent.
+  Tret error tipogràfic o que el professor indiqui una altra cosa.
+  
+</textarea>
+
+
+
+<script>
+const titol = "Test UT02 RA - Sense suport";
+
+
+
+const test_original = [
+[
+"Quina d'aquestes seccions no és una secció normalitzada",
+"6 mm²",
+"10 mm²",
+"16 mm²",
+"20 mm²",
+"25 mm²"
+],
+[
+"Quin d'aquests conductors no és apte per una DI",
+"H07Z1-K",
+"RZ1-K unipolar",
+"RZ1-K multipolar",
+"H05V2-R",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+[
+"Vull fer una combinació de CS + CGP vertical, i he d'instal·lar fusibles de 80 A, tria la CGP amb l'amperatge de les bases BUC més petita que puc instal·lar, entre les que edistribucion autoritza.",
+"CGP-7-100",
+"CGP-9-160",
+"CGP-7-160",
+"CGP-9-250",
+"CGP-7-250"
+],
+[
+"Quin esquema no té LGA?",
+"Esquema 2.1 per a un sol usuari",
+"Esquema 2.2.1 per a dos usuaris alimentats des del mateix lloc.",
+"Esquema 2.2.2 varis usuaris amb contadors centralitzats a un lloc",
+"Esquema 2.2.3 varis usuaris amb contadors centralitzats a més d'un lloc",
+"Tan l'esquema 2.1 com el 2.2.1 no tenen LGA",
+"Tan l'esquema 2.2.2 com el 2.2.3 no tenen LGA"
+],
+[
+"Quin esquema no té LGA?",
+"Esquema 2.1 per a un sol usuari",
+"Esquema 2.2.1 per a dos usuaris alimentats des del mateix lloc.",
+"Esquema 2.2.2 varis usuaris amb contadors centralitzats a un lloc",
+"Esquema 2.2.3 varis usuaris amb contadors centralitzats a més d'un lloc",
+"Tan l'esquema 2.1 com el 2.2.1 no tenen LGA",
+"Tan l'esquema 2.2.2 com el 2.2.3 no tenen LGA"
+],
+[
+"Quans fusibles tenen les CGP admeses per edistribucion? I una CPM d'un usuari monofàsic?",
+"3 i 1 respectivament",
+"4 i 1 respectivament",
+"3 i 2 respectivament",
+"4 i 2 respectivament",
+"Marca aquesta si no pots marcar cap de les altres"
+],
+
+
+
+
+[
+"Quan s'utilitza un  comptador de mesura semiindirecta?",
+"Quan el suministrament monofàsic supera els 63 A",
+"Quan el suministrament trifàsic supera els 63 A",
+"Quan el suministrament monofàsic supera els 15 kW",
+"Quan el suministrament trifasic supera els 15 kW",
+"Marca aquesa si no pots marcar cap de les altres"
+],
+[
+"Quin d'aquests NO és un calibre normalitzat de fusibles?",
+"100 A",
+"160 A",
+"165 A",
+"200 A",
+"250 A"
+],
+[
+"Quin d'aquests conductors és apte per una LGA",
+"H07Z1-K",
+"RZ1-K unipolar",
+"RZ1-K multipolar",
+"H05V2-R",
+"RZ1-K (unipolar i multipolar)",
+"RZ1-K i H07Z1-K"
+],
+[
+"Si la derivació individual va encastada (<i>empotrada</i> en castellà), ha d'anar a dins tub?",
+"Sí, sempre",
+"Si en la majoria de casos, fa falta un permis especial d'edistribucion per passar-ho sense",
+"No, mai"
+],
+[
+"Quin cable és de 450/750 V?",
+"El que és de varis colors (negre, marró, blau, etc.)",
+"El que es verd i a dins hi ha coure",
+"El que és verd i a dins hi ha cables més petits de varis colors (negre, marró, blau, etc.)",
+"El que és de color negre i a dins hi ha cables més petits de varis colors (negre, marró, blau, etc.)",
+],
+
+
+
+
+
+[
+"Si tinc una LGA per fals sostre i una DI per fals sostre a on he de consultar les intensitats màximes?",
+"A la ITC-BT-19 ambdues",
+"A la ITC-BT-07 ambdues",
+"A la ITC-BT-14 la primera i a la ITC-BT-15 la segona",
+"A la ITC-BT-15 la primera i a la ITC-BT-14 la segona"
+],
+[
+"Tria la centralització més petita (amb menys comptadors) però que ha d'anar obligatoriament a local de comptadors",
+"Una amb 3 comptadors",
+"Una amb 11 comptadors",
+"Una amb 14 comptadors",
+"Una ab 17 commptadors",
+"Una amb 23 comptadors"
+],
+[
+"Es obligatori a partir d'un cert nombre de plantes utilitzar varies centralitzacions?",
+"Si",
+"No"
+],
+[
+"A on trobaré una Unitat funcional?",
+"A la LGA",
+"A la DI",
+"A la CGP",
+"A la CC"
+],
+[
+"Si tinc un local monofàsic el seu comptador a la CC ha de ser monofàsic?",
+"Sí, però l'espai ha d'admetre un comptador trifàsic",
+"No",
+"Sí, i l'espai de reserva pot ser tant per a monofàsic com per a trifàsic"
+]
+];
+
+</script>
+<script src="../../js/test/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script src="../../js/test/segur.js"></script>
+<script src="../../js/test/html.js"></script>
+<script src="../../js/test/dades.js"></script>
+<script src="../../js/test/mates.js"></script>
+<script>window.onload = renderitza;</script>
+

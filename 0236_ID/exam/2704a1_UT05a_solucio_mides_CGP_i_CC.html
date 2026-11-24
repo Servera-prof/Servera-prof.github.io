@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+</head>
+<textarea id="enunciat">
+
+Examen mides nínxol CPG + CS i armari/local CC
+==============================================
+
+Solució
+-------
+
+1. Ves al catàleg de Pinazo i a la guia de la NRZ103 i dimensiona 
+   l'hornacina (_hornacina_ en castellà) o nínxol (_nicho_ en castellà, 
+   _niche_ en francés) per a la CS, CGP i fusibles adients per a una 
+   LGA amb una $I_z = 151 \text{ A}$ i una previsió de potència de $P = 
+   80 \text{ kW}$.
+
+   **Important:** per tal de complir alhora la NRZ002 i la NRZ103. 
+   Utilitza els marges més amples de les figures de la **guia NRZ103**.
+   
+   **Resposta:**
+   - Ample nínxol/hornacina: 135 cm
+   - Alt nínxol/hornacina: 115 cm
+   - Profunditat nínxol/hornacina: 30 cm
+   - Referència del fabricant CS: 335302
+   - Referència del fabricant CGP: 6705807 (481192)
+
+
+Al catàleg de Pinazo s'ha triat la CGP-7-160 (ref. 6705806) ja que 
+haurem de posar fusibles de 125 A, que són els únics
+que compleixen:
+
+$$I_b \le I_n \le I_z \cdot 0,91 =137{,}41 $$
+
+A on, en el cas més favorable:
+
+$$I_b = \frac{P}{\sqrt{3} \cdot U \cdot \cos \varphi} 
+      = 115 \text{ kW}$$
+
+Segons el catàleg tenim que l'amplada i altura de les CGP són 
+289 x 530 mm, respectivament.
+
+La CS ha de ser preferiblement ampla segons especificacions de l'NRZ,
+per aquest motiu es tria la CS-400 ampla (ref. 335302) de 530 x 530 mm.
+
+Amb aquestes dades, consultant la guia de l'NRZ103 observem que per a
+muntatge horitzontal els marges horitzontals a preveure són de 100 i que
+els verticals són 150 (el superior) i 300 l'inferior.
+
+Així, l'amplada seria de 
+
+$$289 + 530 + 100 + 100 + 200 = 1219 \text{ mm}$$
+
+i l'alçada:
+
+$$150 + 530 + 300 = 980 \text{ mm}$$
+
+Ara bé, el mínim són 1350 d'ample per 1150 d'alt i per tant aquesta és 
+la mida que haurà de tenir ja que els valors calculats no arriben.
+
+La profunditat serà de 300 mm, ja que és el minim requerit per l'NRZ i
+supera els 230 mm de la CS, o els 120 mm de la CGP.
+
+Si optem per triar la CGP-9-160 tenim que:
+
+- Ref CGP: 6705803 (481193)
+- Amplada $530 + 100 + 100 = 730 \text{ mm}$
+- Amplada $150 + 530 + 530 + 300 = 1510 \text{ mm}$$
+
+El mínim per muntatge vertical és 1770 d'alt i 710 d'ample
+per tant seria 177 x 73 cm i 30 de profunditat.
+
+------
+
+
+
+2. Ves al catàleg de Pinazo i a la guia de la NRZ103 i dimensiona el 
+   local o armari de comptadors. No es pot utilitzar local si amb un 
+   armari és suficient. Recorda que per normativa s'ha de considerar 
+   que tots els locals són trifàsics, els habitatges poden ser 
+   monofàsics si no superen els 15 kW.
+   
+   **Edifici:**
+   
+   - 3 habitatges d’electrificació elevada (planta segona)
+       i 3 d’electrificació bàsica (planta primera).
+   - 3 locals comercials (planta baixa):
+       + Una pizzeria
+       + Una tenda de pinso per cabres
+       + Una oficina d’atenció d’objectes perduts a torrents
+   - Les zones comunes són de 100 m²
+   - L’aparcament (soterrani) té 200 m²
+   
+   **Important:** Recorda que has d'instal·lar un protector de 
+   sobretensions!
+   
+    **Resposta:**
+   - Ample armari/local: 246 cm
+   - Alt armari/local: 207 cm
+   - Profunditat armari/local: 40 cm
+   - Referència del fabricant UF que instal·lis:
+       + PNZ-MODULO 8ME + 3TE Gesa 
+       + PNZ-MODULO I-160 ref: 610015 
+       + PNZ-MODULO DESCARGADOR 
+       
+Tenim 6 habitatges monofàsics i 3 locals comercials trifasics. Les
+zones comunes són relativament petites, així com l'aparcament i per
+tant també serà suficient amb un comptador monofàsic més, el 3TE + 8ME
+de Pinazo encaixa.
+
+L'UF del IGM te una amplitud de 315 mm, així com la UF de ST,
+per altra banda un modul prefabricat de Pinazo (PNZ - Modulo 8ME + 3TE 
+Gesa) fa 630 d'ample i 1620 d'alt.
+
+Com que hi ha menys de 16 comptadors podem muntar a armari. L'armari
+ha de poder contenir al seu interior la centralització, a més dels
+marges requerits per l'NRZ que són:
+- Marges horitzontals de 200 a costat i costat, a més de 800 mm extres
+  d'espai de reserva a un edifici que a més d'habitatges té locals.
+- Els marges verticals són 250 (inferior) i 200 superior.
+- El marge de profunditat és de 200
+
+Així l'ample de l'armari ha de ser
+
+$$200 + 315 + 315 + 630 + 800 +200 =  2460 \text{ mm}$$
+
+l'alt:
+
+$$250 + 1620 + 200 = 2070 \text{ mm}$$
+
+i la profunditat:
+
+$$200 + 200 = 400 \text{ mm}$$
+
+Els mínims són:
+- Ample: 1000
+- Alt: No especificat
+- Profunditat 300
+
+Com que les mides mínimes són inferiors excepte la profunditat. Les
+mides seran les calculades.
+
+
+</textarea>
+
+
+<script src="../../js/config.js"></script>
+<script src="../../js/texme/texme.js"></script>
+<script>window.onload = texme.renderPage;</script>
