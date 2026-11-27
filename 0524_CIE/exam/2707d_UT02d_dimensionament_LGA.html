@@ -171,7 +171,7 @@ function genera_params() {
  *   calculats.
  */
 function calcular_solucions() {
-    const {
+       const {
         pt_kw,   fdp,        np,        i_sl,     si_lga,   
         i_pl,    prof_lga,   i_tt,      temp_t,   i_rt,     
         res_t,   i_tfs,      temp_fs,   i_pcc,    l_lga,
@@ -199,8 +199,8 @@ function calcular_solucions() {
     ];
     
     const arr_fctfs = [ // array de f. corr per temp fs (25 a 50 °C)
-        1.22, 1.15, 1.08, 1,  0.91, 
-        0.82
+        1.14, 1.10, 1.05, 1,  0.96, 
+        0.90
     ];
     const fc_temp = arr_fctfs[i_tfs];
     
@@ -246,20 +246,23 @@ function calcular_solucions() {
     let j_sec = 0;
     let i_max = 0;
     let i_z = 0;
-    
+    let s = 0
+            
     if (i_sl === 0){ // enterrada
         j_sec = arr_ime.findIndex(i_fs => i_fs >= i_b);
         i_max = arr_ime[j_sec];
         const fc_rt = arr_fcrt2[j_sec];
         i_z = i_max * fc_tempt * fc_prof * fc_rt;
+        
+        s = arr_sec[j_sec];
     }else { // fals sostre
         j_sec = arr_imfs.findIndex(i_fs => i_fs >= i_b);
         i_max = arr_imfs[j_sec];
         i_z = i_max * fc_temp;
+        
+        s = arr_sec[j_sec];
     }
     
-
-
     const arr_inf = [ // array de I_n dels fusibles
         63,  80, 100, 125, 160,
         200, 250, 315
@@ -267,8 +270,11 @@ function calcular_solucions() {
     
     let j_inf = arr_inf.findIndex(a => a >= i_z * 0.91) - 1;
     let i_n = arr_inf[j_inf];
+    
+    
     while (i_n < i_b) {
         j_sec++;
+        s = arr_sec[j_sec];
         if (i_sl === 0){ // enterrada
             i_max = arr_ime[j_sec];
             const fc_rt = arr_fcrt2[j_sec];
@@ -281,13 +287,12 @@ function calcular_solucions() {
         i_n = arr_inf[j_inf];
     };
     
-    
-    
     const arr_icgp = [ // array de les intensitats de les CGPs
         100, 160, 250
     ];
     const j_icgp = arr_icgp.findIndex(a => a >= i_n);
     const i_buc = arr_icgp[j_icgp];
+    
     
     const arr_cdtu = [ // Array de cdt unitaries
         [18.255, 19.573, 20.891, 21.550, 20.469, 21.951, 23.434, 24.175, 22.604, 24.252, 25.899, 26.723],
@@ -323,50 +328,23 @@ function calcular_solucions() {
     const arr_cdtmax = [ // array de les cdt màximes admisibles en %
         0.5, 1
     ];
-    const cdt_max = arr_cdtmax[i_pcc]/100 * 400;
+    const cdt_pc = arr_cdtmax[i_pcc]
+    const cdt_max = cdt_pc/100 * 400;
+    
+    
     let j_sec_vell = j_sec;
     while (cdt_90 > cdt_max){
         j_sec++;
+        s = arr_sec[j_sec];
         cdtu = arr_cdtu[j_sec][j_fdpit];
         cdt_90 = cdtu * l_lga/1e3 * i_b;
     }
+    
     const s_lga90 = arr_sec[j_sec];
-    
-    
-    j_sec = j_sec_vell;
-    const t_0 = temp_fs;
-    const t_max = 90;
-    t_op = t_0 + (t_max - t_0) * (i_b / i_z)**2;
-    b1 = arr_fdp.findIndex(a => a <= fdp);
-    b2 = arr_tc.findIndex(a => a >= t_op);
-    j_fdpit = b1 * 4 + b2;                // index del fdp i temperatura
-    cdtu = arr_cdtu[j_sec][j_fdpit];
-    let cdt_op = cdtu * l_lga/1e3 * i_b;
-    while (cdt_op > cdt_max){
-        j_sec++;
-        i_max = arr_imfs[j_sec];
-        i_z = i_max * fc_temp;
-        t_op = t_0 + (t_max - t_0) * (i_b / i_z)**2;
-        b1 = arr_fdp.findIndex(a => a <= fdp);
-        b2 = arr_tc.findIndex(a => a >= t_op);
-        j_fdpit = b1 * 4 + b2;
-        cdtu = arr_cdtu[j_sec][j_fdpit];
-        cdt_op = cdtu * l_lga/1e3 * i_b;
-    }
-    const s_lga = arr_sec[j_sec];
-    
-    const arr_dt = [ // Array de diàmetres de tubs
-        0,       0,       0,       0,       75,
-        75,      110,     110,     125,     140,
-        140,     160,     160,     180,     200
-    ];
-    
-    const diam_t = arr_dt[j_sec];
     
     return {
         i_b,      i_buc,     i_n,    i_max,    i_z,
-        cdt_90,   s_lga90,   t_op,   cdt_op,   cdt_max, 
-        s_lga, diam_t
+        cdt_90,   s_lga90,   t_op,   cdt_max 
     };
 }
 
@@ -627,73 +605,7 @@ function generar_explicacio(){
       ""
     ].join("\n");
 
-    j_sec = j_sec_vell;
-    s = arr_sec[j_sec];
-    const t_0 = temp_fs;
-    const t_max = 90;
-    t_op = t_0 + (t_max - t_0) * (i_b / i_z)**2;
-    b1 = arr_fdp.findIndex(a => a <= fdp);
-    b2 = arr_tc.findIndex(a => a >= t_op);
-    j_fdpit = b1 * 4 + b2;                // index del fdp i temperatura
-    cdtu = arr_cdtu[j_sec][j_fdpit];
-    let cdt_op = cdtu * l_lga/1e3 * i_b;
     
-    md += ['',
-      ""                                                               ,
-      "Ara se'ns demana intentar optimitzar la secció tinguent en"     ,
-      "compte que la temperatura del conductor no arribarà als 90 °C"  ,
-      " - t_0 = temp_fs = " +t_0+ " °C"                                ,
-      " - t_max = 90 °C"                                               ,
-      " - t_op = t_0 + (t_max - t_0) * (i_b / i_z)**2 = "              ,
-      "        = " +xs(t_op)+ " °C"                                    ,
-      ""                                                               ,
-      " - cos φ = " +fdp                                               ,
-      " - s = " +s+ " mm²"                                             ,
-      " - cdt_u = " +cdtu+ " V/(A·km)"                                 ,
-      ""                                                               ,
-      " - l_lga = " +l_lga+ " m"                                       ,
-      " - i_b = " +xs(i_b)+ " A"                                       ,
-      " - cdt_op = cdtu * l_lga/1e3 * i_b = " +xs(cdt_op)+ " V"        ,
-      ""                                                               ,
-      "cdt_op ≤ cdt_max? → " +xs(cdt_op)+ " ≤ " +cdt_max+ "?"          ,
-    ].join("\n");
-    while (cdt_op > cdt_max){
-        j_sec++;
-        s = arr_sec[j_sec];
-        i_max = arr_imfs[j_sec];
-        i_z = i_max * fc_temp;
-        t_op = t_0 + (t_max - t_0) * (i_b / i_z)**2;
-        b1 = arr_fdp.findIndex(a => a <= fdp);
-        b2 = arr_tc.findIndex(a => a >= t_op);
-        j_fdpit = b1 * 4 + b2;
-        cdtu = arr_cdtu[j_sec][j_fdpit];
-        cdt_op = cdtu * l_lga/1e3 * i_b;
-        md += ['',
-          "No!, s'augmenta la secció, ara:"                            ,
-          " - s = " +s+ " mm²"                                         ,
-          " - i_max = arr_imfs[j_sec] = " +i_max+ " A"                 ,
-          " - i_z = i_max * fc_temp = " +i_z+ " A"                     ,
-          " - t_op = " +xs(t_op)+ " °C"                                ,
-          " - cdtu = " +cdtu+ " V/(A·km)"                              ,
-          " - cdt_op = cdtu * l_lga/1e3 * i_b = " +xs(cdt_op)+ " V"    ,
-          ""                                                           ,
-          "cdt_op ≤ cdt_max? → " +xs(cdt_op)+ " ≤ " +cdt_max+ "?"      ,
-        ].join("\n");
-    }
-    const s_lga = arr_sec[j_sec];
-    const arr_dt = [ // Array de diàmetres de tubs
-        0,       0,       0,       0,       75,
-        75,      110,     110,     125,     140,
-        140,     160,     160,     180,     200
-    ];
-    
-    const diam_t = arr_dt[j_sec];
-    
-    md += ['',
-      "Si!"                                                            ,
-      " - s_lga = " +s_lga+ " mm²"                                     ,
-      " - diam_t = " +diam_t+ " mm"                                    ,
-    ].join("\n");
     
     md += "\n~~~";
     return md;

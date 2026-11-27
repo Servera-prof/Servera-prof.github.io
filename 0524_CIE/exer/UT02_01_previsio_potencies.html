@@ -298,7 +298,7 @@ function calcular_solucions() {
     const pl = pl1 + pl2 + pl3;                            // pot locals
     
     const pmqg = i_vg === 0 ? 10 : 20;               // pot per m² garat
-    const pg = plg * sg * pmqg;
+    const pg = max(plg * sg * pmqg, 3450);
     
     const cspl = i_spl === 0 ? 0.3 : 1;                // coeficient SPL
     const nve = Math.ceil(0.1 * plg * sg / spv);
@@ -322,7 +322,7 @@ function calcular_solucions() {
         [4, 6, 9, 11]
     ];
     const i_pgp = [150, 300, 450, 900, 1800, 3500].findIndex(e => e >= npa);
-    const j_pgp = [1, 5, 11, 16].findIndex(e => e >= npl);
+    const j_pgp = [4, 10, 15, 20].findIndex(e => e >= npl);
     const pgp = arr_pgp[i_pgp][j_pgp]*1e3;
     const pzc = pesc + ppas + pae + pgp;
     const pt = ph + pl + pg + pve + pzc;
@@ -406,7 +406,7 @@ function generar_explicacio(){
         [4, 6, 9, 11]
     ];
     const i_pgp = [150, 300, 450, 900, 1800, 3500].findIndex(e => e >= npa);
-    const j_pgp = [1, 5, 11, 16].findIndex(e => e >= npl);
+    const j_pgp = [4, 10, 15, 20].findIndex(e => e >= npl);
     const pgp = arr_pgp[i_pgp][j_pgp]*1e3;
     const pzc = pesc + ppas + pae + pgp;
     const pt = ph + pl + pg + pve + pzc;

@@ -204,8 +204,8 @@ function calcular_solucions() {
     ];
     
     const arr_fctfs = [ // array de f. corr per temp fs (25 a 50 °C)
-        1.22, 1.15, 1.08, 1,  0.91, 
-        0.82
+        1.14, 1.10, 1.05, 1,  0.96, 
+        0.90
     ];
     const fc_temp = arr_fctfs[i_tfs];
     
@@ -251,20 +251,23 @@ function calcular_solucions() {
     let j_sec = 0;
     let i_max = 0;
     let i_z = 0;
-    
+    let s = 0
+            
     if (i_sl === 0){ // enterrada
         j_sec = arr_ime.findIndex(i_fs => i_fs >= i_b);
         i_max = arr_ime[j_sec];
         const fc_rt = arr_fcrt2[j_sec];
         i_z = i_max * fc_tempt * fc_prof * fc_rt;
+        
+        s = arr_sec[j_sec];
     }else { // fals sostre
         j_sec = arr_imfs.findIndex(i_fs => i_fs >= i_b);
         i_max = arr_imfs[j_sec];
         i_z = i_max * fc_temp;
+        
+        s = arr_sec[j_sec];
     }
     
-
-
     const arr_inf = [ // array de I_n dels fusibles
         63,  80, 100, 125, 160,
         200, 250, 315
@@ -272,8 +275,11 @@ function calcular_solucions() {
     
     let j_inf = arr_inf.findIndex(a => a >= i_z * 0.91) - 1;
     let i_n = arr_inf[j_inf];
+    
+    
     while (i_n < i_b) {
         j_sec++;
+        s = arr_sec[j_sec];
         if (i_sl === 0){ // enterrada
             i_max = arr_ime[j_sec];
             const fc_rt = arr_fcrt2[j_sec];
@@ -286,13 +292,12 @@ function calcular_solucions() {
         i_n = arr_inf[j_inf];
     };
     
-    
-    
     const arr_icgp = [ // array de les intensitats de les CGPs
         100, 160, 250
     ];
     const j_icgp = arr_icgp.findIndex(a => a >= i_n);
     const i_buc = arr_icgp[j_icgp];
+    
     
     const arr_cdtu = [ // Array de cdt unitaries
         [18.255, 19.573, 20.891, 21.550, 20.469, 21.951, 23.434, 24.175, 22.604, 24.252, 25.899, 26.723],
@@ -328,17 +333,23 @@ function calcular_solucions() {
     const arr_cdtmax = [ // array de les cdt màximes admisibles en %
         0.5, 1
     ];
-    const cdt_max = arr_cdtmax[i_pcc]/100 * 400;
+    const cdt_pc = arr_cdtmax[i_pcc]
+    const cdt_max = cdt_pc/100 * 400;
+    
+    
     let j_sec_vell = j_sec;
     while (cdt_90 > cdt_max){
         j_sec++;
+        s = arr_sec[j_sec];
         cdtu = arr_cdtu[j_sec][j_fdpit];
         cdt_90 = cdtu * l_lga/1e3 * i_b;
     }
+    
     const s_lga90 = arr_sec[j_sec];
     
     
-    j_sec = j_sec_vell;
+     j_sec = j_sec_vell;
+    s = arr_sec[j_sec];
     const t_0 = temp_fs;
     const t_max = 90;
     t_op = t_0 + (t_max - t_0) * (i_b / i_z)**2;
@@ -347,8 +358,10 @@ function calcular_solucions() {
     j_fdpit = b1 * 4 + b2;                // index del fdp i temperatura
     cdtu = arr_cdtu[j_sec][j_fdpit];
     let cdt_op = cdtu * l_lga/1e3 * i_b;
+    
     while (cdt_op > cdt_max){
         j_sec++;
+        s = arr_sec[j_sec];
         i_max = arr_imfs[j_sec];
         i_z = i_max * fc_temp;
         t_op = t_0 + (t_max - t_0) * (i_b / i_z)**2;
@@ -359,7 +372,6 @@ function calcular_solucions() {
         cdt_op = cdtu * l_lga/1e3 * i_b;
     }
     const s_lga = arr_sec[j_sec];
-    
     const arr_dt = [ // Array de diàmetres de tubs
         0,       0,       0,       0,       75,
         75,      110,     110,     125,     140,
